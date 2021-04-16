@@ -1,0 +1,2587 @@
+openapi: 3.0.0
+info:
+  description: This is an example of using OAuth2 Implicit Flow in a specification
+    to describe security to your API.
+  title: YASM (Yet Another Skill Management) API
+  version: VERSION
+servers:
+- url: /api/v1
+security:
+- openId:
+  - user
+  - admin
+paths:
+  /ping:
+    get:
+      description: This operation shows how to override the global security defined
+        above, as we want to open it up for all users.
+      operationId: getPing
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security: []
+      summary: Server heartbeat operation
+  /organizations:
+    get:
+      operationId: getOrganizations
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedOrganizations'
+          description: A paged array of Organizations
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - openId:
+        - user
+      summary: Get a list of all Organizations
+    post:
+      operationId: createOrganization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organization'
+        description: Details about the Organization
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - implicit: []
+      summary: Create an Organization
+  /organizations/{organizationId}:
+    delete:
+      operationId: deleteOrganization
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - implicit: []
+      summary: Delete an organization
+    get:
+      operationId: getOrganization
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get details about an Organization
+    put:
+      operationId: updateOrganization
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organization'
+        description: Details about the organization
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - implicit: []
+      summary: Update an Organization
+  /organizations/{organizationId}/industries/{industryId}:
+    delete:
+      operationId: detachOrganizationFromIndustry
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: industryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Remove an Organization to an Industry
+    post:
+      operationId: attachOrganizationToIndustry
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: industryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Add an Organization to an Industry
+  /organizations/{organizationId}/offices:
+    post:
+      operationId: createOffice
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Office'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create an Office in an Organization
+  /organizations/{organizationId}/offices/{officeId}:
+    delete:
+      operationId: deleteOffice
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: officeId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Delte an Office from an Organization
+    get:
+      operationId: getOffice
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: officeId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Office'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get an Office for an Organiaztion
+    put:
+      operationId: updateOffice
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: officeId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Office'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Office'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update an Office for an Organization
+  /industries:
+    get:
+      operationId: getIndustries
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedIndustries'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get all Industries
+    post:
+      operationId: createIndustry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Industry'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Industry'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create an Industry
+  /industries/{industryId}:
+    delete:
+      operationId: deleteIndustry
+      parameters:
+      - explode: false
+        in: path
+        name: industryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Delete an Industry
+    get:
+      operationId: getIndustry
+      parameters:
+      - explode: false
+        in: path
+        name: industryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Industry'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get details about an Industry
+    put:
+      operationId: updateIndustry
+      parameters:
+      - explode: false
+        in: path
+        name: industryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Industry'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Industry'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update an Industry
+  /organizations/{organizationId}/certifications:
+    get:
+      operationId: getCertificationsForOrganization
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedCertifications'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get a list of all certifications for a organization
+    post:
+      operationId: createCertification
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Certification'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create a Certification in an Organization
+  /organizations/{organizationId}/projects:
+    get:
+      operationId: getOrganizationProjects
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedProjects'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get a list of all Projects for an Organization
+    post:
+      operationId: createProject
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create a Project in an Organization
+  /certifications:
+    get:
+      operationId: getCertifications
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedCertifications'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get a list of all Certifations indepdenant of the Organization
+  /certifications/{certificationId}:
+    delete:
+      operationId: deleteCertification
+      parameters:
+      - explode: false
+        in: path
+        name: certificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Delete a Certification
+    get:
+      operationId: getCertification
+      parameters:
+      - explode: false
+        in: path
+        name: certificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get details about a Certification
+    put:
+      operationId: updateCertification
+      parameters:
+      - explode: false
+        in: path
+        name: certificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Certification'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update a Certification
+  /certifications/{certificationId}/skills/{skillId}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: certificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+    post:
+      description: Add Skill to Certification
+      operationId: addSkillToCertification
+      parameters:
+      - explode: false
+        in: path
+        name: certificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+    put:
+      description: Update Skill in Certification
+      parameters:
+      - explode: false
+        in: path
+        name: certificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+  /projects:
+    get:
+      operationId: getProjects
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get a list of all Projects in all Organizations
+  /projects/{projectId}:
+    delete:
+      operationId: deleteProject
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Delete a project
+    get:
+      operationId: getProject
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get details about a Project
+    put:
+      operationId: updateProject
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update a Project
+  /skills:
+    get:
+      operationId: getSkills
+      parameters:
+      - description: Return only root skills
+        explode: true
+        in: query
+        name: rootOnly
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedSkills'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get a list of all skills, optionally only root
+    post:
+      operationId: createSkill
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Skill'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create a Skill
+  /skills/{skillId}:
+    delete:
+      operationId: deleteSkill
+      parameters:
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Delete a Skill
+    get:
+      operationId: getSkill
+      parameters:
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get details for a single skill
+    put:
+      operationId: updateSkill
+      parameters:
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Skill'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update a Skill
+  /skills/{skillId}/parents:
+    get:
+      operationId: getSkillParents
+      parameters:
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedSkills'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get ghe list of parents for a skill
+  /skills/{skillId}/parents/{parentSkillId}:
+    delete:
+      operationId: removeSkillFromParentSkill
+      parameters:
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: parentSkillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Detaches a Skill from parent Skill
+    post:
+      operationId: addSkillToParentSkill
+      parameters:
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: parentSkillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Attach a Skill to a parent Skill, returns the parent Skill
+  /persons:
+    get:
+      operationId: getPersons
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedPersons'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get a list of all persons
+  /persons/{personId}:
+    get:
+      operationId: getPerson
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get basic info about a person
+  /persons/{personid}/profile:
+    get:
+      operationId: generatePersonProfile
+      parameters:
+      - explode: false
+        in: path
+        name: personid
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/pdf:
+              schema:
+                format: binary
+                type: string
+          description: A PDF profile of a Person
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Generate a PDF profile from a Person
+  /persons/{personId}/interests/skills/{skillId}:
+    delete:
+      operationId: deletePersonInterest
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Remove an Interest to a Person
+    post:
+      operationId: addPersonInterest
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Add an Interest to a Person
+  /persons/{personId}/certifications/{certificationId}:
+    delete:
+      operationId: deletePersonCertification
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: certificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Remove an Interest to a Person
+    post:
+      operationId: addPersonCertification
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: certificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Date'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Add Certification to a Person
+    put:
+      operationId: updatePersonCertification
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: certificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Date'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update a Certification of a Person
+  /persons/{personId}/projects/{projectId}:
+    delete:
+      operationId: deletePersonProject
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Remove an Project from a Person
+    post:
+      operationId: addPersonProject
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/SkillLevel'
+              type: array
+        description: A list of Skills each with a level
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Add Project to a Person
+    put:
+      operationId: updatePersonProject
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/SkillLevel'
+              type: array
+        description: A list of Skills each with a level
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update a Project of a Person
+  /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId}:
+    delete:
+      operationId: deleteConfirmation
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: confirmingPersonId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Remove a confirmation
+    post:
+      operationId: confirmSkill
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: confirmingPersonId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Confirm Skill
+  /search/all/{text}:
+    get:
+      operationId: searchAll
+      parameters:
+      - explode: false
+        in: path
+        name: text
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Fulltext search on all kinds of objects
+  /languages:
+    get:
+      operationId: getLanguages
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedLanguages'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get a list of Languages
+  /languages/{languageId}:
+    delete:
+      operationId: deleteLanguage
+      parameters:
+      - explode: false
+        in: path
+        name: languageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Delete a language
+    get:
+      operationId: getLanguage
+      parameters:
+      - explode: false
+        in: path
+        name: languageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LanguageDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get details about a language
+    post:
+      operationId: createLanguage
+      parameters:
+      - explode: false
+        in: path
+        name: languageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LanguageDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create a new language
+  /countries:
+    get:
+      operationId: getCountries
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedCountries'
+          description: OK
+      summary: Get all Countries
+  /countries/{countryId}:
+    delete:
+      operationId: deleteCountry
+      parameters:
+      - explode: false
+        in: path
+        name: countryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Delete a Country
+    get:
+      operationId: getCountry
+      parameters:
+      - explode: false
+        in: path
+        name: countryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountryDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get details about a Country
+    post:
+      operationId: createCountry
+      parameters:
+      - explode: false
+        in: path
+        name: countryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Country'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountryDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create a new Country
+    put:
+      operationId: updateCountry
+      parameters:
+      - explode: false
+        in: path
+        name: countryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Country'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountryDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update a Country
+  /countries/{countryId}/languages/{languageId}:
+    delete:
+      operationId: removeLanguageFromCountry
+      parameters:
+      - explode: false
+        in: path
+        name: countryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: languageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Assign a language to a country
+    post:
+      operationId: addLangaugeToCountry
+      parameters:
+      - explode: false
+        in: path
+        name: countryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: languageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Assign a language to a country
+components:
+  schemas:
+    BasicDomainModel:
+      properties:
+        id:
+          format: uuid
+          type: string
+      required:
+      - id
+      type: object
+    NamedDomainModel:
+      allOf:
+      - $ref: '#/components/schemas/BasicDomainModel'
+      - $ref: '#/components/schemas/NamedDomainModel_allOf'
+      required:
+      - name
+    Certification:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Certification_allOf'
+    CertificationDetails:
+      example:
+        skills:
+        - level:
+            level: 1
+        - level:
+            level: 1
+      properties:
+        certification:
+          $ref: '#/components/schemas/Certification'
+        organization:
+          $ref: '#/components/schemas/Organization'
+        skills:
+          items:
+            $ref: '#/components/schemas/SkillLevel'
+          type: array
+    Country:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+    CountryDetails:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/CountryDetails_allOf'
+    Date:
+      example:
+        month: 0
+        year: 2020
+        day: 21
+      properties:
+        year:
+          example: 2020
+          type: number
+        month:
+          type: integer
+        day:
+          example: 21
+          type: integer
+      required:
+      - month
+      - year
+      type: object
+    Experience:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Experience_allOf'
+    Geolocation:
+      properties:
+        longitude:
+          format: asdf
+          type: number
+        latitude:
+          format: asdf
+          type: number
+      required:
+      - latitude
+      - longitude
+      type: object
+    Industry:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Industry_allOf'
+    Language:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Language_allOf'
+    LanguageDetails:
+      example:
+        countries:
+        - null
+        - null
+      properties:
+        language:
+          $ref: '#/components/schemas/Language'
+        countries:
+          items:
+            $ref: '#/components/schemas/Country'
+          type: array
+    LanguageLevel:
+      example:
+        level:
+          level: 1
+      properties:
+        language:
+          $ref: '#/components/schemas/Language'
+        level:
+          $ref: '#/components/schemas/Level'
+      type: object
+    Office:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Office_allOf'
+    Organization:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Organization_allOf'
+    OrganizationDetails:
+      example:
+        projects:
+        - null
+        - null
+        industries:
+        - null
+        - null
+        offices:
+        - null
+        - null
+        certifications:
+        - null
+        - null
+      properties:
+        organization:
+          $ref: '#/components/schemas/Organization'
+        projects:
+          items:
+            $ref: '#/components/schemas/Project'
+          readOnly: true
+          type: array
+        industries:
+          items:
+            $ref: '#/components/schemas/Industry'
+          type: array
+        certifications:
+          items:
+            $ref: '#/components/schemas/Certification'
+          type: array
+        offices:
+          items:
+            $ref: '#/components/schemas/Office'
+          type: array
+      type: object
+    Person:
+      example:
+        name: Darko Krizic
+        location: Riedberg, Frankfurt am Main, Deutschland
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          example: Darko Krizic
+          type: string
+        location:
+          example: Riedberg, Frankfurt am Main, Deutschland
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    PersonDetails:
+      example:
+        projects:
+        - null
+        - null
+        languages:
+        - level:
+            level: 1
+        - level:
+            level: 1
+        person:
+          name: Darko Krizic
+          location: Riedberg, Frankfurt am Main, Deutschland
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        location: location
+        interests:
+        - null
+        - null
+        certifications:
+        - skills:
+          - level:
+              level: 1
+          - level:
+              level: 1
+        - skills:
+          - level:
+              level: 1
+          - level:
+              level: 1
+      properties:
+        person:
+          $ref: '#/components/schemas/Person'
+        projects:
+          items:
+            $ref: '#/components/schemas/ProjectParticipation'
+          type: array
+        interests:
+          items:
+            $ref: '#/components/schemas/Skill'
+          type: array
+        certifications:
+          items:
+            $ref: '#/components/schemas/CertificationDetails'
+          type: array
+        languages:
+          items:
+            $ref: '#/components/schemas/LanguageLevel'
+          type: array
+        location:
+          type: string
+        office:
+          $ref: '#/components/schemas/Office'
+      type: object
+    Project:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Project_allOf'
+    ProjectParticipation:
+      allOf:
+      - $ref: '#/components/schemas/BasicDomainModel'
+      - $ref: '#/components/schemas/ProjectParticipation_allOf'
+    Skill:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Skill_allOf'
+    SkillLevel:
+      example:
+        level:
+          level: 1
+      properties:
+        skill:
+          $ref: '#/components/schemas/Skill'
+        level:
+          $ref: '#/components/schemas/Level'
+    SkillDetails:
+      example:
+        children:
+        - null
+        - null
+      properties:
+        skill:
+          $ref: '#/components/schemas/Skill'
+        children:
+          items:
+            $ref: '#/components/schemas/Skill'
+          type: array
+    Status:
+      example:
+        status: status
+      properties:
+        status:
+          type: string
+    Error:
+      properties:
+        message:
+          type: string
+    Level:
+      example:
+        level: 1
+      properties:
+        level:
+          maximum: 5
+          minimum: 1
+          type: integer
+    Page:
+      properties:
+        skip:
+          minimum: 0
+          type: integer
+        limit:
+          minimum: 1
+          type: integer
+        count:
+          type: integer
+    PagedOrganizations:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedOrganizations_allOf'
+    PagedLanguages:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/CountryDetails_allOf'
+    PagedCertifications:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedCertifications_allOf'
+    PagedCountries:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedCountries_allOf'
+    PagedSkills:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedSkills_allOf'
+    PagedIndustries:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedIndustries_allOf'
+    PagedProjects:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedProjects_allOf'
+    PagedPersons:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedPersons_allOf'
+    SearchResult:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/SearchResult_allOf'
+    SearchResultItem:
+      discriminator:
+        propertyName: type
+      properties:
+        score:
+          example: 0.7
+          type: number
+        type:
+          example: Certification
+          type: string
+        item:
+          $ref: '#/components/schemas/NamedDomainModel'
+    NamedDomainModel_allOf:
+      properties:
+        name:
+          type: string
+      type: object
+    Certification_allOf:
+      properties:
+        synonyms:
+          items:
+            type: string
+          type: array
+        validity:
+          type: string
+      type: object
+    CountryDetails_allOf:
+      properties:
+        languages:
+          items:
+            $ref: '#/components/schemas/Language'
+          type: array
+      type: object
+    Experience_allOf:
+      properties:
+        skill:
+          $ref: '#/components/schemas/SkillLevel'
+        confirmedBy:
+          items:
+            $ref: '#/components/schemas/Person'
+          type: array
+      type: object
+    Industry_allOf:
+      properties:
+        name:
+          example: Aviation
+      type: object
+    Language_allOf:
+      properties:
+        name:
+          example: de
+      type: object
+    Office_allOf:
+      properties:
+        name:
+          example: Frankfurt
+        geolocation:
+          $ref: '#/components/schemas/Geolocation'
+      type: object
+    Organization_allOf:
+      properties:
+        partner:
+          default: false
+          type: boolean
+        customer:
+          default: false
+          type: boolean
+        geolocation:
+          $ref: '#/components/schemas/Geolocation'
+      type: object
+    Project_allOf:
+      properties:
+        name:
+          example: Phoenix Unlimited
+        description:
+          example: Recreate the entire world.
+          type: string
+      type: object
+    ProjectParticipation_allOf:
+      properties:
+        startdate:
+          $ref: '#/components/schemas/Date'
+        enddate:
+          $ref: '#/components/schemas/Date'
+        project:
+          allOf:
+          - $ref: '#/components/schemas/Project'
+          readOnly: true
+        description:
+          example: Responsible Soluation Architect for this project.
+          type: string
+        experiences:
+          items:
+            $ref: '#/components/schemas/Experience'
+          readOnly: true
+          type: array
+      required:
+      - experiences
+      - id
+      - project
+      - startdate
+      type: object
+    Skill_allOf:
+      properties:
+        name:
+          example: Java Enterprise Edition
+          type: string
+        synonyms:
+          items:
+            example: Java EE
+            type: string
+          type: array
+        invest:
+          default: false
+          type: boolean
+      required:
+      - id
+      - name
+      - synonyms
+      type: object
+    PagedOrganizations_allOf:
+      properties:
+        organizations:
+          items:
+            $ref: '#/components/schemas/Organization'
+          type: array
+      type: object
+    PagedCertifications_allOf:
+      properties:
+        certifications:
+          items:
+            $ref: '#/components/schemas/Certification'
+          type: array
+      type: object
+    PagedCountries_allOf:
+      properties:
+        countries:
+          items:
+            $ref: '#/components/schemas/Country'
+          type: array
+      type: object
+    PagedSkills_allOf:
+      properties:
+        skills:
+          items:
+            $ref: '#/components/schemas/Skill'
+          type: array
+      type: object
+    PagedIndustries_allOf:
+      properties:
+        industries:
+          items:
+            $ref: '#/components/schemas/Industry'
+          type: array
+      type: object
+    PagedProjects_allOf:
+      properties:
+        projects:
+          items:
+            $ref: '#/components/schemas/Project'
+          type: array
+      type: object
+    PagedPersons_allOf:
+      properties:
+        persons:
+          items:
+            $ref: '#/components/schemas/Person'
+          type: array
+      type: object
+    SearchResult_allOf:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/SearchResultItem'
+          type: array
+      type: object
+  securitySchemes:
+    openId:
+      openIdConnectUrl: https://login.microsoftonline.com/b2748d0a-856e-4184-bda8-831f9ffa8a48/v2.0/.well-known/openid-configuration
+      type: openIdConnect
