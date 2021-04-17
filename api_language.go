@@ -196,6 +196,9 @@ func (a *LanguageApiService) CreateLanguageExecute(r ApiCreateLanguageRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.language == nil {
+		return localVarReturnValue, nil, reportError("language is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

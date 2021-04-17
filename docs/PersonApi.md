@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## AddPersonCertification
 
-> PersonDetails AddPersonCertification(ctx, personId, certificationId).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> PersonDetails AddPersonCertification(ctx, personId, certificationId).Date(date).Execute()
 
 Add Certification to a Person
 
@@ -43,11 +43,11 @@ import (
 func main() {
     personId := TODO // string | 
     certificationId := TODO // string | 
-    uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE | 
+    date := *openapiclient.NewDate() // Date | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.AddPersonCertification(context.Background(), personId, certificationId).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    resp, r, err := api_client.PersonApi.AddPersonCertification(context.Background(), personId, certificationId).Date(date).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.AddPersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **date** | [**Date**](Date.md) |  | 
 
 ### Return type
 
@@ -946,7 +946,7 @@ No authorization required
 
 ## UpdatePersonCertification
 
-> PersonDetails UpdatePersonCertification(ctx, personId, certificationId).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+> PersonDetails UpdatePersonCertification(ctx, personId, certificationId).Date(date).Execute()
 
 Update a Certification of a Person
 
@@ -965,11 +965,11 @@ import (
 func main() {
     personId := TODO // string | 
     certificationId := TODO // string | 
-    uNKNOWNBASETYPE := TODO // UNKNOWN_BASE_TYPE | 
+    date := *openapiclient.NewDate() // Date | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.UpdatePersonCertification(context.Background(), personId, certificationId).UNKNOWNBASETYPE(uNKNOWNBASETYPE).Execute()
+    resp, r, err := api_client.PersonApi.UpdatePersonCertification(context.Background(), personId, certificationId).Date(date).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdatePersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -997,7 +997,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md) |  | 
+ **date** | [**Date**](Date.md) |  | 
 
 ### Return type
 

@@ -23,6 +23,7 @@ docs/CertificationDetails.md
 docs/Country.md
 docs/CountryApi.md
 docs/CountryDetails.md
+docs/Date.md
 docs/Error.md
 docs/Experience.md
 docs/ExperienceAllOf.md
@@ -88,6 +89,7 @@ model_certification_all_of.go
 model_certification_details.go
 model_country.go
 model_country_details.go
+model_date.go
 model_error.go
 model_experience.go
 model_experience_all_of.go

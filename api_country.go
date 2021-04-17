@@ -78,6 +78,9 @@ func (a *CountryApiService) CreateCountryExecute(r ApiCreateCountryRequest) (Cou
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.country == nil {
+		return localVarReturnValue, nil, reportError("country is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -544,6 +547,9 @@ func (a *CountryApiService) UpdateCountryExecute(r ApiUpdateCountryRequest) (Cou
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
+	if r.country == nil {
+		return localVarReturnValue, nil, reportError("country is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

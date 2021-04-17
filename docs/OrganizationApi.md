@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## AttachOrganizationToIndustry
 
-> Organization AttachOrganizationToIndustry(ctx, organizationId, industryId).Execute()
+> OrganizationDetails AttachOrganizationToIndustry(ctx, organizationId, industryId).Execute()
 
 Add an Organization to an Industry
 
@@ -51,7 +51,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.AttachOrganizationToIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AttachOrganizationToIndustry`: Organization
+    // response from `AttachOrganizationToIndustry`: OrganizationDetails
     fmt.Fprintf(os.Stdout, "Response from `OrganizationApi.AttachOrganizationToIndustry`: %v\n", resp)
 }
 ```
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**OrganizationDetails**](OrganizationDetails.md)
 
 ### Authorization
 
@@ -508,7 +508,7 @@ No authorization required
 
 ## DetachOrganizationFromIndustry
 
-> Status DetachOrganizationFromIndustry(ctx, organizationId, industryId).Execute()
+> OrganizationDetails DetachOrganizationFromIndustry(ctx, organizationId, industryId).Execute()
 
 Remove an Organization to an Industry
 
@@ -535,7 +535,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.DetachOrganizationFromIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DetachOrganizationFromIndustry`: Status
+    // response from `DetachOrganizationFromIndustry`: OrganizationDetails
     fmt.Fprintf(os.Stdout, "Response from `OrganizationApi.DetachOrganizationFromIndustry`: %v\n", resp)
 }
 ```
@@ -561,7 +561,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**OrganizationDetails**](OrganizationDetails.md)
 
 ### Authorization
 

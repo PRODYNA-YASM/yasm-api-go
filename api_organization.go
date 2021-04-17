@@ -35,7 +35,7 @@ type ApiAttachOrganizationToIndustryRequest struct {
 }
 
 
-func (r ApiAttachOrganizationToIndustryRequest) Execute() (Organization, *_nethttp.Response, error) {
+func (r ApiAttachOrganizationToIndustryRequest) Execute() (OrganizationDetails, *_nethttp.Response, error) {
 	return r.ApiService.AttachOrganizationToIndustryExecute(r)
 }
 
@@ -57,16 +57,16 @@ func (a *OrganizationApiService) AttachOrganizationToIndustry(ctx _context.Conte
 
 /*
  * Execute executes the request
- * @return Organization
+ * @return OrganizationDetails
  */
-func (a *OrganizationApiService) AttachOrganizationToIndustryExecute(r ApiAttachOrganizationToIndustryRequest) (Organization, *_nethttp.Response, error) {
+func (a *OrganizationApiService) AttachOrganizationToIndustryExecute(r ApiAttachOrganizationToIndustryRequest) (OrganizationDetails, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Organization
+		localVarReturnValue  OrganizationDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.AttachOrganizationToIndustry")
@@ -877,7 +877,7 @@ type ApiDetachOrganizationFromIndustryRequest struct {
 }
 
 
-func (r ApiDetachOrganizationFromIndustryRequest) Execute() (Status, *_nethttp.Response, error) {
+func (r ApiDetachOrganizationFromIndustryRequest) Execute() (OrganizationDetails, *_nethttp.Response, error) {
 	return r.ApiService.DetachOrganizationFromIndustryExecute(r)
 }
 
@@ -899,16 +899,16 @@ func (a *OrganizationApiService) DetachOrganizationFromIndustry(ctx _context.Con
 
 /*
  * Execute executes the request
- * @return Status
+ * @return OrganizationDetails
  */
-func (a *OrganizationApiService) DetachOrganizationFromIndustryExecute(r ApiDetachOrganizationFromIndustryRequest) (Status, *_nethttp.Response, error) {
+func (a *OrganizationApiService) DetachOrganizationFromIndustryExecute(r ApiDetachOrganizationFromIndustryRequest) (OrganizationDetails, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Status
+		localVarReturnValue  OrganizationDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.DetachOrganizationFromIndustry")

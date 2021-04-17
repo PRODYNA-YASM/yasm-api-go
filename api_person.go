@@ -33,11 +33,11 @@ type ApiAddPersonCertificationRequest struct {
 	ApiService *PersonApiService
 	personId string
 	certificationId string
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	date *Date
 }
 
-func (r ApiAddPersonCertificationRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiAddPersonCertificationRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiAddPersonCertificationRequest) Date(date Date) ApiAddPersonCertificationRequest {
+	r.date = &date
 	return r
 }
 
@@ -87,8 +87,8 @@ func (a *PersonApiService) AddPersonCertificationExecute(r ApiAddPersonCertifica
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.uNKNOWNBASETYPE == nil {
-		return localVarReturnValue, nil, reportError("uNKNOWNBASETYPE is required and must be specified")
+	if r.date == nil {
+		return localVarReturnValue, nil, reportError("date is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -109,7 +109,7 @@ func (a *PersonApiService) AddPersonCertificationExecute(r ApiAddPersonCertifica
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.date
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1621,11 +1621,11 @@ type ApiUpdatePersonCertificationRequest struct {
 	ApiService *PersonApiService
 	personId string
 	certificationId string
-	uNKNOWNBASETYPE *UNKNOWN_BASE_TYPE
+	date *Date
 }
 
-func (r ApiUpdatePersonCertificationRequest) UNKNOWNBASETYPE(uNKNOWNBASETYPE UNKNOWN_BASE_TYPE) ApiUpdatePersonCertificationRequest {
-	r.uNKNOWNBASETYPE = &uNKNOWNBASETYPE
+func (r ApiUpdatePersonCertificationRequest) Date(date Date) ApiUpdatePersonCertificationRequest {
+	r.date = &date
 	return r
 }
 
@@ -1675,8 +1675,8 @@ func (a *PersonApiService) UpdatePersonCertificationExecute(r ApiUpdatePersonCer
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.uNKNOWNBASETYPE == nil {
-		return localVarReturnValue, nil, reportError("uNKNOWNBASETYPE is required and must be specified")
+	if r.date == nil {
+		return localVarReturnValue, nil, reportError("date is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1697,7 +1697,7 @@ func (a *PersonApiService) UpdatePersonCertificationExecute(r ApiUpdatePersonCer
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.uNKNOWNBASETYPE
+	localVarPostBody = r.date
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -155,6 +155,7 @@ Class | Method | HTTP request | Description
  - [CertificationDetails](docs/CertificationDetails.md)
  - [Country](docs/Country.md)
  - [CountryDetails](docs/CountryDetails.md)
+ - [Date](docs/Date.md)
  - [Error](docs/Error.md)
  - [Experience](docs/Experience.md)
  - [ExperienceAllOf](docs/ExperienceAllOf.md)

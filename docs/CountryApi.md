@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-    country := *openapiclient.NewCountry("Id_example", "This is the name") // Country |  (optional)
+    country := *openapiclient.NewCountry("Id_example", "This is the name") // Country | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -298,7 +298,7 @@ import (
 
 func main() {
     countryId := TODO // string | 
-    country := *openapiclient.NewCountry("Id_example", "This is the name") // Country |  (optional)
+    country := *openapiclient.NewCountry("Id_example", "This is the name") // Country | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

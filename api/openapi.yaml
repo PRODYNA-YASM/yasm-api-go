@@ -217,7 +217,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OrganizationDetails'
           description: OK
         "400":
           content:
@@ -252,7 +252,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Organization'
+                $ref: '#/components/schemas/OrganizationDetails'
           description: OK
         "400":
           content:
@@ -1618,10 +1618,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                date:
-                  format: date
-                  type: string
+              $ref: '#/components/schemas/Date'
         required: true
       responses:
         "200":
@@ -1662,10 +1659,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                date:
-                  format: date
-                  type: string
+              $ref: '#/components/schemas/Date'
         required: true
       responses:
         "200":
@@ -1996,6 +1990,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Language'
+        required: true
       responses:
         "200":
           content:
@@ -2104,6 +2099,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Country'
+        required: true
       responses:
         "200":
           content:
@@ -2191,6 +2187,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Country'
+        required: true
       responses:
         "200":
           content:
@@ -2280,6 +2277,13 @@ paths:
       - Language
 components:
   schemas:
+    Date:
+      example:
+        date: date
+      properties:
+        date:
+          type: string
+      type: object
     BasicDomainModel:
       properties:
         id:
@@ -2683,10 +2687,8 @@ components:
     ProjectParticipation_allOf:
       properties:
         startdate:
-          format: date
           type: string
         enddate:
-          format: date
           type: string
         project:
           allOf:
