@@ -31,6 +31,8 @@ paths:
           description: Error
       security: []
       summary: Server heartbeat operation
+      tags:
+      - Status
   /organizations:
     get:
       operationId: getOrganizations
@@ -68,6 +70,8 @@ paths:
       - openId:
         - user
       summary: Get a list of all Organizations
+      tags:
+      - Organization
     post:
       operationId: createOrganization
       requestBody:
@@ -93,6 +97,8 @@ paths:
       security:
       - implicit: []
       summary: Create an Organization
+      tags:
+      - Organization
   /organizations/{organizationId}:
     delete:
       operationId: deleteOrganization
@@ -121,6 +127,8 @@ paths:
       security:
       - implicit: []
       summary: Delete an organization
+      tags:
+      - Organization
     get:
       operationId: getOrganization
       parameters:
@@ -146,6 +154,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get details about an Organization
+      tags:
+      - Organization
     put:
       operationId: updateOrganization
       parameters:
@@ -180,6 +190,8 @@ paths:
       security:
       - implicit: []
       summary: Update an Organization
+      tags:
+      - Organization
   /organizations/{organizationId}/industries/{industryId}:
     delete:
       operationId: detachOrganizationFromIndustry
@@ -214,6 +226,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Remove an Organization to an Industry
+      tags:
+      - Organization
     post:
       operationId: attachOrganizationToIndustry
       parameters:
@@ -247,6 +261,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Add an Organization to an Industry
+      tags:
+      - Organization
   /organizations/{organizationId}/offices:
     post:
       operationId: createOffice
@@ -279,6 +295,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Create an Office in an Organization
+      tags:
+      - Organization
   /organizations/{organizationId}/offices/{officeId}:
     delete:
       operationId: deleteOffice
@@ -313,6 +331,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Delte an Office from an Organization
+      tags:
+      - Organization
     get:
       operationId: getOffice
       parameters:
@@ -346,6 +366,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get an Office for an Organiaztion
+      tags:
+      - Organization
     put:
       operationId: updateOffice
       parameters:
@@ -385,6 +407,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Update an Office for an Organization
+      tags:
+      - Organization
   /industries:
     get:
       operationId: getIndustries
@@ -419,6 +443,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get all Industries
+      tags:
+      - Industry
     post:
       operationId: createIndustry
       requestBody:
@@ -441,6 +467,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Create an Industry
+      tags:
+      - Industry
   /industries/{industryId}:
     delete:
       operationId: deleteIndustry
@@ -467,6 +495,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Delete an Industry
+      tags:
+      - Industry
     get:
       operationId: getIndustry
       parameters:
@@ -494,6 +524,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get details about an Industry
+      tags:
+      - Industry
     put:
       operationId: updateIndustry
       parameters:
@@ -525,6 +557,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Update an Industry
+      tags:
+      - Industry
   /organizations/{organizationId}/certifications:
     get:
       operationId: getCertificationsForOrganization
@@ -567,6 +601,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get a list of all certifications for a organization
+      tags:
+      - Organization
     post:
       operationId: createCertification
       parameters:
@@ -598,6 +634,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Create a Certification in an Organization
+      tags:
+      - Organization
   /organizations/{organizationId}/projects:
     get:
       operationId: getOrganizationProjects
@@ -624,6 +662,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get a list of all Projects for an Organization
+      tags:
+      - Organization
     post:
       operationId: createProject
       parameters:
@@ -655,6 +695,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Create a Project in an Organization
+      tags:
+      - Organization
   /certifications:
     get:
       operationId: getCertifications
@@ -689,6 +731,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get a list of all Certifations indepdenant of the Organization
+      tags:
+      - Certification
   /certifications/{certificationId}:
     delete:
       operationId: deleteCertification
@@ -715,6 +759,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Delete a Certification
+      tags:
+      - Certification
     get:
       operationId: getCertification
       parameters:
@@ -740,6 +786,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get details about a Certification
+      tags:
+      - Certification
     put:
       operationId: updateCertification
       parameters:
@@ -771,6 +819,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Update a Certification
+      tags:
+      - Certification
   /certifications/{certificationId}/skills/{skillId}:
     delete:
       parameters:
@@ -803,6 +853,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Error
+      tags:
+      - Certification
     post:
       description: Add Skill to Certification
       operationId: addSkillToCertification
@@ -842,6 +894,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Error
+      tags:
+      - Certification
     put:
       description: Update Skill in Certification
       parameters:
@@ -880,6 +934,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Error
+      tags:
+      - Certification
   /projects:
     get:
       operationId: getProjects
@@ -897,6 +953,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get a list of all Projects in all Organizations
+      tags:
+      - Project
   /projects/{projectId}:
     delete:
       operationId: deleteProject
@@ -923,6 +981,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Delete a project
+      tags:
+      - Project
     get:
       operationId: getProject
       parameters:
@@ -948,6 +1008,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get details about a Project
+      tags:
+      - Project
     put:
       operationId: updateProject
       parameters:
@@ -979,6 +1041,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Update a Project
+      tags:
+      - Project
   /skills:
     get:
       operationId: getSkills
@@ -1022,6 +1086,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get a list of all skills, optionally only root
+      tags:
+      - Skill
     post:
       operationId: createSkill
       requestBody:
@@ -1044,6 +1110,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Create a Skill
+      tags:
+      - Skill
   /skills/{skillId}:
     delete:
       operationId: deleteSkill
@@ -1070,6 +1138,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Delete a Skill
+      tags:
+      - Skill
     get:
       operationId: getSkill
       parameters:
@@ -1095,6 +1165,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get details for a single skill
+      tags:
+      - Skill
     put:
       operationId: updateSkill
       parameters:
@@ -1126,6 +1198,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Update a Skill
+      tags:
+      - Skill
   /skills/{skillId}/parents:
     get:
       operationId: getSkillParents
@@ -1168,6 +1242,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get ghe list of parents for a skill
+      tags:
+      - Skill
   /skills/{skillId}/parents/{parentSkillId}:
     delete:
       operationId: removeSkillFromParentSkill
@@ -1202,6 +1278,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Detaches a Skill from parent Skill
+      tags:
+      - Skill
     post:
       operationId: addSkillToParentSkill
       parameters:
@@ -1235,6 +1313,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Attach a Skill to a parent Skill, returns the parent Skill
+      tags:
+      - Skill
   /persons:
     get:
       operationId: getPersons
@@ -1269,6 +1349,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get a list of all persons
+      tags:
+      - Person
   /persons/{personId}:
     get:
       operationId: getPerson
@@ -1295,6 +1377,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get basic info about a person
+      tags:
+      - Person
   /persons/{personid}/profile:
     get:
       operationId: generatePersonProfile
@@ -1322,6 +1406,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Generate a PDF profile from a Person
+      tags:
+      - Person
   /persons/{personId}/interests/skills/{skillId}:
     delete:
       operationId: deletePersonInterest
@@ -1356,6 +1442,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Remove an Interest to a Person
+      tags:
+      - Person
     post:
       operationId: addPersonInterest
       parameters:
@@ -1395,6 +1483,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Add an Interest to a Person
+      tags:
+      - Person
   /persons/{personId}/certifications/{certificationId}:
     delete:
       operationId: deletePersonCertification
@@ -1429,6 +1519,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Remove an Interest to a Person
+      tags:
+      - Person
     post:
       operationId: addPersonCertification
       parameters:
@@ -1468,6 +1560,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Add Certification to a Person
+      tags:
+      - Person
     put:
       operationId: updatePersonCertification
       parameters:
@@ -1507,6 +1601,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Update a Certification of a Person
+      tags:
+      - Person
   /persons/{personId}/projects/{projectId}:
     delete:
       operationId: deletePersonProject
@@ -1541,6 +1637,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Remove an Project from a Person
+      tags:
+      - Person
     post:
       operationId: addPersonProject
       parameters:
@@ -1583,6 +1681,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Add Project to a Person
+      tags:
+      - Person
     put:
       operationId: updatePersonProject
       parameters:
@@ -1625,6 +1725,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Update a Project of a Person
+      tags:
+      - Person
   /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId}:
     delete:
       operationId: deleteConfirmation
@@ -1675,6 +1777,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Remove a confirmation
+      tags:
+      - Person
     post:
       operationId: confirmSkill
       parameters:
@@ -1724,6 +1828,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Confirm Skill
+      tags:
+      - Person
   /search/all/{text}:
     get:
       operationId: searchAll
@@ -1765,6 +1871,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Fulltext search on all kinds of objects
+      tags:
+      - Search
   /languages:
     get:
       operationId: getLanguages
@@ -1799,6 +1907,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get a list of Languages
+      tags:
+      - Language
   /languages/{languageId}:
     delete:
       operationId: deleteLanguage
@@ -1825,6 +1935,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Delete a language
+      tags:
+      - Language
     get:
       operationId: getLanguage
       parameters:
@@ -1850,6 +1962,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get details about a language
+      tags:
+      - Language
     post:
       operationId: createLanguage
       parameters:
@@ -1880,6 +1994,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Create a new language
+      tags:
+      - Language
   /countries:
     get:
       operationId: getCountries
@@ -1908,6 +2024,8 @@ paths:
                 $ref: '#/components/schemas/PagedCountries'
           description: OK
       summary: Get all Countries
+      tags:
+      - Country
   /countries/{countryId}:
     delete:
       operationId: deleteCountry
@@ -1934,6 +2052,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Delete a Country
+      tags:
+      - Country
     get:
       operationId: getCountry
       parameters:
@@ -1959,6 +2079,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get details about a Country
+      tags:
+      - Country
     post:
       operationId: createCountry
       parameters:
@@ -1989,6 +2111,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Create a new Country
+      tags:
+      - Country
     put:
       operationId: updateCountry
       parameters:
@@ -2019,6 +2143,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Update a Country
+      tags:
+      - Country
   /countries/{countryId}/languages/{languageId}:
     delete:
       operationId: removeLanguageFromCountry
@@ -2053,6 +2179,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Assign a language to a country
+      tags:
+      - Language
     post:
       operationId: addLangaugeToCountry
       parameters:
@@ -2086,6 +2214,8 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Assign a language to a country
+      tags:
+      - Language
 components:
   schemas:
     BasicDomainModel:
@@ -2417,6 +2547,8 @@ components:
           type: string
         item:
           $ref: '#/components/schemas/NamedDomainModel'
+      required:
+      - type
     NamedDomainModel_allOf:
       properties:
         name:

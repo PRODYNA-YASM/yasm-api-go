@@ -78,71 +78,71 @@ All URIs are relative to *http://localhost/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**AddLangaugeToCountry**](docs/DefaultApi.md#addlangaugetocountry) | **Post** /countries/{countryId}/languages/{languageId} | Assign a language to a country
-*DefaultApi* | [**AddPersonCertification**](docs/DefaultApi.md#addpersoncertification) | **Post** /persons/{personId}/certifications/{certificationId} | Add Certification to a Person
-*DefaultApi* | [**AddPersonInterest**](docs/DefaultApi.md#addpersoninterest) | **Post** /persons/{personId}/interests/skills/{skillId} | Add an Interest to a Person
-*DefaultApi* | [**AddPersonProject**](docs/DefaultApi.md#addpersonproject) | **Post** /persons/{personId}/projects/{projectId} | Add Project to a Person
-*DefaultApi* | [**AddSkillToCertification**](docs/DefaultApi.md#addskilltocertification) | **Post** /certifications/{certificationId}/skills/{skillId} | 
-*DefaultApi* | [**AddSkillToParentSkill**](docs/DefaultApi.md#addskilltoparentskill) | **Post** /skills/{skillId}/parents/{parentSkillId} | Attach a Skill to a parent Skill, returns the parent Skill
-*DefaultApi* | [**AttachOrganizationToIndustry**](docs/DefaultApi.md#attachorganizationtoindustry) | **Post** /organizations/{organizationId}/industries/{industryId} | Add an Organization to an Industry
-*DefaultApi* | [**CertificationsCertificationIdSkillsSkillIdDelete**](docs/DefaultApi.md#certificationscertificationidskillsskilliddelete) | **Delete** /certifications/{certificationId}/skills/{skillId} | 
-*DefaultApi* | [**CertificationsCertificationIdSkillsSkillIdPut**](docs/DefaultApi.md#certificationscertificationidskillsskillidput) | **Put** /certifications/{certificationId}/skills/{skillId} | 
-*DefaultApi* | [**ConfirmSkill**](docs/DefaultApi.md#confirmskill) | **Post** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
-*DefaultApi* | [**CreateCertification**](docs/DefaultApi.md#createcertification) | **Post** /organizations/{organizationId}/certifications | Create a Certification in an Organization
-*DefaultApi* | [**CreateCountry**](docs/DefaultApi.md#createcountry) | **Post** /countries/{countryId} | Create a new Country
-*DefaultApi* | [**CreateIndustry**](docs/DefaultApi.md#createindustry) | **Post** /industries | Create an Industry
-*DefaultApi* | [**CreateLanguage**](docs/DefaultApi.md#createlanguage) | **Post** /languages/{languageId} | Create a new language
-*DefaultApi* | [**CreateOffice**](docs/DefaultApi.md#createoffice) | **Post** /organizations/{organizationId}/offices | Create an Office in an Organization
-*DefaultApi* | [**CreateOrganization**](docs/DefaultApi.md#createorganization) | **Post** /organizations | Create an Organization
-*DefaultApi* | [**CreateProject**](docs/DefaultApi.md#createproject) | **Post** /organizations/{organizationId}/projects | Create a Project in an Organization
-*DefaultApi* | [**CreateSkill**](docs/DefaultApi.md#createskill) | **Post** /skills | Create a Skill
-*DefaultApi* | [**DeleteCertification**](docs/DefaultApi.md#deletecertification) | **Delete** /certifications/{certificationId} | Delete a Certification
-*DefaultApi* | [**DeleteConfirmation**](docs/DefaultApi.md#deleteconfirmation) | **Delete** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
-*DefaultApi* | [**DeleteCountry**](docs/DefaultApi.md#deletecountry) | **Delete** /countries/{countryId} | Delete a Country
-*DefaultApi* | [**DeleteIndustry**](docs/DefaultApi.md#deleteindustry) | **Delete** /industries/{industryId} | Delete an Industry
-*DefaultApi* | [**DeleteLanguage**](docs/DefaultApi.md#deletelanguage) | **Delete** /languages/{languageId} | Delete a language
-*DefaultApi* | [**DeleteOffice**](docs/DefaultApi.md#deleteoffice) | **Delete** /organizations/{organizationId}/offices/{officeId} | Delte an Office from an Organization
-*DefaultApi* | [**DeleteOrganization**](docs/DefaultApi.md#deleteorganization) | **Delete** /organizations/{organizationId} | Delete an organization
-*DefaultApi* | [**DeletePersonCertification**](docs/DefaultApi.md#deletepersoncertification) | **Delete** /persons/{personId}/certifications/{certificationId} | Remove an Interest to a Person
-*DefaultApi* | [**DeletePersonInterest**](docs/DefaultApi.md#deletepersoninterest) | **Delete** /persons/{personId}/interests/skills/{skillId} | Remove an Interest to a Person
-*DefaultApi* | [**DeletePersonProject**](docs/DefaultApi.md#deletepersonproject) | **Delete** /persons/{personId}/projects/{projectId} | Remove an Project from a Person
-*DefaultApi* | [**DeleteProject**](docs/DefaultApi.md#deleteproject) | **Delete** /projects/{projectId} | Delete a project
-*DefaultApi* | [**DeleteSkill**](docs/DefaultApi.md#deleteskill) | **Delete** /skills/{skillId} | Delete a Skill
-*DefaultApi* | [**DetachOrganizationFromIndustry**](docs/DefaultApi.md#detachorganizationfromindustry) | **Delete** /organizations/{organizationId}/industries/{industryId} | Remove an Organization to an Industry
-*DefaultApi* | [**GeneratePersonProfile**](docs/DefaultApi.md#generatepersonprofile) | **Get** /persons/{personid}/profile | Generate a PDF profile from a Person
-*DefaultApi* | [**GetCertification**](docs/DefaultApi.md#getcertification) | **Get** /certifications/{certificationId} | Get details about a Certification
-*DefaultApi* | [**GetCertifications**](docs/DefaultApi.md#getcertifications) | **Get** /certifications | Get a list of all Certifations indepdenant of the Organization
-*DefaultApi* | [**GetCertificationsForOrganization**](docs/DefaultApi.md#getcertificationsfororganization) | **Get** /organizations/{organizationId}/certifications | Get a list of all certifications for a organization
-*DefaultApi* | [**GetCountries**](docs/DefaultApi.md#getcountries) | **Get** /countries | Get all Countries
-*DefaultApi* | [**GetCountry**](docs/DefaultApi.md#getcountry) | **Get** /countries/{countryId} | Get details about a Country
-*DefaultApi* | [**GetIndustries**](docs/DefaultApi.md#getindustries) | **Get** /industries | Get all Industries
-*DefaultApi* | [**GetIndustry**](docs/DefaultApi.md#getindustry) | **Get** /industries/{industryId} | Get details about an Industry
-*DefaultApi* | [**GetLanguage**](docs/DefaultApi.md#getlanguage) | **Get** /languages/{languageId} | Get details about a language
-*DefaultApi* | [**GetLanguages**](docs/DefaultApi.md#getlanguages) | **Get** /languages | Get a list of Languages
-*DefaultApi* | [**GetOffice**](docs/DefaultApi.md#getoffice) | **Get** /organizations/{organizationId}/offices/{officeId} | Get an Office for an Organiaztion
-*DefaultApi* | [**GetOrganization**](docs/DefaultApi.md#getorganization) | **Get** /organizations/{organizationId} | Get details about an Organization
-*DefaultApi* | [**GetOrganizationProjects**](docs/DefaultApi.md#getorganizationprojects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
-*DefaultApi* | [**GetOrganizations**](docs/DefaultApi.md#getorganizations) | **Get** /organizations | Get a list of all Organizations
-*DefaultApi* | [**GetPerson**](docs/DefaultApi.md#getperson) | **Get** /persons/{personId} | Get basic info about a person
-*DefaultApi* | [**GetPersons**](docs/DefaultApi.md#getpersons) | **Get** /persons | Get a list of all persons
-*DefaultApi* | [**GetPing**](docs/DefaultApi.md#getping) | **Get** /ping | Server heartbeat operation
-*DefaultApi* | [**GetProject**](docs/DefaultApi.md#getproject) | **Get** /projects/{projectId} | Get details about a Project
-*DefaultApi* | [**GetProjects**](docs/DefaultApi.md#getprojects) | **Get** /projects | Get a list of all Projects in all Organizations
-*DefaultApi* | [**GetSkill**](docs/DefaultApi.md#getskill) | **Get** /skills/{skillId} | Get details for a single skill
-*DefaultApi* | [**GetSkillParents**](docs/DefaultApi.md#getskillparents) | **Get** /skills/{skillId}/parents | Get ghe list of parents for a skill
-*DefaultApi* | [**GetSkills**](docs/DefaultApi.md#getskills) | **Get** /skills | Get a list of all skills, optionally only root
-*DefaultApi* | [**RemoveLanguageFromCountry**](docs/DefaultApi.md#removelanguagefromcountry) | **Delete** /countries/{countryId}/languages/{languageId} | Assign a language to a country
-*DefaultApi* | [**RemoveSkillFromParentSkill**](docs/DefaultApi.md#removeskillfromparentskill) | **Delete** /skills/{skillId}/parents/{parentSkillId} | Detaches a Skill from parent Skill
-*DefaultApi* | [**SearchAll**](docs/DefaultApi.md#searchall) | **Get** /search/all/{text} | Fulltext search on all kinds of objects
-*DefaultApi* | [**UpdateCertification**](docs/DefaultApi.md#updatecertification) | **Put** /certifications/{certificationId} | Update a Certification
-*DefaultApi* | [**UpdateCountry**](docs/DefaultApi.md#updatecountry) | **Put** /countries/{countryId} | Update a Country
-*DefaultApi* | [**UpdateIndustry**](docs/DefaultApi.md#updateindustry) | **Put** /industries/{industryId} | Update an Industry
-*DefaultApi* | [**UpdateOffice**](docs/DefaultApi.md#updateoffice) | **Put** /organizations/{organizationId}/offices/{officeId} | Update an Office for an Organization
-*DefaultApi* | [**UpdateOrganization**](docs/DefaultApi.md#updateorganization) | **Put** /organizations/{organizationId} | Update an Organization
-*DefaultApi* | [**UpdatePersonCertification**](docs/DefaultApi.md#updatepersoncertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
-*DefaultApi* | [**UpdatePersonProject**](docs/DefaultApi.md#updatepersonproject) | **Put** /persons/{personId}/projects/{projectId} | Update a Project of a Person
-*DefaultApi* | [**UpdateProject**](docs/DefaultApi.md#updateproject) | **Put** /projects/{projectId} | Update a Project
-*DefaultApi* | [**UpdateSkill**](docs/DefaultApi.md#updateskill) | **Put** /skills/{skillId} | Update a Skill
+*CertificationApi* | [**AddSkillToCertification**](docs/CertificationApi.md#addskilltocertification) | **Post** /certifications/{certificationId}/skills/{skillId} | 
+*CertificationApi* | [**CertificationsCertificationIdSkillsSkillIdDelete**](docs/CertificationApi.md#certificationscertificationidskillsskilliddelete) | **Delete** /certifications/{certificationId}/skills/{skillId} | 
+*CertificationApi* | [**CertificationsCertificationIdSkillsSkillIdPut**](docs/CertificationApi.md#certificationscertificationidskillsskillidput) | **Put** /certifications/{certificationId}/skills/{skillId} | 
+*CertificationApi* | [**DeleteCertification**](docs/CertificationApi.md#deletecertification) | **Delete** /certifications/{certificationId} | Delete a Certification
+*CertificationApi* | [**GetCertification**](docs/CertificationApi.md#getcertification) | **Get** /certifications/{certificationId} | Get details about a Certification
+*CertificationApi* | [**GetCertifications**](docs/CertificationApi.md#getcertifications) | **Get** /certifications | Get a list of all Certifations indepdenant of the Organization
+*CertificationApi* | [**UpdateCertification**](docs/CertificationApi.md#updatecertification) | **Put** /certifications/{certificationId} | Update a Certification
+*CountryApi* | [**CreateCountry**](docs/CountryApi.md#createcountry) | **Post** /countries/{countryId} | Create a new Country
+*CountryApi* | [**DeleteCountry**](docs/CountryApi.md#deletecountry) | **Delete** /countries/{countryId} | Delete a Country
+*CountryApi* | [**GetCountries**](docs/CountryApi.md#getcountries) | **Get** /countries | Get all Countries
+*CountryApi* | [**GetCountry**](docs/CountryApi.md#getcountry) | **Get** /countries/{countryId} | Get details about a Country
+*CountryApi* | [**UpdateCountry**](docs/CountryApi.md#updatecountry) | **Put** /countries/{countryId} | Update a Country
+*IndustryApi* | [**CreateIndustry**](docs/IndustryApi.md#createindustry) | **Post** /industries | Create an Industry
+*IndustryApi* | [**DeleteIndustry**](docs/IndustryApi.md#deleteindustry) | **Delete** /industries/{industryId} | Delete an Industry
+*IndustryApi* | [**GetIndustries**](docs/IndustryApi.md#getindustries) | **Get** /industries | Get all Industries
+*IndustryApi* | [**GetIndustry**](docs/IndustryApi.md#getindustry) | **Get** /industries/{industryId} | Get details about an Industry
+*IndustryApi* | [**UpdateIndustry**](docs/IndustryApi.md#updateindustry) | **Put** /industries/{industryId} | Update an Industry
+*LanguageApi* | [**AddLangaugeToCountry**](docs/LanguageApi.md#addlangaugetocountry) | **Post** /countries/{countryId}/languages/{languageId} | Assign a language to a country
+*LanguageApi* | [**CreateLanguage**](docs/LanguageApi.md#createlanguage) | **Post** /languages/{languageId} | Create a new language
+*LanguageApi* | [**DeleteLanguage**](docs/LanguageApi.md#deletelanguage) | **Delete** /languages/{languageId} | Delete a language
+*LanguageApi* | [**GetLanguage**](docs/LanguageApi.md#getlanguage) | **Get** /languages/{languageId} | Get details about a language
+*LanguageApi* | [**GetLanguages**](docs/LanguageApi.md#getlanguages) | **Get** /languages | Get a list of Languages
+*LanguageApi* | [**RemoveLanguageFromCountry**](docs/LanguageApi.md#removelanguagefromcountry) | **Delete** /countries/{countryId}/languages/{languageId} | Assign a language to a country
+*OrganizationApi* | [**AttachOrganizationToIndustry**](docs/OrganizationApi.md#attachorganizationtoindustry) | **Post** /organizations/{organizationId}/industries/{industryId} | Add an Organization to an Industry
+*OrganizationApi* | [**CreateCertification**](docs/OrganizationApi.md#createcertification) | **Post** /organizations/{organizationId}/certifications | Create a Certification in an Organization
+*OrganizationApi* | [**CreateOffice**](docs/OrganizationApi.md#createoffice) | **Post** /organizations/{organizationId}/offices | Create an Office in an Organization
+*OrganizationApi* | [**CreateOrganization**](docs/OrganizationApi.md#createorganization) | **Post** /organizations | Create an Organization
+*OrganizationApi* | [**CreateProject**](docs/OrganizationApi.md#createproject) | **Post** /organizations/{organizationId}/projects | Create a Project in an Organization
+*OrganizationApi* | [**DeleteOffice**](docs/OrganizationApi.md#deleteoffice) | **Delete** /organizations/{organizationId}/offices/{officeId} | Delte an Office from an Organization
+*OrganizationApi* | [**DeleteOrganization**](docs/OrganizationApi.md#deleteorganization) | **Delete** /organizations/{organizationId} | Delete an organization
+*OrganizationApi* | [**DetachOrganizationFromIndustry**](docs/OrganizationApi.md#detachorganizationfromindustry) | **Delete** /organizations/{organizationId}/industries/{industryId} | Remove an Organization to an Industry
+*OrganizationApi* | [**GetCertificationsForOrganization**](docs/OrganizationApi.md#getcertificationsfororganization) | **Get** /organizations/{organizationId}/certifications | Get a list of all certifications for a organization
+*OrganizationApi* | [**GetOffice**](docs/OrganizationApi.md#getoffice) | **Get** /organizations/{organizationId}/offices/{officeId} | Get an Office for an Organiaztion
+*OrganizationApi* | [**GetOrganization**](docs/OrganizationApi.md#getorganization) | **Get** /organizations/{organizationId} | Get details about an Organization
+*OrganizationApi* | [**GetOrganizationProjects**](docs/OrganizationApi.md#getorganizationprojects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
+*OrganizationApi* | [**GetOrganizations**](docs/OrganizationApi.md#getorganizations) | **Get** /organizations | Get a list of all Organizations
+*OrganizationApi* | [**UpdateOffice**](docs/OrganizationApi.md#updateoffice) | **Put** /organizations/{organizationId}/offices/{officeId} | Update an Office for an Organization
+*OrganizationApi* | [**UpdateOrganization**](docs/OrganizationApi.md#updateorganization) | **Put** /organizations/{organizationId} | Update an Organization
+*PersonApi* | [**AddPersonCertification**](docs/PersonApi.md#addpersoncertification) | **Post** /persons/{personId}/certifications/{certificationId} | Add Certification to a Person
+*PersonApi* | [**AddPersonInterest**](docs/PersonApi.md#addpersoninterest) | **Post** /persons/{personId}/interests/skills/{skillId} | Add an Interest to a Person
+*PersonApi* | [**AddPersonProject**](docs/PersonApi.md#addpersonproject) | **Post** /persons/{personId}/projects/{projectId} | Add Project to a Person
+*PersonApi* | [**ConfirmSkill**](docs/PersonApi.md#confirmskill) | **Post** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
+*PersonApi* | [**DeleteConfirmation**](docs/PersonApi.md#deleteconfirmation) | **Delete** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
+*PersonApi* | [**DeletePersonCertification**](docs/PersonApi.md#deletepersoncertification) | **Delete** /persons/{personId}/certifications/{certificationId} | Remove an Interest to a Person
+*PersonApi* | [**DeletePersonInterest**](docs/PersonApi.md#deletepersoninterest) | **Delete** /persons/{personId}/interests/skills/{skillId} | Remove an Interest to a Person
+*PersonApi* | [**DeletePersonProject**](docs/PersonApi.md#deletepersonproject) | **Delete** /persons/{personId}/projects/{projectId} | Remove an Project from a Person
+*PersonApi* | [**GeneratePersonProfile**](docs/PersonApi.md#generatepersonprofile) | **Get** /persons/{personid}/profile | Generate a PDF profile from a Person
+*PersonApi* | [**GetPerson**](docs/PersonApi.md#getperson) | **Get** /persons/{personId} | Get basic info about a person
+*PersonApi* | [**GetPersons**](docs/PersonApi.md#getpersons) | **Get** /persons | Get a list of all persons
+*PersonApi* | [**UpdatePersonCertification**](docs/PersonApi.md#updatepersoncertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
+*PersonApi* | [**UpdatePersonProject**](docs/PersonApi.md#updatepersonproject) | **Put** /persons/{personId}/projects/{projectId} | Update a Project of a Person
+*ProjectApi* | [**DeleteProject**](docs/ProjectApi.md#deleteproject) | **Delete** /projects/{projectId} | Delete a project
+*ProjectApi* | [**GetProject**](docs/ProjectApi.md#getproject) | **Get** /projects/{projectId} | Get details about a Project
+*ProjectApi* | [**GetProjects**](docs/ProjectApi.md#getprojects) | **Get** /projects | Get a list of all Projects in all Organizations
+*ProjectApi* | [**UpdateProject**](docs/ProjectApi.md#updateproject) | **Put** /projects/{projectId} | Update a Project
+*SearchApi* | [**SearchAll**](docs/SearchApi.md#searchall) | **Get** /search/all/{text} | Fulltext search on all kinds of objects
+*SkillApi* | [**AddSkillToParentSkill**](docs/SkillApi.md#addskilltoparentskill) | **Post** /skills/{skillId}/parents/{parentSkillId} | Attach a Skill to a parent Skill, returns the parent Skill
+*SkillApi* | [**CreateSkill**](docs/SkillApi.md#createskill) | **Post** /skills | Create a Skill
+*SkillApi* | [**DeleteSkill**](docs/SkillApi.md#deleteskill) | **Delete** /skills/{skillId} | Delete a Skill
+*SkillApi* | [**GetSkill**](docs/SkillApi.md#getskill) | **Get** /skills/{skillId} | Get details for a single skill
+*SkillApi* | [**GetSkillParents**](docs/SkillApi.md#getskillparents) | **Get** /skills/{skillId}/parents | Get ghe list of parents for a skill
+*SkillApi* | [**GetSkills**](docs/SkillApi.md#getskills) | **Get** /skills | Get a list of all skills, optionally only root
+*SkillApi* | [**RemoveSkillFromParentSkill**](docs/SkillApi.md#removeskillfromparentskill) | **Delete** /skills/{skillId}/parents/{parentSkillId} | Detaches a Skill from parent Skill
+*SkillApi* | [**UpdateSkill**](docs/SkillApi.md#updateskill) | **Put** /skills/{skillId} | Update a Skill
+*StatusApi* | [**GetPing**](docs/StatusApi.md#getping) | **Get** /ping | Server heartbeat operation
 
 
 ## Documentation For Models
