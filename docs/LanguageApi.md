@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddLangaugeToCountry**](LanguageApi.md#AddLangaugeToCountry) | **Post** /countries/{countryId}/languages/{languageId} | Assign a language to a country
-[**CreateLanguage**](LanguageApi.md#CreateLanguage) | **Post** /languages/{languageId} | Create a new language
+[**CreateLanguage**](LanguageApi.md#CreateLanguage) | **Post** /languages | Create a new language
 [**DeleteLanguage**](LanguageApi.md#DeleteLanguage) | **Delete** /languages/{languageId} | Delete a language
 [**GetLanguage**](LanguageApi.md#GetLanguage) | **Get** /languages/{languageId} | Get details about a language
 [**GetLanguages**](LanguageApi.md#GetLanguages) | **Get** /languages | Get a list of Languages
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## AddLangaugeToCountry
 
-> Country AddLangaugeToCountry(ctx, countryId, languageId).Execute()
+> CountryDetails AddLangaugeToCountry(ctx, countryId, languageId).Execute()
 
 Assign a language to a country
 
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `LanguageApi.AddLangaugeToCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddLangaugeToCountry`: Country
+    // response from `AddLangaugeToCountry`: CountryDetails
     fmt.Fprintf(os.Stdout, "Response from `LanguageApi.AddLangaugeToCountry`: %v\n", resp)
 }
 ```
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Country**](Country.md)
+[**CountryDetails**](CountryDetails.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ No authorization required
 
 ## CreateLanguage
 
-> LanguageDetails CreateLanguage(ctx, languageId).Language(language).Execute()
+> LanguageDetails CreateLanguage(ctx).Language(language).Execute()
 
 Create a new language
 
@@ -103,12 +103,11 @@ import (
 )
 
 func main() {
-    languageId := TODO // string | 
     language := *openapiclient.NewLanguage("Id_example", interface{}(de)) // Language |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.LanguageApi.CreateLanguage(context.Background(), languageId).Language(language).Execute()
+    resp, r, err := api_client.LanguageApi.CreateLanguage(context.Background()).Language(language).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LanguageApi.CreateLanguage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -121,10 +120,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**languageId** | [**string**](.md) |  | 
 
 ### Other Parameters
 
@@ -133,7 +128,6 @@ Other parameters are passed through a pointer to a apiCreateLanguageRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **language** | [**Language**](Language.md) |  | 
 
 ### Return type
@@ -358,7 +352,7 @@ No authorization required
 
 ## RemoveLanguageFromCountry
 
-> Country RemoveLanguageFromCountry(ctx, countryId, languageId).Execute()
+> CountryDetails RemoveLanguageFromCountry(ctx, countryId, languageId).Execute()
 
 Assign a language to a country
 
@@ -385,7 +379,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `LanguageApi.RemoveLanguageFromCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RemoveLanguageFromCountry`: Country
+    // response from `RemoveLanguageFromCountry`: CountryDetails
     fmt.Fprintf(os.Stdout, "Response from `LanguageApi.RemoveLanguageFromCountry`: %v\n", resp)
 }
 ```
@@ -411,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Country**](Country.md)
+[**CountryDetails**](CountryDetails.md)
 
 ### Authorization
 

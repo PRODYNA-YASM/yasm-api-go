@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCountry**](CountryApi.md#CreateCountry) | **Post** /countries/{countryId} | Create a new Country
+[**CreateCountry**](CountryApi.md#CreateCountry) | **Post** /countries | Create a new Country
 [**DeleteCountry**](CountryApi.md#DeleteCountry) | **Delete** /countries/{countryId} | Delete a Country
 [**GetCountries**](CountryApi.md#GetCountries) | **Get** /countries | Get all Countries
 [**GetCountry**](CountryApi.md#GetCountry) | **Get** /countries/{countryId} | Get details about a Country
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateCountry
 
-> CountryDetails CreateCountry(ctx, countryId).Country(country).Execute()
+> CountryDetails CreateCountry(ctx).Country(country).Execute()
 
 Create a new Country
 
@@ -31,12 +31,11 @@ import (
 )
 
 func main() {
-    countryId := TODO // string | 
     country := *openapiclient.NewCountry("Id_example", "Name_example") // Country |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CountryApi.CreateCountry(context.Background(), countryId).Country(country).Execute()
+    resp, r, err := api_client.CountryApi.CreateCountry(context.Background()).Country(country).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.CreateCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -49,10 +48,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**countryId** | [**string**](.md) |  | 
 
 ### Other Parameters
 
@@ -61,7 +56,6 @@ Other parameters are passed through a pointer to a apiCreateCountryRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **country** | [**Country**](Country.md) |  | 
 
 ### Return type

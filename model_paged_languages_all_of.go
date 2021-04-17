@@ -14,30 +14,30 @@ import (
 	"encoding/json"
 )
 
-// CountryDetailsAllOf struct for CountryDetailsAllOf
-type CountryDetailsAllOf struct {
+// PagedLanguagesAllOf struct for PagedLanguagesAllOf
+type PagedLanguagesAllOf struct {
 	Languages *[]Language `json:"languages,omitempty"`
 }
 
-// NewCountryDetailsAllOf instantiates a new CountryDetailsAllOf object
+// NewPagedLanguagesAllOf instantiates a new PagedLanguagesAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCountryDetailsAllOf() *CountryDetailsAllOf {
-	this := CountryDetailsAllOf{}
+func NewPagedLanguagesAllOf() *PagedLanguagesAllOf {
+	this := PagedLanguagesAllOf{}
 	return &this
 }
 
-// NewCountryDetailsAllOfWithDefaults instantiates a new CountryDetailsAllOf object
+// NewPagedLanguagesAllOfWithDefaults instantiates a new PagedLanguagesAllOf object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCountryDetailsAllOfWithDefaults() *CountryDetailsAllOf {
-	this := CountryDetailsAllOf{}
+func NewPagedLanguagesAllOfWithDefaults() *PagedLanguagesAllOf {
+	this := PagedLanguagesAllOf{}
 	return &this
 }
 
 // GetLanguages returns the Languages field value if set, zero value otherwise.
-func (o *CountryDetailsAllOf) GetLanguages() []Language {
+func (o *PagedLanguagesAllOf) GetLanguages() []Language {
 	if o == nil || o.Languages == nil {
 		var ret []Language
 		return ret
@@ -47,7 +47,7 @@ func (o *CountryDetailsAllOf) GetLanguages() []Language {
 
 // GetLanguagesOk returns a tuple with the Languages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CountryDetailsAllOf) GetLanguagesOk() (*[]Language, bool) {
+func (o *PagedLanguagesAllOf) GetLanguagesOk() (*[]Language, bool) {
 	if o == nil || o.Languages == nil {
 		return nil, false
 	}
@@ -55,7 +55,7 @@ func (o *CountryDetailsAllOf) GetLanguagesOk() (*[]Language, bool) {
 }
 
 // HasLanguages returns a boolean if a field has been set.
-func (o *CountryDetailsAllOf) HasLanguages() bool {
+func (o *PagedLanguagesAllOf) HasLanguages() bool {
 	if o != nil && o.Languages != nil {
 		return true
 	}
@@ -64,11 +64,11 @@ func (o *CountryDetailsAllOf) HasLanguages() bool {
 }
 
 // SetLanguages gets a reference to the given []Language and assigns it to the Languages field.
-func (o *CountryDetailsAllOf) SetLanguages(v []Language) {
+func (o *PagedLanguagesAllOf) SetLanguages(v []Language) {
 	o.Languages = &v
 }
 
-func (o CountryDetailsAllOf) MarshalJSON() ([]byte, error) {
+func (o PagedLanguagesAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Languages != nil {
 		toSerialize["languages"] = o.Languages
@@ -76,38 +76,38 @@ func (o CountryDetailsAllOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableCountryDetailsAllOf struct {
-	value *CountryDetailsAllOf
+type NullablePagedLanguagesAllOf struct {
+	value *PagedLanguagesAllOf
 	isSet bool
 }
 
-func (v NullableCountryDetailsAllOf) Get() *CountryDetailsAllOf {
+func (v NullablePagedLanguagesAllOf) Get() *PagedLanguagesAllOf {
 	return v.value
 }
 
-func (v *NullableCountryDetailsAllOf) Set(val *CountryDetailsAllOf) {
+func (v *NullablePagedLanguagesAllOf) Set(val *PagedLanguagesAllOf) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCountryDetailsAllOf) IsSet() bool {
+func (v NullablePagedLanguagesAllOf) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCountryDetailsAllOf) Unset() {
+func (v *NullablePagedLanguagesAllOf) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCountryDetailsAllOf(val *CountryDetailsAllOf) *NullableCountryDetailsAllOf {
-	return &NullableCountryDetailsAllOf{value: val, isSet: true}
+func NewNullablePagedLanguagesAllOf(val *PagedLanguagesAllOf) *NullablePagedLanguagesAllOf {
+	return &NullablePagedLanguagesAllOf{value: val, isSet: true}
 }
 
-func (v NullableCountryDetailsAllOf) MarshalJSON() ([]byte, error) {
+func (v NullablePagedLanguagesAllOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCountryDetailsAllOf) UnmarshalJSON(src []byte) error {
+func (v *NullablePagedLanguagesAllOf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

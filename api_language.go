@@ -35,7 +35,7 @@ type ApiAddLangaugeToCountryRequest struct {
 }
 
 
-func (r ApiAddLangaugeToCountryRequest) Execute() (Country, *_nethttp.Response, error) {
+func (r ApiAddLangaugeToCountryRequest) Execute() (CountryDetails, *_nethttp.Response, error) {
 	return r.ApiService.AddLangaugeToCountryExecute(r)
 }
 
@@ -57,16 +57,16 @@ func (a *LanguageApiService) AddLangaugeToCountry(ctx _context.Context, countryI
 
 /*
  * Execute executes the request
- * @return Country
+ * @return CountryDetails
  */
-func (a *LanguageApiService) AddLangaugeToCountryExecute(r ApiAddLangaugeToCountryRequest) (Country, *_nethttp.Response, error) {
+func (a *LanguageApiService) AddLangaugeToCountryExecute(r ApiAddLangaugeToCountryRequest) (CountryDetails, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Country
+		localVarReturnValue  CountryDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LanguageApiService.AddLangaugeToCountry")
@@ -148,7 +148,6 @@ func (a *LanguageApiService) AddLangaugeToCountryExecute(r ApiAddLangaugeToCount
 type ApiCreateLanguageRequest struct {
 	ctx _context.Context
 	ApiService *LanguageApiService
-	languageId string
 	language *Language
 }
 
@@ -164,14 +163,12 @@ func (r ApiCreateLanguageRequest) Execute() (LanguageDetails, *_nethttp.Response
 /*
  * CreateLanguage Create a new language
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param languageId
  * @return ApiCreateLanguageRequest
  */
-func (a *LanguageApiService) CreateLanguage(ctx _context.Context, languageId string) ApiCreateLanguageRequest {
+func (a *LanguageApiService) CreateLanguage(ctx _context.Context) ApiCreateLanguageRequest {
 	return ApiCreateLanguageRequest{
 		ApiService: a,
 		ctx: ctx,
-		languageId: languageId,
 	}
 }
 
@@ -194,8 +191,7 @@ func (a *LanguageApiService) CreateLanguageExecute(r ApiCreateLanguageRequest) (
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/languages/{languageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"languageId"+"}", _neturl.PathEscape(parameterToString(r.languageId, "")), -1)
+	localVarPath := localBasePath + "/languages"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -628,7 +624,7 @@ type ApiRemoveLanguageFromCountryRequest struct {
 }
 
 
-func (r ApiRemoveLanguageFromCountryRequest) Execute() (Country, *_nethttp.Response, error) {
+func (r ApiRemoveLanguageFromCountryRequest) Execute() (CountryDetails, *_nethttp.Response, error) {
 	return r.ApiService.RemoveLanguageFromCountryExecute(r)
 }
 
@@ -650,16 +646,16 @@ func (a *LanguageApiService) RemoveLanguageFromCountry(ctx _context.Context, cou
 
 /*
  * Execute executes the request
- * @return Country
+ * @return CountryDetails
  */
-func (a *LanguageApiService) RemoveLanguageFromCountryExecute(r ApiRemoveLanguageFromCountryRequest) (Country, *_nethttp.Response, error) {
+func (a *LanguageApiService) RemoveLanguageFromCountryExecute(r ApiRemoveLanguageFromCountryRequest) (CountryDetails, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Country
+		localVarReturnValue  CountryDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LanguageApiService.RemoveLanguageFromCountry")

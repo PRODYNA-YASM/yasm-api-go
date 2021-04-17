@@ -404,7 +404,7 @@ func (r ApiCreateOrganizationRequest) Organization(organization Organization) Ap
 	return r
 }
 
-func (r ApiCreateOrganizationRequest) Execute() (Organization, *_nethttp.Response, error) {
+func (r ApiCreateOrganizationRequest) Execute() (OrganizationDetails, *_nethttp.Response, error) {
 	return r.ApiService.CreateOrganizationExecute(r)
 }
 
@@ -422,16 +422,16 @@ func (a *OrganizationApiService) CreateOrganization(ctx _context.Context) ApiCre
 
 /*
  * Execute executes the request
- * @return Organization
+ * @return OrganizationDetails
  */
-func (a *OrganizationApiService) CreateOrganizationExecute(r ApiCreateOrganizationRequest) (Organization, *_nethttp.Response, error) {
+func (a *OrganizationApiService) CreateOrganizationExecute(r ApiCreateOrganizationRequest) (OrganizationDetails, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Organization
+		localVarReturnValue  OrganizationDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.CreateOrganization")
@@ -1729,7 +1729,7 @@ func (r ApiUpdateOrganizationRequest) Organization(organization Organization) Ap
 	return r
 }
 
-func (r ApiUpdateOrganizationRequest) Execute() (Organization, *_nethttp.Response, error) {
+func (r ApiUpdateOrganizationRequest) Execute() (OrganizationDetails, *_nethttp.Response, error) {
 	return r.ApiService.UpdateOrganizationExecute(r)
 }
 
@@ -1749,16 +1749,16 @@ func (a *OrganizationApiService) UpdateOrganization(ctx _context.Context, organi
 
 /*
  * Execute executes the request
- * @return Organization
+ * @return OrganizationDetails
  */
-func (a *OrganizationApiService) UpdateOrganizationExecute(r ApiUpdateOrganizationRequest) (Organization, *_nethttp.Response, error) {
+func (a *OrganizationApiService) UpdateOrganizationExecute(r ApiUpdateOrganizationRequest) (OrganizationDetails, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Organization
+		localVarReturnValue  OrganizationDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiService.UpdateOrganization")

@@ -272,7 +272,7 @@ type ApiDeleteSkillRequest struct {
 }
 
 
-func (r ApiDeleteSkillRequest) Execute() (string, *_nethttp.Response, error) {
+func (r ApiDeleteSkillRequest) Execute() (Status, *_nethttp.Response, error) {
 	return r.ApiService.DeleteSkillExecute(r)
 }
 
@@ -292,16 +292,16 @@ func (a *SkillApiService) DeleteSkill(ctx _context.Context, skillId string) ApiD
 
 /*
  * Execute executes the request
- * @return string
+ * @return Status
  */
-func (a *SkillApiService) DeleteSkillExecute(r ApiDeleteSkillRequest) (string, *_nethttp.Response, error) {
+func (a *SkillApiService) DeleteSkillExecute(r ApiDeleteSkillRequest) (Status, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  string
+		localVarReturnValue  Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SkillApiService.DeleteSkill")

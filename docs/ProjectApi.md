@@ -81,7 +81,7 @@ No authorization required
 
 ## GetProject
 
-> Project GetProject(ctx, projectId).Execute()
+> ProjectDetails GetProject(ctx, projectId).Execute()
 
 Get details about a Project
 
@@ -107,7 +107,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.GetProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetProject`: Project
+    // response from `GetProject`: ProjectDetails
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.GetProject`: %v\n", resp)
 }
 ```
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Project**](Project.md)
+[**ProjectDetails**](ProjectDetails.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ No authorization required
 
 ## GetProjects
 
-> Project GetProjects(ctx).Execute()
+> PagedProjects GetProjects(ctx).Skip(skip).Limit(limit).Execute()
 
 Get a list of all Projects in all Organizations
 
@@ -166,31 +166,38 @@ import (
 )
 
 func main() {
+    skip := int32(56) // int32 |  (optional) (default to 0)
+    limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.GetProjects(context.Background()).Execute()
+    resp, r, err := api_client.ProjectApi.GetProjects(context.Background()).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.GetProjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetProjects`: Project
+    // response from `GetProjects`: PagedProjects
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.GetProjects`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetProjectsRequest struct via the builder pattern
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **skip** | **int32** |  | [default to 0]
+ **limit** | **int32** |  | [default to 20]
+
 ### Return type
 
-[**Project**](Project.md)
+[**PagedProjects**](PagedProjects.md)
 
 ### Authorization
 
@@ -208,7 +215,7 @@ No authorization required
 
 ## UpdateProject
 
-> Project UpdateProject(ctx, projectId).Project(project).Execute()
+> ProjectDetails UpdateProject(ctx, projectId).Project(project).Execute()
 
 Update a Project
 
@@ -235,7 +242,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.UpdateProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateProject`: Project
+    // response from `UpdateProject`: ProjectDetails
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.UpdateProject`: %v\n", resp)
 }
 ```
@@ -260,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Project**](Project.md)
+[**ProjectDetails**](ProjectDetails.md)
 
 ### Authorization
 

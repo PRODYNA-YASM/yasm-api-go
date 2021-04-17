@@ -86,7 +86,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Organization'
+                $ref: '#/components/schemas/OrganizationDetails'
           description: OK
         "400":
           content:
@@ -179,7 +179,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Organization'
+                $ref: '#/components/schemas/OrganizationDetails'
           description: OK
         "400":
           content:
@@ -513,9 +513,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/Industry'
-                type: array
+                $ref: '#/components/schemas/Industry'
           description: OK
         "400":
           content:
@@ -939,12 +937,29 @@ paths:
   /projects:
     get:
       operationId: getProjects
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Project'
+                $ref: '#/components/schemas/PagedProjects'
           description: OK
         "400":
           content:
@@ -999,7 +1014,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Project'
+                $ref: '#/components/schemas/ProjectDetails'
           description: OK
         "400":
           content:
@@ -1032,7 +1047,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Project'
+                $ref: '#/components/schemas/ProjectDetails'
           description: OK
         "400":
           content:
@@ -1129,7 +1144,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/Status'
           description: OK
         "400":
           content:
@@ -1351,6 +1366,30 @@ paths:
       summary: Get a list of all persons
       tags:
       - Person
+    post:
+      operationId: createPerson
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create a new Person
+      tags:
+      - Person
   /persons/{personId}:
     get:
       operationId: getPerson
@@ -1377,6 +1416,39 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get basic info about a person
+      tags:
+      - Person
+    put:
+      operationId: updatePerson
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update an existing Person
       tags:
       - Person
   /persons/{personid}/profile:
@@ -1909,6 +1981,29 @@ paths:
       summary: Get a list of Languages
       tags:
       - Language
+    post:
+      operationId: createLanguage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LanguageDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create a new language
+      tags:
+      - Language
   /languages/{languageId}:
     delete:
       operationId: deleteLanguage
@@ -1964,38 +2059,6 @@ paths:
       summary: Get details about a language
       tags:
       - Language
-    post:
-      operationId: createLanguage
-      parameters:
-      - explode: false
-        in: path
-        name: languageId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Language'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LanguageDetails'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Error
-      summary: Create a new language
-      tags:
-      - Language
   /countries:
     get:
       operationId: getCountries
@@ -2024,6 +2087,29 @@ paths:
                 $ref: '#/components/schemas/PagedCountries'
           description: OK
       summary: Get all Countries
+      tags:
+      - Country
+    post:
+      operationId: createCountry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Country'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountryDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create a new Country
       tags:
       - Country
   /countries/{countryId}:
@@ -2079,38 +2165,6 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Get details about a Country
-      tags:
-      - Country
-    post:
-      operationId: createCountry
-      parameters:
-      - explode: false
-        in: path
-        name: countryId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Country'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CountryDetails'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Error
-      summary: Create a new Country
       tags:
       - Country
     put:
@@ -2170,7 +2224,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Country'
+                $ref: '#/components/schemas/CountryDetails'
           description: OK
         "400":
           content:
@@ -2205,7 +2259,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Country'
+                $ref: '#/components/schemas/CountryDetails'
           description: OK
         "400":
           content:
@@ -2256,9 +2310,18 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
     CountryDetails:
-      allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/CountryDetails_allOf'
+      example:
+        languages:
+        - null
+        - null
+      properties:
+        country:
+          $ref: '#/components/schemas/Country'
+        languages:
+          items:
+            $ref: '#/components/schemas/Language'
+          type: array
+      type: object
     Date:
       example:
         month: 0
@@ -2442,6 +2505,12 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Project_allOf'
+    ProjectDetails:
+      example: {}
+      properties:
+        project:
+          $ref: '#/components/schemas/Project'
+      type: object
     ProjectParticipation:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
@@ -2506,7 +2575,7 @@ components:
     PagedLanguages:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/CountryDetails_allOf'
+      - $ref: '#/components/schemas/PagedLanguages_allOf'
     PagedCertifications:
       allOf:
       - $ref: '#/components/schemas/Page'
@@ -2562,13 +2631,6 @@ components:
           type: array
         validity:
           type: string
-      type: object
-    CountryDetails_allOf:
-      properties:
-        languages:
-          items:
-            $ref: '#/components/schemas/Language'
-          type: array
       type: object
     Experience_allOf:
       properties:
@@ -2662,6 +2724,13 @@ components:
         organizations:
           items:
             $ref: '#/components/schemas/Organization'
+          type: array
+      type: object
+    PagedLanguages_allOf:
+      properties:
+        languages:
+          items:
+            $ref: '#/components/schemas/Language'
           type: array
       type: object
     PagedCertifications_allOf:

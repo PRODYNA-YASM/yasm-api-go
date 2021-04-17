@@ -235,7 +235,7 @@ No authorization required
 
 ## CreateOrganization
 
-> Organization CreateOrganization(ctx).Organization(organization).Execute()
+> OrganizationDetails CreateOrganization(ctx).Organization(organization).Execute()
 
 Create an Organization
 
@@ -261,7 +261,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.CreateOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateOrganization`: Organization
+    // response from `CreateOrganization`: OrganizationDetails
     fmt.Fprintf(os.Stdout, "Response from `OrganizationApi.CreateOrganization`: %v\n", resp)
 }
 ```
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**OrganizationDetails**](OrganizationDetails.md)
 
 ### Authorization
 
@@ -997,7 +997,7 @@ No authorization required
 
 ## UpdateOrganization
 
-> Organization UpdateOrganization(ctx, organizationId).Organization(organization).Execute()
+> OrganizationDetails UpdateOrganization(ctx, organizationId).Organization(organization).Execute()
 
 Update an Organization
 
@@ -1024,7 +1024,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.UpdateOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateOrganization`: Organization
+    // response from `UpdateOrganization`: OrganizationDetails
     fmt.Fprintf(os.Stdout, "Response from `OrganizationApi.UpdateOrganization`: %v\n", resp)
 }
 ```
@@ -1049,7 +1049,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**OrganizationDetails**](OrganizationDetails.md)
 
 ### Authorization
 

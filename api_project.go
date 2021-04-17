@@ -148,7 +148,7 @@ type ApiGetProjectRequest struct {
 }
 
 
-func (r ApiGetProjectRequest) Execute() (Project, *_nethttp.Response, error) {
+func (r ApiGetProjectRequest) Execute() (ProjectDetails, *_nethttp.Response, error) {
 	return r.ApiService.GetProjectExecute(r)
 }
 
@@ -168,16 +168,16 @@ func (a *ProjectApiService) GetProject(ctx _context.Context, projectId string) A
 
 /*
  * Execute executes the request
- * @return Project
+ * @return ProjectDetails
  */
-func (a *ProjectApiService) GetProjectExecute(r ApiGetProjectRequest) (Project, *_nethttp.Response, error) {
+func (a *ProjectApiService) GetProjectExecute(r ApiGetProjectRequest) (ProjectDetails, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Project
+		localVarReturnValue  ProjectDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectApiService.GetProject")
@@ -258,10 +258,20 @@ func (a *ProjectApiService) GetProjectExecute(r ApiGetProjectRequest) (Project, 
 type ApiGetProjectsRequest struct {
 	ctx _context.Context
 	ApiService *ProjectApiService
+	skip *int32
+	limit *int32
 }
 
+func (r ApiGetProjectsRequest) Skip(skip int32) ApiGetProjectsRequest {
+	r.skip = &skip
+	return r
+}
+func (r ApiGetProjectsRequest) Limit(limit int32) ApiGetProjectsRequest {
+	r.limit = &limit
+	return r
+}
 
-func (r ApiGetProjectsRequest) Execute() (Project, *_nethttp.Response, error) {
+func (r ApiGetProjectsRequest) Execute() (PagedProjects, *_nethttp.Response, error) {
 	return r.ApiService.GetProjectsExecute(r)
 }
 
@@ -279,16 +289,16 @@ func (a *ProjectApiService) GetProjects(ctx _context.Context) ApiGetProjectsRequ
 
 /*
  * Execute executes the request
- * @return Project
+ * @return PagedProjects
  */
-func (a *ProjectApiService) GetProjectsExecute(r ApiGetProjectsRequest) (Project, *_nethttp.Response, error) {
+func (a *ProjectApiService) GetProjectsExecute(r ApiGetProjectsRequest) (PagedProjects, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Project
+		localVarReturnValue  PagedProjects
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectApiService.GetProjects")
@@ -302,6 +312,12 @@ func (a *ProjectApiService) GetProjectsExecute(r ApiGetProjectsRequest) (Project
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.skip != nil {
+		localVarQueryParams.Add("skip", parameterToString(*r.skip, ""))
+	}
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -377,7 +393,7 @@ func (r ApiUpdateProjectRequest) Project(project Project) ApiUpdateProjectReques
 	return r
 }
 
-func (r ApiUpdateProjectRequest) Execute() (Project, *_nethttp.Response, error) {
+func (r ApiUpdateProjectRequest) Execute() (ProjectDetails, *_nethttp.Response, error) {
 	return r.ApiService.UpdateProjectExecute(r)
 }
 
@@ -397,16 +413,16 @@ func (a *ProjectApiService) UpdateProject(ctx _context.Context, projectId string
 
 /*
  * Execute executes the request
- * @return Project
+ * @return ProjectDetails
  */
-func (a *ProjectApiService) UpdateProjectExecute(r ApiUpdateProjectRequest) (Project, *_nethttp.Response, error) {
+func (a *ProjectApiService) UpdateProjectExecute(r ApiUpdateProjectRequest) (ProjectDetails, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Project
+		localVarReturnValue  ProjectDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectApiService.UpdateProject")

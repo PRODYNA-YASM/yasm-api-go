@@ -23,7 +23,6 @@ docs/CertificationDetails.md
 docs/Country.md
 docs/CountryApi.md
 docs/CountryDetails.md
-docs/CountryDetailsAllOf.md
 docs/Date.md
 docs/Error.md
 docs/Experience.md
@@ -54,6 +53,7 @@ docs/PagedCountriesAllOf.md
 docs/PagedIndustries.md
 docs/PagedIndustriesAllOf.md
 docs/PagedLanguages.md
+docs/PagedLanguagesAllOf.md
 docs/PagedOrganizations.md
 docs/PagedOrganizationsAllOf.md
 docs/PagedPersons.md
@@ -68,6 +68,7 @@ docs/PersonDetails.md
 docs/Project.md
 docs/ProjectAllOf.md
 docs/ProjectApi.md
+docs/ProjectDetails.md
 docs/ProjectParticipation.md
 docs/ProjectParticipationAllOf.md
 docs/SearchApi.md
@@ -90,7 +91,6 @@ model_certification_all_of.go
 model_certification_details.go
 model_country.go
 model_country_details.go
-model_country_details_all_of.go
 model_date.go
 model_error.go
 model_experience.go
@@ -118,6 +118,7 @@ model_paged_countries_all_of.go
 model_paged_industries.go
 model_paged_industries_all_of.go
 model_paged_languages.go
+model_paged_languages_all_of.go
 model_paged_organizations.go
 model_paged_organizations_all_of.go
 model_paged_persons.go
@@ -130,6 +131,7 @@ model_person.go
 model_person_details.go
 model_project.go
 model_project_all_of.go
+model_project_details.go
 model_project_participation.go
 model_project_participation_all_of.go
 model_search_result.go

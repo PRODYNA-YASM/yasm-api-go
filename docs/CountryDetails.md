@@ -4,15 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
+**Country** | Pointer to [**Country**](Country.md) |  | [optional] 
 **Languages** | Pointer to [**[]Language**](Language.md) |  | [optional] 
 
 ## Methods
 
 ### NewCountryDetails
 
-`func NewCountryDetails(id string, name string, ) *CountryDetails`
+`func NewCountryDetails() *CountryDetails`
 
 NewCountryDetails instantiates a new CountryDetails object
 This constructor will assign default values to properties that have it defined,
@@ -27,45 +26,30 @@ NewCountryDetailsWithDefaults instantiates a new CountryDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetCountry
 
-`func (o *CountryDetails) GetId() string`
+`func (o *CountryDetails) GetCountry() Country`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetCountry returns the Country field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetCountryOk
 
-`func (o *CountryDetails) GetIdOk() (*string, bool)`
+`func (o *CountryDetails) GetCountryOk() (*Country, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetCountryOk returns a tuple with the Country field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetCountry
 
-`func (o *CountryDetails) SetId(v string)`
+`func (o *CountryDetails) SetCountry(v Country)`
 
-SetId sets Id field to given value.
+SetCountry sets Country field to given value.
 
+### HasCountry
 
-### GetName
+`func (o *CountryDetails) HasCountry() bool`
 
-`func (o *CountryDetails) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *CountryDetails) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *CountryDetails) SetName(v string)`
-
-SetName sets Name field to given value.
-
+HasCountry returns a boolean if a field has been set.
 
 ### GetLanguages
 

@@ -152,7 +152,7 @@ No authorization required
 
 ## DeleteSkill
 
-> string DeleteSkill(ctx, skillId).Execute()
+> Status DeleteSkill(ctx, skillId).Execute()
 
 Delete a Skill
 
@@ -178,7 +178,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.DeleteSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteSkill`: string
+    // response from `DeleteSkill`: Status
     fmt.Fprintf(os.Stdout, "Response from `SkillApi.DeleteSkill`: %v\n", resp)
 }
 ```
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**Status**](Status.md)
 
 ### Authorization
 

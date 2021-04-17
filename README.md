@@ -85,7 +85,7 @@ Class | Method | HTTP request | Description
 *CertificationApi* | [**GetCertification**](docs/CertificationApi.md#getcertification) | **Get** /certifications/{certificationId} | Get details about a Certification
 *CertificationApi* | [**GetCertifications**](docs/CertificationApi.md#getcertifications) | **Get** /certifications | Get a list of all Certifations indepdenant of the Organization
 *CertificationApi* | [**UpdateCertification**](docs/CertificationApi.md#updatecertification) | **Put** /certifications/{certificationId} | Update a Certification
-*CountryApi* | [**CreateCountry**](docs/CountryApi.md#createcountry) | **Post** /countries/{countryId} | Create a new Country
+*CountryApi* | [**CreateCountry**](docs/CountryApi.md#createcountry) | **Post** /countries | Create a new Country
 *CountryApi* | [**DeleteCountry**](docs/CountryApi.md#deletecountry) | **Delete** /countries/{countryId} | Delete a Country
 *CountryApi* | [**GetCountries**](docs/CountryApi.md#getcountries) | **Get** /countries | Get all Countries
 *CountryApi* | [**GetCountry**](docs/CountryApi.md#getcountry) | **Get** /countries/{countryId} | Get details about a Country
@@ -96,7 +96,7 @@ Class | Method | HTTP request | Description
 *IndustryApi* | [**GetIndustry**](docs/IndustryApi.md#getindustry) | **Get** /industries/{industryId} | Get details about an Industry
 *IndustryApi* | [**UpdateIndustry**](docs/IndustryApi.md#updateindustry) | **Put** /industries/{industryId} | Update an Industry
 *LanguageApi* | [**AddLangaugeToCountry**](docs/LanguageApi.md#addlangaugetocountry) | **Post** /countries/{countryId}/languages/{languageId} | Assign a language to a country
-*LanguageApi* | [**CreateLanguage**](docs/LanguageApi.md#createlanguage) | **Post** /languages/{languageId} | Create a new language
+*LanguageApi* | [**CreateLanguage**](docs/LanguageApi.md#createlanguage) | **Post** /languages | Create a new language
 *LanguageApi* | [**DeleteLanguage**](docs/LanguageApi.md#deletelanguage) | **Delete** /languages/{languageId} | Delete a language
 *LanguageApi* | [**GetLanguage**](docs/LanguageApi.md#getlanguage) | **Get** /languages/{languageId} | Get details about a language
 *LanguageApi* | [**GetLanguages**](docs/LanguageApi.md#getlanguages) | **Get** /languages | Get a list of Languages
@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
 *PersonApi* | [**AddPersonInterest**](docs/PersonApi.md#addpersoninterest) | **Post** /persons/{personId}/interests/skills/{skillId} | Add an Interest to a Person
 *PersonApi* | [**AddPersonProject**](docs/PersonApi.md#addpersonproject) | **Post** /persons/{personId}/projects/{projectId} | Add Project to a Person
 *PersonApi* | [**ConfirmSkill**](docs/PersonApi.md#confirmskill) | **Post** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
+*PersonApi* | [**CreatePerson**](docs/PersonApi.md#createperson) | **Post** /persons | Create a new Person
 *PersonApi* | [**DeleteConfirmation**](docs/PersonApi.md#deleteconfirmation) | **Delete** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 *PersonApi* | [**DeletePersonCertification**](docs/PersonApi.md#deletepersoncertification) | **Delete** /persons/{personId}/certifications/{certificationId} | Remove an Interest to a Person
 *PersonApi* | [**DeletePersonInterest**](docs/PersonApi.md#deletepersoninterest) | **Delete** /persons/{personId}/interests/skills/{skillId} | Remove an Interest to a Person
@@ -127,6 +128,7 @@ Class | Method | HTTP request | Description
 *PersonApi* | [**GeneratePersonProfile**](docs/PersonApi.md#generatepersonprofile) | **Get** /persons/{personid}/profile | Generate a PDF profile from a Person
 *PersonApi* | [**GetPerson**](docs/PersonApi.md#getperson) | **Get** /persons/{personId} | Get basic info about a person
 *PersonApi* | [**GetPersons**](docs/PersonApi.md#getpersons) | **Get** /persons | Get a list of all persons
+*PersonApi* | [**UpdatePerson**](docs/PersonApi.md#updateperson) | **Put** /persons/{personId} | Update an existing Person
 *PersonApi* | [**UpdatePersonCertification**](docs/PersonApi.md#updatepersoncertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
 *PersonApi* | [**UpdatePersonProject**](docs/PersonApi.md#updatepersonproject) | **Put** /persons/{personId}/projects/{projectId} | Update a Project of a Person
 *ProjectApi* | [**DeleteProject**](docs/ProjectApi.md#deleteproject) | **Delete** /projects/{projectId} | Delete a project
@@ -153,7 +155,6 @@ Class | Method | HTTP request | Description
  - [CertificationDetails](docs/CertificationDetails.md)
  - [Country](docs/Country.md)
  - [CountryDetails](docs/CountryDetails.md)
- - [CountryDetailsAllOf](docs/CountryDetailsAllOf.md)
  - [Date](docs/Date.md)
  - [Error](docs/Error.md)
  - [Experience](docs/Experience.md)
@@ -181,6 +182,7 @@ Class | Method | HTTP request | Description
  - [PagedIndustries](docs/PagedIndustries.md)
  - [PagedIndustriesAllOf](docs/PagedIndustriesAllOf.md)
  - [PagedLanguages](docs/PagedLanguages.md)
+ - [PagedLanguagesAllOf](docs/PagedLanguagesAllOf.md)
  - [PagedOrganizations](docs/PagedOrganizations.md)
  - [PagedOrganizationsAllOf](docs/PagedOrganizationsAllOf.md)
  - [PagedPersons](docs/PagedPersons.md)
@@ -193,6 +195,7 @@ Class | Method | HTTP request | Description
  - [PersonDetails](docs/PersonDetails.md)
  - [Project](docs/Project.md)
  - [ProjectAllOf](docs/ProjectAllOf.md)
+ - [ProjectDetails](docs/ProjectDetails.md)
  - [ProjectParticipation](docs/ProjectParticipation.md)
  - [ProjectParticipationAllOf](docs/ProjectParticipationAllOf.md)
  - [SearchResult](docs/SearchResult.md)

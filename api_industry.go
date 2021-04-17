@@ -394,7 +394,7 @@ type ApiGetIndustryRequest struct {
 }
 
 
-func (r ApiGetIndustryRequest) Execute() ([]Industry, *_nethttp.Response, error) {
+func (r ApiGetIndustryRequest) Execute() (Industry, *_nethttp.Response, error) {
 	return r.ApiService.GetIndustryExecute(r)
 }
 
@@ -414,16 +414,16 @@ func (a *IndustryApiService) GetIndustry(ctx _context.Context, industryId string
 
 /*
  * Execute executes the request
- * @return []Industry
+ * @return Industry
  */
-func (a *IndustryApiService) GetIndustryExecute(r ApiGetIndustryRequest) ([]Industry, *_nethttp.Response, error) {
+func (a *IndustryApiService) GetIndustryExecute(r ApiGetIndustryRequest) (Industry, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []Industry
+		localVarReturnValue  Industry
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IndustryApiService.GetIndustry")

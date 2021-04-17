@@ -30,7 +30,6 @@ type CountryApiService service
 type ApiCreateCountryRequest struct {
 	ctx _context.Context
 	ApiService *CountryApiService
-	countryId string
 	country *Country
 }
 
@@ -46,14 +45,12 @@ func (r ApiCreateCountryRequest) Execute() (CountryDetails, *_nethttp.Response, 
 /*
  * CreateCountry Create a new Country
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param countryId
  * @return ApiCreateCountryRequest
  */
-func (a *CountryApiService) CreateCountry(ctx _context.Context, countryId string) ApiCreateCountryRequest {
+func (a *CountryApiService) CreateCountry(ctx _context.Context) ApiCreateCountryRequest {
 	return ApiCreateCountryRequest{
 		ApiService: a,
 		ctx: ctx,
-		countryId: countryId,
 	}
 }
 
@@ -76,8 +73,7 @@ func (a *CountryApiService) CreateCountryExecute(r ApiCreateCountryRequest) (Cou
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/countries/{countryId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"countryId"+"}", _neturl.PathEscape(parameterToString(r.countryId, "")), -1)
+	localVarPath := localBasePath + "/countries"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
