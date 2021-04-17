@@ -233,7 +233,7 @@ import (
 
 func main() {
     projectId := TODO // string | 
-    project := *openapiclient.NewProject("Id_example", interface{}(Phoenix Unlimited)) // Project | 
+    project := *openapiclient.NewProject("Id_example", "This is the name") // Project | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

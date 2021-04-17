@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
-**Name** | **interface{}** |  | 
+**Name** | **string** |  | 
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 
 ## Methods
 
 ### NewOffice
 
-`func NewOffice(id string, name interface{}, ) *Office`
+`func NewOffice(id string, name string, ) *Office`
 
 NewOffice instantiates a new Office object
 This constructor will assign default values to properties that have it defined,
@@ -49,34 +49,24 @@ SetId sets Id field to given value.
 
 ### GetName
 
-`func (o *Office) GetName() interface{}`
+`func (o *Office) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Office) GetNameOk() (*interface{}, bool)`
+`func (o *Office) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *Office) SetName(v interface{})`
+`func (o *Office) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
-### SetNameNil
-
-`func (o *Office) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *Office) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetGeolocation
 
 `func (o *Office) GetGeolocation() Geolocation`

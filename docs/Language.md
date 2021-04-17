@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
-**Name** | **interface{}** |  | 
+**Name** | **string** |  | 
 
 ## Methods
 
 ### NewLanguage
 
-`func NewLanguage(id string, name interface{}, ) *Language`
+`func NewLanguage(id string, name string, ) *Language`
 
 NewLanguage instantiates a new Language object
 This constructor will assign default values to properties that have it defined,
@@ -48,34 +48,24 @@ SetId sets Id field to given value.
 
 ### GetName
 
-`func (o *Language) GetName() interface{}`
+`func (o *Language) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Language) GetNameOk() (*interface{}, bool)`
+`func (o *Language) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *Language) SetName(v interface{})`
+`func (o *Language) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
-### SetNameNil
-
-`func (o *Language) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *Language) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

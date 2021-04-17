@@ -17,8 +17,8 @@ import (
 // ProjectParticipation struct for ProjectParticipation
 type ProjectParticipation struct {
 	Id string `json:"id"`
-	Startdate Date `json:"startdate"`
-	Enddate *Date `json:"enddate,omitempty"`
+	Startdate string `json:"startdate"`
+	Enddate *string `json:"enddate,omitempty"`
 	Project Project `json:"project"`
 	Description *string `json:"description,omitempty"`
 	Experiences []Experience `json:"experiences"`
@@ -28,7 +28,7 @@ type ProjectParticipation struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectParticipation(id string, startdate Date, project Project, experiences []Experience) *ProjectParticipation {
+func NewProjectParticipation(id string, startdate string, project Project, experiences []Experience) *ProjectParticipation {
 	this := ProjectParticipation{}
 	this.Id = id
 	this.Startdate = startdate
@@ -70,9 +70,9 @@ func (o *ProjectParticipation) SetId(v string) {
 }
 
 // GetStartdate returns the Startdate field value
-func (o *ProjectParticipation) GetStartdate() Date {
+func (o *ProjectParticipation) GetStartdate() string {
 	if o == nil {
-		var ret Date
+		var ret string
 		return ret
 	}
 
@@ -81,7 +81,7 @@ func (o *ProjectParticipation) GetStartdate() Date {
 
 // GetStartdateOk returns a tuple with the Startdate field value
 // and a boolean to check if the value has been set.
-func (o *ProjectParticipation) GetStartdateOk() (*Date, bool) {
+func (o *ProjectParticipation) GetStartdateOk() (*string, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -89,14 +89,14 @@ func (o *ProjectParticipation) GetStartdateOk() (*Date, bool) {
 }
 
 // SetStartdate sets field value
-func (o *ProjectParticipation) SetStartdate(v Date) {
+func (o *ProjectParticipation) SetStartdate(v string) {
 	o.Startdate = v
 }
 
 // GetEnddate returns the Enddate field value if set, zero value otherwise.
-func (o *ProjectParticipation) GetEnddate() Date {
+func (o *ProjectParticipation) GetEnddate() string {
 	if o == nil || o.Enddate == nil {
-		var ret Date
+		var ret string
 		return ret
 	}
 	return *o.Enddate
@@ -104,7 +104,7 @@ func (o *ProjectParticipation) GetEnddate() Date {
 
 // GetEnddateOk returns a tuple with the Enddate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectParticipation) GetEnddateOk() (*Date, bool) {
+func (o *ProjectParticipation) GetEnddateOk() (*string, bool) {
 	if o == nil || o.Enddate == nil {
 		return nil, false
 	}
@@ -120,8 +120,8 @@ func (o *ProjectParticipation) HasEnddate() bool {
 	return false
 }
 
-// SetEnddate gets a reference to the given Date and assigns it to the Enddate field.
-func (o *ProjectParticipation) SetEnddate(v Date) {
+// SetEnddate gets a reference to the given string and assigns it to the Enddate field.
+func (o *ProjectParticipation) SetEnddate(v string) {
 	o.Enddate = &v
 }
 

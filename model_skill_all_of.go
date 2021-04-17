@@ -16,7 +16,6 @@ import (
 
 // SkillAllOf struct for SkillAllOf
 type SkillAllOf struct {
-	Name string `json:"name"`
 	Synonyms []string `json:"synonyms"`
 	Invest *bool `json:"invest,omitempty"`
 }
@@ -25,9 +24,8 @@ type SkillAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSkillAllOf(name string, synonyms []string) *SkillAllOf {
+func NewSkillAllOf(synonyms []string) *SkillAllOf {
 	this := SkillAllOf{}
-	this.Name = name
 	this.Synonyms = synonyms
 	var invest bool = false
 	this.Invest = &invest
@@ -42,30 +40,6 @@ func NewSkillAllOfWithDefaults() *SkillAllOf {
 	var invest bool = false
 	this.Invest = &invest
 	return &this
-}
-
-// GetName returns the Name field value
-func (o *SkillAllOf) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *SkillAllOf) GetNameOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *SkillAllOf) SetName(v string) {
-	o.Name = v
 }
 
 // GetSynonyms returns the Synonyms field value
@@ -126,9 +100,6 @@ func (o *SkillAllOf) SetInvest(v bool) {
 
 func (o SkillAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
 	if true {
 		toSerialize["synonyms"] = o.Synonyms
 	}

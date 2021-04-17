@@ -79,12 +79,12 @@ All URIs are relative to *http://localhost/api/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *CertificationApi* | [**AddSkillToCertification**](docs/CertificationApi.md#addskilltocertification) | **Post** /certifications/{certificationId}/skills/{skillId} | 
-*CertificationApi* | [**CertificationsCertificationIdSkillsSkillIdDelete**](docs/CertificationApi.md#certificationscertificationidskillsskilliddelete) | **Delete** /certifications/{certificationId}/skills/{skillId} | 
-*CertificationApi* | [**CertificationsCertificationIdSkillsSkillIdPut**](docs/CertificationApi.md#certificationscertificationidskillsskillidput) | **Put** /certifications/{certificationId}/skills/{skillId} | 
 *CertificationApi* | [**DeleteCertification**](docs/CertificationApi.md#deletecertification) | **Delete** /certifications/{certificationId} | Delete a Certification
+*CertificationApi* | [**DeleteSkillFromCertification**](docs/CertificationApi.md#deleteskillfromcertification) | **Delete** /certifications/{certificationId}/skills/{skillId} | 
 *CertificationApi* | [**GetCertification**](docs/CertificationApi.md#getcertification) | **Get** /certifications/{certificationId} | Get details about a Certification
 *CertificationApi* | [**GetCertifications**](docs/CertificationApi.md#getcertifications) | **Get** /certifications | Get a list of all Certifations indepdenant of the Organization
 *CertificationApi* | [**UpdateCertification**](docs/CertificationApi.md#updatecertification) | **Put** /certifications/{certificationId} | Update a Certification
+*CertificationApi* | [**UpdateSkillInCertification**](docs/CertificationApi.md#updateskillincertification) | **Put** /certifications/{certificationId}/skills/{skillId} | 
 *CountryApi* | [**CreateCountry**](docs/CountryApi.md#createcountry) | **Post** /countries | Create a new Country
 *CountryApi* | [**DeleteCountry**](docs/CountryApi.md#deletecountry) | **Delete** /countries/{countryId} | Delete a Country
 *CountryApi* | [**GetCountries**](docs/CountryApi.md#getcountries) | **Get** /countries | Get all Countries
@@ -155,15 +155,12 @@ Class | Method | HTTP request | Description
  - [CertificationDetails](docs/CertificationDetails.md)
  - [Country](docs/Country.md)
  - [CountryDetails](docs/CountryDetails.md)
- - [Date](docs/Date.md)
  - [Error](docs/Error.md)
  - [Experience](docs/Experience.md)
  - [ExperienceAllOf](docs/ExperienceAllOf.md)
  - [Geolocation](docs/Geolocation.md)
  - [Industry](docs/Industry.md)
- - [IndustryAllOf](docs/IndustryAllOf.md)
  - [Language](docs/Language.md)
- - [LanguageAllOf](docs/LanguageAllOf.md)
  - [LanguageDetails](docs/LanguageDetails.md)
  - [LanguageLevel](docs/LanguageLevel.md)
  - [Level](docs/Level.md)

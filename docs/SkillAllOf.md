@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** |  | 
 **Synonyms** | **[]string** |  | 
 **Invest** | Pointer to **bool** |  | [optional] [default to false]
 
@@ -12,7 +11,7 @@ Name | Type | Description | Notes
 
 ### NewSkillAllOf
 
-`func NewSkillAllOf(name string, synonyms []string, ) *SkillAllOf`
+`func NewSkillAllOf(synonyms []string, ) *SkillAllOf`
 
 NewSkillAllOf instantiates a new SkillAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +25,6 @@ will change when the set of required properties is changed
 NewSkillAllOfWithDefaults instantiates a new SkillAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetName
-
-`func (o *SkillAllOf) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *SkillAllOf) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *SkillAllOf) SetName(v string)`
-
-SetName sets Name field to given value.
-
 
 ### GetSynonyms
 

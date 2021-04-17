@@ -17,7 +17,7 @@ import (
 // Office struct for Office
 type Office struct {
 	Id string `json:"id"`
-	Name interface{} `json:"name"`
+	Name string `json:"name"`
 	Geolocation *Geolocation `json:"geolocation,omitempty"`
 }
 
@@ -25,7 +25,7 @@ type Office struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOffice(id string, name interface{}) *Office {
+func NewOffice(id string, name string) *Office {
 	this := Office{}
 	this.Id = id
 	this.Name = name
@@ -65,10 +65,9 @@ func (o *Office) SetId(v string) {
 }
 
 // GetName returns the Name field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *Office) GetName() interface{} {
+func (o *Office) GetName() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -77,16 +76,15 @@ func (o *Office) GetName() interface{} {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Office) GetNameOk() (*interface{}, bool) {
-	if o == nil || o.Name == nil {
+func (o *Office) GetNameOk() (*string, bool) {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Name, true
 }
 
 // SetName sets field value
-func (o *Office) SetName(v interface{}) {
+func (o *Office) SetName(v string) {
 	o.Name = v
 }
 
@@ -127,7 +125,7 @@ func (o Office) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.Geolocation != nil {

@@ -156,31 +156,28 @@ func (a *CertificationApiService) AddSkillToCertificationExecute(r ApiAddSkillTo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCertificationsCertificationIdSkillsSkillIdDeleteRequest struct {
+type ApiDeleteCertificationRequest struct {
 	ctx _context.Context
 	ApiService *CertificationApiService
 	certificationId string
-	skillId string
 }
 
 
-func (r ApiCertificationsCertificationIdSkillsSkillIdDeleteRequest) Execute() (Status, *_nethttp.Response, error) {
-	return r.ApiService.CertificationsCertificationIdSkillsSkillIdDeleteExecute(r)
+func (r ApiDeleteCertificationRequest) Execute() (Status, *_nethttp.Response, error) {
+	return r.ApiService.DeleteCertificationExecute(r)
 }
 
 /*
- * CertificationsCertificationIdSkillsSkillIdDelete Method for CertificationsCertificationIdSkillsSkillIdDelete
+ * DeleteCertification Delete a Certification
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param certificationId
- * @param skillId
- * @return ApiCertificationsCertificationIdSkillsSkillIdDeleteRequest
+ * @return ApiDeleteCertificationRequest
  */
-func (a *CertificationApiService) CertificationsCertificationIdSkillsSkillIdDelete(ctx _context.Context, certificationId string, skillId string) ApiCertificationsCertificationIdSkillsSkillIdDeleteRequest {
-	return ApiCertificationsCertificationIdSkillsSkillIdDeleteRequest{
+func (a *CertificationApiService) DeleteCertification(ctx _context.Context, certificationId string) ApiDeleteCertificationRequest {
+	return ApiDeleteCertificationRequest{
 		ApiService: a,
 		ctx: ctx,
 		certificationId: certificationId,
-		skillId: skillId,
 	}
 }
 
@@ -188,7 +185,7 @@ func (a *CertificationApiService) CertificationsCertificationIdSkillsSkillIdDele
  * Execute executes the request
  * @return Status
  */
-func (a *CertificationApiService) CertificationsCertificationIdSkillsSkillIdDeleteExecute(r ApiCertificationsCertificationIdSkillsSkillIdDeleteRequest) (Status, *_nethttp.Response, error) {
+func (a *CertificationApiService) DeleteCertificationExecute(r ApiDeleteCertificationRequest) (Status, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -198,14 +195,13 @@ func (a *CertificationApiService) CertificationsCertificationIdSkillsSkillIdDele
 		localVarReturnValue  Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationApiService.CertificationsCertificationIdSkillsSkillIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationApiService.DeleteCertification")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/certifications/{certificationId}/skills/{skillId}"
+	localVarPath := localBasePath + "/certifications/{certificationId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"certificationId"+"}", _neturl.PathEscape(parameterToString(r.certificationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"skillId"+"}", _neturl.PathEscape(parameterToString(r.skillId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -274,33 +270,27 @@ func (a *CertificationApiService) CertificationsCertificationIdSkillsSkillIdDele
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCertificationsCertificationIdSkillsSkillIdPutRequest struct {
+type ApiDeleteSkillFromCertificationRequest struct {
 	ctx _context.Context
 	ApiService *CertificationApiService
 	certificationId string
 	skillId string
-	level *Level
 }
 
-func (r ApiCertificationsCertificationIdSkillsSkillIdPutRequest) Level(level Level) ApiCertificationsCertificationIdSkillsSkillIdPutRequest {
-	r.level = &level
-	return r
-}
 
-func (r ApiCertificationsCertificationIdSkillsSkillIdPutRequest) Execute() (CertificationDetails, *_nethttp.Response, error) {
-	return r.ApiService.CertificationsCertificationIdSkillsSkillIdPutExecute(r)
+func (r ApiDeleteSkillFromCertificationRequest) Execute() (Status, *_nethttp.Response, error) {
+	return r.ApiService.DeleteSkillFromCertificationExecute(r)
 }
 
 /*
- * CertificationsCertificationIdSkillsSkillIdPut Method for CertificationsCertificationIdSkillsSkillIdPut
- * Update Skill in Certification
+ * DeleteSkillFromCertification Method for DeleteSkillFromCertification
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param certificationId
  * @param skillId
- * @return ApiCertificationsCertificationIdSkillsSkillIdPutRequest
+ * @return ApiDeleteSkillFromCertificationRequest
  */
-func (a *CertificationApiService) CertificationsCertificationIdSkillsSkillIdPut(ctx _context.Context, certificationId string, skillId string) ApiCertificationsCertificationIdSkillsSkillIdPutRequest {
-	return ApiCertificationsCertificationIdSkillsSkillIdPutRequest{
+func (a *CertificationApiService) DeleteSkillFromCertification(ctx _context.Context, certificationId string, skillId string) ApiDeleteSkillFromCertificationRequest {
+	return ApiDeleteSkillFromCertificationRequest{
 		ApiService: a,
 		ctx: ctx,
 		certificationId: certificationId,
@@ -310,129 +300,9 @@ func (a *CertificationApiService) CertificationsCertificationIdSkillsSkillIdPut(
 
 /*
  * Execute executes the request
- * @return CertificationDetails
- */
-func (a *CertificationApiService) CertificationsCertificationIdSkillsSkillIdPutExecute(r ApiCertificationsCertificationIdSkillsSkillIdPutRequest) (CertificationDetails, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CertificationDetails
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationApiService.CertificationsCertificationIdSkillsSkillIdPut")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/certifications/{certificationId}/skills/{skillId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"certificationId"+"}", _neturl.PathEscape(parameterToString(r.certificationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"skillId"+"}", _neturl.PathEscape(parameterToString(r.skillId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.level == nil {
-		return localVarReturnValue, nil, reportError("level is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.level
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiDeleteCertificationRequest struct {
-	ctx _context.Context
-	ApiService *CertificationApiService
-	certificationId string
-}
-
-
-func (r ApiDeleteCertificationRequest) Execute() (Status, *_nethttp.Response, error) {
-	return r.ApiService.DeleteCertificationExecute(r)
-}
-
-/*
- * DeleteCertification Delete a Certification
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param certificationId
- * @return ApiDeleteCertificationRequest
- */
-func (a *CertificationApiService) DeleteCertification(ctx _context.Context, certificationId string) ApiDeleteCertificationRequest {
-	return ApiDeleteCertificationRequest{
-		ApiService: a,
-		ctx: ctx,
-		certificationId: certificationId,
-	}
-}
-
-/*
- * Execute executes the request
  * @return Status
  */
-func (a *CertificationApiService) DeleteCertificationExecute(r ApiDeleteCertificationRequest) (Status, *_nethttp.Response, error) {
+func (a *CertificationApiService) DeleteSkillFromCertificationExecute(r ApiDeleteSkillFromCertificationRequest) (Status, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -442,13 +312,14 @@ func (a *CertificationApiService) DeleteCertificationExecute(r ApiDeleteCertific
 		localVarReturnValue  Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationApiService.DeleteCertification")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationApiService.DeleteSkillFromCertification")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/certifications/{certificationId}"
+	localVarPath := localBasePath + "/certifications/{certificationId}/skills/{skillId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"certificationId"+"}", _neturl.PathEscape(parameterToString(r.certificationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"skillId"+"}", _neturl.PathEscape(parameterToString(r.skillId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -835,6 +706,135 @@ func (a *CertificationApiService) UpdateCertificationExecute(r ApiUpdateCertific
 	}
 	// body params
 	localVarPostBody = r.certification
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateSkillInCertificationRequest struct {
+	ctx _context.Context
+	ApiService *CertificationApiService
+	certificationId string
+	skillId string
+	level *Level
+}
+
+func (r ApiUpdateSkillInCertificationRequest) Level(level Level) ApiUpdateSkillInCertificationRequest {
+	r.level = &level
+	return r
+}
+
+func (r ApiUpdateSkillInCertificationRequest) Execute() (CertificationDetails, *_nethttp.Response, error) {
+	return r.ApiService.UpdateSkillInCertificationExecute(r)
+}
+
+/*
+ * UpdateSkillInCertification Method for UpdateSkillInCertification
+ * Update Skill in Certification
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param certificationId
+ * @param skillId
+ * @return ApiUpdateSkillInCertificationRequest
+ */
+func (a *CertificationApiService) UpdateSkillInCertification(ctx _context.Context, certificationId string, skillId string) ApiUpdateSkillInCertificationRequest {
+	return ApiUpdateSkillInCertificationRequest{
+		ApiService: a,
+		ctx: ctx,
+		certificationId: certificationId,
+		skillId: skillId,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return CertificationDetails
+ */
+func (a *CertificationApiService) UpdateSkillInCertificationExecute(r ApiUpdateSkillInCertificationRequest) (CertificationDetails, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  CertificationDetails
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationApiService.UpdateSkillInCertification")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/certifications/{certificationId}/skills/{skillId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"certificationId"+"}", _neturl.PathEscape(parameterToString(r.certificationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"skillId"+"}", _neturl.PathEscape(parameterToString(r.skillId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.level == nil {
+		return localVarReturnValue, nil, reportError("level is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.level
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err

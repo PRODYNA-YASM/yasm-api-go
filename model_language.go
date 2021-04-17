@@ -17,14 +17,14 @@ import (
 // Language struct for Language
 type Language struct {
 	Id string `json:"id"`
-	Name interface{} `json:"name"`
+	Name string `json:"name"`
 }
 
 // NewLanguage instantiates a new Language object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLanguage(id string, name interface{}) *Language {
+func NewLanguage(id string, name string) *Language {
 	this := Language{}
 	this.Id = id
 	this.Name = name
@@ -64,10 +64,9 @@ func (o *Language) SetId(v string) {
 }
 
 // GetName returns the Name field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *Language) GetName() interface{} {
+func (o *Language) GetName() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -76,16 +75,15 @@ func (o *Language) GetName() interface{} {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Language) GetNameOk() (*interface{}, bool) {
-	if o == nil || o.Name == nil {
+func (o *Language) GetNameOk() (*string, bool) {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Name, true
 }
 
 // SetName sets field value
-func (o *Language) SetName(v interface{}) {
+func (o *Language) SetName(v string) {
 	o.Name = v
 }
 
@@ -94,7 +92,7 @@ func (o Language) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)

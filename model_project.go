@@ -17,7 +17,7 @@ import (
 // Project struct for Project
 type Project struct {
 	Id string `json:"id"`
-	Name interface{} `json:"name"`
+	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
 }
 
@@ -25,7 +25,7 @@ type Project struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProject(id string, name interface{}) *Project {
+func NewProject(id string, name string) *Project {
 	this := Project{}
 	this.Id = id
 	this.Name = name
@@ -65,10 +65,9 @@ func (o *Project) SetId(v string) {
 }
 
 // GetName returns the Name field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *Project) GetName() interface{} {
+func (o *Project) GetName() string {
 	if o == nil {
-		var ret interface{}
+		var ret string
 		return ret
 	}
 
@@ -77,16 +76,15 @@ func (o *Project) GetName() interface{} {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Project) GetNameOk() (*interface{}, bool) {
-	if o == nil || o.Name == nil {
+func (o *Project) GetNameOk() (*string, bool) {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Name, true
 }
 
 // SetName sets field value
-func (o *Project) SetName(v interface{}) {
+func (o *Project) SetName(v string) {
 	o.Name = v
 }
 
@@ -127,7 +125,7 @@ func (o Project) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.Description != nil {

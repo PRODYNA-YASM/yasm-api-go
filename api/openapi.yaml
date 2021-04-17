@@ -821,6 +821,7 @@ paths:
       - Certification
   /certifications/{certificationId}/skills/{skillId}:
     delete:
+      operationId: deleteSkillFromCertification
       parameters:
       - explode: false
         in: path
@@ -896,6 +897,7 @@ paths:
       - Certification
     put:
       description: Update Skill in Certification
+      operationId: updateSkillInCertification
       parameters:
       - explode: false
         in: path
@@ -1616,7 +1618,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Date'
+              properties:
+                date:
+                  format: date
+                  type: string
         required: true
       responses:
         "200":
@@ -1657,7 +1662,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Date'
+              properties:
+                date:
+                  format: date
+                  type: string
         required: true
       responses:
         "200":
@@ -2286,10 +2294,12 @@ components:
       - $ref: '#/components/schemas/NamedDomainModel_allOf'
       required:
       - name
+      type: object
     Certification:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Certification_allOf'
+      type: object
     CertificationDetails:
       example:
         skills:
@@ -2306,9 +2316,11 @@ components:
           items:
             $ref: '#/components/schemas/SkillLevel'
           type: array
+      type: object
     Country:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
+      type: object
     CountryDetails:
       example:
         languages:
@@ -2322,35 +2334,16 @@ components:
             $ref: '#/components/schemas/Language'
           type: array
       type: object
-    Date:
-      example:
-        month: 0
-        year: 2020
-        day: 21
-      properties:
-        year:
-          example: 2020
-          type: number
-        month:
-          type: integer
-        day:
-          example: 21
-          type: integer
-      required:
-      - month
-      - year
-      type: object
     Experience:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Experience_allOf'
+      type: object
     Geolocation:
       properties:
         longitude:
-          format: asdf
           type: number
         latitude:
-          format: asdf
           type: number
       required:
       - latitude
@@ -2359,11 +2352,12 @@ components:
     Industry:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Industry_allOf'
+      type: object
     Language:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Language_allOf'
+      - type: object
+      type: object
     LanguageDetails:
       example:
         countries:
@@ -2376,6 +2370,7 @@ components:
           items:
             $ref: '#/components/schemas/Country'
           type: array
+      type: object
     LanguageLevel:
       example:
         level:
@@ -2390,10 +2385,12 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Office_allOf'
+      type: object
     Organization:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Organization_allOf'
+      type: object
     OrganizationDetails:
       example:
         projects:
@@ -2505,6 +2502,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Project_allOf'
+      type: object
     ProjectDetails:
       example: {}
       properties:
@@ -2515,10 +2513,12 @@ components:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
       - $ref: '#/components/schemas/ProjectParticipation_allOf'
+      type: object
     Skill:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Skill_allOf'
+      type: object
     SkillLevel:
       example:
         level:
@@ -2528,6 +2528,7 @@ components:
           $ref: '#/components/schemas/Skill'
         level:
           $ref: '#/components/schemas/Level'
+      type: object
     SkillDetails:
       example:
         children:
@@ -2540,16 +2541,19 @@ components:
           items:
             $ref: '#/components/schemas/Skill'
           type: array
+      type: object
     Status:
       example:
         status: status
       properties:
         status:
           type: string
+      type: object
     Error:
       properties:
         message:
           type: string
+      type: object
     Level:
       example:
         level: 1
@@ -2558,6 +2562,7 @@ components:
           maximum: 5
           minimum: 1
           type: integer
+      type: object
     Page:
       properties:
         skip:
@@ -2568,42 +2573,52 @@ components:
           type: integer
         count:
           type: integer
+      type: object
     PagedOrganizations:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedOrganizations_allOf'
+      type: object
     PagedLanguages:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedLanguages_allOf'
+      type: object
     PagedCertifications:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedCertifications_allOf'
+      type: object
     PagedCountries:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedCountries_allOf'
+      type: object
     PagedSkills:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedSkills_allOf'
+      type: object
     PagedIndustries:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedIndustries_allOf'
+      type: object
     PagedProjects:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedProjects_allOf'
+      type: object
     PagedPersons:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedPersons_allOf'
+      type: object
     SearchResult:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/SearchResult_allOf'
+      type: object
     SearchResultItem:
       discriminator:
         propertyName: type
@@ -2618,9 +2633,11 @@ components:
           $ref: '#/components/schemas/NamedDomainModel'
       required:
       - type
+      type: object
     NamedDomainModel_allOf:
       properties:
         name:
+          example: This is the name
           type: string
       type: object
     Certification_allOf:
@@ -2641,20 +2658,8 @@ components:
             $ref: '#/components/schemas/Person'
           type: array
       type: object
-    Industry_allOf:
-      properties:
-        name:
-          example: Aviation
-      type: object
-    Language_allOf:
-      properties:
-        name:
-          example: de
-      type: object
     Office_allOf:
       properties:
-        name:
-          example: Frankfurt
         geolocation:
           $ref: '#/components/schemas/Geolocation'
       type: object
@@ -2671,8 +2676,6 @@ components:
       type: object
     Project_allOf:
       properties:
-        name:
-          example: Phoenix Unlimited
         description:
           example: Recreate the entire world.
           type: string
@@ -2680,13 +2683,16 @@ components:
     ProjectParticipation_allOf:
       properties:
         startdate:
-          $ref: '#/components/schemas/Date'
+          format: date
+          type: string
         enddate:
-          $ref: '#/components/schemas/Date'
+          format: date
+          type: string
         project:
           allOf:
           - $ref: '#/components/schemas/Project'
           readOnly: true
+          type: object
         description:
           example: Responsible Soluation Architect for this project.
           type: string
@@ -2703,9 +2709,6 @@ components:
       type: object
     Skill_allOf:
       properties:
-        name:
-          example: Java Enterprise Edition
-          type: string
         synonyms:
           items:
             example: Java EE

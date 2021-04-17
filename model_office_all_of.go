@@ -16,7 +16,6 @@ import (
 
 // OfficeAllOf struct for OfficeAllOf
 type OfficeAllOf struct {
-	Name interface{} `json:"name,omitempty"`
 	Geolocation *Geolocation `json:"geolocation,omitempty"`
 }
 
@@ -35,39 +34,6 @@ func NewOfficeAllOf() *OfficeAllOf {
 func NewOfficeAllOfWithDefaults() *OfficeAllOf {
 	this := OfficeAllOf{}
 	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OfficeAllOf) GetName() interface{} {
-	if o == nil  {
-		var ret interface{}
-		return ret
-	}
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OfficeAllOf) GetNameOk() (*interface{}, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *OfficeAllOf) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given interface{} and assigns it to the Name field.
-func (o *OfficeAllOf) SetName(v interface{}) {
-	o.Name = v
 }
 
 // GetGeolocation returns the Geolocation field value if set, zero value otherwise.
@@ -104,9 +70,6 @@ func (o *OfficeAllOf) SetGeolocation(v Geolocation) {
 
 func (o OfficeAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
 	if o.Geolocation != nil {
 		toSerialize["geolocation"] = o.Geolocation
 	}

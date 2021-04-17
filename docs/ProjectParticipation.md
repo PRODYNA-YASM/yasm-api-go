@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
-**Startdate** | [**Date**](Date.md) |  | 
-**Enddate** | Pointer to [**Date**](Date.md) |  | [optional] 
+**Startdate** | **string** |  | 
+**Enddate** | Pointer to **string** |  | [optional] 
 **Project** | [**Project**](Project.md) |  | [readonly] 
 **Description** | Pointer to **string** |  | [optional] 
 **Experiences** | [**[]Experience**](Experience.md) |  | [readonly] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewProjectParticipation
 
-`func NewProjectParticipation(id string, startdate Date, project Project, experiences []Experience, ) *ProjectParticipation`
+`func NewProjectParticipation(id string, startdate string, project Project, experiences []Experience, ) *ProjectParticipation`
 
 NewProjectParticipation instantiates a new ProjectParticipation object
 This constructor will assign default values to properties that have it defined,
@@ -52,40 +52,40 @@ SetId sets Id field to given value.
 
 ### GetStartdate
 
-`func (o *ProjectParticipation) GetStartdate() Date`
+`func (o *ProjectParticipation) GetStartdate() string`
 
 GetStartdate returns the Startdate field if non-nil, zero value otherwise.
 
 ### GetStartdateOk
 
-`func (o *ProjectParticipation) GetStartdateOk() (*Date, bool)`
+`func (o *ProjectParticipation) GetStartdateOk() (*string, bool)`
 
 GetStartdateOk returns a tuple with the Startdate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartdate
 
-`func (o *ProjectParticipation) SetStartdate(v Date)`
+`func (o *ProjectParticipation) SetStartdate(v string)`
 
 SetStartdate sets Startdate field to given value.
 
 
 ### GetEnddate
 
-`func (o *ProjectParticipation) GetEnddate() Date`
+`func (o *ProjectParticipation) GetEnddate() string`
 
 GetEnddate returns the Enddate field if non-nil, zero value otherwise.
 
 ### GetEnddateOk
 
-`func (o *ProjectParticipation) GetEnddateOk() (*Date, bool)`
+`func (o *ProjectParticipation) GetEnddateOk() (*string, bool)`
 
 GetEnddateOk returns a tuple with the Enddate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnddate
 
-`func (o *ProjectParticipation) SetEnddate(v Date)`
+`func (o *ProjectParticipation) SetEnddate(v string)`
 
 SetEnddate sets Enddate field to given value.
 
