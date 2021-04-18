@@ -7,6 +7,7 @@ api_certification.go
 api_country.go
 api_industry.go
 api_language.go
+api_office.go
 api_organization.go
 api_person.go
 api_project.go
@@ -39,6 +40,7 @@ docs/NamedDomainModel.md
 docs/NamedDomainModelAllOf.md
 docs/Office.md
 docs/OfficeAllOf.md
+docs/OfficeApi.md
 docs/Organization.md
 docs/OrganizationAllOf.md
 docs/OrganizationApi.md
@@ -80,6 +82,7 @@ docs/SkillDetails.md
 docs/SkillLevel.md
 docs/Status.md
 docs/StatusApi.md
+docs/Version.md
 git_push.sh
 go.mod
 go.sum
@@ -138,5 +141,6 @@ model_skill_all_of.go
 model_skill_details.go
 model_skill_level.go
 model_status.go
+model_version.go
 response.go
 utils.go
