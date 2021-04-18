@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: VERSION
+  version: 0.5.0
 servers:
 - url: /api/v1
 security:
@@ -31,6 +31,28 @@ paths:
           description: Error
       security: []
       summary: Server heartbeat operation
+      tags:
+      - Status
+  /version:
+    get:
+      description: This operation shows how to override the global security defined
+        above, as we want to open it up for all users.
+      operationId: getVersion
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security: []
+      summary: Information about the server
       tags:
       - Status
   /organizations:
@@ -228,6 +250,7 @@ paths:
       summary: Remove an Organization to an Industry
       tags:
       - Organization
+      - Industry
     post:
       operationId: attachOrganizationToIndustry
       parameters:
@@ -263,6 +286,7 @@ paths:
       summary: Add an Organization to an Industry
       tags:
       - Organization
+      - Industry
   /organizations/{organizationId}/offices:
     post:
       operationId: createOffice
@@ -297,6 +321,7 @@ paths:
       summary: Create an Office in an Organization
       tags:
       - Organization
+      - Office
   /organizations/{organizationId}/offices/{officeId}:
     delete:
       operationId: deleteOffice
@@ -333,6 +358,7 @@ paths:
       summary: Delte an Office from an Organization
       tags:
       - Organization
+      - Office
     get:
       operationId: getOffice
       parameters:
@@ -368,6 +394,7 @@ paths:
       summary: Get an Office for an Organiaztion
       tags:
       - Organization
+      - Office
     put:
       operationId: updateOffice
       parameters:
@@ -409,6 +436,7 @@ paths:
       summary: Update an Office for an Organization
       tags:
       - Organization
+      - Office
   /industries:
     get:
       operationId: getIndustries
@@ -601,6 +629,7 @@ paths:
       summary: Get a list of all certifications for a organization
       tags:
       - Organization
+      - Certification
     post:
       operationId: createCertification
       parameters:
@@ -634,6 +663,7 @@ paths:
       summary: Create a Certification in an Organization
       tags:
       - Organization
+      - Certification
   /organizations/{organizationId}/projects:
     get:
       operationId: getOrganizationProjects
@@ -662,6 +692,7 @@ paths:
       summary: Get a list of all Projects for an Organization
       tags:
       - Organization
+      - Project
     post:
       operationId: createProject
       parameters:
@@ -695,6 +726,7 @@ paths:
       summary: Create a Project in an Organization
       tags:
       - Organization
+      - Project
   /certifications:
     get:
       operationId: getCertifications
@@ -844,7 +876,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/CertificationDetails'
           description: OK
         "400":
           content:
@@ -854,6 +886,7 @@ paths:
           description: Error
       tags:
       - Certification
+      - Skill
     post:
       description: Add Skill to Certification
       operationId: addSkillToCertification
@@ -895,6 +928,7 @@ paths:
           description: Error
       tags:
       - Certification
+      - Skill
     put:
       description: Update Skill in Certification
       operationId: updateSkillInCertification
@@ -936,6 +970,7 @@ paths:
           description: Error
       tags:
       - Certification
+      - Skill
   /projects:
     get:
       operationId: getProjects
@@ -1286,7 +1321,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/SkillDetails'
           description: OK
         "400":
           content:
@@ -1294,7 +1329,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Error
-      summary: Detaches a Skill from parent Skill
+      summary: Detaches a Skill from parent Skill, return the parent Skill
       tags:
       - Skill
     post:
@@ -1518,6 +1553,7 @@ paths:
       summary: Remove an Interest to a Person
       tags:
       - Person
+      - Skill
     post:
       operationId: addPersonInterest
       parameters:
@@ -1559,6 +1595,7 @@ paths:
       summary: Add an Interest to a Person
       tags:
       - Person
+      - Skill
   /persons/{personId}/certifications/{certificationId}:
     delete:
       operationId: deletePersonCertification
@@ -1595,6 +1632,7 @@ paths:
       summary: Remove an Interest to a Person
       tags:
       - Person
+      - Certification
     post:
       operationId: addPersonCertification
       parameters:
@@ -1636,6 +1674,7 @@ paths:
       summary: Add Certification to a Person
       tags:
       - Person
+      - Certification
     put:
       operationId: updatePersonCertification
       parameters:
@@ -1677,6 +1716,7 @@ paths:
       summary: Update a Certification of a Person
       tags:
       - Person
+      - Certification
   /persons/{personId}/projects/{projectId}:
     delete:
       operationId: deletePersonProject
@@ -1713,6 +1753,7 @@ paths:
       summary: Remove an Project from a Person
       tags:
       - Person
+      - Project
     post:
       operationId: addPersonProject
       parameters:
@@ -1757,6 +1798,7 @@ paths:
       summary: Add Project to a Person
       tags:
       - Person
+      - Project
     put:
       operationId: updatePersonProject
       parameters:
@@ -1801,6 +1843,7 @@ paths:
       summary: Update a Project of a Person
       tags:
       - Person
+      - Project
   /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId}:
     delete:
       operationId: deleteConfirmation
@@ -1853,6 +1896,8 @@ paths:
       summary: Remove a confirmation
       tags:
       - Person
+      - Project
+      - Skill
     post:
       operationId: confirmSkill
       parameters:
@@ -1904,6 +1949,8 @@ paths:
       summary: Confirm Skill
       tags:
       - Person
+      - Project
+      - Skill
   /search/all/{text}:
     get:
       operationId: searchAll
@@ -2240,6 +2287,7 @@ paths:
       summary: Assign a language to a country
       tags:
       - Language
+      - Country
     post:
       operationId: addLangaugeToCountry
       parameters:
@@ -2275,8 +2323,24 @@ paths:
       summary: Assign a language to a country
       tags:
       - Language
+      - Country
 components:
   schemas:
+    Version:
+      example:
+        serverVersion: 0.0.0
+        apiVersion: 0.0.0
+      properties:
+        apiVersion:
+          example: 0.0.0
+          type: string
+        serverVersion:
+          example: 0.0.0
+          type: string
+      required:
+      - apiVersion
+      - serverVersion
+      type: object
     Date:
       example:
         date: date

@@ -4,12 +4,85 @@ All URIs are relative to *http://localhost/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddLangaugeToCountry**](CountryApi.md#AddLangaugeToCountry) | **Post** /countries/{countryId}/languages/{languageId} | Assign a language to a country
 [**CreateCountry**](CountryApi.md#CreateCountry) | **Post** /countries | Create a new Country
 [**DeleteCountry**](CountryApi.md#DeleteCountry) | **Delete** /countries/{countryId} | Delete a Country
 [**GetCountries**](CountryApi.md#GetCountries) | **Get** /countries | Get all Countries
 [**GetCountry**](CountryApi.md#GetCountry) | **Get** /countries/{countryId} | Get details about a Country
+[**RemoveLanguageFromCountry**](CountryApi.md#RemoveLanguageFromCountry) | **Delete** /countries/{countryId}/languages/{languageId} | Assign a language to a country
 [**UpdateCountry**](CountryApi.md#UpdateCountry) | **Put** /countries/{countryId} | Update a Country
 
+
+
+## AddLangaugeToCountry
+
+> CountryDetails AddLangaugeToCountry(ctx, countryId, languageId).Execute()
+
+Assign a language to a country
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    countryId := TODO // string | 
+    languageId := TODO // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.CountryApi.AddLangaugeToCountry(context.Background(), countryId, languageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.AddLangaugeToCountry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddLangaugeToCountry`: CountryDetails
+    fmt.Fprintf(os.Stdout, "Response from `CountryApi.AddLangaugeToCountry`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**countryId** | [**string**](.md) |  | 
+**languageId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddLangaugeToCountryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**CountryDetails**](CountryDetails.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateCountry
@@ -258,6 +331,77 @@ Other parameters are passed through a pointer to a apiGetCountryRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**CountryDetails**](CountryDetails.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveLanguageFromCountry
+
+> CountryDetails RemoveLanguageFromCountry(ctx, countryId, languageId).Execute()
+
+Assign a language to a country
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    countryId := TODO // string | 
+    languageId := TODO // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.CountryApi.RemoveLanguageFromCountry(context.Background(), countryId, languageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.RemoveLanguageFromCountry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemoveLanguageFromCountry`: CountryDetails
+    fmt.Fprintf(os.Stdout, "Response from `CountryApi.RemoveLanguageFromCountry`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**countryId** | [**string**](.md) |  | 
+**languageId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveLanguageFromCountryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
