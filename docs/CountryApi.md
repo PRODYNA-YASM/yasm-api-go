@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddLangaugeToCountry**](CountryApi.md#AddLangaugeToCountry) | **Post** /countries/{countryId}/languages/{languageId} | Assign a language to a country
+[**AddLanguageToCountry**](CountryApi.md#AddLanguageToCountry) | **Post** /countries/{countryId}/languages/{languageId} | Assign a language to a country
 [**CreateCountry**](CountryApi.md#CreateCountry) | **Post** /countries | Create a new Country
 [**DeleteCountry**](CountryApi.md#DeleteCountry) | **Delete** /countries/{countryId} | Delete a Country
 [**GetCountries**](CountryApi.md#GetCountries) | **Get** /countries | Get all Countries
@@ -14,9 +14,9 @@ Method | HTTP request | Description
 
 
 
-## AddLangaugeToCountry
+## AddLanguageToCountry
 
-> CountryDetails AddLangaugeToCountry(ctx, countryId, languageId).Execute()
+> CountryDetails AddLanguageToCountry(ctx, countryId, languageId).Execute()
 
 Assign a language to a country
 
@@ -38,13 +38,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CountryApi.AddLangaugeToCountry(context.Background(), countryId, languageId).Execute()
+    resp, r, err := api_client.CountryApi.AddLanguageToCountry(context.Background(), countryId, languageId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.AddLangaugeToCountry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.AddLanguageToCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddLangaugeToCountry`: CountryDetails
-    fmt.Fprintf(os.Stdout, "Response from `CountryApi.AddLangaugeToCountry`: %v\n", resp)
+    // response from `AddLanguageToCountry`: CountryDetails
+    fmt.Fprintf(os.Stdout, "Response from `CountryApi.AddLanguageToCountry`: %v\n", resp)
 }
 ```
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAddLangaugeToCountryRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAddLanguageToCountryRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

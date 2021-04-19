@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## AddPersonCertification
 
-> PersonDetails AddPersonCertification(ctx, personId, certificationId).Date(date).Execute()
+> PersonDetails AddPersonCertification(ctx, personId, certificationId).Body(body).Execute()
 
 Add Certification to a Person
 
@@ -34,17 +34,18 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "./openapi"
 )
 
 func main() {
     personId := TODO // string | 
     certificationId := TODO // string | 
-    date := *openapiclient.NewDate() // Date | 
+    body := time.Now() // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.AddPersonCertification(context.Background(), personId, certificationId).Date(date).Execute()
+    resp, r, err := api_client.CertificationApi.AddPersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.AddPersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -72,7 +73,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **date** | [**Date**](Date.md) |  | 
+ **body** | **string** |  | 
 
 ### Return type
 
@@ -307,7 +308,7 @@ No authorization required
 
 ## DeletePersonCertification
 
-> Status DeletePersonCertification(ctx, personId, certificationId).Execute()
+> PersonDetails DeletePersonCertification(ctx, personId, certificationId).Execute()
 
 Remove an Interest to a Person
 
@@ -334,7 +335,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.DeletePersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeletePersonCertification`: Status
+    // response from `DeletePersonCertification`: PersonDetails
     fmt.Fprintf(os.Stdout, "Response from `CertificationApi.DeletePersonCertification`: %v\n", resp)
 }
 ```
@@ -360,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**PersonDetails**](PersonDetails.md)
 
 ### Authorization
 
@@ -725,7 +726,7 @@ No authorization required
 
 ## UpdatePersonCertification
 
-> PersonDetails UpdatePersonCertification(ctx, personId, certificationId).Date(date).Execute()
+> PersonDetails UpdatePersonCertification(ctx, personId, certificationId).Body(body).Execute()
 
 Update a Certification of a Person
 
@@ -738,17 +739,18 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "./openapi"
 )
 
 func main() {
     personId := TODO // string | 
     certificationId := TODO // string | 
-    date := *openapiclient.NewDate() // Date | 
+    body := time.Now() // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.UpdatePersonCertification(context.Background(), personId, certificationId).Date(date).Execute()
+    resp, r, err := api_client.CertificationApi.UpdatePersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.UpdatePersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -776,7 +778,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **date** | [**Date**](Date.md) |  | 
+ **body** | **string** |  | 
 
 ### Return type
 

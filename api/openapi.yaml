@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.5.0
+  version: 0.5.1
 servers:
 - url: /api/v1
 security:
@@ -676,6 +676,22 @@ paths:
           format: uuid
           type: string
         style: simple
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -1542,7 +1558,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/PersonDetails'
           description: OK
         "400":
           content:
@@ -1573,12 +1589,6 @@ paths:
           format: uuid
           type: string
         style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Person'
-        required: true
       responses:
         "200":
           content:
@@ -1621,7 +1631,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/PersonDetails'
           description: OK
         "400":
           content:
@@ -1656,7 +1666,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Date'
+              $ref: '#/components/schemas/DateModel'
         required: true
       responses:
         "200":
@@ -1698,7 +1708,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Date'
+              $ref: '#/components/schemas/DateModel'
         required: true
       responses:
         "200":
@@ -2289,7 +2299,7 @@ paths:
       - Language
       - Country
     post:
-      operationId: addLangaugeToCountry
+      operationId: addLanguageToCountry
       parameters:
       - explode: false
         in: path
@@ -2341,13 +2351,9 @@ components:
       - apiVersion
       - serverVersion
       type: object
-    Date:
-      example:
-        date: date
-      properties:
-        date:
-          type: string
-      type: object
+    DateModel:
+      format: date
+      type: string
     BasicDomainModel:
       properties:
         id:

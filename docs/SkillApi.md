@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## AddPersonInterest
 
-> PersonDetails AddPersonInterest(ctx, personId, skillId).Person(person).Execute()
+> PersonDetails AddPersonInterest(ctx, personId, skillId).Execute()
 
 Add an Interest to a Person
 
@@ -43,11 +43,10 @@ import (
 func main() {
     personId := TODO // string | 
     skillId := TODO // string | 
-    person := *openapiclient.NewPerson("Id_example", "Darko Krizic") // Person | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SkillApi.AddPersonInterest(context.Background(), personId, skillId).Person(person).Execute()
+    resp, r, err := api_client.SkillApi.AddPersonInterest(context.Background(), personId, skillId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.AddPersonInterest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -75,7 +74,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **person** | [**Person**](Person.md) |  | 
 
 ### Return type
 
@@ -87,7 +85,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -461,7 +459,7 @@ No authorization required
 
 ## DeletePersonInterest
 
-> Status DeletePersonInterest(ctx, personId, skillId).Execute()
+> PersonDetails DeletePersonInterest(ctx, personId, skillId).Execute()
 
 Remove an Interest to a Person
 
@@ -488,7 +486,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.DeletePersonInterest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeletePersonInterest`: Status
+    // response from `DeletePersonInterest`: PersonDetails
     fmt.Fprintf(os.Stdout, "Response from `SkillApi.DeletePersonInterest`: %v\n", resp)
 }
 ```
@@ -514,7 +512,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**PersonDetails**](PersonDetails.md)
 
 ### Authorization
 

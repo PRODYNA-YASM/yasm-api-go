@@ -790,7 +790,7 @@ No authorization required
 
 ## GetOrganizationProjects
 
-> PagedProjects GetOrganizationProjects(ctx, organizationId).Execute()
+> PagedProjects GetOrganizationProjects(ctx, organizationId).Skip(skip).Limit(limit).Execute()
 
 Get a list of all Projects for an Organization
 
@@ -808,10 +808,12 @@ import (
 
 func main() {
     organizationId := TODO // string | 
+    skip := int32(56) // int32 |  (optional) (default to 0)
+    limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.GetOrganizationProjects(context.Background(), organizationId).Execute()
+    resp, r, err := api_client.OrganizationApi.GetOrganizationProjects(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.GetOrganizationProjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -837,6 +839,8 @@ Other parameters are passed through a pointer to a apiGetOrganizationProjectsReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **skip** | **int32** |  | [default to 0]
+ **limit** | **int32** |  | [default to 20]
 
 ### Return type
 
