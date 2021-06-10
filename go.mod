@@ -1,4 +1,4 @@
-module github.com/prodyna/yasm-go-client
+module github.com/prodyna/yasm-api-go
 
 go 1.13
 
