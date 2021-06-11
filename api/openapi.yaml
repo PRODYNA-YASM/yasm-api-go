@@ -3,11 +3,11 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.5.9
+  version: 0.5.10
 servers:
 - url: /api/v1
 security:
-- openId:
+- bearerAuth:
   - user
   - admin
 paths:
@@ -88,9 +88,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Error
-      security:
-      - openId:
-        - user
       summary: Get a list of all Organizations
       tags:
       - Organization
@@ -2858,6 +2855,7 @@ components:
           type: array
       type: object
   securitySchemes:
-    openId:
-      openIdConnectUrl: https://login.microsoftonline.com/b2748d0a-856e-4184-bda8-831f9ffa8a48/v2.0/.well-known/openid-configuration
-      type: openIdConnect
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
