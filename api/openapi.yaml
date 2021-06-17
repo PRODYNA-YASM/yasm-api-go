@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.5.10
+  version: 0.6.0
 servers:
 - url: /api/v1
 security:
@@ -2366,9 +2366,16 @@ components:
       required:
       - name
       type: object
+    Suggestable:
+      properties:
+        suggestion:
+          default: false
+          type: boolean
+      type: object
     Certification:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Certification_allOf'
       type: object
     CertificationDetails:
@@ -2423,6 +2430,7 @@ components:
     Industry:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Suggestable'
       type: object
     Language:
       allOf:
@@ -2460,6 +2468,7 @@ components:
     Organization:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Organization_allOf'
       type: object
     OrganizationDetails:
@@ -2572,6 +2581,7 @@ components:
     Project:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Project_allOf'
       type: object
     ProjectDetails:
@@ -2588,6 +2598,7 @@ components:
     Skill:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Skill_allOf'
       type: object
     SkillLevel:

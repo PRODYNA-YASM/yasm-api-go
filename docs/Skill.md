@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** |  | 
+**Suggestion** | Pointer to **bool** |  | [optional] [default to false]
 **Synonyms** | **[]string** |  | 
 **Invest** | Pointer to **bool** |  | [optional] [default to false]
 
@@ -67,6 +68,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetSuggestion
+
+`func (o *Skill) GetSuggestion() bool`
+
+GetSuggestion returns the Suggestion field if non-nil, zero value otherwise.
+
+### GetSuggestionOk
+
+`func (o *Skill) GetSuggestionOk() (*bool, bool)`
+
+GetSuggestionOk returns a tuple with the Suggestion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSuggestion
+
+`func (o *Skill) SetSuggestion(v bool)`
+
+SetSuggestion sets Suggestion field to given value.
+
+### HasSuggestion
+
+`func (o *Skill) HasSuggestion() bool`
+
+HasSuggestion returns a boolean if a field has been set.
 
 ### GetSynonyms
 
