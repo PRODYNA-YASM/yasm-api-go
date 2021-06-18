@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.6.1
+  version: 0.6.2
 servers:
 - url: /api/v1
 security:
@@ -1785,10 +1785,10 @@ paths:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/SkillLevel'
+                $ref: '#/components/schemas/SkillLevelUpdate'
               type: array
         description: A list of Skills each with a level
-        required: true
+        required: false
       responses:
         "200":
           content:
@@ -1851,6 +1851,156 @@ paths:
       tags:
       - Person
       - Project
+  /persons/{personId}/projects/{projectId}/skills/{skillId}:
+    delete:
+      operationId: deletePersonProjectSkill
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Remove a Skill from a Project participation
+      tags:
+      - Person
+      - Project
+      - Skill
+    post:
+      operationId: addPersonProjectSkill
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+        description: The Skill Level
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Add Skill to a Project participation
+      tags:
+      - Person
+      - Project
+      - Skill
+    put:
+      operationId: updatePersonProjectSkill
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+        description: The Skill Level
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update the level of a Skill in a Project participation
+      tags:
+      - Person
+      - Project
+      - Skill
   /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId}:
     delete:
       operationId: deleteConfirmation
@@ -2608,6 +2758,18 @@ components:
       properties:
         skill:
           $ref: '#/components/schemas/Skill'
+        level:
+          $ref: '#/components/schemas/Level'
+      type: object
+    SkillLevelUpdate:
+      example:
+        skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        level:
+          level: 1
+      properties:
+        skillId:
+          format: uuid
+          type: string
         level:
           $ref: '#/components/schemas/Level'
       type: object

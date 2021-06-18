@@ -5,18 +5,21 @@ All URIs are relative to *http://localhost/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddPersonInterest**](SkillApi.md#AddPersonInterest) | **Post** /persons/{personId}/interests/skills/{skillId} | Add an Interest to a Person
+[**AddPersonProjectSkill**](SkillApi.md#AddPersonProjectSkill) | **Post** /persons/{personId}/projects/{projectId}/skills/{skillId} | Add Skill to a Project participation
 [**AddSkillToCertification**](SkillApi.md#AddSkillToCertification) | **Post** /certifications/{certificationId}/skills/{skillId} | 
 [**AddSkillToParentSkill**](SkillApi.md#AddSkillToParentSkill) | **Post** /skills/{skillId}/parents/{parentSkillId} | Attach a Skill to a parent Skill, returns the parent Skill
 [**ConfirmSkill**](SkillApi.md#ConfirmSkill) | **Post** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
 [**CreateSkill**](SkillApi.md#CreateSkill) | **Post** /skills | Create a Skill
 [**DeleteConfirmation**](SkillApi.md#DeleteConfirmation) | **Delete** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**DeletePersonInterest**](SkillApi.md#DeletePersonInterest) | **Delete** /persons/{personId}/interests/skills/{skillId} | Remove an Interest to a Person
+[**DeletePersonProjectSkill**](SkillApi.md#DeletePersonProjectSkill) | **Delete** /persons/{personId}/projects/{projectId}/skills/{skillId} | Remove a Skill from a Project participation
 [**DeleteSkill**](SkillApi.md#DeleteSkill) | **Delete** /skills/{skillId} | Delete a Skill
 [**DeleteSkillFromCertification**](SkillApi.md#DeleteSkillFromCertification) | **Delete** /certifications/{certificationId}/skills/{skillId} | 
 [**GetSkill**](SkillApi.md#GetSkill) | **Get** /skills/{skillId} | Get details for a single skill
 [**GetSkillParents**](SkillApi.md#GetSkillParents) | **Get** /skills/{skillId}/parents | Get ghe list of parents for a skill
 [**GetSkills**](SkillApi.md#GetSkills) | **Get** /skills | Get a list of all skills, optionally only root
 [**RemoveSkillFromParentSkill**](SkillApi.md#RemoveSkillFromParentSkill) | **Delete** /skills/{skillId}/parents/{parentSkillId} | Detaches a Skill from parent Skill, return the parent Skill
+[**UpdatePersonProjectSkill**](SkillApi.md#UpdatePersonProjectSkill) | **Put** /persons/{personId}/projects/{projectId}/skills/{skillId} | Update the level of a Skill in a Project participation
 [**UpdateSkill**](SkillApi.md#UpdateSkill) | **Put** /skills/{skillId} | Update a Skill
 [**UpdateSkillInCertification**](SkillApi.md#UpdateSkillInCertification) | **Put** /certifications/{certificationId}/skills/{skillId} | 
 
@@ -86,6 +89,82 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AddPersonProjectSkill
+
+> PersonDetails AddPersonProjectSkill(ctx, personId, projectId, skillId).Level(level).Execute()
+
+Add Skill to a Project participation
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := TODO // string | 
+    projectId := TODO // string | 
+    skillId := TODO // string | 
+    level := *openapiclient.NewLevel() // Level | The Skill Level
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SkillApi.AddPersonProjectSkill(context.Background(), personId, projectId, skillId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.AddPersonProjectSkill``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonProjectSkill`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillApi.AddPersonProjectSkill`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | [**string**](.md) |  | 
+**projectId** | [**string**](.md) |  | 
+**skillId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddPersonProjectSkillRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **level** | [**Level**](Level.md) | The Skill Level | 
+
+### Return type
+
+[**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -528,6 +607,80 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeletePersonProjectSkill
+
+> PersonDetails DeletePersonProjectSkill(ctx, personId, projectId, skillId).Execute()
+
+Remove a Skill from a Project participation
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := TODO // string | 
+    projectId := TODO // string | 
+    skillId := TODO // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SkillApi.DeletePersonProjectSkill(context.Background(), personId, projectId, skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.DeletePersonProjectSkill``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonProjectSkill`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillApi.DeletePersonProjectSkill`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | [**string**](.md) |  | 
+**projectId** | [**string**](.md) |  | 
+**skillId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeletePersonProjectSkillRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteSkill
 
 > Status DeleteSkill(ctx, skillId).Execute()
@@ -939,6 +1092,82 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePersonProjectSkill
+
+> PersonDetails UpdatePersonProjectSkill(ctx, personId, projectId, skillId).Level(level).Execute()
+
+Update the level of a Skill in a Project participation
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := TODO // string | 
+    projectId := TODO // string | 
+    skillId := TODO // string | 
+    level := *openapiclient.NewLevel() // Level | The Skill Level
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.SkillApi.UpdatePersonProjectSkill(context.Background(), personId, projectId, skillId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.UpdatePersonProjectSkill``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonProjectSkill`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillApi.UpdatePersonProjectSkill`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | [**string**](.md) |  | 
+**projectId** | [**string**](.md) |  | 
+**skillId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePersonProjectSkillRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **level** | [**Level**](Level.md) | The Skill Level | 
+
+### Return type
+
+[**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
