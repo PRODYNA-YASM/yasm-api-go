@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Synonyms** | Pointer to **[]string** |  | [optional] 
 **Validity** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -25,31 +24,6 @@ will change when the set of required properties is changed
 NewCertificationAllOfWithDefaults instantiates a new CertificationAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSynonyms
-
-`func (o *CertificationAllOf) GetSynonyms() []string`
-
-GetSynonyms returns the Synonyms field if non-nil, zero value otherwise.
-
-### GetSynonymsOk
-
-`func (o *CertificationAllOf) GetSynonymsOk() (*[]string, bool)`
-
-GetSynonymsOk returns a tuple with the Synonyms field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSynonyms
-
-`func (o *CertificationAllOf) SetSynonyms(v []string)`
-
-SetSynonyms sets Synonyms field to given value.
-
-### HasSynonyms
-
-`func (o *CertificationAllOf) HasSynonyms() bool`
-
-HasSynonyms returns a boolean if a field has been set.
 
 ### GetValidity
 

@@ -62,6 +62,7 @@ docs/PagedProjectsAllOf.md
 docs/PagedSkills.md
 docs/PagedSkillsAllOf.md
 docs/Person.md
+docs/PersonAllOf.md
 docs/PersonApi.md
 docs/PersonDetails.md
 docs/Project.md
@@ -83,6 +84,7 @@ docs/SkillLevelUpdate.md
 docs/Status.md
 docs/StatusApi.md
 docs/Suggestable.md
+docs/Synonymable.md
 docs/Version.md
 git_push.sh
 go.mod
@@ -127,6 +129,7 @@ model_paged_projects_all_of.go
 model_paged_skills.go
 model_paged_skills_all_of.go
 model_person.go
+model_person_all_of.go
 model_person_details.go
 model_project.go
 model_project_all_of.go
@@ -143,6 +146,7 @@ model_skill_level.go
 model_skill_level_update.go
 model_status.go
 model_suggestable.go
+model_synonymable.go
 model_version.go
 response.go
 utils.go

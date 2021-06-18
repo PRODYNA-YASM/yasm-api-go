@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Name** | **string** |  | 
 **Suggestion** | Pointer to **bool** |  | [optional] [default to false]
-**Synonyms** | **[]string** |  | 
+**Synonyms** | Pointer to **[]string** |  | [optional] 
 **Invest** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
 ### NewSkill
 
-`func NewSkill(id string, name string, synonyms []string, ) *Skill`
+`func NewSkill(id string, name string, ) *Skill`
 
 NewSkill instantiates a new Skill object
 This constructor will assign default values to properties that have it defined,
@@ -113,6 +113,11 @@ and a boolean to check if the value has been set.
 
 SetSynonyms sets Synonyms field to given value.
 
+### HasSynonyms
+
+`func (o *Skill) HasSynonyms() bool`
+
+HasSynonyms returns a boolean if a field has been set.
 
 ### GetInvest
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Name** | **string** |  | 
 **Suggestion** | Pointer to **bool** |  | [optional] [default to false]
+**Synonyms** | Pointer to **[]string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -92,6 +93,31 @@ SetSuggestion sets Suggestion field to given value.
 `func (o *Project) HasSuggestion() bool`
 
 HasSuggestion returns a boolean if a field has been set.
+
+### GetSynonyms
+
+`func (o *Project) GetSynonyms() []string`
+
+GetSynonyms returns the Synonyms field if non-nil, zero value otherwise.
+
+### GetSynonymsOk
+
+`func (o *Project) GetSynonymsOk() (*[]string, bool)`
+
+GetSynonymsOk returns a tuple with the Synonyms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSynonyms
+
+`func (o *Project) SetSynonyms(v []string)`
+
+SetSynonyms sets Synonyms field to given value.
+
+### HasSynonyms
+
+`func (o *Project) HasSynonyms() bool`
+
+HasSynonyms returns a boolean if a field has been set.
 
 ### GetDescription
 

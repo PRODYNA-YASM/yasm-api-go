@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Name** | **string** |  | 
 **Suggestion** | Pointer to **bool** |  | [optional] [default to false]
+**Synonyms** | Pointer to **[]string** |  | [optional] 
 **Partner** | Pointer to **bool** |  | [optional] [default to false]
 **Customer** | Pointer to **bool** |  | [optional] [default to false]
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
@@ -94,6 +95,31 @@ SetSuggestion sets Suggestion field to given value.
 `func (o *Organization) HasSuggestion() bool`
 
 HasSuggestion returns a boolean if a field has been set.
+
+### GetSynonyms
+
+`func (o *Organization) GetSynonyms() []string`
+
+GetSynonyms returns the Synonyms field if non-nil, zero value otherwise.
+
+### GetSynonymsOk
+
+`func (o *Organization) GetSynonymsOk() (*[]string, bool)`
+
+GetSynonymsOk returns a tuple with the Synonyms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSynonyms
+
+`func (o *Organization) SetSynonyms(v []string)`
+
+SetSynonyms sets Synonyms field to given value.
+
+### HasSynonyms
+
+`func (o *Organization) HasSynonyms() bool`
+
+HasSynonyms returns a boolean if a field has been set.
 
 ### GetPartner
 

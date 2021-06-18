@@ -815,7 +815,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePersonProject
 
-> PersonDetails UpdatePersonProject(ctx, personId, projectId).SkillLevel(skillLevel).Execute()
+> PersonDetails UpdatePersonProject(ctx, personId, projectId).SkillLevelUpdate(skillLevelUpdate).Execute()
 
 Update a Project of a Person
 
@@ -834,11 +834,11 @@ import (
 func main() {
     personId := TODO // string | 
     projectId := TODO // string | 
-    skillLevel := []openapiclient.SkillLevel{*openapiclient.NewSkillLevel()} // []SkillLevel | A list of Skills each with a level
+    skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | A list of Skills each with a level
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.UpdatePersonProject(context.Background(), personId, projectId).SkillLevel(skillLevel).Execute()
+    resp, r, err := api_client.ProjectApi.UpdatePersonProject(context.Background(), personId, projectId).SkillLevelUpdate(skillLevelUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.UpdatePersonProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -866,7 +866,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **skillLevel** | [**[]SkillLevel**](SkillLevel.md) | A list of Skills each with a level | 
+ **skillLevelUpdate** | [**[]SkillLevelUpdate**](SkillLevelUpdate.md) | A list of Skills each with a level | 
 
 ### Return type
 

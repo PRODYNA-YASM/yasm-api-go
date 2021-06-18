@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** |  | 
+**Suggestion** | Pointer to **bool** |  | [optional] [default to false]
+**Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -66,6 +68,56 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetSuggestion
+
+`func (o *Person) GetSuggestion() bool`
+
+GetSuggestion returns the Suggestion field if non-nil, zero value otherwise.
+
+### GetSuggestionOk
+
+`func (o *Person) GetSuggestionOk() (*bool, bool)`
+
+GetSuggestionOk returns a tuple with the Suggestion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSuggestion
+
+`func (o *Person) SetSuggestion(v bool)`
+
+SetSuggestion sets Suggestion field to given value.
+
+### HasSuggestion
+
+`func (o *Person) HasSuggestion() bool`
+
+HasSuggestion returns a boolean if a field has been set.
+
+### GetSynonyms
+
+`func (o *Person) GetSynonyms() []string`
+
+GetSynonyms returns the Synonyms field if non-nil, zero value otherwise.
+
+### GetSynonymsOk
+
+`func (o *Person) GetSynonymsOk() (*[]string, bool)`
+
+GetSynonymsOk returns a tuple with the Synonyms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSynonyms
+
+`func (o *Person) SetSynonyms(v []string)`
+
+SetSynonyms sets Synonyms field to given value.
+
+### HasSynonyms
+
+`func (o *Person) HasSynonyms() bool`
+
+HasSynonyms returns a boolean if a field has been set.
 
 ### GetLocation
 

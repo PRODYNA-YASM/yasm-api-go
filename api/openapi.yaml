@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.6.2
+  version: 0.6.3
 servers:
 - url: /api/v1
 security:
@@ -1830,7 +1830,7 @@ paths:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/SkillLevel'
+                $ref: '#/components/schemas/SkillLevelUpdate'
               type: array
         description: A list of Skills each with a level
         required: true
@@ -2522,10 +2522,18 @@ components:
           default: false
           type: boolean
       type: object
+    Synonymable:
+      properties:
+        synonyms:
+          items:
+            type: string
+          type: array
+      type: object
     Certification:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Certification_allOf'
       type: object
     CertificationDetails:
@@ -2581,6 +2589,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Synonymable'
       type: object
     Language:
       allOf:
@@ -2619,6 +2628,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Organization_allOf'
       type: object
     OrganizationDetails:
@@ -2657,20 +2667,11 @@ components:
           type: array
       type: object
     Person:
-      example:
-        name: Darko Krizic
-        location: Riedberg, Frankfurt am Main, Deutschland
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        id:
-          format: uuid
-          type: string
-        name:
-          example: Darko Krizic
-          type: string
-        location:
-          example: Riedberg, Frankfurt am Main, Deutschland
-          type: string
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Synonymable'
+      - $ref: '#/components/schemas/Person_allOf'
       required:
       - id
       - name
@@ -2685,10 +2686,6 @@ components:
             level: 1
         - level:
             level: 1
-        person:
-          name: Darko Krizic
-          location: Riedberg, Frankfurt am Main, Deutschland
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         location: location
         interests:
         - null
@@ -2732,6 +2729,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Project_allOf'
       type: object
     ProjectDetails:
@@ -2749,6 +2747,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Skill_allOf'
       type: object
     SkillLevel:
@@ -2886,10 +2885,6 @@ components:
       type: object
     Certification_allOf:
       properties:
-        synonyms:
-          items:
-            type: string
-          type: array
         validity:
           type: string
       type: object
@@ -2917,6 +2912,12 @@ components:
           type: boolean
         geolocation:
           $ref: '#/components/schemas/Geolocation'
+      type: object
+    Person_allOf:
+      properties:
+        location:
+          example: Riedberg, Frankfurt am Main, Deutschland
+          type: string
       type: object
     Project_allOf:
       properties:
@@ -2951,18 +2952,12 @@ components:
       type: object
     Skill_allOf:
       properties:
-        synonyms:
-          items:
-            example: Java EE
-            type: string
-          type: array
         invest:
           default: false
           type: boolean
       required:
       - id
       - name
-      - synonyms
       type: object
     PagedOrganizations_allOf:
       properties:

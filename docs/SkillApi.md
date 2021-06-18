@@ -414,7 +414,7 @@ import (
 )
 
 func main() {
-    skill := *openapiclient.NewSkill("Id_example", "This is the name", []string{"Java EE"}) // Skill | 
+    skill := *openapiclient.NewSkill("Id_example", "This is the name") // Skill | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1195,7 +1195,7 @@ import (
 
 func main() {
     skillId := TODO // string | 
-    skill := *openapiclient.NewSkill("Id_example", "This is the name", []string{"Java EE"}) // Skill | 
+    skill := *openapiclient.NewSkill("Id_example", "This is the name") // Skill | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
