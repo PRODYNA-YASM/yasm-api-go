@@ -82,6 +82,7 @@ docs/SkillApi.md
 docs/SkillDetails.md
 docs/SkillLevel.md
 docs/SkillLevelUpdate.md
+docs/SkillLevelUpdateAllOf.md
 docs/Status.md
 docs/StatusApi.md
 docs/Suggestable.md
@@ -147,6 +148,7 @@ model_skill_all_of.go
 model_skill_details.go
 model_skill_level.go
 model_skill_level_update.go
+model_skill_level_update_all_of.go
 model_status.go
 model_suggestable.go
 model_synonymable.go

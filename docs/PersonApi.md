@@ -197,7 +197,7 @@ import (
 func main() {
     personId := TODO // string | 
     projectId := TODO // string | 
-    projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | A time frame and a list of Skills
+    projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | List of Skills with level and timeframe
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **projectParticipationUpdate** | [**ProjectParticipationUpdate**](ProjectParticipationUpdate.md) | A time frame and a list of Skills | 
+ **projectParticipationUpdate** | [**ProjectParticipationUpdate**](ProjectParticipationUpdate.md) | List of Skills with level and timeframe | 
 
 ### Return type
 
@@ -611,7 +611,7 @@ Name | Type | Description  | Notes
 
 ## DeleteConfirmation
 
-> Status DeleteConfirmation(ctx, personId, projectId, skillId, confirmingPersonId).Execute()
+> PersonDetails DeleteConfirmation(ctx, personId, projectId, skillId, confirmingPersonId).Execute()
 
 Remove a confirmation
 
@@ -640,7 +640,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeleteConfirmation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteConfirmation`: Status
+    // response from `DeleteConfirmation`: PersonDetails
     fmt.Fprintf(os.Stdout, "Response from `PersonApi.DeleteConfirmation`: %v\n", resp)
 }
 ```
@@ -670,7 +670,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**PersonDetails**](PersonDetails.md)
 
 ### Authorization
 
@@ -759,7 +759,7 @@ Name | Type | Description  | Notes
 
 ## DeletePersonInterest
 
-> PersonDetails DeletePersonInterest(ctx, personId, skillId).Level(level).Execute()
+> PersonDetails DeletePersonInterest(ctx, personId, skillId).Execute()
 
 Remove an Interest to a Person
 
@@ -778,11 +778,10 @@ import (
 func main() {
     personId := TODO // string | 
     skillId := TODO // string | 
-    level := *openapiclient.NewLevel() // Level | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeletePersonInterest(context.Background(), personId, skillId).Level(level).Execute()
+    resp, r, err := api_client.PersonApi.DeletePersonInterest(context.Background(), personId, skillId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePersonInterest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -810,7 +809,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **level** | [**Level**](Level.md) |  | 
 
 ### Return type
 
@@ -822,7 +820,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -832,7 +830,7 @@ Name | Type | Description  | Notes
 
 ## DeletePersonProject
 
-> Status DeletePersonProject(ctx, personId, projectId).Execute()
+> PersonDetails DeletePersonProject(ctx, personId, projectId).Execute()
 
 Remove an Project from a Person
 
@@ -859,7 +857,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePersonProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeletePersonProject`: Status
+    // response from `DeletePersonProject`: PersonDetails
     fmt.Fprintf(os.Stdout, "Response from `PersonApi.DeletePersonProject`: %v\n", resp)
 }
 ```
@@ -885,7 +883,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**PersonDetails**](PersonDetails.md)
 
 ### Authorization
 

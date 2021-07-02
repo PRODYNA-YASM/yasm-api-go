@@ -42,7 +42,7 @@ import (
 func main() {
     personId := TODO // string | 
     projectId := TODO // string | 
-    projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | A time frame and a list of Skills
+    projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | List of Skills with level and timeframe
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **projectParticipationUpdate** | [**ProjectParticipationUpdate**](ProjectParticipationUpdate.md) | A time frame and a list of Skills | 
+ **projectParticipationUpdate** | [**ProjectParticipationUpdate**](ProjectParticipationUpdate.md) | List of Skills with level and timeframe | 
 
 ### Return type
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 
 ## DeleteConfirmation
 
-> Status DeleteConfirmation(ctx, personId, projectId, skillId, confirmingPersonId).Execute()
+> PersonDetails DeleteConfirmation(ctx, personId, projectId, skillId, confirmingPersonId).Execute()
 
 Remove a confirmation
 
@@ -348,7 +348,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.DeleteConfirmation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteConfirmation`: Status
+    // response from `DeleteConfirmation`: PersonDetails
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.DeleteConfirmation`: %v\n", resp)
 }
 ```
@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**PersonDetails**](PersonDetails.md)
 
 ### Authorization
 
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 
 ## DeletePersonProject
 
-> Status DeletePersonProject(ctx, personId, projectId).Execute()
+> PersonDetails DeletePersonProject(ctx, personId, projectId).Execute()
 
 Remove an Project from a Person
 
@@ -423,7 +423,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.DeletePersonProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeletePersonProject`: Status
+    // response from `DeletePersonProject`: PersonDetails
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.DeletePersonProject`: %v\n", resp)
 }
 ```
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**PersonDetails**](PersonDetails.md)
 
 ### Authorization
 

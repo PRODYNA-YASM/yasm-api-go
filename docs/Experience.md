@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
 **Skill** | Pointer to [**SkillLevel**](SkillLevel.md) |  | [optional] 
 **ConfirmedBy** | Pointer to [**[]Person**](Person.md) |  | [optional] 
 
@@ -13,7 +11,7 @@ Name | Type | Description | Notes
 
 ### NewExperience
 
-`func NewExperience(id string, name string, ) *Experience`
+`func NewExperience() *Experience`
 
 NewExperience instantiates a new Experience object
 This constructor will assign default values to properties that have it defined,
@@ -27,46 +25,6 @@ will change when the set of required properties is changed
 NewExperienceWithDefaults instantiates a new Experience object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Experience) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Experience) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Experience) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetName
-
-`func (o *Experience) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *Experience) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *Experience) SetName(v string)`
-
-SetName sets Name field to given value.
-
 
 ### GetSkill
 

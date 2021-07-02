@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.7.0
+  version: 0.7.1
 servers:
 - url: /api/v1
 security:
@@ -1550,12 +1550,6 @@ paths:
           format: uuid
           type: string
         style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Level'
-        required: true
       responses:
         "200":
           content:
@@ -1987,7 +1981,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/PersonDetails'
           description: OK
         "400":
           content:
@@ -2023,7 +2017,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectParticipationUpdate'
-        description: A time frame and a list of Skills
+        description: List of Skills with level and timeframe
         required: true
       responses:
         "200":
@@ -2276,7 +2270,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/PersonDetails'
           description: OK
         "400":
           content:
@@ -2817,7 +2811,6 @@ components:
       type: object
     Experience:
       allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Experience_allOf'
       type: object
     Geolocation:
@@ -2946,12 +2939,19 @@ components:
               level: 1
           - level:
               level: 1
+        experiences:
+        - null
+        - null
       properties:
         person:
           $ref: '#/components/schemas/Person'
         projects:
           items:
             $ref: '#/components/schemas/ProjectParticipation'
+          type: array
+        experiences:
+          items:
+            $ref: '#/components/schemas/Experience'
           type: array
         interests:
           items:
@@ -2991,12 +2991,8 @@ components:
     ProjectParticipationUpdate:
       example:
         skills:
-        - skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          level:
-            level: 1
-        - skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          level:
-            level: 1
+        - null
+        - null
         timeframe: '{}'
       properties:
         timeframe:
@@ -3026,17 +3022,8 @@ components:
           $ref: '#/components/schemas/Level'
       type: object
     SkillLevelUpdate:
-      example:
-        skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        level:
-          level: 1
-      properties:
-        skillId:
-          format: uuid
-          type: string
-        level:
-          $ref: '#/components/schemas/Level'
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/SkillLevelUpdate_allOf'
     SkillDetails:
       example:
         children:
@@ -3128,8 +3115,6 @@ components:
       - $ref: '#/components/schemas/SearchResult_allOf'
       type: object
     SearchResultItem:
-      discriminator:
-        propertyName: type
       properties:
         score:
           example: 0.7
@@ -3139,8 +3124,6 @@ components:
           type: string
         item:
           $ref: '#/components/schemas/NamedDomainModel'
-      required:
-      - type
       type: object
     NamedDomainModel_allOf:
       properties:
@@ -3224,6 +3207,14 @@ components:
       required:
       - id
       - name
+      type: object
+    SkillLevelUpdate_allOf:
+      properties:
+        skillId:
+          format: uuid
+          type: string
+        level:
+          $ref: '#/components/schemas/Level'
       type: object
     PagedOrganizations_allOf:
       properties:

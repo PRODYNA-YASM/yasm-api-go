@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 
 ## DeleteConfirmation
 
-> Status DeleteConfirmation(ctx, personId, projectId, skillId, confirmingPersonId).Execute()
+> PersonDetails DeleteConfirmation(ctx, personId, projectId, skillId, confirmingPersonId).Execute()
 
 Remove a confirmation
 
@@ -639,7 +639,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.DeleteConfirmation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteConfirmation`: Status
+    // response from `DeleteConfirmation`: PersonDetails
     fmt.Fprintf(os.Stdout, "Response from `SkillApi.DeleteConfirmation`: %v\n", resp)
 }
 ```
@@ -669,7 +669,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**PersonDetails**](PersonDetails.md)
 
 ### Authorization
 
@@ -687,7 +687,7 @@ Name | Type | Description  | Notes
 
 ## DeletePersonInterest
 
-> PersonDetails DeletePersonInterest(ctx, personId, skillId).Level(level).Execute()
+> PersonDetails DeletePersonInterest(ctx, personId, skillId).Execute()
 
 Remove an Interest to a Person
 
@@ -706,11 +706,10 @@ import (
 func main() {
     personId := TODO // string | 
     skillId := TODO // string | 
-    level := *openapiclient.NewLevel() // Level | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SkillApi.DeletePersonInterest(context.Background(), personId, skillId).Level(level).Execute()
+    resp, r, err := api_client.SkillApi.DeletePersonInterest(context.Background(), personId, skillId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.DeletePersonInterest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -738,7 +737,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **level** | [**Level**](Level.md) |  | 
 
 ### Return type
 
@@ -750,7 +748,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
