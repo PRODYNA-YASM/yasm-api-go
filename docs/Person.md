@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** |  | 
-**Suggestion** | Pointer to **bool** |  | [optional] [default to false]
+**Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewPerson
 
-`func NewPerson(id string, name string, ) *Person`
+`func NewPerson(id string, name string, suggestion bool, ) *Person`
 
 NewPerson instantiates a new Person object
 This constructor will assign default values to properties that have it defined,
@@ -88,11 +88,6 @@ and a boolean to check if the value has been set.
 
 SetSuggestion sets Suggestion field to given value.
 
-### HasSuggestion
-
-`func (o *Person) HasSuggestion() bool`
-
-HasSuggestion returns a boolean if a field has been set.
 
 ### GetSynonyms
 

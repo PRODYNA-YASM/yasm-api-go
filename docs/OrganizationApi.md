@@ -113,7 +113,7 @@ import (
 
 func main() {
     organizationId := TODO // string | 
-    certification := *openapiclient.NewCertification("Id_example", "This is the name") // Certification | 
+    certification := *openapiclient.NewCertification("Id_example", "This is the name", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -252,7 +252,7 @@ import (
 )
 
 func main() {
-    organization := *openapiclient.NewOrganization("Id_example", "This is the name") // Organization | Details about the Organization
+    organization := *openapiclient.NewOrganization("Id_example", "This is the name", false) // Organization | Details about the Organization
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -317,7 +317,7 @@ import (
 
 func main() {
     organizationId := TODO // string | 
-    project := *openapiclient.NewProject("Id_example", "This is the name") // Project | 
+    project := *openapiclient.NewProject("Id_example", "This is the name", false) // Project | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1019,7 +1019,7 @@ import (
 
 func main() {
     organizationId := TODO // string | 
-    organization := *openapiclient.NewOrganization("Id_example", "This is the name") // Organization | Details about the organization
+    organization := *openapiclient.NewOrganization("Id_example", "This is the name", false) // Organization | Details about the organization
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

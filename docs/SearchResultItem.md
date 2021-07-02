@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Score** | Pointer to **float32** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Type** | **string** |  | 
 **Item** | Pointer to [**NamedDomainModel**](NamedDomainModel.md) |  | [optional] 
 
 ## Methods
 
 ### NewSearchResultItem
 
-`func NewSearchResultItem() *SearchResultItem`
+`func NewSearchResultItem(type_ string, ) *SearchResultItem`
 
 NewSearchResultItem instantiates a new SearchResultItem object
 This constructor will assign default values to properties that have it defined,
@@ -71,11 +71,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *SearchResultItem) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetItem
 

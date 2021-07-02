@@ -188,7 +188,7 @@ import (
 
 func main() {
     organizationId := TODO // string | 
-    certification := *openapiclient.NewCertification("Id_example", "This is the name") // Certification | 
+    certification := *openapiclient.NewCertification("Id_example", "This is the name", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -674,7 +674,7 @@ import (
 
 func main() {
     certificationId := TODO // string | 
-    certification := *openapiclient.NewCertification("Id_example", "This is the name") // Certification | 
+    certification := *openapiclient.NewCertification("Id_example", "This is the name", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

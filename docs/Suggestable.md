@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Suggestion** | Pointer to **bool** |  | [optional] [default to false]
+**Suggestion** | **bool** |  | [default to false]
 
 ## Methods
 
 ### NewSuggestable
 
-`func NewSuggestable() *Suggestable`
+`func NewSuggestable(suggestion bool, ) *Suggestable`
 
 NewSuggestable instantiates a new Suggestable object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetSuggestion sets Suggestion field to given value.
 
-### HasSuggestion
-
-`func (o *Suggestable) HasSuggestion() bool`
-
-HasSuggestion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

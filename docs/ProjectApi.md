@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## AddPersonProject
 
-> PersonDetails AddPersonProject(ctx, personId, projectId).SkillLevelUpdate(skillLevelUpdate).Execute()
+> PersonDetails AddPersonProject(ctx, personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
 
 Add Project to a Person
 
@@ -42,11 +42,11 @@ import (
 func main() {
     personId := TODO // string | 
     projectId := TODO // string | 
-    skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | A list of Skills each with a level (optional)
+    projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | A time frame and a list of Skills
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.AddPersonProject(context.Background(), personId, projectId).SkillLevelUpdate(skillLevelUpdate).Execute()
+    resp, r, err := api_client.ProjectApi.AddPersonProject(context.Background(), personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.AddPersonProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **skillLevelUpdate** | [**[]SkillLevelUpdate**](SkillLevelUpdate.md) | A list of Skills each with a level | 
+ **projectParticipationUpdate** | [**ProjectParticipationUpdate**](ProjectParticipationUpdate.md) | A time frame and a list of Skills | 
 
 ### Return type
 
@@ -267,7 +267,7 @@ import (
 
 func main() {
     organizationId := TODO // string | 
-    project := *openapiclient.NewProject("Id_example", "This is the name") // Project | 
+    project := *openapiclient.NewProject("Id_example", "This is the name", false) // Project | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -815,7 +815,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePersonProject
 
-> PersonDetails UpdatePersonProject(ctx, personId, projectId).SkillLevelUpdate(skillLevelUpdate).Execute()
+> PersonDetails UpdatePersonProject(ctx, personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
 
 Update a Project of a Person
 
@@ -834,11 +834,11 @@ import (
 func main() {
     personId := TODO // string | 
     projectId := TODO // string | 
-    skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | A list of Skills each with a level
+    projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | A time frame and a list of Skills
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.UpdatePersonProject(context.Background(), personId, projectId).SkillLevelUpdate(skillLevelUpdate).Execute()
+    resp, r, err := api_client.ProjectApi.UpdatePersonProject(context.Background(), personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.UpdatePersonProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -866,7 +866,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **skillLevelUpdate** | [**[]SkillLevelUpdate**](SkillLevelUpdate.md) | A list of Skills each with a level | 
+ **projectParticipationUpdate** | [**ProjectParticipationUpdate**](ProjectParticipationUpdate.md) | A time frame and a list of Skills | 
 
 ### Return type
 
@@ -982,7 +982,7 @@ import (
 
 func main() {
     projectId := TODO // string | 
-    project := *openapiclient.NewProject("Id_example", "This is the name") // Project | 
+    project := *openapiclient.NewProject("Id_example", "This is the name", false) // Project | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

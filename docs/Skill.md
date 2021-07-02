@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** |  | 
-**Suggestion** | Pointer to **bool** |  | [optional] [default to false]
+**Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Invest** | Pointer to **bool** |  | [optional] [default to false]
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewSkill
 
-`func NewSkill(id string, name string, ) *Skill`
+`func NewSkill(id string, name string, suggestion bool, ) *Skill`
 
 NewSkill instantiates a new Skill object
 This constructor will assign default values to properties that have it defined,
@@ -88,11 +88,6 @@ and a boolean to check if the value has been set.
 
 SetSuggestion sets Suggestion field to given value.
 
-### HasSuggestion
-
-`func (o *Skill) HasSuggestion() bool`
-
-HasSuggestion returns a boolean if a field has been set.
 
 ### GetSynonyms
 

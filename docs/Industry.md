@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** |  | 
-**Suggestion** | Pointer to **bool** |  | [optional] [default to false]
+**Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
 ### NewIndustry
 
-`func NewIndustry(id string, name string, ) *Industry`
+`func NewIndustry(id string, name string, suggestion bool, ) *Industry`
 
 NewIndustry instantiates a new Industry object
 This constructor will assign default values to properties that have it defined,
@@ -87,11 +87,6 @@ and a boolean to check if the value has been set.
 
 SetSuggestion sets Suggestion field to given value.
 
-### HasSuggestion
-
-`func (o *Industry) HasSuggestion() bool`
-
-HasSuggestion returns a boolean if a field has been set.
 
 ### GetSynonyms
 

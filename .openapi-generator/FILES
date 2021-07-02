@@ -71,6 +71,7 @@ docs/ProjectApi.md
 docs/ProjectDetails.md
 docs/ProjectParticipation.md
 docs/ProjectParticipationAllOf.md
+docs/ProjectParticipationUpdate.md
 docs/SearchApi.md
 docs/SearchResult.md
 docs/SearchResultAllOf.md
@@ -85,6 +86,7 @@ docs/Status.md
 docs/StatusApi.md
 docs/Suggestable.md
 docs/Synonymable.md
+docs/Timeframed.md
 docs/Version.md
 git_push.sh
 go.mod
@@ -136,6 +138,7 @@ model_project_all_of.go
 model_project_details.go
 model_project_participation.go
 model_project_participation_all_of.go
+model_project_participation_update.go
 model_search_result.go
 model_search_result_all_of.go
 model_search_result_item.go
@@ -147,6 +150,7 @@ model_skill_level_update.go
 model_status.go
 model_suggestable.go
 model_synonymable.go
+model_timeframed.go
 model_version.go
 response.go
 utils.go

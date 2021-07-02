@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Startdate** | **string** |  | 
-**Enddate** | Pointer to **string** |  | [optional] 
+**Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
 **Project** | [**Project**](Project.md) |  | [readonly] 
 **Description** | Pointer to **string** |  | [optional] 
 **Experiences** | [**[]Experience**](Experience.md) |  | [readonly] 
@@ -14,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewProjectParticipationAllOf
 
-`func NewProjectParticipationAllOf(startdate string, project Project, experiences []Experience, ) *ProjectParticipationAllOf`
+`func NewProjectParticipationAllOf(project Project, experiences []Experience, ) *ProjectParticipationAllOf`
 
 NewProjectParticipationAllOf instantiates a new ProjectParticipationAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -29,50 +28,30 @@ NewProjectParticipationAllOfWithDefaults instantiates a new ProjectParticipation
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStartdate
+### GetTimeframe
 
-`func (o *ProjectParticipationAllOf) GetStartdate() string`
+`func (o *ProjectParticipationAllOf) GetTimeframe() Timeframed`
 
-GetStartdate returns the Startdate field if non-nil, zero value otherwise.
+GetTimeframe returns the Timeframe field if non-nil, zero value otherwise.
 
-### GetStartdateOk
+### GetTimeframeOk
 
-`func (o *ProjectParticipationAllOf) GetStartdateOk() (*string, bool)`
+`func (o *ProjectParticipationAllOf) GetTimeframeOk() (*Timeframed, bool)`
 
-GetStartdateOk returns a tuple with the Startdate field if it's non-nil, zero value otherwise
+GetTimeframeOk returns a tuple with the Timeframe field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStartdate
+### SetTimeframe
 
-`func (o *ProjectParticipationAllOf) SetStartdate(v string)`
+`func (o *ProjectParticipationAllOf) SetTimeframe(v Timeframed)`
 
-SetStartdate sets Startdate field to given value.
+SetTimeframe sets Timeframe field to given value.
 
+### HasTimeframe
 
-### GetEnddate
+`func (o *ProjectParticipationAllOf) HasTimeframe() bool`
 
-`func (o *ProjectParticipationAllOf) GetEnddate() string`
-
-GetEnddate returns the Enddate field if non-nil, zero value otherwise.
-
-### GetEnddateOk
-
-`func (o *ProjectParticipationAllOf) GetEnddateOk() (*string, bool)`
-
-GetEnddateOk returns a tuple with the Enddate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnddate
-
-`func (o *ProjectParticipationAllOf) SetEnddate(v string)`
-
-SetEnddate sets Enddate field to given value.
-
-### HasEnddate
-
-`func (o *ProjectParticipationAllOf) HasEnddate() bool`
-
-HasEnddate returns a boolean if a field has been set.
+HasTimeframe returns a boolean if a field has been set.
 
 ### GetProject
 

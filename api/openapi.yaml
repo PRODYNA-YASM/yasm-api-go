@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.6.4
+  version: 0.7.0
 servers:
 - url: /api/v1
 security:
@@ -1550,6 +1550,12 @@ paths:
           format: uuid
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+        required: true
       responses:
         "200":
           content:
@@ -1600,6 +1606,238 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Error
       summary: Add an Interest to a Person
+      tags:
+      - Person
+      - Skill
+  /persons/{personId}/experiences:
+    delete:
+      operationId: deletePersonSkillExperiences
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                format: uuid
+                type: string
+              type: array
+        description: A list of skillIds
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Remove an Skill Experience to a Person
+      tags:
+      - Person
+      - Skill
+    post:
+      operationId: addPersonSkillExperiences
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/SkillLevelUpdate'
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Add an Skill experience to a Person (bulk)
+      tags:
+      - Person
+      - Skill
+    put:
+      operationId: updatePersonSkillExperiences
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/SkillLevelUpdate'
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Edit an Skill experience to a Person
+      tags:
+      - Person
+      - Skill
+  /persons/{personId}/experiences/skills/{skillId}:
+    delete:
+      operationId: deletePersonSkillExperience
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Remove an Skill Experience to a Person
+      tags:
+      - Person
+      - Skill
+    post:
+      operationId: addPersonSkillExperience
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Add an Skill experience to a Person
+      tags:
+      - Person
+      - Skill
+    put:
+      operationId: updatePersonSkillExperience
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Edit an Skill experience to a Person
       tags:
       - Person
       - Skill
@@ -1784,11 +2022,9 @@ paths:
         content:
           application/json:
             schema:
-              items:
-                $ref: '#/components/schemas/SkillLevelUpdate'
-              type: array
-        description: A list of Skills each with a level
-        required: false
+              $ref: '#/components/schemas/ProjectParticipationUpdate'
+        description: A time frame and a list of Skills
+        required: true
       responses:
         "200":
           content:
@@ -1829,10 +2065,8 @@ paths:
         content:
           application/json:
             schema:
-              items:
-                $ref: '#/components/schemas/SkillLevelUpdate'
-              type: array
-        description: A list of Skills each with a level
+              $ref: '#/components/schemas/ProjectParticipationUpdate'
+        description: A time frame and a list of Skills
         required: true
       responses:
         "200":
@@ -2521,6 +2755,17 @@ components:
         suggestion:
           default: false
           type: boolean
+      required:
+      - suggestion
+      type: object
+    Timeframed:
+      properties:
+        startdate:
+          format: date
+          type: string
+        enddate:
+          format: date
+          type: string
       type: object
     Synonymable:
       properties:
@@ -2743,6 +2988,26 @@ components:
       - $ref: '#/components/schemas/BasicDomainModel'
       - $ref: '#/components/schemas/ProjectParticipation_allOf'
       type: object
+    ProjectParticipationUpdate:
+      example:
+        skills:
+        - skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          level:
+            level: 1
+        - skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          level:
+            level: 1
+        timeframe: '{}'
+      properties:
+        timeframe:
+          allOf:
+          - $ref: '#/components/schemas/Timeframed'
+          type: object
+        skills:
+          items:
+            $ref: '#/components/schemas/SkillLevelUpdate'
+          type: array
+      type: object
     Skill:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -2863,6 +3128,8 @@ components:
       - $ref: '#/components/schemas/SearchResult_allOf'
       type: object
     SearchResultItem:
+      discriminator:
+        propertyName: type
       properties:
         score:
           example: 0.7
@@ -2872,6 +3139,8 @@ components:
           type: string
         item:
           $ref: '#/components/schemas/NamedDomainModel'
+      required:
+      - type
       type: object
     NamedDomainModel_allOf:
       properties:
@@ -2920,13 +3189,15 @@ components:
         description:
           example: Recreate the entire world.
           type: string
+        timeframe:
+          $ref: '#/components/schemas/Timeframed'
       type: object
     ProjectParticipation_allOf:
       properties:
-        startdate:
-          type: string
-        enddate:
-          type: string
+        timeframe:
+          allOf:
+          - $ref: '#/components/schemas/Timeframed'
+          type: object
         project:
           allOf:
           - $ref: '#/components/schemas/Project'
@@ -2944,7 +3215,6 @@ components:
       - experiences
       - id
       - project
-      - startdate
       type: object
     Skill_allOf:
       properties:
