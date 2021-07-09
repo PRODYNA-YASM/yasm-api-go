@@ -65,6 +65,8 @@ docs/Person.md
 docs/PersonAllOf.md
 docs/PersonApi.md
 docs/PersonDetails.md
+docs/PersonScoreDetail.md
+docs/PersonScoreDetailAllOf.md
 docs/Project.md
 docs/ProjectAllOf.md
 docs/ProjectApi.md
@@ -134,6 +136,8 @@ model_paged_skills_all_of.go
 model_person.go
 model_person_all_of.go
 model_person_details.go
+model_person_score_detail.go
+model_person_score_detail_all_of.go
 model_project.go
 model_project_all_of.go
 model_project_details.go

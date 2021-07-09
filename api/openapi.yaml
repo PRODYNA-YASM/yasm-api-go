@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.7.1
+  version: 0.7.2
 servers:
 - url: /api/v1
 security:
@@ -1399,6 +1399,56 @@ paths:
         schema:
           default: 20
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: skillIds
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: projectIds
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: organizationIds
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: industryIds
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: certificationIds
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
         style: form
       responses:
         "200":
@@ -3109,6 +3159,11 @@ components:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedPersons_allOf'
       type: object
+    PersonScoreDetail:
+      allOf:
+      - $ref: '#/components/schemas/PersonDetails'
+      - $ref: '#/components/schemas/PersonScoreDetail_allOf'
+      type: object
     SearchResult:
       allOf:
       - $ref: '#/components/schemas/Page'
@@ -3269,8 +3324,14 @@ components:
       properties:
         persons:
           items:
-            $ref: '#/components/schemas/Person'
+            allOf:
+            - $ref: '#/components/schemas/PersonScoreDetail'
           type: array
+      type: object
+    PersonScoreDetail_allOf:
+      properties:
+        score:
+          type: number
       type: object
     SearchResult_allOf:
       properties:

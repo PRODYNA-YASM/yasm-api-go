@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Skip** | Pointer to **int32** |  | [optional] 
 **Limit** | Pointer to **int32** |  | [optional] 
 **Count** | Pointer to **int32** |  | [optional] 
-**Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
+**Persons** | Pointer to [**[]PersonScoreDetail**](PersonScoreDetail.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasCount returns a boolean if a field has been set.
 
 ### GetPersons
 
-`func (o *PagedPersons) GetPersons() []Person`
+`func (o *PagedPersons) GetPersons() []PersonScoreDetail`
 
 GetPersons returns the Persons field if non-nil, zero value otherwise.
 
 ### GetPersonsOk
 
-`func (o *PagedPersons) GetPersonsOk() (*[]Person, bool)`
+`func (o *PagedPersons) GetPersonsOk() (*[]PersonScoreDetail, bool)`
 
 GetPersonsOk returns a tuple with the Persons field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPersons
 
-`func (o *PagedPersons) SetPersons(v []Person)`
+`func (o *PagedPersons) SetPersons(v []PersonScoreDetail)`
 
 SetPersons sets Persons field to given value.
 

@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// PersonDetails struct for PersonDetails
-type PersonDetails struct {
+// PersonScoreDetail struct for PersonScoreDetail
+type PersonScoreDetail struct {
 	Person *Person `json:"person,omitempty"`
 	Projects *[]ProjectParticipation `json:"projects,omitempty"`
 	Experiences *[]Experience `json:"experiences,omitempty"`
@@ -24,27 +24,28 @@ type PersonDetails struct {
 	Languages *[]LanguageLevel `json:"languages,omitempty"`
 	Location *string `json:"location,omitempty"`
 	Office *Office `json:"office,omitempty"`
+	Score *float32 `json:"score,omitempty"`
 }
 
-// NewPersonDetails instantiates a new PersonDetails object
+// NewPersonScoreDetail instantiates a new PersonScoreDetail object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPersonDetails() *PersonDetails {
-	this := PersonDetails{}
+func NewPersonScoreDetail() *PersonScoreDetail {
+	this := PersonScoreDetail{}
 	return &this
 }
 
-// NewPersonDetailsWithDefaults instantiates a new PersonDetails object
+// NewPersonScoreDetailWithDefaults instantiates a new PersonScoreDetail object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPersonDetailsWithDefaults() *PersonDetails {
-	this := PersonDetails{}
+func NewPersonScoreDetailWithDefaults() *PersonScoreDetail {
+	this := PersonScoreDetail{}
 	return &this
 }
 
 // GetPerson returns the Person field value if set, zero value otherwise.
-func (o *PersonDetails) GetPerson() Person {
+func (o *PersonScoreDetail) GetPerson() Person {
 	if o == nil || o.Person == nil {
 		var ret Person
 		return ret
@@ -54,7 +55,7 @@ func (o *PersonDetails) GetPerson() Person {
 
 // GetPersonOk returns a tuple with the Person field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersonDetails) GetPersonOk() (*Person, bool) {
+func (o *PersonScoreDetail) GetPersonOk() (*Person, bool) {
 	if o == nil || o.Person == nil {
 		return nil, false
 	}
@@ -62,7 +63,7 @@ func (o *PersonDetails) GetPersonOk() (*Person, bool) {
 }
 
 // HasPerson returns a boolean if a field has been set.
-func (o *PersonDetails) HasPerson() bool {
+func (o *PersonScoreDetail) HasPerson() bool {
 	if o != nil && o.Person != nil {
 		return true
 	}
@@ -71,12 +72,12 @@ func (o *PersonDetails) HasPerson() bool {
 }
 
 // SetPerson gets a reference to the given Person and assigns it to the Person field.
-func (o *PersonDetails) SetPerson(v Person) {
+func (o *PersonScoreDetail) SetPerson(v Person) {
 	o.Person = &v
 }
 
 // GetProjects returns the Projects field value if set, zero value otherwise.
-func (o *PersonDetails) GetProjects() []ProjectParticipation {
+func (o *PersonScoreDetail) GetProjects() []ProjectParticipation {
 	if o == nil || o.Projects == nil {
 		var ret []ProjectParticipation
 		return ret
@@ -86,7 +87,7 @@ func (o *PersonDetails) GetProjects() []ProjectParticipation {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersonDetails) GetProjectsOk() (*[]ProjectParticipation, bool) {
+func (o *PersonScoreDetail) GetProjectsOk() (*[]ProjectParticipation, bool) {
 	if o == nil || o.Projects == nil {
 		return nil, false
 	}
@@ -94,7 +95,7 @@ func (o *PersonDetails) GetProjectsOk() (*[]ProjectParticipation, bool) {
 }
 
 // HasProjects returns a boolean if a field has been set.
-func (o *PersonDetails) HasProjects() bool {
+func (o *PersonScoreDetail) HasProjects() bool {
 	if o != nil && o.Projects != nil {
 		return true
 	}
@@ -103,12 +104,12 @@ func (o *PersonDetails) HasProjects() bool {
 }
 
 // SetProjects gets a reference to the given []ProjectParticipation and assigns it to the Projects field.
-func (o *PersonDetails) SetProjects(v []ProjectParticipation) {
+func (o *PersonScoreDetail) SetProjects(v []ProjectParticipation) {
 	o.Projects = &v
 }
 
 // GetExperiences returns the Experiences field value if set, zero value otherwise.
-func (o *PersonDetails) GetExperiences() []Experience {
+func (o *PersonScoreDetail) GetExperiences() []Experience {
 	if o == nil || o.Experiences == nil {
 		var ret []Experience
 		return ret
@@ -118,7 +119,7 @@ func (o *PersonDetails) GetExperiences() []Experience {
 
 // GetExperiencesOk returns a tuple with the Experiences field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersonDetails) GetExperiencesOk() (*[]Experience, bool) {
+func (o *PersonScoreDetail) GetExperiencesOk() (*[]Experience, bool) {
 	if o == nil || o.Experiences == nil {
 		return nil, false
 	}
@@ -126,7 +127,7 @@ func (o *PersonDetails) GetExperiencesOk() (*[]Experience, bool) {
 }
 
 // HasExperiences returns a boolean if a field has been set.
-func (o *PersonDetails) HasExperiences() bool {
+func (o *PersonScoreDetail) HasExperiences() bool {
 	if o != nil && o.Experiences != nil {
 		return true
 	}
@@ -135,12 +136,12 @@ func (o *PersonDetails) HasExperiences() bool {
 }
 
 // SetExperiences gets a reference to the given []Experience and assigns it to the Experiences field.
-func (o *PersonDetails) SetExperiences(v []Experience) {
+func (o *PersonScoreDetail) SetExperiences(v []Experience) {
 	o.Experiences = &v
 }
 
 // GetInterests returns the Interests field value if set, zero value otherwise.
-func (o *PersonDetails) GetInterests() []Skill {
+func (o *PersonScoreDetail) GetInterests() []Skill {
 	if o == nil || o.Interests == nil {
 		var ret []Skill
 		return ret
@@ -150,7 +151,7 @@ func (o *PersonDetails) GetInterests() []Skill {
 
 // GetInterestsOk returns a tuple with the Interests field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersonDetails) GetInterestsOk() (*[]Skill, bool) {
+func (o *PersonScoreDetail) GetInterestsOk() (*[]Skill, bool) {
 	if o == nil || o.Interests == nil {
 		return nil, false
 	}
@@ -158,7 +159,7 @@ func (o *PersonDetails) GetInterestsOk() (*[]Skill, bool) {
 }
 
 // HasInterests returns a boolean if a field has been set.
-func (o *PersonDetails) HasInterests() bool {
+func (o *PersonScoreDetail) HasInterests() bool {
 	if o != nil && o.Interests != nil {
 		return true
 	}
@@ -167,12 +168,12 @@ func (o *PersonDetails) HasInterests() bool {
 }
 
 // SetInterests gets a reference to the given []Skill and assigns it to the Interests field.
-func (o *PersonDetails) SetInterests(v []Skill) {
+func (o *PersonScoreDetail) SetInterests(v []Skill) {
 	o.Interests = &v
 }
 
 // GetCertifications returns the Certifications field value if set, zero value otherwise.
-func (o *PersonDetails) GetCertifications() []CertificationDetails {
+func (o *PersonScoreDetail) GetCertifications() []CertificationDetails {
 	if o == nil || o.Certifications == nil {
 		var ret []CertificationDetails
 		return ret
@@ -182,7 +183,7 @@ func (o *PersonDetails) GetCertifications() []CertificationDetails {
 
 // GetCertificationsOk returns a tuple with the Certifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersonDetails) GetCertificationsOk() (*[]CertificationDetails, bool) {
+func (o *PersonScoreDetail) GetCertificationsOk() (*[]CertificationDetails, bool) {
 	if o == nil || o.Certifications == nil {
 		return nil, false
 	}
@@ -190,7 +191,7 @@ func (o *PersonDetails) GetCertificationsOk() (*[]CertificationDetails, bool) {
 }
 
 // HasCertifications returns a boolean if a field has been set.
-func (o *PersonDetails) HasCertifications() bool {
+func (o *PersonScoreDetail) HasCertifications() bool {
 	if o != nil && o.Certifications != nil {
 		return true
 	}
@@ -199,12 +200,12 @@ func (o *PersonDetails) HasCertifications() bool {
 }
 
 // SetCertifications gets a reference to the given []CertificationDetails and assigns it to the Certifications field.
-func (o *PersonDetails) SetCertifications(v []CertificationDetails) {
+func (o *PersonScoreDetail) SetCertifications(v []CertificationDetails) {
 	o.Certifications = &v
 }
 
 // GetLanguages returns the Languages field value if set, zero value otherwise.
-func (o *PersonDetails) GetLanguages() []LanguageLevel {
+func (o *PersonScoreDetail) GetLanguages() []LanguageLevel {
 	if o == nil || o.Languages == nil {
 		var ret []LanguageLevel
 		return ret
@@ -214,7 +215,7 @@ func (o *PersonDetails) GetLanguages() []LanguageLevel {
 
 // GetLanguagesOk returns a tuple with the Languages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersonDetails) GetLanguagesOk() (*[]LanguageLevel, bool) {
+func (o *PersonScoreDetail) GetLanguagesOk() (*[]LanguageLevel, bool) {
 	if o == nil || o.Languages == nil {
 		return nil, false
 	}
@@ -222,7 +223,7 @@ func (o *PersonDetails) GetLanguagesOk() (*[]LanguageLevel, bool) {
 }
 
 // HasLanguages returns a boolean if a field has been set.
-func (o *PersonDetails) HasLanguages() bool {
+func (o *PersonScoreDetail) HasLanguages() bool {
 	if o != nil && o.Languages != nil {
 		return true
 	}
@@ -231,12 +232,12 @@ func (o *PersonDetails) HasLanguages() bool {
 }
 
 // SetLanguages gets a reference to the given []LanguageLevel and assigns it to the Languages field.
-func (o *PersonDetails) SetLanguages(v []LanguageLevel) {
+func (o *PersonScoreDetail) SetLanguages(v []LanguageLevel) {
 	o.Languages = &v
 }
 
 // GetLocation returns the Location field value if set, zero value otherwise.
-func (o *PersonDetails) GetLocation() string {
+func (o *PersonScoreDetail) GetLocation() string {
 	if o == nil || o.Location == nil {
 		var ret string
 		return ret
@@ -246,7 +247,7 @@ func (o *PersonDetails) GetLocation() string {
 
 // GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersonDetails) GetLocationOk() (*string, bool) {
+func (o *PersonScoreDetail) GetLocationOk() (*string, bool) {
 	if o == nil || o.Location == nil {
 		return nil, false
 	}
@@ -254,7 +255,7 @@ func (o *PersonDetails) GetLocationOk() (*string, bool) {
 }
 
 // HasLocation returns a boolean if a field has been set.
-func (o *PersonDetails) HasLocation() bool {
+func (o *PersonScoreDetail) HasLocation() bool {
 	if o != nil && o.Location != nil {
 		return true
 	}
@@ -263,12 +264,12 @@ func (o *PersonDetails) HasLocation() bool {
 }
 
 // SetLocation gets a reference to the given string and assigns it to the Location field.
-func (o *PersonDetails) SetLocation(v string) {
+func (o *PersonScoreDetail) SetLocation(v string) {
 	o.Location = &v
 }
 
 // GetOffice returns the Office field value if set, zero value otherwise.
-func (o *PersonDetails) GetOffice() Office {
+func (o *PersonScoreDetail) GetOffice() Office {
 	if o == nil || o.Office == nil {
 		var ret Office
 		return ret
@@ -278,7 +279,7 @@ func (o *PersonDetails) GetOffice() Office {
 
 // GetOfficeOk returns a tuple with the Office field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersonDetails) GetOfficeOk() (*Office, bool) {
+func (o *PersonScoreDetail) GetOfficeOk() (*Office, bool) {
 	if o == nil || o.Office == nil {
 		return nil, false
 	}
@@ -286,7 +287,7 @@ func (o *PersonDetails) GetOfficeOk() (*Office, bool) {
 }
 
 // HasOffice returns a boolean if a field has been set.
-func (o *PersonDetails) HasOffice() bool {
+func (o *PersonScoreDetail) HasOffice() bool {
 	if o != nil && o.Office != nil {
 		return true
 	}
@@ -295,11 +296,43 @@ func (o *PersonDetails) HasOffice() bool {
 }
 
 // SetOffice gets a reference to the given Office and assigns it to the Office field.
-func (o *PersonDetails) SetOffice(v Office) {
+func (o *PersonScoreDetail) SetOffice(v Office) {
 	o.Office = &v
 }
 
-func (o PersonDetails) MarshalJSON() ([]byte, error) {
+// GetScore returns the Score field value if set, zero value otherwise.
+func (o *PersonScoreDetail) GetScore() float32 {
+	if o == nil || o.Score == nil {
+		var ret float32
+		return ret
+	}
+	return *o.Score
+}
+
+// GetScoreOk returns a tuple with the Score field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersonScoreDetail) GetScoreOk() (*float32, bool) {
+	if o == nil || o.Score == nil {
+		return nil, false
+	}
+	return o.Score, true
+}
+
+// HasScore returns a boolean if a field has been set.
+func (o *PersonScoreDetail) HasScore() bool {
+	if o != nil && o.Score != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetScore gets a reference to the given float32 and assigns it to the Score field.
+func (o *PersonScoreDetail) SetScore(v float32) {
+	o.Score = &v
+}
+
+func (o PersonScoreDetail) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Person != nil {
 		toSerialize["person"] = o.Person
@@ -325,41 +358,44 @@ func (o PersonDetails) MarshalJSON() ([]byte, error) {
 	if o.Office != nil {
 		toSerialize["office"] = o.Office
 	}
+	if o.Score != nil {
+		toSerialize["score"] = o.Score
+	}
 	return json.Marshal(toSerialize)
 }
 
-type NullablePersonDetails struct {
-	value *PersonDetails
+type NullablePersonScoreDetail struct {
+	value *PersonScoreDetail
 	isSet bool
 }
 
-func (v NullablePersonDetails) Get() *PersonDetails {
+func (v NullablePersonScoreDetail) Get() *PersonScoreDetail {
 	return v.value
 }
 
-func (v *NullablePersonDetails) Set(val *PersonDetails) {
+func (v *NullablePersonScoreDetail) Set(val *PersonScoreDetail) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePersonDetails) IsSet() bool {
+func (v NullablePersonScoreDetail) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePersonDetails) Unset() {
+func (v *NullablePersonScoreDetail) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePersonDetails(val *PersonDetails) *NullablePersonDetails {
-	return &NullablePersonDetails{value: val, isSet: true}
+func NewNullablePersonScoreDetail(val *PersonScoreDetail) *NullablePersonScoreDetail {
+	return &NullablePersonScoreDetail{value: val, isSet: true}
 }
 
-func (v NullablePersonDetails) MarshalJSON() ([]byte, error) {
+func (v NullablePersonScoreDetail) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePersonDetails) UnmarshalJSON(src []byte) error {
+func (v *NullablePersonScoreDetail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
