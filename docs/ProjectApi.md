@@ -749,7 +749,7 @@ Name | Type | Description  | Notes
 
 ## GetProjects
 
-> PagedProjects GetProjects(ctx).Skip(skip).Limit(limit).Execute()
+> PagedProjects GetProjects(ctx).Skip(skip).Limit(limit).SkillIds(skillIds).PersonIds(personIds).IndustryIds(industryIds).Execute()
 
 Get a list of all Projects in all Organizations
 
@@ -768,10 +768,13 @@ import (
 func main() {
     skip := int32(56) // int32 |  (optional) (default to 0)
     limit := int32(56) // int32 |  (optional) (default to 20)
+    skillIds := []string{"Inner_example"} // []string |  (optional)
+    personIds := []string{"Inner_example"} // []string |  (optional)
+    industryIds := []string{"Inner_example"} // []string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.GetProjects(context.Background()).Skip(skip).Limit(limit).Execute()
+    resp, r, err := api_client.ProjectApi.GetProjects(context.Background()).Skip(skip).Limit(limit).SkillIds(skillIds).PersonIds(personIds).IndustryIds(industryIds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.GetProjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -794,6 +797,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
+ **skillIds** | **[]string** |  | 
+ **personIds** | **[]string** |  | 
+ **industryIds** | **[]string** |  | 
 
 ### Return type
 

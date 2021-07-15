@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Skip** | Pointer to **int32** |  | [optional] 
 **Limit** | Pointer to **int32** |  | [optional] 
 **Count** | Pointer to **int32** |  | [optional] 
-**Projects** | Pointer to [**[]Project**](Project.md) |  | [optional] 
+**Projects** | Pointer to [**[]ProjectScoreDetail**](ProjectScoreDetail.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasCount returns a boolean if a field has been set.
 
 ### GetProjects
 
-`func (o *PagedProjects) GetProjects() []Project`
+`func (o *PagedProjects) GetProjects() []ProjectScoreDetail`
 
 GetProjects returns the Projects field if non-nil, zero value otherwise.
 
 ### GetProjectsOk
 
-`func (o *PagedProjects) GetProjectsOk() (*[]Project, bool)`
+`func (o *PagedProjects) GetProjectsOk() (*[]ProjectScoreDetail, bool)`
 
 GetProjectsOk returns a tuple with the Projects field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProjects
 
-`func (o *PagedProjects) SetProjects(v []Project)`
+`func (o *PagedProjects) SetProjects(v []ProjectScoreDetail)`
 
 SetProjects sets Projects field to given value.
 

@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.7.3
+  version: 0.7.4
 servers:
 - url: /api/v1
 security:
@@ -1003,6 +1003,36 @@ paths:
         schema:
           default: 20
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: skillIds
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: personIds
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: industryIds
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
         style: form
       responses:
         "200":
@@ -3033,6 +3063,11 @@ components:
         project:
           $ref: '#/components/schemas/Project'
       type: object
+    ProjectScoreDetail:
+      allOf:
+      - $ref: '#/components/schemas/ProjectDetails'
+      - $ref: '#/components/schemas/ProjectScoreDetail_allOf'
+      type: object
     ProjectParticipation:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
@@ -3162,7 +3197,7 @@ components:
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
-      - $ref: '#/components/schemas/PersonScoreDetail_allOf'
+      - $ref: '#/components/schemas/ProjectScoreDetail_allOf'
       type: object
     SearchResult:
       allOf:
@@ -3229,6 +3264,11 @@ components:
           type: string
         timeframe:
           $ref: '#/components/schemas/Timeframed'
+      type: object
+    ProjectScoreDetail_allOf:
+      properties:
+        score:
+          type: number
       type: object
     ProjectParticipation_allOf:
       properties:
@@ -3317,7 +3357,7 @@ components:
       properties:
         projects:
           items:
-            $ref: '#/components/schemas/Project'
+            $ref: '#/components/schemas/ProjectScoreDetail'
           type: array
       type: object
     PagedPersons_allOf:
@@ -3327,11 +3367,6 @@ components:
             allOf:
             - $ref: '#/components/schemas/PersonScoreDetail'
           type: array
-      type: object
-    PersonScoreDetail_allOf:
-      properties:
-        score:
-          type: number
       type: object
     SearchResult_allOf:
       properties:
