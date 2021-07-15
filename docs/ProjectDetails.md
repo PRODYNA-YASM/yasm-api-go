@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
+**Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
+**Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
 
 ## Methods
 
@@ -49,6 +51,56 @@ SetProject sets Project field to given value.
 `func (o *ProjectDetails) HasProject() bool`
 
 HasProject returns a boolean if a field has been set.
+
+### GetOrganization
+
+`func (o *ProjectDetails) GetOrganization() Organization`
+
+GetOrganization returns the Organization field if non-nil, zero value otherwise.
+
+### GetOrganizationOk
+
+`func (o *ProjectDetails) GetOrganizationOk() (*Organization, bool)`
+
+GetOrganizationOk returns a tuple with the Organization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganization
+
+`func (o *ProjectDetails) SetOrganization(v Organization)`
+
+SetOrganization sets Organization field to given value.
+
+### HasOrganization
+
+`func (o *ProjectDetails) HasOrganization() bool`
+
+HasOrganization returns a boolean if a field has been set.
+
+### GetPersons
+
+`func (o *ProjectDetails) GetPersons() []Person`
+
+GetPersons returns the Persons field if non-nil, zero value otherwise.
+
+### GetPersonsOk
+
+`func (o *ProjectDetails) GetPersonsOk() (*[]Person, bool)`
+
+GetPersonsOk returns a tuple with the Persons field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPersons
+
+`func (o *ProjectDetails) SetPersons(v []Person)`
+
+SetPersons sets Persons field to given value.
+
+### HasPersons
+
+`func (o *ProjectDetails) HasPersons() bool`
+
+HasPersons returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
