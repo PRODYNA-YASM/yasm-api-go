@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Projects** | Pointer to [**[]Project**](Project.md) |  | [optional] 
+**Projects** | Pointer to [**[]ProjectScoreDetail**](ProjectScoreDetail.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetProjects
 
-`func (o *PagedProjectsAllOf) GetProjects() []Project`
+`func (o *PagedProjectsAllOf) GetProjects() []ProjectScoreDetail`
 
 GetProjects returns the Projects field if non-nil, zero value otherwise.
 
 ### GetProjectsOk
 
-`func (o *PagedProjectsAllOf) GetProjectsOk() (*[]Project, bool)`
+`func (o *PagedProjectsAllOf) GetProjectsOk() (*[]ProjectScoreDetail, bool)`
 
 GetProjectsOk returns a tuple with the Projects field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProjects
 
-`func (o *PagedProjectsAllOf) SetProjects(v []Project)`
+`func (o *PagedProjectsAllOf) SetProjects(v []ProjectScoreDetail)`
 
 SetProjects sets Projects field to given value.
 

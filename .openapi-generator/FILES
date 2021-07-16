@@ -66,7 +66,6 @@ docs/PersonAllOf.md
 docs/PersonApi.md
 docs/PersonDetails.md
 docs/PersonScoreDetail.md
-docs/PersonScoreDetailAllOf.md
 docs/Project.md
 docs/ProjectAllOf.md
 docs/ProjectApi.md
@@ -74,6 +73,8 @@ docs/ProjectDetails.md
 docs/ProjectParticipation.md
 docs/ProjectParticipationAllOf.md
 docs/ProjectParticipationUpdate.md
+docs/ProjectScoreDetail.md
+docs/ProjectScoreDetailAllOf.md
 docs/SearchApi.md
 docs/SearchResult.md
 docs/SearchResultAllOf.md
@@ -137,13 +138,14 @@ model_person.go
 model_person_all_of.go
 model_person_details.go
 model_person_score_detail.go
-model_person_score_detail_all_of.go
 model_project.go
 model_project_all_of.go
 model_project_details.go
 model_project_participation.go
 model_project_participation_all_of.go
 model_project_participation_update.go
+model_project_score_detail.go
+model_project_score_detail_all_of.go
 model_search_result.go
 model_search_result_all_of.go
 model_search_result_item.go
