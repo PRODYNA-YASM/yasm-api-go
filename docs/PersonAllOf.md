@@ -4,7 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**EmployeeId** | Pointer to **string** |  | [optional] 
+**JobTitle** | Pointer to **string** |  | [optional] 
+**Company** | Pointer to **string** |  | [optional] 
+**Department** | Pointer to **string** |  | [optional] 
+**Mail** | Pointer to **string** |  | [optional] 
+**MobilePhone** | Pointer to **string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
+**Picture** | Pointer to **string** | base64 encoded image | [optional] 
 
 ## Methods
 
@@ -24,6 +31,156 @@ will change when the set of required properties is changed
 NewPersonAllOfWithDefaults instantiates a new PersonAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEmployeeId
+
+`func (o *PersonAllOf) GetEmployeeId() string`
+
+GetEmployeeId returns the EmployeeId field if non-nil, zero value otherwise.
+
+### GetEmployeeIdOk
+
+`func (o *PersonAllOf) GetEmployeeIdOk() (*string, bool)`
+
+GetEmployeeIdOk returns a tuple with the EmployeeId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmployeeId
+
+`func (o *PersonAllOf) SetEmployeeId(v string)`
+
+SetEmployeeId sets EmployeeId field to given value.
+
+### HasEmployeeId
+
+`func (o *PersonAllOf) HasEmployeeId() bool`
+
+HasEmployeeId returns a boolean if a field has been set.
+
+### GetJobTitle
+
+`func (o *PersonAllOf) GetJobTitle() string`
+
+GetJobTitle returns the JobTitle field if non-nil, zero value otherwise.
+
+### GetJobTitleOk
+
+`func (o *PersonAllOf) GetJobTitleOk() (*string, bool)`
+
+GetJobTitleOk returns a tuple with the JobTitle field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJobTitle
+
+`func (o *PersonAllOf) SetJobTitle(v string)`
+
+SetJobTitle sets JobTitle field to given value.
+
+### HasJobTitle
+
+`func (o *PersonAllOf) HasJobTitle() bool`
+
+HasJobTitle returns a boolean if a field has been set.
+
+### GetCompany
+
+`func (o *PersonAllOf) GetCompany() string`
+
+GetCompany returns the Company field if non-nil, zero value otherwise.
+
+### GetCompanyOk
+
+`func (o *PersonAllOf) GetCompanyOk() (*string, bool)`
+
+GetCompanyOk returns a tuple with the Company field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompany
+
+`func (o *PersonAllOf) SetCompany(v string)`
+
+SetCompany sets Company field to given value.
+
+### HasCompany
+
+`func (o *PersonAllOf) HasCompany() bool`
+
+HasCompany returns a boolean if a field has been set.
+
+### GetDepartment
+
+`func (o *PersonAllOf) GetDepartment() string`
+
+GetDepartment returns the Department field if non-nil, zero value otherwise.
+
+### GetDepartmentOk
+
+`func (o *PersonAllOf) GetDepartmentOk() (*string, bool)`
+
+GetDepartmentOk returns a tuple with the Department field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDepartment
+
+`func (o *PersonAllOf) SetDepartment(v string)`
+
+SetDepartment sets Department field to given value.
+
+### HasDepartment
+
+`func (o *PersonAllOf) HasDepartment() bool`
+
+HasDepartment returns a boolean if a field has been set.
+
+### GetMail
+
+`func (o *PersonAllOf) GetMail() string`
+
+GetMail returns the Mail field if non-nil, zero value otherwise.
+
+### GetMailOk
+
+`func (o *PersonAllOf) GetMailOk() (*string, bool)`
+
+GetMailOk returns a tuple with the Mail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMail
+
+`func (o *PersonAllOf) SetMail(v string)`
+
+SetMail sets Mail field to given value.
+
+### HasMail
+
+`func (o *PersonAllOf) HasMail() bool`
+
+HasMail returns a boolean if a field has been set.
+
+### GetMobilePhone
+
+`func (o *PersonAllOf) GetMobilePhone() string`
+
+GetMobilePhone returns the MobilePhone field if non-nil, zero value otherwise.
+
+### GetMobilePhoneOk
+
+`func (o *PersonAllOf) GetMobilePhoneOk() (*string, bool)`
+
+GetMobilePhoneOk returns a tuple with the MobilePhone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMobilePhone
+
+`func (o *PersonAllOf) SetMobilePhone(v string)`
+
+SetMobilePhone sets MobilePhone field to given value.
+
+### HasMobilePhone
+
+`func (o *PersonAllOf) HasMobilePhone() bool`
+
+HasMobilePhone returns a boolean if a field has been set.
 
 ### GetLocation
 
@@ -49,6 +206,31 @@ SetLocation sets Location field to given value.
 `func (o *PersonAllOf) HasLocation() bool`
 
 HasLocation returns a boolean if a field has been set.
+
+### GetPicture
+
+`func (o *PersonAllOf) GetPicture() string`
+
+GetPicture returns the Picture field if non-nil, zero value otherwise.
+
+### GetPictureOk
+
+`func (o *PersonAllOf) GetPictureOk() (*string, bool)`
+
+GetPictureOk returns a tuple with the Picture field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPicture
+
+`func (o *PersonAllOf) SetPicture(v string)`
+
+SetPicture sets Picture field to given value.
+
+### HasPicture
+
+`func (o *PersonAllOf) HasPicture() bool`
+
+HasPicture returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

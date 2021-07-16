@@ -749,7 +749,7 @@ Name | Type | Description  | Notes
 
 ## GetProjects
 
-> PagedProjects GetProjects(ctx).Skip(skip).Limit(limit).ProjectIds(projectIds).SkillIds(skillIds).PersonIds(personIds).IndustryIds(industryIds).Execute()
+> PagedProjects GetProjects(ctx).Skip(skip).Limit(limit).Execute()
 
 Get a list of all Projects in all Organizations
 
@@ -768,14 +768,10 @@ import (
 func main() {
     skip := int32(56) // int32 |  (optional) (default to 0)
     limit := int32(56) // int32 |  (optional) (default to 20)
-    projectIds := []string{"Inner_example"} // []string |  (optional)
-    skillIds := []string{"Inner_example"} // []string |  (optional)
-    personIds := []string{"Inner_example"} // []string |  (optional)
-    industryIds := []string{"Inner_example"} // []string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.GetProjects(context.Background()).Skip(skip).Limit(limit).ProjectIds(projectIds).SkillIds(skillIds).PersonIds(personIds).IndustryIds(industryIds).Execute()
+    resp, r, err := api_client.ProjectApi.GetProjects(context.Background()).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.GetProjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -798,10 +794,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
- **projectIds** | **[]string** |  | 
- **skillIds** | **[]string** |  | 
- **personIds** | **[]string** |  | 
- **industryIds** | **[]string** |  | 
 
 ### Return type
 

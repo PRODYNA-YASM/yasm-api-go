@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddPersonCertification**](PersonApi.md#AddPersonCertification) | **Post** /persons/{personId}/certifications/{certificationId} | Add Certification to a Person
 [**AddPersonInterest**](PersonApi.md#AddPersonInterest) | **Post** /persons/{personId}/interests/skills/{skillId} | Add an Interest to a Person
+[**AddPersonOffice**](PersonApi.md#AddPersonOffice) | **Post** /persons/{personId}/offices/{officeId} | Assing a person to an office
 [**AddPersonProject**](PersonApi.md#AddPersonProject) | **Post** /persons/{personId}/projects/{projectId} | Add Project to a Person
 [**AddPersonProjectSkill**](PersonApi.md#AddPersonProjectSkill) | **Post** /persons/{personId}/projects/{projectId}/skills/{skillId} | Add Skill to a Project participation
 [**AddPersonSkillExperience**](PersonApi.md#AddPersonSkillExperience) | **Post** /persons/{personId}/experiences/skills/{skillId} | Add an Skill experience to a Person
@@ -15,6 +16,7 @@ Method | HTTP request | Description
 [**DeleteConfirmation**](PersonApi.md#DeleteConfirmation) | **Delete** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**DeletePersonCertification**](PersonApi.md#DeletePersonCertification) | **Delete** /persons/{personId}/certifications/{certificationId} | Remove an Interest to a Person
 [**DeletePersonInterest**](PersonApi.md#DeletePersonInterest) | **Delete** /persons/{personId}/interests/skills/{skillId} | Remove an Interest to a Person
+[**DeletePersonOffice**](PersonApi.md#DeletePersonOffice) | **Delete** /persons/{personId}/offices/{officeId} | Delete the office from a Person
 [**DeletePersonProject**](PersonApi.md#DeletePersonProject) | **Delete** /persons/{personId}/projects/{projectId} | Remove an Project from a Person
 [**DeletePersonProjectSkill**](PersonApi.md#DeletePersonProjectSkill) | **Delete** /persons/{personId}/projects/{projectId}/skills/{skillId} | Remove a Skill from a Project participation
 [**DeletePersonSkillExperience**](PersonApi.md#DeletePersonSkillExperience) | **Delete** /persons/{personId}/experiences/skills/{skillId} | Remove an Skill Experience to a Person
@@ -151,6 +153,77 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAddPersonInterestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AddPersonOffice
+
+> PersonDetails AddPersonOffice(ctx, personId, officeId).Execute()
+
+Assing a person to an office
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := TODO // string | 
+    officeId := TODO // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersonApi.AddPersonOffice(context.Background(), personId, officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.AddPersonOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonOffice`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.AddPersonOffice`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | [**string**](.md) |  | 
+**officeId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddPersonOfficeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -828,6 +901,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeletePersonOffice
+
+> PersonDetails DeletePersonOffice(ctx, personId, officeId).Execute()
+
+Delete the office from a Person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := TODO // string | 
+    officeId := TODO // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersonApi.DeletePersonOffice(context.Background(), personId, officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePersonOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonOffice`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.DeletePersonOffice`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | [**string**](.md) |  | 
+**officeId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeletePersonOfficeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeletePersonProject
 
 > PersonDetails DeletePersonProject(ctx, personId, projectId).Execute()
@@ -1252,7 +1396,7 @@ Name | Type | Description  | Notes
 
 ## GetPersons
 
-> PagedPersons GetPersons(ctx).Skip(skip).Limit(limit).PersonIds(personIds).SkillIds(skillIds).ProjectIds(projectIds).OrganizationIds(organizationIds).IndustryIds(industryIds).CertificationIds(certificationIds).Execute()
+> PagedPersons GetPersons(ctx).Skip(skip).Limit(limit).SkillIds(skillIds).ProjectIds(projectIds).OrganizationIds(organizationIds).IndustryIds(industryIds).CertificationIds(certificationIds).Execute()
 
 Get a list of all persons
 
@@ -1271,7 +1415,6 @@ import (
 func main() {
     skip := int32(56) // int32 |  (optional) (default to 0)
     limit := int32(56) // int32 |  (optional) (default to 20)
-    personIds := []string{"Inner_example"} // []string |  (optional)
     skillIds := []string{"Inner_example"} // []string |  (optional)
     projectIds := []string{"Inner_example"} // []string |  (optional)
     organizationIds := []string{"Inner_example"} // []string |  (optional)
@@ -1280,7 +1423,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.GetPersons(context.Background()).Skip(skip).Limit(limit).PersonIds(personIds).SkillIds(skillIds).ProjectIds(projectIds).OrganizationIds(organizationIds).IndustryIds(industryIds).CertificationIds(certificationIds).Execute()
+    resp, r, err := api_client.PersonApi.GetPersons(context.Background()).Skip(skip).Limit(limit).SkillIds(skillIds).ProjectIds(projectIds).OrganizationIds(organizationIds).IndustryIds(industryIds).CertificationIds(certificationIds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GetPersons``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1303,7 +1446,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
- **personIds** | **[]string** |  | 
  **skillIds** | **[]string** |  | 
  **projectIds** | **[]string** |  | 
  **organizationIds** | **[]string** |  | 

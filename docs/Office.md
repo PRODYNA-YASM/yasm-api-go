@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** |  | 
+**Synonyms** | Pointer to **[]string** |  | [optional] 
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 
 ## Methods
@@ -66,6 +67,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetSynonyms
+
+`func (o *Office) GetSynonyms() []string`
+
+GetSynonyms returns the Synonyms field if non-nil, zero value otherwise.
+
+### GetSynonymsOk
+
+`func (o *Office) GetSynonymsOk() (*[]string, bool)`
+
+GetSynonymsOk returns a tuple with the Synonyms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSynonyms
+
+`func (o *Office) SetSynonyms(v []string)`
+
+SetSynonyms sets Synonyms field to given value.
+
+### HasSynonyms
+
+`func (o *Office) HasSynonyms() bool`
+
+HasSynonyms returns a boolean if a field has been set.
 
 ### GetGeolocation
 

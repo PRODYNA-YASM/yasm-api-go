@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.7.8
+  version: 0.7.9
 servers:
 - url: /api/v1
 security:
@@ -1004,46 +1004,6 @@ paths:
           default: 20
           type: integer
         style: form
-      - explode: true
-        in: query
-        name: projectIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: skillIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: personIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: industryIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
       responses:
         "200":
           content:
@@ -1439,16 +1399,6 @@ paths:
         schema:
           default: 20
           type: integer
-        style: form
-      - explode: true
-        in: query
-        name: personIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
         style: form
       - explode: true
         in: query
@@ -2056,6 +2006,79 @@ paths:
       tags:
       - Person
       - Certification
+  /persons/{personId}/offices/{officeId}:
+    delete:
+      operationId: deletePersonOffice
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: officeId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Delete the office from a Person
+      tags:
+      - Person
+      - Office
+    post:
+      operationId: addPersonOffice
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: officeId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Assing a person to an office
+      tags:
+      - Person
+      - Office
   /persons/{personId}/projects/{projectId}:
     delete:
       operationId: deletePersonProject
@@ -2960,6 +2983,7 @@ components:
     Office:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Office_allOf'
       type: object
     Organization:
@@ -3078,24 +3102,10 @@ components:
       - $ref: '#/components/schemas/Project_allOf'
       type: object
     ProjectDetails:
-      example:
-        persons:
-        - null
-        - null
+      example: {}
       properties:
         project:
           $ref: '#/components/schemas/Project'
-        organization:
-          $ref: '#/components/schemas/Organization'
-        persons:
-          items:
-            $ref: '#/components/schemas/Person'
-          type: array
-      type: object
-    ProjectScoreDetail:
-      allOf:
-      - $ref: '#/components/schemas/ProjectDetails'
-      - $ref: '#/components/schemas/ProjectScoreDetail_allOf'
       type: object
     ProjectParticipation:
       allOf:
@@ -3226,7 +3236,7 @@ components:
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
-      - $ref: '#/components/schemas/ProjectScoreDetail_allOf'
+      - $ref: '#/components/schemas/PersonScoreDetail_allOf'
       type: object
     SearchResult:
       allOf:
@@ -3282,8 +3292,29 @@ components:
       type: object
     Person_allOf:
       properties:
+        employeeId:
+          example: "1234567"
+          type: string
+        jobTitle:
+          example: Software Engineer
+          type: string
+        company:
+          example: PRODYNA SE
+          type: string
+        department:
+          example: Professional Services
+          type: string
+        mail:
+          example: peter.mueller@prodyna.com
+          type: string
+        mobilePhone:
+          example: +49 176 12345678
+          type: string
         location:
           example: Riedberg, Frankfurt am Main, Deutschland
+          type: string
+        picture:
+          description: base64 encoded image
           type: string
       type: object
     Project_allOf:
@@ -3293,11 +3324,6 @@ components:
           type: string
         timeframe:
           $ref: '#/components/schemas/Timeframed'
-      type: object
-    ProjectScoreDetail_allOf:
-      properties:
-        score:
-          type: number
       type: object
     ProjectParticipation_allOf:
       properties:
@@ -3386,7 +3412,7 @@ components:
       properties:
         projects:
           items:
-            $ref: '#/components/schemas/ProjectScoreDetail'
+            $ref: '#/components/schemas/Project'
           type: array
       type: object
     PagedPersons_allOf:
@@ -3396,6 +3422,11 @@ components:
             allOf:
             - $ref: '#/components/schemas/PersonScoreDetail'
           type: array
+      type: object
+    PersonScoreDetail_allOf:
+      properties:
+        score:
+          type: number
       type: object
     SearchResult_allOf:
       properties:
