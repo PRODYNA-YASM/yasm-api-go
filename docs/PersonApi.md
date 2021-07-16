@@ -1252,7 +1252,7 @@ Name | Type | Description  | Notes
 
 ## GetPersons
 
-> PagedPersons GetPersons(ctx).Skip(skip).Limit(limit).SkillIds(skillIds).ProjectIds(projectIds).OrganizationIds(organizationIds).IndustryIds(industryIds).CertificationIds(certificationIds).Execute()
+> PagedPersons GetPersons(ctx).Skip(skip).Limit(limit).PersonIds(personIds).SkillIds(skillIds).ProjectIds(projectIds).OrganizationIds(organizationIds).IndustryIds(industryIds).CertificationIds(certificationIds).Execute()
 
 Get a list of all persons
 
@@ -1271,6 +1271,7 @@ import (
 func main() {
     skip := int32(56) // int32 |  (optional) (default to 0)
     limit := int32(56) // int32 |  (optional) (default to 20)
+    personIds := []string{"Inner_example"} // []string |  (optional)
     skillIds := []string{"Inner_example"} // []string |  (optional)
     projectIds := []string{"Inner_example"} // []string |  (optional)
     organizationIds := []string{"Inner_example"} // []string |  (optional)
@@ -1279,7 +1280,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.GetPersons(context.Background()).Skip(skip).Limit(limit).SkillIds(skillIds).ProjectIds(projectIds).OrganizationIds(organizationIds).IndustryIds(industryIds).CertificationIds(certificationIds).Execute()
+    resp, r, err := api_client.PersonApi.GetPersons(context.Background()).Skip(skip).Limit(limit).PersonIds(personIds).SkillIds(skillIds).ProjectIds(projectIds).OrganizationIds(organizationIds).IndustryIds(industryIds).CertificationIds(certificationIds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GetPersons``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1302,6 +1303,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
+ **personIds** | **[]string** |  | 
  **skillIds** | **[]string** |  | 
  **projectIds** | **[]string** |  | 
  **organizationIds** | **[]string** |  | 
