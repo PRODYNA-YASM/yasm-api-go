@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
 **Project** | [**Project**](Project.md) |  | [readonly] 
-**Description** | Pointer to **string** |  | [optional] 
+**DescriptionOverwrite** | Pointer to **string** |  | [optional] 
+**PersonalDescription** | Pointer to **string** |  | [optional] 
 **Experiences** | [**[]Experience**](Experience.md) |  | [readonly] 
 
 ## Methods
@@ -94,30 +95,55 @@ and a boolean to check if the value has been set.
 SetProject sets Project field to given value.
 
 
-### GetDescription
+### GetDescriptionOverwrite
 
-`func (o *ProjectParticipation) GetDescription() string`
+`func (o *ProjectParticipation) GetDescriptionOverwrite() string`
 
-GetDescription returns the Description field if non-nil, zero value otherwise.
+GetDescriptionOverwrite returns the DescriptionOverwrite field if non-nil, zero value otherwise.
 
-### GetDescriptionOk
+### GetDescriptionOverwriteOk
 
-`func (o *ProjectParticipation) GetDescriptionOk() (*string, bool)`
+`func (o *ProjectParticipation) GetDescriptionOverwriteOk() (*string, bool)`
 
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+GetDescriptionOverwriteOk returns a tuple with the DescriptionOverwrite field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDescription
+### SetDescriptionOverwrite
 
-`func (o *ProjectParticipation) SetDescription(v string)`
+`func (o *ProjectParticipation) SetDescriptionOverwrite(v string)`
 
-SetDescription sets Description field to given value.
+SetDescriptionOverwrite sets DescriptionOverwrite field to given value.
 
-### HasDescription
+### HasDescriptionOverwrite
 
-`func (o *ProjectParticipation) HasDescription() bool`
+`func (o *ProjectParticipation) HasDescriptionOverwrite() bool`
 
-HasDescription returns a boolean if a field has been set.
+HasDescriptionOverwrite returns a boolean if a field has been set.
+
+### GetPersonalDescription
+
+`func (o *ProjectParticipation) GetPersonalDescription() string`
+
+GetPersonalDescription returns the PersonalDescription field if non-nil, zero value otherwise.
+
+### GetPersonalDescriptionOk
+
+`func (o *ProjectParticipation) GetPersonalDescriptionOk() (*string, bool)`
+
+GetPersonalDescriptionOk returns a tuple with the PersonalDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPersonalDescription
+
+`func (o *ProjectParticipation) SetPersonalDescription(v string)`
+
+SetPersonalDescription sets PersonalDescription field to given value.
+
+### HasPersonalDescription
+
+`func (o *ProjectParticipation) HasPersonalDescription() bool`
+
+HasPersonalDescription returns a boolean if a field has been set.
 
 ### GetExperiences
 
