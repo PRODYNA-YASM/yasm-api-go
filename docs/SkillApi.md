@@ -21,7 +21,7 @@ Method | HTTP request | Description
 [**DeleteSkillFromCertification**](SkillApi.md#DeleteSkillFromCertification) | **Delete** /certifications/{certificationId}/skills/{skillId} | 
 [**GetSkill**](SkillApi.md#GetSkill) | **Get** /skills/{skillId} | Get details for a single skill
 [**GetSkillParents**](SkillApi.md#GetSkillParents) | **Get** /skills/{skillId}/parents | Get ghe list of parents for a skill
-[**GetSkills**](SkillApi.md#GetSkills) | **Get** /skills | Get a list of all skills, optionally only root
+[**GetSkills**](SkillApi.md#GetSkills) | **Get** /skills | Get a list of all skills, optionally only root, optionally only kinds
 [**RemoveSkillFromParentSkill**](SkillApi.md#RemoveSkillFromParentSkill) | **Delete** /skills/{skillId}/parents/{parentSkillId} | Detaches a Skill from parent Skill, return the parent Skill
 [**UpdatePersonProjectSkill**](SkillApi.md#UpdatePersonProjectSkill) | **Put** /persons/{personId}/projects/{projectId}/skills/{skillId} | Update the level of a Skill in a Project participation
 [**UpdatePersonSkillExperience**](SkillApi.md#UpdatePersonSkillExperience) | **Put** /persons/{personId}/experiences/skills/{skillId} | Edit an Skill experience to a Person
@@ -1252,9 +1252,9 @@ Name | Type | Description  | Notes
 
 ## GetSkills
 
-> PagedSkills GetSkills(ctx).RootOnly(rootOnly).Skip(skip).Limit(limit).Execute()
+> PagedSkills GetSkills(ctx).Types(types).Suggestions(suggestions).Skip(skip).Limit(limit).Execute()
 
-Get a list of all skills, optionally only root
+Get a list of all skills, optionally only root, optionally only kinds
 
 ### Example
 
@@ -1269,13 +1269,14 @@ import (
 )
 
 func main() {
-    rootOnly := true // bool | Return only root skills (optional) (default to false)
+    types := "types_example" // string | Gives you either all skills, only the root kills or those which are defining kinds (optional) (default to "all")
+    suggestions := "suggestions_example" // string | Optionally filter skills based on suggestion (optional) (default to "all")
     skip := int32(56) // int32 |  (optional) (default to 0)
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SkillApi.GetSkills(context.Background()).RootOnly(rootOnly).Skip(skip).Limit(limit).Execute()
+    resp, r, err := api_client.SkillApi.GetSkills(context.Background()).Types(types).Suggestions(suggestions).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.GetSkills``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1296,7 +1297,8 @@ Other parameters are passed through a pointer to a apiGetSkillsRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rootOnly** | **bool** | Return only root skills | [default to false]
+ **types** | **string** | Gives you either all skills, only the root kills or those which are defining kinds | [default to &quot;all&quot;]
+ **suggestions** | **string** | Optionally filter skills based on suggestion | [default to &quot;all&quot;]
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
 

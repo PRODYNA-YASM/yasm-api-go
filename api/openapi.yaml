@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.7.12
+  version: 0.7.13
 servers:
 - url: /api/v1
 security:
@@ -1152,14 +1152,32 @@ paths:
     get:
       operationId: getSkills
       parameters:
-      - description: Return only root skills
+      - description: Gives you either all skills, only the root kills or those which
+          are defining kinds
         explode: true
         in: query
-        name: rootOnly
+        name: types
         required: false
         schema:
-          default: false
-          type: boolean
+          default: all
+          enum:
+          - all
+          - root
+          - kind
+          type: string
+        style: form
+      - description: Optionally filter skills based on suggestion
+        explode: true
+        in: query
+        name: suggestions
+        required: false
+        schema:
+          default: all
+          enum:
+          - all
+          - suggested
+          - notsuggested
+          type: string
         style: form
       - explode: true
         in: query
@@ -1190,7 +1208,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Error
-      summary: Get a list of all skills, optionally only root
+      summary: Get a list of all skills, optionally only root, optionally only kinds
       tags:
       - Skill
     post:
@@ -3223,12 +3241,20 @@ components:
         children:
         - null
         - null
+        kinds:
+        - Vendor
+        - Vendor
       properties:
         skill:
           $ref: '#/components/schemas/Skill'
         children:
           items:
             $ref: '#/components/schemas/Skill'
+          type: array
+        kinds:
+          items:
+            example: Vendor
+            type: string
           type: array
       type: object
     Status:
@@ -3429,6 +3455,9 @@ components:
     Skill_allOf:
       properties:
         invest:
+          default: false
+          type: boolean
+        kindgiver:
           default: false
           type: boolean
       required:

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Invest** | Pointer to **bool** |  | [optional] [default to false]
+**Kindgiver** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -138,6 +139,31 @@ SetInvest sets Invest field to given value.
 `func (o *Skill) HasInvest() bool`
 
 HasInvest returns a boolean if a field has been set.
+
+### GetKindgiver
+
+`func (o *Skill) GetKindgiver() bool`
+
+GetKindgiver returns the Kindgiver field if non-nil, zero value otherwise.
+
+### GetKindgiverOk
+
+`func (o *Skill) GetKindgiverOk() (*bool, bool)`
+
+GetKindgiverOk returns a tuple with the Kindgiver field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKindgiver
+
+`func (o *Skill) SetKindgiver(v bool)`
+
+SetKindgiver sets Kindgiver field to given value.
+
+### HasKindgiver
+
+`func (o *Skill) HasKindgiver() bool`
+
+HasKindgiver returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
