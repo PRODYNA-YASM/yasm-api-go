@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Name** | **string** |  | 
 **Synonyms** | Pointer to **[]string** |  | [optional] 
+**Location** | Pointer to **string** |  | [optional] 
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 
 ## Methods
@@ -92,6 +93,31 @@ SetSynonyms sets Synonyms field to given value.
 `func (o *Office) HasSynonyms() bool`
 
 HasSynonyms returns a boolean if a field has been set.
+
+### GetLocation
+
+`func (o *Office) GetLocation() string`
+
+GetLocation returns the Location field if non-nil, zero value otherwise.
+
+### GetLocationOk
+
+`func (o *Office) GetLocationOk() (*string, bool)`
+
+GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocation
+
+`func (o *Office) SetLocation(v string)`
+
+SetLocation sets Location field to given value.
+
+### HasLocation
+
+`func (o *Office) HasLocation() bool`
+
+HasLocation returns a boolean if a field has been set.
 
 ### GetGeolocation
 

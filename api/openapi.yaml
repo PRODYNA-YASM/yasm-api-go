@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.7.13
+  version: 0.7.14
 servers:
 - url: /api/v1
 security:
@@ -2935,6 +2935,14 @@ components:
       required:
       - name
       type: object
+    Locateable:
+      properties:
+        location:
+          example: Frankfurt, Germany
+          type: string
+        geolocation:
+          $ref: '#/components/schemas/Geolocation'
+      type: object
     Suggestable:
       properties:
         suggestion:
@@ -3052,13 +3060,14 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Synonymable'
-      - $ref: '#/components/schemas/Office_allOf'
+      - $ref: '#/components/schemas/Locateable'
       type: object
     Organization:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
+      - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Organization_allOf'
       type: object
     OrganizationDetails:
@@ -3101,6 +3110,7 @@ components:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
+      - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Person_allOf'
       required:
       - id
@@ -3116,7 +3126,6 @@ components:
             level: 1
         - level:
             level: 1
-        location: location
         interests:
         - null
         - null
@@ -3157,8 +3166,6 @@ components:
           items:
             $ref: '#/components/schemas/LanguageLevel'
           type: array
-        location:
-          type: string
         office:
           $ref: '#/components/schemas/Office'
       type: object
@@ -3167,6 +3174,7 @@ components:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
+      - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Project_allOf'
       type: object
     ProjectDetails:
@@ -3370,11 +3378,6 @@ components:
             $ref: '#/components/schemas/Person'
           type: array
       type: object
-    Office_allOf:
-      properties:
-        geolocation:
-          $ref: '#/components/schemas/Geolocation'
-      type: object
     Organization_allOf:
       properties:
         partner:
@@ -3383,8 +3386,6 @@ components:
         customer:
           default: false
           type: boolean
-        geolocation:
-          $ref: '#/components/schemas/Geolocation'
       type: object
     Person_allOf:
       properties:
@@ -3405,9 +3406,6 @@ components:
           type: string
         mobilePhone:
           example: +49 176 12345678
-          type: string
-        location:
-          example: Riedberg, Frankfurt am Main, Deutschland
           type: string
         picture:
           description: base64 encoded image

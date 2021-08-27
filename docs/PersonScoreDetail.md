@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **Interests** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 **Certifications** | Pointer to [**[]CertificationDetails**](CertificationDetails.md) |  | [optional] 
 **Languages** | Pointer to [**[]LanguageLevel**](LanguageLevel.md) |  | [optional] 
-**Location** | Pointer to **string** |  | [optional] 
 **Office** | Pointer to [**Office**](Office.md) |  | [optional] 
 **Score** | Pointer to **float32** |  | [optional] 
 
@@ -182,31 +181,6 @@ SetLanguages sets Languages field to given value.
 `func (o *PersonScoreDetail) HasLanguages() bool`
 
 HasLanguages returns a boolean if a field has been set.
-
-### GetLocation
-
-`func (o *PersonScoreDetail) GetLocation() string`
-
-GetLocation returns the Location field if non-nil, zero value otherwise.
-
-### GetLocationOk
-
-`func (o *PersonScoreDetail) GetLocationOk() (*string, bool)`
-
-GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLocation
-
-`func (o *PersonScoreDetail) SetLocation(v string)`
-
-SetLocation sets Location field to given value.
-
-### HasLocation
-
-`func (o *PersonScoreDetail) HasLocation() bool`
-
-HasLocation returns a boolean if a field has been set.
 
 ### GetOffice
 

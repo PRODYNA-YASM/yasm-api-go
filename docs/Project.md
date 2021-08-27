@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
+**Location** | Pointer to **string** |  | [optional] 
+**Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
 
@@ -114,6 +116,56 @@ SetSynonyms sets Synonyms field to given value.
 `func (o *Project) HasSynonyms() bool`
 
 HasSynonyms returns a boolean if a field has been set.
+
+### GetLocation
+
+`func (o *Project) GetLocation() string`
+
+GetLocation returns the Location field if non-nil, zero value otherwise.
+
+### GetLocationOk
+
+`func (o *Project) GetLocationOk() (*string, bool)`
+
+GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocation
+
+`func (o *Project) SetLocation(v string)`
+
+SetLocation sets Location field to given value.
+
+### HasLocation
+
+`func (o *Project) HasLocation() bool`
+
+HasLocation returns a boolean if a field has been set.
+
+### GetGeolocation
+
+`func (o *Project) GetGeolocation() Geolocation`
+
+GetGeolocation returns the Geolocation field if non-nil, zero value otherwise.
+
+### GetGeolocationOk
+
+`func (o *Project) GetGeolocationOk() (*Geolocation, bool)`
+
+GetGeolocationOk returns a tuple with the Geolocation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGeolocation
+
+`func (o *Project) SetGeolocation(v Geolocation)`
+
+SetGeolocation sets Geolocation field to given value.
+
+### HasGeolocation
+
+`func (o *Project) HasGeolocation() bool`
+
+HasGeolocation returns a boolean if a field has been set.
 
 ### GetDescription
 

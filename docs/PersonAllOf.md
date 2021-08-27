@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **Department** | Pointer to **string** |  | [optional] 
 **Mail** | Pointer to **string** |  | [optional] 
 **MobilePhone** | Pointer to **string** |  | [optional] 
-**Location** | Pointer to **string** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] 
 
 ## Methods
@@ -181,31 +180,6 @@ SetMobilePhone sets MobilePhone field to given value.
 `func (o *PersonAllOf) HasMobilePhone() bool`
 
 HasMobilePhone returns a boolean if a field has been set.
-
-### GetLocation
-
-`func (o *PersonAllOf) GetLocation() string`
-
-GetLocation returns the Location field if non-nil, zero value otherwise.
-
-### GetLocationOk
-
-`func (o *PersonAllOf) GetLocationOk() (*string, bool)`
-
-GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLocation
-
-`func (o *PersonAllOf) SetLocation(v string)`
-
-SetLocation sets Location field to given value.
-
-### HasLocation
-
-`func (o *PersonAllOf) HasLocation() bool`
-
-HasLocation returns a boolean if a field has been set.
 
 ### GetPicture
 

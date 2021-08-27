@@ -35,10 +35,10 @@ docs/LanguageApi.md
 docs/LanguageDetails.md
 docs/LanguageLevel.md
 docs/Level.md
+docs/Locateable.md
 docs/NamedDomainModel.md
 docs/NamedDomainModelAllOf.md
 docs/Office.md
-docs/OfficeAllOf.md
 docs/OfficeApi.md
 docs/Organization.md
 docs/OrganizationAllOf.md
@@ -110,10 +110,10 @@ model_language.go
 model_language_details.go
 model_language_level.go
 model_level.go
+model_locateable.go
 model_named_domain_model.go
 model_named_domain_model_all_of.go
 model_office.go
-model_office_all_of.go
 model_organization.go
 model_organization_all_of.go
 model_organization_details.go

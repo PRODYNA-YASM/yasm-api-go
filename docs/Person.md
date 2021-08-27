@@ -8,13 +8,14 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
+**Location** | Pointer to **string** |  | [optional] 
+**Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 **EmployeeId** | Pointer to **string** |  | [optional] 
 **JobTitle** | Pointer to **string** |  | [optional] 
 **Company** | Pointer to **string** |  | [optional] 
 **Department** | Pointer to **string** |  | [optional] 
 **Mail** | Pointer to **string** |  | [optional] 
 **MobilePhone** | Pointer to **string** |  | [optional] 
-**Location** | Pointer to **string** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] 
 
 ## Methods
@@ -120,6 +121,56 @@ SetSynonyms sets Synonyms field to given value.
 `func (o *Person) HasSynonyms() bool`
 
 HasSynonyms returns a boolean if a field has been set.
+
+### GetLocation
+
+`func (o *Person) GetLocation() string`
+
+GetLocation returns the Location field if non-nil, zero value otherwise.
+
+### GetLocationOk
+
+`func (o *Person) GetLocationOk() (*string, bool)`
+
+GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocation
+
+`func (o *Person) SetLocation(v string)`
+
+SetLocation sets Location field to given value.
+
+### HasLocation
+
+`func (o *Person) HasLocation() bool`
+
+HasLocation returns a boolean if a field has been set.
+
+### GetGeolocation
+
+`func (o *Person) GetGeolocation() Geolocation`
+
+GetGeolocation returns the Geolocation field if non-nil, zero value otherwise.
+
+### GetGeolocationOk
+
+`func (o *Person) GetGeolocationOk() (*Geolocation, bool)`
+
+GetGeolocationOk returns a tuple with the Geolocation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGeolocation
+
+`func (o *Person) SetGeolocation(v Geolocation)`
+
+SetGeolocation sets Geolocation field to given value.
+
+### HasGeolocation
+
+`func (o *Person) HasGeolocation() bool`
+
+HasGeolocation returns a boolean if a field has been set.
 
 ### GetEmployeeId
 
@@ -270,31 +321,6 @@ SetMobilePhone sets MobilePhone field to given value.
 `func (o *Person) HasMobilePhone() bool`
 
 HasMobilePhone returns a boolean if a field has been set.
-
-### GetLocation
-
-`func (o *Person) GetLocation() string`
-
-GetLocation returns the Location field if non-nil, zero value otherwise.
-
-### GetLocationOk
-
-`func (o *Person) GetLocationOk() (*string, bool)`
-
-GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLocation
-
-`func (o *Person) SetLocation(v string)`
-
-SetLocation sets Location field to given value.
-
-### HasLocation
-
-`func (o *Person) HasLocation() bool`
-
-HasLocation returns a boolean if a field has been set.
 
 ### GetPicture
 

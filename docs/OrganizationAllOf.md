@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Partner** | Pointer to **bool** |  | [optional] [default to false]
 **Customer** | Pointer to **bool** |  | [optional] [default to false]
-**Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 
 ## Methods
 
@@ -76,31 +75,6 @@ SetCustomer sets Customer field to given value.
 `func (o *OrganizationAllOf) HasCustomer() bool`
 
 HasCustomer returns a boolean if a field has been set.
-
-### GetGeolocation
-
-`func (o *OrganizationAllOf) GetGeolocation() Geolocation`
-
-GetGeolocation returns the Geolocation field if non-nil, zero value otherwise.
-
-### GetGeolocationOk
-
-`func (o *OrganizationAllOf) GetGeolocationOk() (*Geolocation, bool)`
-
-GetGeolocationOk returns a tuple with the Geolocation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGeolocation
-
-`func (o *OrganizationAllOf) SetGeolocation(v Geolocation)`
-
-SetGeolocation sets Geolocation field to given value.
-
-### HasGeolocation
-
-`func (o *OrganizationAllOf) HasGeolocation() bool`
-
-HasGeolocation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
