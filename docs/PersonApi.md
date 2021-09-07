@@ -12,7 +12,9 @@ Method | HTTP request | Description
 [**AddPersonSkillExperience**](PersonApi.md#AddPersonSkillExperience) | **Post** /persons/{personId}/experiences/skills/{skillId} | Add an Skill experience to a Person
 [**AddPersonSkillExperiences**](PersonApi.md#AddPersonSkillExperiences) | **Post** /persons/{personId}/experiences | Add an Skill experience to a Person (bulk)
 [**ConfirmSkill**](PersonApi.md#ConfirmSkill) | **Post** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
+[**CreateAvailability**](PersonApi.md#CreateAvailability) | **Post** /persons/{personId}/availabilities | Create a availability for a person
 [**CreatePerson**](PersonApi.md#CreatePerson) | **Post** /persons | Create a new Person
+[**DeleteAvailability**](PersonApi.md#DeleteAvailability) | **Delete** /person/{personId}/availabilities/{availabilityId} | Delete a person availability
 [**DeleteConfirmation**](PersonApi.md#DeleteConfirmation) | **Delete** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**DeletePersonCertification**](PersonApi.md#DeletePersonCertification) | **Delete** /persons/{personId}/certifications/{certificationId} | Remove an Interest to a Person
 [**DeletePersonInterest**](PersonApi.md#DeletePersonInterest) | **Delete** /persons/{personId}/interests/skills/{skillId} | Remove an Interest to a Person
@@ -22,8 +24,11 @@ Method | HTTP request | Description
 [**DeletePersonSkillExperience**](PersonApi.md#DeletePersonSkillExperience) | **Delete** /persons/{personId}/experiences/skills/{skillId} | Remove an Skill Experience to a Person
 [**DeletePersonSkillExperiences**](PersonApi.md#DeletePersonSkillExperiences) | **Delete** /persons/{personId}/experiences | Remove an Skill Experience to a Person
 [**GeneratePersonProfile**](PersonApi.md#GeneratePersonProfile) | **Get** /persons/{personid}/profile | Generate a PDF profile from a Person
+[**GetAvailabilities**](PersonApi.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
+[**GetAvailabilitiesCalculated**](PersonApi.md#GetAvailabilitiesCalculated) | **Get** /persons/{personId}/availabilities/calculated | Get a list of all activities for a person for a given time persion, calculated on server side
 [**GetPerson**](PersonApi.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**GetPersons**](PersonApi.md#GetPersons) | **Get** /persons | Get a list of all persons
+[**UpdateAvailability**](PersonApi.md#UpdateAvailability) | **Put** /person/{personId}/availabilities/{availabilityId} | Update a person availability
 [**UpdatePerson**](PersonApi.md#UpdatePerson) | **Put** /persons/{personId} | Update an existing Person
 [**UpdatePersonCertification**](PersonApi.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
 [**UpdatePersonProject**](PersonApi.md#UpdatePersonProject) | **Put** /persons/{personId}/projects/{projectId} | Update a Project of a Person
@@ -618,6 +623,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreateAvailability
+
+> PersonDetails CreateAvailability(ctx, personId).Availability(availability).Execute()
+
+Create a availability for a person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := TODO // string | 
+    availability := *openapiclient.NewAvailability("Id_example", "This is the name", time.Now(), time.Now(), float32(38.5), float32(22.5)) // Availability | The availability
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersonApi.CreateAvailability(context.Background(), personId).Availability(availability).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.CreateAvailability``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAvailability`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.CreateAvailability`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAvailabilityRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **availability** | [**Availability**](Availability.md) | The availability | 
+
+### Return type
+
+[**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreatePerson
 
 > PersonDetails CreatePerson(ctx).Person(person).Execute()
@@ -675,6 +751,77 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteAvailability
+
+> AvailabilityDetail DeleteAvailability(ctx, personId, availabilityId).Execute()
+
+Delete a person availability
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := TODO // string | 
+    availabilityId := TODO // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersonApi.DeleteAvailability(context.Background(), personId, availabilityId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeleteAvailability``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteAvailability`: AvailabilityDetail
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.DeleteAvailability`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | [**string**](.md) |  | 
+**availabilityId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAvailabilityRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**AvailabilityDetail**](AvailabilityDetail.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1326,6 +1473,149 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetAvailabilities
+
+> PagedAvailabilities GetAvailabilities(ctx, personId).Execute()
+
+Get a list of all activities for a person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := TODO // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersonApi.GetAvailabilities(context.Background(), personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GetAvailabilities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAvailabilities`: PagedAvailabilities
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.GetAvailabilities`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAvailabilitiesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**PagedAvailabilities**](PagedAvailabilities.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAvailabilitiesCalculated
+
+> PagedAvailabilities GetAvailabilitiesCalculated(ctx, personId).StartDate(startDate).PeriodDays(periodDays).NumberOfPeriods(numberOfPeriods).Execute()
+
+Get a list of all activities for a person for a given time persion, calculated on server side
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := TODO // string | 
+    startDate := time.Now() // string | 
+    periodDays := int32(7) // int32 |  (optional) (default to 7)
+    numberOfPeriods := int32(10) // int32 |  (optional) (default to 10)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersonApi.GetAvailabilitiesCalculated(context.Background(), personId).StartDate(startDate).PeriodDays(periodDays).NumberOfPeriods(numberOfPeriods).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GetAvailabilitiesCalculated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAvailabilitiesCalculated`: PagedAvailabilities
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.GetAvailabilitiesCalculated`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAvailabilitiesCalculatedRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **startDate** | **string** |  | 
+ **periodDays** | **int32** |  | [default to 7]
+ **numberOfPeriods** | **int32** |  | [default to 10]
+
+### Return type
+
+[**PagedAvailabilities**](PagedAvailabilities.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetPerson
 
 > PersonDetails GetPerson(ctx, personId).Execute()
@@ -1465,6 +1755,80 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAvailability
+
+> AvailabilityDetail UpdateAvailability(ctx, personId, availabilityId).Availability(availability).Execute()
+
+Update a person availability
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := TODO // string | 
+    availabilityId := TODO // string | 
+    availability := *openapiclient.NewAvailability("Id_example", "This is the name", time.Now(), time.Now(), float32(38.5), float32(22.5)) // Availability | The availability
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersonApi.UpdateAvailability(context.Background(), personId, availabilityId).Availability(availability).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdateAvailability``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAvailability`: AvailabilityDetail
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.UpdateAvailability`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | [**string**](.md) |  | 
+**availabilityId** | [**string**](.md) |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAvailabilityRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **availability** | [**Availability**](Availability.md) | The availability | 
+
+### Return type
+
+[**AvailabilityDetail**](AvailabilityDetail.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

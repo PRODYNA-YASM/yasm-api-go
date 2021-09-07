@@ -3,6 +3,7 @@
 .travis.yml
 README.md
 api/openapi.yaml
+api_availability.go
 api_certification.go
 api_country.go
 api_industry.go
@@ -16,6 +17,10 @@ api_skill.go
 api_status.go
 client.go
 configuration.go
+docs/Availability.md
+docs/AvailabilityAllOf.md
+docs/AvailabilityApi.md
+docs/AvailabilityDetail.md
 docs/BasicDomainModel.md
 docs/Certification.md
 docs/CertificationAllOf.md
@@ -45,6 +50,8 @@ docs/OrganizationAllOf.md
 docs/OrganizationApi.md
 docs/OrganizationDetails.md
 docs/Page.md
+docs/PagedAvailabilities.md
+docs/PagedAvailabilitiesAllOf.md
 docs/PagedCertifications.md
 docs/PagedCertificationsAllOf.md
 docs/PagedCountries.md
@@ -95,6 +102,9 @@ docs/Version.md
 git_push.sh
 go.mod
 go.sum
+model_availability.go
+model_availability_all_of.go
+model_availability_detail.go
 model_basic_domain_model.go
 model_certification.go
 model_certification_all_of.go
@@ -118,6 +128,8 @@ model_organization.go
 model_organization_all_of.go
 model_organization_details.go
 model_page.go
+model_paged_availabilities.go
+model_paged_availabilities_all_of.go
 model_paged_certifications.go
 model_paged_certifications_all_of.go
 model_paged_countries.go

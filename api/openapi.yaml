@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.7.14
+  version: 0.8.0
 servers:
 - url: /api/v1
 security:
@@ -2527,6 +2527,206 @@ paths:
       - Person
       - Project
       - Skill
+  /persons/{personId}/availabilities:
+    get:
+      operationId: getAvailabilities
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedAvailabilities'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get a list of all activities for a person
+      tags:
+      - Person
+      - Availability
+    post:
+      operationId: createAvailability
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Availability'
+        description: The availability
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Create a availability for a person
+      tags:
+      - Person
+      - Availability
+  /persons/{personId}/availabilities/calculated:
+    get:
+      operationId: getAvailabilitiesCalculated
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: startDate
+        required: true
+        schema:
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: periodDays
+        required: false
+        schema:
+          default: 7
+          example: 7
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: numberOfPeriods
+        required: false
+        schema:
+          default: 10
+          example: 10
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedAvailabilities'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get a list of all activities for a person for a given time persion,
+        calculated on server side
+      tags:
+      - Person
+      - Availability
+  /person/{personId}/availabilities/{availabilityId}:
+    delete:
+      operationId: deleteAvailability
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: availabilityId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityDetail'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Delete a person availability
+      tags:
+      - Person
+      - Availability
+    put:
+      operationId: updateAvailability
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: availabilityId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Availability'
+        description: The availability
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityDetail'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Update a person availability
+      tags:
+      - Person
+      - Availability
   /search/all/{text}:
     get:
       operationId: searchAll
@@ -3169,6 +3369,31 @@ components:
         office:
           $ref: '#/components/schemas/Office'
       type: object
+    Availability:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Timeframed'
+      - $ref: '#/components/schemas/Availability_allOf'
+      required:
+      - enddate
+      - id
+      - name
+      - plannedHours
+      - startdate
+      - workHours
+      type: object
+    AvailabilityDetail:
+      example:
+        percent: 8.008281904610115
+      properties:
+        availability:
+          $ref: '#/components/schemas/Availability'
+        percent:
+          format: integer
+          maximum: 100
+          minimum: 0
+          type: number
+      type: object
     Project:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -3297,6 +3522,11 @@ components:
         count:
           type: integer
       type: object
+    PagedAvailabilities:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedAvailabilities_allOf'
+      type: object
     PagedOrganizations:
       allOf:
       - $ref: '#/components/schemas/Page'
@@ -3411,6 +3641,17 @@ components:
           description: base64 encoded image
           type: string
       type: object
+    Availability_allOf:
+      properties:
+        workHours:
+          example: 38.5
+          format: float
+          type: number
+        plannedHours:
+          example: 22.5
+          format: float
+          type: number
+      type: object
     Project_allOf:
       properties:
         description:
@@ -3469,6 +3710,13 @@ components:
           type: string
         level:
           $ref: '#/components/schemas/Level'
+      type: object
+    PagedAvailabilities_allOf:
+      properties:
+        organizations:
+          items:
+            $ref: '#/components/schemas/AvailabilityDetail'
+          type: array
       type: object
     PagedOrganizations_allOf:
       properties:
