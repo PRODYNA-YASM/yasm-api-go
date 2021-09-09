@@ -625,7 +625,7 @@ Name | Type | Description  | Notes
 
 ## CreateAvailability
 
-> PersonDetails CreateAvailability(ctx, personId).Availability(availability).Execute()
+> AvailabilityDetail CreateAvailability(ctx, personId).Availability(availability).Execute()
 
 Create a availability for a person
 
@@ -653,7 +653,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.CreateAvailability``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAvailability`: PersonDetails
+    // response from `CreateAvailability`: AvailabilityDetail
     fmt.Fprintf(os.Stdout, "Response from `PersonApi.CreateAvailability`: %v\n", resp)
 }
 ```
@@ -678,7 +678,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**AvailabilityDetail**](AvailabilityDetail.md)
 
 ### Authorization
 
