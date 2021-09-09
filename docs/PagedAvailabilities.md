@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Skip** | Pointer to **int32** |  | [optional] 
 **Limit** | Pointer to **int32** |  | [optional] 
 **Count** | Pointer to **int32** |  | [optional] 
-**Organizations** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
+**Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
 
 ## Methods
 
@@ -103,30 +103,30 @@ SetCount sets Count field to given value.
 
 HasCount returns a boolean if a field has been set.
 
-### GetOrganizations
+### GetAvailabilities
 
-`func (o *PagedAvailabilities) GetOrganizations() []AvailabilityDetail`
+`func (o *PagedAvailabilities) GetAvailabilities() []AvailabilityDetail`
 
-GetOrganizations returns the Organizations field if non-nil, zero value otherwise.
+GetAvailabilities returns the Availabilities field if non-nil, zero value otherwise.
 
-### GetOrganizationsOk
+### GetAvailabilitiesOk
 
-`func (o *PagedAvailabilities) GetOrganizationsOk() (*[]AvailabilityDetail, bool)`
+`func (o *PagedAvailabilities) GetAvailabilitiesOk() (*[]AvailabilityDetail, bool)`
 
-GetOrganizationsOk returns a tuple with the Organizations field if it's non-nil, zero value otherwise
+GetAvailabilitiesOk returns a tuple with the Availabilities field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOrganizations
+### SetAvailabilities
 
-`func (o *PagedAvailabilities) SetOrganizations(v []AvailabilityDetail)`
+`func (o *PagedAvailabilities) SetAvailabilities(v []AvailabilityDetail)`
 
-SetOrganizations sets Organizations field to given value.
+SetAvailabilities sets Availabilities field to given value.
 
-### HasOrganizations
+### HasAvailabilities
 
-`func (o *PagedAvailabilities) HasOrganizations() bool`
+`func (o *PagedAvailabilities) HasAvailabilities() bool`
 
-HasOrganizations returns a boolean if a field has been set.
+HasAvailabilities returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

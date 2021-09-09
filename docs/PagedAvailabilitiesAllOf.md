@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Organizations** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
+**Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewPagedAvailabilitiesAllOfWithDefaults instantiates a new PagedAvailabilitiesAl
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetOrganizations
+### GetAvailabilities
 
-`func (o *PagedAvailabilitiesAllOf) GetOrganizations() []AvailabilityDetail`
+`func (o *PagedAvailabilitiesAllOf) GetAvailabilities() []AvailabilityDetail`
 
-GetOrganizations returns the Organizations field if non-nil, zero value otherwise.
+GetAvailabilities returns the Availabilities field if non-nil, zero value otherwise.
 
-### GetOrganizationsOk
+### GetAvailabilitiesOk
 
-`func (o *PagedAvailabilitiesAllOf) GetOrganizationsOk() (*[]AvailabilityDetail, bool)`
+`func (o *PagedAvailabilitiesAllOf) GetAvailabilitiesOk() (*[]AvailabilityDetail, bool)`
 
-GetOrganizationsOk returns a tuple with the Organizations field if it's non-nil, zero value otherwise
+GetAvailabilitiesOk returns a tuple with the Availabilities field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOrganizations
+### SetAvailabilities
 
-`func (o *PagedAvailabilitiesAllOf) SetOrganizations(v []AvailabilityDetail)`
+`func (o *PagedAvailabilitiesAllOf) SetAvailabilities(v []AvailabilityDetail)`
 
-SetOrganizations sets Organizations field to given value.
+SetAvailabilities sets Availabilities field to given value.
 
-### HasOrganizations
+### HasAvailabilities
 
-`func (o *PagedAvailabilitiesAllOf) HasOrganizations() bool`
+`func (o *PagedAvailabilitiesAllOf) HasAvailabilities() bool`
 
-HasOrganizations returns a boolean if a field has been set.
+HasAvailabilities returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

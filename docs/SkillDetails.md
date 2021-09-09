@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Skill** | Pointer to [**Skill**](Skill.md) |  | [optional] 
 **Children** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
-**Kinds** | Pointer to **[]string** |  | [optional] 
+**Kinds** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasChildren returns a boolean if a field has been set.
 
 ### GetKinds
 
-`func (o *SkillDetails) GetKinds() []string`
+`func (o *SkillDetails) GetKinds() []Skill`
 
 GetKinds returns the Kinds field if non-nil, zero value otherwise.
 
 ### GetKindsOk
 
-`func (o *SkillDetails) GetKindsOk() (*[]string, bool)`
+`func (o *SkillDetails) GetKindsOk() (*[]Skill, bool)`
 
 GetKindsOk returns a tuple with the Kinds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKinds
 
-`func (o *SkillDetails) SetKinds(v []string)`
+`func (o *SkillDetails) SetKinds(v []Skill)`
 
 SetKinds sets Kinds field to given value.
 

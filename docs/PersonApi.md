@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**ConfirmSkill**](PersonApi.md#ConfirmSkill) | **Post** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
 [**CreateAvailability**](PersonApi.md#CreateAvailability) | **Post** /persons/{personId}/availabilities | Create a availability for a person
 [**CreatePerson**](PersonApi.md#CreatePerson) | **Post** /persons | Create a new Person
-[**DeleteAvailability**](PersonApi.md#DeleteAvailability) | **Delete** /person/{personId}/availabilities/{availabilityId} | Delete a person availability
+[**DeleteAvailability**](PersonApi.md#DeleteAvailability) | **Delete** /persons/{personId}/availabilities/{availabilityId} | Delete a person availability
 [**DeleteConfirmation**](PersonApi.md#DeleteConfirmation) | **Delete** /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**DeletePersonCertification**](PersonApi.md#DeletePersonCertification) | **Delete** /persons/{personId}/certifications/{certificationId} | Remove an Interest to a Person
 [**DeletePersonInterest**](PersonApi.md#DeletePersonInterest) | **Delete** /persons/{personId}/interests/skills/{skillId} | Remove an Interest to a Person
@@ -28,7 +28,7 @@ Method | HTTP request | Description
 [**GetAvailabilitiesCalculated**](PersonApi.md#GetAvailabilitiesCalculated) | **Get** /persons/{personId}/availabilities/calculated | Get a list of all activities for a person for a given time persion, calculated on server side
 [**GetPerson**](PersonApi.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**GetPersons**](PersonApi.md#GetPersons) | **Get** /persons | Get a list of all persons
-[**UpdateAvailability**](PersonApi.md#UpdateAvailability) | **Put** /person/{personId}/availabilities/{availabilityId} | Update a person availability
+[**UpdateAvailability**](PersonApi.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
 [**UpdatePerson**](PersonApi.md#UpdatePerson) | **Put** /persons/{personId} | Update an existing Person
 [**UpdatePersonCertification**](PersonApi.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
 [**UpdatePersonProject**](PersonApi.md#UpdatePersonProject) | **Put** /persons/{personId}/projects/{projectId} | Update a Project of a Person
@@ -760,7 +760,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAvailability
 
-> AvailabilityDetail DeleteAvailability(ctx, personId, availabilityId).Execute()
+> Status DeleteAvailability(ctx, personId, availabilityId).Execute()
 
 Delete a person availability
 
@@ -787,7 +787,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeleteAvailability``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAvailability`: AvailabilityDetail
+    // response from `DeleteAvailability`: Status
     fmt.Fprintf(os.Stdout, "Response from `PersonApi.DeleteAvailability`: %v\n", resp)
 }
 ```
@@ -813,7 +813,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AvailabilityDetail**](AvailabilityDetail.md)
+[**Status**](Status.md)
 
 ### Authorization
 

@@ -5,10 +5,10 @@ All URIs are relative to *http://localhost/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAvailability**](AvailabilityApi.md#CreateAvailability) | **Post** /persons/{personId}/availabilities | Create a availability for a person
-[**DeleteAvailability**](AvailabilityApi.md#DeleteAvailability) | **Delete** /person/{personId}/availabilities/{availabilityId} | Delete a person availability
+[**DeleteAvailability**](AvailabilityApi.md#DeleteAvailability) | **Delete** /persons/{personId}/availabilities/{availabilityId} | Delete a person availability
 [**GetAvailabilities**](AvailabilityApi.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetAvailabilitiesCalculated**](AvailabilityApi.md#GetAvailabilitiesCalculated) | **Get** /persons/{personId}/availabilities/calculated | Get a list of all activities for a person for a given time persion, calculated on server side
-[**UpdateAvailability**](AvailabilityApi.md#UpdateAvailability) | **Put** /person/{personId}/availabilities/{availabilityId} | Update a person availability
+[**UpdateAvailability**](AvailabilityApi.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
 
 
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAvailability
 
-> AvailabilityDetail DeleteAvailability(ctx, personId, availabilityId).Execute()
+> Status DeleteAvailability(ctx, personId, availabilityId).Execute()
 
 Delete a person availability
 
@@ -112,7 +112,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityApi.DeleteAvailability``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAvailability`: AvailabilityDetail
+    // response from `DeleteAvailability`: Status
     fmt.Fprintf(os.Stdout, "Response from `AvailabilityApi.DeleteAvailability`: %v\n", resp)
 }
 ```
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AvailabilityDetail**](AvailabilityDetail.md)
+[**Status**](Status.md)
 
 ### Authorization
 
