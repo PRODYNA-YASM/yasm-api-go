@@ -909,7 +909,7 @@ Name | Type | Description  | Notes
 
 ## DeletePerson
 
-> PersonDetails DeletePerson(ctx, personId).Execute()
+> Status DeletePerson(ctx, personId).Execute()
 
 Delete an existing Person
 
@@ -935,7 +935,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePerson``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeletePerson`: PersonDetails
+    // response from `DeletePerson`: Status
     fmt.Fprintf(os.Stdout, "Response from `PersonApi.DeletePerson`: %v\n", resp)
 }
 ```
@@ -959,7 +959,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**Status**](Status.md)
 
 ### Authorization
 
