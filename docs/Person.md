@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Mail** | Pointer to **string** |  | [optional] 
 **MobilePhone** | Pointer to **string** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] 
+**Inactive** | Pointer to **bool** | Marks persons not working for the company anymore | [optional] [default to false]
 
 ## Methods
 
@@ -346,6 +347,31 @@ SetPicture sets Picture field to given value.
 `func (o *Person) HasPicture() bool`
 
 HasPicture returns a boolean if a field has been set.
+
+### GetInactive
+
+`func (o *Person) GetInactive() bool`
+
+GetInactive returns the Inactive field if non-nil, zero value otherwise.
+
+### GetInactiveOk
+
+`func (o *Person) GetInactiveOk() (*bool, bool)`
+
+GetInactiveOk returns a tuple with the Inactive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInactive
+
+`func (o *Person) SetInactive(v bool)`
+
+SetInactive sets Inactive field to given value.
+
+### HasInactive
+
+`func (o *Person) HasInactive() bool`
+
+HasInactive returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
