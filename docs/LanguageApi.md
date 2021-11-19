@@ -1,6 +1,6 @@
 # \LanguageApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to */api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -32,8 +32,8 @@ import (
 )
 
 func main() {
-    countryId := TODO // string | 
-    languageId := TODO // string | 
+    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -53,8 +53,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**countryId** | [**string**](.md) |  | 
-**languageId** | [**string**](.md) |  | 
+**countryId** | **string** |  | 
+**languageId** | **string** |  | 
 
 ### Other Parameters
 
@@ -167,7 +167,7 @@ import (
 )
 
 func main() {
-    languageId := TODO // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -187,7 +187,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**languageId** | [**string**](.md) |  | 
+**languageId** | **string** |  | 
 
 ### Other Parameters
 
@@ -235,7 +235,7 @@ import (
 )
 
 func main() {
-    languageId := TODO // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -255,7 +255,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**languageId** | [**string**](.md) |  | 
+**languageId** | **string** |  | 
 
 ### Other Parameters
 
@@ -369,8 +369,8 @@ import (
 )
 
 func main() {
-    countryId := TODO // string | 
-    languageId := TODO // string | 
+    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -390,8 +390,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**countryId** | [**string**](.md) |  | 
-**languageId** | [**string**](.md) |  | 
+**countryId** | **string** |  | 
+**languageId** | **string** |  | 
 
 ### Other Parameters
 

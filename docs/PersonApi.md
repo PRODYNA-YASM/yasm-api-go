@@ -1,6 +1,6 @@
 # \PersonApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to */api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -59,8 +59,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    certificationId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     body := time.Now() // string | 
 
     configuration := openapiclient.NewConfiguration()
@@ -81,8 +81,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**certificationId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**certificationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -132,8 +132,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    skillId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -153,8 +153,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
@@ -203,8 +203,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    officeId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -224,8 +224,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**officeId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**officeId** | **string** |  | 
 
 ### Other Parameters
 
@@ -274,8 +274,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    projectId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | List of Skills with level and timeframe
 
     configuration := openapiclient.NewConfiguration()
@@ -296,8 +296,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**projectId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**projectId** | **string** |  | 
 
 ### Other Parameters
 
@@ -347,9 +347,9 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    projectId := TODO // string | 
-    skillId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     level := *openapiclient.NewLevel() // Level | The Skill Level
 
     configuration := openapiclient.NewConfiguration()
@@ -370,9 +370,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**projectId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**projectId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
@@ -423,8 +423,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    skillId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     level := *openapiclient.NewLevel() // Level | 
 
     configuration := openapiclient.NewConfiguration()
@@ -445,8 +445,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
@@ -496,7 +496,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
 
     configuration := openapiclient.NewConfiguration()
@@ -517,7 +517,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -566,10 +566,10 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    projectId := TODO // string | 
-    skillId := TODO // string | 
-    confirmingPersonId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -589,10 +589,10 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**projectId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
-**confirmingPersonId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**projectId** | **string** |  | 
+**skillId** | **string** |  | 
+**confirmingPersonId** | **string** |  | 
 
 ### Other Parameters
 
@@ -644,7 +644,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     availability := *openapiclient.NewAvailability("Id_example", "This is the name", time.Now(), time.Now(), float32(38.5), float32(22.5)) // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
@@ -665,7 +665,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -778,8 +778,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    availabilityId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -799,8 +799,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**availabilityId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**availabilityId** | **string** |  | 
 
 ### Other Parameters
 
@@ -849,10 +849,10 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    projectId := TODO // string | 
-    skillId := TODO // string | 
-    confirmingPersonId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -872,10 +872,10 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**projectId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
-**confirmingPersonId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**projectId** | **string** |  | 
+**skillId** | **string** |  | 
+**confirmingPersonId** | **string** |  | 
 
 ### Other Parameters
 
@@ -926,7 +926,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -946,7 +946,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -994,8 +994,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    certificationId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1015,8 +1015,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**certificationId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**certificationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1065,8 +1065,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    skillId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1086,8 +1086,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1136,8 +1136,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    officeId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1157,8 +1157,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**officeId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**officeId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1207,8 +1207,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    projectId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1228,8 +1228,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**projectId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**projectId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1278,9 +1278,9 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    projectId := TODO // string | 
-    skillId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1300,9 +1300,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**projectId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**projectId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1352,8 +1352,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    skillId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1373,8 +1373,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1423,7 +1423,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     requestBody := []string{"Property_example"} // []string | A list of skillIds
 
     configuration := openapiclient.NewConfiguration()
@@ -1444,7 +1444,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1493,7 +1493,7 @@ import (
 )
 
 func main() {
-    personid := TODO // string | 
+    personid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1513,7 +1513,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personid** | [**string**](.md) |  | 
+**personid** | **string** |  | 
 
 ### Other Parameters
 
@@ -1561,7 +1561,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1581,7 +1581,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1630,7 +1630,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     startDate := time.Now() // string | 
     periodDays := int32(7) // int32 |  (optional) (default to 7)
     numberOfPeriods := int32(10) // int32 |  (optional) (default to 10)
@@ -1653,7 +1653,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1704,7 +1704,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1724,7 +1724,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1851,8 +1851,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    availabilityId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     availability := *openapiclient.NewAvailability("Id_example", "This is the name", time.Now(), time.Now(), float32(38.5), float32(22.5)) // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
@@ -1873,8 +1873,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**availabilityId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**availabilityId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1924,7 +1924,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     person := *openapiclient.NewPerson("Id_example", "This is the name", false) // Person | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1945,7 +1945,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1995,8 +1995,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    certificationId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     body := time.Now() // string | 
 
     configuration := openapiclient.NewConfiguration()
@@ -2017,8 +2017,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**certificationId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**certificationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -2068,8 +2068,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    projectId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | A time frame and a list of Skills
 
     configuration := openapiclient.NewConfiguration()
@@ -2090,8 +2090,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**projectId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**projectId** | **string** |  | 
 
 ### Other Parameters
 
@@ -2141,9 +2141,9 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    projectId := TODO // string | 
-    skillId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     level := *openapiclient.NewLevel() // Level | The Skill Level
 
     configuration := openapiclient.NewConfiguration()
@@ -2164,9 +2164,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**projectId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**projectId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
@@ -2217,8 +2217,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    skillId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     level := *openapiclient.NewLevel() // Level | 
 
     configuration := openapiclient.NewConfiguration()
@@ -2239,8 +2239,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
@@ -2290,7 +2290,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
 
     configuration := openapiclient.NewConfiguration()
@@ -2311,7 +2311,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 

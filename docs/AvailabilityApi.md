@@ -1,6 +1,6 @@
 # \AvailabilityApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to */api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     availability := *openapiclient.NewAvailability("Id_example", "This is the name", time.Now(), time.Now(), float32(38.5), float32(22.5)) // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
@@ -53,7 +53,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -102,8 +102,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    availabilityId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -123,8 +123,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**availabilityId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**availabilityId** | **string** |  | 
 
 ### Other Parameters
 
@@ -173,7 +173,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -193,7 +193,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -242,7 +242,7 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     startDate := time.Now() // string | 
     periodDays := int32(7) // int32 |  (optional) (default to 7)
     numberOfPeriods := int32(10) // int32 |  (optional) (default to 10)
@@ -265,7 +265,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -317,8 +317,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    availabilityId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     availability := *openapiclient.NewAvailability("Id_example", "This is the name", time.Now(), time.Now(), float32(38.5), float32(22.5)) // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
@@ -339,8 +339,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**availabilityId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**availabilityId** | **string** |  | 
 
 ### Other Parameters
 

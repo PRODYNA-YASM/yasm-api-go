@@ -1,6 +1,6 @@
 # \OfficeApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to */api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -32,8 +32,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    officeId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -53,8 +53,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**officeId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**officeId** | **string** |  | 
 
 ### Other Parameters
 
@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     office := *openapiclient.NewOffice("Id_example", "This is the name") // Office | 
 
     configuration := openapiclient.NewConfiguration()
@@ -124,7 +124,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) |  | 
+**organizationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -173,8 +173,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | 
-    officeId := TODO // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -194,8 +194,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) |  | 
-**officeId** | [**string**](.md) |  | 
+**organizationId** | **string** |  | 
+**officeId** | **string** |  | 
 
 ### Other Parameters
 
@@ -244,8 +244,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    officeId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -265,8 +265,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**officeId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**officeId** | **string** |  | 
 
 ### Other Parameters
 
@@ -315,8 +315,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | 
-    officeId := TODO // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -336,8 +336,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) |  | 
-**officeId** | [**string**](.md) |  | 
+**organizationId** | **string** |  | 
+**officeId** | **string** |  | 
 
 ### Other Parameters
 
@@ -386,8 +386,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | 
-    officeId := TODO // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     office := *openapiclient.NewOffice("Id_example", "This is the name") // Office | 
 
     configuration := openapiclient.NewConfiguration()
@@ -408,8 +408,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) |  | 
-**officeId** | [**string**](.md) |  | 
+**organizationId** | **string** |  | 
+**officeId** | **string** |  | 
 
 ### Other Parameters
 

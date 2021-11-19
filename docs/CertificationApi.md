@@ -1,6 +1,6 @@
 # \CertificationApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to */api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -39,8 +39,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    certificationId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     body := time.Now() // string | 
 
     configuration := openapiclient.NewConfiguration()
@@ -61,8 +61,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**certificationId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**certificationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -114,8 +114,8 @@ import (
 )
 
 func main() {
-    certificationId := TODO // string | 
-    skillId := TODO // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     level := *openapiclient.NewLevel() // Level | 
 
     configuration := openapiclient.NewConfiguration()
@@ -136,8 +136,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certificationId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**certificationId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
@@ -187,7 +187,7 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     certification := *openapiclient.NewCertification("Id_example", "This is the name", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
@@ -208,7 +208,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) |  | 
+**organizationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -257,7 +257,7 @@ import (
 )
 
 func main() {
-    certificationId := TODO // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -277,7 +277,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certificationId** | [**string**](.md) |  | 
+**certificationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -325,8 +325,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    certificationId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -346,8 +346,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**certificationId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**certificationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -396,8 +396,8 @@ import (
 )
 
 func main() {
-    certificationId := TODO // string | 
-    skillId := TODO // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -417,8 +417,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certificationId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**certificationId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
@@ -467,7 +467,7 @@ import (
 )
 
 func main() {
-    certificationId := TODO // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -487,7 +487,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certificationId** | [**string**](.md) |  | 
+**certificationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -601,7 +601,7 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     skip := int32(56) // int32 |  (optional) (default to 0)
     limit := int32(56) // int32 |  (optional) (default to 20)
 
@@ -623,7 +623,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) |  | 
+**organizationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -673,7 +673,7 @@ import (
 )
 
 func main() {
-    certificationId := TODO // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     certification := *openapiclient.NewCertification("Id_example", "This is the name", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
@@ -694,7 +694,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certificationId** | [**string**](.md) |  | 
+**certificationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -744,8 +744,8 @@ import (
 )
 
 func main() {
-    personId := TODO // string | 
-    certificationId := TODO // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     body := time.Now() // string | 
 
     configuration := openapiclient.NewConfiguration()
@@ -766,8 +766,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | [**string**](.md) |  | 
-**certificationId** | [**string**](.md) |  | 
+**personId** | **string** |  | 
+**certificationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -819,8 +819,8 @@ import (
 )
 
 func main() {
-    certificationId := TODO // string | 
-    skillId := TODO // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     level := *openapiclient.NewLevel() // Level | 
 
     configuration := openapiclient.NewConfiguration()
@@ -841,8 +841,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certificationId** | [**string**](.md) |  | 
-**skillId** | [**string**](.md) |  | 
+**certificationId** | **string** |  | 
+**skillId** | **string** |  | 
 
 ### Other Parameters
 
