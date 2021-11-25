@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 
 ## CreateProject
 
-> OrganizationDetails CreateProject(ctx, organizationId).Project(project).Execute()
+> ProjectDetails CreateProject(ctx, organizationId).Project(project).Execute()
 
 Create a Project in an Organization
 
@@ -276,7 +276,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.CreateProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateProject`: OrganizationDetails
+    // response from `CreateProject`: ProjectDetails
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.CreateProject`: %v\n", resp)
 }
 ```
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationDetails**](OrganizationDetails.md)
+[**ProjectDetails**](ProjectDetails.md)
 
 ### Authorization
 

@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.9.2
+  version: 0.9.3
 servers:
 - url: /api/v1
 security:
@@ -23,12 +23,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       security: []
       summary: Server heartbeat operation
       tags:
@@ -45,12 +45,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Version'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       security: []
       summary: Information about the server
       tags:
@@ -82,12 +82,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedOrganizations'
           description: A paged array of Organizations
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get a list of all Organizations
       tags:
       - Organization
@@ -107,12 +107,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrganizationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       security:
       - implicit: []
       summary: Create an Organization
@@ -137,12 +137,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       security:
       - implicit: []
       summary: Delete an organization
@@ -166,12 +166,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrganizationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get details about an Organization
       tags:
       - Organization
@@ -200,12 +200,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrganizationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       security:
       - implicit: []
       summary: Update an Organization
@@ -238,12 +238,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrganizationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Remove an Organization to an Industry
       tags:
       - Organization
@@ -274,12 +274,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrganizationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Add an Organization to an Industry
       tags:
       - Organization
@@ -309,12 +309,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrganizationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Create an Office in an Organization
       tags:
       - Organization
@@ -346,12 +346,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Delte an Office from an Organization
       tags:
       - Organization
@@ -382,12 +382,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Office'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get an Office for an Organiaztion
       tags:
       - Organization
@@ -424,12 +424,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Office'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update an Office for an Organization
       tags:
       - Organization
@@ -461,12 +461,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedIndustries'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get all Industries
       tags:
       - Industry
@@ -485,12 +485,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Industry'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Create an Industry
       tags:
       - Industry
@@ -513,12 +513,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Delete an Industry
       tags:
       - Industry
@@ -540,12 +540,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Industry'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get details about an Industry
       tags:
       - Industry
@@ -573,12 +573,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Industry'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update an Industry
       tags:
       - Industry
@@ -617,12 +617,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedCertifications'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get a list of all certifications for a organization
       tags:
       - Organization
@@ -651,12 +651,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CertificationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Create a Certification in an Organization
       tags:
       - Organization
@@ -696,12 +696,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedProjects'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get a list of all Projects for an Organization
       tags:
       - Organization
@@ -728,14 +728,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganizationDetails'
+                $ref: '#/components/schemas/ProjectDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Create a Project in an Organization
       tags:
       - Organization
@@ -767,12 +767,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedCertifications'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get a list of all Certifations indepdenant of the Organization
       tags:
       - Certification
@@ -795,12 +795,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Delete a Certification
       tags:
       - Certification
@@ -822,12 +822,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CertificationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get details about a Certification
       tags:
       - Certification
@@ -855,12 +855,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CertificationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update a Certification
       tags:
       - Certification
@@ -891,12 +891,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CertificationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       tags:
       - Certification
       - Skill
@@ -933,12 +933,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CertificationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       tags:
       - Certification
       - Skill
@@ -975,12 +975,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CertificationDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       tags:
       - Certification
       - Skill
@@ -1051,12 +1051,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedProjects'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get a list of all Projects in all Organizations
       tags:
       - Project
@@ -1079,12 +1079,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Delete a project
       tags:
       - Project
@@ -1106,12 +1106,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProjectDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get details about a Project
       tags:
       - Project
@@ -1139,12 +1139,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProjectDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update a Project
       tags:
       - Project
@@ -1202,12 +1202,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedSkills'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get a list of all skills, optionally only root, optionally only kinds
       tags:
       - Skill
@@ -1226,12 +1226,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/SkillDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Create a Skill
       tags:
       - Skill
@@ -1254,12 +1254,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Delete a Skill
       tags:
       - Skill
@@ -1281,12 +1281,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/SkillDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get details for a single skill
       tags:
       - Skill
@@ -1314,12 +1314,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/SkillDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update a Skill
       tags:
       - Skill
@@ -1358,12 +1358,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedSkills'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get ghe list of parents for a skill
       tags:
       - Skill
@@ -1394,12 +1394,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/SkillDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Detaches a Skill from parent Skill, return the parent Skill
       tags:
       - Skill
@@ -1429,12 +1429,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/SkillDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Attach a Skill to a parent Skill, returns the parent Skill
       tags:
       - Skill
@@ -1525,12 +1525,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedPersons'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get a list of all persons
       tags:
       - Person
@@ -1549,12 +1549,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Create a new Person
       tags:
       - Person
@@ -1577,12 +1577,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Delete an existing Person
       tags:
       - Person
@@ -1604,12 +1604,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get basic info about a person
       tags:
       - Person
@@ -1637,12 +1637,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update an existing Person
       tags:
       - Person
@@ -1666,12 +1666,12 @@ paths:
                 format: binary
                 type: string
           description: A PDF profile of a Person
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Generate a PDF profile from a Person
       tags:
       - Person
@@ -1702,12 +1702,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Remove an Interest to a Person
       tags:
       - Person
@@ -1738,12 +1738,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Add an Interest to a Person
       tags:
       - Person
@@ -1777,12 +1777,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Remove an Skill Experience to a Person
       tags:
       - Person
@@ -1813,12 +1813,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Add an Skill experience to a Person (bulk)
       tags:
       - Person
@@ -1849,12 +1849,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Edit an Skill experience to a Person
       tags:
       - Person
@@ -1886,12 +1886,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Remove an Skill Experience to a Person
       tags:
       - Person
@@ -1928,12 +1928,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Add an Skill experience to a Person
       tags:
       - Person
@@ -1970,12 +1970,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Edit an Skill experience to a Person
       tags:
       - Person
@@ -2007,12 +2007,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Remove an Interest to a Person
       tags:
       - Person
@@ -2049,12 +2049,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Add Certification to a Person
       tags:
       - Person
@@ -2091,12 +2091,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update a Certification of a Person
       tags:
       - Person
@@ -2128,12 +2128,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Delete the office from a Person
       tags:
       - Person
@@ -2164,12 +2164,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Assing a person to an office
       tags:
       - Person
@@ -2201,12 +2201,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Remove an Project from a Person
       tags:
       - Person
@@ -2244,12 +2244,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Add Project to a Person
       tags:
       - Person
@@ -2287,12 +2287,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update a Project of a Person
       tags:
       - Person
@@ -2332,12 +2332,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Remove a Skill from a Project participation
       tags:
       - Person
@@ -2384,12 +2384,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Add Skill to a Project participation
       tags:
       - Person
@@ -2436,12 +2436,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update the level of a Skill in a Project participation
       tags:
       - Person
@@ -2490,12 +2490,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Remove a confirmation
       tags:
       - Person
@@ -2543,12 +2543,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PersonDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Confirm Skill
       tags:
       - Person
@@ -2573,12 +2573,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedAvailabilities'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get a list of all activities for a person
       tags:
       - Person
@@ -2608,12 +2608,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/AvailabilityDetail'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Create a availability for a person
       tags:
       - Person
@@ -2663,12 +2663,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedAvailabilities'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get a list of all activities for a person for a given time persion,
         calculated on server side
       tags:
@@ -2701,12 +2701,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Delete a person availability
       tags:
       - Person
@@ -2744,12 +2744,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/AvailabilityDetail'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update a person availability
       tags:
       - Person
@@ -2788,12 +2788,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchResult'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Fulltext search on all kinds of objects
       tags:
       - Search
@@ -2824,12 +2824,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedLanguages'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get a list of Languages
       tags:
       - Language
@@ -2848,12 +2848,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/LanguageDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Create a new language
       tags:
       - Language
@@ -2903,12 +2903,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/LanguageDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get details about a language
       tags:
       - Language
@@ -2957,12 +2957,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CountryDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Create a new Country
       tags:
       - Country
@@ -2985,12 +2985,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Delete a Country
       tags:
       - Country
@@ -3012,12 +3012,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CountryDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Get details about a Country
       tags:
       - Country
@@ -3045,12 +3045,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CountryDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Update a Country
       tags:
       - Country
@@ -3081,12 +3081,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CountryDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Assign a language to a country
       tags:
       - Language
@@ -3117,17 +3117,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/CountryDetails'
           description: OK
-        "400":
+        default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Error
+          description: The specified resource was not found
       summary: Assign a language to a country
       tags:
       - Language
       - Country
 components:
+  responses:
+    ErrorResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: The specified resource was not found
   schemas:
     Version:
       example:
