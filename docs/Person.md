@@ -16,6 +16,9 @@ Name | Type | Description | Notes
 **Department** | Pointer to **string** |  | [optional] 
 **Mail** | Pointer to **string** |  | [optional] 
 **MobilePhone** | Pointer to **string** |  | [optional] 
+**Seniority** | Pointer to **string** |  | [optional] 
+**ExperienceSinceYear** | Pointer to **float32** |  | [optional] 
+**OnsiteRatio** | Pointer to **float32** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] 
 **Inactive** | Pointer to **bool** | Marks persons not working for the company anymore | [optional] [default to false]
 
@@ -322,6 +325,81 @@ SetMobilePhone sets MobilePhone field to given value.
 `func (o *Person) HasMobilePhone() bool`
 
 HasMobilePhone returns a boolean if a field has been set.
+
+### GetSeniority
+
+`func (o *Person) GetSeniority() string`
+
+GetSeniority returns the Seniority field if non-nil, zero value otherwise.
+
+### GetSeniorityOk
+
+`func (o *Person) GetSeniorityOk() (*string, bool)`
+
+GetSeniorityOk returns a tuple with the Seniority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeniority
+
+`func (o *Person) SetSeniority(v string)`
+
+SetSeniority sets Seniority field to given value.
+
+### HasSeniority
+
+`func (o *Person) HasSeniority() bool`
+
+HasSeniority returns a boolean if a field has been set.
+
+### GetExperienceSinceYear
+
+`func (o *Person) GetExperienceSinceYear() float32`
+
+GetExperienceSinceYear returns the ExperienceSinceYear field if non-nil, zero value otherwise.
+
+### GetExperienceSinceYearOk
+
+`func (o *Person) GetExperienceSinceYearOk() (*float32, bool)`
+
+GetExperienceSinceYearOk returns a tuple with the ExperienceSinceYear field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExperienceSinceYear
+
+`func (o *Person) SetExperienceSinceYear(v float32)`
+
+SetExperienceSinceYear sets ExperienceSinceYear field to given value.
+
+### HasExperienceSinceYear
+
+`func (o *Person) HasExperienceSinceYear() bool`
+
+HasExperienceSinceYear returns a boolean if a field has been set.
+
+### GetOnsiteRatio
+
+`func (o *Person) GetOnsiteRatio() float32`
+
+GetOnsiteRatio returns the OnsiteRatio field if non-nil, zero value otherwise.
+
+### GetOnsiteRatioOk
+
+`func (o *Person) GetOnsiteRatioOk() (*float32, bool)`
+
+GetOnsiteRatioOk returns a tuple with the OnsiteRatio field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnsiteRatio
+
+`func (o *Person) SetOnsiteRatio(v float32)`
+
+SetOnsiteRatio sets OnsiteRatio field to given value.
+
+### HasOnsiteRatio
+
+`func (o *Person) HasOnsiteRatio() bool`
+
+HasOnsiteRatio returns a boolean if a field has been set.
 
 ### GetPicture
 

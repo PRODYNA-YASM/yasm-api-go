@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.9.4
+  version: 0.9.5
 servers:
 - url: /api/v1
 security:
@@ -3490,11 +3490,18 @@ components:
         persons:
         - null
         - null
+        industries:
+        - null
+        - null
       properties:
         project:
           $ref: '#/components/schemas/Project'
         organization:
           $ref: '#/components/schemas/Organization'
+        industries:
+          items:
+            $ref: '#/components/schemas/Industry'
+          type: array
         persons:
           items:
             $ref: '#/components/schemas/Person'
@@ -3675,6 +3682,9 @@ components:
         skills:
         - ""
         - ""
+        officeIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         projects:
         - ""
         - ""
@@ -3695,6 +3705,11 @@ components:
           max: 100
       properties:
         personIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        officeIds:
           items:
             format: uuid
             type: string
@@ -3833,6 +3848,9 @@ components:
         customer:
           default: false
           type: boolean
+        picture:
+          description: base64 encoded image
+          type: string
       type: object
     Person_allOf:
       properties:
@@ -3854,6 +3872,19 @@ components:
         mobilePhone:
           example: +49 176 12345678
           type: string
+        seniority:
+          example: Senior
+          type: string
+        experienceSinceYear:
+          example: 2010
+          format: int32
+          type: number
+        onsiteRatio:
+          example: 20
+          format: int32
+          maximum: 100
+          minimum: 0
+          type: number
         picture:
           description: base64 encoded image
           type: string

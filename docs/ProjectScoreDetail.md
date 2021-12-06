@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 **Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
+**Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
 **Score** | Pointer to **float32** |  | [optional] 
 
@@ -77,6 +78,31 @@ SetOrganization sets Organization field to given value.
 `func (o *ProjectScoreDetail) HasOrganization() bool`
 
 HasOrganization returns a boolean if a field has been set.
+
+### GetIndustries
+
+`func (o *ProjectScoreDetail) GetIndustries() []Industry`
+
+GetIndustries returns the Industries field if non-nil, zero value otherwise.
+
+### GetIndustriesOk
+
+`func (o *ProjectScoreDetail) GetIndustriesOk() (*[]Industry, bool)`
+
+GetIndustriesOk returns a tuple with the Industries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIndustries
+
+`func (o *ProjectScoreDetail) SetIndustries(v []Industry)`
+
+SetIndustries sets Industries field to given value.
+
+### HasIndustries
+
+`func (o *ProjectScoreDetail) HasIndustries() bool`
+
+HasIndustries returns a boolean if a field has been set.
 
 ### GetPersons
 

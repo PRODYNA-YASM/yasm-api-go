@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PersonIds** | Pointer to **[]string** |  | [optional] 
+**OfficeIds** | Pointer to **[]string** |  | [optional] 
 **Availibility** | Pointer to [**AvailabilityFilter**](AvailabilityFilter.md) |  | [optional] 
 **OnsideRatio** | Pointer to [**MinMaxPercent**](MinMaxPercent.md) |  | [optional] 
 **Seniority** | Pointer to [**Seniority**](Seniority.md) |  | [optional] 
@@ -57,6 +58,31 @@ SetPersonIds sets PersonIds field to given value.
 `func (o *PersonSearch) HasPersonIds() bool`
 
 HasPersonIds returns a boolean if a field has been set.
+
+### GetOfficeIds
+
+`func (o *PersonSearch) GetOfficeIds() []string`
+
+GetOfficeIds returns the OfficeIds field if non-nil, zero value otherwise.
+
+### GetOfficeIdsOk
+
+`func (o *PersonSearch) GetOfficeIdsOk() (*[]string, bool)`
+
+GetOfficeIdsOk returns a tuple with the OfficeIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOfficeIds
+
+`func (o *PersonSearch) SetOfficeIds(v []string)`
+
+SetOfficeIds sets OfficeIds field to given value.
+
+### HasOfficeIds
+
+`func (o *PersonSearch) HasOfficeIds() bool`
+
+HasOfficeIds returns a boolean if a field has been set.
 
 ### GetAvailibility
 
