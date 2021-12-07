@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **PersonIds** | Pointer to **[]string** |  | [optional] 
 **OfficeIds** | Pointer to **[]string** |  | [optional] 
 **Availibility** | Pointer to [**AvailabilityFilter**](AvailabilityFilter.md) |  | [optional] 
-**OnsideRatio** | Pointer to [**MinMaxPercent**](MinMaxPercent.md) |  | [optional] 
+**OnsiteRatio** | Pointer to [**MinMaxPercent**](MinMaxPercent.md) |  | [optional] 
 **Seniority** | Pointer to [**Seniority**](Seniority.md) |  | [optional] 
 **Skills** | Pointer to [**[]PersonSkillFilter**](PersonSkillFilter.md) |  | [optional] 
 **Projects** | Pointer to [**[]PersonProjectFilter**](PersonProjectFilter.md) |  | [optional] 
@@ -109,30 +109,30 @@ SetAvailibility sets Availibility field to given value.
 
 HasAvailibility returns a boolean if a field has been set.
 
-### GetOnsideRatio
+### GetOnsiteRatio
 
-`func (o *PersonSearch) GetOnsideRatio() MinMaxPercent`
+`func (o *PersonSearch) GetOnsiteRatio() MinMaxPercent`
 
-GetOnsideRatio returns the OnsideRatio field if non-nil, zero value otherwise.
+GetOnsiteRatio returns the OnsiteRatio field if non-nil, zero value otherwise.
 
-### GetOnsideRatioOk
+### GetOnsiteRatioOk
 
-`func (o *PersonSearch) GetOnsideRatioOk() (*MinMaxPercent, bool)`
+`func (o *PersonSearch) GetOnsiteRatioOk() (*MinMaxPercent, bool)`
 
-GetOnsideRatioOk returns a tuple with the OnsideRatio field if it's non-nil, zero value otherwise
+GetOnsiteRatioOk returns a tuple with the OnsiteRatio field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOnsideRatio
+### SetOnsiteRatio
 
-`func (o *PersonSearch) SetOnsideRatio(v MinMaxPercent)`
+`func (o *PersonSearch) SetOnsiteRatio(v MinMaxPercent)`
 
-SetOnsideRatio sets OnsideRatio field to given value.
+SetOnsiteRatio sets OnsiteRatio field to given value.
 
-### HasOnsideRatio
+### HasOnsiteRatio
 
-`func (o *PersonSearch) HasOnsideRatio() bool`
+`func (o *PersonSearch) HasOnsiteRatio() bool`
 
-HasOnsideRatio returns a boolean if a field has been set.
+HasOnsiteRatio returns a boolean if a field has been set.
 
 ### GetSeniority
 

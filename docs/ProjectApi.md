@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**GetOrganizationProjects**](ProjectApi.md#GetOrganizationProjects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
 [**GetProject**](ProjectApi.md#GetProject) | **Get** /projects/{projectId} | Get details about a Project
 [**GetProjects**](ProjectApi.md#GetProjects) | **Get** /projects | Get a list of all Projects in all Organizations
+[**SearchProjects**](ProjectApi.md#SearchProjects) | **Post** /projects/search | Complex search over project entities
 [**UpdatePersonProject**](ProjectApi.md#UpdatePersonProject) | **Put** /persons/{personId}/projects/{projectId} | Update a Project of a Person
 [**UpdatePersonProjectSkill**](ProjectApi.md#UpdatePersonProjectSkill) | **Put** /persons/{personId}/projects/{projectId}/skills/{skillId} | Update the level of a Skill in a Project participation
 [**UpdateProject**](ProjectApi.md#UpdateProject) | **Put** /projects/{projectId} | Update a Project
@@ -814,6 +815,74 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchProjects
+
+> PagedProjects SearchProjects(ctx).ProjectSearch(projectSearch).Skip(skip).Limit(limit).Execute()
+
+Complex search over project entities
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    projectSearch := *openapiclient.NewProjectSearch() // ProjectSearch | 
+    skip := int32(56) // int32 |  (optional) (default to 0)
+    limit := int32(56) // int32 |  (optional) (default to 20)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ProjectApi.SearchProjects(context.Background()).ProjectSearch(projectSearch).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.SearchProjects``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchProjects`: PagedProjects
+    fmt.Fprintf(os.Stdout, "Response from `ProjectApi.SearchProjects`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchProjectsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectSearch** | [**ProjectSearch**](ProjectSearch.md) |  | 
+ **skip** | **int32** |  | [default to 0]
+ **limit** | **int32** |  | [default to 20]
+
+### Return type
+
+[**PagedProjects**](PagedProjects.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

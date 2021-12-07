@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.9.5
+  version: 0.9.6
 servers:
 - url: /api/v1
 security:
@@ -1058,6 +1058,48 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       summary: Get a list of all Projects in all Organizations
+      tags:
+      - Project
+  /projects/search:
+    post:
+      operationId: searchProjects
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectSearch'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedProjects'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Complex search over project entities
       tags:
       - Project
   /projects/{projectId}:
@@ -3243,6 +3285,31 @@ components:
             type: string
           type: array
       type: object
+    Availability:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Timeframed'
+      - $ref: '#/components/schemas/Availability_allOf'
+      required:
+      - enddate
+      - id
+      - name
+      - plannedHours
+      - startdate
+      - workHours
+      type: object
+    AvailabilityDetail:
+      example:
+        percent: 8.008281904610115
+      properties:
+        availability:
+          $ref: '#/components/schemas/Availability'
+        percent:
+          format: integer
+          maximum: 100
+          minimum: 0
+          type: number
+      type: object
     Certification:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -3452,30 +3519,99 @@ components:
         office:
           $ref: '#/components/schemas/Office'
       type: object
-    Availability:
-      allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Timeframed'
-      - $ref: '#/components/schemas/Availability_allOf'
-      required:
-      - enddate
-      - id
-      - name
-      - plannedHours
-      - startdate
-      - workHours
-      type: object
-    AvailabilityDetail:
+    PersonSearch:
       example:
-        percent: 8.008281904610115
+        skills:
+        - ""
+        - ""
+        officeIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        projects:
+        - ""
+        - ""
+        industries:
+        - ""
+        - ""
+        organizations:
+        - ""
+        - ""
+        personIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        onsiteRatio:
+          min: 0
+          max: 100
+        certifications:
+        - ""
+        - ""
       properties:
-        availability:
-          $ref: '#/components/schemas/Availability'
-        percent:
-          format: integer
-          maximum: 100
-          minimum: 0
-          type: number
+        personIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        officeIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        availibility:
+          $ref: '#/components/schemas/AvailabilityFilter'
+        onsiteRatio:
+          $ref: '#/components/schemas/MinMaxPercent'
+        seniority:
+          $ref: '#/components/schemas/Seniority'
+        skills:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/PersonSkillFilter'
+          type: array
+        projects:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/PersonProjectFilter'
+          type: array
+        organizations:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/PersonOrganizationFilter'
+          type: array
+        industries:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/PersonIndustryFilter'
+          type: array
+        certifications:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/PersonCertificationFilter'
+          type: array
+      type: object
+    PersonSkillFilter:
+      allOf:
+      - $ref: '#/components/schemas/EntityFilter'
+      - $ref: '#/components/schemas/PersonSkillFilter_allOf'
+      type: object
+    PersonProjectFilter:
+      allOf:
+      - $ref: '#/components/schemas/EntityFilter'
+      - $ref: '#/components/schemas/PersonProjectFilter_allOf'
+      type: object
+    PersonOrganizationFilter:
+      allOf:
+      - $ref: '#/components/schemas/EntityFilter'
+      - $ref: '#/components/schemas/PersonOrganizationFilter_allOf'
+      type: object
+    PersonIndustryFilter:
+      allOf:
+      - $ref: '#/components/schemas/EntityFilter'
+      - $ref: '#/components/schemas/PersonIndustryFilter_allOf'
+      type: object
+    PersonCertificationFilter:
+      allOf:
+      - $ref: '#/components/schemas/EntityFilter'
+      - $ref: '#/components/schemas/PersonCertificationFilter_allOf'
       type: object
     Project:
       allOf:
@@ -3539,6 +3675,57 @@ components:
         personalDescription:
           type: string
       type: object
+    ProjectSearch:
+      example:
+        skills:
+        - ""
+        - ""
+        minStartDate: 2000-01-23
+        maxEndDate: 2000-01-23
+        projectStatuses:
+        - null
+        - null
+        amountOfInvolvedPersons:
+          min: 0
+          max: 100
+        participationAmountInMonths:
+          min: 0
+          max: 100
+        involvedOfficeIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        minStartDate:
+          format: date
+          type: string
+        maxEndDate:
+          format: date
+          type: string
+        projectStatuses:
+          items:
+            $ref: '#/components/schemas/ProjectStatus'
+          type: array
+        participationAmountInMonths:
+          $ref: '#/components/schemas/MinMax'
+        involvedOfficeIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        amountOfInvolvedPersons:
+          $ref: '#/components/schemas/MinMax'
+        skills:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/EntityFilter'
+          type: array
+      type: object
+    ProjectStatus:
+      enum:
+      - PLANNING
+      - ACTIVE
+      - DONE
+      type: string
     Skill:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -3677,100 +3864,6 @@ components:
         item:
           $ref: '#/components/schemas/NamedDomainModel'
       type: object
-    PersonSearch:
-      example:
-        skills:
-        - ""
-        - ""
-        officeIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        projects:
-        - ""
-        - ""
-        industries:
-        - ""
-        - ""
-        organizations:
-        - ""
-        - ""
-        personIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        certifications:
-        - ""
-        - ""
-        onsideRatio:
-          min: 0
-          max: 100
-      properties:
-        personIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-        officeIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-        availibility:
-          $ref: '#/components/schemas/AvailabilityFilter'
-        onsideRatio:
-          $ref: '#/components/schemas/MinMaxPercent'
-        seniority:
-          $ref: '#/components/schemas/Seniority'
-        skills:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/PersonSkillFilter'
-          type: array
-        projects:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/PersonProjectFilter'
-          type: array
-        organizations:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/PersonOrganizationFilter'
-          type: array
-        industries:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/PersonIndustryFilter'
-          type: array
-        certifications:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/PersonCertificationFilter'
-          type: array
-      type: object
-    PersonSkillFilter:
-      allOf:
-      - $ref: '#/components/schemas/EntityFilter'
-      - $ref: '#/components/schemas/PersonSkillFilter_allOf'
-      type: object
-    PersonProjectFilter:
-      allOf:
-      - $ref: '#/components/schemas/EntityFilter'
-      - $ref: '#/components/schemas/PersonProjectFilter_allOf'
-      type: object
-    PersonOrganizationFilter:
-      allOf:
-      - $ref: '#/components/schemas/EntityFilter'
-      - $ref: '#/components/schemas/PersonOrganizationFilter_allOf'
-      type: object
-    PersonIndustryFilter:
-      allOf:
-      - $ref: '#/components/schemas/EntityFilter'
-      - $ref: '#/components/schemas/PersonIndustryFilter_allOf'
-      type: object
-    PersonCertificationFilter:
-      allOf:
-      - $ref: '#/components/schemas/EntityFilter'
-      - $ref: '#/components/schemas/PersonCertificationFilter_allOf'
-      type: object
     EntityFilter:
       properties:
         id:
@@ -3802,6 +3895,9 @@ components:
           type: number
       type: object
     MinMax:
+      example:
+        min: 0
+        max: 100
       properties:
         min:
           example: 0
@@ -3825,6 +3921,17 @@ components:
         name:
           example: This is the name
           type: string
+      type: object
+    Availability_allOf:
+      properties:
+        workHours:
+          example: 38.5
+          format: float
+          type: number
+        plannedHours:
+          example: 22.5
+          format: float
+          type: number
       type: object
     Certification_allOf:
       properties:
@@ -3893,16 +4000,44 @@ components:
           description: Marks persons not working for the company anymore
           type: boolean
       type: object
-    Availability_allOf:
+    PersonSkillFilter_allOf:
       properties:
-        workHours:
-          example: 38.5
-          format: float
-          type: number
-        plannedHours:
-          example: 22.5
-          format: float
-          type: number
+        experienceInMonth:
+          $ref: '#/components/schemas/MinMax'
+        lastAssignment:
+          description: filters the last time the employee used the skill in a project
+          format: date
+          type: string
+      type: object
+    PersonProjectFilter_allOf:
+      properties:
+        participationInMonth:
+          $ref: '#/components/schemas/MinMax'
+        involevedOfficeIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+      type: object
+    PersonOrganizationFilter_allOf:
+      properties:
+        amountOfProjects:
+          $ref: '#/components/schemas/MinMax'
+      type: object
+    PersonIndustryFilter_allOf:
+      properties:
+        activeProjects:
+          type: boolean
+        amountOfProjects:
+          $ref: '#/components/schemas/MinMax'
+        experienceInMonth:
+          $ref: '#/components/schemas/MinMax'
+      type: object
+    PersonCertificationFilter_allOf:
+      properties:
+        startedCertificaiton:
+          description: Include employees who started the certification
+          type: boolean
       type: object
     Project_allOf:
       properties:
@@ -4035,45 +4170,6 @@ components:
           items:
             $ref: '#/components/schemas/SearchResultItem'
           type: array
-      type: object
-    PersonSkillFilter_allOf:
-      properties:
-        experienceInMonth:
-          $ref: '#/components/schemas/MinMax'
-        lastAssignment:
-          description: filters the last time the employee used the skill in a project
-          format: date
-          type: string
-      type: object
-    PersonProjectFilter_allOf:
-      properties:
-        participationInMonth:
-          $ref: '#/components/schemas/MinMax'
-        involevedOfficeIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-      type: object
-    PersonOrganizationFilter_allOf:
-      properties:
-        amountOfProjects:
-          $ref: '#/components/schemas/MinMax'
-      type: object
-    PersonIndustryFilter_allOf:
-      properties:
-        activeProjects:
-          type: boolean
-        amountOfProjects:
-          $ref: '#/components/schemas/MinMax'
-        experienceInMonth:
-          $ref: '#/components/schemas/MinMax'
-      type: object
-    PersonCertificationFilter_allOf:
-      properties:
-        startedCertificaiton:
-          description: Include employees who started the certification
-          type: boolean
       type: object
   securitySchemes:
     bearerAuth:
