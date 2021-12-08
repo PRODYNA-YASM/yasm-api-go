@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.9.6
+  version: 0.9.7
 servers:
 - url: /api/v1
 security:
@@ -3545,6 +3545,9 @@ components:
         certifications:
         - ""
         - ""
+        seniority:
+        - null
+        - null
       properties:
         personIds:
           items:
@@ -3556,12 +3559,14 @@ components:
             format: uuid
             type: string
           type: array
-        availibility:
+        availability:
           $ref: '#/components/schemas/AvailabilityFilter'
         onsiteRatio:
           $ref: '#/components/schemas/MinMaxPercent'
         seniority:
-          $ref: '#/components/schemas/Seniority'
+          items:
+            $ref: '#/components/schemas/Seniority'
+          type: array
         skills:
           items:
             allOf:

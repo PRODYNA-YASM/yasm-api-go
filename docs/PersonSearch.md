@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PersonIds** | Pointer to **[]string** |  | [optional] 
 **OfficeIds** | Pointer to **[]string** |  | [optional] 
-**Availibility** | Pointer to [**AvailabilityFilter**](AvailabilityFilter.md) |  | [optional] 
+**Availability** | Pointer to [**AvailabilityFilter**](AvailabilityFilter.md) |  | [optional] 
 **OnsiteRatio** | Pointer to [**MinMaxPercent**](MinMaxPercent.md) |  | [optional] 
-**Seniority** | Pointer to [**Seniority**](Seniority.md) |  | [optional] 
+**Seniority** | Pointer to [**[]Seniority**](Seniority.md) |  | [optional] 
 **Skills** | Pointer to [**[]PersonSkillFilter**](PersonSkillFilter.md) |  | [optional] 
 **Projects** | Pointer to [**[]PersonProjectFilter**](PersonProjectFilter.md) |  | [optional] 
 **Organizations** | Pointer to [**[]PersonOrganizationFilter**](PersonOrganizationFilter.md) |  | [optional] 
@@ -84,30 +84,30 @@ SetOfficeIds sets OfficeIds field to given value.
 
 HasOfficeIds returns a boolean if a field has been set.
 
-### GetAvailibility
+### GetAvailability
 
-`func (o *PersonSearch) GetAvailibility() AvailabilityFilter`
+`func (o *PersonSearch) GetAvailability() AvailabilityFilter`
 
-GetAvailibility returns the Availibility field if non-nil, zero value otherwise.
+GetAvailability returns the Availability field if non-nil, zero value otherwise.
 
-### GetAvailibilityOk
+### GetAvailabilityOk
 
-`func (o *PersonSearch) GetAvailibilityOk() (*AvailabilityFilter, bool)`
+`func (o *PersonSearch) GetAvailabilityOk() (*AvailabilityFilter, bool)`
 
-GetAvailibilityOk returns a tuple with the Availibility field if it's non-nil, zero value otherwise
+GetAvailabilityOk returns a tuple with the Availability field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAvailibility
+### SetAvailability
 
-`func (o *PersonSearch) SetAvailibility(v AvailabilityFilter)`
+`func (o *PersonSearch) SetAvailability(v AvailabilityFilter)`
 
-SetAvailibility sets Availibility field to given value.
+SetAvailability sets Availability field to given value.
 
-### HasAvailibility
+### HasAvailability
 
-`func (o *PersonSearch) HasAvailibility() bool`
+`func (o *PersonSearch) HasAvailability() bool`
 
-HasAvailibility returns a boolean if a field has been set.
+HasAvailability returns a boolean if a field has been set.
 
 ### GetOnsiteRatio
 
@@ -136,20 +136,20 @@ HasOnsiteRatio returns a boolean if a field has been set.
 
 ### GetSeniority
 
-`func (o *PersonSearch) GetSeniority() Seniority`
+`func (o *PersonSearch) GetSeniority() []Seniority`
 
 GetSeniority returns the Seniority field if non-nil, zero value otherwise.
 
 ### GetSeniorityOk
 
-`func (o *PersonSearch) GetSeniorityOk() (*Seniority, bool)`
+`func (o *PersonSearch) GetSeniorityOk() (*[]Seniority, bool)`
 
 GetSeniorityOk returns a tuple with the Seniority field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSeniority
 
-`func (o *PersonSearch) SetSeniority(v Seniority)`
+`func (o *PersonSearch) SetSeniority(v []Seniority)`
 
 SetSeniority sets Seniority field to given value.
 
