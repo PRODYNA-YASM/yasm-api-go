@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**DeleteProject**](ProjectApi.md#DeleteProject) | **Delete** /projects/{projectId} | Delete a project
 [**GetOrganizationProjects**](ProjectApi.md#GetOrganizationProjects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
 [**GetProject**](ProjectApi.md#GetProject) | **Get** /projects/{projectId} | Get details about a Project
-[**GetProjects**](ProjectApi.md#GetProjects) | **Get** /projects | Get a list of all Projects in all Organizations
 [**SearchProjects**](ProjectApi.md#SearchProjects) | **Post** /projects/search | Complex search over project entities
 [**UpdatePersonProject**](ProjectApi.md#UpdatePersonProject) | **Put** /persons/{personId}/projects/{projectId} | Update a Project of a Person
 [**UpdatePersonProjectSkill**](ProjectApi.md#UpdatePersonProjectSkill) | **Put** /persons/{personId}/projects/{projectId}/skills/{skillId} | Update the level of a Skill in a Project participation
@@ -733,80 +732,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ProjectDetails**](ProjectDetails.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetProjects
-
-> PagedProjects GetProjects(ctx).Skip(skip).Limit(limit).ProjectIds(projectIds).SkillIds(skillIds).PersonIds(personIds).IndustryIds(industryIds).Execute()
-
-Get a list of all Projects in all Organizations
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    skip := int32(56) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
-    projectIds := []string{"Inner_example"} // []string |  (optional)
-    skillIds := []string{"Inner_example"} // []string |  (optional)
-    personIds := []string{"Inner_example"} // []string |  (optional)
-    industryIds := []string{"Inner_example"} // []string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectApi.GetProjects(context.Background()).Skip(skip).Limit(limit).ProjectIds(projectIds).SkillIds(skillIds).PersonIds(personIds).IndustryIds(industryIds).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.GetProjects``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetProjects`: PagedProjects
-    fmt.Fprintf(os.Stdout, "Response from `ProjectApi.GetProjects`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetProjectsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
- **projectIds** | **[]string** |  | 
- **skillIds** | **[]string** |  | 
- **personIds** | **[]string** |  | 
- **industryIds** | **[]string** |  | 
-
-### Return type
-
-[**PagedProjects**](PagedProjects.md)
 
 ### Authorization
 

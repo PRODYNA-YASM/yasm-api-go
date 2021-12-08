@@ -28,7 +28,6 @@ Method | HTTP request | Description
 [**GetAvailabilities**](PersonApi.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetAvailabilitiesCalculated**](PersonApi.md#GetAvailabilitiesCalculated) | **Get** /persons/{personId}/availabilities/calculated | Get a list of all activities for a person for a given time persion, calculated on server side
 [**GetPerson**](PersonApi.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
-[**GetPersons**](PersonApi.md#GetPersons) | **Get** /persons | Get a list of all persons
 [**SearchPersons**](PersonApi.md#SearchPersons) | **Post** /persons/search | Complex search over person entities
 [**UpdateAvailability**](PersonApi.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
 [**UpdatePerson**](PersonApi.md#UpdatePerson) | **Put** /persons/{personId} | Update an existing Person
@@ -1739,84 +1738,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PersonDetails**](PersonDetails.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetPersons
-
-> PagedPersons GetPersons(ctx).Skip(skip).Limit(limit).PersonIds(personIds).SkillIds(skillIds).ProjectIds(projectIds).OrganizationIds(organizationIds).IndustryIds(industryIds).CertificationIds(certificationIds).Execute()
-
-Get a list of all persons
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    skip := int32(56) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
-    personIds := []string{"Inner_example"} // []string |  (optional)
-    skillIds := []string{"Inner_example"} // []string |  (optional)
-    projectIds := []string{"Inner_example"} // []string |  (optional)
-    organizationIds := []string{"Inner_example"} // []string |  (optional)
-    industryIds := []string{"Inner_example"} // []string |  (optional)
-    certificationIds := []string{"Inner_example"} // []string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.GetPersons(context.Background()).Skip(skip).Limit(limit).PersonIds(personIds).SkillIds(skillIds).ProjectIds(projectIds).OrganizationIds(organizationIds).IndustryIds(industryIds).CertificationIds(certificationIds).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GetPersons``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPersons`: PagedPersons
-    fmt.Fprintf(os.Stdout, "Response from `PersonApi.GetPersons`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPersonsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
- **personIds** | **[]string** |  | 
- **skillIds** | **[]string** |  | 
- **projectIds** | **[]string** |  | 
- **organizationIds** | **[]string** |  | 
- **industryIds** | **[]string** |  | 
- **certificationIds** | **[]string** |  | 
-
-### Return type
-
-[**PagedPersons**](PagedPersons.md)
 
 ### Authorization
 

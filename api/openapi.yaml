@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.9.7
+  version: 0.9.8
 servers:
 - url: /api/v1
 security:
@@ -984,82 +984,6 @@ paths:
       tags:
       - Certification
       - Skill
-  /projects:
-    get:
-      operationId: getProjects
-      parameters:
-      - explode: true
-        in: query
-        name: skip
-        required: false
-        schema:
-          default: 0
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 20
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: projectIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: skillIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: personIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: industryIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedProjects'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Get a list of all Projects in all Organizations
-      tags:
-      - Project
   /projects/search:
     post:
       operationId: searchProjects
@@ -1481,101 +1405,6 @@ paths:
       tags:
       - Skill
   /persons:
-    get:
-      operationId: getPersons
-      parameters:
-      - explode: true
-        in: query
-        name: skip
-        required: false
-        schema:
-          default: 0
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 20
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: personIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: skillIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: projectIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: organizationIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: industryIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      - explode: true
-        in: query
-        name: certificationIds
-        required: false
-        schema:
-          items:
-            format: uuid
-            type: string
-          type: array
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedPersons'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Get a list of all persons
-      tags:
-      - Person
     post:
       operationId: createPerson
       requestBody:
@@ -3337,6 +3166,7 @@ components:
     Country:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Country_allOf'
       type: object
     CountryDetails:
       example:
@@ -3693,13 +3523,30 @@ components:
         amountOfInvolvedPersons:
           min: 0
           max: 100
+        industries:
+        - ""
+        - ""
+        organizations:
+        - ""
+        - ""
+        projectIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         participationAmountInMonths:
           min: 0
           max: 100
         involvedOfficeIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        participants:
+        - ""
+        - ""
       properties:
+        projectIds:
+          items:
+            format: uuid
+            type: string
+          type: array
         minStartDate:
           format: date
           type: string
@@ -3720,6 +3567,21 @@ components:
         amountOfInvolvedPersons:
           $ref: '#/components/schemas/MinMax'
         skills:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/EntityFilter'
+          type: array
+        participants:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/EntityFilter'
+          type: array
+        industries:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/EntityFilter'
+          type: array
+        organizations:
           items:
             allOf:
             - $ref: '#/components/schemas/EntityFilter'
@@ -3941,6 +3803,12 @@ components:
     Certification_allOf:
       properties:
         validity:
+          type: string
+      type: object
+    Country_allOf:
+      properties:
+        picture:
+          description: base64 encoded image
           type: string
       type: object
     Experience_allOf:

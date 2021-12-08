@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ProjectIds** | Pointer to **[]string** |  | [optional] 
 **MinStartDate** | Pointer to **string** |  | [optional] 
 **MaxEndDate** | Pointer to **string** |  | [optional] 
 **ProjectStatuses** | Pointer to [**[]ProjectStatus**](ProjectStatus.md) |  | [optional] 
@@ -11,6 +12,9 @@ Name | Type | Description | Notes
 **InvolvedOfficeIds** | Pointer to **[]string** |  | [optional] 
 **AmountOfInvolvedPersons** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
 **Skills** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
+**Participants** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
+**Industries** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
+**Organizations** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
 
 ## Methods
 
@@ -30,6 +34,31 @@ will change when the set of required properties is changed
 NewProjectSearchWithDefaults instantiates a new ProjectSearch object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetProjectIds
+
+`func (o *ProjectSearch) GetProjectIds() []string`
+
+GetProjectIds returns the ProjectIds field if non-nil, zero value otherwise.
+
+### GetProjectIdsOk
+
+`func (o *ProjectSearch) GetProjectIdsOk() (*[]string, bool)`
+
+GetProjectIdsOk returns a tuple with the ProjectIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectIds
+
+`func (o *ProjectSearch) SetProjectIds(v []string)`
+
+SetProjectIds sets ProjectIds field to given value.
+
+### HasProjectIds
+
+`func (o *ProjectSearch) HasProjectIds() bool`
+
+HasProjectIds returns a boolean if a field has been set.
 
 ### GetMinStartDate
 
@@ -205,6 +234,81 @@ SetSkills sets Skills field to given value.
 `func (o *ProjectSearch) HasSkills() bool`
 
 HasSkills returns a boolean if a field has been set.
+
+### GetParticipants
+
+`func (o *ProjectSearch) GetParticipants() []EntityFilter`
+
+GetParticipants returns the Participants field if non-nil, zero value otherwise.
+
+### GetParticipantsOk
+
+`func (o *ProjectSearch) GetParticipantsOk() (*[]EntityFilter, bool)`
+
+GetParticipantsOk returns a tuple with the Participants field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParticipants
+
+`func (o *ProjectSearch) SetParticipants(v []EntityFilter)`
+
+SetParticipants sets Participants field to given value.
+
+### HasParticipants
+
+`func (o *ProjectSearch) HasParticipants() bool`
+
+HasParticipants returns a boolean if a field has been set.
+
+### GetIndustries
+
+`func (o *ProjectSearch) GetIndustries() []EntityFilter`
+
+GetIndustries returns the Industries field if non-nil, zero value otherwise.
+
+### GetIndustriesOk
+
+`func (o *ProjectSearch) GetIndustriesOk() (*[]EntityFilter, bool)`
+
+GetIndustriesOk returns a tuple with the Industries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIndustries
+
+`func (o *ProjectSearch) SetIndustries(v []EntityFilter)`
+
+SetIndustries sets Industries field to given value.
+
+### HasIndustries
+
+`func (o *ProjectSearch) HasIndustries() bool`
+
+HasIndustries returns a boolean if a field has been set.
+
+### GetOrganizations
+
+`func (o *ProjectSearch) GetOrganizations() []EntityFilter`
+
+GetOrganizations returns the Organizations field if non-nil, zero value otherwise.
+
+### GetOrganizationsOk
+
+`func (o *ProjectSearch) GetOrganizationsOk() (*[]EntityFilter, bool)`
+
+GetOrganizationsOk returns a tuple with the Organizations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizations
+
+`func (o *ProjectSearch) SetOrganizations(v []EntityFilter)`
+
+SetOrganizations sets Organizations field to given value.
+
+### HasOrganizations
+
+`func (o *ProjectSearch) HasOrganizations() bool`
+
+HasOrganizations returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
