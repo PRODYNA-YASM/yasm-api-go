@@ -26,7 +26,6 @@ Method | HTTP request | Description
 [**DeletePersonSkillExperiences**](PersonApi.md#DeletePersonSkillExperiences) | **Delete** /persons/{personId}/experiences | Remove an Skill Experience to a Person
 [**GeneratePersonProfile**](PersonApi.md#GeneratePersonProfile) | **Get** /persons/{personid}/profile | Generate a PDF profile from a Person
 [**GetAvailabilities**](PersonApi.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
-[**GetAvailabilitiesCalculated**](PersonApi.md#GetAvailabilitiesCalculated) | **Get** /persons/{personId}/availabilities/calculated | Get a list of all activities for a person for a given time persion, calculated on server side
 [**GetPerson**](PersonApi.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**SearchPersons**](PersonApi.md#SearchPersons) | **Post** /persons/search | Complex search over person entities
 [**UpdateAvailability**](PersonApi.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
@@ -1591,81 +1590,6 @@ Other parameters are passed through a pointer to a apiGetAvailabilitiesRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
-### Return type
-
-[**PagedAvailabilities**](PagedAvailabilities.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetAvailabilitiesCalculated
-
-> PagedAvailabilities GetAvailabilitiesCalculated(ctx, personId).StartDate(startDate).PeriodDays(periodDays).NumberOfPeriods(numberOfPeriods).Execute()
-
-Get a list of all activities for a person for a given time persion, calculated on server side
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    "time"
-    openapiclient "./openapi"
-)
-
-func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    startDate := time.Now() // string | 
-    periodDays := int32(7) // int32 |  (optional) (default to 7)
-    numberOfPeriods := int32(10) // int32 |  (optional) (default to 10)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.GetAvailabilitiesCalculated(context.Background(), personId).StartDate(startDate).PeriodDays(periodDays).NumberOfPeriods(numberOfPeriods).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GetAvailabilitiesCalculated``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAvailabilitiesCalculated`: PagedAvailabilities
-    fmt.Fprintf(os.Stdout, "Response from `PersonApi.GetAvailabilitiesCalculated`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAvailabilitiesCalculatedRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **startDate** | **string** |  | 
- **periodDays** | **int32** |  | [default to 7]
- **numberOfPeriods** | **int32** |  | [default to 10]
 
 ### Return type
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Certifications** | Pointer to [**[]CertificationDetails**](CertificationDetails.md) |  | [optional] 
 **Languages** | Pointer to [**[]LanguageLevel**](LanguageLevel.md) |  | [optional] 
 **Office** | Pointer to [**Office**](Office.md) |  | [optional] 
+**Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
 **Score** | Pointer to **float32** |  | [optional] 
 
 ## Methods
@@ -232,6 +233,31 @@ SetOffice sets Office field to given value.
 `func (o *PersonScoreDetail) HasOffice() bool`
 
 HasOffice returns a boolean if a field has been set.
+
+### GetAvailabilities
+
+`func (o *PersonScoreDetail) GetAvailabilities() []AvailabilityDetail`
+
+GetAvailabilities returns the Availabilities field if non-nil, zero value otherwise.
+
+### GetAvailabilitiesOk
+
+`func (o *PersonScoreDetail) GetAvailabilitiesOk() (*[]AvailabilityDetail, bool)`
+
+GetAvailabilitiesOk returns a tuple with the Availabilities field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAvailabilities
+
+`func (o *PersonScoreDetail) SetAvailabilities(v []AvailabilityDetail)`
+
+SetAvailabilities sets Availabilities field to given value.
+
+### HasAvailabilities
+
+`func (o *PersonScoreDetail) HasAvailabilities() bool`
+
+HasAvailabilities returns a boolean if a field has been set.
 
 ### GetScore
 

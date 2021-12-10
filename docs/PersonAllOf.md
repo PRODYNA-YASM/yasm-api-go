@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **Mail** | Pointer to **string** |  | [optional] 
 **MobilePhone** | Pointer to **string** |  | [optional] 
 **Seniority** | Pointer to **string** |  | [optional] 
-**ExperienceSinceYear** | Pointer to **float32** |  | [optional] 
-**OnsiteRatio** | Pointer to **float32** |  | [optional] 
+**ExperienceSinceYear** | Pointer to **int32** |  | [optional] 
+**OnsiteRatio** | Pointer to **int32** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] 
 **Inactive** | Pointer to **bool** | Marks persons not working for the company anymore | [optional] [default to false]
 
@@ -212,20 +212,20 @@ HasSeniority returns a boolean if a field has been set.
 
 ### GetExperienceSinceYear
 
-`func (o *PersonAllOf) GetExperienceSinceYear() float32`
+`func (o *PersonAllOf) GetExperienceSinceYear() int32`
 
 GetExperienceSinceYear returns the ExperienceSinceYear field if non-nil, zero value otherwise.
 
 ### GetExperienceSinceYearOk
 
-`func (o *PersonAllOf) GetExperienceSinceYearOk() (*float32, bool)`
+`func (o *PersonAllOf) GetExperienceSinceYearOk() (*int32, bool)`
 
 GetExperienceSinceYearOk returns a tuple with the ExperienceSinceYear field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExperienceSinceYear
 
-`func (o *PersonAllOf) SetExperienceSinceYear(v float32)`
+`func (o *PersonAllOf) SetExperienceSinceYear(v int32)`
 
 SetExperienceSinceYear sets ExperienceSinceYear field to given value.
 
@@ -237,20 +237,20 @@ HasExperienceSinceYear returns a boolean if a field has been set.
 
 ### GetOnsiteRatio
 
-`func (o *PersonAllOf) GetOnsiteRatio() float32`
+`func (o *PersonAllOf) GetOnsiteRatio() int32`
 
 GetOnsiteRatio returns the OnsiteRatio field if non-nil, zero value otherwise.
 
 ### GetOnsiteRatioOk
 
-`func (o *PersonAllOf) GetOnsiteRatioOk() (*float32, bool)`
+`func (o *PersonAllOf) GetOnsiteRatioOk() (*int32, bool)`
 
 GetOnsiteRatioOk returns a tuple with the OnsiteRatio field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOnsiteRatio
 
-`func (o *PersonAllOf) SetOnsiteRatio(v float32)`
+`func (o *PersonAllOf) SetOnsiteRatio(v int32)`
 
 SetOnsiteRatio sets OnsiteRatio field to given value.
 

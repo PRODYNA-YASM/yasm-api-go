@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.9.8
+  version: 0.9.9
 servers:
 - url: /api/v1
 security:
@@ -2531,62 +2531,7 @@ paths:
       tags:
       - Person
       - Availability
-  /persons/{personId}/availabilities/calculated:
-    get:
-      operationId: getAvailabilitiesCalculated
-      parameters:
-      - explode: false
-        in: path
-        name: personId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: true
-        in: query
-        name: startDate
-        required: true
-        schema:
-          format: date
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: periodDays
-        required: false
-        schema:
-          default: 7
-          example: 7
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: numberOfPeriods
-        required: false
-        schema:
-          default: 10
-          example: 10
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedAvailabilities'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Get a list of all activities for a person for a given time persion,
-        calculated on server side
-      tags:
-      - Person
-      - Availability
+  /persons/{personId}/availabilities/calculated: {}
   /persons/{personId}/availabilities/{availabilityId}:
     delete:
       operationId: deleteAvailability
@@ -3299,6 +3244,9 @@ components:
             level: 1
         - level:
             level: 1
+        availabilities:
+        - percent: 8.008281904610115
+        - percent: 8.008281904610115
         industries:
         - null
         - null
@@ -3348,6 +3296,10 @@ components:
           type: array
         office:
           $ref: '#/components/schemas/Office'
+        availabilities:
+          items:
+            $ref: '#/components/schemas/AvailabilityDetail'
+          type: array
       type: object
     PersonSearch:
       example:
@@ -3750,16 +3702,14 @@ components:
       properties:
         min:
           example: 0
-          format: int32
           maximum: 100
           minimum: 0
-          type: number
+          type: integer
         max:
           example: 100
-          format: int32
           maximum: 100
           minimum: 0
-          type: number
+          type: integer
       type: object
     MinMax:
       example:
@@ -3768,12 +3718,10 @@ components:
       properties:
         min:
           example: 0
-          format: int32
-          type: number
+          type: integer
         max:
           example: 100
-          format: int32
-          type: number
+          type: integer
       type: object
     Seniority:
       enum:
@@ -3857,14 +3805,12 @@ components:
           type: string
         experienceSinceYear:
           example: 2010
-          format: int32
-          type: number
+          type: integer
         onsiteRatio:
           example: 20
-          format: int32
           maximum: 100
           minimum: 0
-          type: number
+          type: integer
         picture:
           description: base64 encoded image
           type: string

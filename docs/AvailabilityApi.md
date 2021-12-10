@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**CreateAvailability**](AvailabilityApi.md#CreateAvailability) | **Post** /persons/{personId}/availabilities | Create a availability for a person
 [**DeleteAvailability**](AvailabilityApi.md#DeleteAvailability) | **Delete** /persons/{personId}/availabilities/{availabilityId} | Delete a person availability
 [**GetAvailabilities**](AvailabilityApi.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
-[**GetAvailabilitiesCalculated**](AvailabilityApi.md#GetAvailabilitiesCalculated) | **Get** /persons/{personId}/availabilities/calculated | Get a list of all activities for a person for a given time persion, calculated on server side
 [**UpdateAvailability**](AvailabilityApi.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
 
 
@@ -203,81 +202,6 @@ Other parameters are passed through a pointer to a apiGetAvailabilitiesRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
-### Return type
-
-[**PagedAvailabilities**](PagedAvailabilities.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetAvailabilitiesCalculated
-
-> PagedAvailabilities GetAvailabilitiesCalculated(ctx, personId).StartDate(startDate).PeriodDays(periodDays).NumberOfPeriods(numberOfPeriods).Execute()
-
-Get a list of all activities for a person for a given time persion, calculated on server side
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    "time"
-    openapiclient "./openapi"
-)
-
-func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    startDate := time.Now() // string | 
-    periodDays := int32(7) // int32 |  (optional) (default to 7)
-    numberOfPeriods := int32(10) // int32 |  (optional) (default to 10)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AvailabilityApi.GetAvailabilitiesCalculated(context.Background(), personId).StartDate(startDate).PeriodDays(periodDays).NumberOfPeriods(numberOfPeriods).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityApi.GetAvailabilitiesCalculated``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAvailabilitiesCalculated`: PagedAvailabilities
-    fmt.Fprintf(os.Stdout, "Response from `AvailabilityApi.GetAvailabilitiesCalculated`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAvailabilitiesCalculatedRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **startDate** | **string** |  | 
- **periodDays** | **int32** |  | [default to 7]
- **numberOfPeriods** | **int32** |  | [default to 10]
 
 ### Return type
 

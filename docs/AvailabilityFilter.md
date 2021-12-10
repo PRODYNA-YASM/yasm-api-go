@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Startdate** | Pointer to **string** |  | [optional] 
 **Enddate** | Pointer to **string** |  | [optional] 
-**Min** | Pointer to **float32** |  | [optional] 
-**Max** | Pointer to **float32** |  | [optional] 
+**Min** | Pointer to **int32** |  | [optional] 
+**Max** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -80,20 +80,20 @@ HasEnddate returns a boolean if a field has been set.
 
 ### GetMin
 
-`func (o *AvailabilityFilter) GetMin() float32`
+`func (o *AvailabilityFilter) GetMin() int32`
 
 GetMin returns the Min field if non-nil, zero value otherwise.
 
 ### GetMinOk
 
-`func (o *AvailabilityFilter) GetMinOk() (*float32, bool)`
+`func (o *AvailabilityFilter) GetMinOk() (*int32, bool)`
 
 GetMinOk returns a tuple with the Min field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMin
 
-`func (o *AvailabilityFilter) SetMin(v float32)`
+`func (o *AvailabilityFilter) SetMin(v int32)`
 
 SetMin sets Min field to given value.
 
@@ -105,20 +105,20 @@ HasMin returns a boolean if a field has been set.
 
 ### GetMax
 
-`func (o *AvailabilityFilter) GetMax() float32`
+`func (o *AvailabilityFilter) GetMax() int32`
 
 GetMax returns the Max field if non-nil, zero value otherwise.
 
 ### GetMaxOk
 
-`func (o *AvailabilityFilter) GetMaxOk() (*float32, bool)`
+`func (o *AvailabilityFilter) GetMaxOk() (*int32, bool)`
 
 GetMaxOk returns a tuple with the Max field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMax
 
-`func (o *AvailabilityFilter) SetMax(v float32)`
+`func (o *AvailabilityFilter) SetMax(v int32)`
 
 SetMax sets Max field to given value.
 
