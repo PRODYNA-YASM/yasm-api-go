@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **WorkHours** | Pointer to **float32** |  | [optional] 
 **PlannedHours** | Pointer to **float32** |  | [optional] 
+**Descriptions** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetPlannedHours sets PlannedHours field to given value.
 `func (o *AvailabilityAllOf) HasPlannedHours() bool`
 
 HasPlannedHours returns a boolean if a field has been set.
+
+### GetDescriptions
+
+`func (o *AvailabilityAllOf) GetDescriptions() []string`
+
+GetDescriptions returns the Descriptions field if non-nil, zero value otherwise.
+
+### GetDescriptionsOk
+
+`func (o *AvailabilityAllOf) GetDescriptionsOk() (*[]string, bool)`
+
+GetDescriptionsOk returns a tuple with the Descriptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescriptions
+
+`func (o *AvailabilityAllOf) SetDescriptions(v []string)`
+
+SetDescriptions sets Descriptions field to given value.
+
+### HasDescriptions
+
+`func (o *AvailabilityAllOf) HasDescriptions() bool`
+
+HasDescriptions returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
