@@ -37,8 +37,8 @@ func main() {
     languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CountryApi.AddLanguageToCountry(context.Background(), countryId, languageId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CountryApi.AddLanguageToCountry(context.Background(), countryId, languageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.AddLanguageToCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     country := *openapiclient.NewCountry("Id_example", "This is the name") // Country | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CountryApi.CreateCountry(context.Background()).Country(country).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CountryApi.CreateCountry(context.Background()).Country(country).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.CreateCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,8 +171,8 @@ func main() {
     countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CountryApi.DeleteCountry(context.Background(), countryId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CountryApi.DeleteCountry(context.Background(), countryId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.DeleteCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -240,8 +240,8 @@ func main() {
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CountryApi.GetCountries(context.Background()).Skip(skip).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CountryApi.GetCountries(context.Background()).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.GetCountries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -305,8 +305,8 @@ func main() {
     countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CountryApi.GetCountry(context.Background(), countryId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CountryApi.GetCountry(context.Background(), countryId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.GetCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -374,8 +374,8 @@ func main() {
     languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CountryApi.RemoveLanguageFromCountry(context.Background(), countryId, languageId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CountryApi.RemoveLanguageFromCountry(context.Background(), countryId, languageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.RemoveLanguageFromCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -445,8 +445,8 @@ func main() {
     country := *openapiclient.NewCountry("Id_example", "This is the name") // Country | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CountryApi.UpdateCountry(context.Background(), countryId).Country(country).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CountryApi.UpdateCountry(context.Background(), countryId).Country(country).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CountryApi.UpdateCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

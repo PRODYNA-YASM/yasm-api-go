@@ -32,8 +32,8 @@ func main() {
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SearchApi.SearchAll(context.Background(), text).Skip(skip).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchApi.SearchAll(context.Background(), text).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchAll``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

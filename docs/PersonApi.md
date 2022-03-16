@@ -63,8 +63,8 @@ func main() {
     body := time.Now() // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.AddPersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.AddPersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.AddPersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -135,8 +135,8 @@ func main() {
     skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.AddPersonInterest(context.Background(), personId, skillId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.AddPersonInterest(context.Background(), personId, skillId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.AddPersonInterest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -206,8 +206,8 @@ func main() {
     officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.AddPersonOffice(context.Background(), personId, officeId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.AddPersonOffice(context.Background(), personId, officeId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.AddPersonOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,8 +278,8 @@ func main() {
     projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | List of Skills with level and timeframe
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.AddPersonProject(context.Background(), personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.AddPersonProject(context.Background(), personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.AddPersonProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -352,8 +352,8 @@ func main() {
     level := *openapiclient.NewLevel() // Level | The Skill Level
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.AddPersonProjectSkill(context.Background(), personId, projectId, skillId).Level(level).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.AddPersonProjectSkill(context.Background(), personId, projectId, skillId).Level(level).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.AddPersonProjectSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -427,8 +427,8 @@ func main() {
     level := *openapiclient.NewLevel() // Level | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.AddPersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.AddPersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.AddPersonSkillExperience``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -499,8 +499,8 @@ func main() {
     skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.AddPersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.AddPersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.AddPersonSkillExperiences``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -571,8 +571,8 @@ func main() {
     confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.ConfirmSkill(context.Background(), personId, projectId, skillId, confirmingPersonId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.ConfirmSkill(context.Background(), personId, projectId, skillId, confirmingPersonId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.ConfirmSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -647,8 +647,8 @@ func main() {
     availability := *openapiclient.NewAvailability("Id_example", "This is the name", time.Now(), time.Now(), float32(38.5), float32(22.5)) // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.CreateAvailability(context.Background(), personId).Availability(availability).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.CreateAvailability(context.Background(), personId).Availability(availability).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.CreateAvailability``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -716,8 +716,8 @@ func main() {
     person := *openapiclient.NewPerson("Id_example", "This is the name", false) // Person | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.CreatePerson(context.Background()).Person(person).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.CreatePerson(context.Background()).Person(person).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.CreatePerson``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -781,8 +781,8 @@ func main() {
     availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeleteAvailability(context.Background(), personId, availabilityId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.DeleteAvailability(context.Background(), personId, availabilityId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeleteAvailability``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -854,8 +854,8 @@ func main() {
     confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeleteConfirmation(context.Background(), personId, projectId, skillId, confirmingPersonId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.DeleteConfirmation(context.Background(), personId, projectId, skillId, confirmingPersonId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeleteConfirmation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -928,8 +928,8 @@ func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeletePerson(context.Background(), personId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.DeletePerson(context.Background(), personId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePerson``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -997,8 +997,8 @@ func main() {
     certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeletePersonCertification(context.Background(), personId, certificationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.DeletePersonCertification(context.Background(), personId, certificationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1068,8 +1068,8 @@ func main() {
     skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeletePersonInterest(context.Background(), personId, skillId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.DeletePersonInterest(context.Background(), personId, skillId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePersonInterest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1139,8 +1139,8 @@ func main() {
     officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeletePersonOffice(context.Background(), personId, officeId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.DeletePersonOffice(context.Background(), personId, officeId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePersonOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1210,8 +1210,8 @@ func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeletePersonProject(context.Background(), personId, projectId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.DeletePersonProject(context.Background(), personId, projectId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePersonProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1282,8 +1282,8 @@ func main() {
     skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeletePersonProjectSkill(context.Background(), personId, projectId, skillId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.DeletePersonProjectSkill(context.Background(), personId, projectId, skillId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePersonProjectSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1355,8 +1355,8 @@ func main() {
     skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeletePersonSkillExperience(context.Background(), personId, skillId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.DeletePersonSkillExperience(context.Background(), personId, skillId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePersonSkillExperience``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1426,8 +1426,8 @@ func main() {
     requestBody := []string{"Property_example"} // []string | A list of skillIds
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.DeletePersonSkillExperiences(context.Background(), personId).RequestBody(requestBody).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.DeletePersonSkillExperiences(context.Background(), personId).RequestBody(requestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.DeletePersonSkillExperiences``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1495,8 +1495,8 @@ func main() {
     personid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.GeneratePersonProfile(context.Background(), personid).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.GeneratePersonProfile(context.Background(), personid).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GeneratePersonProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1563,8 +1563,8 @@ func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.GetAvailabilities(context.Background(), personId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.GetAvailabilities(context.Background(), personId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GetAvailabilities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1631,8 +1631,8 @@ func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.GetPerson(context.Background(), personId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.GetPerson(context.Background(), personId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GetPerson``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1701,8 +1701,8 @@ func main() {
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.SearchPersons(context.Background()).PersonSearch(personSearch).Skip(skip).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.SearchPersons(context.Background()).PersonSearch(personSearch).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.SearchPersons``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1770,8 +1770,8 @@ func main() {
     availability := *openapiclient.NewAvailability("Id_example", "This is the name", time.Now(), time.Now(), float32(38.5), float32(22.5)) // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.UpdateAvailability(context.Background(), personId, availabilityId).Availability(availability).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.UpdateAvailability(context.Background(), personId, availabilityId).Availability(availability).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdateAvailability``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1842,8 +1842,8 @@ func main() {
     person := *openapiclient.NewPerson("Id_example", "This is the name", false) // Person | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.UpdatePerson(context.Background(), personId).Person(person).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.UpdatePerson(context.Background(), personId).Person(person).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdatePerson``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1914,8 +1914,8 @@ func main() {
     body := time.Now() // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.UpdatePersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.UpdatePersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdatePersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1987,8 +1987,8 @@ func main() {
     projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | A time frame and a list of Skills
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.UpdatePersonProject(context.Background(), personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.UpdatePersonProject(context.Background(), personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdatePersonProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2061,8 +2061,8 @@ func main() {
     level := *openapiclient.NewLevel() // Level | The Skill Level
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.UpdatePersonProjectSkill(context.Background(), personId, projectId, skillId).Level(level).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.UpdatePersonProjectSkill(context.Background(), personId, projectId, skillId).Level(level).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdatePersonProjectSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2136,8 +2136,8 @@ func main() {
     level := *openapiclient.NewLevel() // Level | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.UpdatePersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.UpdatePersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdatePersonSkillExperience``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2208,8 +2208,8 @@ func main() {
     skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersonApi.UpdatePersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.UpdatePersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdatePersonSkillExperiences``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

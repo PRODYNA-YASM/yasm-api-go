@@ -35,8 +35,8 @@ func main() {
     availability := *openapiclient.NewAvailability("Id_example", "This is the name", time.Now(), time.Now(), float32(38.5), float32(22.5)) // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AvailabilityApi.CreateAvailability(context.Background(), personId).Availability(availability).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AvailabilityApi.CreateAvailability(context.Background(), personId).Availability(availability).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityApi.CreateAvailability``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -105,8 +105,8 @@ func main() {
     availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AvailabilityApi.DeleteAvailability(context.Background(), personId, availabilityId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AvailabilityApi.DeleteAvailability(context.Background(), personId, availabilityId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityApi.DeleteAvailability``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AvailabilityApi.GetAvailabilities(context.Background(), personId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AvailabilityApi.GetAvailabilities(context.Background(), personId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityApi.GetAvailabilities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -246,8 +246,8 @@ func main() {
     availability := *openapiclient.NewAvailability("Id_example", "This is the name", time.Now(), time.Now(), float32(38.5), float32(22.5)) // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AvailabilityApi.UpdateAvailability(context.Background(), personId, availabilityId).Availability(availability).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AvailabilityApi.UpdateAvailability(context.Background(), personId, availabilityId).Availability(availability).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityApi.UpdateAvailability``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

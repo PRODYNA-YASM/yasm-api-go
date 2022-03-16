@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 0.9.10
+  version: 1.0.1
 servers:
 - url: /api/v1
 security:
@@ -13,8 +13,8 @@ security:
 paths:
   /ping:
     get:
-      description: This operation shows how to override the global security defined
-        above, as we want to open it up for all users.
+      description: "This operation shows how to override the global security defined\
+        \ above, as we want to open it up for all users."
       operationId: getPing
       responses:
         "200":
@@ -35,8 +35,8 @@ paths:
       - Status
   /version:
     get:
-      description: This operation shows how to override the global security defined
-        above, as we want to open it up for all users.
+      description: "This operation shows how to override the global security defined\
+        \ above, as we want to open it up for all users."
       operationId: getVersion
       responses:
         "200":
@@ -1118,8 +1118,8 @@ paths:
     get:
       operationId: getSkills
       parameters:
-      - description: Gives you either all skills, only the root kills or those which
-          are defining kinds
+      - description: "Gives you either all skills, only the root kills or those which\
+          \ are defining kinds"
         explode: true
         in: query
         name: types
@@ -1174,7 +1174,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Get a list of all skills, optionally only root, optionally only kinds
+      summary: "Get a list of all skills, optionally only root, optionally only kinds"
       tags:
       - Skill
     post:
@@ -1366,7 +1366,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Detaches a Skill from parent Skill, return the parent Skill
+      summary: "Detaches a Skill from parent Skill, return the parent Skill"
       tags:
       - Skill
     post:
@@ -1401,7 +1401,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Attach a Skill to a parent Skill, returns the parent Skill
+      summary: "Attach a Skill to a parent Skill, returns the parent Skill"
       tags:
       - Skill
   /persons:
@@ -3030,7 +3030,7 @@ components:
     Locateable:
       properties:
         location:
-          example: Frankfurt, Germany
+          example: "Frankfurt, Germany"
           type: string
         geolocation:
           $ref: '#/components/schemas/Geolocation'
@@ -3074,6 +3074,7 @@ components:
       type: object
     AvailabilityDetail:
       example:
+        availability: null
         percent: 8.008281904610115
       properties:
         availability:
@@ -3096,8 +3097,12 @@ components:
         skills:
         - level:
             level: 1
+          skill: null
         - level:
             level: 1
+          skill: null
+        organization: null
+        certification: null
       properties:
         certification:
           $ref: '#/components/schemas/Certification'
@@ -3115,6 +3120,7 @@ components:
       type: object
     CountryDetails:
       example:
+        country: null
         languages:
         - null
         - null
@@ -3153,6 +3159,7 @@ components:
       type: object
     LanguageDetails:
       example:
+        language: null
         countries:
         - null
         - null
@@ -3168,6 +3175,7 @@ components:
       example:
         level:
           level: 1
+        language: null
       properties:
         language:
           $ref: '#/components/schemas/Language'
@@ -3193,6 +3201,7 @@ components:
         projects:
         - null
         - null
+        organization: null
         industries:
         - null
         - null
@@ -3242,14 +3251,20 @@ components:
         languages:
         - level:
             level: 1
+          language: null
         - level:
             level: 1
+          language: null
+        person: null
         availabilities:
-        - percent: 8.008281904610115
-        - percent: 8.008281904610115
+        - availability: null
+          percent: 8.008281904610115
+        - availability: null
+          percent: 8.008281904610115
         industries:
         - null
         - null
+        office: null
         interests:
         - null
         - null
@@ -3257,13 +3272,21 @@ components:
         - skills:
           - level:
               level: 1
+            skill: null
           - level:
               level: 1
+            skill: null
+          organization: null
+          certification: null
         - skills:
           - level:
               level: 1
+            skill: null
           - level:
               level: 1
+            skill: null
+          organization: null
+          certification: null
         experiences:
         - null
         - null
@@ -3324,6 +3347,7 @@ components:
         onsiteRatio:
           min: 0
           max: 100
+        availability: null
         certifications:
         - ""
         - ""
@@ -3413,9 +3437,11 @@ components:
         persons:
         - null
         - null
+        organization: null
         industries:
         - null
         - null
+        project: null
       properties:
         project:
           $ref: '#/components/schemas/Project'
@@ -3445,7 +3471,7 @@ components:
         skills:
         - null
         - null
-        timeframe: '{}'
+        timeframe: "{}"
         personalDescription: personalDescription
         descriptionOverwrite: descriptionOverwrite
       properties:
@@ -3556,6 +3582,7 @@ components:
       example:
         level:
           level: 1
+        skill: null
       properties:
         skill:
           $ref: '#/components/schemas/Skill'
@@ -3570,6 +3597,7 @@ components:
         children:
         - null
         - null
+        skill: null
         kinds:
         - null
         - null
@@ -3934,7 +3962,7 @@ components:
       properties:
         organizations:
           items:
-            $ref: '#/components/schemas/Organization'
+            $ref: '#/components/schemas/OrganizationDetails'
           type: array
       type: object
     PagedLanguages_allOf:
@@ -3948,7 +3976,7 @@ components:
       properties:
         certifications:
           items:
-            $ref: '#/components/schemas/Certification'
+            $ref: '#/components/schemas/CertificationDetails'
           type: array
       type: object
     PagedCountries_allOf:

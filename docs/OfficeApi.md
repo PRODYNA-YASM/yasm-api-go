@@ -36,8 +36,8 @@ func main() {
     officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OfficeApi.AddPersonOffice(context.Background(), personId, officeId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeApi.AddPersonOffice(context.Background(), personId, officeId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OfficeApi.AddPersonOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     office := *openapiclient.NewOffice("Id_example", "This is the name") // Office | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OfficeApi.CreateOffice(context.Background(), organizationId).Office(office).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeApi.CreateOffice(context.Background(), organizationId).Office(office).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OfficeApi.CreateOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,8 +177,8 @@ func main() {
     officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OfficeApi.DeleteOffice(context.Background(), organizationId, officeId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeApi.DeleteOffice(context.Background(), organizationId, officeId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OfficeApi.DeleteOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -248,8 +248,8 @@ func main() {
     officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OfficeApi.DeletePersonOffice(context.Background(), personId, officeId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeApi.DeletePersonOffice(context.Background(), personId, officeId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OfficeApi.DeletePersonOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -319,8 +319,8 @@ func main() {
     officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OfficeApi.GetOffice(context.Background(), organizationId, officeId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeApi.GetOffice(context.Background(), organizationId, officeId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OfficeApi.GetOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -391,8 +391,8 @@ func main() {
     office := *openapiclient.NewOffice("Id_example", "This is the name") // Office | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OfficeApi.UpdateOffice(context.Background(), organizationId, officeId).Office(office).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeApi.UpdateOffice(context.Background(), organizationId, officeId).Office(office).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OfficeApi.UpdateOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

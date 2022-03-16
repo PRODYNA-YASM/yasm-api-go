@@ -37,8 +37,8 @@ func main() {
     industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.IndustryApi.AttachOrganizationToIndustry(context.Background(), organizationId, industryId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IndustryApi.AttachOrganizationToIndustry(context.Background(), organizationId, industryId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IndustryApi.AttachOrganizationToIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     industry := *openapiclient.NewIndustry("Id_example", "This is the name", false) // Industry | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.IndustryApi.CreateIndustry(context.Background()).Industry(industry).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IndustryApi.CreateIndustry(context.Background()).Industry(industry).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IndustryApi.CreateIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,8 +171,8 @@ func main() {
     industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.IndustryApi.DeleteIndustry(context.Background(), industryId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IndustryApi.DeleteIndustry(context.Background(), industryId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IndustryApi.DeleteIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -240,8 +240,8 @@ func main() {
     industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.IndustryApi.DetachOrganizationFromIndustry(context.Background(), organizationId, industryId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IndustryApi.DetachOrganizationFromIndustry(context.Background(), organizationId, industryId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IndustryApi.DetachOrganizationFromIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -311,8 +311,8 @@ func main() {
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.IndustryApi.GetIndustries(context.Background()).Skip(skip).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IndustryApi.GetIndustries(context.Background()).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IndustryApi.GetIndustries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -376,8 +376,8 @@ func main() {
     industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.IndustryApi.GetIndustry(context.Background(), industryId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IndustryApi.GetIndustry(context.Background(), industryId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IndustryApi.GetIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -445,8 +445,8 @@ func main() {
     industry := *openapiclient.NewIndustry("Id_example", "This is the name", false) // Industry | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.IndustryApi.UpdateIndustry(context.Background(), industryId).Industry(industry).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IndustryApi.UpdateIndustry(context.Background(), industryId).Industry(industry).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IndustryApi.UpdateIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

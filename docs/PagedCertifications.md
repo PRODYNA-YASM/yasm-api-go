@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Skip** | Pointer to **int32** |  | [optional] 
 **Limit** | Pointer to **int32** |  | [optional] 
 **Count** | Pointer to **int32** |  | [optional] 
-**Certifications** | Pointer to [**[]Certification**](Certification.md) |  | [optional] 
+**Certifications** | Pointer to [**[]CertificationDetails**](CertificationDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasCount returns a boolean if a field has been set.
 
 ### GetCertifications
 
-`func (o *PagedCertifications) GetCertifications() []Certification`
+`func (o *PagedCertifications) GetCertifications() []CertificationDetails`
 
 GetCertifications returns the Certifications field if non-nil, zero value otherwise.
 
 ### GetCertificationsOk
 
-`func (o *PagedCertifications) GetCertificationsOk() (*[]Certification, bool)`
+`func (o *PagedCertifications) GetCertificationsOk() (*[]CertificationDetails, bool)`
 
 GetCertificationsOk returns a tuple with the Certifications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCertifications
 
-`func (o *PagedCertifications) SetCertifications(v []Certification)`
+`func (o *PagedCertifications) SetCertifications(v []CertificationDetails)`
 
 SetCertifications sets Certifications field to given value.
 

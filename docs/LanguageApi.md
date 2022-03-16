@@ -36,8 +36,8 @@ func main() {
     languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.LanguageApi.AddLanguageToCountry(context.Background(), countryId, languageId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageApi.AddLanguageToCountry(context.Background(), countryId, languageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LanguageApi.AddLanguageToCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -106,8 +106,8 @@ func main() {
     language := *openapiclient.NewLanguage("Id_example", "This is the name") // Language | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.LanguageApi.CreateLanguage(context.Background()).Language(language).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageApi.CreateLanguage(context.Background()).Language(language).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LanguageApi.CreateLanguage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -170,8 +170,8 @@ func main() {
     languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.LanguageApi.DeleteLanguage(context.Background(), languageId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageApi.DeleteLanguage(context.Background(), languageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LanguageApi.DeleteLanguage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -238,8 +238,8 @@ func main() {
     languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.LanguageApi.GetLanguage(context.Background(), languageId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageApi.GetLanguage(context.Background(), languageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LanguageApi.GetLanguage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -307,8 +307,8 @@ func main() {
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.LanguageApi.GetLanguages(context.Background()).Skip(skip).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageApi.GetLanguages(context.Background()).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LanguageApi.GetLanguages``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,8 +373,8 @@ func main() {
     languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.LanguageApi.RemoveLanguageFromCountry(context.Background(), countryId, languageId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageApi.RemoveLanguageFromCountry(context.Background(), countryId, languageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LanguageApi.RemoveLanguageFromCountry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

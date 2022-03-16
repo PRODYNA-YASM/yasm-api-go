@@ -45,8 +45,8 @@ func main() {
     industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.AttachOrganizationToIndustry(context.Background(), organizationId, industryId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.AttachOrganizationToIndustry(context.Background(), organizationId, industryId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.AttachOrganizationToIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -116,8 +116,8 @@ func main() {
     certification := *openapiclient.NewCertification("Id_example", "This is the name", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.CreateCertification(context.Background(), organizationId).Certification(certification).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.CreateCertification(context.Background(), organizationId).Certification(certification).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.CreateCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +186,8 @@ func main() {
     office := *openapiclient.NewOffice("Id_example", "This is the name") // Office | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.CreateOffice(context.Background(), organizationId).Office(office).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.CreateOffice(context.Background(), organizationId).Office(office).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.CreateOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -255,8 +255,8 @@ func main() {
     organization := *openapiclient.NewOrganization("Id_example", "This is the name", false) // Organization | Details about the Organization
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.CreateOrganization(context.Background()).Organization(organization).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.CreateOrganization(context.Background()).Organization(organization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.CreateOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -320,8 +320,8 @@ func main() {
     project := *openapiclient.NewProject("Id_example", "This is the name", false) // Project | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.CreateProject(context.Background(), organizationId).Project(project).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.CreateProject(context.Background(), organizationId).Project(project).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.CreateProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -390,8 +390,8 @@ func main() {
     officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.DeleteOffice(context.Background(), organizationId, officeId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.DeleteOffice(context.Background(), organizationId, officeId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.DeleteOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -460,8 +460,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.DeleteOrganization(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.DeleteOrganization(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.DeleteOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -529,8 +529,8 @@ func main() {
     industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.DetachOrganizationFromIndustry(context.Background(), organizationId, industryId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.DetachOrganizationFromIndustry(context.Background(), organizationId, industryId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.DetachOrganizationFromIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -601,8 +601,8 @@ func main() {
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.GetCertificationsForOrganization(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.GetCertificationsForOrganization(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.GetCertificationsForOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -672,8 +672,8 @@ func main() {
     officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.GetOffice(context.Background(), organizationId, officeId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.GetOffice(context.Background(), organizationId, officeId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.GetOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -742,8 +742,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.GetOrganization(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.GetOrganization(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.GetOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -812,8 +812,8 @@ func main() {
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.GetOrganizationProjects(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.GetOrganizationProjects(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.GetOrganizationProjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -883,8 +883,8 @@ func main() {
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.GetOrganizations(context.Background()).Skip(skip).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.GetOrganizations(context.Background()).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.GetOrganizations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -950,8 +950,8 @@ func main() {
     office := *openapiclient.NewOffice("Id_example", "This is the name") // Office | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.UpdateOffice(context.Background(), organizationId, officeId).Office(office).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.UpdateOffice(context.Background(), organizationId, officeId).Office(office).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.UpdateOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1022,8 +1022,8 @@ func main() {
     organization := *openapiclient.NewOrganization("Id_example", "This is the name", false) // Organization | Details about the organization
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.OrganizationApi.UpdateOrganization(context.Background(), organizationId).Organization(organization).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.UpdateOrganization(context.Background(), organizationId).Organization(organization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.UpdateOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

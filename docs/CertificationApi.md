@@ -44,8 +44,8 @@ func main() {
     body := time.Now() // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.AddPersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.AddPersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.AddPersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -119,8 +119,8 @@ func main() {
     level := *openapiclient.NewLevel() // Level | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.AddSkillToCertification(context.Background(), certificationId, skillId).Level(level).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.AddSkillToCertification(context.Background(), certificationId, skillId).Level(level).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.AddSkillToCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -191,8 +191,8 @@ func main() {
     certification := *openapiclient.NewCertification("Id_example", "This is the name", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.CreateCertification(context.Background(), organizationId).Certification(certification).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.CreateCertification(context.Background(), organizationId).Certification(certification).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.CreateCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,8 +260,8 @@ func main() {
     certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.DeleteCertification(context.Background(), certificationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.DeleteCertification(context.Background(), certificationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.DeleteCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -329,8 +329,8 @@ func main() {
     certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.DeletePersonCertification(context.Background(), personId, certificationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.DeletePersonCertification(context.Background(), personId, certificationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.DeletePersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +400,8 @@ func main() {
     skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.DeleteSkillFromCertification(context.Background(), certificationId, skillId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.DeleteSkillFromCertification(context.Background(), certificationId, skillId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.DeleteSkillFromCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -470,8 +470,8 @@ func main() {
     certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.GetCertification(context.Background(), certificationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.GetCertification(context.Background(), certificationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.GetCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -539,8 +539,8 @@ func main() {
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.GetCertifications(context.Background()).Skip(skip).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.GetCertifications(context.Background()).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.GetCertifications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -606,8 +606,8 @@ func main() {
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.GetCertificationsForOrganization(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.GetCertificationsForOrganization(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.GetCertificationsForOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -677,8 +677,8 @@ func main() {
     certification := *openapiclient.NewCertification("Id_example", "This is the name", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.UpdateCertification(context.Background(), certificationId).Certification(certification).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.UpdateCertification(context.Background(), certificationId).Certification(certification).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.UpdateCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -749,8 +749,8 @@ func main() {
     body := time.Now() // string | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.UpdatePersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.UpdatePersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.UpdatePersonCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -824,8 +824,8 @@ func main() {
     level := *openapiclient.NewLevel() // Level | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CertificationApi.UpdateSkillInCertification(context.Background(), certificationId, skillId).Level(level).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.UpdateSkillInCertification(context.Background(), certificationId, skillId).Level(level).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.UpdateSkillInCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

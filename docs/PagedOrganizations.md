@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Skip** | Pointer to **int32** |  | [optional] 
 **Limit** | Pointer to **int32** |  | [optional] 
 **Count** | Pointer to **int32** |  | [optional] 
-**Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
+**Organizations** | Pointer to [**[]OrganizationDetails**](OrganizationDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasCount returns a boolean if a field has been set.
 
 ### GetOrganizations
 
-`func (o *PagedOrganizations) GetOrganizations() []Organization`
+`func (o *PagedOrganizations) GetOrganizations() []OrganizationDetails`
 
 GetOrganizations returns the Organizations field if non-nil, zero value otherwise.
 
 ### GetOrganizationsOk
 
-`func (o *PagedOrganizations) GetOrganizationsOk() (*[]Organization, bool)`
+`func (o *PagedOrganizations) GetOrganizationsOk() (*[]OrganizationDetails, bool)`
 
 GetOrganizationsOk returns a tuple with the Organizations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrganizations
 
-`func (o *PagedOrganizations) SetOrganizations(v []Organization)`
+`func (o *PagedOrganizations) SetOrganizations(v []OrganizationDetails)`
 
 SetOrganizations sets Organizations field to given value.
 

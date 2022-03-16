@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Certifications** | Pointer to [**[]Certification**](Certification.md) |  | [optional] 
+**Certifications** | Pointer to [**[]CertificationDetails**](CertificationDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCertifications
 
-`func (o *PagedCertificationsAllOf) GetCertifications() []Certification`
+`func (o *PagedCertificationsAllOf) GetCertifications() []CertificationDetails`
 
 GetCertifications returns the Certifications field if non-nil, zero value otherwise.
 
 ### GetCertificationsOk
 
-`func (o *PagedCertificationsAllOf) GetCertificationsOk() (*[]Certification, bool)`
+`func (o *PagedCertificationsAllOf) GetCertificationsOk() (*[]CertificationDetails, bool)`
 
 GetCertificationsOk returns a tuple with the Certifications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCertifications
 
-`func (o *PagedCertificationsAllOf) SetCertifications(v []Certification)`
+`func (o *PagedCertificationsAllOf) SetCertifications(v []CertificationDetails)`
 
 SetCertifications sets Certifications field to given value.
 
