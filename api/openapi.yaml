@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.0.1
+  version: 1.0.2
 servers:
 - url: /api/v1
 security:
@@ -658,6 +658,43 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       summary: Create a Certification in an Organization
+      tags:
+      - Organization
+      - Certification
+  /organizations/{organizationId}/certificates/{certificateId}:
+    put:
+      operationId: moveCertification
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: certificateId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Move a Certification to an Organization
       tags:
       - Organization
       - Certification
@@ -3152,6 +3189,15 @@ components:
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
       type: object
+    IndutryDetails:
+      properties:
+        industry:
+          $ref: '#/components/schemas/Industry'
+        organizations:
+          items:
+            $ref: '#/components/schemas/Organization'
+          type: array
+      type: object
     Language:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -3601,10 +3647,17 @@ components:
         kinds:
         - null
         - null
+        parents:
+        - null
+        - null
       properties:
         skill:
           $ref: '#/components/schemas/Skill'
         children:
+          items:
+            $ref: '#/components/schemas/Skill'
+          type: array
+        parents:
           items:
             $ref: '#/components/schemas/Skill'
           type: array
@@ -3990,14 +4043,14 @@ components:
       properties:
         skills:
           items:
-            $ref: '#/components/schemas/Skill'
+            $ref: '#/components/schemas/SkillDetails'
           type: array
       type: object
     PagedIndustries_allOf:
       properties:
         industries:
           items:
-            $ref: '#/components/schemas/Industry'
+            $ref: '#/components/schemas/IndutryDetails'
           type: array
       type: object
     PagedProjects_allOf:

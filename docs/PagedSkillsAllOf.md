@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Skills** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
+**Skills** | Pointer to [**[]SkillDetails**](SkillDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSkills
 
-`func (o *PagedSkillsAllOf) GetSkills() []Skill`
+`func (o *PagedSkillsAllOf) GetSkills() []SkillDetails`
 
 GetSkills returns the Skills field if non-nil, zero value otherwise.
 
 ### GetSkillsOk
 
-`func (o *PagedSkillsAllOf) GetSkillsOk() (*[]Skill, bool)`
+`func (o *PagedSkillsAllOf) GetSkillsOk() (*[]SkillDetails, bool)`
 
 GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkills
 
-`func (o *PagedSkillsAllOf) SetSkills(v []Skill)`
+`func (o *PagedSkillsAllOf) SetSkills(v []SkillDetails)`
 
 SetSkills sets Skills field to given value.
 

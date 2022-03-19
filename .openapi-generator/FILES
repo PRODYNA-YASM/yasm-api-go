@@ -38,6 +38,7 @@ docs/ExperienceAllOf.md
 docs/Geolocation.md
 docs/Industry.md
 docs/IndustryApi.md
+docs/IndutryDetails.md
 docs/Language.md
 docs/LanguageApi.md
 docs/LanguageDetails.md
@@ -138,6 +139,7 @@ model_experience.go
 model_experience_all_of.go
 model_geolocation.go
 model_industry.go
+model_indutry_details.go
 model_language.go
 model_language_details.go
 model_language_level.go

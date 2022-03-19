@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**GetCertification**](CertificationApi.md#GetCertification) | **Get** /certifications/{certificationId} | Get details about a Certification
 [**GetCertifications**](CertificationApi.md#GetCertifications) | **Get** /certifications | Get a list of all Certifations indepdenant of the Organization
 [**GetCertificationsForOrganization**](CertificationApi.md#GetCertificationsForOrganization) | **Get** /organizations/{organizationId}/certifications | Get a list of all certifications for a organization
+[**MoveCertification**](CertificationApi.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificateId} | Move a Certification to an Organization
 [**UpdateCertification**](CertificationApi.md#UpdateCertification) | **Put** /certifications/{certificationId} | Update a Certification
 [**UpdatePersonCertification**](CertificationApi.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
 [**UpdateSkillInCertification**](CertificationApi.md#UpdateSkillInCertification) | **Put** /certifications/{certificationId}/skills/{skillId} | 
@@ -639,6 +640,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PagedCertifications**](PagedCertifications.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## MoveCertification
+
+> CertificationDetails MoveCertification(ctx, organizationId, certificateId).Execute()
+
+Move a Certification to an Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificateId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.MoveCertification(context.Background(), organizationId, certificateId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.MoveCertification``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `MoveCertification`: CertificationDetails
+    fmt.Fprintf(os.Stdout, "Response from `CertificationApi.MoveCertification`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**certificateId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMoveCertificationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**CertificationDetails**](CertificationDetails.md)
 
 ### Authorization
 

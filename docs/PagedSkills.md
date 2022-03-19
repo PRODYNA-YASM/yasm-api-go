@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Skip** | Pointer to **int32** |  | [optional] 
 **Limit** | Pointer to **int32** |  | [optional] 
 **Count** | Pointer to **int32** |  | [optional] 
-**Skills** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
+**Skills** | Pointer to [**[]SkillDetails**](SkillDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasCount returns a boolean if a field has been set.
 
 ### GetSkills
 
-`func (o *PagedSkills) GetSkills() []Skill`
+`func (o *PagedSkills) GetSkills() []SkillDetails`
 
 GetSkills returns the Skills field if non-nil, zero value otherwise.
 
 ### GetSkillsOk
 
-`func (o *PagedSkills) GetSkillsOk() (*[]Skill, bool)`
+`func (o *PagedSkills) GetSkillsOk() (*[]SkillDetails, bool)`
 
 GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkills
 
-`func (o *PagedSkills) SetSkills(v []Skill)`
+`func (o *PagedSkills) SetSkills(v []SkillDetails)`
 
 SetSkills sets Skills field to given value.
 
