@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Industries** | Pointer to [**[]IndutryDetails**](IndutryDetails.md) |  | [optional] 
+**Industries** | Pointer to [**[]IndustryDetails**](IndustryDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetIndustries
 
-`func (o *PagedIndustriesAllOf) GetIndustries() []IndutryDetails`
+`func (o *PagedIndustriesAllOf) GetIndustries() []IndustryDetails`
 
 GetIndustries returns the Industries field if non-nil, zero value otherwise.
 
 ### GetIndustriesOk
 
-`func (o *PagedIndustriesAllOf) GetIndustriesOk() (*[]IndutryDetails, bool)`
+`func (o *PagedIndustriesAllOf) GetIndustriesOk() (*[]IndustryDetails, bool)`
 
 GetIndustriesOk returns a tuple with the Industries field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIndustries
 
-`func (o *PagedIndustriesAllOf) SetIndustries(v []IndutryDetails)`
+`func (o *PagedIndustriesAllOf) SetIndustries(v []IndustryDetails)`
 
 SetIndustries sets Industries field to given value.
 

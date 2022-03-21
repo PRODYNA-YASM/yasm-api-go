@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 
 ## GetIndustry
 
-> Industry GetIndustry(ctx, industryId).Execute()
+> IndustryDetails GetIndustry(ctx, industryId).Execute()
 
 Get details about an Industry
 
@@ -382,7 +382,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `IndustryApi.GetIndustry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetIndustry`: Industry
+    // response from `GetIndustry`: IndustryDetails
     fmt.Fprintf(os.Stdout, "Response from `IndustryApi.GetIndustry`: %v\n", resp)
 }
 ```
@@ -406,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Industry**](Industry.md)
+[**IndustryDetails**](IndustryDetails.md)
 
 ### Authorization
 
