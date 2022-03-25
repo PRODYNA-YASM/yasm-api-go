@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Skip** | Pointer to **int32** |  | [optional] 
 **Limit** | Pointer to **int32** |  | [optional] 
 **Count** | Pointer to **int32** |  | [optional] 
-**Industries** | Pointer to [**[]IndustryDetails**](IndustryDetails.md) |  | [optional] 
+**Industries** | Pointer to [**[]IndutryDetails**](IndutryDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasCount returns a boolean if a field has been set.
 
 ### GetIndustries
 
-`func (o *PagedIndustries) GetIndustries() []IndustryDetails`
+`func (o *PagedIndustries) GetIndustries() []IndutryDetails`
 
 GetIndustries returns the Industries field if non-nil, zero value otherwise.
 
 ### GetIndustriesOk
 
-`func (o *PagedIndustries) GetIndustriesOk() (*[]IndustryDetails, bool)`
+`func (o *PagedIndustries) GetIndustriesOk() (*[]IndutryDetails, bool)`
 
 GetIndustriesOk returns a tuple with the Industries field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIndustries
 
-`func (o *PagedIndustries) SetIndustries(v []IndustryDetails)`
+`func (o *PagedIndustries) SetIndustries(v []IndutryDetails)`
 
 SetIndustries sets Industries field to given value.
 

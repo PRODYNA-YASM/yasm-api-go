@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 **Partner** | Pointer to **bool** |  | [optional] [default to false]
 **Customer** | Pointer to **bool** |  | [optional] [default to false]
 **Picture** | Pointer to **string** | base64 encoded image | [optional] 
@@ -167,6 +168,31 @@ SetGeolocation sets Geolocation field to given value.
 `func (o *Organization) HasGeolocation() bool`
 
 HasGeolocation returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *Organization) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *Organization) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Organization) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *Organization) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetPartner
 

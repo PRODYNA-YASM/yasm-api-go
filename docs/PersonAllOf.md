@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **JobTitle** | Pointer to **string** |  | [optional] 
 **Company** | Pointer to **string** |  | [optional] 
 **Department** | Pointer to **string** |  | [optional] 
+**Education** | Pointer to **string** |  | [optional] 
 **Mail** | Pointer to **string** |  | [optional] 
 **MobilePhone** | Pointer to **string** |  | [optional] 
 **Seniority** | Pointer to **string** |  | [optional] 
@@ -134,6 +135,31 @@ SetDepartment sets Department field to given value.
 `func (o *PersonAllOf) HasDepartment() bool`
 
 HasDepartment returns a boolean if a field has been set.
+
+### GetEducation
+
+`func (o *PersonAllOf) GetEducation() string`
+
+GetEducation returns the Education field if non-nil, zero value otherwise.
+
+### GetEducationOk
+
+`func (o *PersonAllOf) GetEducationOk() (*string, bool)`
+
+GetEducationOk returns a tuple with the Education field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEducation
+
+`func (o *PersonAllOf) SetEducation(v string)`
+
+SetEducation sets Education field to given value.
+
+### HasEducation
+
+`func (o *PersonAllOf) HasEducation() bool`
+
+HasEducation returns a boolean if a field has been set.
 
 ### GetMail
 

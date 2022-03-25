@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
-**Project** | [**Project**](Project.md) |  | [readonly] 
+**ProjectDetails** | Pointer to [**ProjectDetails**](ProjectDetails.md) |  | [optional] [readonly] 
 **DescriptionOverwrite** | Pointer to **string** |  | [optional] 
 **PersonalDescription** | Pointer to **string** |  | [optional] 
 **Experiences** | [**[]Experience**](Experience.md) |  | [readonly] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewProjectParticipationAllOf
 
-`func NewProjectParticipationAllOf(project Project, experiences []Experience, ) *ProjectParticipationAllOf`
+`func NewProjectParticipationAllOf(experiences []Experience, ) *ProjectParticipationAllOf`
 
 NewProjectParticipationAllOf instantiates a new ProjectParticipationAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -54,25 +54,30 @@ SetTimeframe sets Timeframe field to given value.
 
 HasTimeframe returns a boolean if a field has been set.
 
-### GetProject
+### GetProjectDetails
 
-`func (o *ProjectParticipationAllOf) GetProject() Project`
+`func (o *ProjectParticipationAllOf) GetProjectDetails() ProjectDetails`
 
-GetProject returns the Project field if non-nil, zero value otherwise.
+GetProjectDetails returns the ProjectDetails field if non-nil, zero value otherwise.
 
-### GetProjectOk
+### GetProjectDetailsOk
 
-`func (o *ProjectParticipationAllOf) GetProjectOk() (*Project, bool)`
+`func (o *ProjectParticipationAllOf) GetProjectDetailsOk() (*ProjectDetails, bool)`
 
-GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
+GetProjectDetailsOk returns a tuple with the ProjectDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProject
+### SetProjectDetails
 
-`func (o *ProjectParticipationAllOf) SetProject(v Project)`
+`func (o *ProjectParticipationAllOf) SetProjectDetails(v ProjectDetails)`
 
-SetProject sets Project field to given value.
+SetProjectDetails sets ProjectDetails field to given value.
 
+### HasProjectDetails
+
+`func (o *ProjectParticipationAllOf) HasProjectDetails() bool`
+
+HasProjectDetails returns a boolean if a field has been set.
 
 ### GetDescriptionOverwrite
 

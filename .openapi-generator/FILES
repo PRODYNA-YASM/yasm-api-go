@@ -31,6 +31,7 @@ docs/Country.md
 docs/CountryAllOf.md
 docs/CountryApi.md
 docs/CountryDetails.md
+docs/Descriptable.md
 docs/EntityFilter.md
 docs/Error.md
 docs/Experience.md
@@ -38,7 +39,7 @@ docs/ExperienceAllOf.md
 docs/Geolocation.md
 docs/Industry.md
 docs/IndustryApi.md
-docs/IndustryDetails.md
+docs/IndutryDetails.md
 docs/Language.md
 docs/LanguageApi.md
 docs/LanguageDetails.md
@@ -133,13 +134,14 @@ model_certification_details.go
 model_country.go
 model_country_all_of.go
 model_country_details.go
+model_descriptable.go
 model_entity_filter.go
 model_error.go
 model_experience.go
 model_experience_all_of.go
 model_geolocation.go
 model_industry.go
-model_industry_details.go
+model_indutry_details.go
 model_language.go
 model_language_details.go
 model_language_level.go

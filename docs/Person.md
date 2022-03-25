@@ -10,10 +10,12 @@ Name | Type | Description | Notes
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 **EmployeeId** | Pointer to **string** |  | [optional] 
 **JobTitle** | Pointer to **string** |  | [optional] 
 **Company** | Pointer to **string** |  | [optional] 
 **Department** | Pointer to **string** |  | [optional] 
+**Education** | Pointer to **string** |  | [optional] 
 **Mail** | Pointer to **string** |  | [optional] 
 **MobilePhone** | Pointer to **string** |  | [optional] 
 **Seniority** | Pointer to **string** |  | [optional] 
@@ -176,6 +178,31 @@ SetGeolocation sets Geolocation field to given value.
 
 HasGeolocation returns a boolean if a field has been set.
 
+### GetDescription
+
+`func (o *Person) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *Person) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Person) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *Person) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
 ### GetEmployeeId
 
 `func (o *Person) GetEmployeeId() string`
@@ -275,6 +302,31 @@ SetDepartment sets Department field to given value.
 `func (o *Person) HasDepartment() bool`
 
 HasDepartment returns a boolean if a field has been set.
+
+### GetEducation
+
+`func (o *Person) GetEducation() string`
+
+GetEducation returns the Education field if non-nil, zero value otherwise.
+
+### GetEducationOk
+
+`func (o *Person) GetEducationOk() (*string, bool)`
+
+GetEducationOk returns a tuple with the Education field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEducation
+
+`func (o *Person) SetEducation(v string)`
+
+SetEducation sets Education field to given value.
+
+### HasEducation
+
+`func (o *Person) HasEducation() bool`
+
+HasEducation returns a boolean if a field has been set.
 
 ### GetMail
 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 **Validity** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -113,6 +114,31 @@ SetSynonyms sets Synonyms field to given value.
 `func (o *Certification) HasSynonyms() bool`
 
 HasSynonyms returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *Certification) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *Certification) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Certification) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *Certification) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetValidity
 

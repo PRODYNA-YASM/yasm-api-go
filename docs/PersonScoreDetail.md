@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Languages** | Pointer to [**[]LanguageLevel**](LanguageLevel.md) |  | [optional] 
 **Office** | Pointer to [**Office**](Office.md) |  | [optional] 
 **Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
+**Skills** | Pointer to [**[]SkillDetails**](SkillDetails.md) |  | [optional] 
 **Score** | Pointer to **float32** |  | [optional] 
 
 ## Methods
@@ -258,6 +259,31 @@ SetAvailabilities sets Availabilities field to given value.
 `func (o *PersonScoreDetail) HasAvailabilities() bool`
 
 HasAvailabilities returns a boolean if a field has been set.
+
+### GetSkills
+
+`func (o *PersonScoreDetail) GetSkills() []SkillDetails`
+
+GetSkills returns the Skills field if non-nil, zero value otherwise.
+
+### GetSkillsOk
+
+`func (o *PersonScoreDetail) GetSkillsOk() (*[]SkillDetails, bool)`
+
+GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkills
+
+`func (o *PersonScoreDetail) SetSkills(v []SkillDetails)`
+
+SetSkills sets Skills field to given value.
+
+### HasSkills
+
+`func (o *PersonScoreDetail) HasSkills() bool`
+
+HasSkills returns a boolean if a field has been set.
 
 ### GetScore
 
