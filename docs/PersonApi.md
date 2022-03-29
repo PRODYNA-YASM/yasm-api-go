@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddPersonCertification**](PersonApi.md#AddPersonCertification) | **Post** /persons/{personId}/certifications/{certificationId} | Add Certification to a Person
 [**AddPersonInterest**](PersonApi.md#AddPersonInterest) | **Post** /persons/{personId}/interests/skills/{skillId} | Add an Interest to a Person
+[**AddPersonLanguage**](PersonApi.md#AddPersonLanguage) | **Post** /persons/{personId}/languages/{languageId} | Assign a language to the person
 [**AddPersonOffice**](PersonApi.md#AddPersonOffice) | **Post** /persons/{personId}/offices/{officeId} | Assing a person to an office
 [**AddPersonProject**](PersonApi.md#AddPersonProject) | **Post** /persons/{personId}/projects/{projectId} | Add Project to a Person
 [**AddPersonProjectSkill**](PersonApi.md#AddPersonProjectSkill) | **Post** /persons/{personId}/projects/{projectId}/skills/{skillId} | Add Skill to a Project participation
@@ -27,6 +28,7 @@ Method | HTTP request | Description
 [**GeneratePersonProfile**](PersonApi.md#GeneratePersonProfile) | **Get** /persons/{personid}/profile | Generate a PDF profile from a Person
 [**GetAvailabilities**](PersonApi.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonApi.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
+[**RemovePersonLanguage**](PersonApi.md#RemovePersonLanguage) | **Delete** /persons/{personId}/languages/{languageId} | Remove a language from a person
 [**SearchPersons**](PersonApi.md#SearchPersons) | **Post** /persons/search | Complex search over person entities
 [**UpdateAvailability**](PersonApi.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
 [**UpdatePerson**](PersonApi.md#UpdatePerson) | **Put** /persons/{personId} | Update an existing Person
@@ -35,6 +37,7 @@ Method | HTTP request | Description
 [**UpdatePersonProjectSkill**](PersonApi.md#UpdatePersonProjectSkill) | **Put** /persons/{personId}/projects/{projectId}/skills/{skillId} | Update the level of a Skill in a Project participation
 [**UpdatePersonSkillExperience**](PersonApi.md#UpdatePersonSkillExperience) | **Put** /persons/{personId}/experiences/skills/{skillId} | Edit an Skill experience to a Person
 [**UpdatePersonSkillExperiences**](PersonApi.md#UpdatePersonSkillExperiences) | **Put** /persons/{personId}/experiences | Edit an Skill experience to a Person
+[**UupdatePersonLanguage**](PersonApi.md#UupdatePersonLanguage) | **Put** /persons/{personId}/languages/{languageId} | Update a language of a person
 
 
 
@@ -176,6 +179,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AddPersonLanguage
+
+> PersonDetails AddPersonLanguage(ctx, personId, languageId).Level(level).Execute()
+
+Assign a language to the person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.AddPersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.AddPersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.AddPersonLanguage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | **string** |  | 
+**languageId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddPersonLanguageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **level** | [**Level**](Level.md) |  | 
+
+### Return type
+
+[**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1677,6 +1753,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RemovePersonLanguage
+
+> PersonDetails RemovePersonLanguage(ctx, personId, languageId).Execute()
+
+Remove a language from a person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.RemovePersonLanguage(context.Background(), personId, languageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.RemovePersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemovePersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.RemovePersonLanguage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | **string** |  | 
+**languageId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemovePersonLanguageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SearchPersons
 
 > PagedPersons SearchPersons(ctx).PersonSearch(personSearch).Skip(skip).Limit(limit).Execute()
@@ -2236,6 +2383,79 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **skillLevelUpdate** | [**[]SkillLevelUpdate**](SkillLevelUpdate.md) |  | 
+
+### Return type
+
+[**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UupdatePersonLanguage
+
+> PersonDetails UupdatePersonLanguage(ctx, personId, languageId).Level(level).Execute()
+
+Update a language of a person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.UupdatePersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UupdatePersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UupdatePersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.UupdatePersonLanguage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | **string** |  | 
+**languageId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUupdatePersonLanguageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **level** | [**Level**](Level.md) |  | 
 
 ### Return type
 

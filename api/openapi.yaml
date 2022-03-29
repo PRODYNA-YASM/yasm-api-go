@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.0.5
+  version: 1.0.7
 servers:
 - url: /api/v1
 security:
@@ -1809,6 +1809,127 @@ paths:
       tags:
       - Person
       - Skill
+  /persons/{personId}/languages/{languageId}:
+    delete:
+      operationId: removePersonLanguage
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: languageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Remove a language from a person
+      tags:
+      - Person
+      - Language
+    post:
+      operationId: addPersonLanguage
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: languageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Assign a language to the person
+      tags:
+      - Person
+      - Language
+    put:
+      operationId: uupdatePersonLanguage
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: languageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Level'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Update a language of a person
+      tags:
+      - Person
+      - Language
   /persons/{personId}/experiences/skills/{skillId}:
     delete:
       operationId: deletePersonSkillExperience
