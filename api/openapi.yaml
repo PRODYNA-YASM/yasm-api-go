@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.0.8
+  version: 1.0.10
 servers:
 - url: /api/v1
 security:
@@ -3535,20 +3535,20 @@ components:
     PersonSearch:
       example:
         skills:
-        - ""
-        - ""
+        - null
+        - null
         officeIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         projects:
-        - ""
-        - ""
+        - null
+        - null
         industries:
-        - ""
-        - ""
+        - null
+        - null
         organizations:
-        - ""
-        - ""
+        - null
+        - null
         personIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -3557,8 +3557,8 @@ components:
           max: 100
         availability: null
         certifications:
-        - ""
-        - ""
+        - null
+        - null
         seniority:
         - null
         - null
@@ -3583,28 +3583,23 @@ components:
           type: array
         skills:
           items:
-            allOf:
-            - $ref: '#/components/schemas/PersonSkillFilter'
+            $ref: '#/components/schemas/PersonSearch_skills_inner'
           type: array
         projects:
           items:
-            allOf:
-            - $ref: '#/components/schemas/PersonProjectFilter'
+            $ref: '#/components/schemas/PersonSearch_projects_inner'
           type: array
         organizations:
           items:
-            allOf:
-            - $ref: '#/components/schemas/PersonOrganizationFilter'
+            $ref: '#/components/schemas/PersonSearch_organizations_inner'
           type: array
         industries:
           items:
-            allOf:
-            - $ref: '#/components/schemas/PersonIndustryFilter'
+            $ref: '#/components/schemas/PersonSearch_industries_inner'
           type: array
         certifications:
           items:
-            allOf:
-            - $ref: '#/components/schemas/PersonCertificationFilter'
+            $ref: '#/components/schemas/PersonSearch_certifications_inner'
           type: array
       type: object
     PersonSkillFilter:
@@ -3680,14 +3675,12 @@ components:
         skills:
         - null
         - null
-        timeframe: "{}"
+        timeframe: null
         personalDescription: personalDescription
         descriptionOverwrite: descriptionOverwrite
       properties:
         timeframe:
-          allOf:
-          - $ref: '#/components/schemas/Timeframed'
-          type: object
+          $ref: '#/components/schemas/ProjectParticipationUpdate_timeframe'
         skills:
           items:
             $ref: '#/components/schemas/SkillLevelUpdate'
@@ -3700,8 +3693,8 @@ components:
     ProjectSearch:
       example:
         skills:
-        - ""
-        - ""
+        - null
+        - null
         minStartDate: 2000-01-23
         maxEndDate: 2000-01-23
         projectStatuses:
@@ -3711,11 +3704,11 @@ components:
           min: 0
           max: 100
         industries:
-        - ""
-        - ""
+        - null
+        - null
         organizations:
-        - ""
-        - ""
+        - null
+        - null
         projectIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -3726,8 +3719,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         participants:
-        - ""
-        - ""
+        - null
+        - null
       properties:
         projectIds:
           items:
@@ -3755,23 +3748,19 @@ components:
           $ref: '#/components/schemas/MinMax'
         skills:
           items:
-            allOf:
-            - $ref: '#/components/schemas/EntityFilter'
+            $ref: '#/components/schemas/ProjectSearch_skills_inner'
           type: array
         participants:
           items:
-            allOf:
-            - $ref: '#/components/schemas/EntityFilter'
+            $ref: '#/components/schemas/ProjectSearch_skills_inner'
           type: array
         industries:
           items:
-            allOf:
-            - $ref: '#/components/schemas/EntityFilter'
+            $ref: '#/components/schemas/ProjectSearch_skills_inner'
           type: array
         organizations:
           items:
-            allOf:
-            - $ref: '#/components/schemas/EntityFilter'
+            $ref: '#/components/schemas/ProjectSearch_skills_inner'
           type: array
       type: object
     ProjectStatus:
@@ -4071,6 +4060,21 @@ components:
           description: Marks persons not working for the company anymore
           type: boolean
       type: object
+    PersonSearch_skills_inner:
+      allOf:
+      - $ref: '#/components/schemas/PersonSkillFilter'
+    PersonSearch_projects_inner:
+      allOf:
+      - $ref: '#/components/schemas/PersonProjectFilter'
+    PersonSearch_organizations_inner:
+      allOf:
+      - $ref: '#/components/schemas/PersonOrganizationFilter'
+    PersonSearch_industries_inner:
+      allOf:
+      - $ref: '#/components/schemas/PersonIndustryFilter'
+    PersonSearch_certifications_inner:
+      allOf:
+      - $ref: '#/components/schemas/PersonCertificationFilter'
     PersonSkillFilter_allOf:
       properties:
         experienceInMonth:
@@ -4150,6 +4154,13 @@ components:
       - id
       - project
       type: object
+    ProjectParticipationUpdate_timeframe:
+      allOf:
+      - $ref: '#/components/schemas/Timeframed'
+      type: object
+    ProjectSearch_skills_inner:
+      allOf:
+      - $ref: '#/components/schemas/EntityFilter'
     Skill_allOf:
       properties:
         invest:

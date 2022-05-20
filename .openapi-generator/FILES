@@ -89,6 +89,11 @@ docs/PersonProjectFilter.md
 docs/PersonProjectFilterAllOf.md
 docs/PersonScoreDetail.md
 docs/PersonSearch.md
+docs/PersonSearchCertificationsInner.md
+docs/PersonSearchIndustriesInner.md
+docs/PersonSearchOrganizationsInner.md
+docs/PersonSearchProjectsInner.md
+docs/PersonSearchSkillsInner.md
 docs/PersonSkillFilter.md
 docs/PersonSkillFilterAllOf.md
 docs/Project.md
@@ -98,9 +103,11 @@ docs/ProjectDetails.md
 docs/ProjectParticipation.md
 docs/ProjectParticipationAllOf.md
 docs/ProjectParticipationUpdate.md
+docs/ProjectParticipationUpdateTimeframe.md
 docs/ProjectScoreDetail.md
 docs/ProjectScoreDetailAllOf.md
 docs/ProjectSearch.md
+docs/ProjectSearchSkillsInner.md
 docs/ProjectStatus.md
 docs/SearchApi.md
 docs/SearchResult.md
@@ -187,6 +194,11 @@ model_person_project_filter.go
 model_person_project_filter_all_of.go
 model_person_score_detail.go
 model_person_search.go
+model_person_search_certifications_inner.go
+model_person_search_industries_inner.go
+model_person_search_organizations_inner.go
+model_person_search_projects_inner.go
+model_person_search_skills_inner.go
 model_person_skill_filter.go
 model_person_skill_filter_all_of.go
 model_project.go
@@ -195,9 +207,11 @@ model_project_details.go
 model_project_participation.go
 model_project_participation_all_of.go
 model_project_participation_update.go
+model_project_participation_update_timeframe.go
 model_project_score_detail.go
 model_project_score_detail_all_of.go
 model_project_search.go
+model_project_search_skills_inner.go
 model_project_status.go
 model_search_result.go
 model_search_result_all_of.go

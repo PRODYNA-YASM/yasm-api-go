@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **ParticipationAmountInMonths** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
 **InvolvedOfficeIds** | Pointer to **[]string** |  | [optional] 
 **AmountOfInvolvedPersons** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
-**Skills** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
-**Participants** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
-**Industries** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
-**Organizations** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
+**Skills** | Pointer to [**[]ProjectSearchSkillsInner**](ProjectSearchSkillsInner.md) |  | [optional] 
+**Participants** | Pointer to [**[]ProjectSearchSkillsInner**](ProjectSearchSkillsInner.md) |  | [optional] 
+**Industries** | Pointer to [**[]ProjectSearchSkillsInner**](ProjectSearchSkillsInner.md) |  | [optional] 
+**Organizations** | Pointer to [**[]ProjectSearchSkillsInner**](ProjectSearchSkillsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -212,20 +212,20 @@ HasAmountOfInvolvedPersons returns a boolean if a field has been set.
 
 ### GetSkills
 
-`func (o *ProjectSearch) GetSkills() []EntityFilter`
+`func (o *ProjectSearch) GetSkills() []ProjectSearchSkillsInner`
 
 GetSkills returns the Skills field if non-nil, zero value otherwise.
 
 ### GetSkillsOk
 
-`func (o *ProjectSearch) GetSkillsOk() (*[]EntityFilter, bool)`
+`func (o *ProjectSearch) GetSkillsOk() (*[]ProjectSearchSkillsInner, bool)`
 
 GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkills
 
-`func (o *ProjectSearch) SetSkills(v []EntityFilter)`
+`func (o *ProjectSearch) SetSkills(v []ProjectSearchSkillsInner)`
 
 SetSkills sets Skills field to given value.
 
@@ -237,20 +237,20 @@ HasSkills returns a boolean if a field has been set.
 
 ### GetParticipants
 
-`func (o *ProjectSearch) GetParticipants() []EntityFilter`
+`func (o *ProjectSearch) GetParticipants() []ProjectSearchSkillsInner`
 
 GetParticipants returns the Participants field if non-nil, zero value otherwise.
 
 ### GetParticipantsOk
 
-`func (o *ProjectSearch) GetParticipantsOk() (*[]EntityFilter, bool)`
+`func (o *ProjectSearch) GetParticipantsOk() (*[]ProjectSearchSkillsInner, bool)`
 
 GetParticipantsOk returns a tuple with the Participants field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParticipants
 
-`func (o *ProjectSearch) SetParticipants(v []EntityFilter)`
+`func (o *ProjectSearch) SetParticipants(v []ProjectSearchSkillsInner)`
 
 SetParticipants sets Participants field to given value.
 
@@ -262,20 +262,20 @@ HasParticipants returns a boolean if a field has been set.
 
 ### GetIndustries
 
-`func (o *ProjectSearch) GetIndustries() []EntityFilter`
+`func (o *ProjectSearch) GetIndustries() []ProjectSearchSkillsInner`
 
 GetIndustries returns the Industries field if non-nil, zero value otherwise.
 
 ### GetIndustriesOk
 
-`func (o *ProjectSearch) GetIndustriesOk() (*[]EntityFilter, bool)`
+`func (o *ProjectSearch) GetIndustriesOk() (*[]ProjectSearchSkillsInner, bool)`
 
 GetIndustriesOk returns a tuple with the Industries field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIndustries
 
-`func (o *ProjectSearch) SetIndustries(v []EntityFilter)`
+`func (o *ProjectSearch) SetIndustries(v []ProjectSearchSkillsInner)`
 
 SetIndustries sets Industries field to given value.
 
@@ -287,20 +287,20 @@ HasIndustries returns a boolean if a field has been set.
 
 ### GetOrganizations
 
-`func (o *ProjectSearch) GetOrganizations() []EntityFilter`
+`func (o *ProjectSearch) GetOrganizations() []ProjectSearchSkillsInner`
 
 GetOrganizations returns the Organizations field if non-nil, zero value otherwise.
 
 ### GetOrganizationsOk
 
-`func (o *ProjectSearch) GetOrganizationsOk() (*[]EntityFilter, bool)`
+`func (o *ProjectSearch) GetOrganizationsOk() (*[]ProjectSearchSkillsInner, bool)`
 
 GetOrganizationsOk returns a tuple with the Organizations field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrganizations
 
-`func (o *ProjectSearch) SetOrganizations(v []EntityFilter)`
+`func (o *ProjectSearch) SetOrganizations(v []ProjectSearchSkillsInner)`
 
 SetOrganizations sets Organizations field to given value.
 
