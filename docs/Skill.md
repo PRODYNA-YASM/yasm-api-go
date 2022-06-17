@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Name** | **string** |  | 
 **Suggestion** | **bool** |  | [default to false]
+**Linkable** | Pointer to **bool** | The entity can be linked | [optional] [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Invest** | Pointer to **bool** |  | [optional] [default to false]
@@ -90,6 +91,31 @@ and a boolean to check if the value has been set.
 
 SetSuggestion sets Suggestion field to given value.
 
+
+### GetLinkable
+
+`func (o *Skill) GetLinkable() bool`
+
+GetLinkable returns the Linkable field if non-nil, zero value otherwise.
+
+### GetLinkableOk
+
+`func (o *Skill) GetLinkableOk() (*bool, bool)`
+
+GetLinkableOk returns a tuple with the Linkable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinkable
+
+`func (o *Skill) SetLinkable(v bool)`
+
+SetLinkable sets Linkable field to given value.
+
+### HasLinkable
+
+`func (o *Skill) HasLinkable() bool`
+
+HasLinkable returns a boolean if a field has been set.
 
 ### GetSynonyms
 

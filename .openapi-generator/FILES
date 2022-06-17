@@ -45,6 +45,7 @@ docs/LanguageApi.md
 docs/LanguageDetails.md
 docs/LanguageLevel.md
 docs/Level.md
+docs/Linkable.md
 docs/Locateable.md
 docs/MinMax.md
 docs/MinMaxPercent.md
@@ -153,6 +154,7 @@ model_language.go
 model_language_details.go
 model_language_level.go
 model_level.go
+model_linkable.go
 model_locateable.go
 model_min_max.go
 model_min_max_percent.go

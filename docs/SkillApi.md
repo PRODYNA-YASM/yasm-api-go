@@ -1252,7 +1252,7 @@ Name | Type | Description  | Notes
 
 ## GetSkills
 
-> PagedSkills GetSkills(ctx).Types(types).Suggestions(suggestions).Skip(skip).Limit(limit).Execute()
+> PagedSkills GetSkills(ctx).Types(types).Suggestions(suggestions).Linkable(linkable).Skip(skip).Limit(limit).Execute()
 
 Get a list of all skills, optionally only root, optionally only kinds
 
@@ -1271,12 +1271,13 @@ import (
 func main() {
     types := "types_example" // string | Gives you either all skills, only the root kills or those which are defining kinds (optional) (default to "all")
     suggestions := "suggestions_example" // string | Optionally filter skills based on suggestion (optional) (default to "all")
+    linkable := true // bool | Optionally filter skills based on linkable (optional)
     skip := int32(56) // int32 |  (optional) (default to 0)
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SkillApi.GetSkills(context.Background()).Types(types).Suggestions(suggestions).Skip(skip).Limit(limit).Execute()
+    resp, r, err := apiClient.SkillApi.GetSkills(context.Background()).Types(types).Suggestions(suggestions).Linkable(linkable).Skip(skip).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.GetSkills``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1299,6 +1300,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **types** | **string** | Gives you either all skills, only the root kills or those which are defining kinds | [default to &quot;all&quot;]
  **suggestions** | **string** | Optionally filter skills based on suggestion | [default to &quot;all&quot;]
+ **linkable** | **bool** | Optionally filter skills based on linkable | 
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
 

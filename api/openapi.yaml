@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.0.15
+  version: 1.0.16
 servers:
 - url: /api/v1
 security:
@@ -1181,6 +1181,14 @@ paths:
           - suggested
           - notsuggested
           type: string
+        style: form
+      - description: Optionally filter skills based on linkable
+        explode: true
+        in: query
+        name: linkable
+        required: false
+        schema:
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -3245,6 +3253,15 @@ components:
       required:
       - suggestion
       type: object
+    Linkable:
+      properties:
+        linkable:
+          default: false
+          description: The entity can be linked
+          type: boolean
+      required:
+      - hidden
+      type: object
     Timeframed:
       properties:
         startdate:
@@ -3809,6 +3826,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Linkable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
       - $ref: '#/components/schemas/Skill_allOf'
