@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**GetOrganization**](OrganizationApi.md#GetOrganization) | **Get** /organizations/{organizationId} | Get details about an Organization
 [**GetOrganizationProjects**](OrganizationApi.md#GetOrganizationProjects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
 [**GetOrganizations**](OrganizationApi.md#GetOrganizations) | **Get** /organizations | Get a list of all Organizations
+[**MergeOrganizations**](OrganizationApi.md#MergeOrganizations) | **Put** /organizations/{organizationId}/merge/{otherOrganizationId} | Merge two organizations
 [**MoveCertification**](OrganizationApi.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificateId} | Move a Certification to an Organization
 [**UpdateOffice**](OrganizationApi.md#UpdateOffice) | **Put** /organizations/{organizationId}/offices/{officeId} | Update an Office for an Organization
 [**UpdateOrganization**](OrganizationApi.md#UpdateOrganization) | **Put** /organizations/{organizationId} | Update an Organization
@@ -912,6 +913,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PagedOrganizations**](PagedOrganizations.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## MergeOrganizations
+
+> OrganizationDetails MergeOrganizations(ctx, organizationId, otherOrganizationId).Execute()
+
+Merge two organizations
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    otherOrganizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.MergeOrganizations(context.Background(), organizationId, otherOrganizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.MergeOrganizations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `MergeOrganizations`: OrganizationDetails
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationApi.MergeOrganizations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**otherOrganizationId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMergeOrganizationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrganizationDetails**](OrganizationDetails.md)
 
 ### Authorization
 

@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**DeleteProject**](ProjectApi.md#DeleteProject) | **Delete** /projects/{projectId} | Delete a project
 [**GetOrganizationProjects**](ProjectApi.md#GetOrganizationProjects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
 [**GetProject**](ProjectApi.md#GetProject) | **Get** /projects/{projectId} | Get details about a Project
+[**MergeProjects**](ProjectApi.md#MergeProjects) | **Put** /projects/{projectId}/merge/{otherProjectId} | Merge to projects
 [**ReadPersonProject**](ProjectApi.md#ReadPersonProject) | **Get** /persons/{personId}/projects/{projectId} | Get a Project Partifipation of a Person
 [**SearchProjects**](ProjectApi.md#SearchProjects) | **Post** /projects/search | Complex search over project entities
 [**UpdatePersonProject**](ProjectApi.md#UpdatePersonProject) | **Put** /persons/{personId}/projects/{projectId} | Update a Project of a Person
@@ -728,6 +729,77 @@ Other parameters are passed through a pointer to a apiGetProjectRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ProjectDetails**](ProjectDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## MergeProjects
+
+> ProjectDetails MergeProjects(ctx, projectId, otherProjectId).Execute()
+
+Merge to projects
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    otherProjectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectApi.MergeProjects(context.Background(), projectId, otherProjectId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.MergeProjects``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `MergeProjects`: ProjectDetails
+    fmt.Fprintf(os.Stdout, "Response from `ProjectApi.MergeProjects`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**projectId** | **string** |  | 
+**otherProjectId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMergeProjectsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type

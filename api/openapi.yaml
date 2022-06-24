@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.0.17
+  version: 1.1.0
 servers:
 - url: /api/v1
 security:
@@ -209,6 +209,42 @@ paths:
       security:
       - implicit: []
       summary: Update an Organization
+      tags:
+      - Organization
+  /organizations/{organizationId}/merge/{otherOrganizationId}:
+    put:
+      operationId: mergeOrganizations
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: otherOrganizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Merge two organizations
       tags:
       - Organization
   /organizations/{organizationId}/industries/{industryId}:
@@ -1151,6 +1187,42 @@ paths:
       summary: Update a Project
       tags:
       - Project
+  /projects/{projectId}/merge/{otherProjectId}:
+    put:
+      operationId: mergeProjects
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: otherProjectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Merge to projects
+      tags:
+      - Project
   /skills:
     get:
       operationId: getSkills
@@ -1332,6 +1404,42 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       summary: Update a Skill
+      tags:
+      - Skill
+  /skills/{skillId}/merge/{otherSkillId}:
+    put:
+      operationId: mergeSkills
+      parameters:
+      - explode: false
+        in: path
+        name: skillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: otherSkillId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Merge two skills
       tags:
       - Skill
   /skills/{skillId}/parents:
@@ -3485,6 +3593,7 @@ components:
         - children:
           - null
           - null
+          displayName: displayName
           skill: null
           kinds:
           - null
@@ -3495,6 +3604,7 @@ components:
         - children:
           - null
           - null
+          displayName: displayName
           skill: null
           kinds:
           - null
@@ -3691,9 +3801,6 @@ components:
       type: object
     ProjectDetails:
       example:
-        skills:
-        - null
-        - null
         persons:
         - null
         - null
@@ -3714,10 +3821,6 @@ components:
         persons:
           items:
             $ref: '#/components/schemas/Person'
-          type: array
-        skills:
-          items:
-            $ref: '#/components/schemas/Skill'
           type: array
       type: object
     ProjectScoreDetail:
@@ -3857,6 +3960,7 @@ components:
         children:
         - null
         - null
+        displayName: displayName
         skill: null
         kinds:
         - null
@@ -3879,6 +3983,10 @@ components:
           items:
             $ref: '#/components/schemas/Skill'
           type: array
+        displayName:
+          description: "The display name of the skill, e.g. \"Communication (Computing)\"\
+            \ or \"Communication (Design)\" or \"Protcool (Communication,IT)\""
+          type: string
       type: object
     Status:
       example:

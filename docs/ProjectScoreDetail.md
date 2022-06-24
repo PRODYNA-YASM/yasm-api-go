@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
 **Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
-**Skills** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 **Score** | Pointer to **float32** |  | [optional] 
 
 ## Methods
@@ -129,31 +128,6 @@ SetPersons sets Persons field to given value.
 `func (o *ProjectScoreDetail) HasPersons() bool`
 
 HasPersons returns a boolean if a field has been set.
-
-### GetSkills
-
-`func (o *ProjectScoreDetail) GetSkills() []Skill`
-
-GetSkills returns the Skills field if non-nil, zero value otherwise.
-
-### GetSkillsOk
-
-`func (o *ProjectScoreDetail) GetSkillsOk() (*[]Skill, bool)`
-
-GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSkills
-
-`func (o *ProjectScoreDetail) SetSkills(v []Skill)`
-
-SetSkills sets Skills field to given value.
-
-### HasSkills
-
-`func (o *ProjectScoreDetail) HasSkills() bool`
-
-HasSkills returns a boolean if a field has been set.
 
 ### GetScore
 

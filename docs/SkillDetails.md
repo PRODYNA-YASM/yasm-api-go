@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Children** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 **Parents** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 **Kinds** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
+**DisplayName** | Pointer to **string** | The display name of the skill, e.g. \&quot;Communication (Computing)\&quot; or \&quot;Communication (Design)\&quot; or \&quot;Protcool (Communication,IT)\&quot; | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetKinds sets Kinds field to given value.
 `func (o *SkillDetails) HasKinds() bool`
 
 HasKinds returns a boolean if a field has been set.
+
+### GetDisplayName
+
+`func (o *SkillDetails) GetDisplayName() string`
+
+GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
+
+### GetDisplayNameOk
+
+`func (o *SkillDetails) GetDisplayNameOk() (*string, bool)`
+
+GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayName
+
+`func (o *SkillDetails) SetDisplayName(v string)`
+
+SetDisplayName sets DisplayName field to given value.
+
+### HasDisplayName
+
+`func (o *SkillDetails) HasDisplayName() bool`
+
+HasDisplayName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

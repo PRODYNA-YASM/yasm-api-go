@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
 **Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
-**Skills** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 
 ## Methods
 
@@ -128,31 +127,6 @@ SetPersons sets Persons field to given value.
 `func (o *ProjectDetails) HasPersons() bool`
 
 HasPersons returns a boolean if a field has been set.
-
-### GetSkills
-
-`func (o *ProjectDetails) GetSkills() []Skill`
-
-GetSkills returns the Skills field if non-nil, zero value otherwise.
-
-### GetSkillsOk
-
-`func (o *ProjectDetails) GetSkillsOk() (*[]Skill, bool)`
-
-GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSkills
-
-`func (o *ProjectDetails) SetSkills(v []Skill)`
-
-SetSkills sets Skills field to given value.
-
-### HasSkills
-
-`func (o *ProjectDetails) HasSkills() bool`
-
-HasSkills returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
