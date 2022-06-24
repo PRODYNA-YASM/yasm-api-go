@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `UNKNOWN` (value: `"UNKNOWN"`)
+
 * `ENTRY_LEVEL` (value: `"ENTRY_LEVEL"`)
 
 * `PROFESSIONAL` (value: `"PROFESSIONAL"`)

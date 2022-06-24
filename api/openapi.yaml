@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.1.0
+  version: 1.1.1
 servers:
 - url: /api/v1
 security:
@@ -4128,6 +4128,7 @@ components:
       type: object
     Seniority:
       enum:
+      - UNKNOWN
       - ENTRY_LEVEL
       - PROFESSIONAL
       - SENIOR
@@ -4213,6 +4214,8 @@ components:
         seniority:
           example: Senior
           type: string
+        seniorityEnum:
+          $ref: '#/components/schemas/Seniority'
         experienceSinceYear:
           example: 2010
           type: integer

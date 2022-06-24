@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Mail** | Pointer to **string** |  | [optional] 
 **MobilePhone** | Pointer to **string** |  | [optional] 
 **Seniority** | Pointer to **string** |  | [optional] 
+**SeniorityEnum** | Pointer to [**Seniority**](Seniority.md) |  | [optional] 
 **ExperienceSinceYear** | Pointer to **int32** |  | [optional] 
 **OnsiteRatio** | Pointer to **int32** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] 
@@ -402,6 +403,31 @@ SetSeniority sets Seniority field to given value.
 `func (o *Person) HasSeniority() bool`
 
 HasSeniority returns a boolean if a field has been set.
+
+### GetSeniorityEnum
+
+`func (o *Person) GetSeniorityEnum() Seniority`
+
+GetSeniorityEnum returns the SeniorityEnum field if non-nil, zero value otherwise.
+
+### GetSeniorityEnumOk
+
+`func (o *Person) GetSeniorityEnumOk() (*Seniority, bool)`
+
+GetSeniorityEnumOk returns a tuple with the SeniorityEnum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeniorityEnum
+
+`func (o *Person) SetSeniorityEnum(v Seniority)`
+
+SetSeniorityEnum sets SeniorityEnum field to given value.
+
+### HasSeniorityEnum
+
+`func (o *Person) HasSeniorityEnum() bool`
+
+HasSeniorityEnum returns a boolean if a field has been set.
 
 ### GetExperienceSinceYear
 
