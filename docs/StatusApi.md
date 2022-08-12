@@ -119,7 +119,7 @@ Other parameters are passed through a pointer to a apiGetVersionRequest struct v
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

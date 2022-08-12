@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **Location** | Pointer to **string** |  | [optional] 
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
 **External** | Pointer to **bool** | true if project was done outside of the organization | [optional] [default to false]
 
 ## Methods
@@ -192,31 +191,6 @@ SetDescription sets Description field to given value.
 `func (o *Project) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetTimeframe
-
-`func (o *Project) GetTimeframe() Timeframed`
-
-GetTimeframe returns the Timeframe field if non-nil, zero value otherwise.
-
-### GetTimeframeOk
-
-`func (o *Project) GetTimeframeOk() (*Timeframed, bool)`
-
-GetTimeframeOk returns a tuple with the Timeframe field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTimeframe
-
-`func (o *Project) SetTimeframe(v Timeframed)`
-
-SetTimeframe sets Timeframe field to given value.
-
-### HasTimeframe
-
-`func (o *Project) HasTimeframe() bool`
-
-HasTimeframe returns a boolean if a field has been set.
 
 ### GetExternal
 

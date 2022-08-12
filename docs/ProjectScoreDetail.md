@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
 **Skills** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
+**Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
 **Score** | Pointer to **float32** |  | [optional] 
 
 ## Methods
@@ -154,6 +155,31 @@ SetSkills sets Skills field to given value.
 `func (o *ProjectScoreDetail) HasSkills() bool`
 
 HasSkills returns a boolean if a field has been set.
+
+### GetTimeframe
+
+`func (o *ProjectScoreDetail) GetTimeframe() Timeframed`
+
+GetTimeframe returns the Timeframe field if non-nil, zero value otherwise.
+
+### GetTimeframeOk
+
+`func (o *ProjectScoreDetail) GetTimeframeOk() (*Timeframed, bool)`
+
+GetTimeframeOk returns a tuple with the Timeframe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeframe
+
+`func (o *ProjectScoreDetail) SetTimeframe(v Timeframed)`
+
+SetTimeframe sets Timeframe field to given value.
+
+### HasTimeframe
+
+`func (o *ProjectScoreDetail) HasTimeframe() bool`
+
+HasTimeframe returns a boolean if a field has been set.
 
 ### GetScore
 
