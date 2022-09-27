@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
 **Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
-**Skills** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
+**SkillGroups** | Pointer to [**[]SkillGroup**](SkillGroup.md) |  | [optional] 
 **Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
 
 ## Methods
@@ -130,30 +130,30 @@ SetPersons sets Persons field to given value.
 
 HasPersons returns a boolean if a field has been set.
 
-### GetSkills
+### GetSkillGroups
 
-`func (o *ProjectDetails) GetSkills() []Skill`
+`func (o *ProjectDetails) GetSkillGroups() []SkillGroup`
 
-GetSkills returns the Skills field if non-nil, zero value otherwise.
+GetSkillGroups returns the SkillGroups field if non-nil, zero value otherwise.
 
-### GetSkillsOk
+### GetSkillGroupsOk
 
-`func (o *ProjectDetails) GetSkillsOk() (*[]Skill, bool)`
+`func (o *ProjectDetails) GetSkillGroupsOk() (*[]SkillGroup, bool)`
 
-GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
+GetSkillGroupsOk returns a tuple with the SkillGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSkills
+### SetSkillGroups
 
-`func (o *ProjectDetails) SetSkills(v []Skill)`
+`func (o *ProjectDetails) SetSkillGroups(v []SkillGroup)`
 
-SetSkills sets Skills field to given value.
+SetSkillGroups sets SkillGroups field to given value.
 
-### HasSkills
+### HasSkillGroups
 
-`func (o *ProjectDetails) HasSkills() bool`
+`func (o *ProjectDetails) HasSkillGroups() bool`
 
-HasSkills returns a boolean if a field has been set.
+HasSkillGroups returns a boolean if a field has been set.
 
 ### GetTimeframe
 

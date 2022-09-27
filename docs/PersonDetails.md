@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Languages** | Pointer to [**[]LanguageLevel**](LanguageLevel.md) |  | [optional] 
 **Office** | Pointer to [**Office**](Office.md) |  | [optional] 
 **Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
-**Skills** | Pointer to [**[]SkillDetails**](SkillDetails.md) |  | [optional] 
+**SkillGroups** | Pointer to [**[]SkillGroup**](SkillGroup.md) |  | [optional] 
 
 ## Methods
 
@@ -259,30 +259,30 @@ SetAvailabilities sets Availabilities field to given value.
 
 HasAvailabilities returns a boolean if a field has been set.
 
-### GetSkills
+### GetSkillGroups
 
-`func (o *PersonDetails) GetSkills() []SkillDetails`
+`func (o *PersonDetails) GetSkillGroups() []SkillGroup`
 
-GetSkills returns the Skills field if non-nil, zero value otherwise.
+GetSkillGroups returns the SkillGroups field if non-nil, zero value otherwise.
 
-### GetSkillsOk
+### GetSkillGroupsOk
 
-`func (o *PersonDetails) GetSkillsOk() (*[]SkillDetails, bool)`
+`func (o *PersonDetails) GetSkillGroupsOk() (*[]SkillGroup, bool)`
 
-GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
+GetSkillGroupsOk returns a tuple with the SkillGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSkills
+### SetSkillGroups
 
-`func (o *PersonDetails) SetSkills(v []SkillDetails)`
+`func (o *PersonDetails) SetSkillGroups(v []SkillGroup)`
 
-SetSkills sets Skills field to given value.
+SetSkillGroups sets SkillGroups field to given value.
 
-### HasSkills
+### HasSkillGroups
 
-`func (o *PersonDetails) HasSkills() bool`
+`func (o *PersonDetails) HasSkillGroups() bool`
 
-HasSkills returns a boolean if a field has been set.
+HasSkillGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

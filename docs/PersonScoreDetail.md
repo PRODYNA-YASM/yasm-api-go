@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Languages** | Pointer to [**[]LanguageLevel**](LanguageLevel.md) |  | [optional] 
 **Office** | Pointer to [**Office**](Office.md) |  | [optional] 
 **Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
-**Skills** | Pointer to [**[]SkillDetails**](SkillDetails.md) |  | [optional] 
+**SkillGroups** | Pointer to [**[]SkillGroup**](SkillGroup.md) |  | [optional] 
 **Score** | Pointer to **float32** |  | [optional] 
 
 ## Methods
@@ -260,30 +260,30 @@ SetAvailabilities sets Availabilities field to given value.
 
 HasAvailabilities returns a boolean if a field has been set.
 
-### GetSkills
+### GetSkillGroups
 
-`func (o *PersonScoreDetail) GetSkills() []SkillDetails`
+`func (o *PersonScoreDetail) GetSkillGroups() []SkillGroup`
 
-GetSkills returns the Skills field if non-nil, zero value otherwise.
+GetSkillGroups returns the SkillGroups field if non-nil, zero value otherwise.
 
-### GetSkillsOk
+### GetSkillGroupsOk
 
-`func (o *PersonScoreDetail) GetSkillsOk() (*[]SkillDetails, bool)`
+`func (o *PersonScoreDetail) GetSkillGroupsOk() (*[]SkillGroup, bool)`
 
-GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
+GetSkillGroupsOk returns a tuple with the SkillGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSkills
+### SetSkillGroups
 
-`func (o *PersonScoreDetail) SetSkills(v []SkillDetails)`
+`func (o *PersonScoreDetail) SetSkillGroups(v []SkillGroup)`
 
-SetSkills sets Skills field to given value.
+SetSkillGroups sets SkillGroups field to given value.
 
-### HasSkills
+### HasSkillGroups
 
-`func (o *PersonScoreDetail) HasSkills() bool`
+`func (o *PersonScoreDetail) HasSkillGroups() bool`
 
-HasSkills returns a boolean if a field has been set.
+HasSkillGroups returns a boolean if a field has been set.
 
 ### GetScore
 

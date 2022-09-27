@@ -119,6 +119,7 @@ docs/Skill.md
 docs/SkillAllOf.md
 docs/SkillApi.md
 docs/SkillDetails.md
+docs/SkillGroup.md
 docs/SkillLevel.md
 docs/SkillLevelUpdate.md
 docs/SkillLevelUpdateAllOf.md
@@ -222,6 +223,7 @@ model_seniority.go
 model_skill.go
 model_skill_all_of.go
 model_skill_details.go
+model_skill_group.go
 model_skill_level.go
 model_skill_level_update.go
 model_skill_level_update_all_of.go

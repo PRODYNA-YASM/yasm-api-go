@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.1.4
+  version: 1.1.5
 servers:
 - url: /api/v1
 security:
@@ -3591,29 +3591,6 @@ components:
       type: object
     PersonDetails:
       example:
-        skills:
-        - children:
-          - null
-          - null
-          displayName: displayName
-          skill: null
-          kinds:
-          - null
-          - null
-          parents:
-          - null
-          - null
-        - children:
-          - null
-          - null
-          displayName: displayName
-          skill: null
-          kinds:
-          - null
-          - null
-          parents:
-          - null
-          - null
         projects:
         - null
         - null
@@ -3633,6 +3610,15 @@ components:
         industries:
         - null
         - null
+        skillGroups:
+        - skills:
+          - null
+          - null
+          group: null
+        - skills:
+          - null
+          - null
+          group: null
         office: null
         interests:
         - null
@@ -3692,9 +3678,9 @@ components:
           items:
             $ref: '#/components/schemas/AvailabilityDetail'
           type: array
-        skills:
+        skillGroups:
           items:
-            $ref: '#/components/schemas/SkillDetails'
+            $ref: '#/components/schemas/SkillGroup'
           type: array
       type: object
     PersonSearch:
@@ -3803,9 +3789,6 @@ components:
       type: object
     ProjectDetails:
       example:
-        skills:
-        - null
-        - null
         persons:
         - null
         - null
@@ -3816,6 +3799,15 @@ components:
         industries:
         - null
         - null
+        skillGroups:
+        - skills:
+          - null
+          - null
+          group: null
+        - skills:
+          - null
+          - null
+          group: null
         project: null
       properties:
         project:
@@ -3830,9 +3822,9 @@ components:
           items:
             $ref: '#/components/schemas/Person'
           type: array
-        skills:
+        skillGroups:
           items:
-            $ref: '#/components/schemas/Skill'
+            $ref: '#/components/schemas/SkillGroup'
           type: array
         timeframe:
           $ref: '#/components/schemas/Timeframed'
@@ -3955,6 +3947,19 @@ components:
       - $ref: '#/components/schemas/Descriptable'
       - $ref: '#/components/schemas/Skill_allOf'
       type: object
+    SkillGroup:
+      example:
+        skills:
+        - null
+        - null
+        group: null
+      properties:
+        group:
+          $ref: '#/components/schemas/Skill'
+        skills:
+          items:
+            $ref: '#/components/schemas/Skill'
+          type: array
     SkillLevel:
       example:
         level:
@@ -4155,6 +4160,7 @@ components:
           example: This is the name
           type: string
       type: object
+      example: null
     Availability_allOf:
       properties:
         workHours:
@@ -4170,17 +4176,20 @@ components:
             type: string
           type: array
       type: object
+      example: null
     Certification_allOf:
       properties:
         validity:
           type: string
       type: object
+      example: null
     Country_allOf:
       properties:
         picture:
           description: base64 encoded image
           type: string
       type: object
+      example: null
     Experience_allOf:
       properties:
         skill:
@@ -4190,6 +4199,7 @@ components:
             $ref: '#/components/schemas/Person'
           type: array
       type: object
+      example: null
     Organization_allOf:
       properties:
         partner:
@@ -4202,6 +4212,7 @@ components:
           description: base64 encoded image
           type: string
       type: object
+      example: null
     Person_allOf:
       properties:
         employeeId:
@@ -4246,6 +4257,7 @@ components:
           description: Marks persons not working for the company anymore
           type: boolean
       type: object
+      example: null
     PersonSearch_skills_inner:
       allOf:
       - $ref: '#/components/schemas/PersonSkillFilter'
@@ -4270,6 +4282,7 @@ components:
           format: date
           type: string
       type: object
+      example: null
     PersonProjectFilter_allOf:
       properties:
         participationInMonth:
@@ -4280,11 +4293,13 @@ components:
             type: string
           type: array
       type: object
+      example: null
     PersonOrganizationFilter_allOf:
       properties:
         amountOfProjects:
           $ref: '#/components/schemas/MinMax'
       type: object
+      example: null
     PersonIndustryFilter_allOf:
       properties:
         activeProjects:
@@ -4294,12 +4309,14 @@ components:
         experienceInMonth:
           $ref: '#/components/schemas/MinMax'
       type: object
+      example: null
     PersonCertificationFilter_allOf:
       properties:
         startedCertificaiton:
           description: Include employees who started the certification
           type: boolean
       type: object
+      example: null
     Project_allOf:
       properties:
         external:
@@ -4307,11 +4324,13 @@ components:
           description: true if project was done outside of the organization
           type: boolean
       type: object
+      example: null
     ProjectScoreDetail_allOf:
       properties:
         score:
           type: number
       type: object
+      example: null
     ProjectParticipation_allOf:
       properties:
         timeframe:
@@ -4338,6 +4357,7 @@ components:
       - id
       - project
       type: object
+      example: null
     ProjectParticipationUpdate_timeframe:
       allOf:
       - $ref: '#/components/schemas/Timeframed'
@@ -4357,6 +4377,7 @@ components:
       - id
       - name
       type: object
+      example: null
     SkillLevelUpdate_allOf:
       properties:
         skillId:
@@ -4365,6 +4386,7 @@ components:
         level:
           $ref: '#/components/schemas/Level'
       type: object
+      example: null
     PagedAvailabilities_allOf:
       properties:
         availabilities:
@@ -4372,6 +4394,7 @@ components:
             $ref: '#/components/schemas/AvailabilityDetail'
           type: array
       type: object
+      example: null
     PagedOrganizations_allOf:
       properties:
         organizations:
@@ -4379,6 +4402,7 @@ components:
             $ref: '#/components/schemas/OrganizationDetails'
           type: array
       type: object
+      example: null
     PagedLanguages_allOf:
       properties:
         languages:
@@ -4386,6 +4410,7 @@ components:
             $ref: '#/components/schemas/Language'
           type: array
       type: object
+      example: null
     PagedCertifications_allOf:
       properties:
         certifications:
@@ -4393,6 +4418,7 @@ components:
             $ref: '#/components/schemas/CertificationDetails'
           type: array
       type: object
+      example: null
     PagedCountries_allOf:
       properties:
         countries:
@@ -4400,6 +4426,7 @@ components:
             $ref: '#/components/schemas/Country'
           type: array
       type: object
+      example: null
     PagedSkills_allOf:
       properties:
         skills:
@@ -4407,6 +4434,7 @@ components:
             $ref: '#/components/schemas/SkillDetails'
           type: array
       type: object
+      example: null
     PagedIndustries_allOf:
       properties:
         industries:
@@ -4414,6 +4442,7 @@ components:
             $ref: '#/components/schemas/IndustryDetails'
           type: array
       type: object
+      example: null
     PagedProjects_allOf:
       properties:
         projects:
@@ -4421,6 +4450,7 @@ components:
             $ref: '#/components/schemas/ProjectScoreDetail'
           type: array
       type: object
+      example: null
     PagedPersons_allOf:
       properties:
         persons:
@@ -4429,6 +4459,7 @@ components:
             - $ref: '#/components/schemas/PersonScoreDetail'
           type: array
       type: object
+      example: null
     SearchResult_allOf:
       properties:
         items:
@@ -4436,6 +4467,7 @@ components:
             $ref: '#/components/schemas/SearchResultItem'
           type: array
       type: object
+      example: null
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT
