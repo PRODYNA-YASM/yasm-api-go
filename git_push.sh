@@ -14,7 +14,7 @@ if [ "$git_host" = "" ]; then
 fi
 
 if [ "$git_user_id" = "" ]; then
-    git_user_id="prodyna"
+    git_user_id="prodyna-yasm"
     echo "[INFO] No command line input provided. Set \$git_user_id to $git_user_id"
 fi
 
