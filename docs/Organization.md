@@ -4,22 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
+**Partner** | Pointer to **bool** |  | [optional] [default to false]
+**Customer** | Pointer to **bool** |  | [optional] [default to false]
+**Picture** | Pointer to **string** | base64 encoded image | [optional] 
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Partner** | Pointer to **bool** |  | [optional] [default to false]
-**Customer** | Pointer to **bool** |  | [optional] [default to false]
-**Picture** | Pointer to **string** | base64 encoded image | [optional] 
 
 ## Methods
 
 ### NewOrganization
 
-`func NewOrganization(id string, name string, suggestion bool, ) *Organization`
+`func NewOrganization(suggestion bool, ) *Organization`
 
 NewOrganization instantiates a new Organization object
 This constructor will assign default values to properties that have it defined,
@@ -34,45 +32,80 @@ NewOrganizationWithDefaults instantiates a new Organization object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetPartner
 
-`func (o *Organization) GetId() string`
+`func (o *Organization) GetPartner() bool`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetPartner returns the Partner field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetPartnerOk
 
-`func (o *Organization) GetIdOk() (*string, bool)`
+`func (o *Organization) GetPartnerOk() (*bool, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetPartnerOk returns a tuple with the Partner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetPartner
 
-`func (o *Organization) SetId(v string)`
+`func (o *Organization) SetPartner(v bool)`
 
-SetId sets Id field to given value.
+SetPartner sets Partner field to given value.
 
+### HasPartner
 
-### GetName
+`func (o *Organization) HasPartner() bool`
 
-`func (o *Organization) GetName() string`
+HasPartner returns a boolean if a field has been set.
 
-GetName returns the Name field if non-nil, zero value otherwise.
+### GetCustomer
 
-### GetNameOk
+`func (o *Organization) GetCustomer() bool`
 
-`func (o *Organization) GetNameOk() (*string, bool)`
+GetCustomer returns the Customer field if non-nil, zero value otherwise.
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+### GetCustomerOk
+
+`func (o *Organization) GetCustomerOk() (*bool, bool)`
+
+GetCustomerOk returns a tuple with the Customer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetCustomer
 
-`func (o *Organization) SetName(v string)`
+`func (o *Organization) SetCustomer(v bool)`
 
-SetName sets Name field to given value.
+SetCustomer sets Customer field to given value.
 
+### HasCustomer
+
+`func (o *Organization) HasCustomer() bool`
+
+HasCustomer returns a boolean if a field has been set.
+
+### GetPicture
+
+`func (o *Organization) GetPicture() string`
+
+GetPicture returns the Picture field if non-nil, zero value otherwise.
+
+### GetPictureOk
+
+`func (o *Organization) GetPictureOk() (*string, bool)`
+
+GetPictureOk returns a tuple with the Picture field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPicture
+
+`func (o *Organization) SetPicture(v string)`
+
+SetPicture sets Picture field to given value.
+
+### HasPicture
+
+`func (o *Organization) HasPicture() bool`
+
+HasPicture returns a boolean if a field has been set.
 
 ### GetSuggestion
 
@@ -193,81 +226,6 @@ SetDescription sets Description field to given value.
 `func (o *Organization) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetPartner
-
-`func (o *Organization) GetPartner() bool`
-
-GetPartner returns the Partner field if non-nil, zero value otherwise.
-
-### GetPartnerOk
-
-`func (o *Organization) GetPartnerOk() (*bool, bool)`
-
-GetPartnerOk returns a tuple with the Partner field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPartner
-
-`func (o *Organization) SetPartner(v bool)`
-
-SetPartner sets Partner field to given value.
-
-### HasPartner
-
-`func (o *Organization) HasPartner() bool`
-
-HasPartner returns a boolean if a field has been set.
-
-### GetCustomer
-
-`func (o *Organization) GetCustomer() bool`
-
-GetCustomer returns the Customer field if non-nil, zero value otherwise.
-
-### GetCustomerOk
-
-`func (o *Organization) GetCustomerOk() (*bool, bool)`
-
-GetCustomerOk returns a tuple with the Customer field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCustomer
-
-`func (o *Organization) SetCustomer(v bool)`
-
-SetCustomer sets Customer field to given value.
-
-### HasCustomer
-
-`func (o *Organization) HasCustomer() bool`
-
-HasCustomer returns a boolean if a field has been set.
-
-### GetPicture
-
-`func (o *Organization) GetPicture() string`
-
-GetPicture returns the Picture field if non-nil, zero value otherwise.
-
-### GetPictureOk
-
-`func (o *Organization) GetPictureOk() (*string, bool)`
-
-GetPictureOk returns a tuple with the Picture field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPicture
-
-`func (o *Organization) SetPicture(v string)`
-
-SetPicture sets Picture field to given value.
-
-### HasPicture
-
-`func (o *Organization) HasPicture() bool`
-
-HasPicture returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

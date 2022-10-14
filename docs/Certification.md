@@ -4,18 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
+**Validity** | Pointer to **string** |  | [optional] 
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Validity** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewCertification
 
-`func NewCertification(id string, name string, suggestion bool, ) *Certification`
+`func NewCertification(suggestion bool, ) *Certification`
 
 NewCertification instantiates a new Certification object
 This constructor will assign default values to properties that have it defined,
@@ -30,45 +28,30 @@ NewCertificationWithDefaults instantiates a new Certification object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetValidity
 
-`func (o *Certification) GetId() string`
+`func (o *Certification) GetValidity() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetValidity returns the Validity field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetValidityOk
 
-`func (o *Certification) GetIdOk() (*string, bool)`
+`func (o *Certification) GetValidityOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetValidityOk returns a tuple with the Validity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetValidity
 
-`func (o *Certification) SetId(v string)`
+`func (o *Certification) SetValidity(v string)`
 
-SetId sets Id field to given value.
+SetValidity sets Validity field to given value.
 
+### HasValidity
 
-### GetName
+`func (o *Certification) HasValidity() bool`
 
-`func (o *Certification) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *Certification) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *Certification) SetName(v string)`
-
-SetName sets Name field to given value.
-
+HasValidity returns a boolean if a field has been set.
 
 ### GetSuggestion
 
@@ -139,31 +122,6 @@ SetDescription sets Description field to given value.
 `func (o *Certification) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetValidity
-
-`func (o *Certification) GetValidity() string`
-
-GetValidity returns the Validity field if non-nil, zero value otherwise.
-
-### GetValidityOk
-
-`func (o *Certification) GetValidityOk() (*string, bool)`
-
-GetValidityOk returns a tuple with the Validity field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetValidity
-
-`func (o *Certification) SetValidity(v string)`
-
-SetValidity sets Validity field to given value.
-
-### HasValidity
-
-`func (o *Certification) HasValidity() bool`
-
-HasValidity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

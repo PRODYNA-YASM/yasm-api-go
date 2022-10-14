@@ -4,19 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
-**Startdate** | **string** |  | 
-**Enddate** | **string** |  | 
 **WorkHours** | **float32** |  | 
 **PlannedHours** | **float32** |  | 
 **Descriptions** | Pointer to **[]string** |  | [optional] 
+**Startdate** | **string** |  | 
+**Enddate** | **string** |  | 
 
 ## Methods
 
 ### NewAvailability
 
-`func NewAvailability(id string, name string, startdate string, enddate string, workHours float32, plannedHours float32, ) *Availability`
+`func NewAvailability(workHours float32, plannedHours float32, startdate string, enddate string, ) *Availability`
 
 NewAvailability instantiates a new Availability object
 This constructor will assign default values to properties that have it defined,
@@ -30,86 +28,6 @@ will change when the set of required properties is changed
 NewAvailabilityWithDefaults instantiates a new Availability object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Availability) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Availability) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Availability) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetName
-
-`func (o *Availability) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *Availability) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *Availability) SetName(v string)`
-
-SetName sets Name field to given value.
-
-
-### GetStartdate
-
-`func (o *Availability) GetStartdate() string`
-
-GetStartdate returns the Startdate field if non-nil, zero value otherwise.
-
-### GetStartdateOk
-
-`func (o *Availability) GetStartdateOk() (*string, bool)`
-
-GetStartdateOk returns a tuple with the Startdate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStartdate
-
-`func (o *Availability) SetStartdate(v string)`
-
-SetStartdate sets Startdate field to given value.
-
-
-### GetEnddate
-
-`func (o *Availability) GetEnddate() string`
-
-GetEnddate returns the Enddate field if non-nil, zero value otherwise.
-
-### GetEnddateOk
-
-`func (o *Availability) GetEnddateOk() (*string, bool)`
-
-GetEnddateOk returns a tuple with the Enddate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnddate
-
-`func (o *Availability) SetEnddate(v string)`
-
-SetEnddate sets Enddate field to given value.
-
 
 ### GetWorkHours
 
@@ -175,6 +93,46 @@ SetDescriptions sets Descriptions field to given value.
 `func (o *Availability) HasDescriptions() bool`
 
 HasDescriptions returns a boolean if a field has been set.
+
+### GetStartdate
+
+`func (o *Availability) GetStartdate() string`
+
+GetStartdate returns the Startdate field if non-nil, zero value otherwise.
+
+### GetStartdateOk
+
+`func (o *Availability) GetStartdateOk() (*string, bool)`
+
+GetStartdateOk returns a tuple with the Startdate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartdate
+
+`func (o *Availability) SetStartdate(v string)`
+
+SetStartdate sets Startdate field to given value.
+
+
+### GetEnddate
+
+`func (o *Availability) GetEnddate() string`
+
+GetEnddate returns the Enddate field if non-nil, zero value otherwise.
+
+### GetEnddateOk
+
+`func (o *Availability) GetEnddateOk() (*string, bool)`
+
+GetEnddateOk returns a tuple with the Enddate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnddate
+
+`func (o *Availability) SetEnddate(v string)`
+
+SetEnddate sets Enddate field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-    industry := *openapiclient.NewIndustry("Id_example", "This is the name", false) // Industry | 
+    industry := *openapiclient.NewIndustry(false, "Id_example") // Industry | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -442,7 +442,7 @@ import (
 
 func main() {
     industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    industry := *openapiclient.NewIndustry("Id_example", "This is the name", false) // Industry | 
+    industry := *openapiclient.NewIndustry(false, "Id_example") // Industry | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

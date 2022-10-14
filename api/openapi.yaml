@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.2.5
+  version: 1.2.6
 servers:
 - url: /api/v1
 security:
@@ -3322,6 +3322,8 @@ components:
       format: date
       type: string
     BasicDomainModel:
+      discriminator:
+        propertyName: type
       properties:
         id:
           format: uuid
@@ -3332,7 +3334,18 @@ components:
     NamedDomainModel:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
-      - $ref: '#/components/schemas/NamedDomainModel_allOf'
+      discriminator:
+        propertyName: type
+      example:
+        name: This is the name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          example: This is the name
+          type: string
       required:
       - name
       type: object
@@ -3392,7 +3405,25 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Timeframed'
-      - $ref: '#/components/schemas/Availability_allOf'
+      example:
+        workHours: 38.5
+        descriptions:
+        - descriptions
+        - descriptions
+        plannedHours: 22.5
+      properties:
+        workHours:
+          example: 38.5
+          format: float
+          type: number
+        plannedHours:
+          example: 22.5
+          format: float
+          type: number
+        descriptions:
+          items:
+            type: string
+          type: array
       required:
       - enddate
       - id
@@ -3403,7 +3434,12 @@ components:
       type: object
     AvailabilityDetail:
       example:
-        availability: null
+        availability:
+          workHours: 38.5
+          descriptions:
+          - descriptions
+          - descriptions
+          plannedHours: 22.5
         percent: 8.008281904610115
       properties:
         availability:
@@ -3420,19 +3456,31 @@ components:
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Certification_allOf'
+      example:
+        validity: validity
+      properties:
+        validity:
+          type: string
       type: object
     CertificationDetails:
       example:
         skills:
         - level:
             level: 1
-          skill: null
+          skill:
+            invest: false
+            kindgiver: false
         - level:
             level: 1
-          skill: null
-        organization: null
-        certification: null
+          skill:
+            invest: false
+            kindgiver: false
+        organization:
+          partner: false
+          picture: picture
+          customer: false
+        certification:
+          validity: validity
       properties:
         certification:
           $ref: '#/components/schemas/Certification'
@@ -3446,11 +3494,17 @@ components:
     Country:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Country_allOf'
+      example:
+        picture: picture
+      properties:
+        picture:
+          description: base64 encoded image
+          type: string
       type: object
     CountryDetails:
       example:
-        country: null
+        country:
+          picture: picture
         languages:
         - null
         - null
@@ -3463,8 +3517,47 @@ components:
           type: array
       type: object
     Experience:
-      allOf:
-      - $ref: '#/components/schemas/Experience_allOf'
+      example:
+        skill:
+          level:
+            level: 1
+          skill:
+            invest: false
+            kindgiver: false
+        confirmedBy:
+        - education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          jobTitle: Software Engineer
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+        - education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          jobTitle: Software Engineer
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+      properties:
+        skill:
+          $ref: '#/components/schemas/SkillLevel'
+        confirmedBy:
+          items:
+            $ref: '#/components/schemas/Person'
+          type: array
       type: object
     Geolocation:
       properties:
@@ -3485,8 +3578,12 @@ components:
     IndustryDetails:
       example:
         organizations:
-        - null
-        - null
+        - partner: false
+          picture: picture
+          customer: false
+        - partner: false
+          picture: picture
+          customer: false
         industry: null
       properties:
         industry:
@@ -3499,14 +3596,13 @@ components:
     Language:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - type: object
       type: object
     LanguageDetails:
       example:
         language: null
         countries:
-        - null
-        - null
+        - picture: picture
+        - picture: picture
       properties:
         language:
           $ref: '#/components/schemas/Language'
@@ -3539,14 +3635,30 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Organization_allOf'
+      example:
+        partner: false
+        picture: picture
+        customer: false
+      properties:
+        partner:
+          default: false
+          type: boolean
+        customer:
+          default: false
+          type: boolean
+        picture:
+          description: base64 encoded image
+          type: string
       type: object
     OrganizationDetails:
       example:
         projects:
-        - null
-        - null
-        organization: null
+        - external: false
+        - external: false
+        organization:
+          partner: false
+          picture: picture
+          customer: false
         industries:
         - null
         - null
@@ -3554,8 +3666,8 @@ components:
         - null
         - null
         certifications:
-        - null
-        - null
+        - validity: validity
+        - validity: validity
       properties:
         organization:
           $ref: '#/components/schemas/Organization'
@@ -3584,7 +3696,62 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Person_allOf'
+      example:
+        education: Bachelor of Computer Scince
+        mail: peter.mueller@prodyna.com
+        jobTitle: Software Engineer
+        employeeId: "1234567"
+        onsiteRatio: 20
+        seniorityEnum: null
+        picture: picture
+        inactive: false
+        mobilePhone: +49 176 12345678
+        experienceSinceYear: 2010
+        company: PRODYNA SE
+        department: Professional Services
+        seniority: Senior
+      properties:
+        employeeId:
+          example: "1234567"
+          type: string
+        jobTitle:
+          example: Software Engineer
+          type: string
+        company:
+          example: PRODYNA SE
+          type: string
+        department:
+          example: Professional Services
+          type: string
+        education:
+          example: Bachelor of Computer Scince
+          type: string
+        mail:
+          example: peter.mueller@prodyna.com
+          type: string
+        mobilePhone:
+          example: +49 176 12345678
+          type: string
+        seniority:
+          example: Senior
+          type: string
+        seniorityEnum:
+          $ref: '#/components/schemas/Seniority'
+        experienceSinceYear:
+          example: 2010
+          type: integer
+        onsiteRatio:
+          example: 20
+          maximum: 100
+          minimum: 0
+          type: integer
+        picture:
+          description: base64 encoded image
+          type: string
+        inactive:
+          default: false
+          description: Marks persons not working for the company anymore
+          type: boolean
       required:
       - id
       - name
@@ -3601,50 +3768,163 @@ components:
         - level:
             level: 1
           language: null
-        person: null
+        person:
+          education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          jobTitle: Software Engineer
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
         availabilities:
-        - availability: null
+        - availability:
+            workHours: 38.5
+            descriptions:
+            - descriptions
+            - descriptions
+            plannedHours: 22.5
           percent: 8.008281904610115
-        - availability: null
+        - availability:
+            workHours: 38.5
+            descriptions:
+            - descriptions
+            - descriptions
+            plannedHours: 22.5
           percent: 8.008281904610115
         industries:
         - null
         - null
         skillGroups:
         - skills:
-          - null
-          - null
-          group: null
+          - invest: false
+            kindgiver: false
+          - invest: false
+            kindgiver: false
+          group:
+            invest: false
+            kindgiver: false
         - skills:
-          - null
-          - null
-          group: null
+          - invest: false
+            kindgiver: false
+          - invest: false
+            kindgiver: false
+          group:
+            invest: false
+            kindgiver: false
         office: null
         interests:
-        - null
-        - null
+        - invest: false
+          kindgiver: false
+        - invest: false
+          kindgiver: false
         certifications:
         - skills:
           - level:
               level: 1
-            skill: null
+            skill:
+              invest: false
+              kindgiver: false
           - level:
               level: 1
-            skill: null
-          organization: null
-          certification: null
+            skill:
+              invest: false
+              kindgiver: false
+          organization:
+            partner: false
+            picture: picture
+            customer: false
+          certification:
+            validity: validity
         - skills:
           - level:
               level: 1
-            skill: null
+            skill:
+              invest: false
+              kindgiver: false
           - level:
               level: 1
-            skill: null
-          organization: null
-          certification: null
+            skill:
+              invest: false
+              kindgiver: false
+          organization:
+            partner: false
+            picture: picture
+            customer: false
+          certification:
+            validity: validity
         experiences:
-        - null
-        - null
+        - skill:
+            level:
+              level: 1
+            skill:
+              invest: false
+              kindgiver: false
+          confirmedBy:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            jobTitle: Software Engineer
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            jobTitle: Software Engineer
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+        - skill:
+            level:
+              level: 1
+            skill:
+              invest: false
+              kindgiver: false
+          confirmedBy:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            jobTitle: Software Engineer
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            jobTitle: Software Engineer
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
       properties:
         person:
           $ref: '#/components/schemas/Person'
@@ -3686,20 +3966,52 @@ components:
     PersonSearch:
       example:
         skills:
-        - null
-        - null
+        - lastAssignment: 2000-01-23
+          experienceInMonth:
+            min: 0
+            max: 100
+        - lastAssignment: 2000-01-23
+          experienceInMonth:
+            min: 0
+            max: 100
         officeIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         projects:
-        - null
-        - null
+        - participationInMonth:
+            min: 0
+            max: 100
+          involevedOfficeIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - participationInMonth:
+            min: 0
+            max: 100
+          involevedOfficeIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         industries:
-        - null
-        - null
+        - amountOfProjects:
+            min: 0
+            max: 100
+          experienceInMonth:
+            min: 0
+            max: 100
+          activeProjects: true
+        - amountOfProjects:
+            min: 0
+            max: 100
+          experienceInMonth:
+            min: 0
+            max: 100
+          activeProjects: true
         organizations:
-        - null
-        - null
+        - amountOfProjects:
+            min: 0
+            max: 100
+        - amountOfProjects:
+            min: 0
+            max: 100
         personIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -3708,8 +4020,8 @@ components:
           max: 100
         availability: null
         certifications:
-        - null
-        - null
+        - startedCertificaiton: true
+        - startedCertificaiton: true
         seniority:
         - null
         - null
@@ -3734,49 +4046,99 @@ components:
           type: array
         skills:
           items:
-            $ref: '#/components/schemas/PersonSearch_skills_inner'
+            $ref: '#/components/schemas/PersonSkillFilter'
           type: array
         projects:
           items:
-            $ref: '#/components/schemas/PersonSearch_projects_inner'
+            $ref: '#/components/schemas/PersonProjectFilter'
           type: array
         organizations:
           items:
-            $ref: '#/components/schemas/PersonSearch_organizations_inner'
+            $ref: '#/components/schemas/PersonOrganizationFilter'
           type: array
         industries:
           items:
-            $ref: '#/components/schemas/PersonSearch_industries_inner'
+            $ref: '#/components/schemas/PersonIndustryFilter'
           type: array
         certifications:
           items:
-            $ref: '#/components/schemas/PersonSearch_certifications_inner'
+            $ref: '#/components/schemas/PersonCertificationFilter'
           type: array
       type: object
     PersonSkillFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
-      - $ref: '#/components/schemas/PersonSkillFilter_allOf'
+      example:
+        lastAssignment: 2000-01-23
+        experienceInMonth:
+          min: 0
+          max: 100
+      properties:
+        experienceInMonth:
+          $ref: '#/components/schemas/MinMax'
+        lastAssignment:
+          description: filters the last time the employee used the skill in a project
+          format: date
+          type: string
       type: object
     PersonProjectFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
-      - $ref: '#/components/schemas/PersonProjectFilter_allOf'
+      example:
+        participationInMonth:
+          min: 0
+          max: 100
+        involevedOfficeIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        participationInMonth:
+          $ref: '#/components/schemas/MinMax'
+        involevedOfficeIds:
+          items:
+            format: uuid
+            type: string
+          type: array
       type: object
     PersonOrganizationFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
-      - $ref: '#/components/schemas/PersonOrganizationFilter_allOf'
+      example:
+        amountOfProjects:
+          min: 0
+          max: 100
+      properties:
+        amountOfProjects:
+          $ref: '#/components/schemas/MinMax'
       type: object
     PersonIndustryFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
-      - $ref: '#/components/schemas/PersonIndustryFilter_allOf'
+      example:
+        amountOfProjects:
+          min: 0
+          max: 100
+        experienceInMonth:
+          min: 0
+          max: 100
+        activeProjects: true
+      properties:
+        activeProjects:
+          type: boolean
+        amountOfProjects:
+          $ref: '#/components/schemas/MinMax'
+        experienceInMonth:
+          $ref: '#/components/schemas/MinMax'
       type: object
     PersonCertificationFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
-      - $ref: '#/components/schemas/PersonCertificationFilter_allOf'
+      example:
+        startedCertificaiton: true
+      properties:
+        startedCertificaiton:
+          description: Include employees who started the certification
+          type: boolean
       type: object
     Project:
       allOf:
@@ -3785,30 +4147,72 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Project_allOf'
+      example:
+        external: false
+      properties:
+        external:
+          default: false
+          description: true if project was done outside of the organization
+          type: boolean
       type: object
     ProjectDetails:
       example:
         persons:
-        - null
-        - null
+        - education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          jobTitle: Software Engineer
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+        - education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          jobTitle: Software Engineer
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
         timeframe:
           enddate: 2000-01-23
           startdate: 2000-01-23
-        organization: null
+        organization:
+          partner: false
+          picture: picture
+          customer: false
         industries:
         - null
         - null
         skillGroups:
         - skills:
-          - null
-          - null
-          group: null
+          - invest: false
+            kindgiver: false
+          - invest: false
+            kindgiver: false
+          group:
+            invest: false
+            kindgiver: false
         - skills:
-          - null
-          - null
-          group: null
-        project: null
+          - invest: false
+            kindgiver: false
+          - invest: false
+            kindgiver: false
+          group:
+            invest: false
+            kindgiver: false
+        project:
+          external: false
       properties:
         project:
           $ref: '#/components/schemas/Project'
@@ -3842,14 +4246,20 @@ components:
     ProjectParticipationUpdate:
       example:
         skills:
-        - null
-        - null
-        timeframe: null
+        - skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          level:
+            level: 1
+        - skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          level:
+            level: 1
+        timeframe:
+          enddate: 2000-01-23
+          startdate: 2000-01-23
         personalDescription: personalDescription
         descriptionOverwrite: descriptionOverwrite
       properties:
         timeframe:
-          $ref: '#/components/schemas/ProjectParticipationUpdate_timeframe'
+          $ref: '#/components/schemas/Timeframed'
         skills:
           items:
             $ref: '#/components/schemas/SkillLevelUpdate'
@@ -3862,8 +4272,8 @@ components:
     ProjectSearch:
       example:
         skills:
-        - null
-        - null
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         minStartDate: 2000-01-23
         maxEndDate: 2000-01-23
         projectStatuses:
@@ -3873,11 +4283,11 @@ components:
           min: 0
           max: 100
         industries:
-        - null
-        - null
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         organizations:
-        - null
-        - null
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         projectIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -3888,8 +4298,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         participants:
-        - null
-        - null
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         projectIds:
           items:
@@ -3917,19 +4327,19 @@ components:
           $ref: '#/components/schemas/MinMax'
         skills:
           items:
-            $ref: '#/components/schemas/ProjectSearch_skills_inner'
+            $ref: '#/components/schemas/EntityFilter'
           type: array
         participants:
           items:
-            $ref: '#/components/schemas/ProjectSearch_skills_inner'
+            $ref: '#/components/schemas/EntityFilter'
           type: array
         industries:
           items:
-            $ref: '#/components/schemas/ProjectSearch_skills_inner'
+            $ref: '#/components/schemas/EntityFilter'
           type: array
         organizations:
           items:
-            $ref: '#/components/schemas/ProjectSearch_skills_inner'
+            $ref: '#/components/schemas/EntityFilter'
           type: array
       type: object
     ProjectStatus:
@@ -3945,14 +4355,30 @@ components:
       - $ref: '#/components/schemas/Linkable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Skill_allOf'
+      example:
+        invest: false
+        kindgiver: false
+      properties:
+        invest:
+          default: false
+          type: boolean
+        kindgiver:
+          default: false
+          required:
+          - id
+          - name
+          type: boolean
       type: object
     SkillGroup:
       example:
         skills:
-        - null
-        - null
-        group: null
+        - invest: false
+          kindgiver: false
+        - invest: false
+          kindgiver: false
+        group:
+          invest: false
+          kindgiver: false
       properties:
         group:
           $ref: '#/components/schemas/Skill'
@@ -3964,7 +4390,9 @@ components:
       example:
         level:
           level: 1
-        skill: null
+        skill:
+          invest: false
+          kindgiver: false
       properties:
         skill:
           $ref: '#/components/schemas/Skill'
@@ -3972,21 +4400,37 @@ components:
           $ref: '#/components/schemas/Level'
       type: object
     SkillLevelUpdate:
-      allOf:
-      - $ref: '#/components/schemas/SkillLevelUpdate_allOf'
+      example:
+        skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        level:
+          level: 1
+      properties:
+        skillId:
+          format: uuid
+          type: string
+        level:
+          $ref: '#/components/schemas/Level'
     SkillDetails:
       example:
         children:
-        - null
-        - null
+        - invest: false
+          kindgiver: false
+        - invest: false
+          kindgiver: false
         displayName: displayName
-        skill: null
+        skill:
+          invest: false
+          kindgiver: false
         kinds:
-        - null
-        - null
+        - invest: false
+          kindgiver: false
+        - invest: false
+          kindgiver: false
         parents:
-        - null
-        - null
+        - invest: false
+          kindgiver: false
+        - invest: false
+          kindgiver: false
       properties:
         skill:
           $ref: '#/components/schemas/Skill'
@@ -4029,6 +4473,8 @@ components:
           type: integer
       type: object
     Page:
+      discriminator:
+        propertyName: type
       properties:
         skip:
           minimum: 0
@@ -4042,59 +4488,281 @@ components:
     PagedAvailabilities:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedAvailabilities_allOf'
+      example:
+        availabilities:
+        - availability:
+            workHours: 38.5
+            descriptions:
+            - descriptions
+            - descriptions
+            plannedHours: 22.5
+          percent: 8.008281904610115
+        - availability:
+            workHours: 38.5
+            descriptions:
+            - descriptions
+            - descriptions
+            plannedHours: 22.5
+          percent: 8.008281904610115
+      properties:
+        availabilities:
+          items:
+            $ref: '#/components/schemas/AvailabilityDetail'
+          type: array
       type: object
     PagedOrganizations:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedOrganizations_allOf'
+      example:
+        organizations:
+        - projects:
+          - external: false
+          - external: false
+          organization:
+            partner: false
+            picture: picture
+            customer: false
+          industries:
+          - null
+          - null
+          offices:
+          - null
+          - null
+          certifications:
+          - validity: validity
+          - validity: validity
+        - projects:
+          - external: false
+          - external: false
+          organization:
+            partner: false
+            picture: picture
+            customer: false
+          industries:
+          - null
+          - null
+          offices:
+          - null
+          - null
+          certifications:
+          - validity: validity
+          - validity: validity
+      properties:
+        organizations:
+          items:
+            $ref: '#/components/schemas/OrganizationDetails'
+          type: array
       type: object
     PagedLanguages:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedLanguages_allOf'
+      example:
+        languages:
+        - null
+        - null
+      properties:
+        languages:
+          items:
+            $ref: '#/components/schemas/Language'
+          type: array
       type: object
     PagedCertifications:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedCertifications_allOf'
+      example:
+        certifications:
+        - skills:
+          - level:
+              level: 1
+            skill:
+              invest: false
+              kindgiver: false
+          - level:
+              level: 1
+            skill:
+              invest: false
+              kindgiver: false
+          organization:
+            partner: false
+            picture: picture
+            customer: false
+          certification:
+            validity: validity
+        - skills:
+          - level:
+              level: 1
+            skill:
+              invest: false
+              kindgiver: false
+          - level:
+              level: 1
+            skill:
+              invest: false
+              kindgiver: false
+          organization:
+            partner: false
+            picture: picture
+            customer: false
+          certification:
+            validity: validity
+      properties:
+        certifications:
+          items:
+            $ref: '#/components/schemas/CertificationDetails'
+          type: array
       type: object
     PagedCountries:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedCountries_allOf'
+      example:
+        countries:
+        - picture: picture
+        - picture: picture
+      properties:
+        countries:
+          items:
+            $ref: '#/components/schemas/Country'
+          type: array
       type: object
     PagedSkills:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedSkills_allOf'
+      example:
+        skills:
+        - children:
+          - invest: false
+            kindgiver: false
+          - invest: false
+            kindgiver: false
+          displayName: displayName
+          skill:
+            invest: false
+            kindgiver: false
+          kinds:
+          - invest: false
+            kindgiver: false
+          - invest: false
+            kindgiver: false
+          parents:
+          - invest: false
+            kindgiver: false
+          - invest: false
+            kindgiver: false
+        - children:
+          - invest: false
+            kindgiver: false
+          - invest: false
+            kindgiver: false
+          displayName: displayName
+          skill:
+            invest: false
+            kindgiver: false
+          kinds:
+          - invest: false
+            kindgiver: false
+          - invest: false
+            kindgiver: false
+          parents:
+          - invest: false
+            kindgiver: false
+          - invest: false
+            kindgiver: false
+      properties:
+        skills:
+          items:
+            $ref: '#/components/schemas/SkillDetails'
+          type: array
       type: object
     PagedIndustries:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedIndustries_allOf'
+      example:
+        industries:
+        - organizations:
+          - partner: false
+            picture: picture
+            customer: false
+          - partner: false
+            picture: picture
+            customer: false
+          industry: null
+        - organizations:
+          - partner: false
+            picture: picture
+            customer: false
+          - partner: false
+            picture: picture
+            customer: false
+          industry: null
+      properties:
+        industries:
+          items:
+            $ref: '#/components/schemas/IndustryDetails'
+          type: array
       type: object
     PagedProjects:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedProjects_allOf'
+      example:
+        projects:
+        - null
+        - null
+      properties:
+        projects:
+          items:
+            $ref: '#/components/schemas/ProjectScoreDetail'
+          type: array
       type: object
     PagedPersons:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedPersons_allOf'
+      example:
+        persons:
+        - score: 0.8008281904610115
+        - score: 0.8008281904610115
+      properties:
+        persons:
+          items:
+            $ref: '#/components/schemas/PersonScoreDetail'
+          type: array
       type: object
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
-      - $ref: '#/components/schemas/ProjectScoreDetail_allOf'
+      example:
+        score: 0.8008281904610115
+      properties:
+        score:
+          type: number
       type: object
     SearchResult:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/SearchResult_allOf'
+      example:
+        items:
+        - score: 0.7
+          item:
+            name: This is the name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: Certification
+        - score: 0.7
+          item:
+            name: This is the name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: Certification
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/SearchResultItem'
+          type: array
       type: object
     SearchResultItem:
+      example:
+        score: 0.7
+        item:
+          name: This is the name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: Certification
       properties:
         score:
           example: 0.7
@@ -4106,6 +4774,8 @@ components:
           $ref: '#/components/schemas/NamedDomainModel'
       type: object
     EntityFilter:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         id:
           format: uuid
@@ -4154,177 +4824,6 @@ components:
       - MANAGING
       - PRINCIPAL
       type: string
-    NamedDomainModel_allOf:
-      properties:
-        name:
-          example: This is the name
-          type: string
-      type: object
-      example: null
-    Availability_allOf:
-      properties:
-        workHours:
-          example: 38.5
-          format: float
-          type: number
-        plannedHours:
-          example: 22.5
-          format: float
-          type: number
-        descriptions:
-          items:
-            type: string
-          type: array
-      type: object
-      example: null
-    Certification_allOf:
-      properties:
-        validity:
-          type: string
-      type: object
-      example: null
-    Country_allOf:
-      properties:
-        picture:
-          description: base64 encoded image
-          type: string
-      type: object
-      example: null
-    Experience_allOf:
-      properties:
-        skill:
-          $ref: '#/components/schemas/SkillLevel'
-        confirmedBy:
-          items:
-            $ref: '#/components/schemas/Person'
-          type: array
-      type: object
-      example: null
-    Organization_allOf:
-      properties:
-        partner:
-          default: false
-          type: boolean
-        customer:
-          default: false
-          type: boolean
-        picture:
-          description: base64 encoded image
-          type: string
-      type: object
-      example: null
-    Person_allOf:
-      properties:
-        employeeId:
-          example: "1234567"
-          type: string
-        jobTitle:
-          example: Software Engineer
-          type: string
-        company:
-          example: PRODYNA SE
-          type: string
-        department:
-          example: Professional Services
-          type: string
-        education:
-          example: Bachelor of Computer Scince
-          type: string
-        mail:
-          example: peter.mueller@prodyna.com
-          type: string
-        mobilePhone:
-          example: +49 176 12345678
-          type: string
-        seniority:
-          example: Senior
-          type: string
-        seniorityEnum:
-          $ref: '#/components/schemas/Seniority'
-        experienceSinceYear:
-          example: 2010
-          type: integer
-        onsiteRatio:
-          example: 20
-          maximum: 100
-          minimum: 0
-          type: integer
-        picture:
-          description: base64 encoded image
-          type: string
-        inactive:
-          default: false
-          description: Marks persons not working for the company anymore
-          type: boolean
-      type: object
-      example: null
-    PersonSearch_skills_inner:
-      allOf:
-      - $ref: '#/components/schemas/PersonSkillFilter'
-    PersonSearch_projects_inner:
-      allOf:
-      - $ref: '#/components/schemas/PersonProjectFilter'
-    PersonSearch_organizations_inner:
-      allOf:
-      - $ref: '#/components/schemas/PersonOrganizationFilter'
-    PersonSearch_industries_inner:
-      allOf:
-      - $ref: '#/components/schemas/PersonIndustryFilter'
-    PersonSearch_certifications_inner:
-      allOf:
-      - $ref: '#/components/schemas/PersonCertificationFilter'
-    PersonSkillFilter_allOf:
-      properties:
-        experienceInMonth:
-          $ref: '#/components/schemas/MinMax'
-        lastAssignment:
-          description: filters the last time the employee used the skill in a project
-          format: date
-          type: string
-      type: object
-      example: null
-    PersonProjectFilter_allOf:
-      properties:
-        participationInMonth:
-          $ref: '#/components/schemas/MinMax'
-        involevedOfficeIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-      type: object
-      example: null
-    PersonOrganizationFilter_allOf:
-      properties:
-        amountOfProjects:
-          $ref: '#/components/schemas/MinMax'
-      type: object
-      example: null
-    PersonIndustryFilter_allOf:
-      properties:
-        activeProjects:
-          type: boolean
-        amountOfProjects:
-          $ref: '#/components/schemas/MinMax'
-        experienceInMonth:
-          $ref: '#/components/schemas/MinMax'
-      type: object
-      example: null
-    PersonCertificationFilter_allOf:
-      properties:
-        startedCertificaiton:
-          description: Include employees who started the certification
-          type: boolean
-      type: object
-      example: null
-    Project_allOf:
-      properties:
-        external:
-          default: false
-          description: true if project was done outside of the organization
-          type: boolean
-      type: object
-      example: null
     ProjectScoreDetail_allOf:
       properties:
         score:
@@ -4334,14 +4833,9 @@ components:
     ProjectParticipation_allOf:
       properties:
         timeframe:
-          allOf:
-          - $ref: '#/components/schemas/Timeframed'
-          type: object
+          $ref: '#/components/schemas/Timeframed'
         projectDetails:
-          allOf:
-          - $ref: '#/components/schemas/ProjectDetails'
-          readOnly: true
-          type: object
+          $ref: '#/components/schemas/ProjectDetails'
         descriptionOverwrite:
           example: Responsible Soluation Architect for this project.
           type: string
@@ -4356,116 +4850,6 @@ components:
       - experiences
       - id
       - project
-      type: object
-      example: null
-    ProjectParticipationUpdate_timeframe:
-      allOf:
-      - $ref: '#/components/schemas/Timeframed'
-      type: object
-    ProjectSearch_skills_inner:
-      allOf:
-      - $ref: '#/components/schemas/EntityFilter'
-    Skill_allOf:
-      properties:
-        invest:
-          default: false
-          type: boolean
-        kindgiver:
-          default: false
-          type: boolean
-      required:
-      - id
-      - name
-      type: object
-      example: null
-    SkillLevelUpdate_allOf:
-      properties:
-        skillId:
-          format: uuid
-          type: string
-        level:
-          $ref: '#/components/schemas/Level'
-      type: object
-      example: null
-    PagedAvailabilities_allOf:
-      properties:
-        availabilities:
-          items:
-            $ref: '#/components/schemas/AvailabilityDetail'
-          type: array
-      type: object
-      example: null
-    PagedOrganizations_allOf:
-      properties:
-        organizations:
-          items:
-            $ref: '#/components/schemas/OrganizationDetails'
-          type: array
-      type: object
-      example: null
-    PagedLanguages_allOf:
-      properties:
-        languages:
-          items:
-            $ref: '#/components/schemas/Language'
-          type: array
-      type: object
-      example: null
-    PagedCertifications_allOf:
-      properties:
-        certifications:
-          items:
-            $ref: '#/components/schemas/CertificationDetails'
-          type: array
-      type: object
-      example: null
-    PagedCountries_allOf:
-      properties:
-        countries:
-          items:
-            $ref: '#/components/schemas/Country'
-          type: array
-      type: object
-      example: null
-    PagedSkills_allOf:
-      properties:
-        skills:
-          items:
-            $ref: '#/components/schemas/SkillDetails'
-          type: array
-      type: object
-      example: null
-    PagedIndustries_allOf:
-      properties:
-        industries:
-          items:
-            $ref: '#/components/schemas/IndustryDetails'
-          type: array
-      type: object
-      example: null
-    PagedProjects_allOf:
-      properties:
-        projects:
-          items:
-            $ref: '#/components/schemas/ProjectScoreDetail'
-          type: array
-      type: object
-      example: null
-    PagedPersons_allOf:
-      properties:
-        persons:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/PersonScoreDetail'
-          type: array
-      type: object
-      example: null
-    SearchResult_allOf:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/SearchResultItem'
-          type: array
       type: object
       example: null
   securitySchemes:

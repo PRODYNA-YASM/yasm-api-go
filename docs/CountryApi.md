@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-    country := *openapiclient.NewCountry("Id_example", "This is the name") // Country | 
+    country := *openapiclient.NewCountry("Id_example") // Country | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -442,7 +442,7 @@ import (
 
 func main() {
     countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    country := *openapiclient.NewCountry("Id_example", "This is the name") // Country | 
+    country := *openapiclient.NewCountry("Id_example") // Country | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

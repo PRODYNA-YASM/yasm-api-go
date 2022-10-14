@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 
@@ -13,7 +11,7 @@ Name | Type | Description | Notes
 
 ### NewIndustry
 
-`func NewIndustry(id string, name string, suggestion bool, ) *Industry`
+`func NewIndustry(suggestion bool, ) *Industry`
 
 NewIndustry instantiates a new Industry object
 This constructor will assign default values to properties that have it defined,
@@ -27,46 +25,6 @@ will change when the set of required properties is changed
 NewIndustryWithDefaults instantiates a new Industry object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Industry) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Industry) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Industry) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetName
-
-`func (o *Industry) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *Industry) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *Industry) SetName(v string)`
-
-SetName sets Name field to given value.
-
 
 ### GetSuggestion
 

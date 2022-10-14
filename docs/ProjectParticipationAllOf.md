@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
-**ProjectDetails** | Pointer to [**ProjectDetails**](ProjectDetails.md) |  | [optional] [readonly] 
+**ProjectDetails** | Pointer to [**ProjectDetails**](ProjectDetails.md) |  | [optional] 
 **DescriptionOverwrite** | Pointer to **string** |  | [optional] 
 **PersonalDescription** | Pointer to **string** |  | [optional] 
 **Experiences** | [**[]Experience**](Experience.md) |  | [readonly] 

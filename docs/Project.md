@@ -4,20 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
+**External** | Pointer to **bool** | true if project was done outside of the organization | [optional] [default to false]
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**External** | Pointer to **bool** | true if project was done outside of the organization | [optional] [default to false]
 
 ## Methods
 
 ### NewProject
 
-`func NewProject(id string, name string, suggestion bool, ) *Project`
+`func NewProject(suggestion bool, ) *Project`
 
 NewProject instantiates a new Project object
 This constructor will assign default values to properties that have it defined,
@@ -32,45 +30,30 @@ NewProjectWithDefaults instantiates a new Project object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetExternal
 
-`func (o *Project) GetId() string`
+`func (o *Project) GetExternal() bool`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetExternal returns the External field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetExternalOk
 
-`func (o *Project) GetIdOk() (*string, bool)`
+`func (o *Project) GetExternalOk() (*bool, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetExternalOk returns a tuple with the External field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetExternal
 
-`func (o *Project) SetId(v string)`
+`func (o *Project) SetExternal(v bool)`
 
-SetId sets Id field to given value.
+SetExternal sets External field to given value.
 
+### HasExternal
 
-### GetName
+`func (o *Project) HasExternal() bool`
 
-`func (o *Project) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *Project) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *Project) SetName(v string)`
-
-SetName sets Name field to given value.
-
+HasExternal returns a boolean if a field has been set.
 
 ### GetSuggestion
 
@@ -191,31 +174,6 @@ SetDescription sets Description field to given value.
 `func (o *Project) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetExternal
-
-`func (o *Project) GetExternal() bool`
-
-GetExternal returns the External field if non-nil, zero value otherwise.
-
-### GetExternalOk
-
-`func (o *Project) GetExternalOk() (*bool, bool)`
-
-GetExternalOk returns a tuple with the External field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExternal
-
-`func (o *Project) SetExternal(v bool)`
-
-SetExternal sets External field to given value.
-
-### HasExternal
-
-`func (o *Project) HasExternal() bool`
-
-HasExternal returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

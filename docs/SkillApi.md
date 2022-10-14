@@ -564,7 +564,7 @@ import (
 )
 
 func main() {
-    skill := *openapiclient.NewSkill("Id_example", "This is the name", false) // Skill | 
+    skill := *openapiclient.NewSkill(false, "Id_example") // Skill | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1704,7 +1704,7 @@ import (
 
 func main() {
     skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skill := *openapiclient.NewSkill("Id_example", "This is the name", false) // Skill | 
+    skill := *openapiclient.NewSkill(false, "Id_example") // Skill | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -115,7 +115,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification("Id_example", "This is the name", false) // Certification | 
+    certification := *openapiclient.NewCertification(false, "Id_example") // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -185,7 +185,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    office := *openapiclient.NewOffice("Id_example", "This is the name") // Office | 
+    office := *openapiclient.NewOffice("Id_example") // Office | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -254,7 +254,7 @@ import (
 )
 
 func main() {
-    organization := *openapiclient.NewOrganization("Id_example", "This is the name", false) // Organization | Details about the Organization
+    organization := *openapiclient.NewOrganization(false, "Id_example") // Organization | Details about the Organization
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -319,7 +319,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    project := *openapiclient.NewProject("Id_example", "This is the name", false) // Project | 
+    project := *openapiclient.NewProject(false, "Id_example") // Project | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1091,7 +1091,7 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    office := *openapiclient.NewOffice("Id_example", "This is the name") // Office | 
+    office := *openapiclient.NewOffice("Id_example") // Office | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1163,7 +1163,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    organization := *openapiclient.NewOrganization("Id_example", "This is the name", false) // Organization | Details about the organization
+    organization := *openapiclient.NewOrganization(false, "Id_example") // Organization | Details about the organization
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

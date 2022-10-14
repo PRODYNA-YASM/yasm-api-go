@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
+**Id** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
 
 ## Methods
 
 ### NewNamedDomainModel
 
-`func NewNamedDomainModel(id string, name string, ) *NamedDomainModel`
+`func NewNamedDomainModel(name string, ) *NamedDomainModel`
 
 NewNamedDomainModel instantiates a new NamedDomainModel object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *NamedDomainModel) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetName
 

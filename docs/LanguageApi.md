@@ -179,7 +179,7 @@ import (
 )
 
 func main() {
-    language := *openapiclient.NewLanguage("Id_example", "This is the name") // Language | 
+    language := *openapiclient.NewLanguage("Id_example") // Language | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

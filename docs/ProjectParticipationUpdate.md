@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Timeframe** | Pointer to [**ProjectParticipationUpdateTimeframe**](ProjectParticipationUpdateTimeframe.md) |  | [optional] 
+**Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
 **Skills** | Pointer to [**[]SkillLevelUpdate**](SkillLevelUpdate.md) |  | [optional] 
 **DescriptionOverwrite** | Pointer to **string** |  | [optional] 
 **PersonalDescription** | Pointer to **string** |  | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTimeframe
 
-`func (o *ProjectParticipationUpdate) GetTimeframe() ProjectParticipationUpdateTimeframe`
+`func (o *ProjectParticipationUpdate) GetTimeframe() Timeframed`
 
 GetTimeframe returns the Timeframe field if non-nil, zero value otherwise.
 
 ### GetTimeframeOk
 
-`func (o *ProjectParticipationUpdate) GetTimeframeOk() (*ProjectParticipationUpdateTimeframe, bool)`
+`func (o *ProjectParticipationUpdate) GetTimeframeOk() (*Timeframed, bool)`
 
 GetTimeframeOk returns a tuple with the Timeframe field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeframe
 
-`func (o *ProjectParticipationUpdate) SetTimeframe(v ProjectParticipationUpdateTimeframe)`
+`func (o *ProjectParticipationUpdate) SetTimeframe(v Timeframed)`
 
 SetTimeframe sets Timeframe field to given value.
 

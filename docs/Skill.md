@@ -4,20 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
+**Invest** | Pointer to **bool** |  | [optional] [default to false]
+**Kindgiver** | Pointer to **bool** |  | [optional] [default to false]
 **Suggestion** | **bool** |  | [default to false]
 **Linkable** | Pointer to **bool** | The entity can be linked | [optional] [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Invest** | Pointer to **bool** |  | [optional] [default to false]
-**Kindgiver** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
 ### NewSkill
 
-`func NewSkill(id string, name string, suggestion bool, ) *Skill`
+`func NewSkill(suggestion bool, ) *Skill`
 
 NewSkill instantiates a new Skill object
 This constructor will assign default values to properties that have it defined,
@@ -32,45 +30,55 @@ NewSkillWithDefaults instantiates a new Skill object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetInvest
 
-`func (o *Skill) GetId() string`
+`func (o *Skill) GetInvest() bool`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetInvest returns the Invest field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetInvestOk
 
-`func (o *Skill) GetIdOk() (*string, bool)`
+`func (o *Skill) GetInvestOk() (*bool, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetInvestOk returns a tuple with the Invest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetInvest
 
-`func (o *Skill) SetId(v string)`
+`func (o *Skill) SetInvest(v bool)`
 
-SetId sets Id field to given value.
+SetInvest sets Invest field to given value.
 
+### HasInvest
 
-### GetName
+`func (o *Skill) HasInvest() bool`
 
-`func (o *Skill) GetName() string`
+HasInvest returns a boolean if a field has been set.
 
-GetName returns the Name field if non-nil, zero value otherwise.
+### GetKindgiver
 
-### GetNameOk
+`func (o *Skill) GetKindgiver() bool`
 
-`func (o *Skill) GetNameOk() (*string, bool)`
+GetKindgiver returns the Kindgiver field if non-nil, zero value otherwise.
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+### GetKindgiverOk
+
+`func (o *Skill) GetKindgiverOk() (*bool, bool)`
+
+GetKindgiverOk returns a tuple with the Kindgiver field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetKindgiver
 
-`func (o *Skill) SetName(v string)`
+`func (o *Skill) SetKindgiver(v bool)`
 
-SetName sets Name field to given value.
+SetKindgiver sets Kindgiver field to given value.
 
+### HasKindgiver
+
+`func (o *Skill) HasKindgiver() bool`
+
+HasKindgiver returns a boolean if a field has been set.
 
 ### GetSuggestion
 
@@ -166,56 +174,6 @@ SetDescription sets Description field to given value.
 `func (o *Skill) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetInvest
-
-`func (o *Skill) GetInvest() bool`
-
-GetInvest returns the Invest field if non-nil, zero value otherwise.
-
-### GetInvestOk
-
-`func (o *Skill) GetInvestOk() (*bool, bool)`
-
-GetInvestOk returns a tuple with the Invest field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInvest
-
-`func (o *Skill) SetInvest(v bool)`
-
-SetInvest sets Invest field to given value.
-
-### HasInvest
-
-`func (o *Skill) HasInvest() bool`
-
-HasInvest returns a boolean if a field has been set.
-
-### GetKindgiver
-
-`func (o *Skill) GetKindgiver() bool`
-
-GetKindgiver returns the Kindgiver field if non-nil, zero value otherwise.
-
-### GetKindgiverOk
-
-`func (o *Skill) GetKindgiverOk() (*bool, bool)`
-
-GetKindgiverOk returns a tuple with the Kindgiver field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKindgiver
-
-`func (o *Skill) SetKindgiver(v bool)`
-
-SetKindgiver sets Kindgiver field to given value.
-
-### HasKindgiver
-
-`func (o *Skill) HasKindgiver() bool`
-
-HasKindgiver returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

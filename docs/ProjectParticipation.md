@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
 **Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
-**ProjectDetails** | Pointer to [**ProjectDetails**](ProjectDetails.md) |  | [optional] [readonly] 
+**ProjectDetails** | Pointer to [**ProjectDetails**](ProjectDetails.md) |  | [optional] 
 **DescriptionOverwrite** | Pointer to **string** |  | [optional] 
 **PersonalDescription** | Pointer to **string** |  | [optional] 
 **Experiences** | [**[]Experience**](Experience.md) |  | [readonly] 
@@ -15,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewProjectParticipation
 
-`func NewProjectParticipation(id string, experiences []Experience, ) *ProjectParticipation`
+`func NewProjectParticipation(experiences []Experience, ) *ProjectParticipation`
 
 NewProjectParticipation instantiates a new ProjectParticipation object
 This constructor will assign default values to properties that have it defined,
@@ -29,26 +28,6 @@ will change when the set of required properties is changed
 NewProjectParticipationWithDefaults instantiates a new ProjectParticipation object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *ProjectParticipation) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *ProjectParticipation) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *ProjectParticipation) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetTimeframe
 
