@@ -169,16 +169,4 @@ model_synonymable.go
 model_timeframed.go
 model_version.go
 response.go
-test/api_availability_test.go
-test/api_certification_test.go
-test/api_country_test.go
-test/api_industry_test.go
-test/api_language_test.go
-test/api_office_test.go
-test/api_organization_test.go
-test/api_person_test.go
-test/api_project_test.go
-test/api_search_test.go
-test/api_skill_test.go
-test/api_status_test.go
 utils.go
