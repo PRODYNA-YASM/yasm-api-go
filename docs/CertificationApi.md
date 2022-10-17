@@ -1,6 +1,6 @@
 # \CertificationApi
 
-All URIs are relative to */api/v1*
+All URIs are relative to *http://localhost/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -189,7 +189,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification(false, "Id_example") // Certification | 
+    certification := *openapiclient.NewCertification("Id_example", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -746,7 +746,7 @@ import (
 
 func main() {
     certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification(false, "Id_example") // Certification | 
+    certification := *openapiclient.NewCertification("Id_example", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

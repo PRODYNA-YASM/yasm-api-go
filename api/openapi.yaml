@@ -3,9 +3,12 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.3.3
+  version: 1.3.4
 servers:
-- url: /api/v1
+- url: http://localhost/api/v1
+- url: https://dev-yasm.prodyna.com/api/v1
+- url: https://staging-yasm.prodyna.com/api/v1
+- url: https://yasm.prodyna.com/api/v1
 security:
 - bearerAuth:
   - user
@@ -3322,11 +3325,11 @@ components:
       format: date
       type: string
     BasicDomainModel:
-      discriminator:
-        propertyName: type
       properties:
         id:
           format: uuid
+          type: string
+        objectType:
           type: string
       required:
       - id
@@ -3334,8 +3337,6 @@ components:
     NamedDomainModel:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
-      discriminator:
-        propertyName: type
       example:
         name: This is the name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -3406,8 +3407,11 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Timeframed'
+      discriminator:
+        propertyName: objectType
       example:
         workHours: 38.5
+        type: type
         descriptions:
         - descriptions
         - descriptions
@@ -3425,6 +3429,8 @@ components:
           items:
             type: string
           type: array
+        type:
+          type: string
       required:
       - enddate
       - id
@@ -3437,6 +3443,7 @@ components:
       example:
         availability:
           workHours: 38.5
+          type: type
           descriptions:
           - descriptions
           - descriptions
@@ -3457,6 +3464,8 @@ components:
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
+      discriminator:
+        propertyName: objectType
       example:
         validity: validity
       properties:
@@ -3495,6 +3504,8 @@ components:
     Country:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
+      discriminator:
+        propertyName: objectType
       example:
         picture: picture
       properties:
@@ -3575,6 +3586,8 @@ components:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
+      discriminator:
+        propertyName: objectType
       type: object
     IndustryDetails:
       example:
@@ -3628,6 +3641,8 @@ components:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
+      discriminator:
+        propertyName: objectType
       type: object
     Organization:
       allOf:
@@ -3636,6 +3651,8 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
+      discriminator:
+        propertyName: objectType
       example:
         partner: false
         picture: picture
@@ -3697,6 +3714,8 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
+      discriminator:
+        propertyName: objectType
       example:
         education: Bachelor of Computer Scince
         mail: peter.mueller@prodyna.com
@@ -3786,6 +3805,7 @@ components:
         availabilities:
         - availability:
             workHours: 38.5
+            type: type
             descriptions:
             - descriptions
             - descriptions
@@ -3793,6 +3813,7 @@ components:
           percent: 8.008281904610115
         - availability:
             workHours: 38.5
+            type: type
             descriptions:
             - descriptions
             - descriptions
@@ -4085,6 +4106,8 @@ components:
     PersonProjectFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
+      discriminator:
+        propertyName: objectType
       example:
         participationInMonth:
           min: 0
@@ -4104,6 +4127,8 @@ components:
     PersonOrganizationFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
+      discriminator:
+        propertyName: objectType
       example:
         amountOfProjects:
           min: 0
@@ -4115,6 +4140,8 @@ components:
     PersonIndustryFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
+      discriminator:
+        propertyName: objectType
       example:
         amountOfProjects:
           min: 0
@@ -4134,6 +4161,8 @@ components:
     PersonCertificationFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
+      discriminator:
+        propertyName: objectType
       example:
         startedCertificaiton: true
       properties:
@@ -4148,6 +4177,8 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
+      discriminator:
+        propertyName: objectType
       example:
         external: false
       properties:
@@ -4238,11 +4269,15 @@ components:
       allOf:
       - $ref: '#/components/schemas/ProjectDetails'
       - $ref: '#/components/schemas/ProjectScoreDetail_allOf'
+      discriminator:
+        propertyName: objectType
       type: object
     ProjectParticipation:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
       - $ref: '#/components/schemas/ProjectParticipation_allOf'
+      discriminator:
+        propertyName: objectType
       type: object
     ProjectParticipationUpdate:
       example:
@@ -4356,6 +4391,8 @@ components:
       - $ref: '#/components/schemas/Linkable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
+      discriminator:
+        propertyName: objectType
       example:
         invest: false
         kindgiver: false
@@ -4489,10 +4526,13 @@ components:
     PagedAvailabilities:
       allOf:
       - $ref: '#/components/schemas/Page'
+      discriminator:
+        propertyName: objectType
       example:
         availabilities:
         - availability:
             workHours: 38.5
+            type: type
             descriptions:
             - descriptions
             - descriptions
@@ -4500,6 +4540,7 @@ components:
           percent: 8.008281904610115
         - availability:
             workHours: 38.5
+            type: type
             descriptions:
             - descriptions
             - descriptions
@@ -4514,6 +4555,8 @@ components:
     PagedOrganizations:
       allOf:
       - $ref: '#/components/schemas/Page'
+      discriminator:
+        propertyName: objectType
       example:
         organizations:
         - projects:
@@ -4557,6 +4600,8 @@ components:
     PagedLanguages:
       allOf:
       - $ref: '#/components/schemas/Page'
+      discriminator:
+        propertyName: objectType
       example:
         languages:
         - null
@@ -4570,6 +4615,8 @@ components:
     PagedCertifications:
       allOf:
       - $ref: '#/components/schemas/Page'
+      discriminator:
+        propertyName: objectType
       example:
         certifications:
         - skills:
@@ -4615,6 +4662,8 @@ components:
     PagedCountries:
       allOf:
       - $ref: '#/components/schemas/Page'
+      discriminator:
+        propertyName: objectType
       example:
         countries:
         - picture: picture
@@ -4677,6 +4726,8 @@ components:
     PagedIndustries:
       allOf:
       - $ref: '#/components/schemas/Page'
+      discriminator:
+        propertyName: objectType
       example:
         industries:
         - organizations:
@@ -4704,6 +4755,8 @@ components:
     PagedProjects:
       allOf:
       - $ref: '#/components/schemas/Page'
+      discriminator:
+        propertyName: objectType
       example:
         projects:
         - null
@@ -4717,6 +4770,8 @@ components:
     PagedPersons:
       allOf:
       - $ref: '#/components/schemas/Page'
+      discriminator:
+        propertyName: objectType
       example:
         persons:
         - score: 0.8008281904610115
@@ -4730,6 +4785,8 @@ components:
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
+      discriminator:
+        propertyName: objectType
       example:
         score: 0.8008281904610115
       properties:
@@ -4739,6 +4796,8 @@ components:
     SearchResult:
       allOf:
       - $ref: '#/components/schemas/Page'
+      discriminator:
+        propertyName: objectType
       example:
         items:
         - score: 0.7
@@ -4788,6 +4847,8 @@ components:
       allOf:
       - $ref: '#/components/schemas/Timeframed'
       - $ref: '#/components/schemas/MinMaxPercent'
+      discriminator:
+        propertyName: objectType
     MinMaxPercent:
       example:
         min: 0

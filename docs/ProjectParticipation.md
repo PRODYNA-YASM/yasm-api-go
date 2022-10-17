@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** |  | 
+**ObjectType** | Pointer to **string** |  | [optional] 
 **Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
 **ProjectDetails** | Pointer to [**ProjectDetails**](ProjectDetails.md) |  | [optional] 
 **DescriptionOverwrite** | Pointer to **string** |  | [optional] 
@@ -14,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewProjectParticipation
 
-`func NewProjectParticipation(experiences []Experience, ) *ProjectParticipation`
+`func NewProjectParticipation(id string, experiences []Experience, ) *ProjectParticipation`
 
 NewProjectParticipation instantiates a new ProjectParticipation object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +30,51 @@ will change when the set of required properties is changed
 NewProjectParticipationWithDefaults instantiates a new ProjectParticipation object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *ProjectParticipation) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ProjectParticipation) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ProjectParticipation) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetObjectType
+
+`func (o *ProjectParticipation) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *ProjectParticipation) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *ProjectParticipation) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
+### HasObjectType
+
+`func (o *ProjectParticipation) HasObjectType() bool`
+
+HasObjectType returns a boolean if a field has been set.
 
 ### GetTimeframe
 

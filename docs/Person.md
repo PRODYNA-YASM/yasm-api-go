@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **OnsiteRatio** | Pointer to **int32** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] 
 **Inactive** | Pointer to **bool** | Marks persons not working for the company anymore | [optional] [default to false]
+**Id** | **string** |  | 
+**ObjectType** | Pointer to **string** |  | [optional] 
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
@@ -27,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewPerson
 
-`func NewPerson(suggestion bool, ) *Person`
+`func NewPerson(id string, suggestion bool, ) *Person`
 
 NewPerson instantiates a new Person object
 This constructor will assign default values to properties that have it defined,
@@ -366,6 +368,51 @@ SetInactive sets Inactive field to given value.
 `func (o *Person) HasInactive() bool`
 
 HasInactive returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *Person) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Person) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Person) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetObjectType
+
+`func (o *Person) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *Person) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *Person) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
+### HasObjectType
+
+`func (o *Person) HasObjectType() bool`
+
+HasObjectType returns a boolean if a field has been set.
 
 ### GetSuggestion
 

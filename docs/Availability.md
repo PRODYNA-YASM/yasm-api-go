@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **WorkHours** | **float32** |  | 
 **PlannedHours** | **float32** |  | 
 **Descriptions** | Pointer to **[]string** |  | [optional] 
+**Type** | Pointer to **string** |  | [optional] 
+**Id** | **string** |  | 
+**ObjectType** | Pointer to **string** |  | [optional] 
 **Startdate** | **string** |  | 
 **Enddate** | **string** |  | 
 
@@ -14,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewAvailability
 
-`func NewAvailability(workHours float32, plannedHours float32, startdate string, enddate string, ) *Availability`
+`func NewAvailability(workHours float32, plannedHours float32, id string, startdate string, enddate string, ) *Availability`
 
 NewAvailability instantiates a new Availability object
 This constructor will assign default values to properties that have it defined,
@@ -93,6 +96,76 @@ SetDescriptions sets Descriptions field to given value.
 `func (o *Availability) HasDescriptions() bool`
 
 HasDescriptions returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *Availability) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *Availability) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *Availability) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *Availability) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *Availability) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Availability) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Availability) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetObjectType
+
+`func (o *Availability) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *Availability) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *Availability) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
+### HasObjectType
+
+`func (o *Availability) HasObjectType() bool`
+
+HasObjectType returns a boolean if a field has been set.
 
 ### GetStartdate
 

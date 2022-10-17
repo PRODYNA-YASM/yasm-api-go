@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Partner** | Pointer to **bool** |  | [optional] [default to false]
 **Customer** | Pointer to **bool** |  | [optional] [default to false]
 **Picture** | Pointer to **string** | base64 encoded image | [optional] 
+**Id** | **string** |  | 
+**ObjectType** | Pointer to **string** |  | [optional] 
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
@@ -17,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewOrganization
 
-`func NewOrganization(suggestion bool, ) *Organization`
+`func NewOrganization(id string, suggestion bool, ) *Organization`
 
 NewOrganization instantiates a new Organization object
 This constructor will assign default values to properties that have it defined,
@@ -106,6 +108,51 @@ SetPicture sets Picture field to given value.
 `func (o *Organization) HasPicture() bool`
 
 HasPicture returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *Organization) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Organization) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Organization) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetObjectType
+
+`func (o *Organization) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *Organization) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *Organization) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
+### HasObjectType
+
+`func (o *Organization) HasObjectType() bool`
+
+HasObjectType returns a boolean if a field has been set.
 
 ### GetSuggestion
 

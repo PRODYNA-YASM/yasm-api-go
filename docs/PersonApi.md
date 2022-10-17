@@ -1,6 +1,6 @@
 # \PersonApi
 
-All URIs are relative to */api/v1*
+All URIs are relative to *http://localhost/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -721,7 +721,7 @@ import (
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), time.Now(), time.Now(), "Id_example") // Availability | The availability
+    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", time.Now(), time.Now()) // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -790,7 +790,7 @@ import (
 )
 
 func main() {
-    person := *openapiclient.NewPerson(false, "Id_example") // Person | 
+    person := *openapiclient.NewPerson("Id_example", false) // Person | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1986,7 +1986,7 @@ import (
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), time.Now(), time.Now(), "Id_example") // Availability | The availability
+    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", time.Now(), time.Now()) // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2058,7 +2058,7 @@ import (
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    person := *openapiclient.NewPerson(false, "Id_example") // Person | 
+    person := *openapiclient.NewPerson("Id_example", false) // Person | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

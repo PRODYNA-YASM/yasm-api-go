@@ -1,6 +1,6 @@
 # \OrganizationApi
 
-All URIs are relative to */api/v1*
+All URIs are relative to *http://localhost/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -115,7 +115,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification(false, "Id_example") // Certification | 
+    certification := *openapiclient.NewCertification("Id_example", false) // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -254,7 +254,7 @@ import (
 )
 
 func main() {
-    organization := *openapiclient.NewOrganization(false, "Id_example") // Organization | Details about the Organization
+    organization := *openapiclient.NewOrganization("Id_example", false) // Organization | Details about the Organization
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -319,7 +319,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    project := *openapiclient.NewProject(false, "Id_example") // Project | 
+    project := *openapiclient.NewProject("Id_example", false) // Project | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1163,7 +1163,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    organization := *openapiclient.NewOrganization(false, "Id_example") // Organization | Details about the organization
+    organization := *openapiclient.NewOrganization("Id_example", false) // Organization | Details about the organization
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

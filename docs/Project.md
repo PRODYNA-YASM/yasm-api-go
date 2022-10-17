@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **External** | Pointer to **bool** | true if project was done outside of the organization | [optional] [default to false]
+**Id** | **string** |  | 
+**ObjectType** | Pointer to **string** |  | [optional] 
 **Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
@@ -15,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewProject
 
-`func NewProject(suggestion bool, ) *Project`
+`func NewProject(id string, suggestion bool, ) *Project`
 
 NewProject instantiates a new Project object
 This constructor will assign default values to properties that have it defined,
@@ -54,6 +56,51 @@ SetExternal sets External field to given value.
 `func (o *Project) HasExternal() bool`
 
 HasExternal returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *Project) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Project) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Project) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetObjectType
+
+`func (o *Project) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *Project) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *Project) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
+### HasObjectType
+
+`func (o *Project) HasObjectType() bool`
+
+HasObjectType returns a boolean if a field has been set.
 
 ### GetSuggestion
 
