@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.3.5
+  version: 1.3.6
 servers:
 - url: http://localhost/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -4181,17 +4181,14 @@ components:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedProjects_allOf'
-      type: object
     PagedPersons:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedPersons_allOf'
-      type: object
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
       - $ref: '#/components/schemas/ProjectScoreDetail_allOf'
-      type: object
     SearchResult:
       allOf:
       - $ref: '#/components/schemas/Page'
