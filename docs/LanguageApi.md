@@ -179,7 +179,7 @@ import (
 )
 
 func main() {
-    language := *openapiclient.NewLanguage("Id_example") // Language | 
+    language := *openapiclient.NewLanguage("Id_example", "Name_example") // Language | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -379,8 +379,8 @@ import (
 )
 
 func main() {
-    skip := int32(56) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

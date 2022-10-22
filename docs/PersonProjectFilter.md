@@ -5,14 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ParticipationInMonth** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
-**InvolevedOfficeIds** | Pointer to **[]string** |  | [optional] 
-**Id** | **string** |  | 
+**InvolvedOfficeIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
 ### NewPersonProjectFilter
 
-`func NewPersonProjectFilter(id string, ) *PersonProjectFilter`
+`func NewPersonProjectFilter() *PersonProjectFilter`
 
 NewPersonProjectFilter instantiates a new PersonProjectFilter object
 This constructor will assign default values to properties that have it defined,
@@ -52,50 +51,30 @@ SetParticipationInMonth sets ParticipationInMonth field to given value.
 
 HasParticipationInMonth returns a boolean if a field has been set.
 
-### GetInvolevedOfficeIds
+### GetInvolvedOfficeIds
 
-`func (o *PersonProjectFilter) GetInvolevedOfficeIds() []string`
+`func (o *PersonProjectFilter) GetInvolvedOfficeIds() []string`
 
-GetInvolevedOfficeIds returns the InvolevedOfficeIds field if non-nil, zero value otherwise.
+GetInvolvedOfficeIds returns the InvolvedOfficeIds field if non-nil, zero value otherwise.
 
-### GetInvolevedOfficeIdsOk
+### GetInvolvedOfficeIdsOk
 
-`func (o *PersonProjectFilter) GetInvolevedOfficeIdsOk() (*[]string, bool)`
+`func (o *PersonProjectFilter) GetInvolvedOfficeIdsOk() (*[]string, bool)`
 
-GetInvolevedOfficeIdsOk returns a tuple with the InvolevedOfficeIds field if it's non-nil, zero value otherwise
+GetInvolvedOfficeIdsOk returns a tuple with the InvolvedOfficeIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetInvolevedOfficeIds
+### SetInvolvedOfficeIds
 
-`func (o *PersonProjectFilter) SetInvolevedOfficeIds(v []string)`
+`func (o *PersonProjectFilter) SetInvolvedOfficeIds(v []string)`
 
-SetInvolevedOfficeIds sets InvolevedOfficeIds field to given value.
+SetInvolvedOfficeIds sets InvolvedOfficeIds field to given value.
 
-### HasInvolevedOfficeIds
+### HasInvolvedOfficeIds
 
-`func (o *PersonProjectFilter) HasInvolevedOfficeIds() bool`
+`func (o *PersonProjectFilter) HasInvolvedOfficeIds() bool`
 
-HasInvolevedOfficeIds returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *PersonProjectFilter) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *PersonProjectFilter) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *PersonProjectFilter) SetId(v string)`
-
-SetId sets Id field to given value.
-
+HasInvolvedOfficeIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

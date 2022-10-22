@@ -189,7 +189,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification("Id_example", false) // Certification | 
+    certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -536,8 +536,8 @@ import (
 )
 
 func main() {
-    skip := int32(56) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -603,8 +603,8 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(56) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -674,8 +674,8 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certificateId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    certificateId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -746,7 +746,7 @@ import (
 
 func main() {
     certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification("Id_example", false) // Certification | 
+    certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

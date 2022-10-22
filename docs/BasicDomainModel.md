@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
-**ObjectType** | Pointer to **string** |  | [optional] 
+**ObjectType** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -48,20 +48,20 @@ SetId sets Id field to given value.
 
 ### GetObjectType
 
-`func (o *BasicDomainModel) GetObjectType() string`
+`func (o *BasicDomainModel) GetObjectType() interface{}`
 
 GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
 
 ### GetObjectTypeOk
 
-`func (o *BasicDomainModel) GetObjectTypeOk() (*string, bool)`
+`func (o *BasicDomainModel) GetObjectTypeOk() (*interface{}, bool)`
 
 GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObjectType
 
-`func (o *BasicDomainModel) SetObjectType(v string)`
+`func (o *BasicDomainModel) SetObjectType(v interface{})`
 
 SetObjectType sets ObjectType field to given value.
 
@@ -71,6 +71,16 @@ SetObjectType sets ObjectType field to given value.
 
 HasObjectType returns a boolean if a field has been set.
 
+### SetObjectTypeNil
+
+`func (o *BasicDomainModel) SetObjectTypeNil(b bool)`
+
+ SetObjectTypeNil sets the value for ObjectType to be an explicit nil
+
+### UnsetObjectType
+`func (o *BasicDomainModel) UnsetObjectType()`
+
+UnsetObjectType ensures that no value is present for ObjectType, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,15 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
 **Name** | **string** |  | 
-**ObjectType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewNamedDomainModel
 
-`func NewNamedDomainModel(id string, name string, ) *NamedDomainModel`
+`func NewNamedDomainModel(name string, ) *NamedDomainModel`
 
 NewNamedDomainModel instantiates a new NamedDomainModel object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +24,6 @@ will change when the set of required properties is changed
 NewNamedDomainModelWithDefaults instantiates a new NamedDomainModel object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *NamedDomainModel) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *NamedDomainModel) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *NamedDomainModel) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetName
 
@@ -66,31 +44,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetObjectType
-
-`func (o *NamedDomainModel) GetObjectType() string`
-
-GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
-
-### GetObjectTypeOk
-
-`func (o *NamedDomainModel) GetObjectTypeOk() (*string, bool)`
-
-GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetObjectType
-
-`func (o *NamedDomainModel) SetObjectType(v string)`
-
-SetObjectType sets ObjectType field to given value.
-
-### HasObjectType
-
-`func (o *NamedDomainModel) HasObjectType() bool`
-
-HasObjectType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

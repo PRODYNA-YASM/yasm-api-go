@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.3.4
+  version: 1.3.5
 servers:
 - url: http://localhost/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -13,16 +13,42 @@ security:
 - bearerAuth:
   - user
   - admin
+tags:
+- description: Status of the API
+  name: Status
+- description: Organisation related endpoints
+  name: Organization
+- description: Industry related endpoints
+  name: Industry
+- description: Office related endpoints
+  name: Office
+- description: Certification related endpoints
+  name: Certification
+- description: Project related endpoints
+  name: Project
+- description: Skill related endpoints
+  name: Skill
+- description: Person related endpoints
+  name: Person
+- description: Language related endpoints
+  name: Language
+- description: Availability related endpoints
+  name: Availability
+- description: Search related endpoints
+  name: Search
+- description: Country related endpoints
+  name: Country
 paths:
   /ping:
     get:
-      description: "This operation shows how to override the global security defined\
-        \ above, as we want to open it up for all users."
+      description: Returns a heartbeat message
       operationId: getPing
       responses:
         "200":
           content:
             application/json:
+              example:
+                status: OK
               schema:
                 $ref: '#/components/schemas/Status'
           description: OK
@@ -38,16 +64,18 @@ paths:
       - Status
   /version:
     get:
-      description: "This operation shows how to override the global security defined\
-        \ above, as we want to open it up for all users."
+      description: Get the version of the backend and the used API
       operationId: getVersion
       responses:
         "200":
           content:
             application/json:
+              example:
+                serverVersion: 1.0.0
+                apiVersion: 1.0.0
               schema:
                 $ref: '#/components/schemas/Version'
-          description: OK
+          description: Operation successful
         default:
           content:
             application/json:
@@ -67,6 +95,7 @@ paths:
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -75,6 +104,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -116,7 +146,7 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       security:
-      - implicit: []
+      - bearerAuth: []
       summary: Create an Organization
       tags:
       - Organization
@@ -146,7 +176,7 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       security:
-      - implicit: []
+      - bearerAuth: []
       summary: Delete an organization
       tags:
       - Organization
@@ -209,7 +239,7 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       security:
-      - implicit: []
+      - bearerAuth: []
       summary: Update an Organization
       tags:
       - Organization
@@ -482,6 +512,7 @@ paths:
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -490,6 +521,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -638,6 +670,7 @@ paths:
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -646,6 +679,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -708,6 +742,7 @@ paths:
         name: organizationId
         required: true
         schema:
+          example: 70ee6f30-d7c1-4f91-a653-9819ecbfa667
           format: uuid
           type: string
         style: simple
@@ -716,6 +751,7 @@ paths:
         name: certificateId
         required: true
         schema:
+          example: 70ee6f30-d7c1-4f91-a653-9819ecbfa667
           format: uuid
           type: string
         style: simple
@@ -745,6 +781,7 @@ paths:
         name: organizationId
         required: true
         schema:
+          example: 70ee6f30-d7c1-4f91-a653-9819ecbfa667
           format: uuid
           type: string
         style: simple
@@ -754,6 +791,7 @@ paths:
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -762,6 +800,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -789,6 +828,7 @@ paths:
         name: organizationId
         required: true
         schema:
+          example: 70ee6f30-d7c1-4f91-a653-9819ecbfa667
           format: uuid
           type: string
         style: simple
@@ -825,6 +865,7 @@ paths:
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -833,6 +874,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -1069,6 +1111,7 @@ paths:
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -1077,6 +1120,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       requestBody:
@@ -1241,6 +1285,7 @@ paths:
           - all
           - root
           - kind
+          example: all
           type: string
         style: form
       - description: Optionally filter skills based on suggestion
@@ -1254,6 +1299,7 @@ paths:
           - all
           - suggested
           - notsuggested
+          example: all
           type: string
         style: form
       - description: Optionally filter skills based on linkable
@@ -1262,6 +1308,7 @@ paths:
         name: linkable
         required: false
         schema:
+          example: true
           type: boolean
         style: form
       - explode: true
@@ -1270,6 +1317,7 @@ paths:
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -1278,6 +1326,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -1462,6 +1511,7 @@ paths:
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -1470,6 +1520,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -1676,7 +1727,8 @@ paths:
     post:
       operationId: searchPersons
       parameters:
-      - explode: true
+      - example: 0
+        explode: true
         in: query
         name: skip
         required: false
@@ -1731,6 +1783,8 @@ paths:
           content:
             application/octet-stream:
               schema:
+                example: !!binary |-
+                  SlZCRVJpMHhMalFLSmNmcy4uLg==
                 format: binary
                 type: string
           description: A PDF profile of a Person
@@ -2935,12 +2989,14 @@ paths:
         schema:
           type: string
         style: simple
-      - explode: true
+      - example: 0
+        explode: true
         in: query
         name: skip
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -2949,6 +3005,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -2977,6 +3034,7 @@ paths:
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -2985,6 +3043,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -3086,12 +3145,14 @@ paths:
     get:
       operationId: getCountries
       parameters:
-      - explode: true
+      - example: 0
+        explode: true
         in: query
         name: skip
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -3100,6 +3161,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -3325,39 +3387,33 @@ components:
       format: date
       type: string
     BasicDomainModel:
+      discriminator:
+        propertyName: objectType
       properties:
         id:
           format: uuid
           type: string
         objectType:
-          type: string
+          format: string
       required:
       - id
+      type: object
+    Nameable:
+      properties:
+        name:
+          type: string
+      required:
+      - name
       type: object
     NamedDomainModel:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
-      example:
-        name: This is the name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        id:
-          format: uuid
-          type: string
-        name:
-          example: This is the name
-          type: string
-      required:
-      - id
-      - name
-      type: object
+      - $ref: '#/components/schemas/Nameable'
     Descriptable:
       properties:
         description:
           example: This is a description
           type: string
-      required:
-      - name
       type: object
     Locateable:
       properties:
@@ -3385,15 +3441,20 @@ components:
       - hidden
       type: object
     Timeframed:
+      discriminator:
+        propertyName: objectType
       example:
         enddate: 2000-01-23
         startdate: 2000-01-23
+        objectType: objectType
       properties:
         startdate:
           format: date
           type: string
         enddate:
           format: date
+          type: string
+        objectType:
           type: string
       type: object
     Synonymable:
@@ -3407,53 +3468,15 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Timeframed'
-      discriminator:
-        propertyName: objectType
-      example:
-        workHours: 38.5
-        type: type
-        descriptions:
-        - descriptions
-        - descriptions
-        plannedHours: 22.5
-      properties:
-        workHours:
-          example: 38.5
-          format: float
-          type: number
-        plannedHours:
-          example: 22.5
-          format: float
-          type: number
-        descriptions:
-          items:
-            type: string
-          type: array
-        type:
-          type: string
-      required:
-      - enddate
-      - id
-      - name
-      - plannedHours
-      - startdate
-      - workHours
-      type: object
+      - $ref: '#/components/schemas/Availability_allOf'
     AvailabilityDetail:
       example:
-        availability:
-          workHours: 38.5
-          type: type
-          descriptions:
-          - descriptions
-          - descriptions
-          plannedHours: 22.5
+        availability: null
         percent: 8.008281904610115
       properties:
         availability:
           $ref: '#/components/schemas/Availability'
         percent:
-          format: integer
           maximum: 100
           minimum: 0
           type: number
@@ -3464,33 +3487,18 @@ components:
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
-      discriminator:
-        propertyName: objectType
-      example:
-        validity: validity
-      properties:
-        validity:
-          type: string
-      type: object
+      - $ref: '#/components/schemas/Certification_allOf'
     CertificationDetails:
       example:
         skills:
         - level:
             level: 1
-          skill:
-            invest: false
-            kindgiver: false
+          skill: null
         - level:
             level: 1
-          skill:
-            invest: false
-            kindgiver: false
-        organization:
-          partner: false
-          picture: picture
-          customer: false
-        certification:
-          validity: validity
+          skill: null
+        organization: null
+        certification: null
       properties:
         certification:
           $ref: '#/components/schemas/Certification'
@@ -3504,19 +3512,10 @@ components:
     Country:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      discriminator:
-        propertyName: objectType
-      example:
-        picture: picture
-      properties:
-        picture:
-          description: base64 encoded image
-          type: string
-      type: object
+      - $ref: '#/components/schemas/Country_allOf'
     CountryDetails:
       example:
-        country:
-          picture: picture
+        country: null
         languages:
         - null
         - null
@@ -3533,36 +3532,10 @@ components:
         skill:
           level:
             level: 1
-          skill:
-            invest: false
-            kindgiver: false
+          skill: null
         confirmedBy:
-        - education: Bachelor of Computer Scince
-          mail: peter.mueller@prodyna.com
-          jobTitle: Software Engineer
-          employeeId: "1234567"
-          onsiteRatio: 20
-          seniorityEnum: null
-          picture: picture
-          inactive: false
-          mobilePhone: +49 176 12345678
-          experienceSinceYear: 2010
-          company: PRODYNA SE
-          department: Professional Services
-          seniority: Senior
-        - education: Bachelor of Computer Scince
-          mail: peter.mueller@prodyna.com
-          jobTitle: Software Engineer
-          employeeId: "1234567"
-          onsiteRatio: 20
-          seniorityEnum: null
-          picture: picture
-          inactive: false
-          mobilePhone: +49 176 12345678
-          experienceSinceYear: 2010
-          company: PRODYNA SE
-          department: Professional Services
-          seniority: Senior
+        - null
+        - null
       properties:
         skill:
           $ref: '#/components/schemas/SkillLevel'
@@ -3586,18 +3559,11 @@ components:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
-      discriminator:
-        propertyName: objectType
-      type: object
     IndustryDetails:
       example:
         organizations:
-        - partner: false
-          picture: picture
-          customer: false
-        - partner: false
-          picture: picture
-          customer: false
+        - null
+        - null
         industry: null
       properties:
         industry:
@@ -3610,13 +3576,12 @@ components:
     Language:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      type: object
     LanguageDetails:
       example:
         language: null
         countries:
-        - picture: picture
-        - picture: picture
+        - null
+        - null
       properties:
         language:
           $ref: '#/components/schemas/Language'
@@ -3641,9 +3606,6 @@ components:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
-      discriminator:
-        propertyName: objectType
-      type: object
     Organization:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -3651,32 +3613,13 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
-      discriminator:
-        propertyName: objectType
-      example:
-        partner: false
-        picture: picture
-        customer: false
-      properties:
-        partner:
-          default: false
-          type: boolean
-        customer:
-          default: false
-          type: boolean
-        picture:
-          description: base64 encoded image
-          type: string
-      type: object
+      - $ref: '#/components/schemas/Organization_allOf'
     OrganizationDetails:
       example:
         projects:
-        - external: false
-        - external: false
-        organization:
-          partner: false
-          picture: picture
-          customer: false
+        - null
+        - null
+        organization: null
         industries:
         - null
         - null
@@ -3684,8 +3627,8 @@ components:
         - null
         - null
         certifications:
-        - validity: validity
-        - validity: validity
+        - null
+        - null
       properties:
         organization:
           $ref: '#/components/schemas/Organization'
@@ -3714,69 +3657,10 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
+      - $ref: '#/components/schemas/Person_allOf'
+    PersonDetails:
       discriminator:
         propertyName: objectType
-      example:
-        education: Bachelor of Computer Scince
-        mail: peter.mueller@prodyna.com
-        jobTitle: Software Engineer
-        employeeId: "1234567"
-        onsiteRatio: 20
-        seniorityEnum: null
-        picture: picture
-        inactive: false
-        mobilePhone: +49 176 12345678
-        experienceSinceYear: 2010
-        company: PRODYNA SE
-        department: Professional Services
-        seniority: Senior
-      properties:
-        employeeId:
-          example: "1234567"
-          type: string
-        jobTitle:
-          example: Software Engineer
-          type: string
-        company:
-          example: PRODYNA SE
-          type: string
-        department:
-          example: Professional Services
-          type: string
-        education:
-          example: Bachelor of Computer Scince
-          type: string
-        mail:
-          example: peter.mueller@prodyna.com
-          type: string
-        mobilePhone:
-          example: +49 176 12345678
-          type: string
-        seniority:
-          example: Senior
-          type: string
-        seniorityEnum:
-          $ref: '#/components/schemas/Seniority'
-        experienceSinceYear:
-          example: 2010
-          type: integer
-        onsiteRatio:
-          example: 20
-          maximum: 100
-          minimum: 0
-          type: integer
-        picture:
-          description: base64 encoded image
-          type: string
-        inactive:
-          default: false
-          description: Marks persons not working for the company anymore
-          type: boolean
-      required:
-      - id
-      - name
-      type: object
-    PersonDetails:
       example:
         projects:
         - null
@@ -3788,165 +3672,63 @@ components:
         - level:
             level: 1
           language: null
-        person:
-          education: Bachelor of Computer Scince
-          mail: peter.mueller@prodyna.com
-          jobTitle: Software Engineer
-          employeeId: "1234567"
-          onsiteRatio: 20
-          seniorityEnum: null
-          picture: picture
-          inactive: false
-          mobilePhone: +49 176 12345678
-          experienceSinceYear: 2010
-          company: PRODYNA SE
-          department: Professional Services
-          seniority: Senior
+        person: null
         availabilities:
-        - availability:
-            workHours: 38.5
-            type: type
-            descriptions:
-            - descriptions
-            - descriptions
-            plannedHours: 22.5
+        - availability: null
           percent: 8.008281904610115
-        - availability:
-            workHours: 38.5
-            type: type
-            descriptions:
-            - descriptions
-            - descriptions
-            plannedHours: 22.5
+        - availability: null
           percent: 8.008281904610115
         industries:
         - null
         - null
         skillGroups:
         - skills:
-          - invest: false
-            kindgiver: false
-          - invest: false
-            kindgiver: false
-          group:
-            invest: false
-            kindgiver: false
+          - null
+          - null
+          group: null
         - skills:
-          - invest: false
-            kindgiver: false
-          - invest: false
-            kindgiver: false
-          group:
-            invest: false
-            kindgiver: false
+          - null
+          - null
+          group: null
         office: null
         interests:
-        - invest: false
-          kindgiver: false
-        - invest: false
-          kindgiver: false
+        - null
+        - null
         certifications:
         - skills:
           - level:
               level: 1
-            skill:
-              invest: false
-              kindgiver: false
+            skill: null
           - level:
               level: 1
-            skill:
-              invest: false
-              kindgiver: false
-          organization:
-            partner: false
-            picture: picture
-            customer: false
-          certification:
-            validity: validity
+            skill: null
+          organization: null
+          certification: null
         - skills:
           - level:
               level: 1
-            skill:
-              invest: false
-              kindgiver: false
+            skill: null
           - level:
               level: 1
-            skill:
-              invest: false
-              kindgiver: false
-          organization:
-            partner: false
-            picture: picture
-            customer: false
-          certification:
-            validity: validity
+            skill: null
+          organization: null
+          certification: null
         experiences:
         - skill:
             level:
               level: 1
-            skill:
-              invest: false
-              kindgiver: false
+            skill: null
           confirmedBy:
-          - education: Bachelor of Computer Scince
-            mail: peter.mueller@prodyna.com
-            jobTitle: Software Engineer
-            employeeId: "1234567"
-            onsiteRatio: 20
-            seniorityEnum: null
-            picture: picture
-            inactive: false
-            mobilePhone: +49 176 12345678
-            experienceSinceYear: 2010
-            company: PRODYNA SE
-            department: Professional Services
-            seniority: Senior
-          - education: Bachelor of Computer Scince
-            mail: peter.mueller@prodyna.com
-            jobTitle: Software Engineer
-            employeeId: "1234567"
-            onsiteRatio: 20
-            seniorityEnum: null
-            picture: picture
-            inactive: false
-            mobilePhone: +49 176 12345678
-            experienceSinceYear: 2010
-            company: PRODYNA SE
-            department: Professional Services
-            seniority: Senior
+          - null
+          - null
         - skill:
             level:
               level: 1
-            skill:
-              invest: false
-              kindgiver: false
+            skill: null
           confirmedBy:
-          - education: Bachelor of Computer Scince
-            mail: peter.mueller@prodyna.com
-            jobTitle: Software Engineer
-            employeeId: "1234567"
-            onsiteRatio: 20
-            seniorityEnum: null
-            picture: picture
-            inactive: false
-            mobilePhone: +49 176 12345678
-            experienceSinceYear: 2010
-            company: PRODYNA SE
-            department: Professional Services
-            seniority: Senior
-          - education: Bachelor of Computer Scince
-            mail: peter.mueller@prodyna.com
-            jobTitle: Software Engineer
-            employeeId: "1234567"
-            onsiteRatio: 20
-            seniorityEnum: null
-            picture: picture
-            inactive: false
-            mobilePhone: +49 176 12345678
-            experienceSinceYear: 2010
-            company: PRODYNA SE
-            department: Professional Services
-            seniority: Senior
+          - null
+          - null
+        objectType: objectType
       properties:
         person:
           $ref: '#/components/schemas/Person'
@@ -3984,56 +3766,26 @@ components:
           items:
             $ref: '#/components/schemas/SkillGroup'
           type: array
+        objectType:
+          type: string
       type: object
     PersonSearch:
       example:
         skills:
-        - lastAssignment: 2000-01-23
-          experienceInMonth:
-            min: 0
-            max: 100
-        - lastAssignment: 2000-01-23
-          experienceInMonth:
-            min: 0
-            max: 100
+        - null
+        - null
         officeIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         projects:
-        - participationInMonth:
-            min: 0
-            max: 100
-          involevedOfficeIds:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - participationInMonth:
-            min: 0
-            max: 100
-          involevedOfficeIds:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         industries:
-        - amountOfProjects:
-            min: 0
-            max: 100
-          experienceInMonth:
-            min: 0
-            max: 100
-          activeProjects: true
-        - amountOfProjects:
-            min: 0
-            max: 100
-          experienceInMonth:
-            min: 0
-            max: 100
-          activeProjects: true
+        - null
+        - null
         organizations:
-        - amountOfProjects:
-            min: 0
-            max: 100
-        - amountOfProjects:
-            min: 0
-            max: 100
+        - null
+        - null
         personIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -4042,8 +3794,8 @@ components:
           max: 100
         availability: null
         certifications:
-        - startedCertificaiton: true
-        - startedCertificaiton: true
+        - null
+        - null
         seniority:
         - null
         - null
@@ -4090,86 +3842,23 @@ components:
     PersonSkillFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
-      example:
-        lastAssignment: 2000-01-23
-        experienceInMonth:
-          min: 0
-          max: 100
-      properties:
-        experienceInMonth:
-          $ref: '#/components/schemas/MinMax'
-        lastAssignment:
-          description: filters the last time the employee used the skill in a project
-          format: date
-          type: string
-      type: object
+      - $ref: '#/components/schemas/PersonSkillFilter_allOf'
     PersonProjectFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
-      discriminator:
-        propertyName: objectType
-      example:
-        participationInMonth:
-          min: 0
-          max: 100
-        involevedOfficeIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        participationInMonth:
-          $ref: '#/components/schemas/MinMax'
-        involevedOfficeIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-      type: object
+      - $ref: '#/components/schemas/PersonProjectFilter_allOf'
     PersonOrganizationFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
-      discriminator:
-        propertyName: objectType
-      example:
-        amountOfProjects:
-          min: 0
-          max: 100
-      properties:
-        amountOfProjects:
-          $ref: '#/components/schemas/MinMax'
-      type: object
+      - $ref: '#/components/schemas/PersonOrganizationFilter_allOf'
     PersonIndustryFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
-      discriminator:
-        propertyName: objectType
-      example:
-        amountOfProjects:
-          min: 0
-          max: 100
-        experienceInMonth:
-          min: 0
-          max: 100
-        activeProjects: true
-      properties:
-        activeProjects:
-          type: boolean
-        amountOfProjects:
-          $ref: '#/components/schemas/MinMax'
-        experienceInMonth:
-          $ref: '#/components/schemas/MinMax'
-      type: object
+      - $ref: '#/components/schemas/PersonIndustryFilter_allOf'
     PersonCertificationFilter:
       allOf:
       - $ref: '#/components/schemas/EntityFilter'
-      discriminator:
-        propertyName: objectType
-      example:
-        startedCertificaiton: true
-      properties:
-        startedCertificaiton:
-          description: Include employees who started the certification
-          type: boolean
-      type: object
+      - $ref: '#/components/schemas/PersonCertificationFilter_allOf'
     Project:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -4177,74 +3866,33 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
+      - $ref: '#/components/schemas/Project_allOf'
+    ProjectDetails:
       discriminator:
         propertyName: objectType
       example:
-        external: false
-      properties:
-        external:
-          default: false
-          description: true if project was done outside of the organization
-          type: boolean
-      type: object
-    ProjectDetails:
-      example:
         persons:
-        - education: Bachelor of Computer Scince
-          mail: peter.mueller@prodyna.com
-          jobTitle: Software Engineer
-          employeeId: "1234567"
-          onsiteRatio: 20
-          seniorityEnum: null
-          picture: picture
-          inactive: false
-          mobilePhone: +49 176 12345678
-          experienceSinceYear: 2010
-          company: PRODYNA SE
-          department: Professional Services
-          seniority: Senior
-        - education: Bachelor of Computer Scince
-          mail: peter.mueller@prodyna.com
-          jobTitle: Software Engineer
-          employeeId: "1234567"
-          onsiteRatio: 20
-          seniorityEnum: null
-          picture: picture
-          inactive: false
-          mobilePhone: +49 176 12345678
-          experienceSinceYear: 2010
-          company: PRODYNA SE
-          department: Professional Services
-          seniority: Senior
+        - null
+        - null
         timeframe:
           enddate: 2000-01-23
           startdate: 2000-01-23
-        organization:
-          partner: false
-          picture: picture
-          customer: false
+          objectType: objectType
+        organization: null
         industries:
         - null
         - null
         skillGroups:
         - skills:
-          - invest: false
-            kindgiver: false
-          - invest: false
-            kindgiver: false
-          group:
-            invest: false
-            kindgiver: false
+          - null
+          - null
+          group: null
         - skills:
-          - invest: false
-            kindgiver: false
-          - invest: false
-            kindgiver: false
-          group:
-            invest: false
-            kindgiver: false
-        project:
-          external: false
+          - null
+          - null
+          group: null
+        project: null
+        objectType: objectType
       properties:
         project:
           $ref: '#/components/schemas/Project'
@@ -4264,21 +3912,17 @@ components:
           type: array
         timeframe:
           $ref: '#/components/schemas/Timeframed'
+        objectType:
+          type: string
       type: object
     ProjectScoreDetail:
       allOf:
       - $ref: '#/components/schemas/ProjectDetails'
       - $ref: '#/components/schemas/ProjectScoreDetail_allOf'
-      discriminator:
-        propertyName: objectType
-      type: object
     ProjectParticipation:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
       - $ref: '#/components/schemas/ProjectParticipation_allOf'
-      discriminator:
-        propertyName: objectType
-      type: object
     ProjectParticipationUpdate:
       example:
         skills:
@@ -4291,6 +3935,7 @@ components:
         timeframe:
           enddate: 2000-01-23
           startdate: 2000-01-23
+          objectType: objectType
         personalDescription: personalDescription
         descriptionOverwrite: descriptionOverwrite
       properties:
@@ -4309,7 +3954,9 @@ components:
       example:
         skills:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         minStartDate: 2000-01-23
         maxEndDate: 2000-01-23
         projectStatuses:
@@ -4320,10 +3967,14 @@ components:
           max: 100
         industries:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         organizations:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         projectIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -4335,7 +3986,9 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         participants:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
       properties:
         projectIds:
           items:
@@ -4391,32 +4044,13 @@ components:
       - $ref: '#/components/schemas/Linkable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
-      discriminator:
-        propertyName: objectType
-      example:
-        invest: false
-        kindgiver: false
-      properties:
-        invest:
-          default: false
-          type: boolean
-        kindgiver:
-          default: false
-          required:
-          - id
-          - name
-          type: boolean
-      type: object
+      - $ref: '#/components/schemas/Skill_allOf'
     SkillGroup:
       example:
         skills:
-        - invest: false
-          kindgiver: false
-        - invest: false
-          kindgiver: false
-        group:
-          invest: false
-          kindgiver: false
+        - null
+        - null
+        group: null
       properties:
         group:
           $ref: '#/components/schemas/Skill'
@@ -4428,9 +4062,7 @@ components:
       example:
         level:
           level: 1
-        skill:
-          invest: false
-          kindgiver: false
+        skill: null
       properties:
         skill:
           $ref: '#/components/schemas/Skill'
@@ -4451,24 +4083,16 @@ components:
     SkillDetails:
       example:
         children:
-        - invest: false
-          kindgiver: false
-        - invest: false
-          kindgiver: false
+        - null
+        - null
         displayName: displayName
-        skill:
-          invest: false
-          kindgiver: false
+        skill: null
         kinds:
-        - invest: false
-          kindgiver: false
-        - invest: false
-          kindgiver: false
+        - null
+        - null
         parents:
-        - invest: false
-          kindgiver: false
-        - invest: false
-          kindgiver: false
+        - null
+        - null
       properties:
         skill:
           $ref: '#/components/schemas/Skill'
@@ -4512,7 +4136,7 @@ components:
       type: object
     Page:
       discriminator:
-        propertyName: type
+        propertyName: objectType
       properties:
         skip:
           minimum: 0
@@ -4522,307 +4146,57 @@ components:
           type: integer
         count:
           type: integer
+        objectType:
+          type: string
       type: object
     PagedAvailabilities:
       allOf:
       - $ref: '#/components/schemas/Page'
-      discriminator:
-        propertyName: objectType
-      example:
-        availabilities:
-        - availability:
-            workHours: 38.5
-            type: type
-            descriptions:
-            - descriptions
-            - descriptions
-            plannedHours: 22.5
-          percent: 8.008281904610115
-        - availability:
-            workHours: 38.5
-            type: type
-            descriptions:
-            - descriptions
-            - descriptions
-            plannedHours: 22.5
-          percent: 8.008281904610115
-      properties:
-        availabilities:
-          items:
-            $ref: '#/components/schemas/AvailabilityDetail'
-          type: array
-      type: object
+      - $ref: '#/components/schemas/PagedAvailabilities_allOf'
     PagedOrganizations:
       allOf:
       - $ref: '#/components/schemas/Page'
-      discriminator:
-        propertyName: objectType
-      example:
-        organizations:
-        - projects:
-          - external: false
-          - external: false
-          organization:
-            partner: false
-            picture: picture
-            customer: false
-          industries:
-          - null
-          - null
-          offices:
-          - null
-          - null
-          certifications:
-          - validity: validity
-          - validity: validity
-        - projects:
-          - external: false
-          - external: false
-          organization:
-            partner: false
-            picture: picture
-            customer: false
-          industries:
-          - null
-          - null
-          offices:
-          - null
-          - null
-          certifications:
-          - validity: validity
-          - validity: validity
-      properties:
-        organizations:
-          items:
-            $ref: '#/components/schemas/OrganizationDetails'
-          type: array
-      type: object
+      - $ref: '#/components/schemas/PagedOrganizations_allOf'
     PagedLanguages:
       allOf:
       - $ref: '#/components/schemas/Page'
-      discriminator:
-        propertyName: objectType
-      example:
-        languages:
-        - null
-        - null
-      properties:
-        languages:
-          items:
-            $ref: '#/components/schemas/Language'
-          type: array
-      type: object
+      - $ref: '#/components/schemas/PagedLanguages_allOf'
     PagedCertifications:
       allOf:
       - $ref: '#/components/schemas/Page'
-      discriminator:
-        propertyName: objectType
-      example:
-        certifications:
-        - skills:
-          - level:
-              level: 1
-            skill:
-              invest: false
-              kindgiver: false
-          - level:
-              level: 1
-            skill:
-              invest: false
-              kindgiver: false
-          organization:
-            partner: false
-            picture: picture
-            customer: false
-          certification:
-            validity: validity
-        - skills:
-          - level:
-              level: 1
-            skill:
-              invest: false
-              kindgiver: false
-          - level:
-              level: 1
-            skill:
-              invest: false
-              kindgiver: false
-          organization:
-            partner: false
-            picture: picture
-            customer: false
-          certification:
-            validity: validity
-      properties:
-        certifications:
-          items:
-            $ref: '#/components/schemas/CertificationDetails'
-          type: array
-      type: object
+      - $ref: '#/components/schemas/PagedCertifications_allOf'
     PagedCountries:
       allOf:
       - $ref: '#/components/schemas/Page'
-      discriminator:
-        propertyName: objectType
-      example:
-        countries:
-        - picture: picture
-        - picture: picture
-      properties:
-        countries:
-          items:
-            $ref: '#/components/schemas/Country'
-          type: array
-      type: object
+      - $ref: '#/components/schemas/PagedCountries_allOf'
     PagedSkills:
       allOf:
       - $ref: '#/components/schemas/Page'
-      example:
-        skills:
-        - children:
-          - invest: false
-            kindgiver: false
-          - invest: false
-            kindgiver: false
-          displayName: displayName
-          skill:
-            invest: false
-            kindgiver: false
-          kinds:
-          - invest: false
-            kindgiver: false
-          - invest: false
-            kindgiver: false
-          parents:
-          - invest: false
-            kindgiver: false
-          - invest: false
-            kindgiver: false
-        - children:
-          - invest: false
-            kindgiver: false
-          - invest: false
-            kindgiver: false
-          displayName: displayName
-          skill:
-            invest: false
-            kindgiver: false
-          kinds:
-          - invest: false
-            kindgiver: false
-          - invest: false
-            kindgiver: false
-          parents:
-          - invest: false
-            kindgiver: false
-          - invest: false
-            kindgiver: false
-      properties:
-        skills:
-          items:
-            $ref: '#/components/schemas/SkillDetails'
-          type: array
-      type: object
+      - $ref: '#/components/schemas/PagedSkills_allOf'
     PagedIndustries:
       allOf:
       - $ref: '#/components/schemas/Page'
-      discriminator:
-        propertyName: objectType
-      example:
-        industries:
-        - organizations:
-          - partner: false
-            picture: picture
-            customer: false
-          - partner: false
-            picture: picture
-            customer: false
-          industry: null
-        - organizations:
-          - partner: false
-            picture: picture
-            customer: false
-          - partner: false
-            picture: picture
-            customer: false
-          industry: null
-      properties:
-        industries:
-          items:
-            $ref: '#/components/schemas/IndustryDetails'
-          type: array
-      type: object
+      - $ref: '#/components/schemas/PagedIndustries_allOf'
     PagedProjects:
       allOf:
       - $ref: '#/components/schemas/Page'
-      discriminator:
-        propertyName: objectType
-      example:
-        projects:
-        - null
-        - null
-      properties:
-        projects:
-          items:
-            $ref: '#/components/schemas/ProjectScoreDetail'
-          type: array
+      - $ref: '#/components/schemas/PagedProjects_allOf'
       type: object
     PagedPersons:
       allOf:
       - $ref: '#/components/schemas/Page'
-      discriminator:
-        propertyName: objectType
-      example:
-        persons:
-        - score: 0.8008281904610115
-        - score: 0.8008281904610115
-      properties:
-        persons:
-          items:
-            $ref: '#/components/schemas/PersonScoreDetail'
-          type: array
+      - $ref: '#/components/schemas/PagedPersons_allOf'
       type: object
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
-      discriminator:
-        propertyName: objectType
-      example:
-        score: 0.8008281904610115
-      properties:
-        score:
-          type: number
+      - $ref: '#/components/schemas/ProjectScoreDetail_allOf'
       type: object
     SearchResult:
       allOf:
       - $ref: '#/components/schemas/Page'
-      discriminator:
-        propertyName: objectType
-      example:
-        items:
-        - score: 0.7
-          item:
-            name: This is the name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          type: Certification
-        - score: 0.7
-          item:
-            name: This is the name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          type: Certification
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/SearchResultItem'
-          type: array
-      type: object
+      - $ref: '#/components/schemas/SearchResult_allOf'
     SearchResultItem:
-      example:
-        score: 0.7
-        item:
-          name: This is the name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        type: Certification
       properties:
         score:
           example: 0.7
@@ -4834,11 +4208,16 @@ components:
           $ref: '#/components/schemas/NamedDomainModel'
       type: object
     EntityFilter:
+      discriminator:
+        propertyName: objectType
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        objectType: objectType
       properties:
         id:
           format: uuid
+          type: string
+        objectType:
           type: string
       required:
       - id
@@ -4847,8 +4226,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/Timeframed'
       - $ref: '#/components/schemas/MinMaxPercent'
-      discriminator:
-        propertyName: objectType
     MinMaxPercent:
       example:
         min: 0
@@ -4886,6 +4263,148 @@ components:
       - MANAGING
       - PRINCIPAL
       type: string
+    Availability_allOf:
+      properties:
+        workHours:
+          example: 38.5
+          format: float
+          type: number
+        plannedHours:
+          example: 22.5
+          format: float
+          type: number
+        descriptions:
+          items:
+            type: string
+          type: array
+      required:
+      - plannedHours
+      - workHours
+      type: object
+      example: null
+    Certification_allOf:
+      properties:
+        validity:
+          type: string
+      type: object
+      example: null
+    Country_allOf:
+      properties:
+        picture:
+          description: base64 encoded image
+          type: string
+      type: object
+      example: null
+    Organization_allOf:
+      properties:
+        partner:
+          default: false
+          type: boolean
+        customer:
+          default: false
+          type: boolean
+        picture:
+          description: base64 encoded image
+          type: string
+      type: object
+      example: null
+    Person_allOf:
+      properties:
+        employeeId:
+          example: "1234567"
+          type: string
+        jobTitle:
+          example: Software Engineer
+          type: string
+        company:
+          example: PRODYNA SE
+          type: string
+        department:
+          example: Professional Services
+          type: string
+        education:
+          example: Bachelor of Computer Scince
+          type: string
+        mail:
+          example: peter.mueller@prodyna.com
+          type: string
+        mobilePhone:
+          example: +49 176 12345678
+          type: string
+        seniority:
+          example: Senior
+          type: string
+        seniorityEnum:
+          $ref: '#/components/schemas/Seniority'
+        experienceSinceYear:
+          example: 2010
+          type: integer
+        onsiteRatio:
+          example: 20
+          maximum: 100
+          minimum: 0
+          type: integer
+        picture:
+          description: base64 encoded image
+          type: string
+        inactive:
+          default: false
+          description: Marks persons not working for the company anymore
+          type: boolean
+      type: object
+      example: null
+    PersonSkillFilter_allOf:
+      properties:
+        experienceInMonth:
+          $ref: '#/components/schemas/MinMax'
+        lastAssignment:
+          description: filters the last time the employee used the skill in a project
+          format: date
+          type: string
+      type: object
+      example: null
+    PersonProjectFilter_allOf:
+      properties:
+        participationInMonth:
+          $ref: '#/components/schemas/MinMax'
+        involvedOfficeIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+      type: object
+      example: null
+    PersonOrganizationFilter_allOf:
+      properties:
+        amountOfProjects:
+          $ref: '#/components/schemas/MinMax'
+      type: object
+      example: null
+    PersonIndustryFilter_allOf:
+      properties:
+        activeProjects:
+          type: boolean
+        amountOfProjects:
+          $ref: '#/components/schemas/MinMax'
+        experienceInMonth:
+          $ref: '#/components/schemas/MinMax'
+      type: object
+      example: null
+    PersonCertificationFilter_allOf:
+      properties:
+        startedCertificaiton:
+          description: Include employees who started the certification
+          type: boolean
+      type: object
+      example: null
+    Project_allOf:
+      properties:
+        external:
+          default: false
+          description: true if project was done outside of the organization
+          type: boolean
+      type: object
+      example: null
     ProjectScoreDetail_allOf:
       properties:
         score:
@@ -4912,6 +4431,96 @@ components:
       - experiences
       - id
       - project
+      type: object
+      example: null
+    Skill_allOf:
+      properties:
+        invest:
+          default: false
+          type: boolean
+        kindgiver:
+          default: false
+          type: boolean
+      type: object
+      example: null
+    PagedAvailabilities_allOf:
+      properties:
+        availabilities:
+          items:
+            $ref: '#/components/schemas/AvailabilityDetail'
+          type: array
+      type: object
+      example: null
+    PagedOrganizations_allOf:
+      properties:
+        organizations:
+          items:
+            $ref: '#/components/schemas/OrganizationDetails'
+          type: array
+      type: object
+      example: null
+    PagedLanguages_allOf:
+      properties:
+        languages:
+          items:
+            $ref: '#/components/schemas/Language'
+          type: array
+      type: object
+      example: null
+    PagedCertifications_allOf:
+      properties:
+        certifications:
+          items:
+            $ref: '#/components/schemas/CertificationDetails'
+          type: array
+      type: object
+      example: null
+    PagedCountries_allOf:
+      properties:
+        countries:
+          items:
+            $ref: '#/components/schemas/Country'
+          type: array
+      type: object
+      example: null
+    PagedSkills_allOf:
+      properties:
+        skills:
+          items:
+            $ref: '#/components/schemas/SkillDetails'
+          type: array
+      type: object
+      example: null
+    PagedIndustries_allOf:
+      properties:
+        industries:
+          items:
+            $ref: '#/components/schemas/IndustryDetails'
+          type: array
+      type: object
+      example: null
+    PagedProjects_allOf:
+      properties:
+        projects:
+          items:
+            $ref: '#/components/schemas/ProjectScoreDetail'
+          type: array
+      type: object
+      example: null
+    PagedPersons_allOf:
+      properties:
+        persons:
+          items:
+            $ref: '#/components/schemas/PersonScoreDetail'
+          type: array
+      type: object
+      example: null
+    SearchResult_allOf:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/SearchResultItem'
+          type: array
       type: object
       example: null
   securitySchemes:

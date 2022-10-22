@@ -6,13 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExperienceInMonth** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
 **LastAssignment** | Pointer to **string** | filters the last time the employee used the skill in a project | [optional] 
-**Id** | **string** |  | 
 
 ## Methods
 
 ### NewPersonSkillFilter
 
-`func NewPersonSkillFilter(id string, ) *PersonSkillFilter`
+`func NewPersonSkillFilter() *PersonSkillFilter`
 
 NewPersonSkillFilter instantiates a new PersonSkillFilter object
 This constructor will assign default values to properties that have it defined,
@@ -76,26 +75,6 @@ SetLastAssignment sets LastAssignment field to given value.
 `func (o *PersonSkillFilter) HasLastAssignment() bool`
 
 HasLastAssignment returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *PersonSkillFilter) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *PersonSkillFilter) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *PersonSkillFilter) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

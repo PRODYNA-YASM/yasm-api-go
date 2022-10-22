@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
 **SkillGroups** | Pointer to [**[]SkillGroup**](SkillGroup.md) |  | [optional] 
 **Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
+**ObjectType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetTimeframe sets Timeframe field to given value.
 `func (o *ProjectDetails) HasTimeframe() bool`
 
 HasTimeframe returns a boolean if a field has been set.
+
+### GetObjectType
+
+`func (o *ProjectDetails) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *ProjectDetails) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *ProjectDetails) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
+### HasObjectType
+
+`func (o *ProjectDetails) HasObjectType() bool`
+
+HasObjectType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

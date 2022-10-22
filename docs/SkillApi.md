@@ -564,7 +564,7 @@ import (
 )
 
 func main() {
-    skill := *openapiclient.NewSkill("Id_example", false) // Skill | 
+    skill := *openapiclient.NewSkill(false, "Id_example", "Name_example") // Skill | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1199,8 +1199,8 @@ import (
 
 func main() {
     skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(56) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1270,11 +1270,11 @@ import (
 )
 
 func main() {
-    types := "types_example" // string | Gives you either all skills, only the root kills or those which are defining kinds (optional) (default to "all")
-    suggestions := "suggestions_example" // string | Optionally filter skills based on suggestion (optional) (default to "all")
+    types := "all" // string | Gives you either all skills, only the root kills or those which are defining kinds (optional) (default to "all")
+    suggestions := "all" // string | Optionally filter skills based on suggestion (optional) (default to "all")
     linkable := true // bool | Optionally filter skills based on linkable (optional)
-    skip := int32(56) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1704,7 +1704,7 @@ import (
 
 func main() {
     skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skill := *openapiclient.NewSkill("Id_example", false) // Skill | 
+    skill := *openapiclient.NewSkill(false, "Id_example", "Name_example") // Skill | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

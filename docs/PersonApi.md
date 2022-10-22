@@ -715,13 +715,12 @@ import (
     "context"
     "fmt"
     "os"
-    "time"
     openapiclient "./openapi"
 )
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", time.Now(), time.Now()) // Availability | The availability
+    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -790,7 +789,7 @@ import (
 )
 
 func main() {
-    person := *openapiclient.NewPerson("Id_example", false) // Person | 
+    person := *openapiclient.NewPerson(false, "Id_example", "Name_example") // Person | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1916,7 +1915,7 @@ import (
 
 func main() {
     personSearch := *openapiclient.NewPersonSearch() // PersonSearch | 
-    skip := int32(56) // int32 |  (optional) (default to 0)
+    skip := int32(0) // int32 |  (optional) (default to 0)
     limit := int32(56) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
@@ -1979,14 +1978,13 @@ import (
     "context"
     "fmt"
     "os"
-    "time"
     openapiclient "./openapi"
 )
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", time.Now(), time.Now()) // Availability | The availability
+    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2058,7 +2056,7 @@ import (
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    person := *openapiclient.NewPerson("Id_example", false) // Person | 
+    person := *openapiclient.NewPerson(false, "Id_example", "Name_example") // Person | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

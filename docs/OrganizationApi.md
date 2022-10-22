@@ -115,7 +115,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification("Id_example", false) // Certification | 
+    certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -185,7 +185,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    office := *openapiclient.NewOffice("Id_example") // Office | 
+    office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -254,7 +254,7 @@ import (
 )
 
 func main() {
-    organization := *openapiclient.NewOrganization("Id_example", false) // Organization | Details about the Organization
+    organization := *openapiclient.NewOrganization(false, "Id_example", "Name_example") // Organization | Details about the Organization
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -318,8 +318,8 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    project := *openapiclient.NewProject("Id_example", false) // Project | 
+    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    project := *openapiclient.NewProject(false, "Id_example", "Name_example") // Project | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -599,8 +599,8 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(56) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -809,9 +809,9 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(56) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
+    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -881,8 +881,8 @@ import (
 )
 
 func main() {
-    skip := int32(56) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1018,8 +1018,8 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certificateId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    certificateId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1091,7 +1091,7 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    office := *openapiclient.NewOffice("Id_example") // Office | 
+    office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1163,7 +1163,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    organization := *openapiclient.NewOrganization("Id_example", false) // Organization | Details about the organization
+    organization := *openapiclient.NewOrganization(false, "Id_example", "Name_example") // Organization | Details about the organization
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
