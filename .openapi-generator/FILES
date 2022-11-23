@@ -17,6 +17,7 @@ api_skill.go
 api_status.go
 client.go
 configuration.go
+docs/AbstractEntityFilter.md
 docs/Availability.md
 docs/AvailabilityAllOf.md
 docs/AvailabilityApi.md
@@ -123,6 +124,7 @@ docs/Version.md
 git_push.sh
 go.mod
 go.sum
+model_abstract_entity_filter.go
 model_availability.go
 model_availability_all_of.go
 model_availability_detail.go

@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.3.9
+  version: 1.3.10
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -3841,23 +3841,26 @@ components:
       type: object
     PersonSkillFilter:
       allOf:
-      - $ref: '#/components/schemas/EntityFilter'
+      - $ref: '#/components/schemas/AbstractEntityFilter'
       - $ref: '#/components/schemas/PersonSkillFilter_allOf'
+    EntityFilter:
+      allOf:
+      - $ref: '#/components/schemas/AbstractEntityFilter'
     PersonProjectFilter:
       allOf:
-      - $ref: '#/components/schemas/EntityFilter'
+      - $ref: '#/components/schemas/AbstractEntityFilter'
       - $ref: '#/components/schemas/PersonProjectFilter_allOf'
     PersonOrganizationFilter:
       allOf:
-      - $ref: '#/components/schemas/EntityFilter'
+      - $ref: '#/components/schemas/AbstractEntityFilter'
       - $ref: '#/components/schemas/PersonOrganizationFilter_allOf'
     PersonIndustryFilter:
       allOf:
-      - $ref: '#/components/schemas/EntityFilter'
+      - $ref: '#/components/schemas/AbstractEntityFilter'
       - $ref: '#/components/schemas/PersonIndustryFilter_allOf'
     PersonCertificationFilter:
       allOf:
-      - $ref: '#/components/schemas/EntityFilter'
+      - $ref: '#/components/schemas/AbstractEntityFilter'
       - $ref: '#/components/schemas/PersonCertificationFilter_allOf'
     Project:
       allOf:
@@ -3953,10 +3956,8 @@ components:
     ProjectSearch:
       example:
         skills:
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          objectType: objectType
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          objectType: objectType
+        - null
+        - null
         minStartDate: 2000-01-23
         maxEndDate: 2000-01-23
         projectStatuses:
@@ -3966,15 +3967,11 @@ components:
           min: 0
           max: 100
         industries:
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          objectType: objectType
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          objectType: objectType
+        - null
+        - null
         organizations:
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          objectType: objectType
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          objectType: objectType
+        - null
+        - null
         projectIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -3985,10 +3982,8 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         participants:
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          objectType: objectType
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          objectType: objectType
+        - null
+        - null
       properties:
         projectIds:
           items:
@@ -4204,7 +4199,7 @@ components:
         item:
           $ref: '#/components/schemas/NamedDomainModel'
       type: object
-    EntityFilter:
+    AbstractEntityFilter:
       discriminator:
         mapping:
           EntityFilter: EntityFilter
@@ -4214,9 +4209,6 @@ components:
           PersonIndustryFilter: PersonIndustryFilter
           PersonCertificationFilter: PersonCertificationFilter
         propertyName: objectType
-      example:
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        objectType: objectType
       properties:
         id:
           format: uuid
