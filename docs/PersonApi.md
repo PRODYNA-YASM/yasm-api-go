@@ -1551,7 +1551,7 @@ Name | Type | Description  | Notes
 
 ## GeneratePersonProfile
 
-> *os.File GeneratePersonProfile(ctx, personid).Execute()
+> *os.File GeneratePersonProfile(ctx, personid).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).Execute()
 
 Generate a PDF profile from a Person
 
@@ -1569,10 +1569,13 @@ import (
 
 func main() {
     personid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectIds := []string{"Inner_example"} // []string |  (optional)
+    skillIds := []string{"Inner_example"} // []string |  (optional)
+    certificationIds := []string{"Inner_example"} // []string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonApi.GeneratePersonProfile(context.Background(), personid).Execute()
+    resp, r, err := apiClient.PersonApi.GeneratePersonProfile(context.Background(), personid).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GeneratePersonProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1598,6 +1601,9 @@ Other parameters are passed through a pointer to a apiGeneratePersonProfileReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **projectIds** | **[]string** |  | 
+ **skillIds** | **[]string** |  | 
+ **certificationIds** | **[]string** |  | 
 
 ### Return type
 
