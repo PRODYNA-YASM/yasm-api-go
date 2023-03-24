@@ -25,7 +25,7 @@ Method | HTTP request | Description
 [**DeletePersonProjectSkill**](PersonApi.md#DeletePersonProjectSkill) | **Delete** /persons/{personId}/projects/{projectId}/skills/{skillId} | Remove a Skill from a Project participation
 [**DeletePersonSkillExperience**](PersonApi.md#DeletePersonSkillExperience) | **Delete** /persons/{personId}/experiences/skills/{skillId} | Remove an Skill Experience to a Person
 [**DeletePersonSkillExperiences**](PersonApi.md#DeletePersonSkillExperiences) | **Delete** /persons/{personId}/experiences | Remove an Skill Experience to a Person
-[**GeneratePersonProfile**](PersonApi.md#GeneratePersonProfile) | **Get** /persons/{personid}/profile | Generate a PDF profile from a Person
+[**GeneratePersonProfile**](PersonApi.md#GeneratePersonProfile) | **Get** /persons/{personId}/profile | Generate a PDF profile from a Person
 [**GetAvailabilities**](PersonApi.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonApi.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**ReadPersonProject**](PersonApi.md#ReadPersonProject) | **Get** /persons/{personId}/projects/{projectId} | Get a Project Partifipation of a Person
@@ -1551,7 +1551,7 @@ Name | Type | Description  | Notes
 
 ## GeneratePersonProfile
 
-> *os.File GeneratePersonProfile(ctx, personid).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).Execute()
+> *os.File GeneratePersonProfile(ctx, personId).ProjectParticipationIds(projectParticipationIds).SkillIds(skillIds).CertificationIds(certificationIds).Execute()
 
 Generate a PDF profile from a Person
 
@@ -1568,14 +1568,14 @@ import (
 )
 
 func main() {
-    personid := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    projectIds := []string{"Inner_example"} // []string |  (optional)
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectParticipationIds := []string{"Inner_example"} // []string |  (optional)
     skillIds := []string{"Inner_example"} // []string |  (optional)
     certificationIds := []string{"Inner_example"} // []string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonApi.GeneratePersonProfile(context.Background(), personid).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).Execute()
+    resp, r, err := apiClient.PersonApi.GeneratePersonProfile(context.Background(), personId).ProjectParticipationIds(projectParticipationIds).SkillIds(skillIds).CertificationIds(certificationIds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GeneratePersonProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1591,7 +1591,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personid** | **string** |  | 
+**personId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1601,7 +1601,7 @@ Other parameters are passed through a pointer to a apiGeneratePersonProfileReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **projectIds** | **[]string** |  | 
+ **projectParticipationIds** | **[]string** |  | 
  **skillIds** | **[]string** |  | 
  **certificationIds** | **[]string** |  | 
 
