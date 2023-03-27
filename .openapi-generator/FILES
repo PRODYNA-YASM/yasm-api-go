@@ -72,6 +72,8 @@ docs/PagedOrganizations.md
 docs/PagedOrganizationsAllOf.md
 docs/PagedPersons.md
 docs/PagedPersonsAllOf.md
+docs/PagedProjectParticipations.md
+docs/PagedProjectParticipationsAllOf.md
 docs/PagedProjects.md
 docs/PagedProjectsAllOf.md
 docs/PagedSkills.md
@@ -98,6 +100,7 @@ docs/ProjectApi.md
 docs/ProjectDetails.md
 docs/ProjectParticipation.md
 docs/ProjectParticipationAllOf.md
+docs/ProjectParticipationSearch.md
 docs/ProjectParticipationUpdate.md
 docs/ProjectScoreDetail.md
 docs/ProjectScoreDetailAllOf.md
@@ -172,6 +175,8 @@ model_paged_organizations.go
 model_paged_organizations_all_of.go
 model_paged_persons.go
 model_paged_persons_all_of.go
+model_paged_project_participations.go
+model_paged_project_participations_all_of.go
 model_paged_projects.go
 model_paged_projects_all_of.go
 model_paged_skills.go
@@ -196,6 +201,7 @@ model_project_all_of.go
 model_project_details.go
 model_project_participation.go
 model_project_participation_all_of.go
+model_project_participation_search.go
 model_project_participation_update.go
 model_project_score_detail.go
 model_project_score_detail_all_of.go

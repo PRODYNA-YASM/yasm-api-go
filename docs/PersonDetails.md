@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Person** | Pointer to [**Person**](Person.md) |  | [optional] 
-**Projects** | Pointer to [**[]ProjectParticipation**](ProjectParticipation.md) |  | [optional] 
 **Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Experiences** | Pointer to [**[]Experience**](Experience.md) |  | [optional] 
 **Interests** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
@@ -59,31 +58,6 @@ SetPerson sets Person field to given value.
 `func (o *PersonDetails) HasPerson() bool`
 
 HasPerson returns a boolean if a field has been set.
-
-### GetProjects
-
-`func (o *PersonDetails) GetProjects() []ProjectParticipation`
-
-GetProjects returns the Projects field if non-nil, zero value otherwise.
-
-### GetProjectsOk
-
-`func (o *PersonDetails) GetProjectsOk() (*[]ProjectParticipation, bool)`
-
-GetProjectsOk returns a tuple with the Projects field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProjects
-
-`func (o *PersonDetails) SetProjects(v []ProjectParticipation)`
-
-SetProjects sets Projects field to given value.
-
-### HasProjects
-
-`func (o *PersonDetails) HasProjects() bool`
-
-HasProjects returns a boolean if a field has been set.
 
 ### GetIndustries
 

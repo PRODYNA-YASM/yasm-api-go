@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.3.12
+  version: 1.3.13
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -1267,6 +1267,50 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       summary: Merge to projects
+      tags:
+      - Project
+  /project-participations/search:
+    post:
+      operationId: searchProjectParticipations
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          example: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          example: 20
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectParticipationSearch'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedProjectParticipations'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Complex search over project entities
       tags:
       - Project
   /skills:
@@ -2551,7 +2595,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonDetails'
+                $ref: '#/components/schemas/ProjectParticipation'
           description: OK
         default:
           content:
@@ -2594,7 +2638,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonDetails'
+                $ref: '#/components/schemas/ProjectParticipation'
           description: OK
         default:
           content:
@@ -2639,7 +2683,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonDetails'
+                $ref: '#/components/schemas/ProjectParticipation'
           description: OK
         default:
           content:
@@ -2691,7 +2735,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonDetails'
+                $ref: '#/components/schemas/ProjectParticipation'
           description: OK
         default:
           content:
@@ -2743,7 +2787,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonDetails'
+                $ref: '#/components/schemas/ProjectParticipation'
           description: OK
         default:
           content:
@@ -3692,9 +3736,6 @@ components:
       discriminator:
         propertyName: objectType
       example:
-        projects:
-        - null
-        - null
         languages:
         - level:
             level: 1
@@ -3762,10 +3803,6 @@ components:
       properties:
         person:
           $ref: '#/components/schemas/Person'
-        projects:
-          items:
-            $ref: '#/components/schemas/ProjectParticipation'
-          type: array
         industries:
           items:
             $ref: '#/components/schemas/Industry'
@@ -3956,6 +3993,34 @@ components:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
       - $ref: '#/components/schemas/ProjectParticipation_allOf'
+    ProjectParticipationSearch:
+      example:
+        personIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        projectIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        projectParticipationIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        projectIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        personIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        projectParticipationIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+      type: object
     ProjectParticipationUpdate:
       example:
         skills:
@@ -4206,6 +4271,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedProjects_allOf'
+    PagedProjectParticipations:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedProjectParticipations_allOf'
     PagedPersons:
       allOf:
       - $ref: '#/components/schemas/Page'
@@ -4530,6 +4599,14 @@ components:
         projects:
           items:
             $ref: '#/components/schemas/ProjectScoreDetail'
+          type: array
+      type: object
+      example: null
+    PagedProjectParticipations_allOf:
+      properties:
+        projectParticipations:
+          items:
+            $ref: '#/components/schemas/ProjectParticipation'
           type: array
       type: object
       example: null

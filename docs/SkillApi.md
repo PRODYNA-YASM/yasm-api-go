@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ## AddPersonProjectSkill
 
-> PersonDetails AddPersonProjectSkill(ctx, personId, projectId, skillId).Level(level).Execute()
+> ProjectParticipation AddPersonProjectSkill(ctx, personId, projectId, skillId).Level(level).Execute()
 
 Add Skill to a Project participation
 
@@ -134,7 +134,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.AddPersonProjectSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddPersonProjectSkill`: PersonDetails
+    // response from `AddPersonProjectSkill`: ProjectParticipation
     fmt.Fprintf(os.Stdout, "Response from `SkillApi.AddPersonProjectSkill`: %v\n", resp)
 }
 ```
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**ProjectParticipation**](ProjectParticipation.md)
 
 ### Authorization
 
@@ -759,7 +759,7 @@ Name | Type | Description  | Notes
 
 ## DeletePersonProjectSkill
 
-> PersonDetails DeletePersonProjectSkill(ctx, personId, projectId, skillId).Execute()
+> ProjectParticipation DeletePersonProjectSkill(ctx, personId, projectId, skillId).Execute()
 
 Remove a Skill from a Project participation
 
@@ -787,7 +787,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.DeletePersonProjectSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeletePersonProjectSkill`: PersonDetails
+    // response from `DeletePersonProjectSkill`: ProjectParticipation
     fmt.Fprintf(os.Stdout, "Response from `SkillApi.DeletePersonProjectSkill`: %v\n", resp)
 }
 ```
@@ -815,7 +815,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**ProjectParticipation**](ProjectParticipation.md)
 
 ### Authorization
 
@@ -1467,7 +1467,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePersonProjectSkill
 
-> PersonDetails UpdatePersonProjectSkill(ctx, personId, projectId, skillId).Level(level).Execute()
+> ProjectParticipation UpdatePersonProjectSkill(ctx, personId, projectId, skillId).Level(level).Execute()
 
 Update the level of a Skill in a Project participation
 
@@ -1496,7 +1496,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.UpdatePersonProjectSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatePersonProjectSkill`: PersonDetails
+    // response from `UpdatePersonProjectSkill`: ProjectParticipation
     fmt.Fprintf(os.Stdout, "Response from `SkillApi.UpdatePersonProjectSkill`: %v\n", resp)
 }
 ```
@@ -1525,7 +1525,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**ProjectParticipation**](ProjectParticipation.md)
 
 ### Authorization
 

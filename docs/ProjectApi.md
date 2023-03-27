@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**GetProject**](ProjectApi.md#GetProject) | **Get** /projects/{projectId} | Get details about a Project
 [**MergeProjects**](ProjectApi.md#MergeProjects) | **Put** /projects/{projectId}/merge/{otherProjectId} | Merge to projects
 [**ReadPersonProject**](ProjectApi.md#ReadPersonProject) | **Get** /persons/{personId}/projects/{projectId} | Get a Project Partifipation of a Person
+[**SearchProjectParticipations**](ProjectApi.md#SearchProjectParticipations) | **Post** /project-participations/search | Complex search over project entities
 [**SearchProjects**](ProjectApi.md#SearchProjects) | **Post** /projects/search | Complex search over project entities
 [**UpdatePersonProject**](ProjectApi.md#UpdatePersonProject) | **Put** /persons/{personId}/projects/{projectId} | Update a Project of a Person
 [**UpdatePersonProjectSkill**](ProjectApi.md#UpdatePersonProjectSkill) | **Put** /persons/{personId}/projects/{projectId}/skills/{skillId} | Update the level of a Skill in a Project participation
@@ -25,7 +26,7 @@ Method | HTTP request | Description
 
 ## AddPersonProject
 
-> PersonDetails AddPersonProject(ctx, personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
+> ProjectParticipation AddPersonProject(ctx, personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
 
 Add Project to a Person
 
@@ -53,7 +54,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.AddPersonProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddPersonProject`: PersonDetails
+    // response from `AddPersonProject`: ProjectParticipation
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.AddPersonProject`: %v\n", resp)
 }
 ```
@@ -80,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**ProjectParticipation**](ProjectParticipation.md)
 
 ### Authorization
 
@@ -98,7 +99,7 @@ Name | Type | Description  | Notes
 
 ## AddPersonProjectSkill
 
-> PersonDetails AddPersonProjectSkill(ctx, personId, projectId, skillId).Level(level).Execute()
+> ProjectParticipation AddPersonProjectSkill(ctx, personId, projectId, skillId).Level(level).Execute()
 
 Add Skill to a Project participation
 
@@ -127,7 +128,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.AddPersonProjectSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddPersonProjectSkill`: PersonDetails
+    // response from `AddPersonProjectSkill`: ProjectParticipation
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.AddPersonProjectSkill`: %v\n", resp)
 }
 ```
@@ -156,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**ProjectParticipation**](ProjectParticipation.md)
 
 ### Authorization
 
@@ -469,7 +470,7 @@ Name | Type | Description  | Notes
 
 ## DeletePersonProjectSkill
 
-> PersonDetails DeletePersonProjectSkill(ctx, personId, projectId, skillId).Execute()
+> ProjectParticipation DeletePersonProjectSkill(ctx, personId, projectId, skillId).Execute()
 
 Remove a Skill from a Project participation
 
@@ -497,7 +498,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.DeletePersonProjectSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeletePersonProjectSkill`: PersonDetails
+    // response from `DeletePersonProjectSkill`: ProjectParticipation
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.DeletePersonProjectSkill`: %v\n", resp)
 }
 ```
@@ -525,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**ProjectParticipation**](ProjectParticipation.md)
 
 ### Authorization
 
@@ -891,6 +892,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## SearchProjectParticipations
+
+> PagedProjectParticipations SearchProjectParticipations(ctx).ProjectParticipationSearch(projectParticipationSearch).Skip(skip).Limit(limit).Execute()
+
+Complex search over project entities
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    projectParticipationSearch := *openapiclient.NewProjectParticipationSearch() // ProjectParticipationSearch | 
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectApi.SearchProjectParticipations(context.Background()).ProjectParticipationSearch(projectParticipationSearch).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.SearchProjectParticipations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchProjectParticipations`: PagedProjectParticipations
+    fmt.Fprintf(os.Stdout, "Response from `ProjectApi.SearchProjectParticipations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchProjectParticipationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectParticipationSearch** | [**ProjectParticipationSearch**](ProjectParticipationSearch.md) |  | 
+ **skip** | **int32** |  | [default to 0]
+ **limit** | **int32** |  | [default to 20]
+
+### Return type
+
+[**PagedProjectParticipations**](PagedProjectParticipations.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SearchProjects
 
 > PagedProjects SearchProjects(ctx).ProjectSearch(projectSearch).Skip(skip).Limit(limit).Execute()
@@ -961,7 +1030,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePersonProject
 
-> PersonDetails UpdatePersonProject(ctx, personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
+> ProjectParticipation UpdatePersonProject(ctx, personId, projectId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
 
 Update a Project of a Person
 
@@ -989,7 +1058,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.UpdatePersonProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatePersonProject`: PersonDetails
+    // response from `UpdatePersonProject`: ProjectParticipation
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.UpdatePersonProject`: %v\n", resp)
 }
 ```
@@ -1016,7 +1085,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**ProjectParticipation**](ProjectParticipation.md)
 
 ### Authorization
 
@@ -1034,7 +1103,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePersonProjectSkill
 
-> PersonDetails UpdatePersonProjectSkill(ctx, personId, projectId, skillId).Level(level).Execute()
+> ProjectParticipation UpdatePersonProjectSkill(ctx, personId, projectId, skillId).Level(level).Execute()
 
 Update the level of a Skill in a Project participation
 
@@ -1063,7 +1132,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectApi.UpdatePersonProjectSkill``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatePersonProjectSkill`: PersonDetails
+    // response from `UpdatePersonProjectSkill`: ProjectParticipation
     fmt.Fprintf(os.Stdout, "Response from `ProjectApi.UpdatePersonProjectSkill`: %v\n", resp)
 }
 ```
@@ -1092,7 +1161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**ProjectParticipation**](ProjectParticipation.md)
 
 ### Authorization
 
