@@ -28,6 +28,7 @@ Method | HTTP request | Description
 [**GeneratePersonProfile**](PersonApi.md#GeneratePersonProfile) | **Get** /persons/{personId}/profile | Generate a PDF profile from a Person
 [**GetAvailabilities**](PersonApi.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonApi.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
+[**ReadPersonPicture**](PersonApi.md#ReadPersonPicture) | **Get** /persons/{personId}/picture | Read person image
 [**ReadPersonProject**](PersonApi.md#ReadPersonProject) | **Get** /persons/{personId}/projects/{projectId} | Get a Project Partifipation of a Person
 [**RemovePersonLanguage**](PersonApi.md#RemovePersonLanguage) | **Delete** /persons/{personId}/languages/{languageId} | Remove a language from a person
 [**SearchPersons**](PersonApi.md#SearchPersons) | **Post** /persons/search | Complex search over person entities
@@ -1753,6 +1754,74 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadPersonPicture
+
+> *os.File ReadPersonPicture(ctx, personId).Execute()
+
+Read person image
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.ReadPersonPicture(context.Background(), personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.ReadPersonPicture``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadPersonPicture`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.ReadPersonPicture`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadPersonPictureRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: image/jpeg, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
