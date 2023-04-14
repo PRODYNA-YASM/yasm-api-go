@@ -14,31 +14,31 @@ import (
 	"encoding/json"
 )
 
-// SkillGroup struct for SkillGroup
-type SkillGroup struct {
+// ExperienceSkillGroup struct for ExperienceSkillGroup
+type ExperienceSkillGroup struct {
 	Group *Skill `json:"group,omitempty"`
-	Skills []Skill `json:"skills,omitempty"`
+	Skills []ExperienceSkill `json:"skills,omitempty"`
 }
 
-// NewSkillGroup instantiates a new SkillGroup object
+// NewExperienceSkillGroup instantiates a new ExperienceSkillGroup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSkillGroup() *SkillGroup {
-	this := SkillGroup{}
+func NewExperienceSkillGroup() *ExperienceSkillGroup {
+	this := ExperienceSkillGroup{}
 	return &this
 }
 
-// NewSkillGroupWithDefaults instantiates a new SkillGroup object
+// NewExperienceSkillGroupWithDefaults instantiates a new ExperienceSkillGroup object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSkillGroupWithDefaults() *SkillGroup {
-	this := SkillGroup{}
+func NewExperienceSkillGroupWithDefaults() *ExperienceSkillGroup {
+	this := ExperienceSkillGroup{}
 	return &this
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise.
-func (o *SkillGroup) GetGroup() Skill {
+func (o *ExperienceSkillGroup) GetGroup() Skill {
 	if o == nil || o.Group == nil {
 		var ret Skill
 		return ret
@@ -48,7 +48,7 @@ func (o *SkillGroup) GetGroup() Skill {
 
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SkillGroup) GetGroupOk() (*Skill, bool) {
+func (o *ExperienceSkillGroup) GetGroupOk() (*Skill, bool) {
 	if o == nil || o.Group == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *SkillGroup) GetGroupOk() (*Skill, bool) {
 }
 
 // HasGroup returns a boolean if a field has been set.
-func (o *SkillGroup) HasGroup() bool {
+func (o *ExperienceSkillGroup) HasGroup() bool {
 	if o != nil && o.Group != nil {
 		return true
 	}
@@ -65,14 +65,14 @@ func (o *SkillGroup) HasGroup() bool {
 }
 
 // SetGroup gets a reference to the given Skill and assigns it to the Group field.
-func (o *SkillGroup) SetGroup(v Skill) {
+func (o *ExperienceSkillGroup) SetGroup(v Skill) {
 	o.Group = &v
 }
 
 // GetSkills returns the Skills field value if set, zero value otherwise.
-func (o *SkillGroup) GetSkills() []Skill {
+func (o *ExperienceSkillGroup) GetSkills() []ExperienceSkill {
 	if o == nil || o.Skills == nil {
-		var ret []Skill
+		var ret []ExperienceSkill
 		return ret
 	}
 	return o.Skills
@@ -80,7 +80,7 @@ func (o *SkillGroup) GetSkills() []Skill {
 
 // GetSkillsOk returns a tuple with the Skills field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SkillGroup) GetSkillsOk() ([]Skill, bool) {
+func (o *ExperienceSkillGroup) GetSkillsOk() ([]ExperienceSkill, bool) {
 	if o == nil || o.Skills == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *SkillGroup) GetSkillsOk() ([]Skill, bool) {
 }
 
 // HasSkills returns a boolean if a field has been set.
-func (o *SkillGroup) HasSkills() bool {
+func (o *ExperienceSkillGroup) HasSkills() bool {
 	if o != nil && o.Skills != nil {
 		return true
 	}
@@ -96,12 +96,12 @@ func (o *SkillGroup) HasSkills() bool {
 	return false
 }
 
-// SetSkills gets a reference to the given []Skill and assigns it to the Skills field.
-func (o *SkillGroup) SetSkills(v []Skill) {
+// SetSkills gets a reference to the given []ExperienceSkill and assigns it to the Skills field.
+func (o *ExperienceSkillGroup) SetSkills(v []ExperienceSkill) {
 	o.Skills = v
 }
 
-func (o SkillGroup) MarshalJSON() ([]byte, error) {
+func (o ExperienceSkillGroup) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Group != nil {
 		toSerialize["group"] = o.Group
@@ -112,38 +112,38 @@ func (o SkillGroup) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableSkillGroup struct {
-	value *SkillGroup
+type NullableExperienceSkillGroup struct {
+	value *ExperienceSkillGroup
 	isSet bool
 }
 
-func (v NullableSkillGroup) Get() *SkillGroup {
+func (v NullableExperienceSkillGroup) Get() *ExperienceSkillGroup {
 	return v.value
 }
 
-func (v *NullableSkillGroup) Set(val *SkillGroup) {
+func (v *NullableExperienceSkillGroup) Set(val *ExperienceSkillGroup) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSkillGroup) IsSet() bool {
+func (v NullableExperienceSkillGroup) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSkillGroup) Unset() {
+func (v *NullableExperienceSkillGroup) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSkillGroup(val *SkillGroup) *NullableSkillGroup {
-	return &NullableSkillGroup{value: val, isSet: true}
+func NewNullableExperienceSkillGroup(val *ExperienceSkillGroup) *NullableExperienceSkillGroup {
+	return &NullableExperienceSkillGroup{value: val, isSet: true}
 }
 
-func (v NullableSkillGroup) MarshalJSON() ([]byte, error) {
+func (v NullableExperienceSkillGroup) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSkillGroup) UnmarshalJSON(src []byte) error {
+func (v *NullableExperienceSkillGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

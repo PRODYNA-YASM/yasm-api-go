@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.3.16
+  version: 1.3.17
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -1329,6 +1329,7 @@ paths:
           - all
           - root
           - kind
+          - group
           example: all
           type: string
         style: form
@@ -3862,7 +3863,7 @@ components:
           type: array
         skillGroups:
           items:
-            $ref: '#/components/schemas/SkillGroup'
+            $ref: '#/components/schemas/ExperienceSkillGroup'
           type: array
         objectType:
           type: string
@@ -4158,6 +4159,10 @@ components:
       - ACTIVE
       - DONE
       type: string
+    ExperienceSkill:
+      allOf:
+      - $ref: '#/components/schemas/Skill'
+      - $ref: '#/components/schemas/ExperienceSkill_allOf'
     Skill:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -4166,6 +4171,19 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
       - $ref: '#/components/schemas/Skill_allOf'
+    ExperienceSkillGroup:
+      example:
+        skills:
+        - null
+        - null
+        group: null
+      properties:
+        group:
+          $ref: '#/components/schemas/Skill'
+        skills:
+          items:
+            $ref: '#/components/schemas/ExperienceSkill'
+          type: array
     SkillGroup:
       example:
         skills:
@@ -4557,6 +4575,13 @@ components:
       - experiences
       - id
       - project
+      type: object
+      example: null
+    ExperienceSkill_allOf:
+      properties:
+        experienceInMonth:
+          default: 0
+          type: integer
       type: object
       example: null
     Skill_allOf:

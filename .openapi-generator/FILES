@@ -36,6 +36,9 @@ docs/Descriptable.md
 docs/EntityFilter.md
 docs/Error.md
 docs/Experience.md
+docs/ExperienceSkill.md
+docs/ExperienceSkillAllOf.md
+docs/ExperienceSkillGroup.md
 docs/Geolocation.md
 docs/Industry.md
 docs/IndustryApi.md
@@ -143,6 +146,9 @@ model_descriptable.go
 model_entity_filter.go
 model_error.go
 model_experience.go
+model_experience_skill.go
+model_experience_skill_all_of.go
+model_experience_skill_group.go
 model_geolocation.go
 model_industry.go
 model_industry_details.go
