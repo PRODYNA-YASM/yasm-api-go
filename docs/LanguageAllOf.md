@@ -1,4 +1,4 @@
-# Language
+# LanguageAllOf
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewLanguage
+### NewLanguageAllOf
 
-`func NewLanguage() *Language`
+`func NewLanguageAllOf() *LanguageAllOf`
 
-NewLanguage instantiates a new Language object
+NewLanguageAllOf instantiates a new LanguageAllOf object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewLanguageWithDefaults
+### NewLanguageAllOfWithDefaults
 
-`func NewLanguageWithDefaults() *Language`
+`func NewLanguageAllOfWithDefaults() *LanguageAllOf`
 
-NewLanguageWithDefaults instantiates a new Language object
+NewLanguageAllOfWithDefaults instantiates a new LanguageAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetEnglishName
 
-`func (o *Language) GetEnglishName() string`
+`func (o *LanguageAllOf) GetEnglishName() string`
 
 GetEnglishName returns the EnglishName field if non-nil, zero value otherwise.
 
 ### GetEnglishNameOk
 
-`func (o *Language) GetEnglishNameOk() (*string, bool)`
+`func (o *LanguageAllOf) GetEnglishNameOk() (*string, bool)`
 
 GetEnglishNameOk returns a tuple with the EnglishName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnglishName
 
-`func (o *Language) SetEnglishName(v string)`
+`func (o *LanguageAllOf) SetEnglishName(v string)`
 
 SetEnglishName sets EnglishName field to given value.
 
 ### HasEnglishName
 
-`func (o *Language) HasEnglishName() bool`
+`func (o *LanguageAllOf) HasEnglishName() bool`
 
 HasEnglishName returns a boolean if a field has been set.
 
 ### GetNativeName
 
-`func (o *Language) GetNativeName() string`
+`func (o *LanguageAllOf) GetNativeName() string`
 
 GetNativeName returns the NativeName field if non-nil, zero value otherwise.
 
 ### GetNativeNameOk
 
-`func (o *Language) GetNativeNameOk() (*string, bool)`
+`func (o *LanguageAllOf) GetNativeNameOk() (*string, bool)`
 
 GetNativeNameOk returns a tuple with the NativeName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNativeName
 
-`func (o *Language) SetNativeName(v string)`
+`func (o *LanguageAllOf) SetNativeName(v string)`
 
 SetNativeName sets NativeName field to given value.
 
 ### HasNativeName
 
-`func (o *Language) HasNativeName() bool`
+`func (o *LanguageAllOf) HasNativeName() bool`
 
 HasNativeName returns a boolean if a field has been set.
 

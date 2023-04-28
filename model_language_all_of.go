@@ -14,36 +14,33 @@ import (
 	"encoding/json"
 )
 
-// Language struct for Language
-type Language struct {
-	NamedDomainModel
+// LanguageAllOf struct for LanguageAllOf
+type LanguageAllOf struct {
 	// The english description of a language
 	EnglishName *string `json:"englishName,omitempty"`
 	// The native description of a language
 	NativeName *string `json:"nativeName,omitempty"`
 }
 
-// NewLanguage instantiates a new Language object
+// NewLanguageAllOf instantiates a new LanguageAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLanguage(id string, name string) *Language {
-	this := Language{}
-	this.Id = id
-	this.Name = name
+func NewLanguageAllOf() *LanguageAllOf {
+	this := LanguageAllOf{}
 	return &this
 }
 
-// NewLanguageWithDefaults instantiates a new Language object
+// NewLanguageAllOfWithDefaults instantiates a new LanguageAllOf object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewLanguageWithDefaults() *Language {
-	this := Language{}
+func NewLanguageAllOfWithDefaults() *LanguageAllOf {
+	this := LanguageAllOf{}
 	return &this
 }
 
 // GetEnglishName returns the EnglishName field value if set, zero value otherwise.
-func (o *Language) GetEnglishName() string {
+func (o *LanguageAllOf) GetEnglishName() string {
 	if o == nil || o.EnglishName == nil {
 		var ret string
 		return ret
@@ -53,7 +50,7 @@ func (o *Language) GetEnglishName() string {
 
 // GetEnglishNameOk returns a tuple with the EnglishName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Language) GetEnglishNameOk() (*string, bool) {
+func (o *LanguageAllOf) GetEnglishNameOk() (*string, bool) {
 	if o == nil || o.EnglishName == nil {
 		return nil, false
 	}
@@ -61,7 +58,7 @@ func (o *Language) GetEnglishNameOk() (*string, bool) {
 }
 
 // HasEnglishName returns a boolean if a field has been set.
-func (o *Language) HasEnglishName() bool {
+func (o *LanguageAllOf) HasEnglishName() bool {
 	if o != nil && o.EnglishName != nil {
 		return true
 	}
@@ -70,12 +67,12 @@ func (o *Language) HasEnglishName() bool {
 }
 
 // SetEnglishName gets a reference to the given string and assigns it to the EnglishName field.
-func (o *Language) SetEnglishName(v string) {
+func (o *LanguageAllOf) SetEnglishName(v string) {
 	o.EnglishName = &v
 }
 
 // GetNativeName returns the NativeName field value if set, zero value otherwise.
-func (o *Language) GetNativeName() string {
+func (o *LanguageAllOf) GetNativeName() string {
 	if o == nil || o.NativeName == nil {
 		var ret string
 		return ret
@@ -85,7 +82,7 @@ func (o *Language) GetNativeName() string {
 
 // GetNativeNameOk returns a tuple with the NativeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Language) GetNativeNameOk() (*string, bool) {
+func (o *LanguageAllOf) GetNativeNameOk() (*string, bool) {
 	if o == nil || o.NativeName == nil {
 		return nil, false
 	}
@@ -93,7 +90,7 @@ func (o *Language) GetNativeNameOk() (*string, bool) {
 }
 
 // HasNativeName returns a boolean if a field has been set.
-func (o *Language) HasNativeName() bool {
+func (o *LanguageAllOf) HasNativeName() bool {
 	if o != nil && o.NativeName != nil {
 		return true
 	}
@@ -102,20 +99,12 @@ func (o *Language) HasNativeName() bool {
 }
 
 // SetNativeName gets a reference to the given string and assigns it to the NativeName field.
-func (o *Language) SetNativeName(v string) {
+func (o *LanguageAllOf) SetNativeName(v string) {
 	o.NativeName = &v
 }
 
-func (o Language) MarshalJSON() ([]byte, error) {
+func (o LanguageAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	serializedNamedDomainModel, errNamedDomainModel := json.Marshal(o.NamedDomainModel)
-	if errNamedDomainModel != nil {
-		return []byte{}, errNamedDomainModel
-	}
-	errNamedDomainModel = json.Unmarshal([]byte(serializedNamedDomainModel), &toSerialize)
-	if errNamedDomainModel != nil {
-		return []byte{}, errNamedDomainModel
-	}
 	if o.EnglishName != nil {
 		toSerialize["englishName"] = o.EnglishName
 	}
@@ -125,38 +114,38 @@ func (o Language) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableLanguage struct {
-	value *Language
+type NullableLanguageAllOf struct {
+	value *LanguageAllOf
 	isSet bool
 }
 
-func (v NullableLanguage) Get() *Language {
+func (v NullableLanguageAllOf) Get() *LanguageAllOf {
 	return v.value
 }
 
-func (v *NullableLanguage) Set(val *Language) {
+func (v *NullableLanguageAllOf) Set(val *LanguageAllOf) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableLanguage) IsSet() bool {
+func (v NullableLanguageAllOf) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableLanguage) Unset() {
+func (v *NullableLanguageAllOf) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableLanguage(val *Language) *NullableLanguage {
-	return &NullableLanguage{value: val, isSet: true}
+func NewNullableLanguageAllOf(val *LanguageAllOf) *NullableLanguageAllOf {
+	return &NullableLanguageAllOf{value: val, isSet: true}
 }
 
-func (v NullableLanguage) MarshalJSON() ([]byte, error) {
+func (v NullableLanguageAllOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableLanguage) UnmarshalJSON(src []byte) error {
+func (v *NullableLanguageAllOf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
