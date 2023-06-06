@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Office** | Pointer to [**Office**](Office.md) |  | [optional] 
 **Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
 **SkillGroups** | Pointer to [**[]ExperienceSkillGroup**](ExperienceSkillGroup.md) |  | [optional] 
+**Profiles** | Pointer to [**[]Profile**](Profile.md) |  | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -258,6 +259,31 @@ SetSkillGroups sets SkillGroups field to given value.
 `func (o *PersonDetails) HasSkillGroups() bool`
 
 HasSkillGroups returns a boolean if a field has been set.
+
+### GetProfiles
+
+`func (o *PersonDetails) GetProfiles() []Profile`
+
+GetProfiles returns the Profiles field if non-nil, zero value otherwise.
+
+### GetProfilesOk
+
+`func (o *PersonDetails) GetProfilesOk() (*[]Profile, bool)`
+
+GetProfilesOk returns a tuple with the Profiles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfiles
+
+`func (o *PersonDetails) SetProfiles(v []Profile)`
+
+SetProfiles sets Profiles field to given value.
+
+### HasProfiles
+
+`func (o *PersonDetails) HasProfiles() bool`
+
+HasProfiles returns a boolean if a field has been set.
 
 ### GetObjectType
 

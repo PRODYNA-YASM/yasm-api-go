@@ -11,6 +11,7 @@ api_language.go
 api_office.go
 api_organization.go
 api_person.go
+api_profile.go
 api_project.go
 api_search.go
 api_skill.go
@@ -76,6 +77,8 @@ docs/PagedOrganizations.md
 docs/PagedOrganizationsAllOf.md
 docs/PagedPersons.md
 docs/PagedPersonsAllOf.md
+docs/PagedProfiles.md
+docs/PagedProfilesAllOf.md
 docs/PagedProjectParticipations.md
 docs/PagedProjectParticipationsAllOf.md
 docs/PagedProjects.md
@@ -98,6 +101,9 @@ docs/PersonScoreDetail.md
 docs/PersonSearch.md
 docs/PersonSkillFilter.md
 docs/PersonSkillFilterAllOf.md
+docs/Profile.md
+docs/ProfileApi.md
+docs/ProfileDetails.md
 docs/Project.md
 docs/ProjectAllOf.md
 docs/ProjectApi.md
@@ -183,6 +189,8 @@ model_paged_organizations.go
 model_paged_organizations_all_of.go
 model_paged_persons.go
 model_paged_persons_all_of.go
+model_paged_profiles.go
+model_paged_profiles_all_of.go
 model_paged_project_participations.go
 model_paged_project_participations_all_of.go
 model_paged_projects.go
@@ -204,6 +212,8 @@ model_person_score_detail.go
 model_person_search.go
 model_person_skill_filter.go
 model_person_skill_filter_all_of.go
+model_profile.go
+model_profile_details.go
 model_project.go
 model_project_all_of.go
 model_project_details.go

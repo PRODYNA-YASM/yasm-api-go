@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.3.19
+  version: 1.4.0
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -1842,7 +1842,7 @@ paths:
       summary: Complex search over person entities
       tags:
       - Person
-  /persons/{personId}/profile:
+  /persons/{personId}/pdf-profile:
     get:
       operationId: generatePersonProfile
       parameters:
@@ -2450,6 +2450,79 @@ paths:
       tags:
       - Person
       - Certification
+  /persons/{personId}/profiles/{profileId}:
+    delete:
+      operationId: deletePersonProfile
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: profileId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Remove a Profile from a Person
+      tags:
+      - Person
+      - Profile
+    post:
+      operationId: addPersonProfile
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: profileId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Add a Profile to a Person
+      tags:
+      - Person
+      - Profile
   /persons/{personId}/offices/{officeId}:
     delete:
       operationId: deletePersonOffice
@@ -3465,6 +3538,151 @@ paths:
       tags:
       - Language
       - Country
+  /profiles:
+    get:
+      operationId: getProfiles
+      parameters:
+      - example: 0
+        explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          example: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          example: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedProfiles'
+          description: OK
+      summary: Get all Profiles
+      tags:
+      - Profile
+    post:
+      operationId: createProfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Create a new Profile
+      tags:
+      - Profile
+  /profiles/{profileId}:
+    delete:
+      operationId: deleteProfile
+      parameters:
+      - explode: false
+        in: path
+        name: profileId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Delete a Profile
+      tags:
+      - Profile
+    get:
+      operationId: getProfile
+      parameters:
+      - explode: false
+        in: path
+        name: profileId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get details about a Profile
+      tags:
+      - Profile
+    put:
+      operationId: updateProfile
+      parameters:
+      - explode: false
+        in: path
+        name: profileId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Update a Profile
+      tags:
+      - Profile
 components:
   responses:
     ErrorResponse:
@@ -3794,6 +4012,9 @@ components:
           - null
           - null
           group: null
+        profiles:
+        - null
+        - null
         office: null
         interests:
         - null
@@ -3866,6 +4087,10 @@ components:
           items:
             $ref: '#/components/schemas/ExperienceSkillGroup'
           type: array
+        profiles:
+          items:
+            $ref: '#/components/schemas/Profile'
+          type: array
         objectType:
           type: string
       type: object
@@ -3889,6 +4114,9 @@ components:
         personIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        profileIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         onsiteRatio:
           min: 0
           max: 100
@@ -3901,6 +4129,11 @@ components:
         - null
       properties:
         personIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        profileIds:
           items:
             format: uuid
             type: string
@@ -3946,6 +4179,19 @@ components:
     EntityFilter:
       allOf:
       - $ref: '#/components/schemas/AbstractEntityFilter'
+    Profile:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Synonymable'
+    ProfileDetails:
+      discriminator:
+        propertyName: objectType
+      example:
+        profile: null
+      properties:
+        profile:
+          $ref: '#/components/schemas/Profile'
+      type: object
     PersonProjectFilter:
       allOf:
       - $ref: '#/components/schemas/AbstractEntityFilter'
@@ -4329,6 +4575,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedPersons_allOf'
+    PagedProfiles:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedProfiles_allOf'
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
@@ -4686,6 +4936,14 @@ components:
         persons:
           items:
             $ref: '#/components/schemas/PersonScoreDetail'
+          type: array
+      type: object
+      example: null
+    PagedProfiles_allOf:
+      properties:
+        profiles:
+          items:
+            $ref: '#/components/schemas/ProfileDetails'
           type: array
       type: object
       example: null
