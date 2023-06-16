@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EnglishName** | Pointer to **string** | The english description of a language | [optional] 
+**Code** | Pointer to **string** | Two letter ISO code | [optional] 
 **NativeName** | Pointer to **string** | The native description of a language | [optional] 
 
 ## Methods
@@ -26,30 +26,30 @@ NewLanguageWithDefaults instantiates a new Language object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEnglishName
+### GetCode
 
-`func (o *Language) GetEnglishName() string`
+`func (o *Language) GetCode() string`
 
-GetEnglishName returns the EnglishName field if non-nil, zero value otherwise.
+GetCode returns the Code field if non-nil, zero value otherwise.
 
-### GetEnglishNameOk
+### GetCodeOk
 
-`func (o *Language) GetEnglishNameOk() (*string, bool)`
+`func (o *Language) GetCodeOk() (*string, bool)`
 
-GetEnglishNameOk returns a tuple with the EnglishName field if it's non-nil, zero value otherwise
+GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnglishName
+### SetCode
 
-`func (o *Language) SetEnglishName(v string)`
+`func (o *Language) SetCode(v string)`
 
-SetEnglishName sets EnglishName field to given value.
+SetCode sets Code field to given value.
 
-### HasEnglishName
+### HasCode
 
-`func (o *Language) HasEnglishName() bool`
+`func (o *Language) HasCode() bool`
 
-HasEnglishName returns a boolean if a field has been set.
+HasCode returns a boolean if a field has been set.
 
 ### GetNativeName
 
