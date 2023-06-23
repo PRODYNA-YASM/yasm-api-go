@@ -20,40 +20,28 @@ import (
 )
 
 
-// SearchApiService SearchApi service
-type SearchApiService service
+// TemplatesApiService TemplatesApi service
+type TemplatesApiService service
 
-type SearchApiSearchAllRequest struct {
+type TemplatesApiGetTemplatesRequest struct {
 	ctx context.Context
-	ApiService *SearchApiService
+	ApiService *TemplatesApiService
 	text string
-	skip *int32
-	limit *int32
 }
 
-func (r SearchApiSearchAllRequest) Skip(skip int32) SearchApiSearchAllRequest {
-	r.skip = &skip
-	return r
-}
-
-func (r SearchApiSearchAllRequest) Limit(limit int32) SearchApiSearchAllRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r SearchApiSearchAllRequest) Execute() (*SearchResult, *http.Response, error) {
-	return r.ApiService.SearchAllExecute(r)
+func (r TemplatesApiGetTemplatesRequest) Execute() ([]string, *http.Response, error) {
+	return r.ApiService.GetTemplatesExecute(r)
 }
 
 /*
-SearchAll Fulltext search on all kinds of objects
+GetTemplates list of existing templates
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param text
- @return SearchApiSearchAllRequest
+ @return TemplatesApiGetTemplatesRequest
 */
-func (a *SearchApiService) SearchAll(ctx context.Context, text string) SearchApiSearchAllRequest {
-	return SearchApiSearchAllRequest{
+func (a *TemplatesApiService) GetTemplates(ctx context.Context, text string) TemplatesApiGetTemplatesRequest {
+	return TemplatesApiGetTemplatesRequest{
 		ApiService: a,
 		ctx: ctx,
 		text: text,
@@ -61,33 +49,27 @@ func (a *SearchApiService) SearchAll(ctx context.Context, text string) SearchApi
 }
 
 // Execute executes the request
-//  @return SearchResult
-func (a *SearchApiService) SearchAllExecute(r SearchApiSearchAllRequest) (*SearchResult, *http.Response, error) {
+//  @return []string
+func (a *TemplatesApiService) GetTemplatesExecute(r TemplatesApiGetTemplatesRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SearchResult
+		localVarReturnValue  []string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.SearchAll")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplatesApiService.GetTemplates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/search/all/{text}"
+	localVarPath := localBasePath + "/templates"
 	localVarPath = strings.Replace(localVarPath, "{"+"text"+"}", url.PathEscape(parameterToString(r.text, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.skip != nil {
-		localVarQueryParams.Add("skip", parameterToString(*r.skip, ""))
-	}
-	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -127,13 +109,6 @@ func (a *SearchApiService) SearchAllExecute(r SearchApiSearchAllRequest) (*Searc
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

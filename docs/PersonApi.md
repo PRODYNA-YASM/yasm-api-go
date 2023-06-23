@@ -1696,7 +1696,7 @@ Name | Type | Description  | Notes
 
 ## GeneratePersonProfile
 
-> *os.File GeneratePersonProfile(ctx, personId).ProjectParticipationIds(projectParticipationIds).SkillIds(skillIds).CertificationIds(certificationIds).Execute()
+> *os.File GeneratePersonProfile(ctx, personId).ProjectParticipationIds(projectParticipationIds).SkillIds(skillIds).CertificationIds(certificationIds).Template(template).Execute()
 
 Generate a PDF profile from a Person
 
@@ -1717,10 +1717,11 @@ func main() {
     projectParticipationIds := []string{"Inner_example"} // []string |  (optional)
     skillIds := []string{"Inner_example"} // []string |  (optional)
     certificationIds := []string{"Inner_example"} // []string |  (optional)
+    template := "template_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonApi.GeneratePersonProfile(context.Background(), personId).ProjectParticipationIds(projectParticipationIds).SkillIds(skillIds).CertificationIds(certificationIds).Execute()
+    resp, r, err := apiClient.PersonApi.GeneratePersonProfile(context.Background(), personId).ProjectParticipationIds(projectParticipationIds).SkillIds(skillIds).CertificationIds(certificationIds).Template(template).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.GeneratePersonProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1749,6 +1750,7 @@ Name | Type | Description  | Notes
  **projectParticipationIds** | **[]string** |  | 
  **skillIds** | **[]string** |  | 
  **certificationIds** | **[]string** |  | 
+ **template** | **string** |  | 
 
 ### Return type
 

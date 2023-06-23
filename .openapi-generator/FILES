@@ -16,6 +16,7 @@ api_project.go
 api_search.go
 api_skill.go
 api_status.go
+api_templates.go
 client.go
 configuration.go
 docs/AbstractEntityFilter.md
@@ -132,6 +133,7 @@ docs/Status.md
 docs/StatusApi.md
 docs/Suggestable.md
 docs/Synonymable.md
+docs/TemplatesApi.md
 docs/Timeframed.md
 docs/Version.md
 git_push.sh
