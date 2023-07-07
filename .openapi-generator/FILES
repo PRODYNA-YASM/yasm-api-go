@@ -30,6 +30,7 @@ docs/Certification.md
 docs/CertificationAllOf.md
 docs/CertificationApi.md
 docs/CertificationDetails.md
+docs/CertificationSearch.md
 docs/Country.md
 docs/CountryAllOf.md
 docs/CountryApi.md
@@ -148,6 +149,7 @@ model_basic_domain_model.go
 model_certification.go
 model_certification_all_of.go
 model_certification_details.go
+model_certification_search.go
 model_country.go
 model_country_all_of.go
 model_country_details.go

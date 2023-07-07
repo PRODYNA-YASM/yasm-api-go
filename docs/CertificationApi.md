@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**GetCertifications**](CertificationApi.md#GetCertifications) | **Get** /certifications | Get a list of all Certifations indepdenant of the Organization
 [**GetCertificationsForOrganization**](CertificationApi.md#GetCertificationsForOrganization) | **Get** /organizations/{organizationId}/certifications | Get a list of all certifications for a organization
 [**MoveCertification**](CertificationApi.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificateId} | Move a Certification to an Organization
+[**SearchCertifications**](CertificationApi.md#SearchCertifications) | **Post** /certifications/search | Complex search over certification entities
 [**UpdateCertification**](CertificationApi.md#UpdateCertification) | **Put** /certifications/{certificationId} | Update a Certification
 [**UpdatePersonCertification**](CertificationApi.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
 [**UpdateSkillInCertification**](CertificationApi.md#UpdateSkillInCertification) | **Put** /certifications/{certificationId}/skills/{skillId} | 
@@ -719,6 +720,74 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchCertifications
+
+> PagedCertifications SearchCertifications(ctx).CertificationSearch(certificationSearch).Skip(skip).Limit(limit).Execute()
+
+Complex search over certification entities
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    certificationSearch := *openapiclient.NewCertificationSearch() // CertificationSearch | 
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationApi.SearchCertifications(context.Background()).CertificationSearch(certificationSearch).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.SearchCertifications``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchCertifications`: PagedCertifications
+    fmt.Fprintf(os.Stdout, "Response from `CertificationApi.SearchCertifications`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchCertificationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **certificationSearch** | [**CertificationSearch**](CertificationSearch.md) |  | 
+ **skip** | **int32** |  | [default to 0]
+ **limit** | **int32** |  | [default to 20]
+
+### Return type
+
+[**PagedCertifications**](PagedCertifications.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
