@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **InvolvedOfficeIds** | Pointer to **[]string** |  | [optional] 
 **AmountOfInvolvedPersons** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
 **Skills** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
+**ProjectType** | Pointer to [**[]ProjectType**](ProjectType.md) |  | [optional] 
 **Participants** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
 **Industries** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
 **Organizations** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
@@ -234,6 +235,31 @@ SetSkills sets Skills field to given value.
 `func (o *ProjectSearch) HasSkills() bool`
 
 HasSkills returns a boolean if a field has been set.
+
+### GetProjectType
+
+`func (o *ProjectSearch) GetProjectType() []ProjectType`
+
+GetProjectType returns the ProjectType field if non-nil, zero value otherwise.
+
+### GetProjectTypeOk
+
+`func (o *ProjectSearch) GetProjectTypeOk() (*[]ProjectType, bool)`
+
+GetProjectTypeOk returns a tuple with the ProjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectType
+
+`func (o *ProjectSearch) SetProjectType(v []ProjectType)`
+
+SetProjectType sets ProjectType field to given value.
+
+### HasProjectType
+
+`func (o *ProjectSearch) HasProjectType() bool`
+
+HasProjectType returns a boolean if a field has been set.
 
 ### GetParticipants
 
