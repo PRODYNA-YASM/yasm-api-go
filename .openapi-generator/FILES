@@ -75,6 +75,8 @@ docs/PagedIndustries.md
 docs/PagedIndustriesAllOf.md
 docs/PagedLanguages.md
 docs/PagedLanguagesAllOf.md
+docs/PagedOffices.md
+docs/PagedOfficesAllOf.md
 docs/PagedOrganizations.md
 docs/PagedOrganizationsAllOf.md
 docs/PagedPersons.md
@@ -190,6 +192,8 @@ model_paged_industries.go
 model_paged_industries_all_of.go
 model_paged_languages.go
 model_paged_languages_all_of.go
+model_paged_offices.go
+model_paged_offices_all_of.go
 model_paged_organizations.go
 model_paged_organizations_all_of.go
 model_paged_persons.go

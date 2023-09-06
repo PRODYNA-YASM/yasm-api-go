@@ -9,11 +9,11 @@ Method | HTTP request | Description
 [**CreateOffice**](OrganizationApi.md#CreateOffice) | **Post** /organizations/{organizationId}/offices | Create an Office in an Organization
 [**CreateOrganization**](OrganizationApi.md#CreateOrganization) | **Post** /organizations | Create an Organization
 [**CreateProject**](OrganizationApi.md#CreateProject) | **Post** /organizations/{organizationId}/projects | Create a Project in an Organization
-[**DeleteOffice**](OrganizationApi.md#DeleteOffice) | **Delete** /organizations/{organizationId}/offices/{officeId} | Delte an Office from an Organization
+[**DeleteOffice**](OrganizationApi.md#DeleteOffice) | **Delete** /organizations/{organizationId}/offices/{officeId} | Delete an Office from an Organization
 [**DeleteOrganization**](OrganizationApi.md#DeleteOrganization) | **Delete** /organizations/{organizationId} | Delete an organization
 [**DetachOrganizationFromIndustry**](OrganizationApi.md#DetachOrganizationFromIndustry) | **Delete** /organizations/{organizationId}/industries/{industryId} | Remove an Organization to an Industry
 [**GetCertificationsForOrganization**](OrganizationApi.md#GetCertificationsForOrganization) | **Get** /organizations/{organizationId}/certifications | Get a list of all certifications for a organization
-[**GetOffice**](OrganizationApi.md#GetOffice) | **Get** /organizations/{organizationId}/offices/{officeId} | Get an Office for an Organiaztion
+[**GetOffice**](OrganizationApi.md#GetOffice) | **Get** /organizations/{organizationId}/offices/{officeId} | Get an Office for an Organization
 [**GetOrganization**](OrganizationApi.md#GetOrganization) | **Get** /organizations/{organizationId} | Get details about an Organization
 [**GetOrganizationProjects**](OrganizationApi.md#GetOrganizationProjects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
 [**GetOrganizations**](OrganizationApi.md#GetOrganizations) | **Get** /organizations | Get a list of all Organizations
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 > Status DeleteOffice(ctx, organizationId, officeId).Execute()
 
-Delte an Office from an Organization
+Delete an Office from an Organization
 
 ### Example
 
@@ -656,7 +656,7 @@ Name | Type | Description  | Notes
 
 > Office GetOffice(ctx, organizationId, officeId).Execute()
 
-Get an Office for an Organiaztion
+Get an Office for an Organization
 
 ### Example
 

@@ -4,11 +4,13 @@ All URIs are relative to *http://localhost:8080/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddPersonOffice**](OfficeApi.md#AddPersonOffice) | **Post** /persons/{personId}/offices/{officeId} | Assing a person to an office
+[**AddPersonOffice**](OfficeApi.md#AddPersonOffice) | **Post** /persons/{personId}/offices/{officeId} | Assign a person to an office
 [**CreateOffice**](OfficeApi.md#CreateOffice) | **Post** /organizations/{organizationId}/offices | Create an Office in an Organization
-[**DeleteOffice**](OfficeApi.md#DeleteOffice) | **Delete** /organizations/{organizationId}/offices/{officeId} | Delte an Office from an Organization
+[**DeleteOffice**](OfficeApi.md#DeleteOffice) | **Delete** /organizations/{organizationId}/offices/{officeId} | Delete an Office from an Organization
 [**DeletePersonOffice**](OfficeApi.md#DeletePersonOffice) | **Delete** /persons/{personId}/offices/{officeId} | Delete the office from a Person
-[**GetOffice**](OfficeApi.md#GetOffice) | **Get** /organizations/{organizationId}/offices/{officeId} | Get an Office for an Organiaztion
+[**GetOffice**](OfficeApi.md#GetOffice) | **Get** /organizations/{organizationId}/offices/{officeId} | Get an Office for an Organization
+[**GetOfficeDetails**](OfficeApi.md#GetOfficeDetails) | **Get** /offices/{officeId} | Get details about an Office independent of Organization
+[**GetOffices**](OfficeApi.md#GetOffices) | **Get** /offices | Get a list of all Offices
 [**UpdateOffice**](OfficeApi.md#UpdateOffice) | **Put** /organizations/{organizationId}/offices/{officeId} | Update an Office for an Organization
 
 
@@ -17,7 +19,7 @@ Method | HTTP request | Description
 
 > PersonDetails AddPersonOffice(ctx, personId, officeId).Execute()
 
-Assing a person to an office
+Assign a person to an office
 
 ### Example
 
@@ -158,7 +160,7 @@ Name | Type | Description  | Notes
 
 > Status DeleteOffice(ctx, organizationId, officeId).Execute()
 
-Delte an Office from an Organization
+Delete an Office from an Organization
 
 ### Example
 
@@ -300,7 +302,7 @@ Name | Type | Description  | Notes
 
 > Office GetOffice(ctx, organizationId, officeId).Execute()
 
-Get an Office for an Organiaztion
+Get an Office for an Organization
 
 ### Example
 
@@ -352,6 +354,140 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Office**](Office.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOfficeDetails
+
+> Office GetOfficeDetails(ctx, officeId).Execute()
+
+Get details about an Office independent of Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeApi.GetOfficeDetails(context.Background(), officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeApi.GetOfficeDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOfficeDetails`: Office
+    fmt.Fprintf(os.Stdout, "Response from `OfficeApi.GetOfficeDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**officeId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOfficeDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Office**](Office.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOffices
+
+> PagedOffices GetOffices(ctx).Skip(skip).Limit(limit).Execute()
+
+Get a list of all Offices
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeApi.GetOffices(context.Background()).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeApi.GetOffices``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOffices`: PagedOffices
+    fmt.Fprintf(os.Stdout, "Response from `OfficeApi.GetOffices`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOfficesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **skip** | **int32** |  | [default to 0]
+ **limit** | **int32** |  | [default to 20]
+
+### Return type
+
+[**PagedOffices**](PagedOffices.md)
 
 ### Authorization
 

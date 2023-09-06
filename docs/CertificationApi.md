@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**DeletePersonCertification**](CertificationApi.md#DeletePersonCertification) | **Delete** /persons/{personId}/certifications/{certificationId} | Remove an Interest to a Person
 [**DeleteSkillFromCertification**](CertificationApi.md#DeleteSkillFromCertification) | **Delete** /certifications/{certificationId}/skills/{skillId} | 
 [**GetCertification**](CertificationApi.md#GetCertification) | **Get** /certifications/{certificationId} | Get details about a Certification
-[**GetCertifications**](CertificationApi.md#GetCertifications) | **Get** /certifications | Get a list of all Certifations indepdenant of the Organization
+[**GetCertifications**](CertificationApi.md#GetCertifications) | **Get** /certifications | Get a list of all Certifications independent of the Organization
 [**GetCertificationsForOrganization**](CertificationApi.md#GetCertificationsForOrganization) | **Get** /organizations/{organizationId}/certifications | Get a list of all certifications for a organization
 [**MoveCertification**](CertificationApi.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificateId} | Move a Certification to an Organization
 [**SearchCertifications**](CertificationApi.md#SearchCertifications) | **Post** /certifications/search | Complex search over certification entities
@@ -522,7 +522,7 @@ Name | Type | Description  | Notes
 
 > PagedCertifications GetCertifications(ctx).Skip(skip).Limit(limit).Execute()
 
-Get a list of all Certifations indepdenant of the Organization
+Get a list of all Certifications independent of the Organization
 
 ### Example
 

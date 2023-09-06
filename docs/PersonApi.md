@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**AddPersonCertification**](PersonApi.md#AddPersonCertification) | **Post** /persons/{personId}/certifications/{certificationId} | Add Certification to a Person
 [**AddPersonInterest**](PersonApi.md#AddPersonInterest) | **Post** /persons/{personId}/interests/skills/{skillId} | Add an Interest to a Person
 [**AddPersonLanguage**](PersonApi.md#AddPersonLanguage) | **Post** /persons/{personId}/languages/{languageId} | Assign a language to the person
-[**AddPersonOffice**](PersonApi.md#AddPersonOffice) | **Post** /persons/{personId}/offices/{officeId} | Assing a person to an office
+[**AddPersonOffice**](PersonApi.md#AddPersonOffice) | **Post** /persons/{personId}/offices/{officeId} | Assign a person to an office
 [**AddPersonProfile**](PersonApi.md#AddPersonProfile) | **Post** /persons/{personId}/profiles/{profileId} | Add a Profile to a Person
 [**AddPersonProject**](PersonApi.md#AddPersonProject) | **Post** /persons/{personId}/projects/{projectId} | Add Project to a Person
 [**AddPersonProjectSkill**](PersonApi.md#AddPersonProjectSkill) | **Post** /persons/{personId}/projects/{projectId}/skills/{skillId} | Add Skill to a Project participation
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 > PersonDetails AddPersonOffice(ctx, personId, officeId).Execute()
 
-Assing a person to an office
+Assign a person to an office
 
 ### Example
 

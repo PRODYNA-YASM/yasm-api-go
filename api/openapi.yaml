@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.4.4
+  version: 1.4.5
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -420,7 +420,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Delte an Office from an Organization
+      summary: Delete an Office from an Organization
       tags:
       - Organization
       - Office
@@ -456,7 +456,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Get an Office for an Organiaztion
+      summary: Get an Office for an Organization
       tags:
       - Organization
       - Office
@@ -501,6 +501,72 @@ paths:
       summary: Update an Office for an Organization
       tags:
       - Organization
+      - Office
+  /offices:
+    get:
+      operationId: getOffices
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          example: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          example: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedOffices'
+          description: A paged array of Offices
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get a list of all Offices
+      tags:
+      - Office
+  /offices/{officeId}:
+    get:
+      operationId: getOfficeDetails
+      parameters:
+      - explode: false
+        in: path
+        name: officeId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Office'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get details about an Office independent of Organization
+      tags:
       - Office
   /industries:
     get:
@@ -929,7 +995,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Get a list of all Certifations indepdenant of the Organization
+      summary: Get a list of all Certifications independent of the Organization
       tags:
       - Certification
   /certifications/{certificationId}:
@@ -2682,7 +2748,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Assing a person to an office
+      summary: Assign a person to an office
       tags:
       - Person
       - Office
@@ -4699,6 +4765,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/Page'
       - $ref: '#/components/schemas/PagedOrganizations_allOf'
+    PagedOffices:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - $ref: '#/components/schemas/PagedOffices_allOf'
     PagedLanguages:
       allOf:
       - $ref: '#/components/schemas/Page'
@@ -5040,6 +5110,14 @@ components:
         organizations:
           items:
             $ref: '#/components/schemas/OrganizationDetails'
+          type: array
+      type: object
+      example: null
+    PagedOffices_allOf:
+      properties:
+        offices:
+          items:
+            $ref: '#/components/schemas/Office'
           type: array
       type: object
       example: null
