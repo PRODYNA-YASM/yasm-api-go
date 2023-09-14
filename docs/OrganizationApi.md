@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**GetOrganizations**](OrganizationApi.md#GetOrganizations) | **Get** /organizations | Get a list of all Organizations
 [**MergeOrganizations**](OrganizationApi.md#MergeOrganizations) | **Put** /organizations/{organizationId}/merge/{otherOrganizationId} | Merge two organizations
 [**MoveCertification**](OrganizationApi.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificateId} | Move a Certification to an Organization
+[**SearchAllOrganizations**](OrganizationApi.md#SearchAllOrganizations) | **Get** /organizations/search/{text} | Fulltext search on all organizations
 [**UpdateOffice**](OrganizationApi.md#UpdateOffice) | **Put** /organizations/{organizationId}/offices/{officeId} | Update an Office for an Organization
 [**UpdateOrganization**](OrganizationApi.md#UpdateOrganization) | **Put** /organizations/{organizationId} | Update an Organization
 [**UpdateProjectOrganization**](OrganizationApi.md#UpdateProjectOrganization) | **Put** /organizations/{organizationId}/projects/{projectId} | project is now point to the new organization
@@ -1056,6 +1057,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CertificationDetails**](CertificationDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchAllOrganizations
+
+> PagedOrganizations SearchAllOrganizations(ctx, text).Skip(skip).Limit(limit).Execute()
+
+Fulltext search on all organizations
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    text := "text_example" // string | 
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApi.SearchAllOrganizations(context.Background(), text).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApi.SearchAllOrganizations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchAllOrganizations`: PagedOrganizations
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationApi.SearchAllOrganizations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**text** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchAllOrganizationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **skip** | **int32** |  | [default to 0]
+ **limit** | **int32** |  | [default to 20]
+
+### Return type
+
+[**PagedOrganizations**](PagedOrganizations.md)
 
 ### Authorization
 

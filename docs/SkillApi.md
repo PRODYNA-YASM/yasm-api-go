@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**GetSkills**](SkillApi.md#GetSkills) | **Get** /skills | Get a list of all skills, optionally only root, optionally only kinds
 [**MergeSkills**](SkillApi.md#MergeSkills) | **Put** /skills/{skillId}/merge/{otherSkillId} | Merge two skills
 [**RemoveSkillFromParentSkill**](SkillApi.md#RemoveSkillFromParentSkill) | **Delete** /skills/{skillId}/parents/{parentSkillId} | Detaches a Skill from parent Skill, return the parent Skill
+[**SearchAllSkills**](SkillApi.md#SearchAllSkills) | **Get** /skills/search/{text} | Fulltext search on all skills
 [**UpdatePersonProjectSkill**](SkillApi.md#UpdatePersonProjectSkill) | **Put** /persons/{personId}/projects/{projectId}/skills/{skillId} | Update the level of a Skill in a Project participation
 [**UpdatePersonSkillExperience**](SkillApi.md#UpdatePersonSkillExperience) | **Put** /persons/{personId}/experiences/skills/{skillId} | Edit an Skill experience to a Person
 [**UpdatePersonSkillExperiences**](SkillApi.md#UpdatePersonSkillExperiences) | **Put** /persons/{personId}/experiences | Edit an Skill experience to a Person
@@ -1450,6 +1451,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SkillDetails**](SkillDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchAllSkills
+
+> PagedSkills SearchAllSkills(ctx, text).Skip(skip).Limit(limit).Execute()
+
+Fulltext search on all skills
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    text := "text_example" // string | 
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillApi.SearchAllSkills(context.Background(), text).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillApi.SearchAllSkills``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchAllSkills`: PagedSkills
+    fmt.Fprintf(os.Stdout, "Response from `SkillApi.SearchAllSkills`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**text** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchAllSkillsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **skip** | **int32** |  | [default to 0]
+ **limit** | **int32** |  | [default to 20]
+
+### Return type
+
+[**PagedSkills**](PagedSkills.md)
 
 ### Authorization
 
