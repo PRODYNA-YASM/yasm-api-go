@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**DetachOrganizationFromIndustry**](IndustryApi.md#DetachOrganizationFromIndustry) | **Delete** /organizations/{organizationId}/industries/{industryId} | Remove an Organization to an Industry
 [**GetIndustries**](IndustryApi.md#GetIndustries) | **Get** /industries | Get all Industries
 [**GetIndustry**](IndustryApi.md#GetIndustry) | **Get** /industries/{industryId} | Get details about an Industry
-[**SearchAllIndustries**](IndustryApi.md#SearchAllIndustries) | **Get** /industries/search/{text} | Fulltext search on all industries
 [**UpdateIndustry**](IndustryApi.md#UpdateIndustry) | **Put** /industries/{industryId} | Update an Industry
 
 
@@ -291,7 +290,7 @@ Name | Type | Description  | Notes
 
 ## GetIndustries
 
-> PagedIndustries GetIndustries(ctx).Skip(skip).Limit(limit).Execute()
+> PagedIndustries GetIndustries(ctx).Skip(skip).Limit(limit).Term(term).Execute()
 
 Get all Industries
 
@@ -310,10 +309,11 @@ import (
 func main() {
     skip := int32(0) // int32 |  (optional) (default to 0)
     limit := int32(20) // int32 |  (optional) (default to 20)
+    term := "term_example" // string | Optionally search Industries via a search term (optional) (default to "")
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryApi.GetIndustries(context.Background()).Skip(skip).Limit(limit).Execute()
+    resp, r, err := apiClient.IndustryApi.GetIndustries(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IndustryApi.GetIndustries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -336,6 +336,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
+ **term** | **string** | Optionally search Industries via a search term | [default to &quot;&quot;]
 
 ### Return type
 
@@ -408,78 +409,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**IndustryDetails**](IndustryDetails.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SearchAllIndustries
-
-> PagedIndustries SearchAllIndustries(ctx, text).Skip(skip).Limit(limit).Execute()
-
-Fulltext search on all industries
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    text := "text_example" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryApi.SearchAllIndustries(context.Background(), text).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IndustryApi.SearchAllIndustries``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchAllIndustries`: PagedIndustries
-    fmt.Fprintf(os.Stdout, "Response from `IndustryApi.SearchAllIndustries`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**text** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSearchAllIndustriesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-[**PagedIndustries**](PagedIndustries.md)
 
 ### Authorization
 

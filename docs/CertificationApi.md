@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**GetCertifications**](CertificationApi.md#GetCertifications) | **Get** /certifications | Get a list of all Certifications independent of the Organization
 [**GetCertificationsForOrganization**](CertificationApi.md#GetCertificationsForOrganization) | **Get** /organizations/{organizationId}/certifications | Get a list of all certifications for a organization
 [**MoveCertification**](CertificationApi.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificateId} | Move a Certification to an Organization
-[**SearchAllCertifications**](CertificationApi.md#SearchAllCertifications) | **Get** /certifications/search/{text} | Fulltext search on all certifications
 [**SearchCertifications**](CertificationApi.md#SearchCertifications) | **Post** /certifications/search | Complex search over certification entities
 [**UpdateCertification**](CertificationApi.md#UpdateCertification) | **Put** /certifications/{certificationId} | Update a Certification
 [**UpdatePersonCertification**](CertificationApi.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
@@ -521,7 +520,7 @@ Name | Type | Description  | Notes
 
 ## GetCertifications
 
-> PagedCertifications GetCertifications(ctx).Skip(skip).Limit(limit).Execute()
+> PagedCertifications GetCertifications(ctx).Skip(skip).Limit(limit).Term(term).Execute()
 
 Get a list of all Certifications independent of the Organization
 
@@ -540,10 +539,11 @@ import (
 func main() {
     skip := int32(0) // int32 |  (optional) (default to 0)
     limit := int32(20) // int32 |  (optional) (default to 20)
+    term := "term_example" // string | Optionally search for Certifications via search term (optional) (default to "")
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationApi.GetCertifications(context.Background()).Skip(skip).Limit(limit).Execute()
+    resp, r, err := apiClient.CertificationApi.GetCertifications(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.GetCertifications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -566,6 +566,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
+ **term** | **string** | Optionally search for Certifications via search term | [default to &quot;&quot;]
 
 ### Return type
 
@@ -713,78 +714,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CertificationDetails**](CertificationDetails.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SearchAllCertifications
-
-> PagedCertifications SearchAllCertifications(ctx, text).Skip(skip).Limit(limit).Execute()
-
-Fulltext search on all certifications
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    text := "text_example" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationApi.SearchAllCertifications(context.Background(), text).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationApi.SearchAllCertifications``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchAllCertifications`: PagedCertifications
-    fmt.Fprintf(os.Stdout, "Response from `CertificationApi.SearchAllCertifications`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**text** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSearchAllCertificationsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-[**PagedCertifications**](PagedCertifications.md)
 
 ### Authorization
 
