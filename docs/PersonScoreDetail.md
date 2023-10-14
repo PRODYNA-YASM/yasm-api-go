@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Score** | Pointer to **float32** |  | [optional] 
+**DirectHit** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetScore sets Score field to given value.
 `func (o *PersonScoreDetail) HasScore() bool`
 
 HasScore returns a boolean if a field has been set.
+
+### GetDirectHit
+
+`func (o *PersonScoreDetail) GetDirectHit() bool`
+
+GetDirectHit returns the DirectHit field if non-nil, zero value otherwise.
+
+### GetDirectHitOk
+
+`func (o *PersonScoreDetail) GetDirectHitOk() (*bool, bool)`
+
+GetDirectHitOk returns a tuple with the DirectHit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDirectHit
+
+`func (o *PersonScoreDetail) SetDirectHit(v bool)`
+
+SetDirectHit sets DirectHit field to given value.
+
+### HasDirectHit
+
+`func (o *PersonScoreDetail) HasDirectHit() bool`
+
+HasDirectHit returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

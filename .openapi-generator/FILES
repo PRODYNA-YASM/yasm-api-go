@@ -117,10 +117,10 @@ docs/ProjectParticipationAllOf.md
 docs/ProjectParticipationSearch.md
 docs/ProjectParticipationUpdate.md
 docs/ProjectScoreDetail.md
-docs/ProjectScoreDetailAllOf.md
 docs/ProjectSearch.md
 docs/ProjectStatus.md
 docs/ProjectType.md
+docs/ScoreResult.md
 docs/SearchApi.md
 docs/SearchResult.md
 docs/SearchResultAllOf.md
@@ -231,10 +231,10 @@ model_project_participation_all_of.go
 model_project_participation_search.go
 model_project_participation_update.go
 model_project_score_detail.go
-model_project_score_detail_all_of.go
 model_project_search.go
 model_project_status.go
 model_project_type.go
+model_score_result.go
 model_search_result.go
 model_search_result_all_of.go
 model_search_result_item.go

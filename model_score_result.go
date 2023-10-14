@@ -14,32 +14,31 @@ import (
 	"encoding/json"
 )
 
-// PersonScoreDetail struct for PersonScoreDetail
-type PersonScoreDetail struct {
-	PersonDetails
+// ScoreResult struct for ScoreResult
+type ScoreResult struct {
 	Score *float32 `json:"score,omitempty"`
 	DirectHit *bool `json:"directHit,omitempty"`
 }
 
-// NewPersonScoreDetail instantiates a new PersonScoreDetail object
+// NewScoreResult instantiates a new ScoreResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPersonScoreDetail() *PersonScoreDetail {
-	this := PersonScoreDetail{}
+func NewScoreResult() *ScoreResult {
+	this := ScoreResult{}
 	return &this
 }
 
-// NewPersonScoreDetailWithDefaults instantiates a new PersonScoreDetail object
+// NewScoreResultWithDefaults instantiates a new ScoreResult object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPersonScoreDetailWithDefaults() *PersonScoreDetail {
-	this := PersonScoreDetail{}
+func NewScoreResultWithDefaults() *ScoreResult {
+	this := ScoreResult{}
 	return &this
 }
 
 // GetScore returns the Score field value if set, zero value otherwise.
-func (o *PersonScoreDetail) GetScore() float32 {
+func (o *ScoreResult) GetScore() float32 {
 	if o == nil || o.Score == nil {
 		var ret float32
 		return ret
@@ -49,7 +48,7 @@ func (o *PersonScoreDetail) GetScore() float32 {
 
 // GetScoreOk returns a tuple with the Score field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersonScoreDetail) GetScoreOk() (*float32, bool) {
+func (o *ScoreResult) GetScoreOk() (*float32, bool) {
 	if o == nil || o.Score == nil {
 		return nil, false
 	}
@@ -57,7 +56,7 @@ func (o *PersonScoreDetail) GetScoreOk() (*float32, bool) {
 }
 
 // HasScore returns a boolean if a field has been set.
-func (o *PersonScoreDetail) HasScore() bool {
+func (o *ScoreResult) HasScore() bool {
 	if o != nil && o.Score != nil {
 		return true
 	}
@@ -66,12 +65,12 @@ func (o *PersonScoreDetail) HasScore() bool {
 }
 
 // SetScore gets a reference to the given float32 and assigns it to the Score field.
-func (o *PersonScoreDetail) SetScore(v float32) {
+func (o *ScoreResult) SetScore(v float32) {
 	o.Score = &v
 }
 
 // GetDirectHit returns the DirectHit field value if set, zero value otherwise.
-func (o *PersonScoreDetail) GetDirectHit() bool {
+func (o *ScoreResult) GetDirectHit() bool {
 	if o == nil || o.DirectHit == nil {
 		var ret bool
 		return ret
@@ -81,7 +80,7 @@ func (o *PersonScoreDetail) GetDirectHit() bool {
 
 // GetDirectHitOk returns a tuple with the DirectHit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersonScoreDetail) GetDirectHitOk() (*bool, bool) {
+func (o *ScoreResult) GetDirectHitOk() (*bool, bool) {
 	if o == nil || o.DirectHit == nil {
 		return nil, false
 	}
@@ -89,7 +88,7 @@ func (o *PersonScoreDetail) GetDirectHitOk() (*bool, bool) {
 }
 
 // HasDirectHit returns a boolean if a field has been set.
-func (o *PersonScoreDetail) HasDirectHit() bool {
+func (o *ScoreResult) HasDirectHit() bool {
 	if o != nil && o.DirectHit != nil {
 		return true
 	}
@@ -98,20 +97,12 @@ func (o *PersonScoreDetail) HasDirectHit() bool {
 }
 
 // SetDirectHit gets a reference to the given bool and assigns it to the DirectHit field.
-func (o *PersonScoreDetail) SetDirectHit(v bool) {
+func (o *ScoreResult) SetDirectHit(v bool) {
 	o.DirectHit = &v
 }
 
-func (o PersonScoreDetail) MarshalJSON() ([]byte, error) {
+func (o ScoreResult) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	serializedPersonDetails, errPersonDetails := json.Marshal(o.PersonDetails)
-	if errPersonDetails != nil {
-		return []byte{}, errPersonDetails
-	}
-	errPersonDetails = json.Unmarshal([]byte(serializedPersonDetails), &toSerialize)
-	if errPersonDetails != nil {
-		return []byte{}, errPersonDetails
-	}
 	if o.Score != nil {
 		toSerialize["score"] = o.Score
 	}
@@ -121,38 +112,38 @@ func (o PersonScoreDetail) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullablePersonScoreDetail struct {
-	value *PersonScoreDetail
+type NullableScoreResult struct {
+	value *ScoreResult
 	isSet bool
 }
 
-func (v NullablePersonScoreDetail) Get() *PersonScoreDetail {
+func (v NullableScoreResult) Get() *ScoreResult {
 	return v.value
 }
 
-func (v *NullablePersonScoreDetail) Set(val *PersonScoreDetail) {
+func (v *NullableScoreResult) Set(val *ScoreResult) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePersonScoreDetail) IsSet() bool {
+func (v NullableScoreResult) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePersonScoreDetail) Unset() {
+func (v *NullableScoreResult) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePersonScoreDetail(val *PersonScoreDetail) *NullablePersonScoreDetail {
-	return &NullablePersonScoreDetail{value: val, isSet: true}
+func NewNullableScoreResult(val *ScoreResult) *NullableScoreResult {
+	return &NullableScoreResult{value: val, isSet: true}
 }
 
-func (v NullablePersonScoreDetail) MarshalJSON() ([]byte, error) {
+func (v NullableScoreResult) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePersonScoreDetail) UnmarshalJSON(src []byte) error {
+func (v *NullableScoreResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

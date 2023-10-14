@@ -1,4 +1,4 @@
-# ProjectScoreDetail
+# ScoreResult
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewProjectScoreDetail
+### NewScoreResult
 
-`func NewProjectScoreDetail() *ProjectScoreDetail`
+`func NewScoreResult() *ScoreResult`
 
-NewProjectScoreDetail instantiates a new ProjectScoreDetail object
+NewScoreResult instantiates a new ScoreResult object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewProjectScoreDetailWithDefaults
+### NewScoreResultWithDefaults
 
-`func NewProjectScoreDetailWithDefaults() *ProjectScoreDetail`
+`func NewScoreResultWithDefaults() *ScoreResult`
 
-NewProjectScoreDetailWithDefaults instantiates a new ProjectScoreDetail object
+NewScoreResultWithDefaults instantiates a new ScoreResult object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetScore
 
-`func (o *ProjectScoreDetail) GetScore() float32`
+`func (o *ScoreResult) GetScore() float32`
 
 GetScore returns the Score field if non-nil, zero value otherwise.
 
 ### GetScoreOk
 
-`func (o *ProjectScoreDetail) GetScoreOk() (*float32, bool)`
+`func (o *ScoreResult) GetScoreOk() (*float32, bool)`
 
 GetScoreOk returns a tuple with the Score field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScore
 
-`func (o *ProjectScoreDetail) SetScore(v float32)`
+`func (o *ScoreResult) SetScore(v float32)`
 
 SetScore sets Score field to given value.
 
 ### HasScore
 
-`func (o *ProjectScoreDetail) HasScore() bool`
+`func (o *ScoreResult) HasScore() bool`
 
 HasScore returns a boolean if a field has been set.
 
 ### GetDirectHit
 
-`func (o *ProjectScoreDetail) GetDirectHit() bool`
+`func (o *ScoreResult) GetDirectHit() bool`
 
 GetDirectHit returns the DirectHit field if non-nil, zero value otherwise.
 
 ### GetDirectHitOk
 
-`func (o *ProjectScoreDetail) GetDirectHitOk() (*bool, bool)`
+`func (o *ScoreResult) GetDirectHitOk() (*bool, bool)`
 
 GetDirectHitOk returns a tuple with the DirectHit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDirectHit
 
-`func (o *ProjectScoreDetail) SetDirectHit(v bool)`
+`func (o *ScoreResult) SetDirectHit(v bool)`
 
 SetDirectHit sets DirectHit field to given value.
 
 ### HasDirectHit
 
-`func (o *ProjectScoreDetail) HasDirectHit() bool`
+`func (o *ScoreResult) HasDirectHit() bool`
 
 HasDirectHit returns a boolean if a field has been set.
 
