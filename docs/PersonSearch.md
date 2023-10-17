@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PersonIds** | Pointer to **[]string** |  | [optional] 
+**EmployeeIds** | Pointer to **[]string** |  | [optional] 
 **ProfileIds** | Pointer to **[]string** |  | [optional] 
 **OfficeIds** | Pointer to **[]string** |  | [optional] 
 **LanguageIds** | Pointer to **[]string** |  | [optional] 
@@ -60,6 +61,31 @@ SetPersonIds sets PersonIds field to given value.
 `func (o *PersonSearch) HasPersonIds() bool`
 
 HasPersonIds returns a boolean if a field has been set.
+
+### GetEmployeeIds
+
+`func (o *PersonSearch) GetEmployeeIds() []string`
+
+GetEmployeeIds returns the EmployeeIds field if non-nil, zero value otherwise.
+
+### GetEmployeeIdsOk
+
+`func (o *PersonSearch) GetEmployeeIdsOk() (*[]string, bool)`
+
+GetEmployeeIdsOk returns a tuple with the EmployeeIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmployeeIds
+
+`func (o *PersonSearch) SetEmployeeIds(v []string)`
+
+SetEmployeeIds sets EmployeeIds field to given value.
+
+### HasEmployeeIds
+
+`func (o *PersonSearch) HasEmployeeIds() bool`
+
+HasEmployeeIds returns a boolean if a field has been set.
 
 ### GetProfileIds
 
