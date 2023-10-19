@@ -37,6 +37,7 @@ Method | HTTP request | Description
 [**UpdateAvailability**](PersonApi.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
 [**UpdatePerson**](PersonApi.md#UpdatePerson) | **Put** /persons/{personId} | Update an existing Person
 [**UpdatePersonCertification**](PersonApi.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
+[**UpdatePersonPicture**](PersonApi.md#UpdatePersonPicture) | **Put** /persons/{personId}/picture | Update person image
 [**UpdatePersonProject**](PersonApi.md#UpdatePersonProject) | **Put** /persons/{personId}/projects/{projectId} | Update a Project of a Person
 [**UpdatePersonProjectSkill**](PersonApi.md#UpdatePersonProjectSkill) | **Put** /persons/{personId}/projects/{projectId}/skills/{skillId} | Update the level of a Skill in a Project participation
 [**UpdatePersonSkillExperience**](PersonApi.md#UpdatePersonSkillExperience) | **Put** /persons/{personId}/experiences/skills/{skillId} | Edit an Skill experience to a Person
@@ -2394,6 +2395,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePersonPicture
+
+> Status UpdatePersonPicture(ctx, personId).File(file).Execute()
+
+Update person image
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonApi.UpdatePersonPicture(context.Background(), personId).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdatePersonPicture``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonPicture`: Status
+    fmt.Fprintf(os.Stdout, "Response from `PersonApi.UpdatePersonPicture`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePersonPictureRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** |  | 
+
+### Return type
+
+[**Status**](Status.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

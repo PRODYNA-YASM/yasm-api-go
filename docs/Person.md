@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **SeniorityEnum** | Pointer to [**Seniority**](Seniority.md) |  | [optional] 
 **ExperienceSinceYear** | Pointer to **int32** |  | [optional] 
 **OnsiteRatio** | Pointer to **int32** |  | [optional] 
-**Picture** | Pointer to **string** | base64 encoded image | [optional] 
+**Picture** | Pointer to **string** | base64 encoded image | [optional] [readonly] 
 **Inactive** | Pointer to **bool** | Marks persons not working for the company anymore | [optional] [default to false]
 
 ## Methods
