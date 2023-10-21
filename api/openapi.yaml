@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.4.10
+  version: 1.4.11
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -2015,6 +2015,45 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       summary: Update person image
+      tags:
+      - Person
+  /persons/departments:
+    get:
+      operationId: getAllBusinessDepartments
+      parameters:
+      - example: 0
+        explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get all unique business departments
       tags:
       - Person
   /persons/search:
@@ -4418,6 +4457,9 @@ components:
         seniority:
         - null
         - null
+        departmentNames:
+        - departmentNames
+        - departmentNames
       properties:
         personIds:
           items:
@@ -4436,6 +4478,10 @@ components:
         officeIds:
           items:
             format: uuid
+            type: string
+          type: array
+        departmentNames:
+          items:
             type: string
           type: array
         languageIds:

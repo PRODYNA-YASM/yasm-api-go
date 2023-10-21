@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **EmployeeIds** | Pointer to **[]string** |  | [optional] 
 **ProfileIds** | Pointer to **[]string** |  | [optional] 
 **OfficeIds** | Pointer to **[]string** |  | [optional] 
+**DepartmentNames** | Pointer to **[]string** |  | [optional] 
 **LanguageIds** | Pointer to **[]string** |  | [optional] 
 **Availability** | Pointer to [**AvailabilityFilter**](AvailabilityFilter.md) |  | [optional] 
 **OnsiteRatio** | Pointer to [**MinMaxPercent**](MinMaxPercent.md) |  | [optional] 
@@ -136,6 +137,31 @@ SetOfficeIds sets OfficeIds field to given value.
 `func (o *PersonSearch) HasOfficeIds() bool`
 
 HasOfficeIds returns a boolean if a field has been set.
+
+### GetDepartmentNames
+
+`func (o *PersonSearch) GetDepartmentNames() []string`
+
+GetDepartmentNames returns the DepartmentNames field if non-nil, zero value otherwise.
+
+### GetDepartmentNamesOk
+
+`func (o *PersonSearch) GetDepartmentNamesOk() (*[]string, bool)`
+
+GetDepartmentNamesOk returns a tuple with the DepartmentNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDepartmentNames
+
+`func (o *PersonSearch) SetDepartmentNames(v []string)`
+
+SetDepartmentNames sets DepartmentNames field to given value.
+
+### HasDepartmentNames
+
+`func (o *PersonSearch) HasDepartmentNames() bool`
+
+HasDepartmentNames returns a boolean if a field has been set.
 
 ### GetLanguageIds
 
