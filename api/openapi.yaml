@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.4.11
+  version: 1.4.12
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -1997,9 +1997,12 @@ paths:
         style: simple
       requestBody:
         content:
-          multipart/form-data:
+          application/octet-stream:
             schema:
-              $ref: '#/components/schemas/UploadFormData'
+              example: !!binary |-
+                SlZCRVJpMHhMalFLSmNmcy4uLg==
+              format: binary
+              type: string
         required: true
       responses:
         "200":
@@ -5022,12 +5025,6 @@ components:
       - EXTERNAL
       - CONFIDENTIAL
       type: string
-    UploadFormData:
-      properties:
-        file:
-          format: binary
-          type: string
-      type: object
     Availability_allOf:
       properties:
         workHours:

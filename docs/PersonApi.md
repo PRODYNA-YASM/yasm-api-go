@@ -2471,7 +2471,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePersonPicture
 
-> Status UpdatePersonPicture(ctx, personId).File(file).Execute()
+> Status UpdatePersonPicture(ctx, personId).Body(body).Execute()
 
 Update person image
 
@@ -2489,11 +2489,11 @@ import (
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+    body := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonApi.UpdatePersonPicture(context.Background(), personId).File(file).Execute()
+    resp, r, err := apiClient.PersonApi.UpdatePersonPicture(context.Background(), personId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonApi.UpdatePersonPicture``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2519,7 +2519,7 @@ Other parameters are passed through a pointer to a apiUpdatePersonPictureRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **file** | ***os.File** |  | 
+ **body** | ***os.File** |  | 
 
 ### Return type
 
@@ -2531,7 +2531,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: multipart/form-data
+- **Content-Type**: application/octet-stream
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
