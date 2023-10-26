@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **ExperienceSinceYear** | Pointer to **int32** |  | [optional] 
 **OnsiteRatio** | Pointer to **int32** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] [readonly] 
+**PictureSHA256** | Pointer to **string** | SHA256 hash of the full resolution image | [optional] [readonly] 
 **Inactive** | Pointer to **bool** | Marks persons not working for the company anymore | [optional] [default to false]
 
 ## Methods
@@ -336,6 +337,31 @@ SetPicture sets Picture field to given value.
 `func (o *PersonAllOf) HasPicture() bool`
 
 HasPicture returns a boolean if a field has been set.
+
+### GetPictureSHA256
+
+`func (o *PersonAllOf) GetPictureSHA256() string`
+
+GetPictureSHA256 returns the PictureSHA256 field if non-nil, zero value otherwise.
+
+### GetPictureSHA256Ok
+
+`func (o *PersonAllOf) GetPictureSHA256Ok() (*string, bool)`
+
+GetPictureSHA256Ok returns a tuple with the PictureSHA256 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPictureSHA256
+
+`func (o *PersonAllOf) SetPictureSHA256(v string)`
+
+SetPictureSHA256 sets PictureSHA256 field to given value.
+
+### HasPictureSHA256
+
+`func (o *PersonAllOf) HasPictureSHA256() bool`
+
+HasPictureSHA256 returns a boolean if a field has been set.
 
 ### GetInactive
 

@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.4.12
+  version: 1.4.13
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -5120,6 +5120,10 @@ components:
           type: integer
         picture:
           description: base64 encoded image
+          readOnly: true
+          type: string
+        pictureSHA256:
+          description: SHA256 hash of the full resolution image
           readOnly: true
           type: string
         inactive:
