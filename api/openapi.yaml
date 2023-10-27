@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.4.13
+  version: 1.5.0
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -532,6 +532,14 @@ paths:
           default: 20
           example: 20
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: organizationId
+        required: false
+        schema:
+          format: uuid
+          type: string
         style: form
       responses:
         "200":
@@ -4091,7 +4099,23 @@ components:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Timeframed'
-      - $ref: '#/components/schemas/Availability_allOf'
+      - properties:
+          workHours:
+            example: 38.5
+            format: float
+            type: number
+          plannedHours:
+            example: 22.5
+            format: float
+            type: number
+          descriptions:
+            items:
+              type: string
+            type: array
+        required:
+        - plannedHours
+        - workHours
+        type: object
     AvailabilityDetail:
       example:
         availability: null
@@ -4110,7 +4134,10 @@ components:
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Certification_allOf'
+      - properties:
+          validity:
+            type: string
+        type: object
     CertificationDetails:
       example:
         skills:
@@ -4163,7 +4190,11 @@ components:
     Country:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Country_allOf'
+      - properties:
+          picture:
+            description: base64 encoded image
+            type: string
+        type: object
     CountryDetails:
       example:
         country: null
@@ -4227,7 +4258,16 @@ components:
     Language:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Language_allOf'
+      - properties:
+          code:
+            description: Two letter ISO code
+            example: de
+            type: string
+          nativeName:
+            description: The native description of a language
+            example: العربية
+            type: string
+        type: object
     LanguageDetails:
       example:
         language: null
@@ -4265,7 +4305,17 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Organization_allOf'
+      - properties:
+          partner:
+            default: false
+            type: boolean
+          customer:
+            default: false
+            type: boolean
+          picture:
+            description: base64 encoded image
+            type: string
+        type: object
     OrganizationDetails:
       example:
         projects:
@@ -4309,7 +4359,54 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Person_allOf'
+      - properties:
+          employeeId:
+            example: "1234567"
+            type: string
+          jobTitle:
+            example: Software Engineer
+            type: string
+          company:
+            example: PRODYNA SE
+            type: string
+          department:
+            example: Professional Services
+            type: string
+          education:
+            example: Bachelor of Computer Scince
+            type: string
+          mail:
+            example: peter.mueller@prodyna.com
+            type: string
+          mobilePhone:
+            example: +49 176 12345678
+            type: string
+          seniority:
+            example: Senior
+            type: string
+          seniorityEnum:
+            $ref: '#/components/schemas/Seniority'
+          experienceSinceYear:
+            example: 2010
+            type: integer
+          onsiteRatio:
+            example: 20
+            maximum: 100
+            minimum: 0
+            type: integer
+          picture:
+            description: base64 encoded image
+            readOnly: true
+            type: string
+          pictureSHA256:
+            description: SHA256 hash of the full resolution image
+            readOnly: true
+            type: string
+          inactive:
+            default: false
+            description: Marks persons not working for the company anymore
+            type: boolean
+        type: object
     PersonDetails:
       discriminator:
         propertyName: objectType
@@ -4524,7 +4621,14 @@ components:
     PersonSkillFilter:
       allOf:
       - $ref: '#/components/schemas/AbstractEntityFilter'
-      - $ref: '#/components/schemas/PersonSkillFilter_allOf'
+      - properties:
+          experienceInMonth:
+            $ref: '#/components/schemas/MinMax'
+          lastAssignment:
+            description: filters the last time the employee used the skill in a project
+            format: date
+            type: string
+        type: object
     EntityFilter:
       allOf:
       - $ref: '#/components/schemas/AbstractEntityFilter'
@@ -4544,19 +4648,41 @@ components:
     PersonProjectFilter:
       allOf:
       - $ref: '#/components/schemas/AbstractEntityFilter'
-      - $ref: '#/components/schemas/PersonProjectFilter_allOf'
+      - properties:
+          participationInMonth:
+            $ref: '#/components/schemas/MinMax'
+          involvedOfficeIds:
+            items:
+              format: uuid
+              type: string
+            type: array
+        type: object
     PersonOrganizationFilter:
       allOf:
       - $ref: '#/components/schemas/AbstractEntityFilter'
-      - $ref: '#/components/schemas/PersonOrganizationFilter_allOf'
+      - properties:
+          amountOfProjects:
+            $ref: '#/components/schemas/MinMax'
+        type: object
     PersonIndustryFilter:
       allOf:
       - $ref: '#/components/schemas/AbstractEntityFilter'
-      - $ref: '#/components/schemas/PersonIndustryFilter_allOf'
+      - properties:
+          activeProjects:
+            type: boolean
+          amountOfProjects:
+            $ref: '#/components/schemas/MinMax'
+          experienceInMonth:
+            $ref: '#/components/schemas/MinMax'
+        type: object
     PersonCertificationFilter:
       allOf:
       - $ref: '#/components/schemas/AbstractEntityFilter'
-      - $ref: '#/components/schemas/PersonCertificationFilter_allOf'
+      - properties:
+          startedCertificaiton:
+            description: Include employees who started the certification
+            type: boolean
+        type: object
     Project:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -4564,7 +4690,17 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Project_allOf'
+      - properties:
+          external:
+            default: false
+            description: true if project was done outside of the organization
+            type: boolean
+          projectType:
+            example: Confidential
+            type: string
+          projectTypeEnum:
+            $ref: '#/components/schemas/ProjectType'
+        type: object
     ProjectDetails:
       discriminator:
         propertyName: objectType
@@ -4620,7 +4756,26 @@ components:
     ProjectParticipation:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
-      - $ref: '#/components/schemas/ProjectParticipation_allOf'
+      - properties:
+          timeframe:
+            $ref: '#/components/schemas/Timeframed'
+          projectDetails:
+            $ref: '#/components/schemas/ProjectDetails'
+          descriptionOverwrite:
+            example: Responsible Soluation Architect for this project.
+            type: string
+          personalDescription:
+            type: string
+          experiences:
+            items:
+              $ref: '#/components/schemas/Experience'
+            readOnly: true
+            type: array
+        required:
+        - experiences
+        - id
+        - project
+        type: object
     ProjectParticipationSearch:
       example:
         personIds:
@@ -4765,7 +4920,11 @@ components:
     ExperienceSkill:
       allOf:
       - $ref: '#/components/schemas/Skill'
-      - $ref: '#/components/schemas/ExperienceSkill_allOf'
+      - properties:
+          experienceInMonth:
+            default: 0
+            type: integer
+        type: object
     Skill:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -4773,7 +4932,16 @@ components:
       - $ref: '#/components/schemas/Linkable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Skill_allOf'
+      - properties:
+          invest:
+            default: false
+            type: boolean
+          kindgiver:
+            default: false
+            type: boolean
+          groupPriority:
+            type: integer
+        type: object
     ExperienceSkillGroup:
       example:
         skills:
@@ -4894,51 +5062,111 @@ components:
     PagedAvailabilities:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedAvailabilities_allOf'
+      - properties:
+          availabilities:
+            items:
+              $ref: '#/components/schemas/AvailabilityDetail'
+            type: array
+        type: object
     PagedOrganizations:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedOrganizations_allOf'
+      - properties:
+          organizations:
+            items:
+              $ref: '#/components/schemas/OrganizationDetails'
+            type: array
+        type: object
     PagedOffices:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedOffices_allOf'
+      - properties:
+          offices:
+            items:
+              $ref: '#/components/schemas/Office'
+            type: array
+        type: object
     PagedLanguages:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedLanguages_allOf'
+      - properties:
+          languages:
+            items:
+              $ref: '#/components/schemas/Language'
+            type: array
+        type: object
     PagedCertifications:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedCertifications_allOf'
+      - properties:
+          certifications:
+            items:
+              $ref: '#/components/schemas/CertificationDetails'
+            type: array
+        type: object
     PagedCountries:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedCountries_allOf'
+      - properties:
+          countries:
+            items:
+              $ref: '#/components/schemas/Country'
+            type: array
+        type: object
     PagedSkills:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedSkills_allOf'
+      - properties:
+          skills:
+            items:
+              $ref: '#/components/schemas/SkillDetails'
+            type: array
+        type: object
     PagedIndustries:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedIndustries_allOf'
+      - properties:
+          industries:
+            items:
+              $ref: '#/components/schemas/IndustryDetails'
+            type: array
+        type: object
     PagedProjects:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedProjects_allOf'
+      - properties:
+          projects:
+            items:
+              $ref: '#/components/schemas/ProjectScoreDetail'
+            type: array
+        type: object
     PagedProjectParticipations:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedProjectParticipations_allOf'
+      - properties:
+          projectParticipations:
+            items:
+              $ref: '#/components/schemas/ProjectParticipation'
+            type: array
+        type: object
     PagedPersons:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedPersons_allOf'
+      - properties:
+          persons:
+            items:
+              $ref: '#/components/schemas/PersonScoreDetail'
+            type: array
+        type: object
     PagedProfiles:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/PagedProfiles_allOf'
+      - properties:
+          profiles:
+            items:
+              $ref: '#/components/schemas/ProfileDetails'
+            type: array
+        type: object
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
@@ -4946,7 +5174,12 @@ components:
     SearchResult:
       allOf:
       - $ref: '#/components/schemas/Page'
-      - $ref: '#/components/schemas/SearchResult_allOf'
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/SearchResultItem'
+            type: array
+        type: object
     SearchResultItem:
       properties:
         score:
@@ -5025,315 +5258,6 @@ components:
       - EXTERNAL
       - CONFIDENTIAL
       type: string
-    Availability_allOf:
-      properties:
-        workHours:
-          example: 38.5
-          format: float
-          type: number
-        plannedHours:
-          example: 22.5
-          format: float
-          type: number
-        descriptions:
-          items:
-            type: string
-          type: array
-      required:
-      - plannedHours
-      - workHours
-      type: object
-      example: null
-    Certification_allOf:
-      properties:
-        validity:
-          type: string
-      type: object
-      example: null
-    Country_allOf:
-      properties:
-        picture:
-          description: base64 encoded image
-          type: string
-      type: object
-      example: null
-    Language_allOf:
-      properties:
-        code:
-          description: Two letter ISO code
-          example: de
-          type: string
-        nativeName:
-          description: The native description of a language
-          example: العربية
-          type: string
-      type: object
-      example: null
-    Organization_allOf:
-      properties:
-        partner:
-          default: false
-          type: boolean
-        customer:
-          default: false
-          type: boolean
-        picture:
-          description: base64 encoded image
-          type: string
-      type: object
-      example: null
-    Person_allOf:
-      properties:
-        employeeId:
-          example: "1234567"
-          type: string
-        jobTitle:
-          example: Software Engineer
-          type: string
-        company:
-          example: PRODYNA SE
-          type: string
-        department:
-          example: Professional Services
-          type: string
-        education:
-          example: Bachelor of Computer Scince
-          type: string
-        mail:
-          example: peter.mueller@prodyna.com
-          type: string
-        mobilePhone:
-          example: +49 176 12345678
-          type: string
-        seniority:
-          example: Senior
-          type: string
-        seniorityEnum:
-          $ref: '#/components/schemas/Seniority'
-        experienceSinceYear:
-          example: 2010
-          type: integer
-        onsiteRatio:
-          example: 20
-          maximum: 100
-          minimum: 0
-          type: integer
-        picture:
-          description: base64 encoded image
-          readOnly: true
-          type: string
-        pictureSHA256:
-          description: SHA256 hash of the full resolution image
-          readOnly: true
-          type: string
-        inactive:
-          default: false
-          description: Marks persons not working for the company anymore
-          type: boolean
-      type: object
-      example: null
-    PersonSkillFilter_allOf:
-      properties:
-        experienceInMonth:
-          $ref: '#/components/schemas/MinMax'
-        lastAssignment:
-          description: filters the last time the employee used the skill in a project
-          format: date
-          type: string
-      type: object
-      example: null
-    PersonProjectFilter_allOf:
-      properties:
-        participationInMonth:
-          $ref: '#/components/schemas/MinMax'
-        involvedOfficeIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-      type: object
-      example: null
-    PersonOrganizationFilter_allOf:
-      properties:
-        amountOfProjects:
-          $ref: '#/components/schemas/MinMax'
-      type: object
-      example: null
-    PersonIndustryFilter_allOf:
-      properties:
-        activeProjects:
-          type: boolean
-        amountOfProjects:
-          $ref: '#/components/schemas/MinMax'
-        experienceInMonth:
-          $ref: '#/components/schemas/MinMax'
-      type: object
-      example: null
-    PersonCertificationFilter_allOf:
-      properties:
-        startedCertificaiton:
-          description: Include employees who started the certification
-          type: boolean
-      type: object
-      example: null
-    Project_allOf:
-      properties:
-        external:
-          default: false
-          description: true if project was done outside of the organization
-          type: boolean
-        projectType:
-          example: Confidential
-          type: string
-        projectTypeEnum:
-          $ref: '#/components/schemas/ProjectType'
-      type: object
-      example: null
-    ProjectParticipation_allOf:
-      properties:
-        timeframe:
-          $ref: '#/components/schemas/Timeframed'
-        projectDetails:
-          $ref: '#/components/schemas/ProjectDetails'
-        descriptionOverwrite:
-          example: Responsible Soluation Architect for this project.
-          type: string
-        personalDescription:
-          type: string
-        experiences:
-          items:
-            $ref: '#/components/schemas/Experience'
-          readOnly: true
-          type: array
-      required:
-      - experiences
-      - id
-      - project
-      type: object
-      example: null
-    ExperienceSkill_allOf:
-      properties:
-        experienceInMonth:
-          default: 0
-          type: integer
-      type: object
-      example: null
-    Skill_allOf:
-      properties:
-        invest:
-          default: false
-          type: boolean
-        kindgiver:
-          default: false
-          type: boolean
-        groupPriority:
-          type: integer
-      type: object
-      example: null
-    PagedAvailabilities_allOf:
-      properties:
-        availabilities:
-          items:
-            $ref: '#/components/schemas/AvailabilityDetail'
-          type: array
-      type: object
-      example: null
-    PagedOrganizations_allOf:
-      properties:
-        organizations:
-          items:
-            $ref: '#/components/schemas/OrganizationDetails'
-          type: array
-      type: object
-      example: null
-    PagedOffices_allOf:
-      properties:
-        offices:
-          items:
-            $ref: '#/components/schemas/Office'
-          type: array
-      type: object
-      example: null
-    PagedLanguages_allOf:
-      properties:
-        languages:
-          items:
-            $ref: '#/components/schemas/Language'
-          type: array
-      type: object
-      example: null
-    PagedCertifications_allOf:
-      properties:
-        certifications:
-          items:
-            $ref: '#/components/schemas/CertificationDetails'
-          type: array
-      type: object
-      example: null
-    PagedCountries_allOf:
-      properties:
-        countries:
-          items:
-            $ref: '#/components/schemas/Country'
-          type: array
-      type: object
-      example: null
-    PagedSkills_allOf:
-      properties:
-        skills:
-          items:
-            $ref: '#/components/schemas/SkillDetails'
-          type: array
-      type: object
-      example: null
-    PagedIndustries_allOf:
-      properties:
-        industries:
-          items:
-            $ref: '#/components/schemas/IndustryDetails'
-          type: array
-      type: object
-      example: null
-    PagedProjects_allOf:
-      properties:
-        projects:
-          items:
-            $ref: '#/components/schemas/ProjectScoreDetail'
-          type: array
-      type: object
-      example: null
-    PagedProjectParticipations_allOf:
-      properties:
-        projectParticipations:
-          items:
-            $ref: '#/components/schemas/ProjectParticipation'
-          type: array
-      type: object
-      example: null
-    PagedPersons_allOf:
-      properties:
-        persons:
-          items:
-            $ref: '#/components/schemas/PersonScoreDetail'
-          type: array
-      type: object
-      example: null
-    PagedProfiles_allOf:
-      properties:
-        profiles:
-          items:
-            $ref: '#/components/schemas/ProfileDetails'
-          type: array
-      type: object
-      example: null
-    SearchResult_allOf:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/SearchResultItem'
-          type: array
-      type: object
-      example: null
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

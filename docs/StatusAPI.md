@@ -1,0 +1,132 @@
+# \StatusAPI
+
+All URIs are relative to *http://localhost:8080/api/v1*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**GetPing**](StatusAPI.md#GetPing) | **Get** /ping | Server heartbeat operation
+[**GetVersion**](StatusAPI.md#GetVersion) | **Get** /version | Information about the server
+
+
+
+## GetPing
+
+> Status GetPing(ctx).Execute()
+
+Server heartbeat operation
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StatusAPI.GetPing(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StatusAPI.GetPing``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPing`: Status
+    fmt.Fprintf(os.Stdout, "Response from `StatusAPI.GetPing`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPingRequest struct via the builder pattern
+
+
+### Return type
+
+[**Status**](Status.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetVersion
+
+> Version GetVersion(ctx).Execute()
+
+Information about the server
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StatusAPI.GetVersion(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StatusAPI.GetVersion``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetVersion`: Version
+    fmt.Fprintf(os.Stdout, "Response from `StatusAPI.GetVersion`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVersionRequest struct via the builder pattern
+
+
+### Return type
+
+[**Version**](Version.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
