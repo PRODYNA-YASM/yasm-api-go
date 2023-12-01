@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.6.3
+  version: 1.6.6
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -4708,10 +4708,9 @@ components:
             description: true if project was done outside of the organization
             type: boolean
           projectType:
-            example: Confidential
-            type: string
-          projectTypeEnum:
             $ref: '#/components/schemas/ProjectType'
+          confidentiality:
+            $ref: '#/components/schemas/Confidentiality'
         type: object
     ProjectDetails:
       discriminator:
@@ -4845,12 +4844,24 @@ components:
       type: object
     ProjectSearch:
       example:
-        skills:
-        - null
-        - null
         minStartDate: 2000-01-23
         maxEndDate: 2000-01-23
         projectStatuses:
+        - null
+        - null
+        confidentiality:
+        - null
+        - null
+        projectType:
+        - null
+        - null
+        projectIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        involvedOfficeIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        skills:
         - null
         - null
         amountOfInvolvedPersons:
@@ -4859,21 +4870,12 @@ components:
         industries:
         - null
         - null
-        projectType:
-        - null
-        - null
         organizations:
         - null
         - null
-        projectIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         participationAmountInMonths:
           min: 0
           max: 100
-        involvedOfficeIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         participants:
         - null
         - null
@@ -4909,6 +4911,10 @@ components:
         projectType:
           items:
             $ref: '#/components/schemas/ProjectType'
+          type: array
+        confidentiality:
+          items:
+            $ref: '#/components/schemas/Confidentiality'
           type: array
         participants:
           items:
@@ -5268,6 +5274,11 @@ components:
       - UNKNOWN_TYPE
       - INTERNAL
       - EXTERNAL
+      type: string
+    Confidentiality:
+      enum:
+      - UNKNOWN_CONFIDENTIALITY
+      - PUBLIC
       - CONFIDENTIAL
       type: string
   securitySchemes:

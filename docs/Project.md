@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **External** | Pointer to **bool** | true if project was done outside of the organization | [optional] [default to false]
-**ProjectType** | Pointer to **string** |  | [optional] 
-**ProjectTypeEnum** | Pointer to [**ProjectType**](ProjectType.md) |  | [optional] 
+**ProjectType** | Pointer to [**ProjectType**](ProjectType.md) |  | [optional] 
+**Confidentiality** | Pointer to [**Confidentiality**](Confidentiality.md) |  | [optional] 
 
 ## Methods
 
@@ -179,20 +179,20 @@ HasExternal returns a boolean if a field has been set.
 
 ### GetProjectType
 
-`func (o *Project) GetProjectType() string`
+`func (o *Project) GetProjectType() ProjectType`
 
 GetProjectType returns the ProjectType field if non-nil, zero value otherwise.
 
 ### GetProjectTypeOk
 
-`func (o *Project) GetProjectTypeOk() (*string, bool)`
+`func (o *Project) GetProjectTypeOk() (*ProjectType, bool)`
 
 GetProjectTypeOk returns a tuple with the ProjectType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProjectType
 
-`func (o *Project) SetProjectType(v string)`
+`func (o *Project) SetProjectType(v ProjectType)`
 
 SetProjectType sets ProjectType field to given value.
 
@@ -202,30 +202,30 @@ SetProjectType sets ProjectType field to given value.
 
 HasProjectType returns a boolean if a field has been set.
 
-### GetProjectTypeEnum
+### GetConfidentiality
 
-`func (o *Project) GetProjectTypeEnum() ProjectType`
+`func (o *Project) GetConfidentiality() Confidentiality`
 
-GetProjectTypeEnum returns the ProjectTypeEnum field if non-nil, zero value otherwise.
+GetConfidentiality returns the Confidentiality field if non-nil, zero value otherwise.
 
-### GetProjectTypeEnumOk
+### GetConfidentialityOk
 
-`func (o *Project) GetProjectTypeEnumOk() (*ProjectType, bool)`
+`func (o *Project) GetConfidentialityOk() (*Confidentiality, bool)`
 
-GetProjectTypeEnumOk returns a tuple with the ProjectTypeEnum field if it's non-nil, zero value otherwise
+GetConfidentialityOk returns a tuple with the Confidentiality field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProjectTypeEnum
+### SetConfidentiality
 
-`func (o *Project) SetProjectTypeEnum(v ProjectType)`
+`func (o *Project) SetConfidentiality(v Confidentiality)`
 
-SetProjectTypeEnum sets ProjectTypeEnum field to given value.
+SetConfidentiality sets Confidentiality field to given value.
 
-### HasProjectTypeEnum
+### HasConfidentiality
 
-`func (o *Project) HasProjectTypeEnum() bool`
+`func (o *Project) HasConfidentiality() bool`
 
-HasProjectTypeEnum returns a boolean if a field has been set.
+HasConfidentiality returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

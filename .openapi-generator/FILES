@@ -29,6 +29,7 @@ docs/Certification.md
 docs/CertificationAPI.md
 docs/CertificationDetails.md
 docs/CertificationSearch.md
+docs/Confidentiality.md
 docs/Country.md
 docs/CountryAPI.md
 docs/CountryDetails.md
@@ -123,6 +124,7 @@ model_basic_domain_model.go
 model_certification.go
 model_certification_details.go
 model_certification_search.go
+model_confidentiality.go
 model_country.go
 model_country_details.go
 model_descriptable.go

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AmountOfInvolvedPersons** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
 **Skills** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
 **ProjectType** | Pointer to [**[]ProjectType**](ProjectType.md) |  | [optional] 
+**Confidentiality** | Pointer to [**[]Confidentiality**](Confidentiality.md) |  | [optional] 
 **Participants** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
 **Industries** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
 **Organizations** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
@@ -260,6 +261,31 @@ SetProjectType sets ProjectType field to given value.
 `func (o *ProjectSearch) HasProjectType() bool`
 
 HasProjectType returns a boolean if a field has been set.
+
+### GetConfidentiality
+
+`func (o *ProjectSearch) GetConfidentiality() []Confidentiality`
+
+GetConfidentiality returns the Confidentiality field if non-nil, zero value otherwise.
+
+### GetConfidentialityOk
+
+`func (o *ProjectSearch) GetConfidentialityOk() (*[]Confidentiality, bool)`
+
+GetConfidentialityOk returns a tuple with the Confidentiality field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfidentiality
+
+`func (o *ProjectSearch) SetConfidentiality(v []Confidentiality)`
+
+SetConfidentiality sets Confidentiality field to given value.
+
+### HasConfidentiality
+
+`func (o *ProjectSearch) HasConfidentiality() bool`
+
+HasConfidentiality returns a boolean if a field has been set.
 
 ### GetParticipants
 

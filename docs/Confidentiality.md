@@ -1,13 +1,13 @@
-# ProjectType
+# Confidentiality
 
 ## Enum
 
 
-* `UNKNOWN_TYPE` (value: `"UNKNOWN_TYPE"`)
+* `UNKNOWN_CONFIDENTIALITY` (value: `"UNKNOWN_CONFIDENTIALITY"`)
 
-* `INTERNAL` (value: `"INTERNAL"`)
+* `PUBLIC` (value: `"PUBLIC"`)
 
-* `EXTERNAL` (value: `"EXTERNAL"`)
+* `CONFIDENTIAL` (value: `"CONFIDENTIAL"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
