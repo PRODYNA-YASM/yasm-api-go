@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost:8080/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AddOrganizationToParentOrganization**](OrganizationAPI.md#AddOrganizationToParentOrganization) | **Post** /organizations/{organizationId}/parents/{parentOrganizationId} | Attach an Organization to a parent Organization, returns the parent Organization
 [**AttachOrganizationToIndustry**](OrganizationAPI.md#AttachOrganizationToIndustry) | **Post** /organizations/{organizationId}/industries/{industryId} | Add an Organization to an Industry
 [**CreateCertification**](OrganizationAPI.md#CreateCertification) | **Post** /organizations/{organizationId}/certifications | Create a Certification in an Organization
 [**CreateOffice**](OrganizationAPI.md#CreateOffice) | **Post** /organizations/{organizationId}/offices | Create an Office in an Organization
@@ -17,12 +18,83 @@ Method | HTTP request | Description
 [**GetOrganization**](OrganizationAPI.md#GetOrganization) | **Get** /organizations/{organizationId} | Get details about an Organization
 [**GetOrganizationProjects**](OrganizationAPI.md#GetOrganizationProjects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
 [**GetOrganizations**](OrganizationAPI.md#GetOrganizations) | **Get** /organizations | Get a list of all Organizations
-[**MergeOrganizations**](OrganizationAPI.md#MergeOrganizations) | **Put** /organizations/{organizationId}/merge/{otherOrganizationId} | Merge two organizations
 [**MoveCertification**](OrganizationAPI.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificateId} | Move a Certification to an Organization
+[**RemoveOrganizationFromParentOrganization**](OrganizationAPI.md#RemoveOrganizationFromParentOrganization) | **Delete** /organizations/{organizationId}/parents/{parentOrganizationId} | Detaches an Organization from parent Organization, return the parent Organization
 [**UpdateOffice**](OrganizationAPI.md#UpdateOffice) | **Put** /organizations/{organizationId}/offices/{officeId} | Update an Office for an Organization
 [**UpdateOrganization**](OrganizationAPI.md#UpdateOrganization) | **Put** /organizations/{organizationId} | Update an Organization
 [**UpdateProjectOrganization**](OrganizationAPI.md#UpdateProjectOrganization) | **Put** /organizations/{organizationId}/projects/{projectId} | project is now point to the new organization
 
+
+
+## AddOrganizationToParentOrganization
+
+> OrganizationDetails AddOrganizationToParentOrganization(ctx, organizationId, parentOrganizationId).Execute()
+
+Attach an Organization to a parent Organization, returns the parent Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    parentOrganizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAPI.AddOrganizationToParentOrganization(context.Background(), organizationId, parentOrganizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.AddOrganizationToParentOrganization``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddOrganizationToParentOrganization`: OrganizationDetails
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.AddOrganizationToParentOrganization`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**parentOrganizationId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddOrganizationToParentOrganizationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrganizationDetails**](OrganizationDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## AttachOrganizationToIndustry
@@ -931,77 +1003,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## MergeOrganizations
-
-> OrganizationDetails MergeOrganizations(ctx, organizationId, otherOrganizationId).Execute()
-
-Merge two organizations
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    otherOrganizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.MergeOrganizations(context.Background(), organizationId, otherOrganizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.MergeOrganizations``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `MergeOrganizations`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.MergeOrganizations`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-**otherOrganizationId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiMergeOrganizationsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**OrganizationDetails**](OrganizationDetails.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## MoveCertification
 
 > CertificationDetails MoveCertification(ctx, organizationId, certificateId).Execute()
@@ -1058,6 +1059,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CertificationDetails**](CertificationDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveOrganizationFromParentOrganization
+
+> OrganizationDetails RemoveOrganizationFromParentOrganization(ctx, organizationId, parentOrganizationId).Execute()
+
+Detaches an Organization from parent Organization, return the parent Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    parentOrganizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAPI.RemoveOrganizationFromParentOrganization(context.Background(), organizationId, parentOrganizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.RemoveOrganizationFromParentOrganization``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemoveOrganizationFromParentOrganization`: OrganizationDetails
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.RemoveOrganizationFromParentOrganization`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**parentOrganizationId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveOrganizationFromParentOrganizationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrganizationDetails**](OrganizationDetails.md)
 
 ### Authorization
 

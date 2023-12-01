@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
+**Children** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
+**Parents** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **Projects** | Pointer to [**[]Project**](Project.md) |  | [optional] [readonly] 
 **Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Certifications** | Pointer to [**[]Certification**](Certification.md) |  | [optional] 
@@ -53,6 +55,56 @@ SetOrganization sets Organization field to given value.
 `func (o *OrganizationDetails) HasOrganization() bool`
 
 HasOrganization returns a boolean if a field has been set.
+
+### GetChildren
+
+`func (o *OrganizationDetails) GetChildren() []Organization`
+
+GetChildren returns the Children field if non-nil, zero value otherwise.
+
+### GetChildrenOk
+
+`func (o *OrganizationDetails) GetChildrenOk() (*[]Organization, bool)`
+
+GetChildrenOk returns a tuple with the Children field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChildren
+
+`func (o *OrganizationDetails) SetChildren(v []Organization)`
+
+SetChildren sets Children field to given value.
+
+### HasChildren
+
+`func (o *OrganizationDetails) HasChildren() bool`
+
+HasChildren returns a boolean if a field has been set.
+
+### GetParents
+
+`func (o *OrganizationDetails) GetParents() []Organization`
+
+GetParents returns the Parents field if non-nil, zero value otherwise.
+
+### GetParentsOk
+
+`func (o *OrganizationDetails) GetParentsOk() (*[]Organization, bool)`
+
+GetParentsOk returns a tuple with the Parents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParents
+
+`func (o *OrganizationDetails) SetParents(v []Organization)`
+
+SetParents sets Parents field to given value.
+
+### HasParents
+
+`func (o *OrganizationDetails) HasParents() bool`
+
+HasParents returns a boolean if a field has been set.
 
 ### GetProjects
 

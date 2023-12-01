@@ -22,6 +22,21 @@ func Test_client_OrganizationAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test OrganizationAPIService AddOrganizationToParentOrganization", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var organizationId string
+		var parentOrganizationId string
+
+		resp, httpRes, err := apiClient.OrganizationAPI.AddOrganizationToParentOrganization(context.Background(), organizationId, parentOrganizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationAPIService AttachOrganizationToIndustry", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -204,21 +219,6 @@ func Test_client_OrganizationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrganizationAPIService MergeOrganizations", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var organizationId string
-		var otherOrganizationId string
-
-		resp, httpRes, err := apiClient.OrganizationAPI.MergeOrganizations(context.Background(), organizationId, otherOrganizationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test OrganizationAPIService MoveCertification", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -227,6 +227,21 @@ func Test_client_OrganizationAPIService(t *testing.T) {
 		var certificateId string
 
 		resp, httpRes, err := apiClient.OrganizationAPI.MoveCertification(context.Background(), organizationId, certificateId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationAPIService RemoveOrganizationFromParentOrganization", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var organizationId string
+		var parentOrganizationId string
+
+		resp, httpRes, err := apiClient.OrganizationAPI.RemoveOrganizationFromParentOrganization(context.Background(), organizationId, parentOrganizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

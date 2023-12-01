@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.6.6
+  version: 1.7.0
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -16,7 +16,7 @@ security:
 tags:
 - description: Status of the API
   name: Status
-- description: Organisation related endpoints
+- description: Organization related endpoints
   name: Organization
 - description: Industry related endpoints
   name: Industry
@@ -252,9 +252,9 @@ paths:
       summary: Update an Organization
       tags:
       - Organization
-  /organizations/{organizationId}/merge/{otherOrganizationId}:
-    put:
-      operationId: mergeOrganizations
+  /organizations/{organizationId}/parents/{parentOrganizationId}:
+    delete:
+      operationId: removeOrganizationFromParentOrganization
       parameters:
       - explode: false
         in: path
@@ -266,7 +266,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: otherOrganizationId
+        name: parentOrganizationId
         required: true
         schema:
           format: uuid
@@ -285,7 +285,44 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Merge two organizations
+      summary: "Detaches an Organization from parent Organization, return the parent\
+        \ Organization"
+      tags:
+      - Organization
+    post:
+      operationId: addOrganizationToParentOrganization
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: parentOrganizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: "Attach an Organization to a parent Organization, returns the parent\
+        \ Organization"
       tags:
       - Organization
   /organizations/{organizationId}/industries/{industryId}:
@@ -4333,6 +4370,9 @@ components:
         projects:
         - null
         - null
+        children:
+        - null
+        - null
         organization: null
         industries:
         - null
@@ -4343,9 +4383,20 @@ components:
         certifications:
         - null
         - null
+        parents:
+        - null
+        - null
       properties:
         organization:
           $ref: '#/components/schemas/Organization'
+        children:
+          items:
+            $ref: '#/components/schemas/Organization'
+          type: array
+        parents:
+          items:
+            $ref: '#/components/schemas/Organization'
+          type: array
         projects:
           items:
             $ref: '#/components/schemas/Project'
