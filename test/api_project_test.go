@@ -22,6 +22,21 @@ func Test_client_ProjectAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test ProjectAPIService AddExecutiveOrganizationToProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+		var organizationId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.AddExecutiveOrganizationToProject(context.Background(), projectId, organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectAPIService AddPersonProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -174,21 +189,6 @@ func Test_client_ProjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectAPIService MergeProjects", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectId string
-		var otherProjectId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.MergeProjects(context.Background(), projectId, otherProjectId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProjectAPIService ReadPersonProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -197,6 +197,21 @@ func Test_client_ProjectAPIService(t *testing.T) {
 		var projectId string
 
 		resp, httpRes, err := apiClient.ProjectAPI.ReadPersonProject(context.Background(), personId, projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectAPIService RemoveExecutiveOrganizationFromProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+		var organizationId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.RemoveExecutiveOrganizationFromProject(context.Background(), projectId, organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

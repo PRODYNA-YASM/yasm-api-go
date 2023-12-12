@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
+**ExecutiveOrganizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
 **Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
@@ -55,6 +56,31 @@ SetProject sets Project field to given value.
 `func (o *ProjectDetails) HasProject() bool`
 
 HasProject returns a boolean if a field has been set.
+
+### GetExecutiveOrganizations
+
+`func (o *ProjectDetails) GetExecutiveOrganizations() []Organization`
+
+GetExecutiveOrganizations returns the ExecutiveOrganizations field if non-nil, zero value otherwise.
+
+### GetExecutiveOrganizationsOk
+
+`func (o *ProjectDetails) GetExecutiveOrganizationsOk() (*[]Organization, bool)`
+
+GetExecutiveOrganizationsOk returns a tuple with the ExecutiveOrganizations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExecutiveOrganizations
+
+`func (o *ProjectDetails) SetExecutiveOrganizations(v []Organization)`
+
+SetExecutiveOrganizations sets ExecutiveOrganizations field to given value.
+
+### HasExecutiveOrganizations
+
+`func (o *ProjectDetails) HasExecutiveOrganizations() bool`
+
+HasExecutiveOrganizations returns a boolean if a field has been set.
 
 ### GetOrganization
 

@@ -22,6 +22,21 @@ func Test_client_OrganizationAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test OrganizationAPIService AddExecutiveOrganizationToProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+		var organizationId string
+
+		resp, httpRes, err := apiClient.OrganizationAPI.AddExecutiveOrganizationToProject(context.Background(), projectId, organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationAPIService AddOrganizationToParentOrganization", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -227,6 +242,21 @@ func Test_client_OrganizationAPIService(t *testing.T) {
 		var certificateId string
 
 		resp, httpRes, err := apiClient.OrganizationAPI.MoveCertification(context.Background(), organizationId, certificateId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationAPIService RemoveExecutiveOrganizationFromProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+		var organizationId string
+
+		resp, httpRes, err := apiClient.OrganizationAPI.RemoveExecutiveOrganizationFromProject(context.Background(), projectId, organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
