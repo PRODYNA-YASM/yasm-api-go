@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certification** | Pointer to [**Certification**](Certification.md) |  | [optional] 
 **Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
-**Skills** | Pointer to [**[]SkillLevel**](SkillLevel.md) |  | [optional] 
+**SkillLevels** | Pointer to [**[]SkillLevel**](SkillLevel.md) |  | [optional] 
 
 ## Methods
 
@@ -77,30 +77,30 @@ SetOrganization sets Organization field to given value.
 
 HasOrganization returns a boolean if a field has been set.
 
-### GetSkills
+### GetSkillLevels
 
-`func (o *CertificationDetails) GetSkills() []SkillLevel`
+`func (o *CertificationDetails) GetSkillLevels() []SkillLevel`
 
-GetSkills returns the Skills field if non-nil, zero value otherwise.
+GetSkillLevels returns the SkillLevels field if non-nil, zero value otherwise.
 
-### GetSkillsOk
+### GetSkillLevelsOk
 
-`func (o *CertificationDetails) GetSkillsOk() (*[]SkillLevel, bool)`
+`func (o *CertificationDetails) GetSkillLevelsOk() (*[]SkillLevel, bool)`
 
-GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
+GetSkillLevelsOk returns a tuple with the SkillLevels field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSkills
+### SetSkillLevels
 
-`func (o *CertificationDetails) SetSkills(v []SkillLevel)`
+`func (o *CertificationDetails) SetSkillLevels(v []SkillLevel)`
 
-SetSkills sets Skills field to given value.
+SetSkillLevels sets SkillLevels field to given value.
 
-### HasSkills
+### HasSkillLevels
 
-`func (o *CertificationDetails) HasSkills() bool`
+`func (o *CertificationDetails) HasSkillLevels() bool`
 
-HasSkills returns a boolean if a field has been set.
+HasSkillLevels returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

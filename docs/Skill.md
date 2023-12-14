@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Invest** | Pointer to **bool** |  | [optional] [default to false]
-**Kindgiver** | Pointer to **bool** |  | [optional] [default to false]
+**KindGiver** | Pointer to **bool** |  | [optional] [default to false]
 **GroupPriority** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -151,30 +151,30 @@ SetInvest sets Invest field to given value.
 
 HasInvest returns a boolean if a field has been set.
 
-### GetKindgiver
+### GetKindGiver
 
-`func (o *Skill) GetKindgiver() bool`
+`func (o *Skill) GetKindGiver() bool`
 
-GetKindgiver returns the Kindgiver field if non-nil, zero value otherwise.
+GetKindGiver returns the KindGiver field if non-nil, zero value otherwise.
 
-### GetKindgiverOk
+### GetKindGiverOk
 
-`func (o *Skill) GetKindgiverOk() (*bool, bool)`
+`func (o *Skill) GetKindGiverOk() (*bool, bool)`
 
-GetKindgiverOk returns a tuple with the Kindgiver field if it's non-nil, zero value otherwise
+GetKindGiverOk returns a tuple with the KindGiver field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKindgiver
+### SetKindGiver
 
-`func (o *Skill) SetKindgiver(v bool)`
+`func (o *Skill) SetKindGiver(v bool)`
 
-SetKindgiver sets Kindgiver field to given value.
+SetKindGiver sets KindGiver field to given value.
 
-### HasKindgiver
+### HasKindGiver
 
-`func (o *Skill) HasKindgiver() bool`
+`func (o *Skill) HasKindGiver() bool`
 
-HasKindgiver returns a boolean if a field has been set.
+HasKindGiver returns a boolean if a field has been set.
 
 ### GetGroupPriority
 

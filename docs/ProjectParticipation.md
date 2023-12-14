@@ -5,16 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
-**ProjectDetails** | Pointer to [**ProjectDetails**](ProjectDetails.md) |  | [optional] 
-**DescriptionOverwrite** | Pointer to **string** |  | [optional] 
 **PersonalDescription** | Pointer to **string** |  | [optional] 
-**Experiences** | [**[]Experience**](Experience.md) |  | [readonly] 
 
 ## Methods
 
 ### NewProjectParticipation
 
-`func NewProjectParticipation(experiences []Experience, ) *ProjectParticipation`
+`func NewProjectParticipation() *ProjectParticipation`
 
 NewProjectParticipation instantiates a new ProjectParticipation object
 This constructor will assign default values to properties that have it defined,
@@ -54,56 +51,6 @@ SetTimeframe sets Timeframe field to given value.
 
 HasTimeframe returns a boolean if a field has been set.
 
-### GetProjectDetails
-
-`func (o *ProjectParticipation) GetProjectDetails() ProjectDetails`
-
-GetProjectDetails returns the ProjectDetails field if non-nil, zero value otherwise.
-
-### GetProjectDetailsOk
-
-`func (o *ProjectParticipation) GetProjectDetailsOk() (*ProjectDetails, bool)`
-
-GetProjectDetailsOk returns a tuple with the ProjectDetails field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProjectDetails
-
-`func (o *ProjectParticipation) SetProjectDetails(v ProjectDetails)`
-
-SetProjectDetails sets ProjectDetails field to given value.
-
-### HasProjectDetails
-
-`func (o *ProjectParticipation) HasProjectDetails() bool`
-
-HasProjectDetails returns a boolean if a field has been set.
-
-### GetDescriptionOverwrite
-
-`func (o *ProjectParticipation) GetDescriptionOverwrite() string`
-
-GetDescriptionOverwrite returns the DescriptionOverwrite field if non-nil, zero value otherwise.
-
-### GetDescriptionOverwriteOk
-
-`func (o *ProjectParticipation) GetDescriptionOverwriteOk() (*string, bool)`
-
-GetDescriptionOverwriteOk returns a tuple with the DescriptionOverwrite field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescriptionOverwrite
-
-`func (o *ProjectParticipation) SetDescriptionOverwrite(v string)`
-
-SetDescriptionOverwrite sets DescriptionOverwrite field to given value.
-
-### HasDescriptionOverwrite
-
-`func (o *ProjectParticipation) HasDescriptionOverwrite() bool`
-
-HasDescriptionOverwrite returns a boolean if a field has been set.
-
 ### GetPersonalDescription
 
 `func (o *ProjectParticipation) GetPersonalDescription() string`
@@ -128,26 +75,6 @@ SetPersonalDescription sets PersonalDescription field to given value.
 `func (o *ProjectParticipation) HasPersonalDescription() bool`
 
 HasPersonalDescription returns a boolean if a field has been set.
-
-### GetExperiences
-
-`func (o *ProjectParticipation) GetExperiences() []Experience`
-
-GetExperiences returns the Experiences field if non-nil, zero value otherwise.
-
-### GetExperiencesOk
-
-`func (o *ProjectParticipation) GetExperiencesOk() (*[]Experience, bool)`
-
-GetExperiencesOk returns a tuple with the Experiences field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExperiences
-
-`func (o *ProjectParticipation) SetExperiences(v []Experience)`
-
-SetExperiences sets Experiences field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StartedCertificaiton** | Pointer to **bool** | Include employees who started the certification | [optional] 
+**StartedCertification** | Pointer to **bool** | Include employees who started the certification | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewPersonCertificationFilterWithDefaults instantiates a new PersonCertificationF
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetStartedCertificaiton
+### GetStartedCertification
 
-`func (o *PersonCertificationFilter) GetStartedCertificaiton() bool`
+`func (o *PersonCertificationFilter) GetStartedCertification() bool`
 
-GetStartedCertificaiton returns the StartedCertificaiton field if non-nil, zero value otherwise.
+GetStartedCertification returns the StartedCertification field if non-nil, zero value otherwise.
 
-### GetStartedCertificaitonOk
+### GetStartedCertificationOk
 
-`func (o *PersonCertificationFilter) GetStartedCertificaitonOk() (*bool, bool)`
+`func (o *PersonCertificationFilter) GetStartedCertificationOk() (*bool, bool)`
 
-GetStartedCertificaitonOk returns a tuple with the StartedCertificaiton field if it's non-nil, zero value otherwise
+GetStartedCertificationOk returns a tuple with the StartedCertification field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStartedCertificaiton
+### SetStartedCertification
 
-`func (o *PersonCertificationFilter) SetStartedCertificaiton(v bool)`
+`func (o *PersonCertificationFilter) SetStartedCertification(v bool)`
 
-SetStartedCertificaiton sets StartedCertificaiton field to given value.
+SetStartedCertification sets StartedCertification field to given value.
 
-### HasStartedCertificaiton
+### HasStartedCertification
 
-`func (o *PersonCertificationFilter) HasStartedCertificaiton() bool`
+`func (o *PersonCertificationFilter) HasStartedCertification() bool`
 
-HasStartedCertificaiton returns a boolean if a field has been set.
+HasStartedCertification returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

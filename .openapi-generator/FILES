@@ -13,6 +13,7 @@ api_organization.go
 api_person.go
 api_profile.go
 api_project.go
+api_project_participation.go
 api_search.go
 api_skill.go
 api_status.go
@@ -69,7 +70,7 @@ docs/PagedOffices.md
 docs/PagedOrganizations.md
 docs/PagedPersons.md
 docs/PagedProfiles.md
-docs/PagedProjectParticipations.md
+docs/PagedProjectParticipation.md
 docs/PagedProjects.md
 docs/PagedSkills.md
 docs/Person.md
@@ -79,6 +80,8 @@ docs/PersonDetails.md
 docs/PersonIndustryFilter.md
 docs/PersonOrganizationFilter.md
 docs/PersonProjectFilter.md
+docs/PersonProjectParticipationDetails.md
+docs/PersonProjectParticipationItem.md
 docs/PersonScoreDetail.md
 docs/PersonSearch.md
 docs/PersonSkillFilter.md
@@ -89,6 +92,9 @@ docs/Project.md
 docs/ProjectAPI.md
 docs/ProjectDetails.md
 docs/ProjectParticipation.md
+docs/ProjectParticipationAPI.md
+docs/ProjectParticipationCreate.md
+docs/ProjectParticipationDetails.md
 docs/ProjectParticipationSearch.md
 docs/ProjectParticipationUpdate.md
 docs/ProjectScoreDetail.md
@@ -106,6 +112,8 @@ docs/SkillDetails.md
 docs/SkillGroup.md
 docs/SkillLevel.md
 docs/SkillLevelUpdate.md
+docs/SkillLink.md
+docs/SkillLinkUpdate.md
 docs/Status.md
 docs/StatusAPI.md
 docs/Suggestable.md
@@ -159,7 +167,7 @@ model_paged_offices.go
 model_paged_organizations.go
 model_paged_persons.go
 model_paged_profiles.go
-model_paged_project_participations.go
+model_paged_project_participation.go
 model_paged_projects.go
 model_paged_skills.go
 model_person.go
@@ -168,6 +176,8 @@ model_person_details.go
 model_person_industry_filter.go
 model_person_organization_filter.go
 model_person_project_filter.go
+model_person_project_participation_details.go
+model_person_project_participation_item.go
 model_person_score_detail.go
 model_person_search.go
 model_person_skill_filter.go
@@ -176,6 +186,8 @@ model_profile_details.go
 model_project.go
 model_project_details.go
 model_project_participation.go
+model_project_participation_create.go
+model_project_participation_details.go
 model_project_participation_search.go
 model_project_participation_update.go
 model_project_score_detail.go
@@ -191,6 +203,8 @@ model_skill_details.go
 model_skill_group.go
 model_skill_level.go
 model_skill_level_update.go
+model_skill_link.go
+model_skill_link_update.go
 model_status.go
 model_suggestable.go
 model_synonymable.go
@@ -206,6 +220,7 @@ test/api_office_test.go
 test/api_organization_test.go
 test/api_person_test.go
 test/api_profile_test.go
+test/api_project_participation_test.go
 test/api_project_test.go
 test/api_search_test.go
 test/api_skill_test.go

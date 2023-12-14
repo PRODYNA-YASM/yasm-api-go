@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Skill** | Pointer to [**SkillLevel**](SkillLevel.md) |  | [optional] 
+**SkillLevel** | Pointer to [**SkillLevel**](SkillLevel.md) |  | [optional] 
 **ConfirmedBy** | Pointer to [**[]Person**](Person.md) |  | [optional] 
 
 ## Methods
@@ -26,30 +26,30 @@ NewExperienceWithDefaults instantiates a new Experience object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSkill
+### GetSkillLevel
 
-`func (o *Experience) GetSkill() SkillLevel`
+`func (o *Experience) GetSkillLevel() SkillLevel`
 
-GetSkill returns the Skill field if non-nil, zero value otherwise.
+GetSkillLevel returns the SkillLevel field if non-nil, zero value otherwise.
 
-### GetSkillOk
+### GetSkillLevelOk
 
-`func (o *Experience) GetSkillOk() (*SkillLevel, bool)`
+`func (o *Experience) GetSkillLevelOk() (*SkillLevel, bool)`
 
-GetSkillOk returns a tuple with the Skill field if it's non-nil, zero value otherwise
+GetSkillLevelOk returns a tuple with the SkillLevel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSkill
+### SetSkillLevel
 
-`func (o *Experience) SetSkill(v SkillLevel)`
+`func (o *Experience) SetSkillLevel(v SkillLevel)`
 
-SetSkill sets Skill field to given value.
+SetSkillLevel sets SkillLevel field to given value.
 
-### HasSkill
+### HasSkillLevel
 
-`func (o *Experience) HasSkill() bool`
+`func (o *Experience) HasSkillLevel() bool`
 
-HasSkill returns a boolean if a field has been set.
+HasSkillLevel returns a boolean if a field has been set.
 
 ### GetConfirmedBy
 

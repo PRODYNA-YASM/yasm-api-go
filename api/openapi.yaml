@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.8.0
+  version: 1.9.0
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -39,29 +39,6 @@ tags:
 - description: Country related endpoints
   name: Country
 paths:
-  /ping:
-    get:
-      description: Returns a heartbeat message
-      operationId: getPing
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                status: OK
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      security: []
-      summary: Server heartbeat operation
-      tags:
-      - Status
   /version:
     get:
       description: Get the version of the backend and the used API
@@ -1560,7 +1537,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PagedProjectParticipations'
+                $ref: '#/components/schemas/PagedProjectParticipation'
           description: OK
         default:
           content:
@@ -1575,8 +1552,7 @@ paths:
     get:
       operationId: getSkills
       parameters:
-      - description: "Gives you either all skills, only the root kills or those which\
-          \ are defining kinds"
+      - description: "Gives you either all skills, only the root kills"
         explode: true
         in: query
         name: types
@@ -1586,7 +1562,6 @@ paths:
           enum:
           - all
           - root
-          - kind
           - group
           example: all
           type: string
@@ -1654,7 +1629,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: "Get a list of all skills, optionally only root, optionally only kinds"
+      summary: "Get a list of all skills, optionally only root"
       tags:
       - Skill
     post:
@@ -1906,6 +1881,11 @@ paths:
           format: uuid
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkillLinkUpdate'
       responses:
         "200":
           content:
@@ -2198,7 +2178,7 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: projectParticipationIds
+        name: projectIds
         required: false
         schema:
           items:
@@ -2955,9 +2935,9 @@ paths:
       tags:
       - Person
       - Office
-  /persons/{personId}/projects/{projectId}:
-    delete:
-      operationId: deletePersonProject
+  /persons/{personId}/project-participation:
+    get:
+      operationId: readPersonProjectParticipation
       parameters:
       - explode: false
         in: path
@@ -2967,9 +2947,69 @@ paths:
           format: uuid
           type: string
         style: simple
+      - explode: true
+        in: query
+        name: projectIds
+        required: false
+        schema:
+          items:
+            format: uuid
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PersonProjectParticipationDetails'
+                type: array
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get a Project Partifipation of a Person
+      tags:
+      - Person
+      - ProjectParticipation
+  /project-participations:
+    post:
+      operationId: addProjectParticipation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectParticipationCreate'
+        description: List of Skills with level and timeframe
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectParticipationDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Add Project to a Person
+      tags:
+      - Person
+      - Project
+  /project-participations/{projectParticipationId}:
+    delete:
+      operationId: deleteProjectParticipation
+      parameters:
       - explode: false
         in: path
-        name: projectId
+        name: projectParticipationId
         required: true
         schema:
           format: uuid
@@ -2980,7 +3020,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonDetails'
+                $ref: '#/components/schemas/Status'
           description: OK
         default:
           content:
@@ -2993,19 +3033,11 @@ paths:
       - Person
       - Project
     get:
-      operationId: readPersonProject
+      operationId: readProjectParticipation
       parameters:
       - explode: false
         in: path
-        name: personId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: projectId
+        name: projectParticipationId
         required: true
         schema:
           format: uuid
@@ -3016,7 +3048,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectParticipation'
+                $ref: '#/components/schemas/ProjectParticipationDetails'
           description: OK
         default:
           content:
@@ -3024,67 +3056,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Get a Project Partifipation of a Person
-      tags:
-      - Person
-      - Project
-    post:
-      operationId: addPersonProject
-      parameters:
-      - explode: false
-        in: path
-        name: personId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProjectParticipationUpdate'
-        description: List of Skills with level and timeframe
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectParticipation'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Add Project to a Person
+      summary: Get a project participation
       tags:
       - Person
       - Project
     put:
-      operationId: updatePersonProject
+      operationId: updateProjectParticipation
       parameters:
       - explode: false
         in: path
-        name: personId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: projectId
+        name: projectParticipationId
         required: true
         schema:
           format: uuid
@@ -3102,7 +3083,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectParticipation'
+                $ref: '#/components/schemas/ProjectParticipationDetails'
           description: OK
         default:
           content:
@@ -3114,171 +3095,13 @@ paths:
       tags:
       - Person
       - Project
-  /persons/{personId}/projects/{projectId}/skills/{skillId}:
+  /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId}:
     delete:
-      operationId: deletePersonProjectSkill
+      operationId: removeSkillConfirmation
       parameters:
       - explode: false
         in: path
-        name: personId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: skillId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectParticipation'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Remove a Skill from a Project participation
-      tags:
-      - Person
-      - Project
-      - Skill
-    post:
-      operationId: addPersonProjectSkill
-      parameters:
-      - explode: false
-        in: path
-        name: personId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: skillId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Level'
-        description: The Skill Level
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectParticipation'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Add Skill to a Project participation
-      tags:
-      - Person
-      - Project
-      - Skill
-    put:
-      operationId: updatePersonProjectSkill
-      parameters:
-      - explode: false
-        in: path
-        name: personId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: skillId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Level'
-        description: The Skill Level
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectParticipation'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Update the level of a Skill in a Project participation
-      tags:
-      - Person
-      - Project
-      - Skill
-  /persons/{personId}/projects/{projectId}/skills/{skillId}/confirmation/{confirmingPersonId}:
-    delete:
-      operationId: deleteConfirmation
-      parameters:
-      - explode: false
-        in: path
-        name: personId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: projectId
+        name: projectParticipationId
         required: true
         schema:
           format: uuid
@@ -3305,7 +3128,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonDetails'
+                $ref: '#/components/schemas/ProjectParticipationDetails'
           description: OK
         default:
           content:
@@ -3319,19 +3142,11 @@ paths:
       - Project
       - Skill
     post:
-      operationId: confirmSkill
+      operationId: addSkillConfirmation
       parameters:
       - explode: false
         in: path
-        name: personId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: projectId
+        name: projectParticipationId
         required: true
         schema:
           format: uuid
@@ -3358,7 +3173,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PersonDetails'
+                $ref: '#/components/schemas/ProjectParticipationDetails'
           description: OK
         default:
           content:
@@ -4224,7 +4039,7 @@ components:
         type: object
     CertificationDetails:
       example:
-        skills:
+        skillLevels:
         - level:
             level: 1
           skill: null
@@ -4238,7 +4053,7 @@ components:
           $ref: '#/components/schemas/Certification'
         organization:
           $ref: '#/components/schemas/Organization'
-        skills:
+        skillLevels:
           items:
             $ref: '#/components/schemas/SkillLevel'
           type: array
@@ -4294,22 +4109,15 @@ components:
           type: array
       type: object
     Experience:
-      example:
-        skill:
-          level:
-            level: 1
-          skill: null
-        confirmedBy:
-        - null
-        - null
-      properties:
-        skill:
-          $ref: '#/components/schemas/SkillLevel'
-        confirmedBy:
-          items:
-            $ref: '#/components/schemas/Person'
-          type: array
-      type: object
+      allOf:
+      - properties:
+          skillLevel:
+            $ref: '#/components/schemas/SkillLevel'
+          confirmedBy:
+            items:
+              $ref: '#/components/schemas/Person'
+            type: array
+        type: object
     Geolocation:
       properties:
         longitude:
@@ -4544,7 +4352,7 @@ components:
         - null
         - null
         certifications:
-        - skills:
+        - skillLevels:
           - level:
               level: 1
             skill: null
@@ -4553,7 +4361,7 @@ components:
             skill: null
           organization: null
           certification: null
-        - skills:
+        - skillLevels:
           - level:
               level: 1
             skill: null
@@ -4563,20 +4371,8 @@ components:
           organization: null
           certification: null
         experiences:
-        - skill:
-            level:
-              level: 1
-            skill: null
-          confirmedBy:
-          - null
-          - null
-        - skill:
-            level:
-              level: 1
-            skill: null
-          confirmedBy:
-          - null
-          - null
+        - null
+        - null
         objectType: objectType
       properties:
         person:
@@ -4779,7 +4575,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/AbstractEntityFilter'
       - properties:
-          startedCertificaiton:
+          startedCertification:
             description: Include employees who started the certification
             type: boolean
         type: object
@@ -4865,22 +4661,44 @@ components:
       - properties:
           timeframe:
             $ref: '#/components/schemas/Timeframed'
-          projectDetails:
-            $ref: '#/components/schemas/ProjectDetails'
-          descriptionOverwrite:
-            example: Responsible Soluation Architect for this project.
-            type: string
           personalDescription:
             type: string
+        type: object
+    ProjectParticipationDetails:
+      allOf:
+      - properties:
+          participation:
+            $ref: '#/components/schemas/ProjectParticipation'
           experiences:
             items:
               $ref: '#/components/schemas/Experience'
             readOnly: true
             type: array
-        required:
-        - experiences
-        - id
-        - project
+          person:
+            $ref: '#/components/schemas/Person'
+          project:
+            $ref: '#/components/schemas/Project'
+        type: object
+    PersonProjectParticipationDetails:
+      allOf:
+      - properties:
+          projectDetails:
+            $ref: '#/components/schemas/ProjectDetails'
+          participationItems:
+            items:
+              $ref: '#/components/schemas/PersonProjectParticipationItem'
+            type: array
+        type: object
+    PersonProjectParticipationItem:
+      allOf:
+      - properties:
+          participation:
+            $ref: '#/components/schemas/ProjectParticipation'
+          experiences:
+            items:
+              $ref: '#/components/schemas/Experience'
+            readOnly: true
+            type: array
         type: object
     ProjectParticipationSearch:
       example:
@@ -4924,7 +4742,6 @@ components:
           startdate: 2000-01-23
           objectType: objectType
         personalDescription: personalDescription
-        descriptionOverwrite: descriptionOverwrite
       properties:
         timeframe:
           $ref: '#/components/schemas/Timeframed'
@@ -4932,10 +4749,27 @@ components:
           items:
             $ref: '#/components/schemas/SkillLevelUpdate'
           type: array
-        descriptionOverwrite:
-          type: string
         personalDescription:
           type: string
+      type: object
+    ProjectParticipationCreate:
+      allOf:
+      - $ref: '#/components/schemas/ProjectParticipationUpdate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          projectId:
+            format: uuid
+            type: string
+          personId:
+            format: uuid
+            type: string
+        required:
+        - id
+        - personId
+        - projectId
+        type: object
       type: object
     ProjectSearch:
       example:
@@ -5049,7 +4883,7 @@ components:
           invest:
             default: false
             type: boolean
-          kindgiver:
+          kindGiver:
             default: false
             type: boolean
           groupPriority:
@@ -5103,29 +4937,52 @@ components:
           type: string
         level:
           $ref: '#/components/schemas/Level'
+    SkillLink:
+      example:
+        skill: null
+        kindGiver: false
+      properties:
+        skill:
+          $ref: '#/components/schemas/Skill'
+        kindGiver:
+          default: false
+          type: boolean
+      type: object
+    SkillLinkUpdate:
+      example:
+        kindGiver: false
+      properties:
+        kindGiver:
+          default: false
+          type: boolean
+      type: object
     SkillDetails:
       example:
         children:
-        - null
-        - null
+        - skill: null
+          kindGiver: false
+        - skill: null
+          kindGiver: false
         displayName: displayName
         skill: null
         kinds:
         - null
         - null
         parents:
-        - null
-        - null
+        - skill: null
+          kindGiver: false
+        - skill: null
+          kindGiver: false
       properties:
         skill:
           $ref: '#/components/schemas/Skill'
         children:
           items:
-            $ref: '#/components/schemas/Skill'
+            $ref: '#/components/schemas/SkillLink'
           type: array
         parents:
           items:
-            $ref: '#/components/schemas/Skill'
+            $ref: '#/components/schemas/SkillLink'
           type: array
         kinds:
           items:
@@ -5253,13 +5110,13 @@ components:
               $ref: '#/components/schemas/ProjectScoreDetail'
             type: array
         type: object
-    PagedProjectParticipations:
+    PagedProjectParticipation:
       allOf:
       - $ref: '#/components/schemas/Page'
       - properties:
-          projectParticipations:
+          projectParticipation:
             items:
-              $ref: '#/components/schemas/ProjectParticipation'
+              $ref: '#/components/schemas/ProjectParticipationDetails'
             type: array
         type: object
     PagedPersons:

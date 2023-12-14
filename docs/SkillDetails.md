@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Skill** | Pointer to [**Skill**](Skill.md) |  | [optional] 
-**Children** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
-**Parents** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
+**Children** | Pointer to [**[]SkillLink**](SkillLink.md) |  | [optional] 
+**Parents** | Pointer to [**[]SkillLink**](SkillLink.md) |  | [optional] 
 **Kinds** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 **DisplayName** | Pointer to **string** | The display name of the skill, e.g. \&quot;Communication (Computing)\&quot; or \&quot;Communication (Design)\&quot; or \&quot;Protcool (Communication,IT)\&quot; | [optional] 
 
@@ -56,20 +56,20 @@ HasSkill returns a boolean if a field has been set.
 
 ### GetChildren
 
-`func (o *SkillDetails) GetChildren() []Skill`
+`func (o *SkillDetails) GetChildren() []SkillLink`
 
 GetChildren returns the Children field if non-nil, zero value otherwise.
 
 ### GetChildrenOk
 
-`func (o *SkillDetails) GetChildrenOk() (*[]Skill, bool)`
+`func (o *SkillDetails) GetChildrenOk() (*[]SkillLink, bool)`
 
 GetChildrenOk returns a tuple with the Children field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChildren
 
-`func (o *SkillDetails) SetChildren(v []Skill)`
+`func (o *SkillDetails) SetChildren(v []SkillLink)`
 
 SetChildren sets Children field to given value.
 
@@ -81,20 +81,20 @@ HasChildren returns a boolean if a field has been set.
 
 ### GetParents
 
-`func (o *SkillDetails) GetParents() []Skill`
+`func (o *SkillDetails) GetParents() []SkillLink`
 
 GetParents returns the Parents field if non-nil, zero value otherwise.
 
 ### GetParentsOk
 
-`func (o *SkillDetails) GetParentsOk() (*[]Skill, bool)`
+`func (o *SkillDetails) GetParentsOk() (*[]SkillLink, bool)`
 
 GetParentsOk returns a tuple with the Parents field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParents
 
-`func (o *SkillDetails) SetParents(v []Skill)`
+`func (o *SkillDetails) SetParents(v []SkillLink)`
 
 SetParents sets Parents field to given value.
 

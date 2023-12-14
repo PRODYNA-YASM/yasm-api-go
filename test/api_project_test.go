@@ -37,14 +37,11 @@ func Test_client_ProjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectAPIService AddPersonProject", func(t *testing.T) {
+	t.Run("Test ProjectAPIService AddProjectParticipation", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var personId string
-		var projectId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.AddPersonProject(context.Background(), personId, projectId).Execute()
+		resp, httpRes, err := apiClient.ProjectAPI.AddProjectParticipation(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,32 +49,15 @@ func Test_client_ProjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectAPIService AddPersonProjectSkill", func(t *testing.T) {
+	t.Run("Test ProjectAPIService AddSkillConfirmation", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var personId string
-		var projectId string
-		var skillId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.AddPersonProjectSkill(context.Background(), personId, projectId, skillId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectAPIService ConfirmSkill", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var personId string
-		var projectId string
+		var projectParticipationId string
 		var skillId string
 		var confirmingPersonId string
 
-		resp, httpRes, err := apiClient.ProjectAPI.ConfirmSkill(context.Background(), personId, projectId, skillId, confirmingPersonId).Execute()
+		resp, httpRes, err := apiClient.ProjectAPI.AddSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -99,54 +79,6 @@ func Test_client_ProjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectAPIService DeleteConfirmation", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var personId string
-		var projectId string
-		var skillId string
-		var confirmingPersonId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.DeleteConfirmation(context.Background(), personId, projectId, skillId, confirmingPersonId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectAPIService DeletePersonProject", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var personId string
-		var projectId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.DeletePersonProject(context.Background(), personId, projectId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectAPIService DeletePersonProjectSkill", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var personId string
-		var projectId string
-		var skillId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.DeletePersonProjectSkill(context.Background(), personId, projectId, skillId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProjectAPIService DeleteProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -154,6 +86,20 @@ func Test_client_ProjectAPIService(t *testing.T) {
 		var projectId string
 
 		resp, httpRes, err := apiClient.ProjectAPI.DeleteProject(context.Background(), projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectAPIService DeleteProjectParticipation", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectParticipationId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.DeleteProjectParticipation(context.Background(), projectParticipationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -189,14 +135,13 @@ func Test_client_ProjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectAPIService ReadPersonProject", func(t *testing.T) {
+	t.Run("Test ProjectAPIService ReadProjectParticipation", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var personId string
-		var projectId string
+		var projectParticipationId string
 
-		resp, httpRes, err := apiClient.ProjectAPI.ReadPersonProject(context.Background(), personId, projectId).Execute()
+		resp, httpRes, err := apiClient.ProjectAPI.ReadProjectParticipation(context.Background(), projectParticipationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -212,6 +157,22 @@ func Test_client_ProjectAPIService(t *testing.T) {
 		var organizationId string
 
 		resp, httpRes, err := apiClient.ProjectAPI.RemoveExecutiveOrganizationFromProject(context.Background(), projectId, organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectAPIService RemoveSkillConfirmation", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectParticipationId string
+		var skillId string
+		var confirmingPersonId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.RemoveSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -243,37 +204,6 @@ func Test_client_ProjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectAPIService UpdatePersonProject", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var personId string
-		var projectId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.UpdatePersonProject(context.Background(), personId, projectId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectAPIService UpdatePersonProjectSkill", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var personId string
-		var projectId string
-		var skillId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.UpdatePersonProjectSkill(context.Background(), personId, projectId, skillId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProjectAPIService UpdateProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -296,6 +226,20 @@ func Test_client_ProjectAPIService(t *testing.T) {
 		var projectId string
 
 		resp, httpRes, err := apiClient.ProjectAPI.UpdateProjectOrganization(context.Background(), organizationId, projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectAPIService UpdateProjectParticipation", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectParticipationId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.UpdateProjectParticipation(context.Background(), projectParticipationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
