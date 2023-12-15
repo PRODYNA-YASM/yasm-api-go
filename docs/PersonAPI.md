@@ -29,7 +29,7 @@ Method | HTTP request | Description
 [**GetAvailabilities**](PersonAPI.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonAPI.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**ReadPersonPicture**](PersonAPI.md#ReadPersonPicture) | **Get** /persons/{personId}/picture | Read person image
-[**ReadPersonProjectParticipation**](PersonAPI.md#ReadPersonProjectParticipation) | **Get** /persons/{personId}/project-participation | Get a Project Partifipation of a Person
+[**ReadPersonProjectParticipation**](PersonAPI.md#ReadPersonProjectParticipation) | **Get** /persons/{personId}/project-participation | Get a Project Participation of a Person
 [**ReadProjectParticipation**](PersonAPI.md#ReadProjectParticipation) | **Get** /project-participations/{projectParticipationId} | Get a project participation
 [**RemovePersonLanguage**](PersonAPI.md#RemovePersonLanguage) | **Delete** /persons/{personId}/languages/{languageId} | Remove a language from a person
 [**RemoveSkillConfirmation**](PersonAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
@@ -37,11 +37,11 @@ Method | HTTP request | Description
 [**UpdateAvailability**](PersonAPI.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
 [**UpdatePerson**](PersonAPI.md#UpdatePerson) | **Put** /persons/{personId} | Update an existing Person
 [**UpdatePersonCertification**](PersonAPI.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
+[**UpdatePersonLanguage**](PersonAPI.md#UpdatePersonLanguage) | **Put** /persons/{personId}/languages/{languageId} | Update a language of a person
 [**UpdatePersonPicture**](PersonAPI.md#UpdatePersonPicture) | **Put** /persons/{personId}/picture | Update person image
 [**UpdatePersonSkillExperience**](PersonAPI.md#UpdatePersonSkillExperience) | **Put** /persons/{personId}/experiences/skills/{skillId} | Edit an Skill experience to a Person
 [**UpdatePersonSkillExperiences**](PersonAPI.md#UpdatePersonSkillExperiences) | **Put** /persons/{personId}/experiences | Edit an Skill experience to a Person
 [**UpdateProjectParticipation**](PersonAPI.md#UpdateProjectParticipation) | **Put** /project-participations/{projectParticipationId} | Update a Project of a Person
-[**UupdatePersonLanguage**](PersonAPI.md#UupdatePersonLanguage) | **Put** /persons/{personId}/languages/{languageId} | Update a language of a person
 
 
 
@@ -1550,7 +1550,7 @@ import (
 
 func main() {
     skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1804,7 +1804,7 @@ Name | Type | Description  | Notes
 
 > []PersonProjectParticipationDetails ReadPersonProjectParticipation(ctx, personId).ProjectIds(projectIds).Execute()
 
-Get a Project Partifipation of a Person
+Get a Project Participation of a Person
 
 ### Example
 
@@ -1820,7 +1820,7 @@ import (
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    projectIds := []string{"Inner_example"} // []string |  (optional)
+    projectIds := []string{"Inner_example"} // []string | Filter by project ids, if not set, all projects are returned (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1850,7 +1850,7 @@ Other parameters are passed through a pointer to a apiReadPersonProjectParticipa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **projectIds** | **[]string** |  | 
+ **projectIds** | **[]string** | Filter by project ids, if not set, all projects are returned | 
 
 ### Return type
 
@@ -2104,7 +2104,7 @@ import (
 func main() {
     personSearch := *openapiclient.NewPersonSearch() // PersonSearch | 
     skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(56) // int32 |  (optional) (default to 20)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2349,6 +2349,79 @@ Name | Type | Description  | Notes
 
 
  **body** | **string** |  | 
+
+### Return type
+
+[**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePersonLanguage
+
+> PersonDetails UpdatePersonLanguage(ctx, personId, languageId).Level(level).Execute()
+
+Update a language of a person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.UpdatePersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonLanguage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | **string** |  | 
+**languageId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePersonLanguageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **level** | [**Level**](Level.md) |  | 
 
 ### Return type
 
@@ -2636,79 +2709,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ProjectParticipationDetails**](ProjectParticipationDetails.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UupdatePersonLanguage
-
-> PersonDetails UupdatePersonLanguage(ctx, personId, languageId).Level(level).Execute()
-
-Update a language of a person
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    level := *openapiclient.NewLevel() // Level | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.UupdatePersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UupdatePersonLanguage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UupdatePersonLanguage`: PersonDetails
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UupdatePersonLanguage`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | **string** |  | 
-**languageId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUupdatePersonLanguageRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **level** | [**Level**](Level.md) |  | 
-
-### Return type
-
-[**PersonDetails**](PersonDetails.md)
 
 ### Authorization
 

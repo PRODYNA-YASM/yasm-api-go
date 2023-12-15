@@ -19,7 +19,7 @@ Method | HTTP request | Description
 [**GetOrganization**](OrganizationAPI.md#GetOrganization) | **Get** /organizations/{organizationId} | Get details about an Organization
 [**GetOrganizationProjects**](OrganizationAPI.md#GetOrganizationProjects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
 [**GetOrganizations**](OrganizationAPI.md#GetOrganizations) | **Get** /organizations | Get a list of all Organizations
-[**MoveCertification**](OrganizationAPI.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificateId} | Move a Certification to an Organization
+[**MoveCertification**](OrganizationAPI.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificationId} | Move a Certification to an Organization
 [**RemoveExecutiveOrganizationFromProject**](OrganizationAPI.md#RemoveExecutiveOrganizationFromProject) | **Delete** /projects/{projectId}/executive-organizations/{organizationId} | Remove an Organization from a Project as executive organization
 [**RemoveOrganizationFromParentOrganization**](OrganizationAPI.md#RemoveOrganizationFromParentOrganization) | **Delete** /organizations/{organizationId}/parents/{parentOrganizationId} | Detaches an Organization from parent Organization, return the parent Organization
 [**UpdateOffice**](OrganizationAPI.md#UpdateOffice) | **Put** /organizations/{organizationId}/offices/{officeId} | Update an Office for an Organization
@@ -464,7 +464,7 @@ import (
 )
 
 func main() {
-    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     project := *openapiclient.NewProject(false, "Id_example", "Name_example") // Project | 
 
     configuration := openapiclient.NewConfiguration()
@@ -955,7 +955,7 @@ import (
 )
 
 func main() {
-    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     skip := int32(0) // int32 |  (optional) (default to 0)
     limit := int32(20) // int32 |  (optional) (default to 20)
 
@@ -1029,7 +1029,7 @@ import (
 func main() {
     skip := int32(0) // int32 |  (optional) (default to 0)
     limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally filter organizations by search term (optional) (default to "")
+    term := "term_example" // string | Optionally search via search term (optional) (default to "")
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1056,7 +1056,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
- **term** | **string** | Optionally filter organizations by search term | [default to &quot;&quot;]
+ **term** | **string** | Optionally search via search term | [default to &quot;&quot;]
 
 ### Return type
 
@@ -1078,7 +1078,7 @@ Name | Type | Description  | Notes
 
 ## MoveCertification
 
-> CertificationDetails MoveCertification(ctx, organizationId, certificateId).Execute()
+> CertificationDetails MoveCertification(ctx, certificationId, organizationId).Execute()
 
 Move a Certification to an Organization
 
@@ -1095,12 +1095,12 @@ import (
 )
 
 func main() {
-    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
-    certificateId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.MoveCertification(context.Background(), organizationId, certificateId).Execute()
+    resp, r, err := apiClient.OrganizationAPI.MoveCertification(context.Background(), certificationId, organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.MoveCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1116,8 +1116,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**certificationId** | **string** |  | 
 **organizationId** | **string** |  | 
-**certificateId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1451,8 +1451,8 @@ import (
 )
 
 func main() {
-    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
-    projectId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

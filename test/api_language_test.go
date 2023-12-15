@@ -134,14 +134,14 @@ func Test_client_LanguageAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test LanguageAPIService UupdatePersonLanguage", func(t *testing.T) {
+	t.Run("Test LanguageAPIService UpdatePersonLanguage", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var personId string
 		var languageId string
 
-		resp, httpRes, err := apiClient.LanguageAPI.UupdatePersonLanguage(context.Background(), personId, languageId).Execute()
+		resp, httpRes, err := apiClient.LanguageAPI.UpdatePersonLanguage(context.Background(), personId, languageId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

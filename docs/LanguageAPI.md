@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**GetLanguages**](LanguageAPI.md#GetLanguages) | **Get** /languages | Get a list of Languages
 [**RemoveLanguageFromCountry**](LanguageAPI.md#RemoveLanguageFromCountry) | **Delete** /countries/{countryId}/languages/{languageId} | Assign a language to a country
 [**RemovePersonLanguage**](LanguageAPI.md#RemovePersonLanguage) | **Delete** /persons/{personId}/languages/{languageId} | Remove a language from a person
-[**UupdatePersonLanguage**](LanguageAPI.md#UupdatePersonLanguage) | **Put** /persons/{personId}/languages/{languageId} | Update a language of a person
+[**UpdatePersonLanguage**](LanguageAPI.md#UpdatePersonLanguage) | **Put** /persons/{personId}/languages/{languageId} | Update a language of a person
 
 
 
@@ -568,9 +568,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UupdatePersonLanguage
+## UpdatePersonLanguage
 
-> PersonDetails UupdatePersonLanguage(ctx, personId, languageId).Level(level).Execute()
+> PersonDetails UpdatePersonLanguage(ctx, personId, languageId).Level(level).Execute()
 
 Update a language of a person
 
@@ -593,13 +593,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LanguageAPI.UupdatePersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
+    resp, r, err := apiClient.LanguageAPI.UpdatePersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.UupdatePersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.UpdatePersonLanguage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UupdatePersonLanguage`: PersonDetails
-    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.UupdatePersonLanguage`: %v\n", resp)
+    // response from `UpdatePersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.UpdatePersonLanguage`: %v\n", resp)
 }
 ```
 
@@ -614,7 +614,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUupdatePersonLanguageRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdatePersonLanguageRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

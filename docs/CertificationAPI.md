@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**GetCertification**](CertificationAPI.md#GetCertification) | **Get** /certifications/{certificationId} | Get details about a Certification
 [**GetCertifications**](CertificationAPI.md#GetCertifications) | **Get** /certifications | Get a list of all Certifications independent of the Organization
 [**GetCertificationsForOrganization**](CertificationAPI.md#GetCertificationsForOrganization) | **Get** /organizations/{organizationId}/certifications | Get a list of all certifications for a organization
-[**MoveCertification**](CertificationAPI.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificateId} | Move a Certification to an Organization
+[**MoveCertification**](CertificationAPI.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificationId} | Move a Certification to an Organization
 [**SearchCertifications**](CertificationAPI.md#SearchCertifications) | **Post** /certifications/search | Complex search over certification entities
 [**UpdateCertification**](CertificationAPI.md#UpdateCertification) | **Put** /certifications/{certificationId} | Update a Certification
 [**UpdatePersonCertification**](CertificationAPI.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
@@ -539,7 +539,7 @@ import (
 func main() {
     skip := int32(0) // int32 |  (optional) (default to 0)
     limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally search for Certifications via search term (optional) (default to "")
+    term := "term_example" // string | Optionally search via search term (optional) (default to "")
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -566,7 +566,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
- **term** | **string** | Optionally search for Certifications via search term | [default to &quot;&quot;]
+ **term** | **string** | Optionally search via search term | [default to &quot;&quot;]
 
 ### Return type
 
@@ -660,7 +660,7 @@ Name | Type | Description  | Notes
 
 ## MoveCertification
 
-> CertificationDetails MoveCertification(ctx, organizationId, certificateId).Execute()
+> CertificationDetails MoveCertification(ctx, certificationId, organizationId).Execute()
 
 Move a Certification to an Organization
 
@@ -677,12 +677,12 @@ import (
 )
 
 func main() {
-    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
-    certificateId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.MoveCertification(context.Background(), organizationId, certificateId).Execute()
+    resp, r, err := apiClient.CertificationAPI.MoveCertification(context.Background(), certificationId, organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.MoveCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -698,8 +698,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**certificationId** | **string** |  | 
 **organizationId** | **string** |  | 
-**certificateId** | **string** |  | 
 
 ### Other Parameters
 

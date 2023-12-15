@@ -1022,7 +1022,7 @@ Name | Type | Description  | Notes
 
 ## GetSkills
 
-> PagedSkills GetSkills(ctx).Types(types).Suggestions(suggestions).Linkable(linkable).Skip(skip).Limit(limit).Term(term).Execute()
+> PagedSkills GetSkills(ctx).Skip(skip).Limit(limit).Term(term).Types(types).Suggestions(suggestions).Linkable(linkable).Execute()
 
 Get a list of all skills, optionally only root
 
@@ -1039,16 +1039,16 @@ import (
 )
 
 func main() {
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
+    term := "term_example" // string | Optionally search via search term (optional) (default to "")
     types := "all" // string | Gives you either all skills, only the root kills (optional) (default to "all")
     suggestions := "all" // string | Optionally filter skills based on suggestion (optional) (default to "all")
     linkable := true // bool | Optionally filter skills based on linkable (optional)
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally filter skills based on a search term (optional) (default to "")
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SkillAPI.GetSkills(context.Background()).Types(types).Suggestions(suggestions).Linkable(linkable).Skip(skip).Limit(limit).Term(term).Execute()
+    resp, r, err := apiClient.SkillAPI.GetSkills(context.Background()).Skip(skip).Limit(limit).Term(term).Types(types).Suggestions(suggestions).Linkable(linkable).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.GetSkills``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1069,12 +1069,12 @@ Other parameters are passed through a pointer to a apiGetSkillsRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **skip** | **int32** |  | [default to 0]
+ **limit** | **int32** |  | [default to 20]
+ **term** | **string** | Optionally search via search term | [default to &quot;&quot;]
  **types** | **string** | Gives you either all skills, only the root kills | [default to &quot;all&quot;]
  **suggestions** | **string** | Optionally filter skills based on suggestion | [default to &quot;all&quot;]
  **linkable** | **bool** | Optionally filter skills based on linkable | 
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
- **term** | **string** | Optionally filter skills based on a search term | [default to &quot;&quot;]
 
 ### Return type
 

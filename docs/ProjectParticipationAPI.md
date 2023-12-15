@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost:8080/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadPersonProjectParticipation**](ProjectParticipationAPI.md#ReadPersonProjectParticipation) | **Get** /persons/{personId}/project-participation | Get a Project Partifipation of a Person
+[**ReadPersonProjectParticipation**](ProjectParticipationAPI.md#ReadPersonProjectParticipation) | **Get** /persons/{personId}/project-participation | Get a Project Participation of a Person
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > []PersonProjectParticipationDetails ReadPersonProjectParticipation(ctx, personId).ProjectIds(projectIds).Execute()
 
-Get a Project Partifipation of a Person
+Get a Project Participation of a Person
 
 ### Example
 
@@ -28,7 +28,7 @@ import (
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    projectIds := []string{"Inner_example"} // []string |  (optional)
+    projectIds := []string{"Inner_example"} // []string | Filter by project ids, if not set, all projects are returned (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -58,7 +58,7 @@ Other parameters are passed through a pointer to a apiReadPersonProjectParticipa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **projectIds** | **[]string** |  | 
+ **projectIds** | **[]string** | Filter by project ids, if not set, all projects are returned | 
 
 ### Return type
 

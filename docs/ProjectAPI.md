@@ -251,7 +251,7 @@ import (
 )
 
 func main() {
-    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     project := *openapiclient.NewProject(false, "Id_example", "Name_example") // Project | 
 
     configuration := openapiclient.NewConfiguration()
@@ -457,7 +457,7 @@ import (
 )
 
 func main() {
-    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     skip := int32(0) // int32 |  (optional) (default to 0)
     limit := int32(20) // int32 |  (optional) (default to 20)
 
@@ -1016,8 +1016,8 @@ import (
 )
 
 func main() {
-    organizationId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
-    projectId := "70ee6f30-d7c1-4f91-a653-9819ecbfa667" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

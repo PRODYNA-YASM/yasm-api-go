@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.9.0
+  version: 1.10.0
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -84,7 +84,7 @@ paths:
           example: 20
           type: integer
         style: form
-      - description: Optionally filter organizations by search term
+      - description: Optionally search via search term
         explode: true
         in: query
         name: term
@@ -131,8 +131,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      security:
-      - bearerAuth: []
       summary: Create an Organization
       tags:
       - Organization
@@ -161,8 +159,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      security:
-      - bearerAuth: []
       summary: Delete an organization
       tags:
       - Organization
@@ -224,8 +220,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      security:
-      - bearerAuth: []
       summary: Update an Organization
       tags:
       - Organization
@@ -621,7 +615,7 @@ paths:
           example: 20
           type: integer
         style: form
-      - description: Optionally search Industries via a search term
+      - description: Optionally search via search term
         explode: true
         in: query
         name: term
@@ -839,25 +833,23 @@ paths:
       tags:
       - Organization
       - Certification
-  /organizations/{organizationId}/certificates/{certificateId}:
+  /organizations/{organizationId}/certificates/{certificationId}:
     put:
       operationId: moveCertification
       parameters:
       - explode: false
         in: path
-        name: organizationId
+        name: certificationId
         required: true
         schema:
-          example: 70ee6f30-d7c1-4f91-a653-9819ecbfa667
           format: uuid
           type: string
         style: simple
       - explode: false
         in: path
-        name: certificateId
+        name: organizationId
         required: true
         schema:
-          example: 70ee6f30-d7c1-4f91-a653-9819ecbfa667
           format: uuid
           type: string
         style: simple
@@ -887,7 +879,6 @@ paths:
         name: organizationId
         required: true
         schema:
-          example: 70ee6f30-d7c1-4f91-a653-9819ecbfa667
           format: uuid
           type: string
         style: simple
@@ -934,7 +925,6 @@ paths:
         name: organizationId
         required: true
         schema:
-          example: 70ee6f30-d7c1-4f91-a653-9819ecbfa667
           format: uuid
           type: string
         style: simple
@@ -970,7 +960,6 @@ paths:
         name: organizationId
         required: true
         schema:
-          example: 70ee6f30-d7c1-4f91-a653-9819ecbfa667
           format: uuid
           type: string
         style: simple
@@ -979,7 +968,6 @@ paths:
         name: projectId
         required: true
         schema:
-          example: 70ee6f30-d7c1-4f91-a653-9819ecbfa667
           format: uuid
           type: string
         style: simple
@@ -1022,7 +1010,7 @@ paths:
           example: 20
           type: integer
         style: form
-      - description: Optionally search for Certifications via search term
+      - description: Optionally search via search term
         explode: true
         in: query
         name: term
@@ -1552,6 +1540,33 @@ paths:
     get:
       operationId: getSkills
       parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          default: 0
+          example: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          example: 20
+          type: integer
+        style: form
+      - description: Optionally search via search term
+        explode: true
+        in: query
+        name: term
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
       - description: "Gives you either all skills, only the root kills"
         explode: true
         in: query
@@ -1588,33 +1603,6 @@ paths:
         schema:
           example: true
           type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: skip
-        required: false
-        schema:
-          default: 0
-          example: 0
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 20
-          example: 20
-          type: integer
-        style: form
-      - description: Optionally filter skills based on a search term
-        explode: true
-        in: query
-        name: term
-        required: false
-        schema:
-          default: ""
-          type: string
         style: form
       responses:
         "200":
@@ -2086,13 +2074,13 @@ paths:
     get:
       operationId: getAllBusinessDepartments
       parameters:
-      - example: 0
-        explode: true
+      - explode: true
         in: query
         name: skip
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -2101,6 +2089,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       responses:
@@ -2125,13 +2114,13 @@ paths:
     post:
       operationId: searchPersons
       parameters:
-      - example: 0
-        explode: true
+      - explode: true
         in: query
         name: skip
         required: false
         schema:
           default: 0
+          example: 0
           type: integer
         style: form
       - explode: true
@@ -2140,6 +2129,7 @@ paths:
         required: false
         schema:
           default: 20
+          example: 20
           type: integer
         style: form
       requestBody:
@@ -2506,7 +2496,7 @@ paths:
       - Person
       - Language
     put:
-      operationId: uupdatePersonLanguage
+      operationId: updatePersonLanguage
       parameters:
       - explode: false
         in: path
@@ -2947,7 +2937,8 @@ paths:
           format: uuid
           type: string
         style: simple
-      - explode: true
+      - description: "Filter by project ids, if not set, all projects are returned"
+        explode: true
         in: query
         name: projectIds
         required: false
@@ -2972,7 +2963,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Get a Project Partifipation of a Person
+      summary: Get a Project Participation of a Person
       tags:
       - Person
       - ProjectParticipation
@@ -3342,8 +3333,7 @@ paths:
         schema:
           type: string
         style: simple
-      - example: 0
-        explode: true
+      - explode: true
         in: query
         name: skip
         required: false
@@ -3521,8 +3511,7 @@ paths:
     get:
       operationId: getCountries
       parameters:
-      - example: 0
-        explode: true
+      - explode: true
         in: query
         name: skip
         required: false
@@ -3739,8 +3728,7 @@ paths:
     get:
       operationId: getProfiles
       parameters:
-      - example: 0
-        explode: true
+      - explode: true
         in: query
         name: skip
         required: false
@@ -3881,6 +3869,145 @@ paths:
       tags:
       - Profile
 components:
+  parameters:
+    Skip:
+      explode: true
+      in: query
+      name: skip
+      required: false
+      schema:
+        default: 0
+        example: 0
+        type: integer
+      style: form
+    Limit:
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 20
+        example: 20
+        type: integer
+      style: form
+    Term:
+      description: Optionally search via search term
+      explode: true
+      in: query
+      name: term
+      required: false
+      schema:
+        default: ""
+        type: string
+      style: form
+    AvailabilityId:
+      explode: false
+      in: path
+      name: availabilityId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    CertificationId:
+      explode: false
+      in: path
+      name: certificationId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    LanguageId:
+      explode: false
+      in: path
+      name: languageId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    ProfileId:
+      explode: false
+      in: path
+      name: profileId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    CountryId:
+      explode: false
+      in: path
+      name: countryId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    OrganizationId:
+      explode: false
+      in: path
+      name: organizationId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    OfficeId:
+      explode: false
+      in: path
+      name: officeId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    IndustryId:
+      explode: false
+      in: path
+      name: industryId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    PersonId:
+      explode: false
+      in: path
+      name: personId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    ProjectId:
+      explode: false
+      in: path
+      name: projectId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    ProjectParticipationId:
+      explode: false
+      in: path
+      name: projectParticipationId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    SkillId:
+      explode: false
+      in: path
+      name: skillId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
   responses:
     ErrorResponse:
       content:

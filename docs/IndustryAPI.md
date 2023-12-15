@@ -309,7 +309,7 @@ import (
 func main() {
     skip := int32(0) // int32 |  (optional) (default to 0)
     limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally search Industries via a search term (optional) (default to "")
+    term := "term_example" // string | Optionally search via search term (optional) (default to "")
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **skip** | **int32** |  | [default to 0]
  **limit** | **int32** |  | [default to 20]
- **term** | **string** | Optionally search Industries via a search term | [default to &quot;&quot;]
+ **term** | **string** | Optionally search via search term | [default to &quot;&quot;]
 
 ### Return type
 

@@ -495,6 +495,21 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PersonAPIService UpdatePersonLanguage", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+		var languageId string
+
+		resp, httpRes, err := apiClient.PersonAPI.UpdatePersonLanguage(context.Background(), personId, languageId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PersonAPIService UpdatePersonPicture", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -545,21 +560,6 @@ func Test_client_PersonAPIService(t *testing.T) {
 		var projectParticipationId string
 
 		resp, httpRes, err := apiClient.PersonAPI.UpdateProjectParticipation(context.Background(), projectParticipationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PersonAPIService UupdatePersonLanguage", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var personId string
-		var languageId string
-
-		resp, httpRes, err := apiClient.PersonAPI.UupdatePersonLanguage(context.Background(), personId, languageId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
