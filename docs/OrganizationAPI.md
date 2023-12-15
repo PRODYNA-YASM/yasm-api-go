@@ -1078,7 +1078,7 @@ Name | Type | Description  | Notes
 
 ## MoveCertification
 
-> CertificationDetails MoveCertification(ctx, certificationId, organizationId).Execute()
+> CertificationDetails MoveCertification(ctx, organizationId, certificationId).Execute()
 
 Move a Certification to an Organization
 
@@ -1095,12 +1095,12 @@ import (
 )
 
 func main() {
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.MoveCertification(context.Background(), certificationId, organizationId).Execute()
+    resp, r, err := apiClient.OrganizationAPI.MoveCertification(context.Background(), organizationId, certificationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.MoveCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1116,8 +1116,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certificationId** | **string** |  | 
 **organizationId** | **string** |  | 
+**certificationId** | **string** |  | 
 
 ### Other Parameters
 

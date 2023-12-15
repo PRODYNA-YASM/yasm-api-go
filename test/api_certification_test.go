@@ -154,10 +154,10 @@ func Test_client_CertificationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var certificationId string
 		var organizationId string
+		var certificationId string
 
-		resp, httpRes, err := apiClient.CertificationAPI.MoveCertification(context.Background(), certificationId, organizationId).Execute()
+		resp, httpRes, err := apiClient.CertificationAPI.MoveCertification(context.Background(), organizationId, certificationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.10.1
+  version: 1.11.0
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -839,7 +839,7 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: certificationId
+        name: organizationId
         required: true
         schema:
           format: uuid
@@ -847,7 +847,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: organizationId
+        name: certificationId
         required: true
         schema:
           format: uuid
