@@ -254,6 +254,20 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PersonAPIService DeletePersonPicture", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+
+		resp, httpRes, err := apiClient.PersonAPI.DeletePersonPicture(context.Background(), personId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PersonAPIService DeletePersonProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
