@@ -1454,7 +1454,7 @@ Name | Type | Description  | Notes
 
 ## GeneratePersonProfile
 
-> *os.File GeneratePersonProfile(ctx, personId).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).ProfileIds(profileIds).Template(template).Execute()
+> *os.File GeneratePersonProfile(ctx, personId).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).ProfileIds(profileIds).Seniority(seniority).Template(template).Execute()
 
 Generate a PDF profile from a Person
 
@@ -1476,11 +1476,12 @@ func main() {
     skillIds := []string{"Inner_example"} // []string |  (optional)
     certificationIds := []string{"Inner_example"} // []string |  (optional)
     profileIds := []string{"Inner_example"} // []string |  (optional)
+    seniority := openapiclient.Seniority("UNKNOWN") // Seniority |  (optional)
     template := "template_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.GeneratePersonProfile(context.Background(), personId).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).ProfileIds(profileIds).Template(template).Execute()
+    resp, r, err := apiClient.PersonAPI.GeneratePersonProfile(context.Background(), personId).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).ProfileIds(profileIds).Seniority(seniority).Template(template).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GeneratePersonProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1510,6 +1511,7 @@ Name | Type | Description  | Notes
  **skillIds** | **[]string** |  | 
  **certificationIds** | **[]string** |  | 
  **profileIds** | **[]string** |  | 
+ **seniority** | [**Seniority**](Seniority.md) |  | 
  **template** | **string** |  | 
 
 ### Return type
