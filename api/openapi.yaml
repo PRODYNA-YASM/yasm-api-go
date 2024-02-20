@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.12.1
+  version: 1.13.0
 servers:
 - url: http://localhost:8080/api/v1
 - url: https://dev-yasm.prodyna.com/api/v1
@@ -3356,6 +3356,70 @@ paths:
       tags:
       - Person
       - Availability
+  /persons/{personId}/manager:
+    delete:
+      operationId: removeManager
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Remove a manager from a person
+      tags:
+      - Person
+  /persons/{personId}/manager/{managerId}:
+    put:
+      operationId: setManager
+      parameters:
+      - explode: false
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: managerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Set a manager for a person
+      tags:
+      - Person
   /search/all/{text}:
     get:
       operationId: searchAll
@@ -4487,6 +4551,7 @@ components:
         - level:
             level: 1
           language: null
+        manager: null
         person: null
         availabilities:
         - availability: null
@@ -4572,6 +4637,8 @@ components:
           items:
             $ref: '#/components/schemas/Profile'
           type: array
+        manager:
+          $ref: '#/components/schemas/Person'
         objectType:
           type: string
       type: object

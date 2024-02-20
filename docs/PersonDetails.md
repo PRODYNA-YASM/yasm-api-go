@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
 **SkillGroups** | Pointer to [**[]ExperienceSkillGroup**](ExperienceSkillGroup.md) |  | [optional] 
 **Profiles** | Pointer to [**[]Profile**](Profile.md) |  | [optional] 
+**Manager** | Pointer to [**Person**](Person.md) |  | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -284,6 +285,31 @@ SetProfiles sets Profiles field to given value.
 `func (o *PersonDetails) HasProfiles() bool`
 
 HasProfiles returns a boolean if a field has been set.
+
+### GetManager
+
+`func (o *PersonDetails) GetManager() Person`
+
+GetManager returns the Manager field if non-nil, zero value otherwise.
+
+### GetManagerOk
+
+`func (o *PersonDetails) GetManagerOk() (*Person, bool)`
+
+GetManagerOk returns a tuple with the Manager field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManager
+
+`func (o *PersonDetails) SetManager(v Person)`
+
+SetManager sets Manager field to given value.
+
+### HasManager
+
+`func (o *PersonDetails) HasManager() bool`
+
+HasManager returns a boolean if a field has been set.
 
 ### GetObjectType
 

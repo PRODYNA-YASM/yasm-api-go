@@ -422,6 +422,20 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PersonAPIService RemoveManager", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+
+		resp, httpRes, err := apiClient.PersonAPI.RemoveManager(context.Background(), personId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PersonAPIService RemovePersonLanguage", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -458,6 +472,21 @@ func Test_client_PersonAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.PersonAPI.SearchPersons(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PersonAPIService SetManager", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+		var managerId string
+
+		resp, httpRes, err := apiClient.PersonAPI.SetManager(context.Background(), personId, managerId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
