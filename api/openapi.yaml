@@ -3,12 +3,9 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.13.0
+  version: 1.14.0
 servers:
-- url: http://localhost:8080/api/v1
-- url: https://dev-yasm.prodyna.com/api/v1
-- url: https://staging-yasm.prodyna.com/api/v1
-- url: https://yasm.prodyna.com/api/v1
+- url: /
 security:
 - bearerAuth:
   - user
@@ -66,33 +63,27 @@ paths:
     get:
       operationId: getOrganizations
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       - description: Optionally search via search term
-        explode: true
         in: query
         name: term
         required: false
         schema:
           default: ""
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -138,14 +129,12 @@ paths:
     delete:
       operationId: deleteOrganization
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -165,14 +154,12 @@ paths:
     get:
       operationId: getOrganization
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -192,14 +179,12 @@ paths:
     put:
       operationId: updateOrganization
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -227,22 +212,18 @@ paths:
     delete:
       operationId: removeOrganizationFromParentOrganization
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: parentOrganizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -263,22 +244,18 @@ paths:
     post:
       operationId: addOrganizationToParentOrganization
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: parentOrganizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -300,22 +277,18 @@ paths:
     delete:
       operationId: detachOrganizationFromIndustry
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: industryId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -336,22 +309,18 @@ paths:
     post:
       operationId: attachOrganizationToIndustry
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: industryId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -373,14 +342,12 @@ paths:
     post:
       operationId: createOffice
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -408,22 +375,18 @@ paths:
     delete:
       operationId: deleteOffice
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: officeId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -444,22 +407,18 @@ paths:
     get:
       operationId: getOffice
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: officeId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -480,22 +439,18 @@ paths:
     put:
       operationId: updateOffice
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: officeId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -523,32 +478,26 @@ paths:
     get:
       operationId: getOffices
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: organizationId
         required: false
         schema:
           format: uuid
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -569,14 +518,12 @@ paths:
     get:
       operationId: getOfficeDetails
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: officeId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -597,33 +544,27 @@ paths:
     get:
       operationId: getIndustries
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       - description: Optionally search via search term
-        explode: true
         in: query
         name: term
         required: false
         schema:
           default: ""
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -668,14 +609,12 @@ paths:
     delete:
       operationId: deleteIndustry
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: industryId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -695,14 +634,12 @@ paths:
     get:
       operationId: getIndustry
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: industryId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -722,14 +659,12 @@ paths:
     put:
       operationId: updateIndustry
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: industryId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -756,32 +691,26 @@ paths:
     get:
       operationId: getCertificationsForOrganization
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -802,14 +731,12 @@ paths:
     post:
       operationId: createCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -837,22 +764,18 @@ paths:
     put:
       operationId: moveCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: certificationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -874,32 +797,26 @@ paths:
     get:
       operationId: getOrganizationProjects
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -920,14 +837,12 @@ paths:
     post:
       operationId: createProject
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -955,22 +870,18 @@ paths:
     put:
       operationId: updateProjectOrganization
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: projectId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -992,33 +903,27 @@ paths:
     get:
       operationId: getCertifications
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       - description: Optionally search via search term
-        explode: true
         in: query
         name: term
         required: false
         schema:
           default: ""
           type: string
-        style: form
       responses:
         "200":
           content:
@@ -1039,14 +944,12 @@ paths:
     delete:
       operationId: deleteCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: certificationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1066,14 +969,12 @@ paths:
     get:
       operationId: getCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: certificationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1093,14 +994,12 @@ paths:
     put:
       operationId: updateCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: certificationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1127,22 +1026,18 @@ paths:
     delete:
       operationId: deleteSkillFromCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: certificationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1163,22 +1058,18 @@ paths:
       description: Add Skill to Certification
       operationId: addSkillToCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: certificationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1205,22 +1096,18 @@ paths:
       description: Update Skill in Certification
       operationId: updateSkillInCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: certificationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1247,24 +1134,20 @@ paths:
     post:
       operationId: searchCertifications
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       requestBody:
         content:
           application/json:
@@ -1291,24 +1174,20 @@ paths:
     post:
       operationId: searchProjects
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       requestBody:
         content:
           application/json:
@@ -1335,14 +1214,12 @@ paths:
     delete:
       operationId: deleteProject
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: projectId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1362,14 +1239,12 @@ paths:
     get:
       operationId: getProject
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: projectId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1389,14 +1264,12 @@ paths:
     put:
       operationId: updateProject
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: projectId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1423,22 +1296,18 @@ paths:
     delete:
       operationId: removeExecutiveOrganizationFromProject
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: projectId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1459,22 +1328,18 @@ paths:
     post:
       operationId: addExecutiveOrganizationToProject
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: projectId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: organizationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1496,24 +1361,20 @@ paths:
     post:
       operationId: searchProjectParticipations
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       requestBody:
         content:
           application/json:
@@ -1540,35 +1401,28 @@ paths:
     get:
       operationId: getSkills
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       - description: Optionally search via search term
-        explode: true
         in: query
         name: term
         required: false
         schema:
           default: ""
           type: string
-        style: form
       - description: "Gives you either all skills, only the root kills"
-        explode: true
         in: query
         name: types
         required: false
@@ -1580,9 +1434,7 @@ paths:
           - group
           example: all
           type: string
-        style: form
       - description: Optionally filter skills based on suggestion
-        explode: true
         in: query
         name: suggestions
         required: false
@@ -1594,16 +1446,13 @@ paths:
           - notsuggested
           example: all
           type: string
-        style: form
       - description: Optionally filter skills based on linkable
-        explode: true
         in: query
         name: linkable
         required: false
         schema:
           example: true
           type: boolean
-        style: form
       responses:
         "200":
           content:
@@ -1648,14 +1497,12 @@ paths:
     delete:
       operationId: deleteSkill
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1675,14 +1522,12 @@ paths:
     get:
       operationId: getSkill
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1702,14 +1547,12 @@ paths:
     put:
       operationId: updateSkill
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -1732,72 +1575,30 @@ paths:
       summary: Update a Skill
       tags:
       - Skill
-  /skills/{skillId}/merge/{otherSkillId}:
-    put:
-      operationId: mergeSkills
-      parameters:
-      - explode: false
-        in: path
-        name: skillId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: otherSkillId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SkillDetails'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Merge two skills
-      tags:
-      - Skill
   /skills/{skillId}/parents:
     get:
       operationId: getSkillParents
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -1818,22 +1619,18 @@ paths:
     delete:
       operationId: removeSkillFromParentSkill
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: parentSkillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1853,27 +1650,24 @@ paths:
     post:
       operationId: addSkillToParentSkill
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: parentSkillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/SkillLinkUpdate'
+        required: true
       responses:
         "200":
           content:
@@ -1919,14 +1713,12 @@ paths:
     delete:
       operationId: deletePerson
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1946,14 +1738,12 @@ paths:
     get:
       operationId: getPerson
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -1973,14 +1763,12 @@ paths:
     put:
       operationId: updatePerson
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2007,14 +1795,12 @@ paths:
     delete:
       operationId: deletePersonPicture
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "204":
           content:
@@ -2034,21 +1820,18 @@ paths:
     get:
       operationId: readPersonPicture
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
             image/jpeg:
               schema:
-                example: !!binary |-
-                  SlZCRVJpMHhMalFLSmNmcy4uLg==
+                example: JVBERi0xLjQKJcfs...
                 format: binary
                 type: string
           description: High resolution picture of a person
@@ -2064,20 +1847,17 @@ paths:
     put:
       operationId: updatePersonPicture
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/octet-stream:
             schema:
-              example: !!binary |-
-                SlZCRVJpMHhMalFLSmNmcy4uLg==
+              example: JVBERi0xLjQKJcfs...
               format: binary
               type: string
         required: true
@@ -2101,24 +1881,20 @@ paths:
     get:
       operationId: getAllBusinessDepartments
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -2141,24 +1917,20 @@ paths:
     post:
       operationId: searchPersons
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       requestBody:
         content:
           application/json:
@@ -2185,16 +1957,13 @@ paths:
     get:
       operationId: generatePersonProfile
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: true
-        in: query
+      - in: query
         name: projectIds
         required: false
         schema:
@@ -2202,9 +1971,7 @@ paths:
             format: uuid
             type: string
           type: array
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: skillIds
         required: false
         schema:
@@ -2212,9 +1979,7 @@ paths:
             format: uuid
             type: string
           type: array
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: certificationIds
         required: false
         schema:
@@ -2222,9 +1987,7 @@ paths:
             format: uuid
             type: string
           type: array
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: profileIds
         required: false
         schema:
@@ -2232,28 +1995,22 @@ paths:
             format: uuid
             type: string
           type: array
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: seniority
         required: false
         schema:
           $ref: '#/components/schemas/Seniority'
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: template
         required: false
         schema:
           type: string
-        style: form
       responses:
         "200":
           content:
             application/octet-stream:
               schema:
-                example: !!binary |-
-                  SlZCRVJpMHhMalFLSmNmcy4uLg==
+                example: JVBERi0xLjQKJcfs...
                 format: binary
                 type: string
           description: A PDF profile of a Person
@@ -2270,22 +2027,18 @@ paths:
     delete:
       operationId: deletePersonInterest
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2306,22 +2059,18 @@ paths:
     post:
       operationId: addPersonInterest
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2343,14 +2092,12 @@ paths:
     delete:
       operationId: deletePersonSkillExperiences
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2381,14 +2128,12 @@ paths:
     post:
       operationId: addPersonSkillExperiences
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2417,14 +2162,12 @@ paths:
     put:
       operationId: updatePersonSkillExperiences
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2454,22 +2197,18 @@ paths:
     delete:
       operationId: removePersonLanguage
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: languageId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2490,22 +2229,18 @@ paths:
     post:
       operationId: addPersonLanguage
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: languageId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2532,22 +2267,18 @@ paths:
     put:
       operationId: updatePersonLanguage
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: languageId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2575,22 +2306,18 @@ paths:
     delete:
       operationId: deletePersonSkillExperience
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2611,22 +2338,18 @@ paths:
     post:
       operationId: addPersonSkillExperience
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2653,22 +2376,18 @@ paths:
     put:
       operationId: updatePersonSkillExperience
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2696,22 +2415,18 @@ paths:
     delete:
       operationId: deletePersonCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: certificationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2732,22 +2447,18 @@ paths:
     post:
       operationId: addPersonCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: certificationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2774,22 +2485,18 @@ paths:
     put:
       operationId: updatePersonCertification
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: certificationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -2817,22 +2524,18 @@ paths:
     delete:
       operationId: deletePersonProfile
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: profileId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2853,22 +2556,18 @@ paths:
     post:
       operationId: addPersonProfile
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: profileId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2890,22 +2589,18 @@ paths:
     delete:
       operationId: deletePersonOffice
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: officeId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2926,22 +2621,18 @@ paths:
     post:
       operationId: addPersonOffice
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: officeId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -2963,16 +2654,13 @@ paths:
     get:
       operationId: readPersonProjectParticipation
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       - description: "Filter by project ids, if not set, all projects are returned"
-        explode: true
         in: query
         name: projectIds
         required: false
@@ -2981,7 +2669,6 @@ paths:
             format: uuid
             type: string
           type: array
-        style: form
       responses:
         "200":
           content:
@@ -3032,14 +2719,12 @@ paths:
     delete:
       operationId: deleteProjectParticipation
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: projectParticipationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3060,14 +2745,12 @@ paths:
     get:
       operationId: readProjectParticipation
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: projectParticipationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3088,14 +2771,12 @@ paths:
     put:
       operationId: updateProjectParticipation
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: projectParticipationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3124,30 +2805,24 @@ paths:
     delete:
       operationId: removeSkillConfirmation
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: projectParticipationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: confirmingPersonId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3169,30 +2844,24 @@ paths:
     post:
       operationId: addSkillConfirmation
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: projectParticipationId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: skillId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: confirmingPersonId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3215,14 +2884,12 @@ paths:
     get:
       operationId: getAvailabilities
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3243,14 +2910,12 @@ paths:
     post:
       operationId: createAvailability
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3275,27 +2940,22 @@ paths:
       tags:
       - Person
       - Availability
-  /persons/{personId}/availabilities/calculated: {}
   /persons/{personId}/availabilities/{availabilityId}:
     delete:
       operationId: deleteAvailability
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: availabilityId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3316,22 +2976,18 @@ paths:
     put:
       operationId: updateAvailability
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: availabilityId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3360,14 +3016,12 @@ paths:
     delete:
       operationId: removeManager
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3388,22 +3042,18 @@ paths:
     put:
       operationId: setManager
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: personId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: managerId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3424,31 +3074,25 @@ paths:
     get:
       operationId: searchAll
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: text
         required: true
         schema:
           type: string
-        style: simple
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -3469,13 +3113,11 @@ paths:
     get:
       operationId: getTemplates
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: text
         required: true
         schema:
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3492,24 +3134,20 @@ paths:
     get:
       operationId: getLanguages
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -3554,14 +3192,12 @@ paths:
     delete:
       operationId: deleteLanguage
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: languageId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3581,14 +3217,12 @@ paths:
     get:
       operationId: getLanguage
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: languageId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3609,24 +3243,20 @@ paths:
     get:
       operationId: getCountries
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -3665,14 +3295,12 @@ paths:
     delete:
       operationId: deleteCountry
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: countryId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3692,14 +3320,12 @@ paths:
     get:
       operationId: getCountry
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: countryId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3719,14 +3345,12 @@ paths:
     put:
       operationId: updateCountry
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: countryId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3753,22 +3377,18 @@ paths:
     delete:
       operationId: removeLanguageFromCountry
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: countryId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: languageId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3789,22 +3409,18 @@ paths:
     post:
       operationId: addLanguageToCountry
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: countryId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
-      - explode: false
-        in: path
+      - in: path
         name: languageId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3826,24 +3442,20 @@ paths:
     get:
       operationId: getProfiles
       parameters:
-      - explode: true
-        in: query
+      - in: query
         name: skip
         required: false
         schema:
           default: 0
           example: 0
           type: integer
-        style: form
-      - explode: true
-        in: query
+      - in: query
         name: limit
         required: false
         schema:
           default: 20
           example: 20
           type: integer
-        style: form
       responses:
         "200":
           content:
@@ -3882,14 +3494,12 @@ paths:
     delete:
       operationId: deleteProfile
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: profileId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3909,14 +3519,12 @@ paths:
     get:
       operationId: getProfile
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: profileId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3936,14 +3544,12 @@ paths:
     put:
       operationId: updateProfile
       parameters:
-      - explode: false
-        in: path
+      - in: path
         name: profileId
         required: true
         schema:
           format: uuid
           type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -3969,7 +3575,6 @@ paths:
 components:
   parameters:
     Skip:
-      explode: true
       in: query
       name: skip
       required: false
@@ -3977,9 +3582,7 @@ components:
         default: 0
         example: 0
         type: integer
-      style: form
     Limit:
-      explode: true
       in: query
       name: limit
       required: false
@@ -3987,125 +3590,98 @@ components:
         default: 20
         example: 20
         type: integer
-      style: form
     Term:
       description: Optionally search via search term
-      explode: true
       in: query
       name: term
       required: false
       schema:
         default: ""
         type: string
-      style: form
-    AvailabilityId:
-      explode: false
-      in: path
-      name: availabilityId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
-    CertificationId:
-      explode: false
-      in: path
-      name: certificationId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
-    LanguageId:
-      explode: false
-      in: path
-      name: languageId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
-    ProfileId:
-      explode: false
-      in: path
-      name: profileId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
-    CountryId:
-      explode: false
-      in: path
-      name: countryId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
     OrganizationId:
-      explode: false
       in: path
       name: organizationId
       required: true
       schema:
         format: uuid
         type: string
-      style: simple
-    OfficeId:
-      explode: false
-      in: path
-      name: officeId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
     IndustryId:
-      explode: false
       in: path
       name: industryId
       required: true
       schema:
         format: uuid
         type: string
-      style: simple
-    PersonId:
-      explode: false
+    OfficeId:
       in: path
-      name: personId
+      name: officeId
       required: true
       schema:
         format: uuid
         type: string
-      style: simple
+    CertificationId:
+      in: path
+      name: certificationId
+      required: true
+      schema:
+        format: uuid
+        type: string
     ProjectId:
-      explode: false
       in: path
       name: projectId
       required: true
       schema:
         format: uuid
         type: string
-      style: simple
-    ProjectParticipationId:
-      explode: false
-      in: path
-      name: projectParticipationId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
     SkillId:
-      explode: false
       in: path
       name: skillId
       required: true
       schema:
         format: uuid
         type: string
-      style: simple
+    PersonId:
+      in: path
+      name: personId
+      required: true
+      schema:
+        format: uuid
+        type: string
+    LanguageId:
+      in: path
+      name: languageId
+      required: true
+      schema:
+        format: uuid
+        type: string
+    ProfileId:
+      in: path
+      name: profileId
+      required: true
+      schema:
+        format: uuid
+        type: string
+    ProjectParticipationId:
+      in: path
+      name: projectParticipationId
+      required: true
+      schema:
+        format: uuid
+        type: string
+    AvailabilityId:
+      in: path
+      name: availabilityId
+      required: true
+      schema:
+        format: uuid
+        type: string
+    CountryId:
+      in: path
+      name: countryId
+      required: true
+      schema:
+        format: uuid
+        type: string
   responses:
     ErrorResponse:
       content:
@@ -4128,295 +3704,24 @@ components:
       required:
       - apiVersion
       - serverVersion
+      title: Version
       type: object
-    DateModel:
-      format: date
-      type: string
-    BasicDomainModel:
-      discriminator:
-        propertyName: objectType
+    Error:
       properties:
-        id:
-          format: uuid
+        message:
           type: string
-        objectType:
-          format: string
-      required:
-      - id
+      title: Error
       type: object
-    Nameable:
-      properties:
-        name:
-          type: string
-      required:
-      - name
-      type: object
-    NamedDomainModel:
+    PagedOrganizations:
       allOf:
-      - $ref: '#/components/schemas/BasicDomainModel'
-      - $ref: '#/components/schemas/Nameable'
-    Descriptable:
-      properties:
-        description:
-          example: This is a description
-          type: string
-      type: object
-    Locateable:
-      properties:
-        location:
-          example: "Frankfurt, Germany"
-          type: string
-        geolocation:
-          $ref: '#/components/schemas/Geolocation'
-      type: object
-    Suggestable:
-      properties:
-        suggestion:
-          default: false
-          type: boolean
-      required:
-      - suggestion
-      type: object
-    Linkable:
-      properties:
-        linkable:
-          default: false
-          description: The entity can be linked
-          type: boolean
-      required:
-      - hidden
-      type: object
-    Timeframed:
-      discriminator:
-        propertyName: objectType
-      example:
-        enddate: 2000-01-23
-        startdate: 2000-01-23
-        objectType: objectType
-      properties:
-        startdate:
-          format: date
-          type: string
-        enddate:
-          format: date
-          type: string
-        objectType:
-          type: string
-      type: object
-    Synonymable:
-      properties:
-        synonyms:
-          items:
-            type: string
-          type: array
-      type: object
-    ScoreResult:
-      properties:
-        score:
-          example: 0.5
-          type: number
-        directHit:
-          example: true
-          type: boolean
-      type: object
-    Availability:
-      allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Timeframed'
+      - $ref: '#/components/schemas/Page'
       - properties:
-          workHours:
-            example: 38.5
-            format: float
-            type: number
-          plannedHours:
-            example: 22.5
-            format: float
-            type: number
-          descriptions:
+          organizations:
             items:
-              type: string
-            type: array
-        required:
-        - plannedHours
-        - workHours
-        type: object
-    AvailabilityDetail:
-      example:
-        availability: null
-        percent: 8.008281904610115
-      properties:
-        availability:
-          $ref: '#/components/schemas/Availability'
-        percent:
-          maximum: 100
-          minimum: 0
-          type: number
-      type: object
-    Certification:
-      allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Suggestable'
-      - $ref: '#/components/schemas/Synonymable'
-      - $ref: '#/components/schemas/Descriptable'
-      - properties:
-          validity:
-            type: string
-        type: object
-    CertificationDetails:
-      example:
-        skillLevels:
-        - level:
-            level: 1
-          skill: null
-        - level:
-            level: 1
-          skill: null
-        organization: null
-        certification: null
-      properties:
-        certification:
-          $ref: '#/components/schemas/Certification'
-        organization:
-          $ref: '#/components/schemas/Organization'
-        skillLevels:
-          items:
-            $ref: '#/components/schemas/SkillLevel'
-          type: array
-      type: object
-    CertificationSearch:
-      example:
-        certificationIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        skillIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        organizationIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        certificationIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-        skillIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-        organizationIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-      type: object
-    Country:
-      allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
-      - properties:
-          picture:
-            description: base64 encoded image
-            type: string
-        type: object
-    CountryDetails:
-      example:
-        country: null
-        languages:
-        - null
-        - null
-      properties:
-        country:
-          $ref: '#/components/schemas/Country'
-        languages:
-          items:
-            $ref: '#/components/schemas/Language'
-          type: array
-      type: object
-    Experience:
-      allOf:
-      - properties:
-          skillLevel:
-            $ref: '#/components/schemas/SkillLevel'
-          confirmedBy:
-            items:
-              $ref: '#/components/schemas/Person'
+              $ref: '#/components/schemas/OrganizationDetails'
             type: array
         type: object
-    Geolocation:
-      properties:
-        longitude:
-          format: float
-          type: number
-        latitude:
-          format: float
-          type: number
-      required:
-      - latitude
-      - longitude
-      type: object
-    Industry:
-      allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Suggestable'
-      - $ref: '#/components/schemas/Synonymable'
-    IndustryDetails:
-      example:
-        organizations:
-        - null
-        - null
-        industry: null
-      properties:
-        industry:
-          $ref: '#/components/schemas/Industry'
-        organizations:
-          items:
-            $ref: '#/components/schemas/Organization'
-          type: array
-      type: object
-    Language:
-      allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
-      - properties:
-          code:
-            description: Two letter ISO code
-            example: de
-            type: string
-          nativeName:
-            description: The native description of a language
-            example: العربية
-            type: string
-        type: object
-    LanguageDetails:
-      example:
-        language: null
-        countries:
-        - null
-        - null
-      properties:
-        language:
-          $ref: '#/components/schemas/Language'
-        countries:
-          items:
-            $ref: '#/components/schemas/Country'
-          type: array
-      type: object
-    LanguageLevel:
-      example:
-        level:
-          level: 1
-        language: null
-      properties:
-        language:
-          $ref: '#/components/schemas/Language'
-        level:
-          $ref: '#/components/schemas/Level'
-      type: object
-    Office:
-      allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Synonymable'
-      - $ref: '#/components/schemas/Locateable'
+      title: PagedOrganizations
     Organization:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -4435,6 +3740,7 @@ components:
             description: base64 encoded image
             type: string
         type: object
+      title: Organization
     OrganizationDetails:
       example:
         projects:
@@ -4484,6 +3790,430 @@ components:
           items:
             $ref: '#/components/schemas/Office'
           type: array
+      title: OrganizationDetails
+      type: object
+    Status:
+      example:
+        status: status
+      properties:
+        status:
+          type: string
+      title: Status
+      type: object
+    Office:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Synonymable'
+      - $ref: '#/components/schemas/Locateable'
+      title: Office
+    PagedOffices:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          offices:
+            items:
+              $ref: '#/components/schemas/Office'
+            type: array
+        type: object
+      title: PagedOffices
+    PagedIndustries:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          industries:
+            items:
+              $ref: '#/components/schemas/IndustryDetails'
+            type: array
+        type: object
+      title: PagedIndustries
+    Industry:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Synonymable'
+      title: Industry
+    IndustryDetails:
+      example:
+        organizations:
+        - null
+        - null
+        industry: null
+      properties:
+        industry:
+          $ref: '#/components/schemas/Industry'
+        organizations:
+          items:
+            $ref: '#/components/schemas/Organization'
+          type: array
+      title: IndustryDetails
+      type: object
+    PagedCertifications:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          certifications:
+            items:
+              $ref: '#/components/schemas/CertificationDetails'
+            type: array
+        type: object
+      title: PagedCertifications
+    Certification:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Synonymable'
+      - $ref: '#/components/schemas/Descriptable'
+      - properties:
+          validity:
+            type: string
+        type: object
+      title: Certification
+    CertificationDetails:
+      example:
+        skillLevels:
+        - level:
+            level: 1
+          skill: null
+        - level:
+            level: 1
+          skill: null
+        organization: null
+        certification: null
+      properties:
+        certification:
+          $ref: '#/components/schemas/Certification'
+        organization:
+          $ref: '#/components/schemas/Organization'
+        skillLevels:
+          items:
+            $ref: '#/components/schemas/SkillLevel'
+          type: array
+      title: CertificationDetails
+      type: object
+    PagedProjects:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          projects:
+            items:
+              $ref: '#/components/schemas/ProjectScoreDetail'
+            type: array
+        type: object
+      title: PagedProjects
+    Project:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Synonymable'
+      - $ref: '#/components/schemas/Locateable'
+      - $ref: '#/components/schemas/Descriptable'
+      - properties:
+          external:
+            default: false
+            description: true if project was done outside of the organization
+            type: boolean
+          projectType:
+            $ref: '#/components/schemas/ProjectType'
+          confidentiality:
+            $ref: '#/components/schemas/Confidentiality'
+        type: object
+      title: Project
+    ProjectDetails:
+      discriminator:
+        propertyName: objectType
+      example:
+        persons:
+        - null
+        - null
+        timeframe:
+          enddate: 2000-01-23
+          startdate: 2000-01-23
+          objectType: objectType
+        organization: null
+        industries:
+        - null
+        - null
+        skillGroups:
+        - skills:
+          - null
+          - null
+          group: null
+        - skills:
+          - null
+          - null
+          group: null
+        project: null
+        executiveOrganizations:
+        - null
+        - null
+        objectType: objectType
+      properties:
+        project:
+          $ref: '#/components/schemas/Project'
+        executiveOrganizations:
+          items:
+            $ref: '#/components/schemas/Organization'
+          type: array
+        organization:
+          $ref: '#/components/schemas/Organization'
+        industries:
+          items:
+            $ref: '#/components/schemas/Industry'
+          type: array
+        persons:
+          items:
+            $ref: '#/components/schemas/Person'
+          type: array
+        skillGroups:
+          items:
+            $ref: '#/components/schemas/SkillGroup'
+          type: array
+        timeframe:
+          $ref: '#/components/schemas/Timeframed'
+        objectType:
+          type: string
+      title: ProjectDetails
+      type: object
+    Level:
+      example:
+        level: 1
+      properties:
+        level:
+          maximum: 5
+          minimum: 1
+          type: integer
+      title: Level
+      type: object
+    CertificationSearch:
+      example:
+        certificationIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        skillIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        organizationIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        certificationIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        skillIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        organizationIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+      title: CertificationSearch
+      type: object
+    ProjectSearch:
+      example:
+        minStartDate: 2000-01-23
+        maxEndDate: 2000-01-23
+        projectStatuses:
+        - null
+        - null
+        confidentiality:
+        - null
+        - null
+        projectType:
+        - null
+        - null
+        projectIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        involvedOfficeIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        skills:
+        - null
+        - null
+        amountOfInvolvedPersons:
+          min: 0
+          max: 100
+        industries:
+        - null
+        - null
+        organizations:
+        - null
+        - null
+        participationAmountInMonths:
+          min: 0
+          max: 100
+        participants:
+        - null
+        - null
+      properties:
+        projectIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        minStartDate:
+          format: date
+          type: string
+        maxEndDate:
+          format: date
+          type: string
+        projectStatuses:
+          items:
+            $ref: '#/components/schemas/ProjectStatus'
+          type: array
+        participationAmountInMonths:
+          $ref: '#/components/schemas/MinMax'
+        involvedOfficeIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        amountOfInvolvedPersons:
+          $ref: '#/components/schemas/MinMax'
+        skills:
+          items:
+            $ref: '#/components/schemas/EntityFilter'
+          type: array
+        projectType:
+          items:
+            $ref: '#/components/schemas/ProjectType'
+          type: array
+        confidentiality:
+          items:
+            $ref: '#/components/schemas/Confidentiality'
+          type: array
+        participants:
+          items:
+            $ref: '#/components/schemas/EntityFilter'
+          type: array
+        industries:
+          items:
+            $ref: '#/components/schemas/EntityFilter'
+          type: array
+        organizations:
+          items:
+            $ref: '#/components/schemas/EntityFilter'
+          type: array
+      title: ProjectSearch
+      type: object
+    ProjectParticipationSearch:
+      example:
+        personIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        projectIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        projectParticipationIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        projectIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        personIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        projectParticipationIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+      title: ProjectParticipationSearch
+      type: object
+    PagedProjectParticipation:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          projectParticipation:
+            items:
+              $ref: '#/components/schemas/ProjectParticipationDetails'
+            type: array
+        type: object
+      title: PagedProjectParticipation
+    PagedSkills:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          skills:
+            items:
+              $ref: '#/components/schemas/SkillDetails'
+            type: array
+        type: object
+      title: PagedSkills
+    Skill:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Suggestable'
+      - $ref: '#/components/schemas/Linkable'
+      - $ref: '#/components/schemas/Synonymable'
+      - $ref: '#/components/schemas/Descriptable'
+      - properties:
+          invest:
+            default: false
+            type: boolean
+          kindGiver:
+            default: false
+            type: boolean
+          groupPriority:
+            type: integer
+        type: object
+      title: Skill
+    SkillDetails:
+      example:
+        children:
+        - skill: null
+          kindGiver: false
+        - skill: null
+          kindGiver: false
+        displayName: displayName
+        skill: null
+        kinds:
+        - null
+        - null
+        parents:
+        - skill: null
+          kindGiver: false
+        - skill: null
+          kindGiver: false
+      properties:
+        skill:
+          $ref: '#/components/schemas/Skill'
+        children:
+          items:
+            $ref: '#/components/schemas/SkillLink'
+          type: array
+        parents:
+          items:
+            $ref: '#/components/schemas/SkillLink'
+          type: array
+        kinds:
+          items:
+            $ref: '#/components/schemas/Skill'
+          type: array
+        displayName:
+          description: "The display name of the skill, e.g. \"Communication (Computing)\"\
+            \ or \"Communication (Design)\" or \"Protcool (Communication,IT)\""
+          type: string
+      title: SkillDetails
+      type: object
+    SkillLinkUpdate:
+      example:
+        kindGiver: false
+      properties:
+        kindGiver:
+          default: false
+          type: boolean
+      title: SkillLinkUpdate
       type: object
     Person:
       allOf:
@@ -4540,6 +4270,7 @@ components:
             description: Marks persons not working for the company anymore
             type: boolean
         type: object
+      title: Person
     PersonDetails:
       discriminator:
         propertyName: objectType
@@ -4641,6 +4372,7 @@ components:
           $ref: '#/components/schemas/Person'
         objectType:
           type: string
+      title: PersonDetails
       type: object
     PersonSearch:
       example:
@@ -4741,157 +4473,75 @@ components:
           items:
             $ref: '#/components/schemas/PersonCertificationFilter'
           type: array
+      title: PersonSearch
       type: object
-    PersonSkillFilter:
+    PagedPersons:
       allOf:
-      - $ref: '#/components/schemas/AbstractEntityFilter'
+      - $ref: '#/components/schemas/Page'
       - properties:
-          experienceInMonth:
-            $ref: '#/components/schemas/MinMax'
-          lastAssignment:
-            description: filters the last time the employee used the skill in a project
-            format: date
-            type: string
-        type: object
-    EntityFilter:
-      allOf:
-      - $ref: '#/components/schemas/AbstractEntityFilter'
-    Profile:
-      allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Synonymable'
-    ProfileDetails:
-      discriminator:
-        propertyName: objectType
-      example:
-        profile: null
-      properties:
-        profile:
-          $ref: '#/components/schemas/Profile'
-      type: object
-    PersonProjectFilter:
-      allOf:
-      - $ref: '#/components/schemas/AbstractEntityFilter'
-      - properties:
-          participationInMonth:
-            $ref: '#/components/schemas/MinMax'
-          involvedOfficeIds:
+          persons:
             items:
-              format: uuid
-              type: string
+              $ref: '#/components/schemas/PersonScoreDetail'
             type: array
         type: object
-    PersonOrganizationFilter:
-      allOf:
-      - $ref: '#/components/schemas/AbstractEntityFilter'
-      - properties:
-          amountOfProjects:
-            $ref: '#/components/schemas/MinMax'
-        type: object
-    PersonIndustryFilter:
-      allOf:
-      - $ref: '#/components/schemas/AbstractEntityFilter'
-      - properties:
-          activeProjects:
-            type: boolean
-          amountOfProjects:
-            $ref: '#/components/schemas/MinMax'
-          experienceInMonth:
-            $ref: '#/components/schemas/MinMax'
-        type: object
-    PersonCertificationFilter:
-      allOf:
-      - $ref: '#/components/schemas/AbstractEntityFilter'
-      - properties:
-          startedCertification:
-            description: Include employees who started the certification
-            type: boolean
-        type: object
-    Project:
-      allOf:
-      - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Suggestable'
-      - $ref: '#/components/schemas/Synonymable'
-      - $ref: '#/components/schemas/Locateable'
-      - $ref: '#/components/schemas/Descriptable'
-      - properties:
-          external:
-            default: false
-            description: true if project was done outside of the organization
-            type: boolean
-          projectType:
-            $ref: '#/components/schemas/ProjectType'
-          confidentiality:
-            $ref: '#/components/schemas/Confidentiality'
-        type: object
-    ProjectDetails:
-      discriminator:
-        propertyName: objectType
+      title: PagedPersons
+    Seniority:
+      enum:
+      - UNKNOWN
+      - ENTRY_LEVEL
+      - PROFESSIONAL
+      - SENIOR
+      - MANAGING
+      - PRINCIPAL
+      title: Seniority
+      type: string
+    SkillLevelUpdate:
       example:
-        persons:
-        - null
-        - null
-        timeframe:
-          enddate: 2000-01-23
-          startdate: 2000-01-23
-          objectType: objectType
-        organization: null
-        industries:
-        - null
-        - null
-        skillGroups:
-        - skills:
-          - null
-          - null
-          group: null
-        - skills:
-          - null
-          - null
-          group: null
-        project: null
-        executiveOrganizations:
-        - null
-        - null
-        objectType: objectType
+        skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        level:
+          level: 1
       properties:
-        project:
-          $ref: '#/components/schemas/Project'
-        executiveOrganizations:
-          items:
-            $ref: '#/components/schemas/Organization'
-          type: array
-        organization:
-          $ref: '#/components/schemas/Organization'
-        industries:
-          items:
-            $ref: '#/components/schemas/Industry'
-          type: array
-        persons:
-          items:
-            $ref: '#/components/schemas/Person'
-          type: array
-        skillGroups:
-          items:
-            $ref: '#/components/schemas/SkillGroup'
-          type: array
-        timeframe:
-          $ref: '#/components/schemas/Timeframed'
-        objectType:
+        skillId:
+          format: uuid
           type: string
+        level:
+          $ref: '#/components/schemas/Level'
+      title: SkillLevelUpdate
       type: object
-    ProjectScoreDetail:
+    DateModel:
+      format: date
+      title: DateModel
+      type: string
+    PersonProjectParticipationDetails:
       allOf:
-      - $ref: '#/components/schemas/ProjectDetails'
-      - $ref: '#/components/schemas/ScoreResult'
-    ProjectParticipation:
-      allOf:
-      - $ref: '#/components/schemas/BasicDomainModel'
       - properties:
-          timeframe:
-            $ref: '#/components/schemas/Timeframed'
-          personalDescription:
-            type: string
+          projectDetails:
+            $ref: '#/components/schemas/ProjectDetails'
+          participationItems:
+            items:
+              $ref: '#/components/schemas/PersonProjectParticipationItem'
+            type: array
         type: object
+      title: PersonProjectParticipationDetails
+    ProjectParticipationCreate:
+      allOf:
+      - $ref: '#/components/schemas/ProjectParticipationUpdate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          projectId:
+            format: uuid
+            type: string
+          personId:
+            format: uuid
+            type: string
+        required:
+        - id
+        - personId
+        - projectId
+        type: object
+      title: ProjectParticipationCreate
     ProjectParticipationDetails:
       allOf:
       - properties:
@@ -4907,55 +4557,7 @@ components:
           project:
             $ref: '#/components/schemas/Project'
         type: object
-    PersonProjectParticipationDetails:
-      allOf:
-      - properties:
-          projectDetails:
-            $ref: '#/components/schemas/ProjectDetails'
-          participationItems:
-            items:
-              $ref: '#/components/schemas/PersonProjectParticipationItem'
-            type: array
-        type: object
-    PersonProjectParticipationItem:
-      allOf:
-      - properties:
-          participation:
-            $ref: '#/components/schemas/ProjectParticipation'
-          experiences:
-            items:
-              $ref: '#/components/schemas/Experience'
-            readOnly: true
-            type: array
-        type: object
-    ProjectParticipationSearch:
-      example:
-        personIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        projectIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        projectParticipationIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        projectIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-        personIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-        projectParticipationIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-      type: object
+      title: ProjectParticipationDetails
     ProjectParticipationUpdate:
       example:
         skills:
@@ -4979,268 +4581,160 @@ components:
           type: array
         personalDescription:
           type: string
+      title: ProjectParticipationUpdate
       type: object
-    ProjectParticipationCreate:
+    PagedAvailabilities:
       allOf:
-      - $ref: '#/components/schemas/ProjectParticipationUpdate'
+      - $ref: '#/components/schemas/Page'
       - properties:
-          id:
-            format: uuid
-            type: string
-          projectId:
-            format: uuid
-            type: string
-          personId:
-            format: uuid
-            type: string
-        required:
-        - id
-        - personId
-        - projectId
+          availabilities:
+            items:
+              $ref: '#/components/schemas/AvailabilityDetail'
+            type: array
         type: object
-      type: object
-    ProjectSearch:
-      example:
-        minStartDate: 2000-01-23
-        maxEndDate: 2000-01-23
-        projectStatuses:
-        - null
-        - null
-        confidentiality:
-        - null
-        - null
-        projectType:
-        - null
-        - null
-        projectIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        involvedOfficeIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        skills:
-        - null
-        - null
-        amountOfInvolvedPersons:
-          min: 0
-          max: 100
-        industries:
-        - null
-        - null
-        organizations:
-        - null
-        - null
-        participationAmountInMonths:
-          min: 0
-          max: 100
-        participants:
-        - null
-        - null
-      properties:
-        projectIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-        minStartDate:
-          format: date
-          type: string
-        maxEndDate:
-          format: date
-          type: string
-        projectStatuses:
-          items:
-            $ref: '#/components/schemas/ProjectStatus'
-          type: array
-        participationAmountInMonths:
-          $ref: '#/components/schemas/MinMax'
-        involvedOfficeIds:
-          items:
-            format: uuid
-            type: string
-          type: array
-        amountOfInvolvedPersons:
-          $ref: '#/components/schemas/MinMax'
-        skills:
-          items:
-            $ref: '#/components/schemas/EntityFilter'
-          type: array
-        projectType:
-          items:
-            $ref: '#/components/schemas/ProjectType'
-          type: array
-        confidentiality:
-          items:
-            $ref: '#/components/schemas/Confidentiality'
-          type: array
-        participants:
-          items:
-            $ref: '#/components/schemas/EntityFilter'
-          type: array
-        industries:
-          items:
-            $ref: '#/components/schemas/EntityFilter'
-          type: array
-        organizations:
-          items:
-            $ref: '#/components/schemas/EntityFilter'
-          type: array
-      type: object
-    ProjectStatus:
-      enum:
-      - PLANNING
-      - ACTIVE
-      - DONE
-      type: string
-    ExperienceSkill:
-      allOf:
-      - $ref: '#/components/schemas/Skill'
-      - properties:
-          experienceInMonth:
-            default: 0
-            type: integer
-        type: object
-    Skill:
+      title: PagedAvailabilities
+    Availability:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Suggestable'
-      - $ref: '#/components/schemas/Linkable'
-      - $ref: '#/components/schemas/Synonymable'
-      - $ref: '#/components/schemas/Descriptable'
+      - $ref: '#/components/schemas/Timeframed'
       - properties:
-          invest:
-            default: false
-            type: boolean
-          kindGiver:
-            default: false
-            type: boolean
-          groupPriority:
-            type: integer
+          workHours:
+            example: 38.5
+            format: float
+            type: number
+          plannedHours:
+            example: 22.5
+            format: float
+            type: number
+          descriptions:
+            items:
+              type: string
+            type: array
+        required:
+        - plannedHours
+        - workHours
         type: object
-    ExperienceSkillGroup:
+      title: Availability
+    AvailabilityDetail:
       example:
-        skills:
-        - null
-        - null
-        group: null
+        availability: null
+        percent: 8.008281904610115
       properties:
-        group:
-          $ref: '#/components/schemas/Skill'
-        skills:
+        availability:
+          $ref: '#/components/schemas/Availability'
+        percent:
+          maximum: 100
+          minimum: 0
+          type: number
+      title: AvailabilityDetail
+      type: object
+    SearchResult:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
           items:
-            $ref: '#/components/schemas/ExperienceSkill'
-          type: array
-    SkillGroup:
+            items:
+              $ref: '#/components/schemas/SearchResultItem'
+            type: array
+        type: object
+      title: SearchResult
+    PagedLanguages:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          languages:
+            items:
+              $ref: '#/components/schemas/Language'
+            type: array
+        type: object
+      title: PagedLanguages
+    Language:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - properties:
+          code:
+            description: Two letter ISO code
+            example: de
+            type: string
+          nativeName:
+            description: The native description of a language
+            example: العربية
+            type: string
+        type: object
+      title: Language
+    LanguageDetails:
       example:
-        skills:
+        language: null
+        countries:
         - null
         - null
-        group: null
       properties:
-        group:
-          $ref: '#/components/schemas/Skill'
-        skills:
+        language:
+          $ref: '#/components/schemas/Language'
+        countries:
           items:
-            $ref: '#/components/schemas/Skill'
+            $ref: '#/components/schemas/Country'
           type: array
-    SkillLevel:
-      example:
-        level:
-          level: 1
-        skill: null
-      properties:
-        skill:
-          $ref: '#/components/schemas/Skill'
-        level:
-          $ref: '#/components/schemas/Level'
+      title: LanguageDetails
       type: object
-    SkillLevelUpdate:
+    PagedCountries:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          countries:
+            items:
+              $ref: '#/components/schemas/Country'
+            type: array
+        type: object
+      title: PagedCountries
+    Country:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - properties:
+          picture:
+            description: base64 encoded image
+            type: string
+        type: object
+      title: Country
+    CountryDetails:
       example:
-        skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        level:
-          level: 1
-      properties:
-        skillId:
-          format: uuid
-          type: string
-        level:
-          $ref: '#/components/schemas/Level'
-    SkillLink:
-      example:
-        skill: null
-        kindGiver: false
-      properties:
-        skill:
-          $ref: '#/components/schemas/Skill'
-        kindGiver:
-          default: false
-          type: boolean
-      type: object
-    SkillLinkUpdate:
-      example:
-        kindGiver: false
-      properties:
-        kindGiver:
-          default: false
-          type: boolean
-      type: object
-    SkillDetails:
-      example:
-        children:
-        - skill: null
-          kindGiver: false
-        - skill: null
-          kindGiver: false
-        displayName: displayName
-        skill: null
-        kinds:
+        country: null
+        languages:
         - null
         - null
-        parents:
-        - skill: null
-          kindGiver: false
-        - skill: null
-          kindGiver: false
       properties:
-        skill:
-          $ref: '#/components/schemas/Skill'
-        children:
+        country:
+          $ref: '#/components/schemas/Country'
+        languages:
           items:
-            $ref: '#/components/schemas/SkillLink'
+            $ref: '#/components/schemas/Language'
           type: array
-        parents:
-          items:
-            $ref: '#/components/schemas/SkillLink'
-          type: array
-        kinds:
-          items:
-            $ref: '#/components/schemas/Skill'
-          type: array
-        displayName:
-          description: "The display name of the skill, e.g. \"Communication (Computing)\"\
-            \ or \"Communication (Design)\" or \"Protcool (Communication,IT)\""
-          type: string
+      title: CountryDetails
       type: object
-    Status:
+    PagedProfiles:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          profiles:
+            items:
+              $ref: '#/components/schemas/ProfileDetails'
+            type: array
+        type: object
+      title: PagedProfiles
+    Profile:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Synonymable'
+      title: Profile
+    ProfileDetails:
+      discriminator:
+        propertyName: objectType
       example:
-        status: status
+        profile: null
       properties:
-        status:
-          type: string
-      type: object
-    Error:
-      properties:
-        message:
-          type: string
-      type: object
-    Level:
-      example:
-        level: 1
-      properties:
-        level:
-          maximum: 5
-          minimum: 1
-          type: integer
+        profile:
+          $ref: '#/components/schemas/Profile'
+      title: ProfileDetails
       type: object
     Page:
       discriminator:
@@ -5256,162 +4750,197 @@ components:
           type: integer
         objectType:
           type: string
+      title: Page
       type: object
-    PagedAvailabilities:
+    NamedDomainModel:
       allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          availabilities:
-            items:
-              $ref: '#/components/schemas/AvailabilityDetail'
-            type: array
-        type: object
-    PagedOrganizations:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          organizations:
-            items:
-              $ref: '#/components/schemas/OrganizationDetails'
-            type: array
-        type: object
-    PagedOffices:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          offices:
-            items:
-              $ref: '#/components/schemas/Office'
-            type: array
-        type: object
-    PagedLanguages:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          languages:
-            items:
-              $ref: '#/components/schemas/Language'
-            type: array
-        type: object
-    PagedCertifications:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          certifications:
-            items:
-              $ref: '#/components/schemas/CertificationDetails'
-            type: array
-        type: object
-    PagedCountries:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          countries:
-            items:
-              $ref: '#/components/schemas/Country'
-            type: array
-        type: object
-    PagedSkills:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          skills:
-            items:
-              $ref: '#/components/schemas/SkillDetails'
-            type: array
-        type: object
-    PagedIndustries:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          industries:
-            items:
-              $ref: '#/components/schemas/IndustryDetails'
-            type: array
-        type: object
-    PagedProjects:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          projects:
-            items:
-              $ref: '#/components/schemas/ProjectScoreDetail'
-            type: array
-        type: object
-    PagedProjectParticipation:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          projectParticipation:
-            items:
-              $ref: '#/components/schemas/ProjectParticipationDetails'
-            type: array
-        type: object
-    PagedPersons:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          persons:
-            items:
-              $ref: '#/components/schemas/PersonScoreDetail'
-            type: array
-        type: object
-    PagedProfiles:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          profiles:
-            items:
-              $ref: '#/components/schemas/ProfileDetails'
-            type: array
-        type: object
-    PersonScoreDetail:
-      allOf:
-      - $ref: '#/components/schemas/PersonDetails'
-      - $ref: '#/components/schemas/ScoreResult'
-    SearchResult:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
+      - $ref: '#/components/schemas/BasicDomainModel'
+      - $ref: '#/components/schemas/Nameable'
+      title: NamedDomainModel
+    Suggestable:
+      properties:
+        suggestion:
+          default: false
+          type: boolean
+      required:
+      - suggestion
+      title: Suggestable
+      type: object
+    Synonymable:
+      properties:
+        synonyms:
           items:
-            items:
-              $ref: '#/components/schemas/SearchResultItem'
-            type: array
-        type: object
-    SearchResultItem:
-      properties:
-        score:
-          example: 0.7
-          type: number
-        type:
-          example: Certification
-          type: string
-        item:
-          $ref: '#/components/schemas/NamedDomainModel'
+            type: string
+          type: array
+      title: Synonymable
       type: object
-    AbstractEntityFilter:
-      discriminator:
-        mapping:
-          EntityFilter: EntityFilter
-          PersonSkillFilter: PersonSkillFilter
-          PersonProjectFilter: PersonProjectFilter
-          PersonOrganizationFilter: PersonOrganizationFilter
-          PersonIndustryFilter: PersonIndustryFilter
-          PersonCertificationFilter: PersonCertificationFilter
-        propertyName: objectType
+    Locateable:
       properties:
-        id:
-          format: uuid
+        location:
+          example: "Frankfurt, Germany"
+          type: string
+        geolocation:
+          $ref: '#/components/schemas/Geolocation'
+      title: Locateable
+      type: object
+    Descriptable:
+      properties:
+        description:
+          example: This is a description
+          type: string
+      title: Descriptable
+      type: object
+    SkillLevel:
+      example:
+        level:
+          level: 1
+        skill: null
+      properties:
+        skill:
+          $ref: '#/components/schemas/Skill'
+        level:
+          $ref: '#/components/schemas/Level'
+      title: SkillLevel
+      type: object
+    ProjectScoreDetail:
+      allOf:
+      - $ref: '#/components/schemas/ProjectDetails'
+      - $ref: '#/components/schemas/ScoreResult'
+      title: ProjectScoreDetail
+    ProjectType:
+      enum:
+      - UNKNOWN_TYPE
+      - INTERNAL
+      - EXTERNAL
+      title: ProjectType
+      type: string
+    Confidentiality:
+      enum:
+      - UNKNOWN_CONFIDENTIALITY
+      - PUBLIC
+      - CONFIDENTIAL
+      title: Confidentiality
+      type: string
+    SkillGroup:
+      example:
+        skills:
+        - null
+        - null
+        group: null
+      properties:
+        group:
+          $ref: '#/components/schemas/Skill'
+        skills:
+          items:
+            $ref: '#/components/schemas/Skill'
+          type: array
+      title: SkillGroup
+      type: object
+    Timeframed:
+      discriminator:
+        propertyName: objectType
+      example:
+        enddate: 2000-01-23
+        startdate: 2000-01-23
+        objectType: objectType
+      properties:
+        startdate:
+          format: date
+          type: string
+        enddate:
+          format: date
           type: string
         objectType:
           type: string
-      required:
-      - id
+      title: Timeframed
+      type: object
+    ProjectStatus:
+      enum:
+      - PLANNING
+      - ACTIVE
+      - DONE
+      title: ProjectStatus
+      type: string
+    MinMax:
+      example:
+        min: 0
+        max: 100
+      properties:
+        min:
+          example: 0
+          type: integer
+        max:
+          example: 100
+          type: integer
+      title: MinMax
+      type: object
+    EntityFilter:
+      allOf:
+      - $ref: '#/components/schemas/AbstractEntityFilter'
+      title: EntityFilter
+    Linkable:
+      properties:
+        linkable:
+          default: false
+          description: The entity can be linked
+          type: boolean
+      title: Linkable
+      type: object
+    SkillLink:
+      example:
+        skill: null
+        kindGiver: false
+      properties:
+        skill:
+          $ref: '#/components/schemas/Skill'
+        kindGiver:
+          default: false
+          type: boolean
+      title: SkillLink
+      type: object
+    Experience:
+      allOf:
+      - properties:
+          skillLevel:
+            $ref: '#/components/schemas/SkillLevel'
+          confirmedBy:
+            items:
+              $ref: '#/components/schemas/Person'
+            type: array
+        type: object
+      title: Experience
+    LanguageLevel:
+      example:
+        level:
+          level: 1
+        language: null
+      properties:
+        language:
+          $ref: '#/components/schemas/Language'
+        level:
+          $ref: '#/components/schemas/Level'
+      title: LanguageLevel
+      type: object
+    ExperienceSkillGroup:
+      example:
+        skills:
+        - null
+        - null
+        group: null
+      properties:
+        group:
+          $ref: '#/components/schemas/Skill'
+        skills:
+          items:
+            $ref: '#/components/schemas/ExperienceSkill'
+          type: array
+      title: ExperienceSkillGroup
       type: object
     AvailabilityFilter:
       allOf:
       - $ref: '#/components/schemas/Timeframed'
       - $ref: '#/components/schemas/MinMaxPercent'
+      title: AvailabilityFilter
     MinMaxPercent:
       example:
         min: 0
@@ -5427,40 +4956,165 @@ components:
           maximum: 100
           minimum: 0
           type: integer
+      title: MinMaxPercent
       type: object
-    MinMax:
-      example:
-        min: 0
-        max: 100
+    PersonSkillFilter:
+      allOf:
+      - $ref: '#/components/schemas/AbstractEntityFilter'
+      - properties:
+          experienceInMonth:
+            $ref: '#/components/schemas/MinMax'
+          lastAssignment:
+            description: filters the last time the employee used the skill in a project
+            format: date
+            type: string
+        type: object
+      title: PersonSkillFilter
+    PersonProjectFilter:
+      allOf:
+      - $ref: '#/components/schemas/AbstractEntityFilter'
+      - properties:
+          participationInMonth:
+            $ref: '#/components/schemas/MinMax'
+          involvedOfficeIds:
+            items:
+              format: uuid
+              type: string
+            type: array
+        type: object
+      title: PersonProjectFilter
+    PersonOrganizationFilter:
+      allOf:
+      - $ref: '#/components/schemas/AbstractEntityFilter'
+      - properties:
+          amountOfProjects:
+            $ref: '#/components/schemas/MinMax'
+        type: object
+      title: PersonOrganizationFilter
+    PersonIndustryFilter:
+      allOf:
+      - $ref: '#/components/schemas/AbstractEntityFilter'
+      - properties:
+          activeProjects:
+            type: boolean
+          amountOfProjects:
+            $ref: '#/components/schemas/MinMax'
+          experienceInMonth:
+            $ref: '#/components/schemas/MinMax'
+        type: object
+      title: PersonIndustryFilter
+    PersonCertificationFilter:
+      allOf:
+      - $ref: '#/components/schemas/AbstractEntityFilter'
+      - properties:
+          startedCertification:
+            description: Include employees who started the certification
+            type: boolean
+        type: object
+      title: PersonCertificationFilter
+    PersonScoreDetail:
+      allOf:
+      - $ref: '#/components/schemas/PersonDetails'
+      - $ref: '#/components/schemas/ScoreResult'
+      title: PersonScoreDetail
+    PersonProjectParticipationItem:
+      allOf:
+      - properties:
+          participation:
+            $ref: '#/components/schemas/ProjectParticipation'
+          experiences:
+            items:
+              $ref: '#/components/schemas/Experience'
+            readOnly: true
+            type: array
+        type: object
+      title: PersonProjectParticipationItem
+    ProjectParticipation:
+      allOf:
+      - $ref: '#/components/schemas/BasicDomainModel'
+      - properties:
+          timeframe:
+            $ref: '#/components/schemas/Timeframed'
+          personalDescription:
+            type: string
+        type: object
+      title: ProjectParticipation
+    SearchResultItem:
       properties:
-        min:
-          example: 0
-          type: integer
-        max:
-          example: 100
-          type: integer
+        score:
+          example: 0.7
+          type: number
+        type:
+          example: Certification
+          type: string
+        item:
+          $ref: '#/components/schemas/NamedDomainModel'
+      title: SearchResultItem
       type: object
-    Seniority:
-      enum:
-      - UNKNOWN
-      - ENTRY_LEVEL
-      - PROFESSIONAL
-      - SENIOR
-      - MANAGING
-      - PRINCIPAL
-      type: string
-    ProjectType:
-      enum:
-      - UNKNOWN_TYPE
-      - INTERNAL
-      - EXTERNAL
-      type: string
-    Confidentiality:
-      enum:
-      - UNKNOWN_CONFIDENTIALITY
-      - PUBLIC
-      - CONFIDENTIAL
-      type: string
+    BasicDomainModel:
+      discriminator:
+        propertyName: objectType
+      properties:
+        id:
+          format: uuid
+          type: string
+        objectType:
+          type: string
+      required:
+      - id
+      title: BasicDomainModel
+      type: object
+    Nameable:
+      properties:
+        name:
+          type: string
+      required:
+      - name
+      title: Nameable
+      type: object
+    Geolocation:
+      properties:
+        longitude:
+          format: float
+          type: number
+        latitude:
+          format: float
+          type: number
+      required:
+      - latitude
+      - longitude
+      title: Geolocation
+      type: object
+    ScoreResult:
+      properties:
+        score:
+          example: 0.5
+          type: number
+        directHit:
+          example: true
+          type: boolean
+      title: ScoreResult
+      type: object
+    AbstractEntityFilter:
+      properties:
+        id:
+          format: uuid
+          type: string
+        objectType:
+          type: string
+      required:
+      - id
+      title: AbstractEntityFilter
+      type: object
+    ExperienceSkill:
+      allOf:
+      - $ref: '#/components/schemas/Skill'
+      - properties:
+          experienceInMonth:
+            default: 0
+            type: integer
+        type: object
+      title: ExperienceSkill
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

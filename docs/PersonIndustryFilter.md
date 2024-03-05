@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** |  | 
+**ObjectType** | Pointer to **string** |  | [optional] 
 **ActiveProjects** | Pointer to **bool** |  | [optional] 
 **AmountOfProjects** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
 **ExperienceInMonth** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
@@ -12,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewPersonIndustryFilter
 
-`func NewPersonIndustryFilter() *PersonIndustryFilter`
+`func NewPersonIndustryFilter(id string, ) *PersonIndustryFilter`
 
 NewPersonIndustryFilter instantiates a new PersonIndustryFilter object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +28,51 @@ will change when the set of required properties is changed
 NewPersonIndustryFilterWithDefaults instantiates a new PersonIndustryFilter object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *PersonIndustryFilter) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *PersonIndustryFilter) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *PersonIndustryFilter) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetObjectType
+
+`func (o *PersonIndustryFilter) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *PersonIndustryFilter) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *PersonIndustryFilter) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
+### HasObjectType
+
+`func (o *PersonIndustryFilter) HasObjectType() bool`
+
+HasObjectType returns a boolean if a field has been set.
 
 ### GetActiveProjects
 

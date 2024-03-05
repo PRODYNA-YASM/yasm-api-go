@@ -237,21 +237,6 @@ func Test_client_SkillAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SkillAPIService MergeSkills", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var skillId string
-		var otherSkillId string
-
-		resp, httpRes, err := apiClient.SkillAPI.MergeSkills(context.Background(), skillId, otherSkillId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SkillAPIService RemoveSkillConfirmation", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

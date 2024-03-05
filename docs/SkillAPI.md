@@ -1,6 +1,6 @@
 # \SkillAPI
 
-All URIs are relative to *http://localhost:8080/api/v1*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,7 +19,6 @@ Method | HTTP request | Description
 [**GetSkill**](SkillAPI.md#GetSkill) | **Get** /skills/{skillId} | Get details for a single skill
 [**GetSkillParents**](SkillAPI.md#GetSkillParents) | **Get** /skills/{skillId}/parents | Get ghe list of parents for a skill
 [**GetSkills**](SkillAPI.md#GetSkills) | **Get** /skills | Get a list of all skills, optionally only root
-[**MergeSkills**](SkillAPI.md#MergeSkills) | **Put** /skills/{skillId}/merge/{otherSkillId} | Merge two skills
 [**RemoveSkillConfirmation**](SkillAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**RemoveSkillFromParentSkill**](SkillAPI.md#RemoveSkillFromParentSkill) | **Delete** /skills/{skillId}/parents/{parentSkillId} | Detaches a Skill from parent Skill, return the parent Skill
 [**UpdatePersonSkillExperience**](SkillAPI.md#UpdatePersonSkillExperience) | **Put** /persons/{personId}/experiences/skills/{skillId} | Edit an Skill experience to a Person
@@ -413,7 +412,7 @@ import (
 func main() {
     skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     parentSkillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skillLinkUpdate := *openapiclient.NewSkillLinkUpdate() // SkillLinkUpdate |  (optional)
+    skillLinkUpdate := *openapiclient.NewSkillLinkUpdate() // SkillLinkUpdate | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1079,77 +1078,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PagedSkills**](PagedSkills.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## MergeSkills
-
-> SkillDetails MergeSkills(ctx, skillId, otherSkillId).Execute()
-
-Merge two skills
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    otherSkillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SkillAPI.MergeSkills(context.Background(), skillId, otherSkillId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.MergeSkills``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `MergeSkills`: SkillDetails
-    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.MergeSkills`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**skillId** | **string** |  | 
-**otherSkillId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiMergeSkillsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**SkillDetails**](SkillDetails.md)
 
 ### Authorization
 

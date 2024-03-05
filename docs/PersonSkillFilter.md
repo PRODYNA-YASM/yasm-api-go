@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** |  | 
+**ObjectType** | Pointer to **string** |  | [optional] 
 **ExperienceInMonth** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
 **LastAssignment** | Pointer to **string** | filters the last time the employee used the skill in a project | [optional] 
 
@@ -11,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewPersonSkillFilter
 
-`func NewPersonSkillFilter() *PersonSkillFilter`
+`func NewPersonSkillFilter(id string, ) *PersonSkillFilter`
 
 NewPersonSkillFilter instantiates a new PersonSkillFilter object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +27,51 @@ will change when the set of required properties is changed
 NewPersonSkillFilterWithDefaults instantiates a new PersonSkillFilter object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *PersonSkillFilter) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *PersonSkillFilter) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *PersonSkillFilter) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetObjectType
+
+`func (o *PersonSkillFilter) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *PersonSkillFilter) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *PersonSkillFilter) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
+### HasObjectType
+
+`func (o *PersonSkillFilter) HasObjectType() bool`
+
+HasObjectType returns a boolean if a field has been set.
 
 ### GetExperienceInMonth
 
