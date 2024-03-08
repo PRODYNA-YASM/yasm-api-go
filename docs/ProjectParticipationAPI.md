@@ -1,6 +1,6 @@
 # \ProjectParticipationAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://yasm.prodyna.com:443/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,25 +20,25 @@ Get a Project Participation of a Person
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    projectIds := []string{"Inner_example"} // []string | Filter by project ids, if not set, all projects are returned (optional)
+	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	projectIds := []string{"Inner_example"} // []string | Filter by project ids, if not set, all projects are returned (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectParticipationAPI.ReadPersonProjectParticipation(context.Background(), personId).ProjectIds(projectIds).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectParticipationAPI.ReadPersonProjectParticipation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ReadPersonProjectParticipation`: []PersonProjectParticipationDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProjectParticipationAPI.ReadPersonProjectParticipation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectParticipationAPI.ReadPersonProjectParticipation(context.Background(), personId).ProjectIds(projectIds).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectParticipationAPI.ReadPersonProjectParticipation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ReadPersonProjectParticipation`: []PersonProjectParticipationDetails
+	fmt.Fprintf(os.Stdout, "Response from `ProjectParticipationAPI.ReadPersonProjectParticipation`: %v\n", resp)
 }
 ```
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 

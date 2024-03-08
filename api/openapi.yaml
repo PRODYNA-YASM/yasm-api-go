@@ -3,11 +3,32 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.14.0
+  version: 1.14.1
 servers:
-- url: /
+- url: "{scheme}://{host}:{port}/api/v1"
+  variables:
+    scheme:
+      default: https
+      enum:
+      - https
+      - http
+    host:
+      default: yasm.prodyna.com
+      enum:
+      - yasm.prodyna.com
+      - dev-yasm.prodyna.com
+      - staging-yasm.prodyna.com
+      - localhost
+    port:
+      default: "443"
+      enum:
+      - "443"
+      - "8080"
 security:
-- bearerAuth:
+- bearerScheme:
+  - user
+  - admin
+- oidcScheme:
   - user
   - admin
 tags:
@@ -3707,6 +3728,8 @@ components:
       title: Version
       type: object
     Error:
+      example:
+        message: message
       properties:
         message:
           type: string
@@ -3721,6 +3744,262 @@ components:
               $ref: '#/components/schemas/OrganizationDetails'
             type: array
         type: object
+      example:
+        limit: 1
+        count: 1
+        organizations:
+        - projects:
+          - external: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            confidentiality: null
+            projectType: null
+            description: This is a description
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - external: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            confidentiality: null
+            projectType: null
+            description: This is a description
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          children:
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          industries:
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          offices:
+          - synonyms:
+            - synonyms
+            - synonyms
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - synonyms:
+            - synonyms
+            - synonyms
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          certifications:
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            validity: validity
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            validity: validity
+          parents:
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+        - projects:
+          - external: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            confidentiality: null
+            projectType: null
+            description: This is a description
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - external: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            confidentiality: null
+            projectType: null
+            description: This is a description
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          children:
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          industries:
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          offices:
+          - synonyms:
+            - synonyms
+            - synonyms
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - synonyms:
+            - synonyms
+            - synonyms
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          certifications:
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            validity: validity
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            validity: validity
+          parents:
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+        skip: 0
+        objectType: objectType
       title: PagedOrganizations
     Organization:
       allOf:
@@ -3740,28 +4019,147 @@ components:
             description: base64 encoded image
             type: string
         type: object
+      example:
+        partner: false
+        synonyms:
+        - synonyms
+        - synonyms
+        suggestion: false
+        description: This is a description
+        location: "Frankfurt, Germany"
+        picture: picture
+        geolocation:
+          latitude: 5.637377
+          longitude: 5.962134
+        customer: false
       title: Organization
     OrganizationDetails:
       example:
         projects:
-        - null
-        - null
+        - external: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          confidentiality: null
+          projectType: null
+          description: This is a description
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        - external: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          confidentiality: null
+          projectType: null
+          description: This is a description
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
         children:
-        - null
-        - null
-        organization: null
+        - partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
+        - partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
+        organization:
+          partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
         industries:
-        - null
-        - null
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
         offices:
-        - null
-        - null
+        - synonyms:
+          - synonyms
+          - synonyms
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        - synonyms:
+          - synonyms
+          - synonyms
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
         certifications:
-        - null
-        - null
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          validity: validity
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          validity: validity
         parents:
-        - null
-        - null
+        - partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
+        - partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
       properties:
         organization:
           $ref: '#/components/schemas/Organization'
@@ -3805,6 +4203,14 @@ components:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
+      example:
+        synonyms:
+        - synonyms
+        - synonyms
+        location: "Frankfurt, Germany"
+        geolocation:
+          latitude: 5.637377
+          longitude: 5.962134
       title: Office
     PagedOffices:
       allOf:
@@ -3815,6 +4221,26 @@ components:
               $ref: '#/components/schemas/Office'
             type: array
         type: object
+      example:
+        offices:
+        - synonyms:
+          - synonyms
+          - synonyms
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        - synonyms:
+          - synonyms
+          - synonyms
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        limit: 1
+        count: 1
+        skip: 0
+        objectType: objectType
       title: PagedOffices
     PagedIndustries:
       allOf:
@@ -3825,19 +4251,116 @@ components:
               $ref: '#/components/schemas/IndustryDetails'
             type: array
         type: object
+      example:
+        industries:
+        - organizations:
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          industry:
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+        - organizations:
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          industry:
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+        limit: 1
+        count: 1
+        skip: 0
+        objectType: objectType
       title: PagedIndustries
     Industry:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
+      example:
+        synonyms:
+        - synonyms
+        - synonyms
+        suggestion: false
       title: Industry
     IndustryDetails:
       example:
         organizations:
-        - null
-        - null
-        industry: null
+        - partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
+        - partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
+        industry:
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
       properties:
         industry:
           $ref: '#/components/schemas/Industry'
@@ -3856,6 +4379,102 @@ components:
               $ref: '#/components/schemas/CertificationDetails'
             type: array
         type: object
+      example:
+        limit: 1
+        count: 1
+        skip: 0
+        certifications:
+        - skillLevels:
+          - level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          - level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          certification:
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            validity: validity
+        - skillLevels:
+          - level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          - level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          certification:
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            validity: validity
+        objectType: objectType
       title: PagedCertifications
     Certification:
       allOf:
@@ -3867,18 +4486,61 @@ components:
           validity:
             type: string
         type: object
+      example:
+        synonyms:
+        - synonyms
+        - synonyms
+        suggestion: false
+        description: This is a description
+        validity: validity
       title: Certification
     CertificationDetails:
       example:
         skillLevels:
         - level:
-            level: 1
-          skill: null
+            level: 3
+          skill:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
         - level:
-            level: 1
-          skill: null
-        organization: null
-        certification: null
+            level: 3
+          skill:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+        organization:
+          partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
+        certification:
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          validity: validity
       properties:
         certification:
           $ref: '#/components/schemas/Certification'
@@ -3899,6 +4561,362 @@ components:
               $ref: '#/components/schemas/ProjectScoreDetail'
             type: array
         type: object
+      example:
+        projects:
+        - persons:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          timeframe:
+            enddate: 2000-01-23
+            startdate: 2000-01-23
+            objectType: objectType
+          score: 0.5
+          directHit: true
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          industries:
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          skillGroups:
+          - skills:
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            group:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          - skills:
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            group:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          project:
+            external: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            confidentiality: null
+            projectType: null
+            description: This is a description
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          executiveOrganizations:
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          objectType: objectType
+        - persons:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          timeframe:
+            enddate: 2000-01-23
+            startdate: 2000-01-23
+            objectType: objectType
+          score: 0.5
+          directHit: true
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          industries:
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          skillGroups:
+          - skills:
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            group:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          - skills:
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            group:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          project:
+            external: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            confidentiality: null
+            projectType: null
+            description: This is a description
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          executiveOrganizations:
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          objectType: objectType
+        limit: 1
+        count: 1
+        skip: 0
+        objectType: objectType
       title: PagedProjects
     Project:
       allOf:
@@ -3917,35 +4935,196 @@ components:
           confidentiality:
             $ref: '#/components/schemas/Confidentiality'
         type: object
+      example:
+        external: false
+        synonyms:
+        - synonyms
+        - synonyms
+        suggestion: false
+        confidentiality: null
+        projectType: null
+        description: This is a description
+        location: "Frankfurt, Germany"
+        geolocation:
+          latitude: 5.637377
+          longitude: 5.962134
       title: Project
     ProjectDetails:
       discriminator:
         propertyName: objectType
       example:
         persons:
-        - null
-        - null
+        - education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        - education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
         timeframe:
           enddate: 2000-01-23
           startdate: 2000-01-23
           objectType: objectType
-        organization: null
+        organization:
+          partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
         industries:
-        - null
-        - null
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
         skillGroups:
         - skills:
-          - null
-          - null
-          group: null
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          group:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
         - skills:
-          - null
-          - null
-          group: null
-        project: null
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          group:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+        project:
+          external: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          confidentiality: null
+          projectType: null
+          description: This is a description
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
         executiveOrganizations:
-        - null
-        - null
+        - partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
+        - partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
         objectType: objectType
       properties:
         project:
@@ -3976,7 +5155,7 @@ components:
       type: object
     Level:
       example:
-        level: 1
+        level: 3
       properties:
         level:
           maximum: 5
@@ -4033,23 +5212,31 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         skills:
-        - null
-        - null
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         amountOfInvolvedPersons:
           min: 0
           max: 100
         industries:
-        - null
-        - null
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         organizations:
-        - null
-        - null
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         participationAmountInMonths:
           min: 0
           max: 100
         participants:
-        - null
-        - null
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
       properties:
         projectIds:
           items:
@@ -4139,6 +5326,354 @@ components:
               $ref: '#/components/schemas/ProjectParticipationDetails'
             type: array
         type: object
+      example:
+        projectParticipation:
+        - participation:
+            timeframe:
+              enddate: 2000-01-23
+              startdate: 2000-01-23
+              objectType: objectType
+            personalDescription: personalDescription
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            objectType: objectType
+          person:
+            education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          project:
+            external: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            confidentiality: null
+            projectType: null
+            description: This is a description
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          experiences:
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+        - participation:
+            timeframe:
+              enddate: 2000-01-23
+              startdate: 2000-01-23
+              objectType: objectType
+            personalDescription: personalDescription
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            objectType: objectType
+          person:
+            education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          project:
+            external: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            confidentiality: null
+            projectType: null
+            description: This is a description
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          experiences:
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+        limit: 1
+        count: 1
+        skip: 0
+        objectType: objectType
       title: PagedProjectParticipation
     PagedSkills:
       allOf:
@@ -4149,6 +5684,164 @@ components:
               $ref: '#/components/schemas/SkillDetails'
             type: array
         type: object
+      example:
+        skills:
+        - children:
+          - skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            kindGiver: false
+          - skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            kindGiver: false
+          displayName: displayName
+          skill:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          kinds:
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          parents:
+          - skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            kindGiver: false
+          - skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            kindGiver: false
+        - children:
+          - skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            kindGiver: false
+          - skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            kindGiver: false
+          displayName: displayName
+          skill:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          kinds:
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          parents:
+          - skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            kindGiver: false
+          - skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            kindGiver: false
+        limit: 1
+        count: 1
+        skip: 0
+        objectType: objectType
       title: PagedSkills
     Skill:
       allOf:
@@ -4167,23 +5860,94 @@ components:
           groupPriority:
             type: integer
         type: object
+      example:
+        groupPriority: 5
+        synonyms:
+        - synonyms
+        - synonyms
+        suggestion: false
+        linkable: false
+        invest: false
+        description: This is a description
+        kindGiver: false
       title: Skill
     SkillDetails:
       example:
         children:
-        - skill: null
+        - skill:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
           kindGiver: false
-        - skill: null
+        - skill:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
           kindGiver: false
         displayName: displayName
-        skill: null
-        kinds:
-        - null
-        - null
-        parents:
-        - skill: null
+        skill:
+          groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
           kindGiver: false
-        - skill: null
+        kinds:
+        - groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
+        - groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
+        parents:
+        - skill:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          kindGiver: false
+        - skill:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
           kindGiver: false
       properties:
         skill:
@@ -4269,7 +6033,36 @@ components:
             default: false
             description: Marks persons not working for the company anymore
             type: boolean
+          githubUser:
+            description: GitHub user name
+            example: pmueller
+            type: string
         type: object
+      example:
+        education: Bachelor of Computer Scince
+        mail: peter.mueller@prodyna.com
+        pictureSHA256: pictureSHA256
+        synonyms:
+        - synonyms
+        - synonyms
+        suggestion: false
+        jobTitle: Software Engineer
+        description: This is a description
+        employeeId: "1234567"
+        onsiteRatio: 20
+        seniorityEnum: null
+        githubUser: pmueller
+        picture: picture
+        inactive: false
+        mobilePhone: +49 176 12345678
+        experienceSinceYear: 2010
+        location: "Frankfurt, Germany"
+        company: PRODYNA SE
+        department: Professional Services
+        seniority: Senior
+        geolocation:
+          latitude: 5.637377
+          longitude: 5.962134
       title: Person
     PersonDetails:
       discriminator:
@@ -4277,59 +6070,372 @@ components:
       example:
         languages:
         - level:
-            level: 1
-          language: null
+            level: 3
+          language:
+            nativeName: العربية
+            code: de
         - level:
-            level: 1
-          language: null
-        manager: null
-        person: null
+            level: 3
+          language:
+            nativeName: العربية
+            code: de
+        manager:
+          education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        person:
+          education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
         availabilities:
-        - availability: null
+        - availability:
+            enddate: 2000-01-23
+            workHours: 38.5
+            startdate: 2000-01-23
+            descriptions:
+            - descriptions
+            - descriptions
+            plannedHours: 22.5
+            objectType: objectType
           percent: 8.008281904610115
-        - availability: null
+        - availability:
+            enddate: 2000-01-23
+            workHours: 38.5
+            startdate: 2000-01-23
+            descriptions:
+            - descriptions
+            - descriptions
+            plannedHours: 22.5
+            objectType: objectType
           percent: 8.008281904610115
         industries:
-        - null
-        - null
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
         skillGroups:
         - skills:
-          - null
-          - null
-          group: null
+          - experienceInMonth: 6
+          - experienceInMonth: 6
+          group:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
         - skills:
-          - null
-          - null
-          group: null
+          - experienceInMonth: 6
+          - experienceInMonth: 6
+          group:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
         profiles:
-        - null
-        - null
-        office: null
+        - synonyms:
+          - synonyms
+          - synonyms
+        - synonyms:
+          - synonyms
+          - synonyms
+        office:
+          synonyms:
+          - synonyms
+          - synonyms
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
         interests:
-        - null
-        - null
+        - groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
+        - groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
         certifications:
         - skillLevels:
           - level:
-              level: 1
-            skill: null
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
           - level:
-              level: 1
-            skill: null
-          organization: null
-          certification: null
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          certification:
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            validity: validity
         - skillLevels:
           - level:
-              level: 1
-            skill: null
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
           - level:
-              level: 1
-            skill: null
-          organization: null
-          certification: null
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          certification:
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            validity: validity
         experiences:
-        - null
-        - null
+        - confirmedBy:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          skillLevel:
+            level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+        - confirmedBy:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          skillLevel:
+            level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
         objectType: objectType
       properties:
         person:
@@ -4377,8 +6483,22 @@ components:
     PersonSearch:
       example:
         projects:
-        - null
-        - null
+        - participationInMonth:
+            min: 0
+            max: 100
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          involvedOfficeIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
+        - participationInMonth:
+            min: 0
+            max: 100
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          involvedOfficeIds:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         profileIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -4388,13 +6508,32 @@ components:
         onsiteRatio:
           min: 0
           max: 100
-        availability: null
+        availability:
+          enddate: 2000-01-23
+          min: 0
+          max: 100
+          startdate: 2000-01-23
+          objectType: objectType
         certifications:
-        - null
-        - null
+        - startedCertification: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
+        - startedCertification: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
         skills:
-        - null
-        - null
+        - lastAssignment: 2000-01-23
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          experienceInMonth:
+            min: 0
+            max: 100
+          objectType: objectType
+        - lastAssignment: 2000-01-23
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          experienceInMonth:
+            min: 0
+            max: 100
+          objectType: objectType
         employeeIds:
         - employeeIds
         - employeeIds
@@ -4402,11 +6541,35 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         industries:
-        - null
-        - null
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          amountOfProjects:
+            min: 0
+            max: 100
+          experienceInMonth:
+            min: 0
+            max: 100
+          activeProjects: true
+          objectType: objectType
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          amountOfProjects:
+            min: 0
+            max: 100
+          experienceInMonth:
+            min: 0
+            max: 100
+          activeProjects: true
+          objectType: objectType
         organizations:
-        - null
-        - null
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          amountOfProjects:
+            min: 0
+            max: 100
+          objectType: objectType
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          amountOfProjects:
+            min: 0
+            max: 100
+          objectType: objectType
         personIds:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -4484,6 +6647,754 @@ components:
               $ref: '#/components/schemas/PersonScoreDetail'
             type: array
         type: object
+      example:
+        persons:
+        - languages:
+          - level:
+              level: 3
+            language:
+              nativeName: العربية
+              code: de
+          - level:
+              level: 3
+            language:
+              nativeName: العربية
+              code: de
+          manager:
+            education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          availabilities:
+          - availability:
+              enddate: 2000-01-23
+              workHours: 38.5
+              startdate: 2000-01-23
+              descriptions:
+              - descriptions
+              - descriptions
+              plannedHours: 22.5
+              objectType: objectType
+            percent: 8.008281904610115
+          - availability:
+              enddate: 2000-01-23
+              workHours: 38.5
+              startdate: 2000-01-23
+              descriptions:
+              - descriptions
+              - descriptions
+              plannedHours: 22.5
+              objectType: objectType
+            percent: 8.008281904610115
+          skillGroups:
+          - skills:
+            - experienceInMonth: 6
+            - experienceInMonth: 6
+            group:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          - skills:
+            - experienceInMonth: 6
+            - experienceInMonth: 6
+            group:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          profiles:
+          - synonyms:
+            - synonyms
+            - synonyms
+          - synonyms:
+            - synonyms
+            - synonyms
+          office:
+            synonyms:
+            - synonyms
+            - synonyms
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          certifications:
+          - skillLevels:
+            - level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+            - level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+            organization:
+              partner: false
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              description: This is a description
+              location: "Frankfurt, Germany"
+              picture: picture
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+              customer: false
+            certification:
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              description: This is a description
+              validity: validity
+          - skillLevels:
+            - level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+            - level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+            organization:
+              partner: false
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              description: This is a description
+              location: "Frankfurt, Germany"
+              picture: picture
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+              customer: false
+            certification:
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              description: This is a description
+              validity: validity
+          experiences:
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+          objectType: objectType
+          score: 0.5
+          directHit: true
+          person:
+            education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          industries:
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          interests:
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+        - languages:
+          - level:
+              level: 3
+            language:
+              nativeName: العربية
+              code: de
+          - level:
+              level: 3
+            language:
+              nativeName: العربية
+              code: de
+          manager:
+            education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          availabilities:
+          - availability:
+              enddate: 2000-01-23
+              workHours: 38.5
+              startdate: 2000-01-23
+              descriptions:
+              - descriptions
+              - descriptions
+              plannedHours: 22.5
+              objectType: objectType
+            percent: 8.008281904610115
+          - availability:
+              enddate: 2000-01-23
+              workHours: 38.5
+              startdate: 2000-01-23
+              descriptions:
+              - descriptions
+              - descriptions
+              plannedHours: 22.5
+              objectType: objectType
+            percent: 8.008281904610115
+          skillGroups:
+          - skills:
+            - experienceInMonth: 6
+            - experienceInMonth: 6
+            group:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          - skills:
+            - experienceInMonth: 6
+            - experienceInMonth: 6
+            group:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          profiles:
+          - synonyms:
+            - synonyms
+            - synonyms
+          - synonyms:
+            - synonyms
+            - synonyms
+          office:
+            synonyms:
+            - synonyms
+            - synonyms
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          certifications:
+          - skillLevels:
+            - level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+            - level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+            organization:
+              partner: false
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              description: This is a description
+              location: "Frankfurt, Germany"
+              picture: picture
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+              customer: false
+            certification:
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              description: This is a description
+              validity: validity
+          - skillLevels:
+            - level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+            - level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+            organization:
+              partner: false
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              description: This is a description
+              location: "Frankfurt, Germany"
+              picture: picture
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+              customer: false
+            certification:
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              description: This is a description
+              validity: validity
+          experiences:
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+          objectType: objectType
+          score: 0.5
+          directHit: true
+          person:
+            education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          industries:
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          interests:
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+        limit: 1
+        count: 1
+        skip: 0
+        objectType: objectType
       title: PagedPersons
     Seniority:
       enum:
@@ -4499,7 +7410,7 @@ components:
       example:
         skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         level:
-          level: 1
+          level: 3
       properties:
         skillId:
           format: uuid
@@ -4522,6 +7433,448 @@ components:
               $ref: '#/components/schemas/PersonProjectParticipationItem'
             type: array
         type: object
+      example:
+        participationItems:
+        - participation:
+            timeframe:
+              enddate: 2000-01-23
+              startdate: 2000-01-23
+              objectType: objectType
+            personalDescription: personalDescription
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            objectType: objectType
+          experiences:
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+        - participation:
+            timeframe:
+              enddate: 2000-01-23
+              startdate: 2000-01-23
+              objectType: objectType
+            personalDescription: personalDescription
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            objectType: objectType
+          experiences:
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+          - confirmedBy:
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            - education: Bachelor of Computer Scince
+              mail: peter.mueller@prodyna.com
+              pictureSHA256: pictureSHA256
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              jobTitle: Software Engineer
+              description: This is a description
+              employeeId: "1234567"
+              onsiteRatio: 20
+              seniorityEnum: null
+              githubUser: pmueller
+              picture: picture
+              inactive: false
+              mobilePhone: +49 176 12345678
+              experienceSinceYear: 2010
+              location: "Frankfurt, Germany"
+              company: PRODYNA SE
+              department: Professional Services
+              seniority: Senior
+              geolocation:
+                latitude: 5.637377
+                longitude: 5.962134
+            skillLevel:
+              level:
+                level: 3
+              skill:
+                groupPriority: 5
+                synonyms:
+                - synonyms
+                - synonyms
+                suggestion: false
+                linkable: false
+                invest: false
+                description: This is a description
+                kindGiver: false
+        projectDetails:
+          persons:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          timeframe:
+            enddate: 2000-01-23
+            startdate: 2000-01-23
+            objectType: objectType
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          industries:
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          - synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+          skillGroups:
+          - skills:
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            group:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          - skills:
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            - groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+            group:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          project:
+            external: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            confidentiality: null
+            projectType: null
+            description: This is a description
+            location: "Frankfurt, Germany"
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          executiveOrganizations:
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          - partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          objectType: objectType
       title: PersonProjectParticipationDetails
     ProjectParticipationCreate:
       allOf:
@@ -4541,6 +7894,22 @@ components:
         - personId
         - projectId
         type: object
+      example:
+        skills:
+        - skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          level:
+            level: 3
+        - skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          level:
+            level: 3
+        timeframe:
+          enddate: 2000-01-23
+          startdate: 2000-01-23
+          objectType: objectType
+        personalDescription: personalDescription
+        personId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        projectId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       title: ProjectParticipationCreate
     ProjectParticipationDetails:
       allOf:
@@ -4557,16 +7926,188 @@ components:
           project:
             $ref: '#/components/schemas/Project'
         type: object
+      example:
+        participation:
+          timeframe:
+            enddate: 2000-01-23
+            startdate: 2000-01-23
+            objectType: objectType
+          personalDescription: personalDescription
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
+        person:
+          education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        project:
+          external: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          confidentiality: null
+          projectType: null
+          description: This is a description
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        experiences:
+        - confirmedBy:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          skillLevel:
+            level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+        - confirmedBy:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          skillLevel:
+            level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
       title: ProjectParticipationDetails
     ProjectParticipationUpdate:
       example:
         skills:
         - skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           level:
-            level: 1
+            level: 3
         - skillId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           level:
-            level: 1
+            level: 3
         timeframe:
           enddate: 2000-01-23
           startdate: 2000-01-23
@@ -4592,6 +8133,32 @@ components:
               $ref: '#/components/schemas/AvailabilityDetail'
             type: array
         type: object
+      example:
+        availabilities:
+        - availability:
+            enddate: 2000-01-23
+            workHours: 38.5
+            startdate: 2000-01-23
+            descriptions:
+            - descriptions
+            - descriptions
+            plannedHours: 22.5
+            objectType: objectType
+          percent: 8.008281904610115
+        - availability:
+            enddate: 2000-01-23
+            workHours: 38.5
+            startdate: 2000-01-23
+            descriptions:
+            - descriptions
+            - descriptions
+            plannedHours: 22.5
+            objectType: objectType
+          percent: 8.008281904610115
+        limit: 1
+        count: 1
+        skip: 0
+        objectType: objectType
       title: PagedAvailabilities
     Availability:
       allOf:
@@ -4614,10 +8181,27 @@ components:
         - plannedHours
         - workHours
         type: object
+      example:
+        enddate: 2000-01-23
+        workHours: 38.5
+        startdate: 2000-01-23
+        descriptions:
+        - descriptions
+        - descriptions
+        plannedHours: 22.5
+        objectType: objectType
       title: Availability
     AvailabilityDetail:
       example:
-        availability: null
+        availability:
+          enddate: 2000-01-23
+          workHours: 38.5
+          startdate: 2000-01-23
+          descriptions:
+          - descriptions
+          - descriptions
+          plannedHours: 22.5
+          objectType: objectType
         percent: 8.008281904610115
       properties:
         availability:
@@ -4637,6 +8221,24 @@ components:
               $ref: '#/components/schemas/SearchResultItem'
             type: array
         type: object
+      example:
+        limit: 1
+        count: 1
+        skip: 0
+        items:
+        - score: 0.7
+          item:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            objectType: objectType
+          type: Certification
+        - score: 0.7
+          item:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            objectType: objectType
+          type: Certification
+        objectType: objectType
       title: SearchResult
     PagedLanguages:
       allOf:
@@ -4647,6 +8249,16 @@ components:
               $ref: '#/components/schemas/Language'
             type: array
         type: object
+      example:
+        languages:
+        - nativeName: العربية
+          code: de
+        - nativeName: العربية
+          code: de
+        limit: 1
+        count: 1
+        skip: 0
+        objectType: objectType
       title: PagedLanguages
     Language:
       allOf:
@@ -4661,13 +8273,18 @@ components:
             example: العربية
             type: string
         type: object
+      example:
+        nativeName: العربية
+        code: de
       title: Language
     LanguageDetails:
       example:
-        language: null
+        language:
+          nativeName: العربية
+          code: de
         countries:
-        - null
-        - null
+        - picture: picture
+        - picture: picture
       properties:
         language:
           $ref: '#/components/schemas/Language'
@@ -4686,6 +8303,14 @@ components:
               $ref: '#/components/schemas/Country'
             type: array
         type: object
+      example:
+        limit: 1
+        count: 1
+        skip: 0
+        countries:
+        - picture: picture
+        - picture: picture
+        objectType: objectType
       title: PagedCountries
     Country:
       allOf:
@@ -4695,13 +8320,18 @@ components:
             description: base64 encoded image
             type: string
         type: object
+      example:
+        picture: picture
       title: Country
     CountryDetails:
       example:
-        country: null
+        country:
+          picture: picture
         languages:
-        - null
-        - null
+        - nativeName: العربية
+          code: de
+        - nativeName: العربية
+          code: de
       properties:
         country:
           $ref: '#/components/schemas/Country'
@@ -4720,17 +8350,38 @@ components:
               $ref: '#/components/schemas/ProfileDetails'
             type: array
         type: object
+      example:
+        limit: 1
+        count: 1
+        profiles:
+        - profile:
+            synonyms:
+            - synonyms
+            - synonyms
+        - profile:
+            synonyms:
+            - synonyms
+            - synonyms
+        skip: 0
+        objectType: objectType
       title: PagedProfiles
     Profile:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
       - $ref: '#/components/schemas/Synonymable'
+      example:
+        synonyms:
+        - synonyms
+        - synonyms
       title: Profile
     ProfileDetails:
       discriminator:
         propertyName: objectType
       example:
-        profile: null
+        profile:
+          synonyms:
+          - synonyms
+          - synonyms
       properties:
         profile:
           $ref: '#/components/schemas/Profile'
@@ -4756,6 +8407,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
       - $ref: '#/components/schemas/Nameable'
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        objectType: objectType
       title: NamedDomainModel
     Suggestable:
       properties:
@@ -4793,8 +8448,17 @@ components:
     SkillLevel:
       example:
         level:
-          level: 1
-        skill: null
+          level: 3
+        skill:
+          groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
       properties:
         skill:
           $ref: '#/components/schemas/Skill'
@@ -4806,6 +8470,182 @@ components:
       allOf:
       - $ref: '#/components/schemas/ProjectDetails'
       - $ref: '#/components/schemas/ScoreResult'
+      example:
+        persons:
+        - education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        - education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        timeframe:
+          enddate: 2000-01-23
+          startdate: 2000-01-23
+          objectType: objectType
+        score: 0.5
+        directHit: true
+        organization:
+          partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
+        industries:
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+        skillGroups:
+        - skills:
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          group:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+        - skills:
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          - groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+          group:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+        project:
+          external: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          confidentiality: null
+          projectType: null
+          description: This is a description
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        executiveOrganizations:
+        - partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
+        - partner: false
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          description: This is a description
+          location: "Frankfurt, Germany"
+          picture: picture
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+          customer: false
+        objectType: objectType
       title: ProjectScoreDetail
     ProjectType:
       enum:
@@ -4824,9 +8664,34 @@ components:
     SkillGroup:
       example:
         skills:
-        - null
-        - null
-        group: null
+        - groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
+        - groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
+        group:
+          groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
       properties:
         group:
           $ref: '#/components/schemas/Skill'
@@ -4877,6 +8742,9 @@ components:
     EntityFilter:
       allOf:
       - $ref: '#/components/schemas/AbstractEntityFilter'
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        objectType: objectType
       title: EntityFilter
     Linkable:
       properties:
@@ -4888,7 +8756,16 @@ components:
       type: object
     SkillLink:
       example:
-        skill: null
+        skill:
+          groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
         kindGiver: false
       properties:
         skill:
@@ -4908,12 +8785,77 @@ components:
               $ref: '#/components/schemas/Person'
             type: array
         type: object
+      example:
+        confirmedBy:
+        - education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        - education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        skillLevel:
+          level:
+            level: 3
+          skill:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
       title: Experience
     LanguageLevel:
       example:
         level:
-          level: 1
-        language: null
+          level: 3
+        language:
+          nativeName: العربية
+          code: de
       properties:
         language:
           $ref: '#/components/schemas/Language'
@@ -4924,9 +8866,18 @@ components:
     ExperienceSkillGroup:
       example:
         skills:
-        - null
-        - null
-        group: null
+        - experienceInMonth: 6
+        - experienceInMonth: 6
+        group:
+          groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
       properties:
         group:
           $ref: '#/components/schemas/Skill'
@@ -4940,6 +8891,12 @@ components:
       allOf:
       - $ref: '#/components/schemas/Timeframed'
       - $ref: '#/components/schemas/MinMaxPercent'
+      example:
+        enddate: 2000-01-23
+        min: 0
+        max: 100
+        startdate: 2000-01-23
+        objectType: objectType
       title: AvailabilityFilter
     MinMaxPercent:
       example:
@@ -4969,6 +8926,13 @@ components:
             format: date
             type: string
         type: object
+      example:
+        lastAssignment: 2000-01-23
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        experienceInMonth:
+          min: 0
+          max: 100
+        objectType: objectType
       title: PersonSkillFilter
     PersonProjectFilter:
       allOf:
@@ -4982,6 +8946,15 @@ components:
               type: string
             type: array
         type: object
+      example:
+        participationInMonth:
+          min: 0
+          max: 100
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        involvedOfficeIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        objectType: objectType
       title: PersonProjectFilter
     PersonOrganizationFilter:
       allOf:
@@ -4990,6 +8963,12 @@ components:
           amountOfProjects:
             $ref: '#/components/schemas/MinMax'
         type: object
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        amountOfProjects:
+          min: 0
+          max: 100
+        objectType: objectType
       title: PersonOrganizationFilter
     PersonIndustryFilter:
       allOf:
@@ -5002,6 +8981,16 @@ components:
           experienceInMonth:
             $ref: '#/components/schemas/MinMax'
         type: object
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        amountOfProjects:
+          min: 0
+          max: 100
+        experienceInMonth:
+          min: 0
+          max: 100
+        activeProjects: true
+        objectType: objectType
       title: PersonIndustryFilter
     PersonCertificationFilter:
       allOf:
@@ -5011,11 +9000,387 @@ components:
             description: Include employees who started the certification
             type: boolean
         type: object
+      example:
+        startedCertification: true
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        objectType: objectType
       title: PersonCertificationFilter
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
       - $ref: '#/components/schemas/ScoreResult'
+      example:
+        languages:
+        - level:
+            level: 3
+          language:
+            nativeName: العربية
+            code: de
+        - level:
+            level: 3
+          language:
+            nativeName: العربية
+            code: de
+        manager:
+          education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        availabilities:
+        - availability:
+            enddate: 2000-01-23
+            workHours: 38.5
+            startdate: 2000-01-23
+            descriptions:
+            - descriptions
+            - descriptions
+            plannedHours: 22.5
+            objectType: objectType
+          percent: 8.008281904610115
+        - availability:
+            enddate: 2000-01-23
+            workHours: 38.5
+            startdate: 2000-01-23
+            descriptions:
+            - descriptions
+            - descriptions
+            plannedHours: 22.5
+            objectType: objectType
+          percent: 8.008281904610115
+        skillGroups:
+        - skills:
+          - experienceInMonth: 6
+          - experienceInMonth: 6
+          group:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+        - skills:
+          - experienceInMonth: 6
+          - experienceInMonth: 6
+          group:
+            groupPriority: 5
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            linkable: false
+            invest: false
+            description: This is a description
+            kindGiver: false
+        profiles:
+        - synonyms:
+          - synonyms
+          - synonyms
+        - synonyms:
+          - synonyms
+          - synonyms
+        office:
+          synonyms:
+          - synonyms
+          - synonyms
+          location: "Frankfurt, Germany"
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        certifications:
+        - skillLevels:
+          - level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          - level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          certification:
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            validity: validity
+        - skillLevels:
+          - level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          - level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+          organization:
+            partner: false
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            location: "Frankfurt, Germany"
+            picture: picture
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+            customer: false
+          certification:
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            description: This is a description
+            validity: validity
+        experiences:
+        - confirmedBy:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          skillLevel:
+            level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+        - confirmedBy:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          skillLevel:
+            level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+        objectType: objectType
+        score: 0.5
+        directHit: true
+        person:
+          education: Bachelor of Computer Scince
+          mail: peter.mueller@prodyna.com
+          pictureSHA256: pictureSHA256
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          jobTitle: Software Engineer
+          description: This is a description
+          employeeId: "1234567"
+          onsiteRatio: 20
+          seniorityEnum: null
+          githubUser: pmueller
+          picture: picture
+          inactive: false
+          mobilePhone: +49 176 12345678
+          experienceSinceYear: 2010
+          location: "Frankfurt, Germany"
+          company: PRODYNA SE
+          department: Professional Services
+          seniority: Senior
+          geolocation:
+            latitude: 5.637377
+            longitude: 5.962134
+        industries:
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+        - synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+        interests:
+        - groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
+        - groupPriority: 5
+          synonyms:
+          - synonyms
+          - synonyms
+          suggestion: false
+          linkable: false
+          invest: false
+          description: This is a description
+          kindGiver: false
       title: PersonScoreDetail
     PersonProjectParticipationItem:
       allOf:
@@ -5028,6 +9393,140 @@ components:
             readOnly: true
             type: array
         type: object
+      example:
+        participation:
+          timeframe:
+            enddate: 2000-01-23
+            startdate: 2000-01-23
+            objectType: objectType
+          personalDescription: personalDescription
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
+        experiences:
+        - confirmedBy:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          skillLevel:
+            level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
+        - confirmedBy:
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          - education: Bachelor of Computer Scince
+            mail: peter.mueller@prodyna.com
+            pictureSHA256: pictureSHA256
+            synonyms:
+            - synonyms
+            - synonyms
+            suggestion: false
+            jobTitle: Software Engineer
+            description: This is a description
+            employeeId: "1234567"
+            onsiteRatio: 20
+            seniorityEnum: null
+            githubUser: pmueller
+            picture: picture
+            inactive: false
+            mobilePhone: +49 176 12345678
+            experienceSinceYear: 2010
+            location: "Frankfurt, Germany"
+            company: PRODYNA SE
+            department: Professional Services
+            seniority: Senior
+            geolocation:
+              latitude: 5.637377
+              longitude: 5.962134
+          skillLevel:
+            level:
+              level: 3
+            skill:
+              groupPriority: 5
+              synonyms:
+              - synonyms
+              - synonyms
+              suggestion: false
+              linkable: false
+              invest: false
+              description: This is a description
+              kindGiver: false
       title: PersonProjectParticipationItem
     ProjectParticipation:
       allOf:
@@ -5038,8 +9537,23 @@ components:
           personalDescription:
             type: string
         type: object
+      example:
+        timeframe:
+          enddate: 2000-01-23
+          startdate: 2000-01-23
+          objectType: objectType
+        personalDescription: personalDescription
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        objectType: objectType
       title: ProjectParticipation
     SearchResultItem:
+      example:
+        score: 0.7
+        item:
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          objectType: objectType
+        type: Certification
       properties:
         score:
           example: 0.7
@@ -5073,6 +9587,9 @@ components:
       title: Nameable
       type: object
     Geolocation:
+      example:
+        latitude: 5.637377
+        longitude: 5.962134
       properties:
         longitude:
           format: float
@@ -5114,9 +9631,15 @@ components:
             default: 0
             type: integer
         type: object
+      example:
+        experienceInMonth: 6
       title: ExperienceSkill
   securitySchemes:
-    bearerAuth:
+    oidcScheme:
+      description: Authentication
+      openIdConnectUrl: ""
+      type: openIdConnect
+    bearerScheme:
       bearerFormat: JWT
       scheme: bearer
       type: http

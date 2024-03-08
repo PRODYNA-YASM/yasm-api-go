@@ -1,6 +1,6 @@
 # \StatusAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://yasm.prodyna.com:443/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,23 +22,23 @@ Information about the server
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StatusAPI.GetVersion(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StatusAPI.GetVersion``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetVersion`: Version
-    fmt.Fprintf(os.Stdout, "Response from `StatusAPI.GetVersion`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StatusAPI.GetVersion(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StatusAPI.GetVersion``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetVersion`: Version
+	fmt.Fprintf(os.Stdout, "Response from `StatusAPI.GetVersion`: %v\n", resp)
 }
 ```
 
@@ -57,7 +57,7 @@ Other parameters are passed through a pointer to a apiGetVersionRequest struct v
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 

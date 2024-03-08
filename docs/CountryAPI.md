@@ -1,6 +1,6 @@
 # \CountryAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://yasm.prodyna.com:443/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,25 +26,25 @@ Assign a language to a country
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CountryAPI.AddLanguageToCountry(context.Background(), countryId, languageId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.AddLanguageToCountry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AddLanguageToCountry`: CountryDetails
-    fmt.Fprintf(os.Stdout, "Response from `CountryAPI.AddLanguageToCountry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CountryAPI.AddLanguageToCountry(context.Background(), countryId, languageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.AddLanguageToCountry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddLanguageToCountry`: CountryDetails
+	fmt.Fprintf(os.Stdout, "Response from `CountryAPI.AddLanguageToCountry`: %v\n", resp)
 }
 ```
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -97,24 +97,24 @@ Create a new Country
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    country := *openapiclient.NewCountry("Id_example", "Name_example") // Country | 
+	country := *openapiclient.NewCountry("Id_example", "Name_example") // Country | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CountryAPI.CreateCountry(context.Background()).Country(country).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.CreateCountry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCountry`: CountryDetails
-    fmt.Fprintf(os.Stdout, "Response from `CountryAPI.CreateCountry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CountryAPI.CreateCountry(context.Background()).Country(country).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.CreateCountry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateCountry`: CountryDetails
+	fmt.Fprintf(os.Stdout, "Response from `CountryAPI.CreateCountry`: %v\n", resp)
 }
 ```
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -161,24 +161,24 @@ Delete a Country
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CountryAPI.DeleteCountry(context.Background(), countryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.DeleteCountry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteCountry`: Status
-    fmt.Fprintf(os.Stdout, "Response from `CountryAPI.DeleteCountry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CountryAPI.DeleteCountry(context.Background(), countryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.DeleteCountry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteCountry`: Status
+	fmt.Fprintf(os.Stdout, "Response from `CountryAPI.DeleteCountry`: %v\n", resp)
 }
 ```
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -229,25 +229,25 @@ Get all Countries
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
+	skip := int32(0) // int32 |  (optional) (default to 0)
+	limit := int32(20) // int32 |  (optional) (default to 20)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CountryAPI.GetCountries(context.Background()).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.GetCountries``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCountries`: PagedCountries
-    fmt.Fprintf(os.Stdout, "Response from `CountryAPI.GetCountries`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CountryAPI.GetCountries(context.Background()).Skip(skip).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.GetCountries``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetCountries`: PagedCountries
+	fmt.Fprintf(os.Stdout, "Response from `CountryAPI.GetCountries`: %v\n", resp)
 }
 ```
 
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -295,24 +295,24 @@ Get details about a Country
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CountryAPI.GetCountry(context.Background(), countryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.GetCountry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCountry`: CountryDetails
-    fmt.Fprintf(os.Stdout, "Response from `CountryAPI.GetCountry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CountryAPI.GetCountry(context.Background(), countryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.GetCountry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetCountry`: CountryDetails
+	fmt.Fprintf(os.Stdout, "Response from `CountryAPI.GetCountry`: %v\n", resp)
 }
 ```
 
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -363,25 +363,25 @@ Assign a language to a country
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CountryAPI.RemoveLanguageFromCountry(context.Background(), countryId, languageId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.RemoveLanguageFromCountry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RemoveLanguageFromCountry`: CountryDetails
-    fmt.Fprintf(os.Stdout, "Response from `CountryAPI.RemoveLanguageFromCountry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CountryAPI.RemoveLanguageFromCountry(context.Background(), countryId, languageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.RemoveLanguageFromCountry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RemoveLanguageFromCountry`: CountryDetails
+	fmt.Fprintf(os.Stdout, "Response from `CountryAPI.RemoveLanguageFromCountry`: %v\n", resp)
 }
 ```
 
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -434,25 +434,25 @@ Update a Country
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    country := *openapiclient.NewCountry("Id_example", "Name_example") // Country | 
+	countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	country := *openapiclient.NewCountry("Id_example", "Name_example") // Country | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CountryAPI.UpdateCountry(context.Background(), countryId).Country(country).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.UpdateCountry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateCountry`: CountryDetails
-    fmt.Fprintf(os.Stdout, "Response from `CountryAPI.UpdateCountry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CountryAPI.UpdateCountry(context.Background(), countryId).Country(country).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.UpdateCountry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateCountry`: CountryDetails
+	fmt.Fprintf(os.Stdout, "Response from `CountryAPI.UpdateCountry`: %v\n", resp)
 }
 ```
 
@@ -480,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 

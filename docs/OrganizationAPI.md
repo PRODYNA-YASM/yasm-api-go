@@ -1,6 +1,6 @@
 # \OrganizationAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://yasm.prodyna.com:443/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -40,25 +40,25 @@ Add an Organization to a Project as executive organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.AddExecutiveOrganizationToProject(context.Background(), projectId, organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.AddExecutiveOrganizationToProject``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AddExecutiveOrganizationToProject`: ProjectDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.AddExecutiveOrganizationToProject`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.AddExecutiveOrganizationToProject(context.Background(), projectId, organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.AddExecutiveOrganizationToProject``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddExecutiveOrganizationToProject`: ProjectDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.AddExecutiveOrganizationToProject`: %v\n", resp)
 }
 ```
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -111,25 +111,25 @@ Attach an Organization to a parent Organization, returns the parent Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    parentOrganizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	parentOrganizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.AddOrganizationToParentOrganization(context.Background(), organizationId, parentOrganizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.AddOrganizationToParentOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AddOrganizationToParentOrganization`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.AddOrganizationToParentOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.AddOrganizationToParentOrganization(context.Background(), organizationId, parentOrganizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.AddOrganizationToParentOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddOrganizationToParentOrganization`: OrganizationDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.AddOrganizationToParentOrganization`: %v\n", resp)
 }
 ```
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -182,25 +182,25 @@ Add an Organization to an Industry
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.AttachOrganizationToIndustry(context.Background(), organizationId, industryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.AttachOrganizationToIndustry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AttachOrganizationToIndustry`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.AttachOrganizationToIndustry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.AttachOrganizationToIndustry(context.Background(), organizationId, industryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.AttachOrganizationToIndustry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AttachOrganizationToIndustry`: OrganizationDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.AttachOrganizationToIndustry`: %v\n", resp)
 }
 ```
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -253,25 +253,25 @@ Create a Certification in an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.CreateCertification(context.Background(), organizationId).Certification(certification).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCertification`: CertificationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.CreateCertification(context.Background(), organizationId).Certification(certification).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateCertification`: CertificationDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateCertification`: %v\n", resp)
 }
 ```
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -323,25 +323,25 @@ Create an Office in an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.CreateOffice(context.Background(), organizationId).Office(office).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateOffice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateOffice`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateOffice`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.CreateOffice(context.Background(), organizationId).Office(office).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateOffice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateOffice`: OrganizationDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateOffice`: %v\n", resp)
 }
 ```
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -393,24 +393,24 @@ Create an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organization := *openapiclient.NewOrganization(false, "Id_example", "Name_example") // Organization | Details about the Organization
+	organization := *openapiclient.NewOrganization(false, "Id_example", "Name_example") // Organization | Details about the Organization
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.CreateOrganization(context.Background()).Organization(organization).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateOrganization`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.CreateOrganization(context.Background()).Organization(organization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateOrganization`: OrganizationDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateOrganization`: %v\n", resp)
 }
 ```
 
@@ -433,7 +433,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -457,25 +457,25 @@ Create a Project in an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    project := *openapiclient.NewProject(false, "Id_example", "Name_example") // Project | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	project := *openapiclient.NewProject(false, "Id_example", "Name_example") // Project | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.CreateProject(context.Background(), organizationId).Project(project).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateProject``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateProject`: ProjectDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateProject`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.CreateProject(context.Background(), organizationId).Project(project).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateProject``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateProject`: ProjectDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateProject`: %v\n", resp)
 }
 ```
 
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -527,25 +527,25 @@ Delete an Office from an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.DeleteOffice(context.Background(), organizationId, officeId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.DeleteOffice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteOffice`: Status
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.DeleteOffice`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.DeleteOffice(context.Background(), organizationId, officeId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.DeleteOffice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteOffice`: Status
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.DeleteOffice`: %v\n", resp)
 }
 ```
 
@@ -574,7 +574,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -598,24 +598,24 @@ Delete an organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.DeleteOrganization(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.DeleteOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteOrganization`: Status
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.DeleteOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.DeleteOrganization(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.DeleteOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteOrganization`: Status
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.DeleteOrganization`: %v\n", resp)
 }
 ```
 
@@ -642,7 +642,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -666,25 +666,25 @@ Remove an Organization to an Industry
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.DetachOrganizationFromIndustry(context.Background(), organizationId, industryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.DetachOrganizationFromIndustry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DetachOrganizationFromIndustry`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.DetachOrganizationFromIndustry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.DetachOrganizationFromIndustry(context.Background(), organizationId, industryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.DetachOrganizationFromIndustry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DetachOrganizationFromIndustry`: OrganizationDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.DetachOrganizationFromIndustry`: %v\n", resp)
 }
 ```
 
@@ -713,7 +713,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -737,26 +737,26 @@ Get a list of all certifications for a organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	skip := int32(0) // int32 |  (optional) (default to 0)
+	limit := int32(20) // int32 |  (optional) (default to 20)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.GetCertificationsForOrganization(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetCertificationsForOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCertificationsForOrganization`: PagedCertifications
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetCertificationsForOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.GetCertificationsForOrganization(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetCertificationsForOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetCertificationsForOrganization`: PagedCertifications
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetCertificationsForOrganization`: %v\n", resp)
 }
 ```
 
@@ -785,7 +785,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -809,25 +809,25 @@ Get an Office for an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.GetOffice(context.Background(), organizationId, officeId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOffice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOffice`: Office
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOffice`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.GetOffice(context.Background(), organizationId, officeId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOffice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOffice`: Office
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOffice`: %v\n", resp)
 }
 ```
 
@@ -856,7 +856,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -880,24 +880,24 @@ Get details about an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.GetOrganization(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganization`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.GetOrganization(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganization`: OrganizationDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOrganization`: %v\n", resp)
 }
 ```
 
@@ -924,7 +924,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -948,26 +948,26 @@ Get a list of all Projects for an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	skip := int32(0) // int32 |  (optional) (default to 0)
+	limit := int32(20) // int32 |  (optional) (default to 20)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.GetOrganizationProjects(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOrganizationProjects``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationProjects`: PagedProjects
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOrganizationProjects`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.GetOrganizationProjects(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOrganizationProjects``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationProjects`: PagedProjects
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOrganizationProjects`: %v\n", resp)
 }
 ```
 
@@ -996,7 +996,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -1020,26 +1020,26 @@ Get a list of all Organizations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally search via search term (optional) (default to "")
+	skip := int32(0) // int32 |  (optional) (default to 0)
+	limit := int32(20) // int32 |  (optional) (default to 20)
+	term := "term_example" // string | Optionally search via search term (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.GetOrganizations(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOrganizations``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizations`: PagedOrganizations
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOrganizations`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.GetOrganizations(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOrganizations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizations`: PagedOrganizations
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOrganizations`: %v\n", resp)
 }
 ```
 
@@ -1064,7 +1064,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -1088,25 +1088,25 @@ Move a Certification to an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.MoveCertification(context.Background(), organizationId, certificationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.MoveCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `MoveCertification`: CertificationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.MoveCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.MoveCertification(context.Background(), organizationId, certificationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.MoveCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `MoveCertification`: CertificationDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.MoveCertification`: %v\n", resp)
 }
 ```
 
@@ -1135,7 +1135,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -1159,25 +1159,25 @@ Remove an Organization from a Project as executive organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.RemoveExecutiveOrganizationFromProject(context.Background(), projectId, organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.RemoveExecutiveOrganizationFromProject``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RemoveExecutiveOrganizationFromProject`: ProjectDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.RemoveExecutiveOrganizationFromProject`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.RemoveExecutiveOrganizationFromProject(context.Background(), projectId, organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.RemoveExecutiveOrganizationFromProject``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RemoveExecutiveOrganizationFromProject`: ProjectDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.RemoveExecutiveOrganizationFromProject`: %v\n", resp)
 }
 ```
 
@@ -1206,7 +1206,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -1230,25 +1230,25 @@ Detaches an Organization from parent Organization, return the parent Organizatio
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    parentOrganizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	parentOrganizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.RemoveOrganizationFromParentOrganization(context.Background(), organizationId, parentOrganizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.RemoveOrganizationFromParentOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RemoveOrganizationFromParentOrganization`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.RemoveOrganizationFromParentOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.RemoveOrganizationFromParentOrganization(context.Background(), organizationId, parentOrganizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.RemoveOrganizationFromParentOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RemoveOrganizationFromParentOrganization`: OrganizationDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.RemoveOrganizationFromParentOrganization`: %v\n", resp)
 }
 ```
 
@@ -1277,7 +1277,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -1301,26 +1301,26 @@ Update an Office for an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.UpdateOffice(context.Background(), organizationId, officeId).Office(office).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.UpdateOffice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateOffice`: Office
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.UpdateOffice`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.UpdateOffice(context.Background(), organizationId, officeId).Office(office).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.UpdateOffice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateOffice`: Office
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.UpdateOffice`: %v\n", resp)
 }
 ```
 
@@ -1350,7 +1350,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -1374,25 +1374,25 @@ Update an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    organization := *openapiclient.NewOrganization(false, "Id_example", "Name_example") // Organization | Details about the organization
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organization := *openapiclient.NewOrganization(false, "Id_example", "Name_example") // Organization | Details about the organization
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.UpdateOrganization(context.Background(), organizationId).Organization(organization).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.UpdateOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateOrganization`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.UpdateOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.UpdateOrganization(context.Background(), organizationId).Organization(organization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.UpdateOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateOrganization`: OrganizationDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.UpdateOrganization`: %v\n", resp)
 }
 ```
 
@@ -1420,7 +1420,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -1444,25 +1444,25 @@ project is now point to the new organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.UpdateProjectOrganization(context.Background(), organizationId, projectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.UpdateProjectOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateProjectOrganization`: ProjectDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.UpdateProjectOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAPI.UpdateProjectOrganization(context.Background(), organizationId, projectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.UpdateProjectOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateProjectOrganization`: ProjectDetails
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.UpdateProjectOrganization`: %v\n", resp)
 }
 ```
 
@@ -1491,7 +1491,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 

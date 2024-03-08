@@ -1,6 +1,6 @@
 # \CertificationAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://yasm.prodyna.com:443/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -33,27 +33,27 @@ Add Certification to a Person
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
+	"context"
+	"fmt"
+	"os"
     "time"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    body := time.Now() // string | 
+	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	body := time.Now() // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.AddPersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.AddPersonCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AddPersonCertification`: PersonDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.AddPersonCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.AddPersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.AddPersonCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddPersonCertification`: PersonDetails
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.AddPersonCertification`: %v\n", resp)
 }
 ```
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -109,26 +109,26 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    level := *openapiclient.NewLevel() // Level | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	level := *openapiclient.NewLevel() // Level | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.AddSkillToCertification(context.Background(), certificationId, skillId).Level(level).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.AddSkillToCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AddSkillToCertification`: CertificationDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.AddSkillToCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.AddSkillToCertification(context.Background(), certificationId, skillId).Level(level).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.AddSkillToCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddSkillToCertification`: CertificationDetails
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.AddSkillToCertification`: %v\n", resp)
 }
 ```
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -182,25 +182,25 @@ Create a Certification in an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.CreateCertification(context.Background(), organizationId).Certification(certification).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.CreateCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCertification`: CertificationDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.CreateCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.CreateCertification(context.Background(), organizationId).Certification(certification).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.CreateCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateCertification`: CertificationDetails
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.CreateCertification`: %v\n", resp)
 }
 ```
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -252,24 +252,24 @@ Delete a Certification
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.DeleteCertification(context.Background(), certificationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.DeleteCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteCertification`: Status
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.DeleteCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.DeleteCertification(context.Background(), certificationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.DeleteCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteCertification`: Status
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.DeleteCertification`: %v\n", resp)
 }
 ```
 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -320,25 +320,25 @@ Remove an Interest to a Person
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.DeletePersonCertification(context.Background(), personId, certificationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.DeletePersonCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeletePersonCertification`: PersonDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.DeletePersonCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.DeletePersonCertification(context.Background(), personId, certificationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.DeletePersonCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeletePersonCertification`: PersonDetails
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.DeletePersonCertification`: %v\n", resp)
 }
 ```
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -391,25 +391,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.DeleteSkillFromCertification(context.Background(), certificationId, skillId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.DeleteSkillFromCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteSkillFromCertification`: CertificationDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.DeleteSkillFromCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.DeleteSkillFromCertification(context.Background(), certificationId, skillId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.DeleteSkillFromCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteSkillFromCertification`: CertificationDetails
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.DeleteSkillFromCertification`: %v\n", resp)
 }
 ```
 
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -462,24 +462,24 @@ Get details about a Certification
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.GetCertification(context.Background(), certificationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.GetCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCertification`: CertificationDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.GetCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.GetCertification(context.Background(), certificationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.GetCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetCertification`: CertificationDetails
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.GetCertification`: %v\n", resp)
 }
 ```
 
@@ -506,7 +506,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -530,26 +530,26 @@ Get a list of all Certifications independent of the Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally search via search term (optional) (default to "")
+	skip := int32(0) // int32 |  (optional) (default to 0)
+	limit := int32(20) // int32 |  (optional) (default to 20)
+	term := "term_example" // string | Optionally search via search term (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.GetCertifications(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.GetCertifications``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCertifications`: PagedCertifications
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.GetCertifications`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.GetCertifications(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.GetCertifications``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetCertifications`: PagedCertifications
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.GetCertifications`: %v\n", resp)
 }
 ```
 
@@ -574,7 +574,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -598,26 +598,26 @@ Get a list of all certifications for a organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	skip := int32(0) // int32 |  (optional) (default to 0)
+	limit := int32(20) // int32 |  (optional) (default to 20)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.GetCertificationsForOrganization(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.GetCertificationsForOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCertificationsForOrganization`: PagedCertifications
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.GetCertificationsForOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.GetCertificationsForOrganization(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.GetCertificationsForOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetCertificationsForOrganization`: PagedCertifications
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.GetCertificationsForOrganization`: %v\n", resp)
 }
 ```
 
@@ -646,7 +646,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -670,25 +670,25 @@ Move a Certification to an Organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.MoveCertification(context.Background(), organizationId, certificationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.MoveCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `MoveCertification`: CertificationDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.MoveCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.MoveCertification(context.Background(), organizationId, certificationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.MoveCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `MoveCertification`: CertificationDetails
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.MoveCertification`: %v\n", resp)
 }
 ```
 
@@ -717,7 +717,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -741,26 +741,26 @@ Complex search over certification entities
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    certificationSearch := *openapiclient.NewCertificationSearch() // CertificationSearch | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
+	certificationSearch := *openapiclient.NewCertificationSearch() // CertificationSearch | 
+	skip := int32(0) // int32 |  (optional) (default to 0)
+	limit := int32(20) // int32 |  (optional) (default to 20)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.SearchCertifications(context.Background()).CertificationSearch(certificationSearch).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.SearchCertifications``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchCertifications`: PagedCertifications
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.SearchCertifications`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.SearchCertifications(context.Background()).CertificationSearch(certificationSearch).Skip(skip).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.SearchCertifications``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SearchCertifications`: PagedCertifications
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.SearchCertifications`: %v\n", resp)
 }
 ```
 
@@ -785,7 +785,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -809,25 +809,25 @@ Update a Certification
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.UpdateCertification(context.Background(), certificationId).Certification(certification).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.UpdateCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateCertification`: CertificationDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.UpdateCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.UpdateCertification(context.Background(), certificationId).Certification(certification).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.UpdateCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateCertification`: CertificationDetails
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.UpdateCertification`: %v\n", resp)
 }
 ```
 
@@ -855,7 +855,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -879,27 +879,27 @@ Update a Certification of a Person
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
+	"context"
+	"fmt"
+	"os"
     "time"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    body := time.Now() // string | 
+	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	body := time.Now() // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.UpdatePersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.UpdatePersonCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdatePersonCertification`: PersonDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.UpdatePersonCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.UpdatePersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.UpdatePersonCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdatePersonCertification`: PersonDetails
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.UpdatePersonCertification`: %v\n", resp)
 }
 ```
 
@@ -929,7 +929,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -955,26 +955,26 @@ Name | Type | Description  | Notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    level := *openapiclient.NewLevel() // Level | 
+	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	level := *openapiclient.NewLevel() // Level | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.UpdateSkillInCertification(context.Background(), certificationId, skillId).Level(level).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.UpdateSkillInCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateSkillInCertification`: CertificationDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.UpdateSkillInCertification`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificationAPI.UpdateSkillInCertification(context.Background(), certificationId, skillId).Level(level).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.UpdateSkillInCertification``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateSkillInCertification`: CertificationDetails
+	fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.UpdateSkillInCertification`: %v\n", resp)
 }
 ```
 
@@ -1004,7 +1004,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 

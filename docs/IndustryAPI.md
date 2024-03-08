@@ -1,6 +1,6 @@
 # \IndustryAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://yasm.prodyna.com:443/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,25 +26,25 @@ Add an Organization to an Industry
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryAPI.AttachOrganizationToIndustry(context.Background(), organizationId, industryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.AttachOrganizationToIndustry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AttachOrganizationToIndustry`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.AttachOrganizationToIndustry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IndustryAPI.AttachOrganizationToIndustry(context.Background(), organizationId, industryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.AttachOrganizationToIndustry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AttachOrganizationToIndustry`: OrganizationDetails
+	fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.AttachOrganizationToIndustry`: %v\n", resp)
 }
 ```
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -97,24 +97,24 @@ Create an Industry
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    industry := *openapiclient.NewIndustry(false, "Id_example", "Name_example") // Industry | 
+	industry := *openapiclient.NewIndustry(false, "Id_example", "Name_example") // Industry | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryAPI.CreateIndustry(context.Background()).Industry(industry).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.CreateIndustry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateIndustry`: IndustryDetails
-    fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.CreateIndustry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IndustryAPI.CreateIndustry(context.Background()).Industry(industry).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.CreateIndustry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateIndustry`: IndustryDetails
+	fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.CreateIndustry`: %v\n", resp)
 }
 ```
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -161,24 +161,24 @@ Delete an Industry
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryAPI.DeleteIndustry(context.Background(), industryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.DeleteIndustry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteIndustry`: Status
-    fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.DeleteIndustry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IndustryAPI.DeleteIndustry(context.Background(), industryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.DeleteIndustry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteIndustry`: Status
+	fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.DeleteIndustry`: %v\n", resp)
 }
 ```
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -229,25 +229,25 @@ Remove an Organization to an Industry
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryAPI.DetachOrganizationFromIndustry(context.Background(), organizationId, industryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.DetachOrganizationFromIndustry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DetachOrganizationFromIndustry`: OrganizationDetails
-    fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.DetachOrganizationFromIndustry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IndustryAPI.DetachOrganizationFromIndustry(context.Background(), organizationId, industryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.DetachOrganizationFromIndustry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DetachOrganizationFromIndustry`: OrganizationDetails
+	fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.DetachOrganizationFromIndustry`: %v\n", resp)
 }
 ```
 
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -300,26 +300,26 @@ Get all Industries
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally search via search term (optional) (default to "")
+	skip := int32(0) // int32 |  (optional) (default to 0)
+	limit := int32(20) // int32 |  (optional) (default to 20)
+	term := "term_example" // string | Optionally search via search term (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryAPI.GetIndustries(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.GetIndustries``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIndustries`: PagedIndustries
-    fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.GetIndustries`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IndustryAPI.GetIndustries(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.GetIndustries``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetIndustries`: PagedIndustries
+	fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.GetIndustries`: %v\n", resp)
 }
 ```
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -368,24 +368,24 @@ Get details about an Industry
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryAPI.GetIndustry(context.Background(), industryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.GetIndustry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIndustry`: IndustryDetails
-    fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.GetIndustry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IndustryAPI.GetIndustry(context.Background(), industryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.GetIndustry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetIndustry`: IndustryDetails
+	fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.GetIndustry`: %v\n", resp)
 }
 ```
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
@@ -436,25 +436,25 @@ Update an Industry
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    industry := *openapiclient.NewIndustry(false, "Id_example", "Name_example") // Industry | 
+	industryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	industry := *openapiclient.NewIndustry(false, "Id_example", "Name_example") // Industry | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryAPI.UpdateIndustry(context.Background(), industryId).Industry(industry).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.UpdateIndustry``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateIndustry`: IndustryDetails
-    fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.UpdateIndustry`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IndustryAPI.UpdateIndustry(context.Background(), industryId).Industry(industry).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.UpdateIndustry``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateIndustry`: IndustryDetails
+	fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.UpdateIndustry`: %v\n", resp)
 }
 ```
 
@@ -482,7 +482,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
 
 ### HTTP request headers
 
