@@ -28,25 +28,25 @@ Assign a language to a country
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LanguageAPI.AddLanguageToCountry(context.Background(), countryId, languageId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.AddLanguageToCountry``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddLanguageToCountry`: CountryDetails
-	fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.AddLanguageToCountry`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageAPI.AddLanguageToCountry(context.Background(), countryId, languageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.AddLanguageToCountry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddLanguageToCountry`: CountryDetails
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.AddLanguageToCountry`: %v\n", resp)
 }
 ```
 
@@ -99,26 +99,26 @@ Assign a language to the person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	level := *openapiclient.NewLevel() // Level | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LanguageAPI.AddPersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.AddPersonLanguage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonLanguage`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.AddPersonLanguage`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageAPI.AddPersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.AddPersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.AddPersonLanguage`: %v\n", resp)
 }
 ```
 
@@ -172,24 +172,24 @@ Create a new language
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	language := *openapiclient.NewLanguage("Id_example", "Name_example") // Language | 
+    language := *openapiclient.NewLanguage("Id_example", "Name_example") // Language | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LanguageAPI.CreateLanguage(context.Background()).Language(language).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.CreateLanguage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateLanguage`: LanguageDetails
-	fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.CreateLanguage`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageAPI.CreateLanguage(context.Background()).Language(language).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.CreateLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateLanguage`: LanguageDetails
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.CreateLanguage`: %v\n", resp)
 }
 ```
 
@@ -236,24 +236,24 @@ Delete a language
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LanguageAPI.DeleteLanguage(context.Background(), languageId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.DeleteLanguage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteLanguage`: Status
-	fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.DeleteLanguage`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageAPI.DeleteLanguage(context.Background(), languageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.DeleteLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteLanguage`: Status
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.DeleteLanguage`: %v\n", resp)
 }
 ```
 
@@ -304,24 +304,24 @@ Get details about a language
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LanguageAPI.GetLanguage(context.Background(), languageId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.GetLanguage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetLanguage`: LanguageDetails
-	fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.GetLanguage`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageAPI.GetLanguage(context.Background(), languageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.GetLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetLanguage`: LanguageDetails
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.GetLanguage`: %v\n", resp)
 }
 ```
 
@@ -372,25 +372,25 @@ Get a list of Languages
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skip := int32(0) // int32 |  (optional) (default to 0)
-	limit := int32(20) // int32 |  (optional) (default to 20)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LanguageAPI.GetLanguages(context.Background()).Skip(skip).Limit(limit).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.GetLanguages``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetLanguages`: PagedLanguages
-	fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.GetLanguages`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageAPI.GetLanguages(context.Background()).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.GetLanguages``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetLanguages`: PagedLanguages
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.GetLanguages`: %v\n", resp)
 }
 ```
 
@@ -438,25 +438,25 @@ Assign a language to a country
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LanguageAPI.RemoveLanguageFromCountry(context.Background(), countryId, languageId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.RemoveLanguageFromCountry``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RemoveLanguageFromCountry`: CountryDetails
-	fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.RemoveLanguageFromCountry`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageAPI.RemoveLanguageFromCountry(context.Background(), countryId, languageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.RemoveLanguageFromCountry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemoveLanguageFromCountry`: CountryDetails
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.RemoveLanguageFromCountry`: %v\n", resp)
 }
 ```
 
@@ -509,25 +509,25 @@ Remove a language from a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LanguageAPI.RemovePersonLanguage(context.Background(), personId, languageId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.RemovePersonLanguage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RemovePersonLanguage`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.RemovePersonLanguage`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageAPI.RemovePersonLanguage(context.Background(), personId, languageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.RemovePersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemovePersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.RemovePersonLanguage`: %v\n", resp)
 }
 ```
 
@@ -580,26 +580,26 @@ Update a language of a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	level := *openapiclient.NewLevel() // Level | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LanguageAPI.UpdatePersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.UpdatePersonLanguage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdatePersonLanguage`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.UpdatePersonLanguage`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageAPI.UpdatePersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.UpdatePersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.UpdatePersonLanguage`: %v\n", resp)
 }
 ```
 

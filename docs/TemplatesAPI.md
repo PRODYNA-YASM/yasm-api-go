@@ -20,24 +20,24 @@ list of existing templates
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	text := "text_example" // string | 
+    text := "text_example" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TemplatesAPI.GetTemplates(context.Background(), text).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TemplatesAPI.GetTemplates``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetTemplates`: []string
-	fmt.Fprintf(os.Stdout, "Response from `TemplatesAPI.GetTemplates`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TemplatesAPI.GetTemplates(context.Background(), text).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TemplatesAPI.GetTemplates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetTemplates`: []string
+    fmt.Fprintf(os.Stdout, "Response from `TemplatesAPI.GetTemplates`: %v\n", resp)
 }
 ```
 

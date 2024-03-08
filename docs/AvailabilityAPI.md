@@ -23,25 +23,25 @@ Create a availability for a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AvailabilityAPI.CreateAvailability(context.Background(), personId).Availability(availability).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityAPI.CreateAvailability``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateAvailability`: AvailabilityDetail
-	fmt.Fprintf(os.Stdout, "Response from `AvailabilityAPI.CreateAvailability`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AvailabilityAPI.CreateAvailability(context.Background(), personId).Availability(availability).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityAPI.CreateAvailability``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAvailability`: AvailabilityDetail
+    fmt.Fprintf(os.Stdout, "Response from `AvailabilityAPI.CreateAvailability`: %v\n", resp)
 }
 ```
 
@@ -93,25 +93,25 @@ Delete a person availability
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AvailabilityAPI.DeleteAvailability(context.Background(), personId, availabilityId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityAPI.DeleteAvailability``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteAvailability`: Status
-	fmt.Fprintf(os.Stdout, "Response from `AvailabilityAPI.DeleteAvailability`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AvailabilityAPI.DeleteAvailability(context.Background(), personId, availabilityId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityAPI.DeleteAvailability``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteAvailability`: Status
+    fmt.Fprintf(os.Stdout, "Response from `AvailabilityAPI.DeleteAvailability`: %v\n", resp)
 }
 ```
 
@@ -164,24 +164,24 @@ Get a list of all activities for a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AvailabilityAPI.GetAvailabilities(context.Background(), personId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityAPI.GetAvailabilities``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetAvailabilities`: PagedAvailabilities
-	fmt.Fprintf(os.Stdout, "Response from `AvailabilityAPI.GetAvailabilities`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AvailabilityAPI.GetAvailabilities(context.Background(), personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityAPI.GetAvailabilities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAvailabilities`: PagedAvailabilities
+    fmt.Fprintf(os.Stdout, "Response from `AvailabilityAPI.GetAvailabilities`: %v\n", resp)
 }
 ```
 
@@ -232,26 +232,26 @@ Update a person availability
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AvailabilityAPI.UpdateAvailability(context.Background(), personId, availabilityId).Availability(availability).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityAPI.UpdateAvailability``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateAvailability`: AvailabilityDetail
-	fmt.Fprintf(os.Stdout, "Response from `AvailabilityAPI.UpdateAvailability`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AvailabilityAPI.UpdateAvailability(context.Background(), personId, availabilityId).Availability(availability).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AvailabilityAPI.UpdateAvailability``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAvailability`: AvailabilityDetail
+    fmt.Fprintf(os.Stdout, "Response from `AvailabilityAPI.UpdateAvailability`: %v\n", resp)
 }
 ```
 

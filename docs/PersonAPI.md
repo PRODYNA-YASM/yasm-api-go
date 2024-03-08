@@ -60,27 +60,27 @@ Add Certification to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
     "time"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	body := time.Now() // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    body := time.Now() // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.AddPersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonCertification``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonCertification`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonCertification`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.AddPersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonCertification``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonCertification`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonCertification`: %v\n", resp)
 }
 ```
 
@@ -134,25 +134,25 @@ Add an Interest to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.AddPersonInterest(context.Background(), personId, skillId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonInterest``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonInterest`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonInterest`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.AddPersonInterest(context.Background(), personId, skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonInterest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonInterest`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonInterest`: %v\n", resp)
 }
 ```
 
@@ -205,26 +205,26 @@ Assign a language to the person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	level := *openapiclient.NewLevel() // Level | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.AddPersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonLanguage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonLanguage`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonLanguage`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.AddPersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonLanguage`: %v\n", resp)
 }
 ```
 
@@ -278,25 +278,25 @@ Assign a person to an office
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.AddPersonOffice(context.Background(), personId, officeId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonOffice``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonOffice`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonOffice`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.AddPersonOffice(context.Background(), personId, officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonOffice`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonOffice`: %v\n", resp)
 }
 ```
 
@@ -349,25 +349,25 @@ Add a Profile to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.AddPersonProfile(context.Background(), personId, profileId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonProfile`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonProfile`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.AddPersonProfile(context.Background(), personId, profileId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonProfile`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonProfile`: %v\n", resp)
 }
 ```
 
@@ -420,26 +420,26 @@ Add an Skill experience to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	level := *openapiclient.NewLevel() // Level | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.AddPersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonSkillExperience``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonSkillExperience`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonSkillExperience`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.AddPersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonSkillExperience``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonSkillExperience`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonSkillExperience`: %v\n", resp)
 }
 ```
 
@@ -493,25 +493,25 @@ Add an Skill experience to a Person (bulk)
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.AddPersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonSkillExperiences``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonSkillExperiences`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonSkillExperiences`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.AddPersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonSkillExperiences``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonSkillExperiences`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonSkillExperiences`: %v\n", resp)
 }
 ```
 
@@ -563,24 +563,24 @@ Add Project to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	projectParticipationCreate := *openapiclient.NewProjectParticipationCreate("Id_example", "ProjectId_example", "PersonId_example") // ProjectParticipationCreate | List of Skills with level and timeframe
+    projectParticipationCreate := *openapiclient.NewProjectParticipationCreate("Id_example", "ProjectId_example", "PersonId_example") // ProjectParticipationCreate | List of Skills with level and timeframe
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.AddProjectParticipation(context.Background()).ProjectParticipationCreate(projectParticipationCreate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddProjectParticipation``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddProjectParticipation`: ProjectParticipationDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddProjectParticipation`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.AddProjectParticipation(context.Background()).ProjectParticipationCreate(projectParticipationCreate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddProjectParticipation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddProjectParticipation`: ProjectParticipationDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddProjectParticipation`: %v\n", resp)
 }
 ```
 
@@ -627,26 +627,26 @@ Confirm Skill
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.AddSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddSkillConfirmation``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddSkillConfirmation`: ProjectParticipationDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddSkillConfirmation`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.AddSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddSkillConfirmation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddSkillConfirmation`: ProjectParticipationDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddSkillConfirmation`: %v\n", resp)
 }
 ```
 
@@ -701,25 +701,25 @@ Create a availability for a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.CreateAvailability(context.Background(), personId).Availability(availability).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.CreateAvailability``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateAvailability`: AvailabilityDetail
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.CreateAvailability`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.CreateAvailability(context.Background(), personId).Availability(availability).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.CreateAvailability``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAvailability`: AvailabilityDetail
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.CreateAvailability`: %v\n", resp)
 }
 ```
 
@@ -771,24 +771,24 @@ Create a new Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	person := *openapiclient.NewPerson(false, "Id_example", "Name_example") // Person | 
+    person := *openapiclient.NewPerson(false, "Id_example", "Name_example") // Person | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.CreatePerson(context.Background()).Person(person).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.CreatePerson``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreatePerson`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.CreatePerson`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.CreatePerson(context.Background()).Person(person).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.CreatePerson``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreatePerson`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.CreatePerson`: %v\n", resp)
 }
 ```
 
@@ -835,25 +835,25 @@ Delete a person availability
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.DeleteAvailability(context.Background(), personId, availabilityId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeleteAvailability``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteAvailability`: Status
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeleteAvailability`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeleteAvailability(context.Background(), personId, availabilityId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeleteAvailability``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteAvailability`: Status
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeleteAvailability`: %v\n", resp)
 }
 ```
 
@@ -906,24 +906,24 @@ Delete an existing Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.DeletePerson(context.Background(), personId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePerson``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePerson`: Status
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePerson`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeletePerson(context.Background(), personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePerson``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePerson`: Status
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePerson`: %v\n", resp)
 }
 ```
 
@@ -974,25 +974,25 @@ Remove an Interest to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.DeletePersonCertification(context.Background(), personId, certificationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonCertification``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonCertification`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonCertification`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeletePersonCertification(context.Background(), personId, certificationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonCertification``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonCertification`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonCertification`: %v\n", resp)
 }
 ```
 
@@ -1045,25 +1045,25 @@ Remove an Interest to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.DeletePersonInterest(context.Background(), personId, skillId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonInterest``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonInterest`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonInterest`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeletePersonInterest(context.Background(), personId, skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonInterest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonInterest`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonInterest`: %v\n", resp)
 }
 ```
 
@@ -1116,25 +1116,25 @@ Delete the office from a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.DeletePersonOffice(context.Background(), personId, officeId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonOffice``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonOffice`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonOffice`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeletePersonOffice(context.Background(), personId, officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonOffice`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonOffice`: %v\n", resp)
 }
 ```
 
@@ -1187,24 +1187,24 @@ Delete person image
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.DeletePersonPicture(context.Background(), personId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonPicture``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonPicture`: Status
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonPicture`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeletePersonPicture(context.Background(), personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonPicture``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonPicture`: Status
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonPicture`: %v\n", resp)
 }
 ```
 
@@ -1255,25 +1255,25 @@ Remove a Profile from a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.DeletePersonProfile(context.Background(), personId, profileId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonProfile`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonProfile`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeletePersonProfile(context.Background(), personId, profileId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonProfile`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonProfile`: %v\n", resp)
 }
 ```
 
@@ -1326,25 +1326,25 @@ Remove an Skill Experience to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.DeletePersonSkillExperience(context.Background(), personId, skillId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonSkillExperience``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonSkillExperience`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonSkillExperience`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeletePersonSkillExperience(context.Background(), personId, skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonSkillExperience``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonSkillExperience`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonSkillExperience`: %v\n", resp)
 }
 ```
 
@@ -1397,25 +1397,25 @@ Remove an Skill Experience to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	requestBody := []string{"Property_example"} // []string | A list of skillIds
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    requestBody := []string{"Property_example"} // []string | A list of skillIds
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.DeletePersonSkillExperiences(context.Background(), personId).RequestBody(requestBody).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonSkillExperiences``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonSkillExperiences`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonSkillExperiences`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeletePersonSkillExperiences(context.Background(), personId).RequestBody(requestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonSkillExperiences``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonSkillExperiences`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonSkillExperiences`: %v\n", resp)
 }
 ```
 
@@ -1467,24 +1467,24 @@ Remove an Project from a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.DeleteProjectParticipation(context.Background(), projectParticipationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeleteProjectParticipation``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteProjectParticipation`: Status
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeleteProjectParticipation`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeleteProjectParticipation(context.Background(), projectParticipationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeleteProjectParticipation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteProjectParticipation`: Status
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeleteProjectParticipation`: %v\n", resp)
 }
 ```
 
@@ -1535,30 +1535,30 @@ Generate a PDF profile from a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	projectIds := []string{"Inner_example"} // []string |  (optional)
-	skillIds := []string{"Inner_example"} // []string |  (optional)
-	certificationIds := []string{"Inner_example"} // []string |  (optional)
-	profileIds := []string{"Inner_example"} // []string |  (optional)
-	seniority := openapiclient.Seniority("UNKNOWN") // Seniority |  (optional)
-	template := "template_example" // string |  (optional)
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectIds := []string{"Inner_example"} // []string |  (optional)
+    skillIds := []string{"Inner_example"} // []string |  (optional)
+    certificationIds := []string{"Inner_example"} // []string |  (optional)
+    profileIds := []string{"Inner_example"} // []string |  (optional)
+    seniority := openapiclient.Seniority("UNKNOWN") // Seniority |  (optional)
+    template := "template_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.GeneratePersonProfile(context.Background(), personId).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).ProfileIds(profileIds).Seniority(seniority).Template(template).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GeneratePersonProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GeneratePersonProfile`: *os.File
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GeneratePersonProfile`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.GeneratePersonProfile(context.Background(), personId).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).ProfileIds(profileIds).Seniority(seniority).Template(template).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GeneratePersonProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GeneratePersonProfile`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GeneratePersonProfile`: %v\n", resp)
 }
 ```
 
@@ -1615,25 +1615,25 @@ Get all unique business departments
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skip := int32(0) // int32 |  (optional) (default to 0)
-	limit := int32(20) // int32 |  (optional) (default to 20)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.GetAllBusinessDepartments(context.Background()).Skip(skip).Limit(limit).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetAllBusinessDepartments``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetAllBusinessDepartments`: []string
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetAllBusinessDepartments`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.GetAllBusinessDepartments(context.Background()).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetAllBusinessDepartments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAllBusinessDepartments`: []string
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetAllBusinessDepartments`: %v\n", resp)
 }
 ```
 
@@ -1681,24 +1681,24 @@ Get a list of all activities for a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.GetAvailabilities(context.Background(), personId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetAvailabilities``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetAvailabilities`: PagedAvailabilities
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetAvailabilities`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.GetAvailabilities(context.Background(), personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetAvailabilities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAvailabilities`: PagedAvailabilities
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetAvailabilities`: %v\n", resp)
 }
 ```
 
@@ -1749,24 +1749,24 @@ Get basic info about a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.GetPerson(context.Background(), personId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetPerson``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetPerson`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetPerson`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.GetPerson(context.Background(), personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetPerson``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPerson`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetPerson`: %v\n", resp)
 }
 ```
 
@@ -1817,24 +1817,24 @@ Read person image
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.ReadPersonPicture(context.Background(), personId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.ReadPersonPicture``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ReadPersonPicture`: *os.File
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.ReadPersonPicture`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.ReadPersonPicture(context.Background(), personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.ReadPersonPicture``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadPersonPicture`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.ReadPersonPicture`: %v\n", resp)
 }
 ```
 
@@ -1885,25 +1885,25 @@ Get a Project Participation of a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	projectIds := []string{"Inner_example"} // []string | Filter by project ids, if not set, all projects are returned (optional)
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectIds := []string{"Inner_example"} // []string | Filter by project ids, if not set, all projects are returned (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.ReadPersonProjectParticipation(context.Background(), personId).ProjectIds(projectIds).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.ReadPersonProjectParticipation``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ReadPersonProjectParticipation`: []PersonProjectParticipationDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.ReadPersonProjectParticipation`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.ReadPersonProjectParticipation(context.Background(), personId).ProjectIds(projectIds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.ReadPersonProjectParticipation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadPersonProjectParticipation`: []PersonProjectParticipationDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.ReadPersonProjectParticipation`: %v\n", resp)
 }
 ```
 
@@ -1955,24 +1955,24 @@ Get a project participation
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.ReadProjectParticipation(context.Background(), projectParticipationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.ReadProjectParticipation``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ReadProjectParticipation`: ProjectParticipationDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.ReadProjectParticipation`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.ReadProjectParticipation(context.Background(), projectParticipationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.ReadProjectParticipation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadProjectParticipation`: ProjectParticipationDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.ReadProjectParticipation`: %v\n", resp)
 }
 ```
 
@@ -2023,24 +2023,24 @@ Remove a manager from a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.RemoveManager(context.Background(), personId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.RemoveManager``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RemoveManager`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.RemoveManager`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.RemoveManager(context.Background(), personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.RemoveManager``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemoveManager`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.RemoveManager`: %v\n", resp)
 }
 ```
 
@@ -2091,25 +2091,25 @@ Remove a language from a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.RemovePersonLanguage(context.Background(), personId, languageId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.RemovePersonLanguage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RemovePersonLanguage`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.RemovePersonLanguage`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.RemovePersonLanguage(context.Background(), personId, languageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.RemovePersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemovePersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.RemovePersonLanguage`: %v\n", resp)
 }
 ```
 
@@ -2162,26 +2162,26 @@ Remove a confirmation
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.RemoveSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.RemoveSkillConfirmation``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RemoveSkillConfirmation`: ProjectParticipationDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.RemoveSkillConfirmation`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.RemoveSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.RemoveSkillConfirmation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemoveSkillConfirmation`: ProjectParticipationDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.RemoveSkillConfirmation`: %v\n", resp)
 }
 ```
 
@@ -2236,26 +2236,26 @@ Complex search over person entities
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personSearch := *openapiclient.NewPersonSearch() // PersonSearch | 
-	skip := int32(0) // int32 |  (optional) (default to 0)
-	limit := int32(20) // int32 |  (optional) (default to 20)
+    personSearch := *openapiclient.NewPersonSearch() // PersonSearch | 
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.SearchPersons(context.Background()).PersonSearch(personSearch).Skip(skip).Limit(limit).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.SearchPersons``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SearchPersons`: PagedPersons
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.SearchPersons`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.SearchPersons(context.Background()).PersonSearch(personSearch).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.SearchPersons``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchPersons`: PagedPersons
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.SearchPersons`: %v\n", resp)
 }
 ```
 
@@ -2304,25 +2304,25 @@ Set a manager for a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	managerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    managerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.SetManager(context.Background(), personId, managerId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.SetManager``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SetManager`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.SetManager`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.SetManager(context.Background(), personId, managerId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.SetManager``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SetManager`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.SetManager`: %v\n", resp)
 }
 ```
 
@@ -2375,26 +2375,26 @@ Update a person availability
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.UpdateAvailability(context.Background(), personId, availabilityId).Availability(availability).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdateAvailability``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateAvailability`: AvailabilityDetail
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdateAvailability`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.UpdateAvailability(context.Background(), personId, availabilityId).Availability(availability).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdateAvailability``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAvailability`: AvailabilityDetail
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdateAvailability`: %v\n", resp)
 }
 ```
 
@@ -2448,25 +2448,25 @@ Update an existing Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	person := *openapiclient.NewPerson(false, "Id_example", "Name_example") // Person | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    person := *openapiclient.NewPerson(false, "Id_example", "Name_example") // Person | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.UpdatePerson(context.Background(), personId).Person(person).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePerson``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdatePerson`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePerson`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.UpdatePerson(context.Background(), personId).Person(person).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePerson``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePerson`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePerson`: %v\n", resp)
 }
 ```
 
@@ -2518,27 +2518,27 @@ Update a Certification of a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
     "time"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	body := time.Now() // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    body := time.Now() // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.UpdatePersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonCertification``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdatePersonCertification`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonCertification`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.UpdatePersonCertification(context.Background(), personId, certificationId).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonCertification``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonCertification`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonCertification`: %v\n", resp)
 }
 ```
 
@@ -2592,26 +2592,26 @@ Update a language of a person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	level := *openapiclient.NewLevel() // Level | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    languageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.UpdatePersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonLanguage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdatePersonLanguage`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonLanguage`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.UpdatePersonLanguage(context.Background(), personId, languageId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonLanguage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonLanguage`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonLanguage`: %v\n", resp)
 }
 ```
 
@@ -2665,25 +2665,25 @@ Update person image
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	body := os.NewFile(1234, "some_file") // *os.File | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    body := os.NewFile(1234, "some_file") // *os.File | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.UpdatePersonPicture(context.Background(), personId).Body(body).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonPicture``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdatePersonPicture`: Status
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonPicture`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.UpdatePersonPicture(context.Background(), personId).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonPicture``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonPicture`: Status
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonPicture`: %v\n", resp)
 }
 ```
 
@@ -2735,26 +2735,26 @@ Edit an Skill experience to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	level := *openapiclient.NewLevel() // Level | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.UpdatePersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonSkillExperience``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdatePersonSkillExperience`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonSkillExperience`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.UpdatePersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonSkillExperience``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonSkillExperience`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonSkillExperience`: %v\n", resp)
 }
 ```
 
@@ -2808,25 +2808,25 @@ Edit an Skill experience to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.UpdatePersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonSkillExperiences``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdatePersonSkillExperiences`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonSkillExperiences`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.UpdatePersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonSkillExperiences``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonSkillExperiences`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonSkillExperiences`: %v\n", resp)
 }
 ```
 
@@ -2878,25 +2878,25 @@ Update a Project of a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | A time frame and a list of Skills
+    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | A time frame and a list of Skills
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PersonAPI.UpdateProjectParticipation(context.Background(), projectParticipationId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdateProjectParticipation``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateProjectParticipation`: ProjectParticipationDetails
-	fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdateProjectParticipation`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.UpdateProjectParticipation(context.Background(), projectParticipationId).ProjectParticipationUpdate(projectParticipationUpdate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdateProjectParticipation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateProjectParticipation`: ProjectParticipationDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdateProjectParticipation`: %v\n", resp)
 }
 ```
 

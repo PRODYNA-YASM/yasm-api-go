@@ -40,25 +40,25 @@ Add an Interest to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.AddPersonInterest(context.Background(), personId, skillId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddPersonInterest``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonInterest`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddPersonInterest`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.AddPersonInterest(context.Background(), personId, skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddPersonInterest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonInterest`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddPersonInterest`: %v\n", resp)
 }
 ```
 
@@ -111,26 +111,26 @@ Add an Skill experience to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	level := *openapiclient.NewLevel() // Level | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.AddPersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddPersonSkillExperience``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonSkillExperience`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddPersonSkillExperience`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.AddPersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddPersonSkillExperience``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonSkillExperience`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddPersonSkillExperience`: %v\n", resp)
 }
 ```
 
@@ -184,25 +184,25 @@ Add an Skill experience to a Person (bulk)
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.AddPersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddPersonSkillExperiences``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonSkillExperiences`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddPersonSkillExperiences`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.AddPersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddPersonSkillExperiences``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonSkillExperiences`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddPersonSkillExperiences`: %v\n", resp)
 }
 ```
 
@@ -254,26 +254,26 @@ Confirm Skill
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.AddSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddSkillConfirmation``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddSkillConfirmation`: ProjectParticipationDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddSkillConfirmation`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.AddSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddSkillConfirmation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddSkillConfirmation`: ProjectParticipationDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddSkillConfirmation`: %v\n", resp)
 }
 ```
 
@@ -330,26 +330,26 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	level := *openapiclient.NewLevel() // Level | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.AddSkillToCertification(context.Background(), certificationId, skillId).Level(level).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddSkillToCertification``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddSkillToCertification`: CertificationDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddSkillToCertification`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.AddSkillToCertification(context.Background(), certificationId, skillId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddSkillToCertification``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddSkillToCertification`: CertificationDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddSkillToCertification`: %v\n", resp)
 }
 ```
 
@@ -403,26 +403,26 @@ Attach a Skill to a parent Skill, returns the parent Skill
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	parentSkillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillLinkUpdate := *openapiclient.NewSkillLinkUpdate() // SkillLinkUpdate | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    parentSkillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillLinkUpdate := *openapiclient.NewSkillLinkUpdate() // SkillLinkUpdate | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.AddSkillToParentSkill(context.Background(), skillId, parentSkillId).SkillLinkUpdate(skillLinkUpdate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddSkillToParentSkill``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddSkillToParentSkill`: SkillDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddSkillToParentSkill`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.AddSkillToParentSkill(context.Background(), skillId, parentSkillId).SkillLinkUpdate(skillLinkUpdate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddSkillToParentSkill``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddSkillToParentSkill`: SkillDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddSkillToParentSkill`: %v\n", resp)
 }
 ```
 
@@ -476,24 +476,24 @@ Create a Skill
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skill := *openapiclient.NewSkill(false, "Id_example", "Name_example") // Skill | 
+    skill := *openapiclient.NewSkill(false, "Id_example", "Name_example") // Skill | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.CreateSkill(context.Background()).Skill(skill).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.CreateSkill``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateSkill`: SkillDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.CreateSkill`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.CreateSkill(context.Background()).Skill(skill).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.CreateSkill``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateSkill`: SkillDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.CreateSkill`: %v\n", resp)
 }
 ```
 
@@ -540,25 +540,25 @@ Remove an Interest to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.DeletePersonInterest(context.Background(), personId, skillId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.DeletePersonInterest``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonInterest`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.DeletePersonInterest`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.DeletePersonInterest(context.Background(), personId, skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.DeletePersonInterest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonInterest`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.DeletePersonInterest`: %v\n", resp)
 }
 ```
 
@@ -611,25 +611,25 @@ Remove an Skill Experience to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.DeletePersonSkillExperience(context.Background(), personId, skillId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.DeletePersonSkillExperience``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonSkillExperience`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.DeletePersonSkillExperience`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.DeletePersonSkillExperience(context.Background(), personId, skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.DeletePersonSkillExperience``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonSkillExperience`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.DeletePersonSkillExperience`: %v\n", resp)
 }
 ```
 
@@ -682,25 +682,25 @@ Remove an Skill Experience to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	requestBody := []string{"Property_example"} // []string | A list of skillIds
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    requestBody := []string{"Property_example"} // []string | A list of skillIds
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.DeletePersonSkillExperiences(context.Background(), personId).RequestBody(requestBody).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.DeletePersonSkillExperiences``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonSkillExperiences`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.DeletePersonSkillExperiences`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.DeletePersonSkillExperiences(context.Background(), personId).RequestBody(requestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.DeletePersonSkillExperiences``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonSkillExperiences`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.DeletePersonSkillExperiences`: %v\n", resp)
 }
 ```
 
@@ -752,24 +752,24 @@ Delete a Skill
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.DeleteSkill(context.Background(), skillId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.DeleteSkill``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteSkill`: Status
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.DeleteSkill`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.DeleteSkill(context.Background(), skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.DeleteSkill``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteSkill`: Status
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.DeleteSkill`: %v\n", resp)
 }
 ```
 
@@ -820,25 +820,25 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.DeleteSkillFromCertification(context.Background(), certificationId, skillId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.DeleteSkillFromCertification``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteSkillFromCertification`: CertificationDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.DeleteSkillFromCertification`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.DeleteSkillFromCertification(context.Background(), certificationId, skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.DeleteSkillFromCertification``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteSkillFromCertification`: CertificationDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.DeleteSkillFromCertification`: %v\n", resp)
 }
 ```
 
@@ -891,24 +891,24 @@ Get details for a single skill
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.GetSkill(context.Background(), skillId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.GetSkill``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetSkill`: SkillDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.GetSkill`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.GetSkill(context.Background(), skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.GetSkill``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSkill`: SkillDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.GetSkill`: %v\n", resp)
 }
 ```
 
@@ -959,26 +959,26 @@ Get ghe list of parents for a skill
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skip := int32(0) // int32 |  (optional) (default to 0)
-	limit := int32(20) // int32 |  (optional) (default to 20)
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.GetSkillParents(context.Background(), skillId).Skip(skip).Limit(limit).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.GetSkillParents``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetSkillParents`: PagedSkills
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.GetSkillParents`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.GetSkillParents(context.Background(), skillId).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.GetSkillParents``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSkillParents`: PagedSkills
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.GetSkillParents`: %v\n", resp)
 }
 ```
 
@@ -1031,29 +1031,29 @@ Get a list of all skills, optionally only root
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skip := int32(0) // int32 |  (optional) (default to 0)
-	limit := int32(20) // int32 |  (optional) (default to 20)
-	term := "term_example" // string | Optionally search via search term (optional) (default to "")
-	types := "all" // string | Gives you either all skills, only the root kills (optional) (default to "all")
-	suggestions := "all" // string | Optionally filter skills based on suggestion (optional) (default to "all")
-	linkable := true // bool | Optionally filter skills based on linkable (optional)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
+    term := "term_example" // string | Optionally search via search term (optional) (default to "")
+    types := "all" // string | Gives you either all skills, only the root kills (optional) (default to "all")
+    suggestions := "all" // string | Optionally filter skills based on suggestion (optional) (default to "all")
+    linkable := true // bool | Optionally filter skills based on linkable (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.GetSkills(context.Background()).Skip(skip).Limit(limit).Term(term).Types(types).Suggestions(suggestions).Linkable(linkable).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.GetSkills``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetSkills`: PagedSkills
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.GetSkills`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.GetSkills(context.Background()).Skip(skip).Limit(limit).Term(term).Types(types).Suggestions(suggestions).Linkable(linkable).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.GetSkills``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSkills`: PagedSkills
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.GetSkills`: %v\n", resp)
 }
 ```
 
@@ -1105,26 +1105,26 @@ Remove a confirmation
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.RemoveSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.RemoveSkillConfirmation``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RemoveSkillConfirmation`: ProjectParticipationDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.RemoveSkillConfirmation`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.RemoveSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.RemoveSkillConfirmation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemoveSkillConfirmation`: ProjectParticipationDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.RemoveSkillConfirmation`: %v\n", resp)
 }
 ```
 
@@ -1179,25 +1179,25 @@ Detaches a Skill from parent Skill, return the parent Skill
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	parentSkillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    parentSkillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.RemoveSkillFromParentSkill(context.Background(), skillId, parentSkillId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.RemoveSkillFromParentSkill``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `RemoveSkillFromParentSkill`: SkillDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.RemoveSkillFromParentSkill`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.RemoveSkillFromParentSkill(context.Background(), skillId, parentSkillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.RemoveSkillFromParentSkill``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemoveSkillFromParentSkill`: SkillDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.RemoveSkillFromParentSkill`: %v\n", resp)
 }
 ```
 
@@ -1250,26 +1250,26 @@ Edit an Skill experience to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	level := *openapiclient.NewLevel() // Level | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.UpdatePersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.UpdatePersonSkillExperience``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdatePersonSkillExperience`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.UpdatePersonSkillExperience`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.UpdatePersonSkillExperience(context.Background(), personId, skillId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.UpdatePersonSkillExperience``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonSkillExperience`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.UpdatePersonSkillExperience`: %v\n", resp)
 }
 ```
 
@@ -1323,25 +1323,25 @@ Edit an Skill experience to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillLevelUpdate := []openapiclient.SkillLevelUpdate{*openapiclient.NewSkillLevelUpdate()} // []SkillLevelUpdate | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.UpdatePersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.UpdatePersonSkillExperiences``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdatePersonSkillExperiences`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.UpdatePersonSkillExperiences`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.UpdatePersonSkillExperiences(context.Background(), personId).SkillLevelUpdate(skillLevelUpdate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.UpdatePersonSkillExperiences``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePersonSkillExperiences`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.UpdatePersonSkillExperiences`: %v\n", resp)
 }
 ```
 
@@ -1393,25 +1393,25 @@ Update a Skill
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skill := *openapiclient.NewSkill(false, "Id_example", "Name_example") // Skill | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skill := *openapiclient.NewSkill(false, "Id_example", "Name_example") // Skill | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.UpdateSkill(context.Background(), skillId).Skill(skill).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.UpdateSkill``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateSkill`: SkillDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.UpdateSkill`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.UpdateSkill(context.Background(), skillId).Skill(skill).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.UpdateSkill``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateSkill`: SkillDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.UpdateSkill`: %v\n", resp)
 }
 ```
 
@@ -1465,26 +1465,26 @@ Name | Type | Description  | Notes
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	level := *openapiclient.NewLevel() // Level | 
+    certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    level := *openapiclient.NewLevel() // Level | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SkillAPI.UpdateSkillInCertification(context.Background(), certificationId, skillId).Level(level).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.UpdateSkillInCertification``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateSkillInCertification`: CertificationDetails
-	fmt.Fprintf(os.Stdout, "Response from `SkillAPI.UpdateSkillInCertification`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.UpdateSkillInCertification(context.Background(), certificationId, skillId).Level(level).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.UpdateSkillInCertification``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateSkillInCertification`: CertificationDetails
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.UpdateSkillInCertification`: %v\n", resp)
 }
 ```
 

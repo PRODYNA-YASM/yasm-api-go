@@ -27,25 +27,25 @@ Assign a person to an office
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfficeAPI.AddPersonOffice(context.Background(), personId, officeId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.AddPersonOffice``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonOffice`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.AddPersonOffice`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeAPI.AddPersonOffice(context.Background(), personId, officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.AddPersonOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonOffice`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.AddPersonOffice`: %v\n", resp)
 }
 ```
 
@@ -98,25 +98,25 @@ Create an Office in an Organization
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfficeAPI.CreateOffice(context.Background(), organizationId).Office(office).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.CreateOffice``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateOffice`: OrganizationDetails
-	fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.CreateOffice`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeAPI.CreateOffice(context.Background(), organizationId).Office(office).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.CreateOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateOffice`: OrganizationDetails
+    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.CreateOffice`: %v\n", resp)
 }
 ```
 
@@ -168,25 +168,25 @@ Delete an Office from an Organization
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfficeAPI.DeleteOffice(context.Background(), organizationId, officeId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.DeleteOffice``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteOffice`: Status
-	fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.DeleteOffice`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeAPI.DeleteOffice(context.Background(), organizationId, officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.DeleteOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteOffice`: Status
+    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.DeleteOffice`: %v\n", resp)
 }
 ```
 
@@ -239,25 +239,25 @@ Delete the office from a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfficeAPI.DeletePersonOffice(context.Background(), personId, officeId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.DeletePersonOffice``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonOffice`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.DeletePersonOffice`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeAPI.DeletePersonOffice(context.Background(), personId, officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.DeletePersonOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonOffice`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.DeletePersonOffice`: %v\n", resp)
 }
 ```
 
@@ -310,25 +310,25 @@ Get an Office for an Organization
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfficeAPI.GetOffice(context.Background(), organizationId, officeId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.GetOffice``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetOffice`: Office
-	fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.GetOffice`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeAPI.GetOffice(context.Background(), organizationId, officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.GetOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOffice`: Office
+    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.GetOffice`: %v\n", resp)
 }
 ```
 
@@ -381,24 +381,24 @@ Get details about an Office independent of Organization
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfficeAPI.GetOfficeDetails(context.Background(), officeId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.GetOfficeDetails``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetOfficeDetails`: Office
-	fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.GetOfficeDetails`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeAPI.GetOfficeDetails(context.Background(), officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.GetOfficeDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOfficeDetails`: Office
+    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.GetOfficeDetails`: %v\n", resp)
 }
 ```
 
@@ -449,26 +449,26 @@ Get a list of all Offices
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skip := int32(0) // int32 |  (optional) (default to 0)
-	limit := int32(20) // int32 |  (optional) (default to 20)
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfficeAPI.GetOffices(context.Background()).Skip(skip).Limit(limit).OrganizationId(organizationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.GetOffices``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetOffices`: PagedOffices
-	fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.GetOffices`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeAPI.GetOffices(context.Background()).Skip(skip).Limit(limit).OrganizationId(organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.GetOffices``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOffices`: PagedOffices
+    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.GetOffices`: %v\n", resp)
 }
 ```
 
@@ -517,26 +517,26 @@ Update an Office for an Organization
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OfficeAPI.UpdateOffice(context.Background(), organizationId, officeId).Office(office).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.UpdateOffice``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateOffice`: Office
-	fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.UpdateOffice`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeAPI.UpdateOffice(context.Background(), organizationId, officeId).Office(office).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.UpdateOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateOffice`: Office
+    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.UpdateOffice`: %v\n", resp)
 }
 ```
 

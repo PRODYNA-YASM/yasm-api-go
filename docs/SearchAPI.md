@@ -20,26 +20,26 @@ Fulltext search on all kinds of objects
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	text := "text_example" // string | 
-	skip := int32(0) // int32 |  (optional) (default to 0)
-	limit := int32(20) // int32 |  (optional) (default to 20)
+    text := "text_example" // string | 
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SearchAPI.SearchAll(context.Background(), text).Skip(skip).Limit(limit).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchAll``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SearchAll`: SearchResult
-	fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchAll`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SearchAPI.SearchAll(context.Background(), text).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchAll``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchAll`: SearchResult
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchAll`: %v\n", resp)
 }
 ```
 

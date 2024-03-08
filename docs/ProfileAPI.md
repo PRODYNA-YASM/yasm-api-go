@@ -26,25 +26,25 @@ Add a Profile to a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProfileAPI.AddPersonProfile(context.Background(), personId, profileId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.AddPersonProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddPersonProfile`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.AddPersonProfile`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfileAPI.AddPersonProfile(context.Background(), personId, profileId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.AddPersonProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddPersonProfile`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.AddPersonProfile`: %v\n", resp)
 }
 ```
 
@@ -97,24 +97,24 @@ Create a new Profile
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	profile := *openapiclient.NewProfile("Id_example", "Name_example") // Profile | 
+    profile := *openapiclient.NewProfile("Id_example", "Name_example") // Profile | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProfileAPI.CreateProfile(context.Background()).Profile(profile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.CreateProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateProfile`: ProfileDetails
-	fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.CreateProfile`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfileAPI.CreateProfile(context.Background()).Profile(profile).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.CreateProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateProfile`: ProfileDetails
+    fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.CreateProfile`: %v\n", resp)
 }
 ```
 
@@ -161,25 +161,25 @@ Remove a Profile from a Person
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProfileAPI.DeletePersonProfile(context.Background(), personId, profileId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.DeletePersonProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeletePersonProfile`: PersonDetails
-	fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.DeletePersonProfile`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfileAPI.DeletePersonProfile(context.Background(), personId, profileId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.DeletePersonProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePersonProfile`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.DeletePersonProfile`: %v\n", resp)
 }
 ```
 
@@ -232,24 +232,24 @@ Delete a Profile
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProfileAPI.DeleteProfile(context.Background(), profileId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.DeleteProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteProfile`: Status
-	fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.DeleteProfile`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfileAPI.DeleteProfile(context.Background(), profileId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.DeleteProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteProfile`: Status
+    fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.DeleteProfile`: %v\n", resp)
 }
 ```
 
@@ -300,24 +300,24 @@ Get details about a Profile
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProfileAPI.GetProfile(context.Background(), profileId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.GetProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetProfile`: ProfileDetails
-	fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.GetProfile`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfileAPI.GetProfile(context.Background(), profileId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.GetProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetProfile`: ProfileDetails
+    fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.GetProfile`: %v\n", resp)
 }
 ```
 
@@ -368,25 +368,25 @@ Get all Profiles
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	skip := int32(0) // int32 |  (optional) (default to 0)
-	limit := int32(20) // int32 |  (optional) (default to 20)
+    skip := int32(0) // int32 |  (optional) (default to 0)
+    limit := int32(20) // int32 |  (optional) (default to 20)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProfileAPI.GetProfiles(context.Background()).Skip(skip).Limit(limit).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.GetProfiles``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetProfiles`: PagedProfiles
-	fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.GetProfiles`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfileAPI.GetProfiles(context.Background()).Skip(skip).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.GetProfiles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetProfiles`: PagedProfiles
+    fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.GetProfiles`: %v\n", resp)
 }
 ```
 
@@ -434,25 +434,25 @@ Update a Profile
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/prodyna-yasm/yasm-api-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-	profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	profile := *openapiclient.NewProfile("Id_example", "Name_example") // Profile | 
+    profileId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    profile := *openapiclient.NewProfile("Id_example", "Name_example") // Profile | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProfileAPI.UpdateProfile(context.Background(), profileId).Profile(profile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.UpdateProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateProfile`: ProfileDetails
-	fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.UpdateProfile`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfileAPI.UpdateProfile(context.Background(), profileId).Profile(profile).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.UpdateProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateProfile`: ProfileDetails
+    fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.UpdateProfile`: %v\n", resp)
 }
 ```
 
