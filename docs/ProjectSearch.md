@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **MaxEndDate** | Pointer to **string** |  | [optional] 
 **ProjectStatuses** | Pointer to [**[]ProjectStatus**](ProjectStatus.md) |  | [optional] 
 **ParticipationAmountInMonths** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
-**InvolvedOfficeIds** | Pointer to **[]string** |  | [optional] 
+**InvolvedCountryIds** | Pointer to **[]string** |  | [optional] 
+**OrganizationCountryIds** | Pointer to **[]string** |  | [optional] 
 **AmountOfInvolvedPersons** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
 **Skills** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
 **ProjectType** | Pointer to [**[]ProjectType**](ProjectType.md) |  | [optional] 
@@ -162,30 +163,55 @@ SetParticipationAmountInMonths sets ParticipationAmountInMonths field to given v
 
 HasParticipationAmountInMonths returns a boolean if a field has been set.
 
-### GetInvolvedOfficeIds
+### GetInvolvedCountryIds
 
-`func (o *ProjectSearch) GetInvolvedOfficeIds() []string`
+`func (o *ProjectSearch) GetInvolvedCountryIds() []string`
 
-GetInvolvedOfficeIds returns the InvolvedOfficeIds field if non-nil, zero value otherwise.
+GetInvolvedCountryIds returns the InvolvedCountryIds field if non-nil, zero value otherwise.
 
-### GetInvolvedOfficeIdsOk
+### GetInvolvedCountryIdsOk
 
-`func (o *ProjectSearch) GetInvolvedOfficeIdsOk() (*[]string, bool)`
+`func (o *ProjectSearch) GetInvolvedCountryIdsOk() (*[]string, bool)`
 
-GetInvolvedOfficeIdsOk returns a tuple with the InvolvedOfficeIds field if it's non-nil, zero value otherwise
+GetInvolvedCountryIdsOk returns a tuple with the InvolvedCountryIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetInvolvedOfficeIds
+### SetInvolvedCountryIds
 
-`func (o *ProjectSearch) SetInvolvedOfficeIds(v []string)`
+`func (o *ProjectSearch) SetInvolvedCountryIds(v []string)`
 
-SetInvolvedOfficeIds sets InvolvedOfficeIds field to given value.
+SetInvolvedCountryIds sets InvolvedCountryIds field to given value.
 
-### HasInvolvedOfficeIds
+### HasInvolvedCountryIds
 
-`func (o *ProjectSearch) HasInvolvedOfficeIds() bool`
+`func (o *ProjectSearch) HasInvolvedCountryIds() bool`
 
-HasInvolvedOfficeIds returns a boolean if a field has been set.
+HasInvolvedCountryIds returns a boolean if a field has been set.
+
+### GetOrganizationCountryIds
+
+`func (o *ProjectSearch) GetOrganizationCountryIds() []string`
+
+GetOrganizationCountryIds returns the OrganizationCountryIds field if non-nil, zero value otherwise.
+
+### GetOrganizationCountryIdsOk
+
+`func (o *ProjectSearch) GetOrganizationCountryIdsOk() (*[]string, bool)`
+
+GetOrganizationCountryIdsOk returns a tuple with the OrganizationCountryIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizationCountryIds
+
+`func (o *ProjectSearch) SetOrganizationCountryIds(v []string)`
+
+SetOrganizationCountryIds sets OrganizationCountryIds field to given value.
+
+### HasOrganizationCountryIds
+
+`func (o *ProjectSearch) HasOrganizationCountryIds() bool`
+
+HasOrganizationCountryIds returns a boolean if a field has been set.
 
 ### GetAmountOfInvolvedPersons
 
