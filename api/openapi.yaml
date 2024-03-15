@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.16.0
+  version: 1.16.1
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -1984,7 +1984,7 @@ paths:
         schema:
           format: uuid
           type: string
-      - explode: false
+      - explode: true
         in: query
         name: projectIds
         required: false
@@ -1994,7 +1994,7 @@ paths:
             type: string
           type: array
         style: form
-      - explode: false
+      - explode: true
         in: query
         name: skillIds
         required: false
@@ -2004,7 +2004,7 @@ paths:
             type: string
           type: array
         style: form
-      - explode: false
+      - explode: true
         in: query
         name: certificationIds
         required: false
@@ -2014,7 +2014,7 @@ paths:
             type: string
           type: array
         style: form
-      - explode: false
+      - explode: true
         in: query
         name: profileIds
         required: false
@@ -2690,7 +2690,7 @@ paths:
           format: uuid
           type: string
       - description: "Filter by project ids, if not set, all projects are returned"
-        explode: false
+        explode: true
         in: query
         name: projectIds
         required: false
