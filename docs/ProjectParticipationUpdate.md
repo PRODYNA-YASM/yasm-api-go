@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
+**Timeframe** | [**Timeframed**](Timeframed.md) |  | 
 **Skills** | Pointer to [**[]SkillLevelUpdate**](SkillLevelUpdate.md) |  | [optional] 
 **PersonalDescription** | Pointer to **string** |  | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewProjectParticipationUpdate
 
-`func NewProjectParticipationUpdate() *ProjectParticipationUpdate`
+`func NewProjectParticipationUpdate(timeframe Timeframed, ) *ProjectParticipationUpdate`
 
 NewProjectParticipationUpdate instantiates a new ProjectParticipationUpdate object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetTimeframe sets Timeframe field to given value.
 
-### HasTimeframe
-
-`func (o *ProjectParticipationUpdate) HasTimeframe() bool`
-
-HasTimeframe returns a boolean if a field has been set.
 
 ### GetSkills
 

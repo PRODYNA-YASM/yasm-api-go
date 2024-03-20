@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Startdate** | Pointer to **string** |  | [optional] 
+**Startdate** | **string** |  | 
 **Enddate** | Pointer to **string** |  | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewTimeframed
 
-`func NewTimeframed() *Timeframed`
+`func NewTimeframed(startdate string, ) *Timeframed`
 
 NewTimeframed instantiates a new Timeframed object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetStartdate sets Startdate field to given value.
 
-### HasStartdate
-
-`func (o *Timeframed) HasStartdate() bool`
-
-HasStartdate returns a boolean if a field has been set.
 
 ### GetEnddate
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Startdate** | Pointer to **string** |  | [optional] 
+**Startdate** | **string** |  | 
 **Enddate** | Pointer to **string** |  | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
 **WorkHours** | **float32** |  | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewAvailability
 
-`func NewAvailability(workHours float32, plannedHours float32, ) *Availability`
+`func NewAvailability(startdate string, workHours float32, plannedHours float32, ) *Availability`
 
 NewAvailability instantiates a new Availability object
 This constructor will assign default values to properties that have it defined,
@@ -49,11 +49,6 @@ and a boolean to check if the value has been set.
 
 SetStartdate sets Startdate field to given value.
 
-### HasStartdate
-
-`func (o *Availability) HasStartdate() bool`
-
-HasStartdate returns a boolean if a field has been set.
 
 ### GetEnddate
 

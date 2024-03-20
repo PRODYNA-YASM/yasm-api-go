@@ -26,12 +26,13 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
+    availability := *openapiclient.NewAvailability(time.Now(), float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -235,13 +236,14 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     availabilityId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    availability := *openapiclient.NewAvailability(float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
+    availability := *openapiclient.NewAvailability(time.Now(), float32(38.5), float32(22.5), "Id_example", "Name_example") // Availability | The availability
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

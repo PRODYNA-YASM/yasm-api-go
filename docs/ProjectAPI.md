@@ -109,11 +109,12 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    projectParticipationCreate := *openapiclient.NewProjectParticipationCreate("Id_example", "ProjectId_example", "PersonId_example") // ProjectParticipationCreate | List of Skills with level and timeframe
+    projectParticipationCreate := *openapiclient.NewProjectParticipationCreate(*openapiclient.NewTimeframed(time.Now()), "Id_example", "ProjectId_example", "PersonId_example") // ProjectParticipationCreate | List of Skills with level and timeframe
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1083,12 +1084,13 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
     projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate() // ProjectParticipationUpdate | A time frame and a list of Skills
+    projectParticipationUpdate := *openapiclient.NewProjectParticipationUpdate(*openapiclient.NewTimeframed(time.Now())) // ProjectParticipationUpdate | A time frame and a list of Skills
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
