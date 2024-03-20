@@ -35,7 +35,6 @@ docs/Country.md
 docs/CountryAPI.md
 docs/CountryDetails.md
 docs/Descriptable.md
-docs/EntityFilter.md
 docs/Error.md
 docs/Experience.md
 docs/ExperienceSkill.md
@@ -75,11 +74,7 @@ docs/PagedProjects.md
 docs/PagedSkills.md
 docs/Person.md
 docs/PersonAPI.md
-docs/PersonCertificationFilter.md
 docs/PersonDetails.md
-docs/PersonIndustryFilter.md
-docs/PersonOrganizationFilter.md
-docs/PersonProjectFilter.md
 docs/PersonProjectParticipationDetails.md
 docs/PersonProjectParticipationItem.md
 docs/PersonScoreDetail.md
@@ -136,7 +131,6 @@ model_confidentiality.go
 model_country.go
 model_country_details.go
 model_descriptable.go
-model_entity_filter.go
 model_error.go
 model_experience.go
 model_experience_skill.go
@@ -171,11 +165,7 @@ model_paged_project_participation.go
 model_paged_projects.go
 model_paged_skills.go
 model_person.go
-model_person_certification_filter.go
 model_person_details.go
-model_person_industry_filter.go
-model_person_organization_filter.go
-model_person_project_filter.go
 model_person_project_participation_details.go
 model_person_project_participation_item.go
 model_person_score_detail.go

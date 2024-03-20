@@ -12,12 +12,12 @@ Name | Type | Description | Notes
 **InvolvedCountryIds** | Pointer to **[]string** |  | [optional] 
 **OrganizationCountryIds** | Pointer to **[]string** |  | [optional] 
 **AmountOfInvolvedPersons** | Pointer to [**MinMax**](MinMax.md) |  | [optional] 
-**Skills** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
+**SkillIds** | Pointer to **[]string** |  | [optional] 
 **ProjectType** | Pointer to [**[]ProjectType**](ProjectType.md) |  | [optional] 
 **Confidentiality** | Pointer to [**[]Confidentiality**](Confidentiality.md) |  | [optional] 
-**Participants** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
-**Industries** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
-**Organizations** | Pointer to [**[]EntityFilter**](EntityFilter.md) |  | [optional] 
+**ParticipantIds** | Pointer to **[]string** |  | [optional] 
+**IndustryIds** | Pointer to **[]string** |  | [optional] 
+**OrganizationIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -238,30 +238,30 @@ SetAmountOfInvolvedPersons sets AmountOfInvolvedPersons field to given value.
 
 HasAmountOfInvolvedPersons returns a boolean if a field has been set.
 
-### GetSkills
+### GetSkillIds
 
-`func (o *ProjectSearch) GetSkills() []EntityFilter`
+`func (o *ProjectSearch) GetSkillIds() []string`
 
-GetSkills returns the Skills field if non-nil, zero value otherwise.
+GetSkillIds returns the SkillIds field if non-nil, zero value otherwise.
 
-### GetSkillsOk
+### GetSkillIdsOk
 
-`func (o *ProjectSearch) GetSkillsOk() (*[]EntityFilter, bool)`
+`func (o *ProjectSearch) GetSkillIdsOk() (*[]string, bool)`
 
-GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
+GetSkillIdsOk returns a tuple with the SkillIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSkills
+### SetSkillIds
 
-`func (o *ProjectSearch) SetSkills(v []EntityFilter)`
+`func (o *ProjectSearch) SetSkillIds(v []string)`
 
-SetSkills sets Skills field to given value.
+SetSkillIds sets SkillIds field to given value.
 
-### HasSkills
+### HasSkillIds
 
-`func (o *ProjectSearch) HasSkills() bool`
+`func (o *ProjectSearch) HasSkillIds() bool`
 
-HasSkills returns a boolean if a field has been set.
+HasSkillIds returns a boolean if a field has been set.
 
 ### GetProjectType
 
@@ -313,80 +313,80 @@ SetConfidentiality sets Confidentiality field to given value.
 
 HasConfidentiality returns a boolean if a field has been set.
 
-### GetParticipants
+### GetParticipantIds
 
-`func (o *ProjectSearch) GetParticipants() []EntityFilter`
+`func (o *ProjectSearch) GetParticipantIds() []string`
 
-GetParticipants returns the Participants field if non-nil, zero value otherwise.
+GetParticipantIds returns the ParticipantIds field if non-nil, zero value otherwise.
 
-### GetParticipantsOk
+### GetParticipantIdsOk
 
-`func (o *ProjectSearch) GetParticipantsOk() (*[]EntityFilter, bool)`
+`func (o *ProjectSearch) GetParticipantIdsOk() (*[]string, bool)`
 
-GetParticipantsOk returns a tuple with the Participants field if it's non-nil, zero value otherwise
+GetParticipantIdsOk returns a tuple with the ParticipantIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetParticipants
+### SetParticipantIds
 
-`func (o *ProjectSearch) SetParticipants(v []EntityFilter)`
+`func (o *ProjectSearch) SetParticipantIds(v []string)`
 
-SetParticipants sets Participants field to given value.
+SetParticipantIds sets ParticipantIds field to given value.
 
-### HasParticipants
+### HasParticipantIds
 
-`func (o *ProjectSearch) HasParticipants() bool`
+`func (o *ProjectSearch) HasParticipantIds() bool`
 
-HasParticipants returns a boolean if a field has been set.
+HasParticipantIds returns a boolean if a field has been set.
 
-### GetIndustries
+### GetIndustryIds
 
-`func (o *ProjectSearch) GetIndustries() []EntityFilter`
+`func (o *ProjectSearch) GetIndustryIds() []string`
 
-GetIndustries returns the Industries field if non-nil, zero value otherwise.
+GetIndustryIds returns the IndustryIds field if non-nil, zero value otherwise.
 
-### GetIndustriesOk
+### GetIndustryIdsOk
 
-`func (o *ProjectSearch) GetIndustriesOk() (*[]EntityFilter, bool)`
+`func (o *ProjectSearch) GetIndustryIdsOk() (*[]string, bool)`
 
-GetIndustriesOk returns a tuple with the Industries field if it's non-nil, zero value otherwise
+GetIndustryIdsOk returns a tuple with the IndustryIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIndustries
+### SetIndustryIds
 
-`func (o *ProjectSearch) SetIndustries(v []EntityFilter)`
+`func (o *ProjectSearch) SetIndustryIds(v []string)`
 
-SetIndustries sets Industries field to given value.
+SetIndustryIds sets IndustryIds field to given value.
 
-### HasIndustries
+### HasIndustryIds
 
-`func (o *ProjectSearch) HasIndustries() bool`
+`func (o *ProjectSearch) HasIndustryIds() bool`
 
-HasIndustries returns a boolean if a field has been set.
+HasIndustryIds returns a boolean if a field has been set.
 
-### GetOrganizations
+### GetOrganizationIds
 
-`func (o *ProjectSearch) GetOrganizations() []EntityFilter`
+`func (o *ProjectSearch) GetOrganizationIds() []string`
 
-GetOrganizations returns the Organizations field if non-nil, zero value otherwise.
+GetOrganizationIds returns the OrganizationIds field if non-nil, zero value otherwise.
 
-### GetOrganizationsOk
+### GetOrganizationIdsOk
 
-`func (o *ProjectSearch) GetOrganizationsOk() (*[]EntityFilter, bool)`
+`func (o *ProjectSearch) GetOrganizationIdsOk() (*[]string, bool)`
 
-GetOrganizationsOk returns a tuple with the Organizations field if it's non-nil, zero value otherwise
+GetOrganizationIdsOk returns a tuple with the OrganizationIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOrganizations
+### SetOrganizationIds
 
-`func (o *ProjectSearch) SetOrganizations(v []EntityFilter)`
+`func (o *ProjectSearch) SetOrganizationIds(v []string)`
 
-SetOrganizations sets Organizations field to given value.
+SetOrganizationIds sets OrganizationIds field to given value.
 
-### HasOrganizations
+### HasOrganizationIds
 
-`func (o *ProjectSearch) HasOrganizations() bool`
+`func (o *ProjectSearch) HasOrganizationIds() bool`
 
-HasOrganizations returns a boolean if a field has been set.
+HasOrganizationIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

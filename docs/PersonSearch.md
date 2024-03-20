@@ -8,16 +8,15 @@ Name | Type | Description | Notes
 **EmployeeIds** | Pointer to **[]string** |  | [optional] 
 **ProfileIds** | Pointer to **[]string** |  | [optional] 
 **OfficeIds** | Pointer to **[]string** |  | [optional] 
-**DepartmentNames** | Pointer to **[]string** |  | [optional] 
 **LanguageIds** | Pointer to **[]string** |  | [optional] 
 **Availability** | Pointer to [**AvailabilityFilter**](AvailabilityFilter.md) |  | [optional] 
 **OnsiteRatio** | Pointer to [**MinMaxPercent**](MinMaxPercent.md) |  | [optional] 
 **Seniority** | Pointer to [**[]Seniority**](Seniority.md) |  | [optional] 
 **Skills** | Pointer to [**[]PersonSkillFilter**](PersonSkillFilter.md) |  | [optional] 
-**Projects** | Pointer to [**[]PersonProjectFilter**](PersonProjectFilter.md) |  | [optional] 
-**Organizations** | Pointer to [**[]PersonOrganizationFilter**](PersonOrganizationFilter.md) |  | [optional] 
-**Industries** | Pointer to [**[]PersonIndustryFilter**](PersonIndustryFilter.md) |  | [optional] 
-**Certifications** | Pointer to [**[]PersonCertificationFilter**](PersonCertificationFilter.md) |  | [optional] 
+**ProjectIds** | Pointer to **[]string** |  | [optional] 
+**OrganizationIds** | Pointer to **[]string** |  | [optional] 
+**IndustriesIds** | Pointer to **[]string** |  | [optional] 
+**CertificationsIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -137,31 +136,6 @@ SetOfficeIds sets OfficeIds field to given value.
 `func (o *PersonSearch) HasOfficeIds() bool`
 
 HasOfficeIds returns a boolean if a field has been set.
-
-### GetDepartmentNames
-
-`func (o *PersonSearch) GetDepartmentNames() []string`
-
-GetDepartmentNames returns the DepartmentNames field if non-nil, zero value otherwise.
-
-### GetDepartmentNamesOk
-
-`func (o *PersonSearch) GetDepartmentNamesOk() (*[]string, bool)`
-
-GetDepartmentNamesOk returns a tuple with the DepartmentNames field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDepartmentNames
-
-`func (o *PersonSearch) SetDepartmentNames(v []string)`
-
-SetDepartmentNames sets DepartmentNames field to given value.
-
-### HasDepartmentNames
-
-`func (o *PersonSearch) HasDepartmentNames() bool`
-
-HasDepartmentNames returns a boolean if a field has been set.
 
 ### GetLanguageIds
 
@@ -288,105 +262,105 @@ SetSkills sets Skills field to given value.
 
 HasSkills returns a boolean if a field has been set.
 
-### GetProjects
+### GetProjectIds
 
-`func (o *PersonSearch) GetProjects() []PersonProjectFilter`
+`func (o *PersonSearch) GetProjectIds() []string`
 
-GetProjects returns the Projects field if non-nil, zero value otherwise.
+GetProjectIds returns the ProjectIds field if non-nil, zero value otherwise.
 
-### GetProjectsOk
+### GetProjectIdsOk
 
-`func (o *PersonSearch) GetProjectsOk() (*[]PersonProjectFilter, bool)`
+`func (o *PersonSearch) GetProjectIdsOk() (*[]string, bool)`
 
-GetProjectsOk returns a tuple with the Projects field if it's non-nil, zero value otherwise
+GetProjectIdsOk returns a tuple with the ProjectIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProjects
+### SetProjectIds
 
-`func (o *PersonSearch) SetProjects(v []PersonProjectFilter)`
+`func (o *PersonSearch) SetProjectIds(v []string)`
 
-SetProjects sets Projects field to given value.
+SetProjectIds sets ProjectIds field to given value.
 
-### HasProjects
+### HasProjectIds
 
-`func (o *PersonSearch) HasProjects() bool`
+`func (o *PersonSearch) HasProjectIds() bool`
 
-HasProjects returns a boolean if a field has been set.
+HasProjectIds returns a boolean if a field has been set.
 
-### GetOrganizations
+### GetOrganizationIds
 
-`func (o *PersonSearch) GetOrganizations() []PersonOrganizationFilter`
+`func (o *PersonSearch) GetOrganizationIds() []string`
 
-GetOrganizations returns the Organizations field if non-nil, zero value otherwise.
+GetOrganizationIds returns the OrganizationIds field if non-nil, zero value otherwise.
 
-### GetOrganizationsOk
+### GetOrganizationIdsOk
 
-`func (o *PersonSearch) GetOrganizationsOk() (*[]PersonOrganizationFilter, bool)`
+`func (o *PersonSearch) GetOrganizationIdsOk() (*[]string, bool)`
 
-GetOrganizationsOk returns a tuple with the Organizations field if it's non-nil, zero value otherwise
+GetOrganizationIdsOk returns a tuple with the OrganizationIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOrganizations
+### SetOrganizationIds
 
-`func (o *PersonSearch) SetOrganizations(v []PersonOrganizationFilter)`
+`func (o *PersonSearch) SetOrganizationIds(v []string)`
 
-SetOrganizations sets Organizations field to given value.
+SetOrganizationIds sets OrganizationIds field to given value.
 
-### HasOrganizations
+### HasOrganizationIds
 
-`func (o *PersonSearch) HasOrganizations() bool`
+`func (o *PersonSearch) HasOrganizationIds() bool`
 
-HasOrganizations returns a boolean if a field has been set.
+HasOrganizationIds returns a boolean if a field has been set.
 
-### GetIndustries
+### GetIndustriesIds
 
-`func (o *PersonSearch) GetIndustries() []PersonIndustryFilter`
+`func (o *PersonSearch) GetIndustriesIds() []string`
 
-GetIndustries returns the Industries field if non-nil, zero value otherwise.
+GetIndustriesIds returns the IndustriesIds field if non-nil, zero value otherwise.
 
-### GetIndustriesOk
+### GetIndustriesIdsOk
 
-`func (o *PersonSearch) GetIndustriesOk() (*[]PersonIndustryFilter, bool)`
+`func (o *PersonSearch) GetIndustriesIdsOk() (*[]string, bool)`
 
-GetIndustriesOk returns a tuple with the Industries field if it's non-nil, zero value otherwise
+GetIndustriesIdsOk returns a tuple with the IndustriesIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIndustries
+### SetIndustriesIds
 
-`func (o *PersonSearch) SetIndustries(v []PersonIndustryFilter)`
+`func (o *PersonSearch) SetIndustriesIds(v []string)`
 
-SetIndustries sets Industries field to given value.
+SetIndustriesIds sets IndustriesIds field to given value.
 
-### HasIndustries
+### HasIndustriesIds
 
-`func (o *PersonSearch) HasIndustries() bool`
+`func (o *PersonSearch) HasIndustriesIds() bool`
 
-HasIndustries returns a boolean if a field has been set.
+HasIndustriesIds returns a boolean if a field has been set.
 
-### GetCertifications
+### GetCertificationsIds
 
-`func (o *PersonSearch) GetCertifications() []PersonCertificationFilter`
+`func (o *PersonSearch) GetCertificationsIds() []string`
 
-GetCertifications returns the Certifications field if non-nil, zero value otherwise.
+GetCertificationsIds returns the CertificationsIds field if non-nil, zero value otherwise.
 
-### GetCertificationsOk
+### GetCertificationsIdsOk
 
-`func (o *PersonSearch) GetCertificationsOk() (*[]PersonCertificationFilter, bool)`
+`func (o *PersonSearch) GetCertificationsIdsOk() (*[]string, bool)`
 
-GetCertificationsOk returns a tuple with the Certifications field if it's non-nil, zero value otherwise
+GetCertificationsIdsOk returns a tuple with the CertificationsIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCertifications
+### SetCertificationsIds
 
-`func (o *PersonSearch) SetCertifications(v []PersonCertificationFilter)`
+`func (o *PersonSearch) SetCertificationsIds(v []string)`
 
-SetCertifications sets Certifications field to given value.
+SetCertificationsIds sets CertificationsIds field to given value.
 
-### HasCertifications
+### HasCertificationsIds
 
-`func (o *PersonSearch) HasCertifications() bool`
+`func (o *PersonSearch) HasCertificationsIds() bool`
 
-HasCertifications returns a boolean if a field has been set.
+HasCertificationsIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
