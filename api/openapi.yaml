@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.16.4
+  version: 1.16.5
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -154,8 +154,7 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -179,8 +178,7 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -204,8 +202,7 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -237,14 +234,12 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: parentOrganizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -269,14 +264,12 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: parentOrganizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -302,14 +295,12 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: industryId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -334,14 +325,12 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: industryId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -367,8 +356,7 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -400,14 +388,12 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: officeId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -432,14 +418,12 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: officeId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -464,14 +448,12 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: officeId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -517,8 +499,7 @@ paths:
         name: organizationId
         required: false
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -543,8 +524,7 @@ paths:
         name: officeId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -634,8 +614,7 @@ paths:
         name: industryId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -659,8 +638,7 @@ paths:
         name: industryId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -684,8 +662,7 @@ paths:
         name: industryId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -716,8 +693,7 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: query
         name: skip
         required: false
@@ -756,8 +732,7 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -789,14 +764,12 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: certificationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -822,8 +795,7 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: query
         name: skip
         required: false
@@ -862,8 +834,7 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -895,14 +866,12 @@ paths:
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: projectId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -969,8 +938,7 @@ paths:
         name: certificationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -994,8 +962,7 @@ paths:
         name: certificationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1019,8 +986,7 @@ paths:
         name: certificationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -1051,14 +1017,12 @@ paths:
         name: certificationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1083,14 +1047,12 @@ paths:
         name: certificationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -1121,14 +1083,12 @@ paths:
         name: certificationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -1239,8 +1199,7 @@ paths:
         name: projectId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1264,8 +1223,7 @@ paths:
         name: projectId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1289,8 +1247,7 @@ paths:
         name: projectId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -1321,14 +1278,12 @@ paths:
         name: projectId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1353,14 +1308,12 @@ paths:
         name: projectId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: organizationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1522,8 +1475,7 @@ paths:
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1547,8 +1499,7 @@ paths:
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1572,8 +1523,7 @@ paths:
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -1604,8 +1554,7 @@ paths:
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: query
         name: skip
         required: false
@@ -1644,14 +1593,12 @@ paths:
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: parentSkillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1675,14 +1622,12 @@ paths:
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: parentSkillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -1738,8 +1683,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1763,8 +1707,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1788,8 +1731,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -1820,8 +1762,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "204":
           content:
@@ -1845,8 +1786,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -1872,8 +1812,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/octet-stream:
@@ -1982,47 +1921,34 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - explode: true
         in: query
         name: projectIds
         required: false
         schema:
-          items:
-            format: uuid
-            type: string
-          type: array
+          $ref: '#/components/schemas/UUIDS'
         style: form
       - explode: true
         in: query
         name: skillIds
         required: false
         schema:
-          items:
-            format: uuid
-            type: string
-          type: array
+          $ref: '#/components/schemas/UUIDS'
         style: form
       - explode: true
         in: query
         name: certificationIds
         required: false
         schema:
-          items:
-            format: uuid
-            type: string
-          type: array
+          $ref: '#/components/schemas/UUIDS'
         style: form
       - explode: true
         in: query
         name: profileIds
         required: false
         schema:
-          items:
-            format: uuid
-            type: string
-          type: array
+          $ref: '#/components/schemas/UUIDS'
         style: form
       - in: query
         name: seniority
@@ -2060,14 +1986,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2092,14 +2016,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2125,16 +2047,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
             schema:
-              items:
-                format: uuid
-                type: string
-              type: array
+              $ref: '#/components/schemas/UUIDS_1'
         description: A list of skillIds
         required: true
       responses:
@@ -2161,8 +2079,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -2195,8 +2112,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -2230,14 +2146,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: languageId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2262,14 +2176,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: languageId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -2300,14 +2212,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: languageId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -2339,14 +2249,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2371,14 +2279,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -2409,14 +2315,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -2448,14 +2352,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: certificationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2480,14 +2382,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: certificationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -2518,14 +2418,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: certificationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -2557,14 +2455,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: profileId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2589,14 +2485,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: profileId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2622,14 +2516,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: officeId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2654,14 +2546,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: officeId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2687,18 +2577,14 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - description: "Filter by project ids, if not set, all projects are returned"
         explode: true
         in: query
         name: projectIds
         required: false
         schema:
-          items:
-            format: uuid
-            type: string
-          type: array
+          $ref: '#/components/schemas/UUIDS_1'
         style: form
       responses:
         "200":
@@ -2754,8 +2640,7 @@ paths:
         name: projectParticipationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2780,8 +2665,7 @@ paths:
         name: projectParticipationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2806,8 +2690,7 @@ paths:
         name: projectParticipationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -2840,20 +2723,17 @@ paths:
         name: projectParticipationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: confirmingPersonId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2879,20 +2759,17 @@ paths:
         name: projectParticipationId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: skillId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: confirmingPersonId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2919,8 +2796,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -2945,8 +2821,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -2979,14 +2854,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: availabilityId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3011,14 +2884,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: availabilityId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -3051,8 +2922,7 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3077,14 +2947,12 @@ paths:
         name: personId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: managerId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3227,8 +3095,7 @@ paths:
         name: languageId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3252,8 +3119,7 @@ paths:
         name: languageId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3330,8 +3196,7 @@ paths:
         name: countryId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3355,8 +3220,7 @@ paths:
         name: countryId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3380,8 +3244,7 @@ paths:
         name: countryId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -3412,14 +3275,12 @@ paths:
         name: countryId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: languageId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3444,14 +3305,12 @@ paths:
         name: countryId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       - in: path
         name: languageId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3529,8 +3388,7 @@ paths:
         name: profileId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3554,8 +3412,7 @@ paths:
         name: profileId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       responses:
         "200":
           content:
@@ -3579,8 +3436,7 @@ paths:
         name: profileId
         required: true
         schema:
-          format: uuid
-          type: string
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -3634,85 +3490,73 @@ components:
       name: organizationId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     IndustryId:
       in: path
       name: industryId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     OfficeId:
       in: path
       name: officeId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     CertificationId:
       in: path
       name: certificationId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     ProjectId:
       in: path
       name: projectId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     SkillId:
       in: path
       name: skillId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     PersonId:
       in: path
       name: personId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     LanguageId:
       in: path
       name: languageId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     ProfileId:
       in: path
       name: profileId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     ProjectParticipationId:
       in: path
       name: projectParticipationId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     AvailabilityId:
       in: path
       name: availabilityId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
     CountryId:
       in: path
       name: countryId
       required: true
       schema:
-        format: uuid
-        type: string
+        $ref: '#/components/schemas/UUID'
   responses:
     ErrorResponse:
       content:
@@ -3823,6 +3667,10 @@ components:
           type: array
       title: OrganizationDetails
       type: object
+    UUID:
+      format: uuid
+      title: UUID
+      type: string
     Status:
       example:
         status: status
@@ -3865,17 +3713,13 @@ components:
       title: Industry
     IndustryDetails:
       example:
-        organizations:
-        - null
-        - null
+        organizationsCount: 0
         industry: null
       properties:
         industry:
           $ref: '#/components/schemas/Industry'
-        organizations:
-          items:
-            $ref: '#/components/schemas/Organization'
-          type: array
+        organizationsCount:
+          type: integer
       title: IndustryDetails
       type: object
     PagedCertifications:
@@ -4018,29 +3862,29 @@ components:
     CertificationSearch:
       example:
         certificationIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         skillIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         organizationIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
       properties:
         certificationIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         skillIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         organizationIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
       title: CertificationSearch
       type: object
@@ -4052,43 +3896,43 @@ components:
         - null
         - null
         industryIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         confidentiality:
         - null
         - null
         involvedCountryIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         projectType:
         - null
         - null
         organizationCountryIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         projectIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         amountOfInvolvedPersons:
           min: 0
           max: 100
         skillIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         organizationIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         participantIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         participationAmountInMonths:
           min: 0
           max: 100
       properties:
         projectIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         minStartDate:
           format: date
@@ -4104,20 +3948,20 @@ components:
           $ref: '#/components/schemas/MinMax'
         involvedCountryIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         organizationCountryIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         amountOfInvolvedPersons:
           $ref: '#/components/schemas/MinMax'
         skillIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         projectType:
           items:
@@ -4129,47 +3973,47 @@ components:
           type: array
         participantIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         industryIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         organizationIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
       title: ProjectSearch
       type: object
     ProjectParticipationSearch:
       example:
         personIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         projectIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         projectParticipationIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
       properties:
         projectIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         personIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         projectParticipationIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
       title: ProjectParticipationSearch
       type: object
@@ -4424,21 +4268,21 @@ components:
     PersonSearch:
       example:
         industryIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         profileIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         languageIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         onsiteRatio:
           min: 0
           max: 100
         availability: null
         projectIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         skills:
         - null
         - null
@@ -4446,25 +4290,25 @@ components:
         - employeeIds
         - employeeIds
         certificationIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         officeIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         organizationIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         personIds:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - null
+        - null
         seniority:
         - null
         - null
       properties:
         personIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         employeeIds:
           items:
@@ -4472,18 +4316,18 @@ components:
           type: array
         profileIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         officeIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         languageIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         availability:
           $ref: '#/components/schemas/AvailabilityFilter'
@@ -4499,23 +4343,23 @@ components:
           type: array
         projectIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         organizationIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         industryIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
         certificationIds:
           items:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
           type: array
       title: PersonSearch
       type: object
@@ -4529,6 +4373,11 @@ components:
             type: array
         type: object
       title: PagedPersons
+    UUIDS:
+      items:
+        $ref: '#/components/schemas/UUID'
+      title: UUIDS
+      type: array
     Seniority:
       enum:
       - UNKNOWN
@@ -4547,11 +4396,17 @@ components:
       properties:
         skillId:
           format: uuid
+          title: UUID
           type: string
         level:
           $ref: '#/components/schemas/Level'
       title: SkillLevelUpdate
       type: object
+    UUIDS_1:
+      items:
+        $ref: '#/components/schemas/UUID'
+      title: UUIDS
+      type: array
     DateModel:
       format: date
       title: DateModel
@@ -4572,14 +4427,11 @@ components:
       - $ref: '#/components/schemas/ProjectParticipationUpdate'
       - properties:
           id:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
           projectId:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
           personId:
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/UUID'
         required:
         - id
         - personId
@@ -5059,6 +4911,7 @@ components:
       properties:
         id:
           format: uuid
+          title: UUID
           type: string
         objectType:
           type: string
@@ -5110,6 +4963,7 @@ components:
       properties:
         id:
           format: uuid
+          title: UUID
           type: string
         objectType:
           type: string

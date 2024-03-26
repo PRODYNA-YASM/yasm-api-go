@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Industry** | Pointer to [**Industry**](Industry.md) |  | [optional] 
-**Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
+**OrganizationsCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -51,30 +51,30 @@ SetIndustry sets Industry field to given value.
 
 HasIndustry returns a boolean if a field has been set.
 
-### GetOrganizations
+### GetOrganizationsCount
 
-`func (o *IndustryDetails) GetOrganizations() []Organization`
+`func (o *IndustryDetails) GetOrganizationsCount() int32`
 
-GetOrganizations returns the Organizations field if non-nil, zero value otherwise.
+GetOrganizationsCount returns the OrganizationsCount field if non-nil, zero value otherwise.
 
-### GetOrganizationsOk
+### GetOrganizationsCountOk
 
-`func (o *IndustryDetails) GetOrganizationsOk() (*[]Organization, bool)`
+`func (o *IndustryDetails) GetOrganizationsCountOk() (*int32, bool)`
 
-GetOrganizationsOk returns a tuple with the Organizations field if it's non-nil, zero value otherwise
+GetOrganizationsCountOk returns a tuple with the OrganizationsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOrganizations
+### SetOrganizationsCount
 
-`func (o *IndustryDetails) SetOrganizations(v []Organization)`
+`func (o *IndustryDetails) SetOrganizationsCount(v int32)`
 
-SetOrganizations sets Organizations field to given value.
+SetOrganizationsCount sets OrganizationsCount field to given value.
 
-### HasOrganizations
+### HasOrganizationsCount
 
-`func (o *IndustryDetails) HasOrganizations() bool`
+`func (o *IndustryDetails) HasOrganizationsCount() bool`
 
-HasOrganizations returns a boolean if a field has been set.
+HasOrganizationsCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
