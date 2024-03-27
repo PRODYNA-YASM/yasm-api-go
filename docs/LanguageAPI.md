@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**GetLanguage**](LanguageAPI.md#GetLanguage) | **Get** /languages/{languageId} | Get details about a language
 [**RemoveLanguageFromCountry**](LanguageAPI.md#RemoveLanguageFromCountry) | **Delete** /countries/{countryId}/languages/{languageId} | Assign a language to a country
 [**RemovePersonLanguage**](LanguageAPI.md#RemovePersonLanguage) | **Delete** /persons/{personId}/languages/{languageId} | Remove a language from a person
+[**SearchLanguages**](LanguageAPI.md#SearchLanguages) | **Post** /languages/search | Search over languages
 [**UpdatePersonLanguage**](LanguageAPI.md#UpdatePersonLanguage) | **Put** /persons/{personId}/languages/{languageId} | Update a language of a person
 
 
@@ -494,6 +495,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchLanguages
+
+> PagedLanguages SearchLanguages(ctx).Search(search).Execute()
+
+Search over languages
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    search := *openapiclient.NewSearch(int32(123), int32(123)) // Search |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageAPI.SearchLanguages(context.Background()).Search(search).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.SearchLanguages``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchLanguages`: PagedLanguages
+    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.SearchLanguages`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchLanguagesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search** | [**Search**](Search.md) |  | 
+
+### Return type
+
+[**PagedLanguages**](PagedLanguages.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

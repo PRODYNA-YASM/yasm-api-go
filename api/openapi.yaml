@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.17.0
+  version: 1.17.1
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -538,7 +538,7 @@ paths:
           description: The specified resource was not found
       summary: Search over countries
       tags:
-      - Countries
+      - Country
   /industries:
     post:
       operationId: createIndustry
@@ -667,7 +667,7 @@ paths:
           description: The specified resource was not found
       summary: Search over industries
       tags:
-      - Industries
+      - Industry
   /languages:
     post:
       operationId: createLanguage
@@ -766,7 +766,7 @@ paths:
           description: The specified resource was not found
       summary: Search over languages
       tags:
-      - Languages
+      - Language
   /offices:
     post:
       operationId: createOffice
@@ -903,7 +903,7 @@ paths:
           description: The specified resource was not found
       summary: Search over offices
       tags:
-      - Offices
+      - Office
   /organizations:
     post:
       operationId: createOrganization
@@ -2370,7 +2370,7 @@ paths:
           description: The specified resource was not found
       summary: Search over profiles
       tags:
-      - Profiles
+      - Profile
   /projects:
     post:
       operationId: createProject
@@ -2735,6 +2735,7 @@ paths:
       summary: Search over project participations
       tags:
       - Project
+      - Person
   /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId}:
     delete:
       operationId: removeSkillConfirmation

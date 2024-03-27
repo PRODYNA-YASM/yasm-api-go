@@ -5,18 +5,13 @@ README.md
 api/openapi.yaml
 api_availability.go
 api_certification.go
-api_countries.go
 api_country.go
-api_industries.go
 api_industry.go
 api_language.go
-api_languages.go
 api_office.go
-api_offices.go
 api_organization.go
 api_person.go
 api_profile.go
-api_profiles.go
 api_project.go
 api_project_participation.go
 api_search.go
@@ -36,7 +31,6 @@ docs/CertificationAPI.md
 docs/CertificationDetails.md
 docs/CertificationSearch.md
 docs/Confidentiality.md
-docs/CountriesAPI.md
 docs/Country.md
 docs/CountryAPI.md
 docs/CountryDetails.md
@@ -46,7 +40,6 @@ docs/Experience.md
 docs/ExperienceSkill.md
 docs/ExperienceSkillGroup.md
 docs/Geolocation.md
-docs/IndustriesAPI.md
 docs/Industry.md
 docs/IndustryAPI.md
 docs/IndustryDetails.md
@@ -54,7 +47,6 @@ docs/Language.md
 docs/LanguageAPI.md
 docs/LanguageDetails.md
 docs/LanguageLevel.md
-docs/LanguagesAPI.md
 docs/Level.md
 docs/Linkable.md
 docs/Locateable.md
@@ -65,7 +57,6 @@ docs/NamedDomainModel.md
 docs/Office.md
 docs/OfficeAPI.md
 docs/OfficeSearch.md
-docs/OfficesAPI.md
 docs/Organization.md
 docs/OrganizationAPI.md
 docs/OrganizationDetails.md
@@ -93,7 +84,6 @@ docs/PersonSkillFilter.md
 docs/Profile.md
 docs/ProfileAPI.md
 docs/ProfileDetails.md
-docs/ProfilesAPI.md
 docs/Project.md
 docs/ProjectAPI.md
 docs/ProjectDetails.md
@@ -219,18 +209,13 @@ model_version.go
 response.go
 test/api_availability_test.go
 test/api_certification_test.go
-test/api_countries_test.go
 test/api_country_test.go
-test/api_industries_test.go
 test/api_industry_test.go
 test/api_language_test.go
-test/api_languages_test.go
 test/api_office_test.go
-test/api_offices_test.go
 test/api_organization_test.go
 test/api_person_test.go
 test/api_profile_test.go
-test/api_profiles_test.go
 test/api_project_participation_test.go
 test/api_project_test.go
 test/api_search_test.go
