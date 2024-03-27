@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**AddLanguageToCountry**](CountryAPI.md#AddLanguageToCountry) | **Post** /countries/{countryId}/languages/{languageId} | Assign a language to a country
 [**CreateCountry**](CountryAPI.md#CreateCountry) | **Post** /countries | Create a new Country
 [**DeleteCountry**](CountryAPI.md#DeleteCountry) | **Delete** /countries/{countryId} | Delete a Country
-[**GetCountries**](CountryAPI.md#GetCountries) | **Get** /countries | Get all Countries
 [**GetCountry**](CountryAPI.md#GetCountry) | **Get** /countries/{countryId} | Get details about a Country
 [**RemoveLanguageFromCountry**](CountryAPI.md#RemoveLanguageFromCountry) | **Delete** /countries/{countryId}/languages/{languageId} | Assign a language to a country
 [**UpdateCountry**](CountryAPI.md#UpdateCountry) | **Put** /countries/{countryId} | Update a Country
@@ -202,72 +201,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Status**](Status.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetCountries
-
-> PagedCountries GetCountries(ctx).Skip(skip).Limit(limit).Execute()
-
-Get all Countries
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CountryAPI.GetCountries(context.Background()).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.GetCountries``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCountries`: PagedCountries
-    fmt.Fprintf(os.Stdout, "Response from `CountryAPI.GetCountries`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCountriesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-[**PagedCountries**](PagedCountries.md)
 
 ### Authorization
 

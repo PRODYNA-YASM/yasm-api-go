@@ -4,13 +4,13 @@ All URIs are relative to *https://yasm.prodyna.com:443/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SearchAll**](SearchAPI.md#SearchAll) | **Get** /search/all/{text} | Fulltext search on all kinds of objects
+[**Search**](SearchAPI.md#Search) | **Post** /search | Fulltext search on all kinds of objects
 
 
 
-## SearchAll
+## Search
 
-> SearchResult SearchAll(ctx, text).Skip(skip).Limit(limit).Execute()
+> SearchResult Search(ctx).Search(search).Execute()
 
 Fulltext search on all kinds of objects
 
@@ -27,40 +27,32 @@ import (
 )
 
 func main() {
-    text := "text_example" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
+    search := *openapiclient.NewSearch(int32(123), int32(123)) // Search | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAPI.SearchAll(context.Background(), text).Skip(skip).Limit(limit).Execute()
+    resp, r, err := apiClient.SearchAPI.Search(context.Background()).Search(search).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchAll``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.Search``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchAll`: SearchResult
-    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchAll`: %v\n", resp)
+    // response from `Search`: SearchResult
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.Search`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**text** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSearchAllRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
+ **search** | [**Search**](Search.md) |  | 
 
 ### Return type
 
@@ -72,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

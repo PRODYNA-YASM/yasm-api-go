@@ -8,7 +8,6 @@ Method | HTTP request | Description
 [**CreateIndustry**](IndustryAPI.md#CreateIndustry) | **Post** /industries | Create an Industry
 [**DeleteIndustry**](IndustryAPI.md#DeleteIndustry) | **Delete** /industries/{industryId} | Delete an Industry
 [**DetachOrganizationFromIndustry**](IndustryAPI.md#DetachOrganizationFromIndustry) | **Delete** /organizations/{organizationId}/industries/{industryId} | Remove an Organization to an Industry
-[**GetIndustries**](IndustryAPI.md#GetIndustries) | **Get** /industries | Get all Industries
 [**GetIndustry**](IndustryAPI.md#GetIndustry) | **Get** /industries/{industryId} | Get details about an Industry
 [**UpdateIndustry**](IndustryAPI.md#UpdateIndustry) | **Put** /industries/{industryId} | Update an Industry
 
@@ -273,74 +272,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrganizationDetails**](OrganizationDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetIndustries
-
-> PagedIndustries GetIndustries(ctx).Skip(skip).Limit(limit).Term(term).Execute()
-
-Get all Industries
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally search via search term (optional) (default to "")
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryAPI.GetIndustries(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.GetIndustries``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIndustries`: PagedIndustries
-    fmt.Fprintf(os.Stdout, "Response from `IndustryAPI.GetIndustries`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetIndustriesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
- **term** | **string** | Optionally search via search term | [default to &quot;&quot;]
-
-### Return type
-
-[**PagedIndustries**](PagedIndustries.md)
 
 ### Authorization
 

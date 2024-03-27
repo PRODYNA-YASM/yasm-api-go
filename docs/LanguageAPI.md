@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**CreateLanguage**](LanguageAPI.md#CreateLanguage) | **Post** /languages | Create a new language
 [**DeleteLanguage**](LanguageAPI.md#DeleteLanguage) | **Delete** /languages/{languageId} | Delete a language
 [**GetLanguage**](LanguageAPI.md#GetLanguage) | **Get** /languages/{languageId} | Get details about a language
-[**GetLanguages**](LanguageAPI.md#GetLanguages) | **Get** /languages | Get a list of Languages
 [**RemoveLanguageFromCountry**](LanguageAPI.md#RemoveLanguageFromCountry) | **Delete** /countries/{countryId}/languages/{languageId} | Assign a language to a country
 [**RemovePersonLanguage**](LanguageAPI.md#RemovePersonLanguage) | **Delete** /persons/{personId}/languages/{languageId} | Remove a language from a person
 [**UpdatePersonLanguage**](LanguageAPI.md#UpdatePersonLanguage) | **Put** /persons/{personId}/languages/{languageId} | Update a language of a person
@@ -345,72 +344,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LanguageDetails**](LanguageDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetLanguages
-
-> PagedLanguages GetLanguages(ctx).Skip(skip).Limit(limit).Execute()
-
-Get a list of Languages
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LanguageAPI.GetLanguages(context.Background()).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LanguageAPI.GetLanguages``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetLanguages`: PagedLanguages
-    fmt.Fprintf(os.Stdout, "Response from `LanguageAPI.GetLanguages`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetLanguagesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-[**PagedLanguages**](PagedLanguages.md)
 
 ### Authorization
 

@@ -7,18 +7,17 @@ Method | HTTP request | Description
 [**AddExecutiveOrganizationToProject**](ProjectAPI.md#AddExecutiveOrganizationToProject) | **Post** /projects/{projectId}/executive-organizations/{organizationId} | Add an Organization to a Project as executive organization
 [**AddProjectParticipation**](ProjectAPI.md#AddProjectParticipation) | **Post** /project-participations | Add Project to a Person
 [**AddSkillConfirmation**](ProjectAPI.md#AddSkillConfirmation) | **Post** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
-[**CreateProject**](ProjectAPI.md#CreateProject) | **Post** /organizations/{organizationId}/projects | Create a Project in an Organization
+[**CreateProject**](ProjectAPI.md#CreateProject) | **Post** /projects | Create a Project in an Organization
 [**DeleteProject**](ProjectAPI.md#DeleteProject) | **Delete** /projects/{projectId} | Delete a project
 [**DeleteProjectParticipation**](ProjectAPI.md#DeleteProjectParticipation) | **Delete** /project-participations/{projectParticipationId} | Remove an Project from a Person
-[**GetOrganizationProjects**](ProjectAPI.md#GetOrganizationProjects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
 [**GetProject**](ProjectAPI.md#GetProject) | **Get** /projects/{projectId} | Get details about a Project
+[**MoveProject**](ProjectAPI.md#MoveProject) | **Put** /projects/{projectId}/organizations/{organizationId} | Move a Project to an Organization
 [**ReadProjectParticipation**](ProjectAPI.md#ReadProjectParticipation) | **Get** /project-participations/{projectParticipationId} | Get a project participation
 [**RemoveExecutiveOrganizationFromProject**](ProjectAPI.md#RemoveExecutiveOrganizationFromProject) | **Delete** /projects/{projectId}/executive-organizations/{organizationId} | Remove an Organization from a Project as executive organization
 [**RemoveSkillConfirmation**](ProjectAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
-[**SearchProjectParticipations**](ProjectAPI.md#SearchProjectParticipations) | **Post** /project-participations/search | Complex search over project entities
+[**SearchProjectParticipations**](ProjectAPI.md#SearchProjectParticipations) | **Post** /project-participations/search | Search over project participations
 [**SearchProjects**](ProjectAPI.md#SearchProjects) | **Post** /projects/search | Complex search over project entities
 [**UpdateProject**](ProjectAPI.md#UpdateProject) | **Put** /projects/{projectId} | Update a Project
-[**UpdateProjectOrganization**](ProjectAPI.md#UpdateProjectOrganization) | **Put** /organizations/{organizationId}/projects/{projectId} | project is now point to the new organization
 [**UpdateProjectParticipation**](ProjectAPI.md#UpdateProjectParticipation) | **Put** /project-participations/{projectParticipationId} | Update a Project of a Person
 
 
@@ -235,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## CreateProject
 
-> ProjectDetails CreateProject(ctx, organizationId).Project(project).Execute()
+> ProjectDetails CreateProject(ctx).OrganizationId(organizationId).Project(project).Execute()
 
 Create a Project in an Organization
 
@@ -252,12 +251,12 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the organization
     project := *openapiclient.NewProject(false, "Id_example", "Name_example") // Project | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectAPI.CreateProject(context.Background(), organizationId).Project(project).Execute()
+    resp, r, err := apiClient.ProjectAPI.CreateProject(context.Background()).OrganizationId(organizationId).Project(project).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.CreateProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -270,10 +269,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -282,7 +277,7 @@ Other parameters are passed through a pointer to a apiCreateProjectRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
+ **organizationId** | **string** | The ID of the organization | 
  **project** | [**Project**](Project.md) |  | 
 
 ### Return type
@@ -439,78 +434,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetOrganizationProjects
-
-> PagedProjects GetOrganizationProjects(ctx, organizationId).Skip(skip).Limit(limit).Execute()
-
-Get a list of all Projects for an Organization
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectAPI.GetOrganizationProjects(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.GetOrganizationProjects``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationProjects`: PagedProjects
-    fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.GetOrganizationProjects`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetOrganizationProjectsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-[**PagedProjects**](PagedProjects.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetProject
 
 > ProjectDetails GetProject(ctx, projectId).Execute()
@@ -559,6 +482,77 @@ Other parameters are passed through a pointer to a apiGetProjectRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ProjectDetails**](ProjectDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## MoveProject
+
+> ProjectDetails MoveProject(ctx, projectId, organizationId).Execute()
+
+Move a Project to an Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectAPI.MoveProject(context.Background(), projectId, organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.MoveProject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `MoveProject`: ProjectDetails
+    fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.MoveProject`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**projectId** | **string** |  | 
+**organizationId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMoveProjectRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -794,9 +788,9 @@ Name | Type | Description  | Notes
 
 ## SearchProjectParticipations
 
-> PagedProjectParticipation SearchProjectParticipations(ctx).ProjectParticipationSearch(projectParticipationSearch).Skip(skip).Limit(limit).Execute()
+> PagedProjectParticipation SearchProjectParticipations(ctx).ProjectParticipationSearch(projectParticipationSearch).Execute()
 
-Complex search over project entities
+Search over project participations
 
 ### Example
 
@@ -811,13 +805,11 @@ import (
 )
 
 func main() {
-    projectParticipationSearch := *openapiclient.NewProjectParticipationSearch() // ProjectParticipationSearch | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
+    projectParticipationSearch := *openapiclient.NewProjectParticipationSearch(int32(123), int32(123)) // ProjectParticipationSearch |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectAPI.SearchProjectParticipations(context.Background()).ProjectParticipationSearch(projectParticipationSearch).Skip(skip).Limit(limit).Execute()
+    resp, r, err := apiClient.ProjectAPI.SearchProjectParticipations(context.Background()).ProjectParticipationSearch(projectParticipationSearch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.SearchProjectParticipations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -839,8 +831,6 @@ Other parameters are passed through a pointer to a apiSearchProjectParticipation
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectParticipationSearch** | [**ProjectParticipationSearch**](ProjectParticipationSearch.md) |  | 
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
 
 ### Return type
 
@@ -862,7 +852,7 @@ Name | Type | Description  | Notes
 
 ## SearchProjects
 
-> PagedProjects SearchProjects(ctx).ProjectSearch(projectSearch).Skip(skip).Limit(limit).Execute()
+> PagedProjects SearchProjects(ctx).ProjectSearch(projectSearch).Execute()
 
 Complex search over project entities
 
@@ -879,13 +869,11 @@ import (
 )
 
 func main() {
-    projectSearch := *openapiclient.NewProjectSearch() // ProjectSearch | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
+    projectSearch := *openapiclient.NewProjectSearch(int32(123), int32(123)) // ProjectSearch |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectAPI.SearchProjects(context.Background()).ProjectSearch(projectSearch).Skip(skip).Limit(limit).Execute()
+    resp, r, err := apiClient.ProjectAPI.SearchProjects(context.Background()).ProjectSearch(projectSearch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.SearchProjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -907,8 +895,6 @@ Other parameters are passed through a pointer to a apiSearchProjectsRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **projectSearch** | [**ProjectSearch**](ProjectSearch.md) |  | 
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
 
 ### Return type
 
@@ -991,77 +977,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateProjectOrganization
-
-> ProjectDetails UpdateProjectOrganization(ctx, organizationId, projectId).Execute()
-
-project is now point to the new organization
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectAPI.UpdateProjectOrganization(context.Background(), organizationId, projectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.UpdateProjectOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateProjectOrganization`: ProjectDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.UpdateProjectOrganization`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-**projectId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateProjectOrganizationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**ProjectDetails**](ProjectDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

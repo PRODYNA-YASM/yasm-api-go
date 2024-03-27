@@ -5,13 +5,18 @@ README.md
 api/openapi.yaml
 api_availability.go
 api_certification.go
+api_countries.go
 api_country.go
+api_industries.go
 api_industry.go
 api_language.go
+api_languages.go
 api_office.go
+api_offices.go
 api_organization.go
 api_person.go
 api_profile.go
+api_profiles.go
 api_project.go
 api_project_participation.go
 api_search.go
@@ -31,6 +36,7 @@ docs/CertificationAPI.md
 docs/CertificationDetails.md
 docs/CertificationSearch.md
 docs/Confidentiality.md
+docs/CountriesAPI.md
 docs/Country.md
 docs/CountryAPI.md
 docs/CountryDetails.md
@@ -40,6 +46,7 @@ docs/Experience.md
 docs/ExperienceSkill.md
 docs/ExperienceSkillGroup.md
 docs/Geolocation.md
+docs/IndustriesAPI.md
 docs/Industry.md
 docs/IndustryAPI.md
 docs/IndustryDetails.md
@@ -47,6 +54,7 @@ docs/Language.md
 docs/LanguageAPI.md
 docs/LanguageDetails.md
 docs/LanguageLevel.md
+docs/LanguagesAPI.md
 docs/Level.md
 docs/Linkable.md
 docs/Locateable.md
@@ -56,6 +64,8 @@ docs/Nameable.md
 docs/NamedDomainModel.md
 docs/Office.md
 docs/OfficeAPI.md
+docs/OfficeSearch.md
+docs/OfficesAPI.md
 docs/Organization.md
 docs/OrganizationAPI.md
 docs/OrganizationDetails.md
@@ -83,6 +93,7 @@ docs/PersonSkillFilter.md
 docs/Profile.md
 docs/ProfileAPI.md
 docs/ProfileDetails.md
+docs/ProfilesAPI.md
 docs/Project.md
 docs/ProjectAPI.md
 docs/ProjectDetails.md
@@ -97,6 +108,7 @@ docs/ProjectSearch.md
 docs/ProjectStatus.md
 docs/ProjectType.md
 docs/ScoreResult.md
+docs/Search.md
 docs/SearchAPI.md
 docs/SearchResult.md
 docs/SearchResultItem.md
@@ -109,6 +121,7 @@ docs/SkillLevel.md
 docs/SkillLevelUpdate.md
 docs/SkillLink.md
 docs/SkillLinkUpdate.md
+docs/SkillSearch.md
 docs/Status.md
 docs/StatusAPI.md
 docs/Suggestable.md
@@ -149,6 +162,7 @@ model_min_max_percent.go
 model_nameable.go
 model_named_domain_model.go
 model_office.go
+model_office_search.go
 model_organization.go
 model_organization_details.go
 model_page.go
@@ -185,6 +199,7 @@ model_project_search.go
 model_project_status.go
 model_project_type.go
 model_score_result.go
+model_search.go
 model_search_result.go
 model_search_result_item.go
 model_seniority.go
@@ -195,6 +210,7 @@ model_skill_level.go
 model_skill_level_update.go
 model_skill_link.go
 model_skill_link_update.go
+model_skill_search.go
 model_status.go
 model_suggestable.go
 model_synonymable.go
@@ -203,13 +219,18 @@ model_version.go
 response.go
 test/api_availability_test.go
 test/api_certification_test.go
+test/api_countries_test.go
 test/api_country_test.go
+test/api_industries_test.go
 test/api_industry_test.go
 test/api_language_test.go
+test/api_languages_test.go
 test/api_office_test.go
+test/api_offices_test.go
 test/api_organization_test.go
 test/api_person_test.go
 test/api_profile_test.go
+test/api_profiles_test.go
 test/api_project_participation_test.go
 test/api_project_test.go
 test/api_search_test.go

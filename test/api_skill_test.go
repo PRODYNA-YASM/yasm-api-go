@@ -211,32 +211,6 @@ func Test_client_SkillAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SkillAPIService GetSkillParents", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var skillId string
-
-		resp, httpRes, err := apiClient.SkillAPI.GetSkillParents(context.Background(), skillId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SkillAPIService GetSkills", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.SkillAPI.GetSkills(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SkillAPIService RemoveSkillConfirmation", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -261,6 +235,18 @@ func Test_client_SkillAPIService(t *testing.T) {
 		var parentSkillId string
 
 		resp, httpRes, err := apiClient.SkillAPI.RemoveSkillFromParentSkill(context.Background(), skillId, parentSkillId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SkillAPIService SearchSkills", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SkillAPI.SearchSkills(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

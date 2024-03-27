@@ -78,18 +78,6 @@ func Test_client_IndustryAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test IndustryAPIService GetIndustries", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.IndustryAPI.GetIndustries(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test IndustryAPIService GetIndustry", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -56,9 +56,7 @@ func Test_client_CertificationAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var organizationId string
-
-		resp, httpRes, err := apiClient.CertificationAPI.CreateCertification(context.Background(), organizationId).Execute()
+		resp, httpRes, err := apiClient.CertificationAPI.CreateCertification(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -124,40 +122,14 @@ func Test_client_CertificationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationAPIService GetCertifications", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.CertificationAPI.GetCertifications(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CertificationAPIService GetCertificationsForOrganization", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var organizationId string
-
-		resp, httpRes, err := apiClient.CertificationAPI.GetCertificationsForOrganization(context.Background(), organizationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CertificationAPIService MoveCertification", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var organizationId string
 		var certificationId string
+		var organizationId string
 
-		resp, httpRes, err := apiClient.CertificationAPI.MoveCertification(context.Background(), organizationId, certificationId).Execute()
+		resp, httpRes, err := apiClient.CertificationAPI.MoveCertification(context.Background(), certificationId, organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

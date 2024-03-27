@@ -63,18 +63,6 @@ func Test_client_CountryAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CountryAPIService GetCountries", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.CountryAPI.GetCountries(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CountryAPIService GetCountry", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

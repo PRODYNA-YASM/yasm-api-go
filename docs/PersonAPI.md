@@ -26,7 +26,6 @@ Method | HTTP request | Description
 [**DeletePersonSkillExperiences**](PersonAPI.md#DeletePersonSkillExperiences) | **Delete** /persons/{personId}/experiences | Remove an Skill Experience to a Person
 [**DeleteProjectParticipation**](PersonAPI.md#DeleteProjectParticipation) | **Delete** /project-participations/{projectParticipationId} | Remove an Project from a Person
 [**GeneratePersonProfile**](PersonAPI.md#GeneratePersonProfile) | **Get** /persons/{personId}/pdf-profile | Generate a PDF profile from a Person
-[**GetAllBusinessDepartments**](PersonAPI.md#GetAllBusinessDepartments) | **Get** /persons/departments | Get all unique business departments
 [**GetAvailabilities**](PersonAPI.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonAPI.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**ReadPersonPicture**](PersonAPI.md#ReadPersonPicture) | **Get** /persons/{personId}/picture | Read person image
@@ -35,7 +34,7 @@ Method | HTTP request | Description
 [**RemoveManager**](PersonAPI.md#RemoveManager) | **Delete** /persons/{personId}/manager | Remove a manager from a person
 [**RemovePersonLanguage**](PersonAPI.md#RemovePersonLanguage) | **Delete** /persons/{personId}/languages/{languageId} | Remove a language from a person
 [**RemoveSkillConfirmation**](PersonAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
-[**SearchPersons**](PersonAPI.md#SearchPersons) | **Post** /persons/search | Complex search over person entities
+[**SearchPersons**](PersonAPI.md#SearchPersons) | **Post** /persons/search | Search over persons
 [**SetManager**](PersonAPI.md#SetManager) | **Put** /persons/{personId}/manager/{managerId} | Set a manager for a person
 [**UpdateAvailability**](PersonAPI.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
 [**UpdatePerson**](PersonAPI.md#UpdatePerson) | **Put** /persons/{personId} | Update an existing Person
@@ -1605,72 +1604,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAllBusinessDepartments
-
-> []string GetAllBusinessDepartments(ctx).Skip(skip).Limit(limit).Execute()
-
-Get all unique business departments
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.GetAllBusinessDepartments(context.Background()).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetAllBusinessDepartments``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAllBusinessDepartments`: []string
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetAllBusinessDepartments`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAllBusinessDepartmentsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-**[]string**
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetAvailabilities
 
 > PagedAvailabilities GetAvailabilities(ctx, personId).Execute()
@@ -2228,9 +2161,9 @@ Name | Type | Description  | Notes
 
 ## SearchPersons
 
-> PagedPersons SearchPersons(ctx).PersonSearch(personSearch).Skip(skip).Limit(limit).Execute()
+> PagedPersons SearchPersons(ctx).PersonSearch(personSearch).Execute()
 
-Complex search over person entities
+Search over persons
 
 ### Example
 
@@ -2245,13 +2178,11 @@ import (
 )
 
 func main() {
-    personSearch := *openapiclient.NewPersonSearch() // PersonSearch | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
+    personSearch := *openapiclient.NewPersonSearch(int32(123), int32(123)) // PersonSearch |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.SearchPersons(context.Background()).PersonSearch(personSearch).Skip(skip).Limit(limit).Execute()
+    resp, r, err := apiClient.PersonAPI.SearchPersons(context.Background()).PersonSearch(personSearch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.SearchPersons``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2273,8 +2204,6 @@ Other parameters are passed through a pointer to a apiSearchPersonsRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **personSearch** | [**PersonSearch**](PersonSearch.md) |  | 
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
 
 ### Return type
 

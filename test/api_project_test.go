@@ -69,9 +69,7 @@ func Test_client_ProjectAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var organizationId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.CreateProject(context.Background(), organizationId).Execute()
+		resp, httpRes, err := apiClient.ProjectAPI.CreateProject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -107,20 +105,6 @@ func Test_client_ProjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectAPIService GetOrganizationProjects", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var organizationId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.GetOrganizationProjects(context.Background(), organizationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProjectAPIService GetProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -128,6 +112,21 @@ func Test_client_ProjectAPIService(t *testing.T) {
 		var projectId string
 
 		resp, httpRes, err := apiClient.ProjectAPI.GetProject(context.Background(), projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectAPIService MoveProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+		var organizationId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.MoveProject(context.Background(), projectId, organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -211,21 +210,6 @@ func Test_client_ProjectAPIService(t *testing.T) {
 		var projectId string
 
 		resp, httpRes, err := apiClient.ProjectAPI.UpdateProject(context.Background(), projectId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectAPIService UpdateProjectOrganization", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var organizationId string
-		var projectId string
-
-		resp, httpRes, err := apiClient.ProjectAPI.UpdateProjectOrganization(context.Background(), organizationId, projectId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

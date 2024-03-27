@@ -6,15 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddPersonCertification**](CertificationAPI.md#AddPersonCertification) | **Post** /persons/{personId}/certifications/{certificationId} | Add Certification to a Person
 [**AddSkillToCertification**](CertificationAPI.md#AddSkillToCertification) | **Post** /certifications/{certificationId}/skills/{skillId} | 
-[**CreateCertification**](CertificationAPI.md#CreateCertification) | **Post** /organizations/{organizationId}/certifications | Create a Certification in an Organization
+[**CreateCertification**](CertificationAPI.md#CreateCertification) | **Post** /certifications | Create a Certification in an Organization
 [**DeleteCertification**](CertificationAPI.md#DeleteCertification) | **Delete** /certifications/{certificationId} | Delete a Certification
 [**DeletePersonCertification**](CertificationAPI.md#DeletePersonCertification) | **Delete** /persons/{personId}/certifications/{certificationId} | Remove an Interest to a Person
 [**DeleteSkillFromCertification**](CertificationAPI.md#DeleteSkillFromCertification) | **Delete** /certifications/{certificationId}/skills/{skillId} | 
 [**GetCertification**](CertificationAPI.md#GetCertification) | **Get** /certifications/{certificationId} | Get details about a Certification
-[**GetCertifications**](CertificationAPI.md#GetCertifications) | **Get** /certifications | Get a list of all Certifications independent of the Organization
-[**GetCertificationsForOrganization**](CertificationAPI.md#GetCertificationsForOrganization) | **Get** /organizations/{organizationId}/certifications | Get a list of all certifications for a organization
-[**MoveCertification**](CertificationAPI.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificationId} | Move a Certification to an Organization
-[**SearchCertifications**](CertificationAPI.md#SearchCertifications) | **Post** /certifications/search | Complex search over certification entities
+[**MoveCertification**](CertificationAPI.md#MoveCertification) | **Put** /certifications/{certificationId}/organizations/{organizationId} | Move a Certification to an Organization
+[**SearchCertifications**](CertificationAPI.md#SearchCertifications) | **Post** /certifications/search | Search over certifications
 [**UpdateCertification**](CertificationAPI.md#UpdateCertification) | **Put** /certifications/{certificationId} | Update a Certification
 [**UpdatePersonCertification**](CertificationAPI.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
 [**UpdateSkillInCertification**](CertificationAPI.md#UpdateSkillInCertification) | **Put** /certifications/{certificationId}/skills/{skillId} | 
@@ -172,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## CreateCertification
 
-> CertificationDetails CreateCertification(ctx, organizationId).Certification(certification).Execute()
+> CertificationDetails CreateCertification(ctx).OrganizationId(organizationId).Certification(certification).Execute()
 
 Create a Certification in an Organization
 
@@ -189,12 +187,12 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the organization
     certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.CreateCertification(context.Background(), organizationId).Certification(certification).Execute()
+    resp, r, err := apiClient.CertificationAPI.CreateCertification(context.Background()).OrganizationId(organizationId).Certification(certification).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.CreateCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -207,10 +205,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -219,7 +213,7 @@ Other parameters are passed through a pointer to a apiCreateCertificationRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
+ **organizationId** | **string** | The ID of the organization | 
  **certification** | [**Certification**](Certification.md) |  | 
 
 ### Return type
@@ -518,149 +512,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCertifications
-
-> PagedCertifications GetCertifications(ctx).Skip(skip).Limit(limit).Term(term).Execute()
-
-Get a list of all Certifications independent of the Organization
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally search via search term (optional) (default to "")
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.GetCertifications(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.GetCertifications``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCertifications`: PagedCertifications
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.GetCertifications`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCertificationsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
- **term** | **string** | Optionally search via search term | [default to &quot;&quot;]
-
-### Return type
-
-[**PagedCertifications**](PagedCertifications.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetCertificationsForOrganization
-
-> PagedCertifications GetCertificationsForOrganization(ctx, organizationId).Skip(skip).Limit(limit).Execute()
-
-Get a list of all certifications for a organization
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.GetCertificationsForOrganization(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.GetCertificationsForOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCertificationsForOrganization`: PagedCertifications
-    fmt.Fprintf(os.Stdout, "Response from `CertificationAPI.GetCertificationsForOrganization`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCertificationsForOrganizationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-[**PagedCertifications**](PagedCertifications.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## MoveCertification
 
-> CertificationDetails MoveCertification(ctx, organizationId, certificationId).Execute()
+> CertificationDetails MoveCertification(ctx, certificationId, organizationId).Execute()
 
 Move a Certification to an Organization
 
@@ -677,12 +531,12 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.MoveCertification(context.Background(), organizationId, certificationId).Execute()
+    resp, r, err := apiClient.CertificationAPI.MoveCertification(context.Background(), certificationId, organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.MoveCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -698,8 +552,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
 **certificationId** | **string** |  | 
+**organizationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -731,9 +585,9 @@ Name | Type | Description  | Notes
 
 ## SearchCertifications
 
-> PagedCertifications SearchCertifications(ctx).CertificationSearch(certificationSearch).Skip(skip).Limit(limit).Execute()
+> PagedCertifications SearchCertifications(ctx).CertificationSearch(certificationSearch).Execute()
 
-Complex search over certification entities
+Search over certifications
 
 ### Example
 
@@ -748,13 +602,11 @@ import (
 )
 
 func main() {
-    certificationSearch := *openapiclient.NewCertificationSearch() // CertificationSearch | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
+    certificationSearch := *openapiclient.NewCertificationSearch(int32(123), int32(123)) // CertificationSearch |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationAPI.SearchCertifications(context.Background()).CertificationSearch(certificationSearch).Skip(skip).Limit(limit).Execute()
+    resp, r, err := apiClient.CertificationAPI.SearchCertifications(context.Background()).CertificationSearch(certificationSearch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationAPI.SearchCertifications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -776,8 +628,6 @@ Other parameters are passed through a pointer to a apiSearchCertificationsReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **certificationSearch** | [**CertificationSearch**](CertificationSearch.md) |  | 
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
 
 ### Return type
 

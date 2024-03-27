@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**DeletePersonProfile**](ProfileAPI.md#DeletePersonProfile) | **Delete** /persons/{personId}/profiles/{profileId} | Remove a Profile from a Person
 [**DeleteProfile**](ProfileAPI.md#DeleteProfile) | **Delete** /profiles/{profileId} | Delete a Profile
 [**GetProfile**](ProfileAPI.md#GetProfile) | **Get** /profiles/{profileId} | Get details about a Profile
-[**GetProfiles**](ProfileAPI.md#GetProfiles) | **Get** /profiles | Get all Profiles
 [**UpdateProfile**](ProfileAPI.md#UpdateProfile) | **Put** /profiles/{profileId} | Update a Profile
 
 
@@ -341,72 +340,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ProfileDetails**](ProfileDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetProfiles
-
-> PagedProfiles GetProfiles(ctx).Skip(skip).Limit(limit).Execute()
-
-Get all Profiles
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProfileAPI.GetProfiles(context.Background()).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProfileAPI.GetProfiles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetProfiles`: PagedProfiles
-    fmt.Fprintf(os.Stdout, "Response from `ProfileAPI.GetProfiles`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetProfilesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-[**PagedProfiles**](PagedProfiles.md)
 
 ### Authorization
 

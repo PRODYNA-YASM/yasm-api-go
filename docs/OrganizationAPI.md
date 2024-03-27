@@ -7,24 +7,18 @@ Method | HTTP request | Description
 [**AddExecutiveOrganizationToProject**](OrganizationAPI.md#AddExecutiveOrganizationToProject) | **Post** /projects/{projectId}/executive-organizations/{organizationId} | Add an Organization to a Project as executive organization
 [**AddOrganizationToParentOrganization**](OrganizationAPI.md#AddOrganizationToParentOrganization) | **Post** /organizations/{organizationId}/parents/{parentOrganizationId} | Attach an Organization to a parent Organization, returns the parent Organization
 [**AttachOrganizationToIndustry**](OrganizationAPI.md#AttachOrganizationToIndustry) | **Post** /organizations/{organizationId}/industries/{industryId} | Add an Organization to an Industry
-[**CreateCertification**](OrganizationAPI.md#CreateCertification) | **Post** /organizations/{organizationId}/certifications | Create a Certification in an Organization
-[**CreateOffice**](OrganizationAPI.md#CreateOffice) | **Post** /organizations/{organizationId}/offices | Create an Office in an Organization
+[**CreateOffice**](OrganizationAPI.md#CreateOffice) | **Post** /offices | Create an Office in an Organization
 [**CreateOrganization**](OrganizationAPI.md#CreateOrganization) | **Post** /organizations | Create an Organization
-[**CreateProject**](OrganizationAPI.md#CreateProject) | **Post** /organizations/{organizationId}/projects | Create a Project in an Organization
-[**DeleteOffice**](OrganizationAPI.md#DeleteOffice) | **Delete** /organizations/{organizationId}/offices/{officeId} | Delete an Office from an Organization
+[**CreateProject**](OrganizationAPI.md#CreateProject) | **Post** /projects | Create a Project in an Organization
 [**DeleteOrganization**](OrganizationAPI.md#DeleteOrganization) | **Delete** /organizations/{organizationId} | Delete an organization
 [**DetachOrganizationFromIndustry**](OrganizationAPI.md#DetachOrganizationFromIndustry) | **Delete** /organizations/{organizationId}/industries/{industryId} | Remove an Organization to an Industry
-[**GetCertificationsForOrganization**](OrganizationAPI.md#GetCertificationsForOrganization) | **Get** /organizations/{organizationId}/certifications | Get a list of all certifications for a organization
-[**GetOffice**](OrganizationAPI.md#GetOffice) | **Get** /organizations/{organizationId}/offices/{officeId} | Get an Office for an Organization
 [**GetOrganization**](OrganizationAPI.md#GetOrganization) | **Get** /organizations/{organizationId} | Get details about an Organization
-[**GetOrganizationProjects**](OrganizationAPI.md#GetOrganizationProjects) | **Get** /organizations/{organizationId}/projects | Get a list of all Projects for an Organization
-[**GetOrganizations**](OrganizationAPI.md#GetOrganizations) | **Get** /organizations | Get a list of all Organizations
-[**MoveCertification**](OrganizationAPI.md#MoveCertification) | **Put** /organizations/{organizationId}/certificates/{certificationId} | Move a Certification to an Organization
+[**MoveCertification**](OrganizationAPI.md#MoveCertification) | **Put** /certifications/{certificationId}/organizations/{organizationId} | Move a Certification to an Organization
+[**MoveProject**](OrganizationAPI.md#MoveProject) | **Put** /projects/{projectId}/organizations/{organizationId} | Move a Project to an Organization
 [**RemoveExecutiveOrganizationFromProject**](OrganizationAPI.md#RemoveExecutiveOrganizationFromProject) | **Delete** /projects/{projectId}/executive-organizations/{organizationId} | Remove an Organization from a Project as executive organization
 [**RemoveOrganizationFromParentOrganization**](OrganizationAPI.md#RemoveOrganizationFromParentOrganization) | **Delete** /organizations/{organizationId}/parents/{parentOrganizationId} | Detaches an Organization from parent Organization, return the parent Organization
-[**UpdateOffice**](OrganizationAPI.md#UpdateOffice) | **Put** /organizations/{organizationId}/offices/{officeId} | Update an Office for an Organization
+[**SearchOrganizations**](OrganizationAPI.md#SearchOrganizations) | **Post** /organizations/search | Search over organizations
 [**UpdateOrganization**](OrganizationAPI.md#UpdateOrganization) | **Put** /organizations/{organizationId} | Update an Organization
-[**UpdateProjectOrganization**](OrganizationAPI.md#UpdateProjectOrganization) | **Put** /organizations/{organizationId}/projects/{projectId} | project is now point to the new organization
 
 
 
@@ -241,79 +235,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateCertification
-
-> CertificationDetails CreateCertification(ctx, organizationId).Certification(certification).Execute()
-
-Create a Certification in an Organization
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    certification := *openapiclient.NewCertification(false, "Id_example", "Name_example") // Certification | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.CreateCertification(context.Background(), organizationId).Certification(certification).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateCertification``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateCertification`: CertificationDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateCertification`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateCertificationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **certification** | [**Certification**](Certification.md) |  | 
-
-### Return type
-
-[**CertificationDetails**](CertificationDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CreateOffice
 
-> OrganizationDetails CreateOffice(ctx, organizationId).Office(office).Execute()
+> Office CreateOffice(ctx).OrganizationId(organizationId).Office(office).Execute()
 
 Create an Office in an Organization
 
@@ -330,17 +254,17 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the organization
     office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.CreateOffice(context.Background(), organizationId).Office(office).Execute()
+    resp, r, err := apiClient.OrganizationAPI.CreateOffice(context.Background()).OrganizationId(organizationId).Office(office).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateOffice`: OrganizationDetails
+    // response from `CreateOffice`: Office
     fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateOffice`: %v\n", resp)
 }
 ```
@@ -348,10 +272,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -360,12 +280,12 @@ Other parameters are passed through a pointer to a apiCreateOfficeRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
+ **organizationId** | **string** | The ID of the organization | 
  **office** | [**Office**](Office.md) |  | 
 
 ### Return type
 
-[**OrganizationDetails**](OrganizationDetails.md)
+[**Office**](Office.md)
 
 ### Authorization
 
@@ -447,7 +367,7 @@ Name | Type | Description  | Notes
 
 ## CreateProject
 
-> ProjectDetails CreateProject(ctx, organizationId).Project(project).Execute()
+> ProjectDetails CreateProject(ctx).OrganizationId(organizationId).Project(project).Execute()
 
 Create a Project in an Organization
 
@@ -464,12 +384,12 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the organization
     project := *openapiclient.NewProject(false, "Id_example", "Name_example") // Project | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.CreateProject(context.Background(), organizationId).Project(project).Execute()
+    resp, r, err := apiClient.OrganizationAPI.CreateProject(context.Background()).OrganizationId(organizationId).Project(project).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -482,10 +402,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -494,7 +410,7 @@ Other parameters are passed through a pointer to a apiCreateProjectRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
+ **organizationId** | **string** | The ID of the organization | 
  **project** | [**Project**](Project.md) |  | 
 
 ### Return type
@@ -508,77 +424,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DeleteOffice
-
-> Status DeleteOffice(ctx, organizationId, officeId).Execute()
-
-Delete an Office from an Organization
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.DeleteOffice(context.Background(), organizationId, officeId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.DeleteOffice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeleteOffice`: Status
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.DeleteOffice`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-**officeId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteOfficeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**Status**](Status.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -725,149 +570,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCertificationsForOrganization
-
-> PagedCertifications GetCertificationsForOrganization(ctx, organizationId).Skip(skip).Limit(limit).Execute()
-
-Get a list of all certifications for a organization
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.GetCertificationsForOrganization(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetCertificationsForOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetCertificationsForOrganization`: PagedCertifications
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetCertificationsForOrganization`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCertificationsForOrganizationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-[**PagedCertifications**](PagedCertifications.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetOffice
-
-> Office GetOffice(ctx, organizationId, officeId).Execute()
-
-Get an Office for an Organization
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.GetOffice(context.Background(), organizationId, officeId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOffice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOffice`: Office
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOffice`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-**officeId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetOfficeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**Office**](Office.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetOrganization
 
 > OrganizationDetails GetOrganization(ctx, organizationId).Execute()
@@ -936,149 +638,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetOrganizationProjects
-
-> PagedProjects GetOrganizationProjects(ctx, organizationId).Skip(skip).Limit(limit).Execute()
-
-Get a list of all Projects for an Organization
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.GetOrganizationProjects(context.Background(), organizationId).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOrganizationProjects``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationProjects`: PagedProjects
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOrganizationProjects`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetOrganizationProjectsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-[**PagedProjects**](PagedProjects.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetOrganizations
-
-> PagedOrganizations GetOrganizations(ctx).Skip(skip).Limit(limit).Term(term).Execute()
-
-Get a list of all Organizations
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally search via search term (optional) (default to "")
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.GetOrganizations(context.Background()).Skip(skip).Limit(limit).Term(term).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.GetOrganizations``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizations`: PagedOrganizations
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.GetOrganizations`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetOrganizationsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
- **term** | **string** | Optionally search via search term | [default to &quot;&quot;]
-
-### Return type
-
-[**PagedOrganizations**](PagedOrganizations.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## MoveCertification
 
-> CertificationDetails MoveCertification(ctx, organizationId, certificationId).Execute()
+> CertificationDetails MoveCertification(ctx, certificationId, organizationId).Execute()
 
 Move a Certification to an Organization
 
@@ -1095,12 +657,12 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     certificationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.MoveCertification(context.Background(), organizationId, certificationId).Execute()
+    resp, r, err := apiClient.OrganizationAPI.MoveCertification(context.Background(), certificationId, organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.MoveCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1116,8 +678,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
 **certificationId** | **string** |  | 
+**organizationId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1132,6 +694,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CertificationDetails**](CertificationDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## MoveProject
+
+> ProjectDetails MoveProject(ctx, projectId, organizationId).Execute()
+
+Move a Project to an Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAPI.MoveProject(context.Background(), projectId, organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.MoveProject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `MoveProject`: ProjectDetails
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.MoveProject`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**projectId** | **string** |  | 
+**organizationId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMoveProjectRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ProjectDetails**](ProjectDetails.md)
 
 ### Authorization
 
@@ -1289,11 +922,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateOffice
+## SearchOrganizations
 
-> Office UpdateOffice(ctx, organizationId, officeId).Office(office).Execute()
+> PagedOrganizations SearchOrganizations(ctx).Search(search).Execute()
 
-Update an Office for an Organization
+Search over organizations
 
 ### Example
 
@@ -1308,45 +941,36 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
+    search := *openapiclient.NewSearch(int32(123), int32(123)) // Search |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.UpdateOffice(context.Background(), organizationId, officeId).Office(office).Execute()
+    resp, r, err := apiClient.OrganizationAPI.SearchOrganizations(context.Background()).Search(search).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.UpdateOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.SearchOrganizations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateOffice`: Office
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.UpdateOffice`: %v\n", resp)
+    // response from `SearchOrganizations`: PagedOrganizations
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.SearchOrganizations`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-**officeId** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateOfficeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSearchOrganizationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
-
- **office** | [**Office**](Office.md) |  | 
+ **search** | [**Search**](Search.md) |  | 
 
 ### Return type
 
-[**Office**](Office.md)
+[**PagedOrganizations**](PagedOrganizations.md)
 
 ### Authorization
 
@@ -1425,77 +1049,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateProjectOrganization
-
-> ProjectDetails UpdateProjectOrganization(ctx, organizationId, projectId).Execute()
-
-project is now point to the new organization
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.UpdateProjectOrganization(context.Background(), organizationId, projectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.UpdateProjectOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateProjectOrganization`: ProjectDetails
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.UpdateProjectOrganization`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** |  | 
-**projectId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateProjectOrganizationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**ProjectDetails**](ProjectDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

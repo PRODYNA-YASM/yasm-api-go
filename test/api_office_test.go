@@ -41,9 +41,7 @@ func Test_client_OfficeAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var organizationId string
-
-		resp, httpRes, err := apiClient.OfficeAPI.CreateOffice(context.Background(), organizationId).Execute()
+		resp, httpRes, err := apiClient.OfficeAPI.CreateOffice(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -55,10 +53,9 @@ func Test_client_OfficeAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var organizationId string
 		var officeId string
 
-		resp, httpRes, err := apiClient.OfficeAPI.DeleteOffice(context.Background(), organizationId, officeId).Execute()
+		resp, httpRes, err := apiClient.OfficeAPI.DeleteOffice(context.Background(), officeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -81,21 +78,6 @@ func Test_client_OfficeAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OfficeAPIService GetOffice", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var organizationId string
-		var officeId string
-
-		resp, httpRes, err := apiClient.OfficeAPI.GetOffice(context.Background(), organizationId, officeId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test OfficeAPIService GetOfficeDetails", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -110,26 +92,13 @@ func Test_client_OfficeAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OfficeAPIService GetOffices", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.OfficeAPI.GetOffices(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test OfficeAPIService UpdateOffice", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var organizationId string
 		var officeId string
 
-		resp, httpRes, err := apiClient.OfficeAPI.UpdateOffice(context.Background(), organizationId, officeId).Execute()
+		resp, httpRes, err := apiClient.OfficeAPI.UpdateOffice(context.Background(), officeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

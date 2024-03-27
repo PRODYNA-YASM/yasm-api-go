@@ -17,10 +17,9 @@ Method | HTTP request | Description
 [**DeleteSkill**](SkillAPI.md#DeleteSkill) | **Delete** /skills/{skillId} | Delete a Skill
 [**DeleteSkillFromCertification**](SkillAPI.md#DeleteSkillFromCertification) | **Delete** /certifications/{certificationId}/skills/{skillId} | 
 [**GetSkill**](SkillAPI.md#GetSkill) | **Get** /skills/{skillId} | Get details for a single skill
-[**GetSkillParents**](SkillAPI.md#GetSkillParents) | **Get** /skills/{skillId}/parents | Get ghe list of parents for a skill
-[**GetSkills**](SkillAPI.md#GetSkills) | **Get** /skills | Get a list of all skills, optionally only root
 [**RemoveSkillConfirmation**](SkillAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**RemoveSkillFromParentSkill**](SkillAPI.md#RemoveSkillFromParentSkill) | **Delete** /skills/{skillId}/parents/{parentSkillId} | Detaches a Skill from parent Skill, return the parent Skill
+[**SearchSkills**](SkillAPI.md#SearchSkills) | **Post** /skills/search | Search over skills
 [**UpdatePersonSkillExperience**](SkillAPI.md#UpdatePersonSkillExperience) | **Put** /persons/{personId}/experiences/skills/{skillId} | Edit an Skill experience to a Person
 [**UpdatePersonSkillExperiences**](SkillAPI.md#UpdatePersonSkillExperiences) | **Put** /persons/{personId}/experiences | Edit an Skill experience to a Person
 [**UpdateSkill**](SkillAPI.md#UpdateSkill) | **Put** /skills/{skillId} | Update a Skill
@@ -947,152 +946,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSkillParents
-
-> PagedSkills GetSkillParents(ctx, skillId).Skip(skip).Limit(limit).Execute()
-
-Get ghe list of parents for a skill
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SkillAPI.GetSkillParents(context.Background(), skillId).Skip(skip).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.GetSkillParents``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSkillParents`: PagedSkills
-    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.GetSkillParents`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**skillId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSkillParentsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
-
-### Return type
-
-[**PagedSkills**](PagedSkills.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetSkills
-
-> PagedSkills GetSkills(ctx).Skip(skip).Limit(limit).Term(term).Types(types).Suggestions(suggestions).Linkable(linkable).Execute()
-
-Get a list of all skills, optionally only root
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    skip := int32(0) // int32 |  (optional) (default to 0)
-    limit := int32(20) // int32 |  (optional) (default to 20)
-    term := "term_example" // string | Optionally search via search term (optional) (default to "")
-    types := "all" // string | Gives you either all skills, only the root kills (optional) (default to "all")
-    suggestions := "all" // string | Optionally filter skills based on suggestion (optional) (default to "all")
-    linkable := true // bool | Optionally filter skills based on linkable (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SkillAPI.GetSkills(context.Background()).Skip(skip).Limit(limit).Term(term).Types(types).Suggestions(suggestions).Linkable(linkable).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.GetSkills``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSkills`: PagedSkills
-    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.GetSkills`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSkillsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **skip** | **int32** |  | [default to 0]
- **limit** | **int32** |  | [default to 20]
- **term** | **string** | Optionally search via search term | [default to &quot;&quot;]
- **types** | **string** | Gives you either all skills, only the root kills | [default to &quot;all&quot;]
- **suggestions** | **string** | Optionally filter skills based on suggestion | [default to &quot;all&quot;]
- **linkable** | **bool** | Optionally filter skills based on linkable | 
-
-### Return type
-
-[**PagedSkills**](PagedSkills.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## RemoveSkillConfirmation
 
 > ProjectParticipationDetails RemoveSkillConfirmation(ctx, projectParticipationId, skillId, confirmingPersonId).Execute()
@@ -1231,6 +1084,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchSkills
+
+> PagedSkills SearchSkills(ctx).SkillSearch(skillSearch).Execute()
+
+Search over skills
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    skillSearch := *openapiclient.NewSkillSearch(int32(123), int32(123)) // SkillSearch |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.SearchSkills(context.Background()).SkillSearch(skillSearch).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.SearchSkills``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchSkills`: PagedSkills
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.SearchSkills`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchSkillsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **skillSearch** | [**SkillSearch**](SkillSearch.md) |  | 
+
+### Return type
+
+[**PagedSkills**](PagedSkills.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
