@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.17.1
+  version: 1.18.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -4332,7 +4332,7 @@ components:
       type: object
     AvailabilityFilter:
       allOf:
-      - $ref: '#/components/schemas/Timeframed'
+      - $ref: '#/components/schemas/TimeframeFilter'
       - $ref: '#/components/schemas/MinMaxPercent'
       title: AvailabilityFilter
     MinMaxPercent:
@@ -4531,6 +4531,20 @@ components:
             type: integer
         type: object
       title: ExperienceSkill
+    TimeframeFilter:
+      discriminator:
+        propertyName: objectType
+      properties:
+        startdate:
+          format: date
+          type: string
+        enddate:
+          format: date
+          type: string
+        objectType:
+          type: string
+      title: TimeframeFilter
+      type: object
     AbstractEntityFilter:
       properties:
         id:

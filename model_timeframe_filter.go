@@ -14,60 +14,67 @@ import (
 	"encoding/json"
 )
 
-// checks if the Timeframed type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Timeframed{}
+// checks if the TimeframeFilter type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TimeframeFilter{}
 
-// Timeframed struct for Timeframed
-type Timeframed struct {
-	Startdate string `json:"startdate"`
+// TimeframeFilter struct for TimeframeFilter
+type TimeframeFilter struct {
+	Startdate *string `json:"startdate,omitempty"`
 	Enddate *string `json:"enddate,omitempty"`
 	ObjectType *string `json:"objectType,omitempty"`
 }
 
-// NewTimeframed instantiates a new Timeframed object
+// NewTimeframeFilter instantiates a new TimeframeFilter object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTimeframed(startdate string) *Timeframed {
-	this := Timeframed{}
-	this.Startdate = startdate
+func NewTimeframeFilter() *TimeframeFilter {
+	this := TimeframeFilter{}
 	return &this
 }
 
-// NewTimeframedWithDefaults instantiates a new Timeframed object
+// NewTimeframeFilterWithDefaults instantiates a new TimeframeFilter object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTimeframedWithDefaults() *Timeframed {
-	this := Timeframed{}
+func NewTimeframeFilterWithDefaults() *TimeframeFilter {
+	this := TimeframeFilter{}
 	return &this
 }
 
-// GetStartdate returns the Startdate field value
-func (o *Timeframed) GetStartdate() string {
-	if o == nil {
+// GetStartdate returns the Startdate field value if set, zero value otherwise.
+func (o *TimeframeFilter) GetStartdate() string {
+	if o == nil || IsNil(o.Startdate) {
 		var ret string
 		return ret
 	}
-
-	return o.Startdate
+	return *o.Startdate
 }
 
-// GetStartdateOk returns a tuple with the Startdate field value
+// GetStartdateOk returns a tuple with the Startdate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Timeframed) GetStartdateOk() (*string, bool) {
-	if o == nil {
+func (o *TimeframeFilter) GetStartdateOk() (*string, bool) {
+	if o == nil || IsNil(o.Startdate) {
 		return nil, false
 	}
-	return &o.Startdate, true
+	return o.Startdate, true
 }
 
-// SetStartdate sets field value
-func (o *Timeframed) SetStartdate(v string) {
-	o.Startdate = v
+// HasStartdate returns a boolean if a field has been set.
+func (o *TimeframeFilter) HasStartdate() bool {
+	if o != nil && !IsNil(o.Startdate) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartdate gets a reference to the given string and assigns it to the Startdate field.
+func (o *TimeframeFilter) SetStartdate(v string) {
+	o.Startdate = &v
 }
 
 // GetEnddate returns the Enddate field value if set, zero value otherwise.
-func (o *Timeframed) GetEnddate() string {
+func (o *TimeframeFilter) GetEnddate() string {
 	if o == nil || IsNil(o.Enddate) {
 		var ret string
 		return ret
@@ -77,7 +84,7 @@ func (o *Timeframed) GetEnddate() string {
 
 // GetEnddateOk returns a tuple with the Enddate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Timeframed) GetEnddateOk() (*string, bool) {
+func (o *TimeframeFilter) GetEnddateOk() (*string, bool) {
 	if o == nil || IsNil(o.Enddate) {
 		return nil, false
 	}
@@ -85,7 +92,7 @@ func (o *Timeframed) GetEnddateOk() (*string, bool) {
 }
 
 // HasEnddate returns a boolean if a field has been set.
-func (o *Timeframed) HasEnddate() bool {
+func (o *TimeframeFilter) HasEnddate() bool {
 	if o != nil && !IsNil(o.Enddate) {
 		return true
 	}
@@ -94,12 +101,12 @@ func (o *Timeframed) HasEnddate() bool {
 }
 
 // SetEnddate gets a reference to the given string and assigns it to the Enddate field.
-func (o *Timeframed) SetEnddate(v string) {
+func (o *TimeframeFilter) SetEnddate(v string) {
 	o.Enddate = &v
 }
 
 // GetObjectType returns the ObjectType field value if set, zero value otherwise.
-func (o *Timeframed) GetObjectType() string {
+func (o *TimeframeFilter) GetObjectType() string {
 	if o == nil || IsNil(o.ObjectType) {
 		var ret string
 		return ret
@@ -109,7 +116,7 @@ func (o *Timeframed) GetObjectType() string {
 
 // GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Timeframed) GetObjectTypeOk() (*string, bool) {
+func (o *TimeframeFilter) GetObjectTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ObjectType) {
 		return nil, false
 	}
@@ -117,7 +124,7 @@ func (o *Timeframed) GetObjectTypeOk() (*string, bool) {
 }
 
 // HasObjectType returns a boolean if a field has been set.
-func (o *Timeframed) HasObjectType() bool {
+func (o *TimeframeFilter) HasObjectType() bool {
 	if o != nil && !IsNil(o.ObjectType) {
 		return true
 	}
@@ -126,11 +133,11 @@ func (o *Timeframed) HasObjectType() bool {
 }
 
 // SetObjectType gets a reference to the given string and assigns it to the ObjectType field.
-func (o *Timeframed) SetObjectType(v string) {
+func (o *TimeframeFilter) SetObjectType(v string) {
 	o.ObjectType = &v
 }
 
-func (o Timeframed) MarshalJSON() ([]byte, error) {
+func (o TimeframeFilter) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -138,9 +145,11 @@ func (o Timeframed) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Timeframed) ToMap() (map[string]interface{}, error) {
+func (o TimeframeFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["startdate"] = o.Startdate
+	if !IsNil(o.Startdate) {
+		toSerialize["startdate"] = o.Startdate
+	}
 	if !IsNil(o.Enddate) {
 		toSerialize["enddate"] = o.Enddate
 	}
@@ -150,38 +159,38 @@ func (o Timeframed) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableTimeframed struct {
-	value *Timeframed
+type NullableTimeframeFilter struct {
+	value *TimeframeFilter
 	isSet bool
 }
 
-func (v NullableTimeframed) Get() *Timeframed {
+func (v NullableTimeframeFilter) Get() *TimeframeFilter {
 	return v.value
 }
 
-func (v *NullableTimeframed) Set(val *Timeframed) {
+func (v *NullableTimeframeFilter) Set(val *TimeframeFilter) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTimeframed) IsSet() bool {
+func (v NullableTimeframeFilter) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTimeframed) Unset() {
+func (v *NullableTimeframeFilter) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTimeframed(val *Timeframed) *NullableTimeframed {
-	return &NullableTimeframed{value: val, isSet: true}
+func NewNullableTimeframeFilter(val *TimeframeFilter) *NullableTimeframeFilter {
+	return &NullableTimeframeFilter{value: val, isSet: true}
 }
 
-func (v NullableTimeframed) MarshalJSON() ([]byte, error) {
+func (v NullableTimeframeFilter) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTimeframed) UnmarshalJSON(src []byte) error {
+func (v *NullableTimeframeFilter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -117,6 +117,7 @@ docs/StatusAPI.md
 docs/Suggestable.md
 docs/Synonymable.md
 docs/TemplatesAPI.md
+docs/TimeframeFilter.md
 docs/Timeframed.md
 docs/Version.md
 git_push.sh
@@ -204,6 +205,7 @@ model_skill_search.go
 model_status.go
 model_suggestable.go
 model_synonymable.go
+model_timeframe_filter.go
 model_timeframed.go
 model_version.go
 response.go
