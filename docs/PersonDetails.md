@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Person** | Pointer to [**Person**](Person.md) |  | [optional] 
+**Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
 **Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Experiences** | Pointer to [**[]Experience**](Experience.md) |  | [optional] 
 **Interests** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 **Certifications** | Pointer to [**[]CertificationDetails**](CertificationDetails.md) |  | [optional] 
 **Languages** | Pointer to [**[]LanguageLevel**](LanguageLevel.md) |  | [optional] 
-**Office** | Pointer to [**Office**](Office.md) |  | [optional] 
+**Office** | Pointer to [**OfficeDetails**](OfficeDetails.md) |  | [optional] 
 **Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
 **SkillGroups** | Pointer to [**[]ExperienceSkillGroup**](ExperienceSkillGroup.md) |  | [optional] 
 **Profiles** | Pointer to [**[]Profile**](Profile.md) |  | [optional] 
@@ -60,6 +61,31 @@ SetPerson sets Person field to given value.
 `func (o *PersonDetails) HasPerson() bool`
 
 HasPerson returns a boolean if a field has been set.
+
+### GetOrganization
+
+`func (o *PersonDetails) GetOrganization() Organization`
+
+GetOrganization returns the Organization field if non-nil, zero value otherwise.
+
+### GetOrganizationOk
+
+`func (o *PersonDetails) GetOrganizationOk() (*Organization, bool)`
+
+GetOrganizationOk returns a tuple with the Organization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganization
+
+`func (o *PersonDetails) SetOrganization(v Organization)`
+
+SetOrganization sets Organization field to given value.
+
+### HasOrganization
+
+`func (o *PersonDetails) HasOrganization() bool`
+
+HasOrganization returns a boolean if a field has been set.
 
 ### GetIndustries
 
@@ -188,20 +214,20 @@ HasLanguages returns a boolean if a field has been set.
 
 ### GetOffice
 
-`func (o *PersonDetails) GetOffice() Office`
+`func (o *PersonDetails) GetOffice() OfficeDetails`
 
 GetOffice returns the Office field if non-nil, zero value otherwise.
 
 ### GetOfficeOk
 
-`func (o *PersonDetails) GetOfficeOk() (*Office, bool)`
+`func (o *PersonDetails) GetOfficeOk() (*OfficeDetails, bool)`
 
 GetOfficeOk returns a tuple with the Office field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOffice
 
-`func (o *PersonDetails) SetOffice(v Office)`
+`func (o *PersonDetails) SetOffice(v OfficeDetails)`
 
 SetOffice sets Office field to given value.
 

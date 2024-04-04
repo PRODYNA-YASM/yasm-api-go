@@ -67,21 +67,6 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PersonAPIService AddPersonOffice", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var personId string
-		var officeId string
-
-		resp, httpRes, err := apiClient.PersonAPI.AddPersonOffice(context.Background(), personId, officeId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test PersonAPIService AddPersonProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -243,10 +228,25 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
+		var officeId string
+		var countryId string
+
+		resp, httpRes, err := apiClient.PersonAPI.DeletePersonOffice(context.Background(), officeId, countryId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PersonAPIService DeletePersonOffice_1", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
 		var personId string
 		var officeId string
 
-		resp, httpRes, err := apiClient.PersonAPI.DeletePersonOffice(context.Background(), personId, officeId).Execute()
+		resp, httpRes, err := apiClient.PersonAPI.DeletePersonOffice_0(context.Background(), personId, officeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -546,6 +546,21 @@ func Test_client_PersonAPIService(t *testing.T) {
 		var languageId string
 
 		resp, httpRes, err := apiClient.PersonAPI.UpdatePersonLanguage(context.Background(), personId, languageId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PersonAPIService UpdatePersonOffice", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+		var officeId string
+
+		resp, httpRes, err := apiClient.PersonAPI.UpdatePersonOffice(context.Background(), personId, officeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

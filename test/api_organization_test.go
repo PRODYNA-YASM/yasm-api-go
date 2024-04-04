@@ -37,6 +37,21 @@ func Test_client_OrganizationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationAPIService AddOrganizationOffice", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var organizationId string
+		var officeId string
+
+		resp, httpRes, err := apiClient.OrganizationAPI.AddOrganizationOffice(context.Background(), organizationId, officeId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationAPIService AddOrganizationToParentOrganization", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -110,6 +125,21 @@ func Test_client_OrganizationAPIService(t *testing.T) {
 		var organizationId string
 
 		resp, httpRes, err := apiClient.OrganizationAPI.DeleteOrganization(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationAPIService DeleteOrganizationOffice", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var organizationId string
+		var officeId string
+
+		resp, httpRes, err := apiClient.OrganizationAPI.DeleteOrganizationOffice(context.Background(), organizationId, officeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

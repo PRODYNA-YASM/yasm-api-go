@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.18.0
+  version: 1.19.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -770,13 +770,6 @@ paths:
   /offices:
     post:
       operationId: createOffice
-      parameters:
-      - description: The ID of the organization
-        in: query
-        name: organizationId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -788,7 +781,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Office'
+                $ref: '#/components/schemas/OfficeDetails'
           description: OK
         default:
           content:
@@ -822,7 +815,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Delete an Office from an Organization
+      summary: Delete an Office
       tags:
       - Office
     get:
@@ -838,7 +831,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Office'
+                $ref: '#/components/schemas/OfficeDetails'
           description: OK
         default:
           content:
@@ -846,7 +839,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Get details about an Office independent of Organization
+      summary: Get details about an Office
       tags:
       - Office
     put:
@@ -868,7 +861,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Office'
+                $ref: '#/components/schemas/OfficeDetails'
           description: OK
         default:
           content:
@@ -876,9 +869,70 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Update an Office for an Organization
+      summary: Update an Office
       tags:
       - Office
+  /offices/{officeId}/countries/{countryId}:
+    delete:
+      operationId: deletePersonOffice
+      parameters:
+      - in: path
+        name: officeId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: countryId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfficeDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Delete the office from a Person
+      tags:
+      - Person
+      - Office
+    put:
+      operationId: updateOfficeCountry
+      parameters:
+      - in: path
+        name: officeId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: countryId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfficeDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Assign a country to an office
+      tags:
+      - Office
+      - Country
   /offices/search:
     post:
       operationId: searchOffices
@@ -1132,6 +1186,67 @@ paths:
         \ Organization"
       tags:
       - Organization
+  /organizations/{organizationId}/offices/{officeId}:
+    delete:
+      operationId: deleteOrganizationOffice
+      parameters:
+      - in: path
+        name: organizationId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: officeId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Delete an office from an organization
+      tags:
+      - Organization
+      - Office
+    post:
+      operationId: addOrganizationOffice
+      parameters:
+      - in: path
+        name: organizationId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: officeId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Assign an office to an organization
+      tags:
+      - Organization
+      - Office
   /organizations/search:
     post:
       operationId: searchOrganizations
@@ -1912,8 +2027,8 @@ paths:
       tags:
       - Person
       - Office
-    post:
-      operationId: addPersonOffice
+    put:
+      operationId: updatePersonOffice
       parameters:
       - in: path
         name: personId
@@ -3364,6 +3479,17 @@ components:
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       title: Office
+    OfficeDetails:
+      example:
+        country: null
+        office: null
+      properties:
+        office:
+          $ref: '#/components/schemas/Office'
+        country:
+          $ref: '#/components/schemas/Country'
+      title: OfficeDetails
+      type: object
     OfficeSearch:
       allOf:
       - $ref: '#/components/schemas/Search'
@@ -3378,7 +3504,7 @@ components:
       - properties:
           offices:
             items:
-              $ref: '#/components/schemas/Office'
+              $ref: '#/components/schemas/OfficeDetails'
             type: array
         type: object
       title: PagedOffices
@@ -3534,15 +3660,11 @@ components:
             level: 1
           language: null
         manager: null
-        person: null
         availabilities:
         - availability: null
           percent: 8.008281904610115
         - availability: null
           percent: 8.008281904610115
-        industries:
-        - null
-        - null
         skillGroups:
         - skills:
           - null
@@ -3555,10 +3677,9 @@ components:
         profiles:
         - null
         - null
-        office: null
-        interests:
-        - null
-        - null
+        office:
+          country: null
+          office: null
         certifications:
         - skillLevels:
           - level:
@@ -3594,9 +3715,19 @@ components:
               level: 1
             skill: null
         objectType: objectType
+        person: null
+        organization: null
+        industries:
+        - null
+        - null
+        interests:
+        - null
+        - null
       properties:
         person:
           $ref: '#/components/schemas/Person'
+        organization:
+          $ref: '#/components/schemas/Organization'
         industries:
           items:
             $ref: '#/components/schemas/Industry'
@@ -3618,7 +3749,7 @@ components:
             $ref: '#/components/schemas/LanguageLevel'
           type: array
         office:
-          $ref: '#/components/schemas/Office'
+          $ref: '#/components/schemas/OfficeDetails'
         availabilities:
           items:
             $ref: '#/components/schemas/AvailabilityDetail'

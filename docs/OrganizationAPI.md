@@ -5,12 +5,14 @@ All URIs are relative to *https://yasm.prodyna.com:443/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddExecutiveOrganizationToProject**](OrganizationAPI.md#AddExecutiveOrganizationToProject) | **Post** /projects/{projectId}/executive-organizations/{organizationId} | Add an Organization to a Project as executive organization
+[**AddOrganizationOffice**](OrganizationAPI.md#AddOrganizationOffice) | **Post** /organizations/{organizationId}/offices/{officeId} | Assign an office to an organization
 [**AddOrganizationToParentOrganization**](OrganizationAPI.md#AddOrganizationToParentOrganization) | **Post** /organizations/{organizationId}/parents/{parentOrganizationId} | Attach an Organization to a parent Organization, returns the parent Organization
 [**AttachOrganizationToIndustry**](OrganizationAPI.md#AttachOrganizationToIndustry) | **Post** /organizations/{organizationId}/industries/{industryId} | Add an Organization to an Industry
 [**CreateOffice**](OrganizationAPI.md#CreateOffice) | **Post** /offices | Create an Office in an Organization
 [**CreateOrganization**](OrganizationAPI.md#CreateOrganization) | **Post** /organizations | Create an Organization
 [**CreateProject**](OrganizationAPI.md#CreateProject) | **Post** /projects | Create a Project in an Organization
 [**DeleteOrganization**](OrganizationAPI.md#DeleteOrganization) | **Delete** /organizations/{organizationId} | Delete an organization
+[**DeleteOrganizationOffice**](OrganizationAPI.md#DeleteOrganizationOffice) | **Delete** /organizations/{organizationId}/offices/{officeId} | Delete an office from an organization
 [**DetachOrganizationFromIndustry**](OrganizationAPI.md#DetachOrganizationFromIndustry) | **Delete** /organizations/{organizationId}/industries/{industryId} | Remove an Organization to an Industry
 [**GetOrganization**](OrganizationAPI.md#GetOrganization) | **Get** /organizations/{organizationId} | Get details about an Organization
 [**MoveCertification**](OrganizationAPI.md#MoveCertification) | **Put** /certifications/{certificationId}/organizations/{organizationId} | Move a Certification to an Organization
@@ -78,6 +80,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ProjectDetails**](ProjectDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AddOrganizationOffice
+
+> OrganizationDetails AddOrganizationOffice(ctx, organizationId, officeId).Execute()
+
+Assign an office to an organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAPI.AddOrganizationOffice(context.Background(), organizationId, officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.AddOrganizationOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddOrganizationOffice`: OrganizationDetails
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.AddOrganizationOffice`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**officeId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAddOrganizationOfficeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrganizationDetails**](OrganizationDetails.md)
 
 ### Authorization
 
@@ -237,7 +310,7 @@ Name | Type | Description  | Notes
 
 ## CreateOffice
 
-> Office CreateOffice(ctx).OrganizationId(organizationId).Office(office).Execute()
+> OfficeDetails CreateOffice(ctx).Office(office).Execute()
 
 Create an Office in an Organization
 
@@ -254,17 +327,16 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the organization
     office := *openapiclient.NewOffice("Id_example", "Name_example") // Office | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.CreateOffice(context.Background()).OrganizationId(organizationId).Office(office).Execute()
+    resp, r, err := apiClient.OrganizationAPI.CreateOffice(context.Background()).Office(office).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.CreateOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateOffice`: Office
+    // response from `CreateOffice`: OfficeDetails
     fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.CreateOffice`: %v\n", resp)
 }
 ```
@@ -280,12 +352,11 @@ Other parameters are passed through a pointer to a apiCreateOfficeRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organizationId** | **string** | The ID of the organization | 
  **office** | [**Office**](Office.md) |  | 
 
 ### Return type
 
-[**Office**](Office.md)
+[**OfficeDetails**](OfficeDetails.md)
 
 ### Authorization
 
@@ -484,6 +555,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Status**](Status.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteOrganizationOffice
+
+> OrganizationDetails DeleteOrganizationOffice(ctx, organizationId, officeId).Execute()
+
+Delete an office from an organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAPI.DeleteOrganizationOffice(context.Background(), organizationId, officeId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.DeleteOrganizationOffice``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteOrganizationOffice`: OrganizationDetails
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.DeleteOrganizationOffice`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**officeId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteOrganizationOfficeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrganizationDetails**](OrganizationDetails.md)
 
 ### Authorization
 

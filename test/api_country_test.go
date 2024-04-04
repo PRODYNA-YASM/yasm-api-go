@@ -118,4 +118,19 @@ func Test_client_CountryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CountryAPIService UpdateOfficeCountry", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var officeId string
+		var countryId string
+
+		resp, httpRes, err := apiClient.CountryAPI.UpdateOfficeCountry(context.Background(), officeId, countryId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

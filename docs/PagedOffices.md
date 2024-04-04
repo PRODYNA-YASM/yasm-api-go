@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Offices** | Pointer to [**[]Office**](Office.md) |  | [optional] 
+**Offices** | Pointer to [**[]OfficeDetails**](OfficeDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOffices
 
-`func (o *PagedOffices) GetOffices() []Office`
+`func (o *PagedOffices) GetOffices() []OfficeDetails`
 
 GetOffices returns the Offices field if non-nil, zero value otherwise.
 
 ### GetOfficesOk
 
-`func (o *PagedOffices) GetOfficesOk() (*[]Office, bool)`
+`func (o *PagedOffices) GetOfficesOk() (*[]OfficeDetails, bool)`
 
 GetOfficesOk returns a tuple with the Offices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOffices
 
-`func (o *PagedOffices) SetOffices(v []Office)`
+`func (o *PagedOffices) SetOffices(v []OfficeDetails)`
 
 SetOffices sets Offices field to given value.
 

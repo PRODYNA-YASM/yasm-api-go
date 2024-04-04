@@ -56,6 +56,7 @@ docs/Nameable.md
 docs/NamedDomainModel.md
 docs/Office.md
 docs/OfficeAPI.md
+docs/OfficeDetails.md
 docs/OfficeSearch.md
 docs/Organization.md
 docs/OrganizationAPI.md
@@ -153,6 +154,7 @@ model_min_max_percent.go
 model_nameable.go
 model_named_domain_model.go
 model_office.go
+model_office_details.go
 model_office_search.go
 model_organization.go
 model_organization_details.go

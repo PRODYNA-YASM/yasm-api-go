@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**RemoveLanguageFromCountry**](CountryAPI.md#RemoveLanguageFromCountry) | **Delete** /countries/{countryId}/languages/{languageId} | Assign a language to a country
 [**SearchCountries**](CountryAPI.md#SearchCountries) | **Post** /countries/search | Search over countries
 [**UpdateCountry**](CountryAPI.md#UpdateCountry) | **Put** /countries/{countryId} | Update a Country
+[**UpdateOfficeCountry**](CountryAPI.md#UpdateOfficeCountry) | **Put** /offices/{officeId}/countries/{countryId} | Assign a country to an office
 
 
 
@@ -483,6 +484,77 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOfficeCountry
+
+> OfficeDetails UpdateOfficeCountry(ctx, officeId, countryId).Execute()
+
+Assign a country to an office
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CountryAPI.UpdateOfficeCountry(context.Background(), officeId, countryId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CountryAPI.UpdateOfficeCountry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateOfficeCountry`: OfficeDetails
+    fmt.Fprintf(os.Stdout, "Response from `CountryAPI.UpdateOfficeCountry`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**officeId** | **string** |  | 
+**countryId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOfficeCountryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OfficeDetails**](OfficeDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
