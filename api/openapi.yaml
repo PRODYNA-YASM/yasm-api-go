@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.19.0
+  version: 1.23.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -874,7 +874,7 @@ paths:
       - Office
   /offices/{officeId}/countries/{countryId}:
     delete:
-      operationId: deletePersonOffice
+      operationId: deleteOfficeCountry
       parameters:
       - in: path
         name: officeId
@@ -1247,6 +1247,67 @@ paths:
       tags:
       - Organization
       - Office
+  /organizations/{organizationId}/service-manager/{personId}:
+    delete:
+      operationId: removeOrganizationServiceManager
+      parameters:
+      - in: path
+        name: organizationId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Remove service manager from an Organization
+      tags:
+      - Organization
+      - Person
+    put:
+      operationId: updateOrganizationServiceManager
+      parameters:
+      - in: path
+        name: organizationId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Update service manager of an Organization
+      tags:
+      - Organization
+      - Person
   /organizations/search:
     post:
       operationId: searchOrganizations
@@ -1254,7 +1315,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Search'
+              $ref: '#/components/schemas/OrganizationSearch'
         required: false
       responses:
         "200":
@@ -3545,12 +3606,15 @@ components:
         certifications:
         - null
         - null
+        serviceManager: null
         parents:
         - null
         - null
       properties:
         organization:
           $ref: '#/components/schemas/Organization'
+        serviceManager:
+          $ref: '#/components/schemas/Person'
         children:
           items:
             $ref: '#/components/schemas/Organization'
@@ -3578,6 +3642,22 @@ components:
           type: array
       title: OrganizationDetails
       type: object
+    OrganizationSearch:
+      allOf:
+      - $ref: '#/components/schemas/Search'
+      - properties:
+          personIds:
+            $ref: '#/components/schemas/UUIDS'
+          projectIds:
+            $ref: '#/components/schemas/UUIDS'
+          organizationIds:
+            $ref: '#/components/schemas/UUIDS'
+          industryIds:
+            $ref: '#/components/schemas/UUIDS'
+          certificationIds:
+            $ref: '#/components/schemas/UUIDS'
+        type: object
+      title: OrganizationSearch
     PagedOrganizations:
       allOf:
       - $ref: '#/components/schemas/Page'

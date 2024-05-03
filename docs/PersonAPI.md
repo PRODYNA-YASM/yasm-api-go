@@ -15,11 +15,11 @@ Method | HTTP request | Description
 [**CreateAvailability**](PersonAPI.md#CreateAvailability) | **Post** /persons/{personId}/availabilities | Create a availability for a person
 [**CreatePerson**](PersonAPI.md#CreatePerson) | **Post** /persons | Create a new Person
 [**DeleteAvailability**](PersonAPI.md#DeleteAvailability) | **Delete** /persons/{personId}/availabilities/{availabilityId} | Delete a person availability
+[**DeleteOfficeCountry**](PersonAPI.md#DeleteOfficeCountry) | **Delete** /offices/{officeId}/countries/{countryId} | Delete the office from a Person
 [**DeletePerson**](PersonAPI.md#DeletePerson) | **Delete** /persons/{personId} | Delete an existing Person
 [**DeletePersonCertification**](PersonAPI.md#DeletePersonCertification) | **Delete** /persons/{personId}/certifications/{certificationId} | Remove an Interest to a Person
 [**DeletePersonInterest**](PersonAPI.md#DeletePersonInterest) | **Delete** /persons/{personId}/interests/skills/{skillId} | Remove an Interest to a Person
-[**DeletePersonOffice**](PersonAPI.md#DeletePersonOffice) | **Delete** /offices/{officeId}/countries/{countryId} | Delete the office from a Person
-[**DeletePersonOffice_0**](PersonAPI.md#DeletePersonOffice_0) | **Delete** /persons/{personId}/offices/{officeId} | Delete the office from a Person
+[**DeletePersonOffice**](PersonAPI.md#DeletePersonOffice) | **Delete** /persons/{personId}/offices/{officeId} | Delete the office from a Person
 [**DeletePersonPicture**](PersonAPI.md#DeletePersonPicture) | **Delete** /persons/{personId}/picture | Delete person image
 [**DeletePersonProfile**](PersonAPI.md#DeletePersonProfile) | **Delete** /persons/{personId}/profiles/{profileId} | Remove a Profile from a Person
 [**DeletePersonSkillExperience**](PersonAPI.md#DeletePersonSkillExperience) | **Delete** /persons/{personId}/experiences/skills/{skillId} | Remove an Skill Experience to a Person
@@ -32,12 +32,14 @@ Method | HTTP request | Description
 [**ReadPersonProjectParticipation**](PersonAPI.md#ReadPersonProjectParticipation) | **Get** /persons/{personId}/project-participation | Get a Project Participation of a Person
 [**ReadProjectParticipation**](PersonAPI.md#ReadProjectParticipation) | **Get** /project-participations/{projectParticipationId} | Get a project participation
 [**RemoveManager**](PersonAPI.md#RemoveManager) | **Delete** /persons/{personId}/manager | Remove a manager from a person
+[**RemoveOrganizationServiceManager**](PersonAPI.md#RemoveOrganizationServiceManager) | **Delete** /organizations/{organizationId}/service-manager/{personId} | Remove service manager from an Organization
 [**RemovePersonLanguage**](PersonAPI.md#RemovePersonLanguage) | **Delete** /persons/{personId}/languages/{languageId} | Remove a language from a person
 [**RemoveSkillConfirmation**](PersonAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**SearchPersons**](PersonAPI.md#SearchPersons) | **Post** /persons/search | Search over persons
 [**SearchProjectParticipations**](PersonAPI.md#SearchProjectParticipations) | **Post** /project-participations/search | Search over project participations
 [**SetManager**](PersonAPI.md#SetManager) | **Put** /persons/{personId}/manager/{managerId} | Set a manager for a person
 [**UpdateAvailability**](PersonAPI.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
+[**UpdateOrganizationServiceManager**](PersonAPI.md#UpdateOrganizationServiceManager) | **Put** /organizations/{organizationId}/service-manager/{personId} | Update service manager of an Organization
 [**UpdatePerson**](PersonAPI.md#UpdatePerson) | **Put** /persons/{personId} | Update an existing Person
 [**UpdatePersonCertification**](PersonAPI.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
 [**UpdatePersonLanguage**](PersonAPI.md#UpdatePersonLanguage) | **Put** /persons/{personId}/languages/{languageId} | Update a language of a person
@@ -826,6 +828,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteOfficeCountry
+
+> OfficeDetails DeleteOfficeCountry(ctx, officeId, countryId).Execute()
+
+Delete the office from a Person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeleteOfficeCountry(context.Background(), officeId, countryId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeleteOfficeCountry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteOfficeCountry`: OfficeDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeleteOfficeCountry`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**officeId** | **string** |  | 
+**countryId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteOfficeCountryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OfficeDetails**](OfficeDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeletePerson
 
 > Status DeletePerson(ctx, personId).Execute()
@@ -1038,78 +1111,7 @@ Name | Type | Description  | Notes
 
 ## DeletePersonOffice
 
-> OfficeDetails DeletePersonOffice(ctx, officeId, countryId).Execute()
-
-Delete the office from a Person
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.DeletePersonOffice(context.Background(), officeId, countryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonOffice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeletePersonOffice`: OfficeDetails
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonOffice`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**officeId** | **string** |  | 
-**countryId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeletePersonOfficeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**OfficeDetails**](OfficeDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DeletePersonOffice_0
-
-> PersonDetails DeletePersonOffice_0(ctx, personId, officeId).Execute()
+> PersonDetails DeletePersonOffice(ctx, personId, officeId).Execute()
 
 Delete the office from a Person
 
@@ -1131,13 +1133,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.DeletePersonOffice_0(context.Background(), personId, officeId).Execute()
+    resp, r, err := apiClient.PersonAPI.DeletePersonOffice(context.Background(), personId, officeId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonOffice_0``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeletePersonOffice_0`: PersonDetails
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonOffice_0`: %v\n", resp)
+    // response from `DeletePersonOffice`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonOffice`: %v\n", resp)
 }
 ```
 
@@ -1152,7 +1154,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeletePersonOffice_1Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeletePersonOfficeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -2016,6 +2018,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RemoveOrganizationServiceManager
+
+> OrganizationDetails RemoveOrganizationServiceManager(ctx, organizationId, personId).Execute()
+
+Remove service manager from an Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.RemoveOrganizationServiceManager(context.Background(), organizationId, personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.RemoveOrganizationServiceManager``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemoveOrganizationServiceManager`: OrganizationDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.RemoveOrganizationServiceManager`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**personId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveOrganizationServiceManagerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrganizationDetails**](OrganizationDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RemovePersonLanguage
 
 > PersonDetails RemovePersonLanguage(ctx, personId, languageId).Execute()
@@ -2427,6 +2500,77 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOrganizationServiceManager
+
+> OrganizationDetails UpdateOrganizationServiceManager(ctx, organizationId, personId).Execute()
+
+Update service manager of an Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.UpdateOrganizationServiceManager(context.Background(), organizationId, personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdateOrganizationServiceManager``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateOrganizationServiceManager`: OrganizationDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdateOrganizationServiceManager`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**personId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrganizationServiceManagerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrganizationDetails**](OrganizationDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

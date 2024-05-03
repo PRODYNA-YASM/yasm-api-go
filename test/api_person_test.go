@@ -180,6 +180,21 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PersonAPIService DeleteOfficeCountry", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var officeId string
+		var countryId string
+
+		resp, httpRes, err := apiClient.PersonAPI.DeleteOfficeCountry(context.Background(), officeId, countryId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PersonAPIService DeletePerson", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -228,25 +243,10 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var officeId string
-		var countryId string
-
-		resp, httpRes, err := apiClient.PersonAPI.DeletePersonOffice(context.Background(), officeId, countryId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PersonAPIService DeletePersonOffice_1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
 		var personId string
 		var officeId string
 
-		resp, httpRes, err := apiClient.PersonAPI.DeletePersonOffice_0(context.Background(), personId, officeId).Execute()
+		resp, httpRes, err := apiClient.PersonAPI.DeletePersonOffice(context.Background(), personId, officeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -424,6 +424,21 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PersonAPIService RemoveOrganizationServiceManager", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var organizationId string
+		var personId string
+
+		resp, httpRes, err := apiClient.PersonAPI.RemoveOrganizationServiceManager(context.Background(), organizationId, personId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PersonAPIService RemovePersonLanguage", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -502,6 +517,21 @@ func Test_client_PersonAPIService(t *testing.T) {
 		var availabilityId string
 
 		resp, httpRes, err := apiClient.PersonAPI.UpdateAvailability(context.Background(), personId, availabilityId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PersonAPIService UpdateOrganizationServiceManager", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var organizationId string
+		var personId string
+
+		resp, httpRes, err := apiClient.PersonAPI.UpdateOrganizationServiceManager(context.Background(), organizationId, personId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

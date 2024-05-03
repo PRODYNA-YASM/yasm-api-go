@@ -61,6 +61,7 @@ docs/OfficeSearch.md
 docs/Organization.md
 docs/OrganizationAPI.md
 docs/OrganizationDetails.md
+docs/OrganizationSearch.md
 docs/Page.md
 docs/PagedAvailabilities.md
 docs/PagedCertifications.md
@@ -158,6 +159,7 @@ model_office_details.go
 model_office_search.go
 model_organization.go
 model_organization_details.go
+model_organization_search.go
 model_page.go
 model_paged_availabilities.go
 model_paged_certifications.go

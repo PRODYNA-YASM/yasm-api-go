@@ -7,9 +7,9 @@ Method | HTTP request | Description
 [**AddOrganizationOffice**](OfficeAPI.md#AddOrganizationOffice) | **Post** /organizations/{organizationId}/offices/{officeId} | Assign an office to an organization
 [**CreateOffice**](OfficeAPI.md#CreateOffice) | **Post** /offices | Create an Office in an Organization
 [**DeleteOffice**](OfficeAPI.md#DeleteOffice) | **Delete** /offices/{officeId} | Delete an Office
+[**DeleteOfficeCountry**](OfficeAPI.md#DeleteOfficeCountry) | **Delete** /offices/{officeId}/countries/{countryId} | Delete the office from a Person
 [**DeleteOrganizationOffice**](OfficeAPI.md#DeleteOrganizationOffice) | **Delete** /organizations/{organizationId}/offices/{officeId} | Delete an office from an organization
-[**DeletePersonOffice**](OfficeAPI.md#DeletePersonOffice) | **Delete** /offices/{officeId}/countries/{countryId} | Delete the office from a Person
-[**DeletePersonOffice_0**](OfficeAPI.md#DeletePersonOffice_0) | **Delete** /persons/{personId}/offices/{officeId} | Delete the office from a Person
+[**DeletePersonOffice**](OfficeAPI.md#DeletePersonOffice) | **Delete** /persons/{personId}/offices/{officeId} | Delete the office from a Person
 [**GetOfficeDetails**](OfficeAPI.md#GetOfficeDetails) | **Get** /offices/{officeId} | Get details about an Office
 [**SearchOffices**](OfficeAPI.md#SearchOffices) | **Post** /offices/search | Search over offices
 [**UpdateOffice**](OfficeAPI.md#UpdateOffice) | **Put** /offices/{officeId} | Update an Office
@@ -221,6 +221,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteOfficeCountry
+
+> OfficeDetails DeleteOfficeCountry(ctx, officeId, countryId).Execute()
+
+Delete the office from a Person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OfficeAPI.DeleteOfficeCountry(context.Background(), officeId, countryId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.DeleteOfficeCountry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteOfficeCountry`: OfficeDetails
+    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.DeleteOfficeCountry`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**officeId** | **string** |  | 
+**countryId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteOfficeCountryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OfficeDetails**](OfficeDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteOrganizationOffice
 
 > OrganizationDetails DeleteOrganizationOffice(ctx, organizationId, officeId).Execute()
@@ -294,78 +365,7 @@ Name | Type | Description  | Notes
 
 ## DeletePersonOffice
 
-> OfficeDetails DeletePersonOffice(ctx, officeId, countryId).Execute()
-
-Delete the office from a Person
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    officeId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    countryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfficeAPI.DeletePersonOffice(context.Background(), officeId, countryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.DeletePersonOffice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeletePersonOffice`: OfficeDetails
-    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.DeletePersonOffice`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**officeId** | **string** |  | 
-**countryId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeletePersonOfficeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**OfficeDetails**](OfficeDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DeletePersonOffice_0
-
-> PersonDetails DeletePersonOffice_0(ctx, personId, officeId).Execute()
+> PersonDetails DeletePersonOffice(ctx, personId, officeId).Execute()
 
 Delete the office from a Person
 
@@ -387,13 +387,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OfficeAPI.DeletePersonOffice_0(context.Background(), personId, officeId).Execute()
+    resp, r, err := apiClient.OfficeAPI.DeletePersonOffice(context.Background(), personId, officeId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.DeletePersonOffice_0``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OfficeAPI.DeletePersonOffice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeletePersonOffice_0`: PersonDetails
-    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.DeletePersonOffice_0`: %v\n", resp)
+    // response from `DeletePersonOffice`: PersonDetails
+    fmt.Fprintf(os.Stdout, "Response from `OfficeAPI.DeletePersonOffice`: %v\n", resp)
 }
 ```
 
@@ -408,7 +408,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeletePersonOffice_1Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeletePersonOfficeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

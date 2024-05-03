@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
+**ServiceManager** | Pointer to [**Person**](Person.md) |  | [optional] 
 **Children** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **Parents** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **Projects** | Pointer to [**[]Project**](Project.md) |  | [optional] [readonly] 
@@ -55,6 +56,31 @@ SetOrganization sets Organization field to given value.
 `func (o *OrganizationDetails) HasOrganization() bool`
 
 HasOrganization returns a boolean if a field has been set.
+
+### GetServiceManager
+
+`func (o *OrganizationDetails) GetServiceManager() Person`
+
+GetServiceManager returns the ServiceManager field if non-nil, zero value otherwise.
+
+### GetServiceManagerOk
+
+`func (o *OrganizationDetails) GetServiceManagerOk() (*Person, bool)`
+
+GetServiceManagerOk returns a tuple with the ServiceManager field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceManager
+
+`func (o *OrganizationDetails) SetServiceManager(v Person)`
+
+SetServiceManager sets ServiceManager field to given value.
+
+### HasServiceManager
+
+`func (o *OrganizationDetails) HasServiceManager() bool`
+
+HasServiceManager returns a boolean if a field has been set.
 
 ### GetChildren
 

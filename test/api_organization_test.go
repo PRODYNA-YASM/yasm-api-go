@@ -236,6 +236,21 @@ func Test_client_OrganizationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationAPIService RemoveOrganizationServiceManager", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var organizationId string
+		var personId string
+
+		resp, httpRes, err := apiClient.OrganizationAPI.RemoveOrganizationServiceManager(context.Background(), organizationId, personId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationAPIService SearchOrganizations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -255,6 +270,21 @@ func Test_client_OrganizationAPIService(t *testing.T) {
 		var organizationId string
 
 		resp, httpRes, err := apiClient.OrganizationAPI.UpdateOrganization(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationAPIService UpdateOrganizationServiceManager", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var organizationId string
+		var personId string
+
+		resp, httpRes, err := apiClient.OrganizationAPI.UpdateOrganizationServiceManager(context.Background(), organizationId, personId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

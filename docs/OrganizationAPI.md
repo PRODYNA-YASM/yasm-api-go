@@ -19,8 +19,10 @@ Method | HTTP request | Description
 [**MoveProject**](OrganizationAPI.md#MoveProject) | **Put** /projects/{projectId}/organizations/{organizationId} | Move a Project to an Organization
 [**RemoveExecutiveOrganizationFromProject**](OrganizationAPI.md#RemoveExecutiveOrganizationFromProject) | **Delete** /projects/{projectId}/executive-organizations/{organizationId} | Remove an Organization from a Project as executive organization
 [**RemoveOrganizationFromParentOrganization**](OrganizationAPI.md#RemoveOrganizationFromParentOrganization) | **Delete** /organizations/{organizationId}/parents/{parentOrganizationId} | Detaches an Organization from parent Organization, return the parent Organization
+[**RemoveOrganizationServiceManager**](OrganizationAPI.md#RemoveOrganizationServiceManager) | **Delete** /organizations/{organizationId}/service-manager/{personId} | Remove service manager from an Organization
 [**SearchOrganizations**](OrganizationAPI.md#SearchOrganizations) | **Post** /organizations/search | Search over organizations
 [**UpdateOrganization**](OrganizationAPI.md#UpdateOrganization) | **Put** /organizations/{organizationId} | Update an Organization
+[**UpdateOrganizationServiceManager**](OrganizationAPI.md#UpdateOrganizationServiceManager) | **Put** /organizations/{organizationId}/service-manager/{personId} | Update service manager of an Organization
 
 
 
@@ -1064,9 +1066,80 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RemoveOrganizationServiceManager
+
+> OrganizationDetails RemoveOrganizationServiceManager(ctx, organizationId, personId).Execute()
+
+Remove service manager from an Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAPI.RemoveOrganizationServiceManager(context.Background(), organizationId, personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.RemoveOrganizationServiceManager``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemoveOrganizationServiceManager`: OrganizationDetails
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.RemoveOrganizationServiceManager`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**personId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveOrganizationServiceManagerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrganizationDetails**](OrganizationDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SearchOrganizations
 
-> PagedOrganizations SearchOrganizations(ctx).Search(search).Execute()
+> PagedOrganizations SearchOrganizations(ctx).OrganizationSearch(organizationSearch).Execute()
 
 Search over organizations
 
@@ -1083,11 +1156,11 @@ import (
 )
 
 func main() {
-    search := *openapiclient.NewSearch(int32(123), int32(123)) // Search |  (optional)
+    organizationSearch := *openapiclient.NewOrganizationSearch(int32(123), int32(123)) // OrganizationSearch |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAPI.SearchOrganizations(context.Background()).Search(search).Execute()
+    resp, r, err := apiClient.OrganizationAPI.SearchOrganizations(context.Background()).OrganizationSearch(organizationSearch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.SearchOrganizations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1108,7 +1181,7 @@ Other parameters are passed through a pointer to a apiSearchOrganizationsRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | [**Search**](Search.md) |  | 
+ **organizationSearch** | [**OrganizationSearch**](OrganizationSearch.md) |  | 
 
 ### Return type
 
@@ -1191,6 +1264,77 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOrganizationServiceManager
+
+> OrganizationDetails UpdateOrganizationServiceManager(ctx, organizationId, personId).Execute()
+
+Update service manager of an Organization
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAPI.UpdateOrganizationServiceManager(context.Background(), organizationId, personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.UpdateOrganizationServiceManager``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateOrganizationServiceManager`: OrganizationDetails
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.UpdateOrganizationServiceManager`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**personId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrganizationServiceManagerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrganizationDetails**](OrganizationDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

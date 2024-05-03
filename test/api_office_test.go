@@ -63,6 +63,21 @@ func Test_client_OfficeAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OfficeAPIService DeleteOfficeCountry", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var officeId string
+		var countryId string
+
+		resp, httpRes, err := apiClient.OfficeAPI.DeleteOfficeCountry(context.Background(), officeId, countryId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OfficeAPIService DeleteOrganizationOffice", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -82,25 +97,10 @@ func Test_client_OfficeAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var officeId string
-		var countryId string
-
-		resp, httpRes, err := apiClient.OfficeAPI.DeletePersonOffice(context.Background(), officeId, countryId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test OfficeAPIService DeletePersonOffice_1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
 		var personId string
 		var officeId string
 
-		resp, httpRes, err := apiClient.OfficeAPI.DeletePersonOffice_0(context.Background(), personId, officeId).Execute()
+		resp, httpRes, err := apiClient.OfficeAPI.DeletePersonOffice(context.Background(), personId, officeId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
