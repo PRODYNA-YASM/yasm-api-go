@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the OrganizationSearch type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OrganizationSearch{}
+// checks if the IndustrySearch type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IndustrySearch{}
 
-// OrganizationSearch struct for OrganizationSearch
-type OrganizationSearch struct {
+// IndustrySearch struct for IndustrySearch
+type IndustrySearch struct {
 	Search
 	PersonIds []string `json:"personIds,omitempty"`
 	ProjectIds []string `json:"projectIds,omitempty"`
@@ -27,27 +27,27 @@ type OrganizationSearch struct {
 	CertificationIds []string `json:"certificationIds,omitempty"`
 }
 
-// NewOrganizationSearch instantiates a new OrganizationSearch object
+// NewIndustrySearch instantiates a new IndustrySearch object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationSearch(skip int32, limit int32) *OrganizationSearch {
-	this := OrganizationSearch{}
+func NewIndustrySearch(skip int32, limit int32) *IndustrySearch {
+	this := IndustrySearch{}
 	this.Skip = skip
 	this.Limit = limit
 	return &this
 }
 
-// NewOrganizationSearchWithDefaults instantiates a new OrganizationSearch object
+// NewIndustrySearchWithDefaults instantiates a new IndustrySearch object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOrganizationSearchWithDefaults() *OrganizationSearch {
-	this := OrganizationSearch{}
+func NewIndustrySearchWithDefaults() *IndustrySearch {
+	this := IndustrySearch{}
 	return &this
 }
 
 // GetPersonIds returns the PersonIds field value if set, zero value otherwise.
-func (o *OrganizationSearch) GetPersonIds() []string {
+func (o *IndustrySearch) GetPersonIds() []string {
 	if o == nil || IsNil(o.PersonIds) {
 		var ret []string
 		return ret
@@ -57,7 +57,7 @@ func (o *OrganizationSearch) GetPersonIds() []string {
 
 // GetPersonIdsOk returns a tuple with the PersonIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationSearch) GetPersonIdsOk() ([]string, bool) {
+func (o *IndustrySearch) GetPersonIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.PersonIds) {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *OrganizationSearch) GetPersonIdsOk() ([]string, bool) {
 }
 
 // HasPersonIds returns a boolean if a field has been set.
-func (o *OrganizationSearch) HasPersonIds() bool {
+func (o *IndustrySearch) HasPersonIds() bool {
 	if o != nil && !IsNil(o.PersonIds) {
 		return true
 	}
@@ -74,12 +74,12 @@ func (o *OrganizationSearch) HasPersonIds() bool {
 }
 
 // SetPersonIds gets a reference to the given []string and assigns it to the PersonIds field.
-func (o *OrganizationSearch) SetPersonIds(v []string) {
+func (o *IndustrySearch) SetPersonIds(v []string) {
 	o.PersonIds = v
 }
 
 // GetProjectIds returns the ProjectIds field value if set, zero value otherwise.
-func (o *OrganizationSearch) GetProjectIds() []string {
+func (o *IndustrySearch) GetProjectIds() []string {
 	if o == nil || IsNil(o.ProjectIds) {
 		var ret []string
 		return ret
@@ -89,7 +89,7 @@ func (o *OrganizationSearch) GetProjectIds() []string {
 
 // GetProjectIdsOk returns a tuple with the ProjectIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationSearch) GetProjectIdsOk() ([]string, bool) {
+func (o *IndustrySearch) GetProjectIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.ProjectIds) {
 		return nil, false
 	}
@@ -97,7 +97,7 @@ func (o *OrganizationSearch) GetProjectIdsOk() ([]string, bool) {
 }
 
 // HasProjectIds returns a boolean if a field has been set.
-func (o *OrganizationSearch) HasProjectIds() bool {
+func (o *IndustrySearch) HasProjectIds() bool {
 	if o != nil && !IsNil(o.ProjectIds) {
 		return true
 	}
@@ -106,12 +106,12 @@ func (o *OrganizationSearch) HasProjectIds() bool {
 }
 
 // SetProjectIds gets a reference to the given []string and assigns it to the ProjectIds field.
-func (o *OrganizationSearch) SetProjectIds(v []string) {
+func (o *IndustrySearch) SetProjectIds(v []string) {
 	o.ProjectIds = v
 }
 
 // GetOrganizationIds returns the OrganizationIds field value if set, zero value otherwise.
-func (o *OrganizationSearch) GetOrganizationIds() []string {
+func (o *IndustrySearch) GetOrganizationIds() []string {
 	if o == nil || IsNil(o.OrganizationIds) {
 		var ret []string
 		return ret
@@ -121,7 +121,7 @@ func (o *OrganizationSearch) GetOrganizationIds() []string {
 
 // GetOrganizationIdsOk returns a tuple with the OrganizationIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationSearch) GetOrganizationIdsOk() ([]string, bool) {
+func (o *IndustrySearch) GetOrganizationIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.OrganizationIds) {
 		return nil, false
 	}
@@ -129,7 +129,7 @@ func (o *OrganizationSearch) GetOrganizationIdsOk() ([]string, bool) {
 }
 
 // HasOrganizationIds returns a boolean if a field has been set.
-func (o *OrganizationSearch) HasOrganizationIds() bool {
+func (o *IndustrySearch) HasOrganizationIds() bool {
 	if o != nil && !IsNil(o.OrganizationIds) {
 		return true
 	}
@@ -138,12 +138,12 @@ func (o *OrganizationSearch) HasOrganizationIds() bool {
 }
 
 // SetOrganizationIds gets a reference to the given []string and assigns it to the OrganizationIds field.
-func (o *OrganizationSearch) SetOrganizationIds(v []string) {
+func (o *IndustrySearch) SetOrganizationIds(v []string) {
 	o.OrganizationIds = v
 }
 
 // GetIndustryIds returns the IndustryIds field value if set, zero value otherwise.
-func (o *OrganizationSearch) GetIndustryIds() []string {
+func (o *IndustrySearch) GetIndustryIds() []string {
 	if o == nil || IsNil(o.IndustryIds) {
 		var ret []string
 		return ret
@@ -153,7 +153,7 @@ func (o *OrganizationSearch) GetIndustryIds() []string {
 
 // GetIndustryIdsOk returns a tuple with the IndustryIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationSearch) GetIndustryIdsOk() ([]string, bool) {
+func (o *IndustrySearch) GetIndustryIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.IndustryIds) {
 		return nil, false
 	}
@@ -161,7 +161,7 @@ func (o *OrganizationSearch) GetIndustryIdsOk() ([]string, bool) {
 }
 
 // HasIndustryIds returns a boolean if a field has been set.
-func (o *OrganizationSearch) HasIndustryIds() bool {
+func (o *IndustrySearch) HasIndustryIds() bool {
 	if o != nil && !IsNil(o.IndustryIds) {
 		return true
 	}
@@ -170,12 +170,12 @@ func (o *OrganizationSearch) HasIndustryIds() bool {
 }
 
 // SetIndustryIds gets a reference to the given []string and assigns it to the IndustryIds field.
-func (o *OrganizationSearch) SetIndustryIds(v []string) {
+func (o *IndustrySearch) SetIndustryIds(v []string) {
 	o.IndustryIds = v
 }
 
 // GetCertificationIds returns the CertificationIds field value if set, zero value otherwise.
-func (o *OrganizationSearch) GetCertificationIds() []string {
+func (o *IndustrySearch) GetCertificationIds() []string {
 	if o == nil || IsNil(o.CertificationIds) {
 		var ret []string
 		return ret
@@ -185,7 +185,7 @@ func (o *OrganizationSearch) GetCertificationIds() []string {
 
 // GetCertificationIdsOk returns a tuple with the CertificationIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationSearch) GetCertificationIdsOk() ([]string, bool) {
+func (o *IndustrySearch) GetCertificationIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.CertificationIds) {
 		return nil, false
 	}
@@ -193,7 +193,7 @@ func (o *OrganizationSearch) GetCertificationIdsOk() ([]string, bool) {
 }
 
 // HasCertificationIds returns a boolean if a field has been set.
-func (o *OrganizationSearch) HasCertificationIds() bool {
+func (o *IndustrySearch) HasCertificationIds() bool {
 	if o != nil && !IsNil(o.CertificationIds) {
 		return true
 	}
@@ -202,11 +202,11 @@ func (o *OrganizationSearch) HasCertificationIds() bool {
 }
 
 // SetCertificationIds gets a reference to the given []string and assigns it to the CertificationIds field.
-func (o *OrganizationSearch) SetCertificationIds(v []string) {
+func (o *IndustrySearch) SetCertificationIds(v []string) {
 	o.CertificationIds = v
 }
 
-func (o OrganizationSearch) MarshalJSON() ([]byte, error) {
+func (o IndustrySearch) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -214,7 +214,7 @@ func (o OrganizationSearch) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o OrganizationSearch) ToMap() (map[string]interface{}, error) {
+func (o IndustrySearch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	serializedSearch, errSearch := json.Marshal(o.Search)
 	if errSearch != nil {
@@ -242,38 +242,38 @@ func (o OrganizationSearch) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableOrganizationSearch struct {
-	value *OrganizationSearch
+type NullableIndustrySearch struct {
+	value *IndustrySearch
 	isSet bool
 }
 
-func (v NullableOrganizationSearch) Get() *OrganizationSearch {
+func (v NullableIndustrySearch) Get() *IndustrySearch {
 	return v.value
 }
 
-func (v *NullableOrganizationSearch) Set(val *OrganizationSearch) {
+func (v *NullableIndustrySearch) Set(val *IndustrySearch) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOrganizationSearch) IsSet() bool {
+func (v NullableIndustrySearch) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOrganizationSearch) Unset() {
+func (v *NullableIndustrySearch) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOrganizationSearch(val *OrganizationSearch) *NullableOrganizationSearch {
-	return &NullableOrganizationSearch{value: val, isSet: true}
+func NewNullableIndustrySearch(val *IndustrySearch) *NullableIndustrySearch {
+	return &NullableIndustrySearch{value: val, isSet: true}
 }
 
-func (v NullableOrganizationSearch) MarshalJSON() ([]byte, error) {
+func (v NullableIndustrySearch) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOrganizationSearch) UnmarshalJSON(src []byte) error {
+func (v *NullableIndustrySearch) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

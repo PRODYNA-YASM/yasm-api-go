@@ -43,6 +43,7 @@ docs/Geolocation.md
 docs/Industry.md
 docs/IndustryAPI.md
 docs/IndustryDetails.md
+docs/IndustrySearch.md
 docs/Language.md
 docs/LanguageAPI.md
 docs/LanguageDetails.md
@@ -144,6 +145,7 @@ model_experience_skill_group.go
 model_geolocation.go
 model_industry.go
 model_industry_details.go
+model_industry_search.go
 model_language.go
 model_language_details.go
 model_language_level.go

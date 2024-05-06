@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ## SearchIndustries
 
-> PagedIndustries SearchIndustries(ctx).Search(search).Execute()
+> PagedIndustries SearchIndustries(ctx).IndustrySearch(industrySearch).Execute()
 
 Search over industries
 
@@ -375,11 +375,11 @@ import (
 )
 
 func main() {
-    search := *openapiclient.NewSearch(int32(123), int32(123)) // Search |  (optional)
+    industrySearch := *openapiclient.NewIndustrySearch(int32(123), int32(123)) // IndustrySearch |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IndustryAPI.SearchIndustries(context.Background()).Search(search).Execute()
+    resp, r, err := apiClient.IndustryAPI.SearchIndustries(context.Background()).IndustrySearch(industrySearch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IndustryAPI.SearchIndustries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,7 +400,7 @@ Other parameters are passed through a pointer to a apiSearchIndustriesRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search** | [**Search**](Search.md) |  | 
+ **industrySearch** | [**IndustrySearch**](IndustrySearch.md) |  | 
 
 ### Return type
 
