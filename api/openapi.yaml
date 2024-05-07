@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.24.0
+  version: 1.25.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -3336,7 +3336,6 @@ components:
     Certification:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
       - properties:
@@ -3471,7 +3470,6 @@ components:
     Industry:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
       title: Industry
     IndustryDetails:
@@ -3588,7 +3586,6 @@ components:
     Organization:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
@@ -3687,7 +3684,6 @@ components:
     Person:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
@@ -4091,7 +4087,6 @@ components:
     Project:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Suggestable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Locateable'
       - $ref: '#/components/schemas/Descriptable'
@@ -4326,17 +4321,9 @@ components:
     Skill:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
-      - $ref: '#/components/schemas/Suggestable'
-      - $ref: '#/components/schemas/Linkable'
       - $ref: '#/components/schemas/Synonymable'
       - $ref: '#/components/schemas/Descriptable'
       - properties:
-          invest:
-            default: false
-            type: boolean
-          kindGiver:
-            default: false
-            type: boolean
           groupPriority:
             type: integer
         type: object
@@ -4392,19 +4379,8 @@ components:
             - group
             example: all
             type: string
-          suggestions:
-            default: all
-            description: Optionally filter skills based on suggestion
-            enum:
-            - all
-            - suggested
-            - notsuggested
-            example: all
-            type: string
-          linkable:
-            description: Optionally filter skills based on linkable
-            example: true
-            type: boolean
+          skillIds:
+            $ref: '#/components/schemas/UUIDS'
         type: object
       title: SkillSearch
     PagedSkills:
@@ -4431,15 +4407,6 @@ components:
       - $ref: '#/components/schemas/BasicDomainModel'
       - $ref: '#/components/schemas/Nameable'
       title: NamedDomainModel
-    Suggestable:
-      properties:
-        suggestion:
-          default: false
-          type: boolean
-      required:
-      - suggestion
-      title: Suggestable
-      type: object
     Synonymable:
       properties:
         synonyms:
@@ -4693,14 +4660,6 @@ components:
         item:
           $ref: '#/components/schemas/NamedDomainModel'
       title: SearchResultItem
-      type: object
-    Linkable:
-      properties:
-        linkable:
-          default: false
-          description: The entity can be linked
-          type: boolean
-      title: Linkable
       type: object
     SkillLink:
       example:

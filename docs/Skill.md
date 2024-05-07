@@ -4,19 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Suggestion** | **bool** |  | [default to false]
-**Linkable** | Pointer to **bool** | The entity can be linked | [optional] [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Invest** | Pointer to **bool** |  | [optional] [default to false]
-**KindGiver** | Pointer to **bool** |  | [optional] [default to false]
 **GroupPriority** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
 ### NewSkill
 
-`func NewSkill(suggestion bool, ) *Skill`
+`func NewSkill() *Skill`
 
 NewSkill instantiates a new Skill object
 This constructor will assign default values to properties that have it defined,
@@ -30,51 +26,6 @@ will change when the set of required properties is changed
 NewSkillWithDefaults instantiates a new Skill object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSuggestion
-
-`func (o *Skill) GetSuggestion() bool`
-
-GetSuggestion returns the Suggestion field if non-nil, zero value otherwise.
-
-### GetSuggestionOk
-
-`func (o *Skill) GetSuggestionOk() (*bool, bool)`
-
-GetSuggestionOk returns a tuple with the Suggestion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSuggestion
-
-`func (o *Skill) SetSuggestion(v bool)`
-
-SetSuggestion sets Suggestion field to given value.
-
-
-### GetLinkable
-
-`func (o *Skill) GetLinkable() bool`
-
-GetLinkable returns the Linkable field if non-nil, zero value otherwise.
-
-### GetLinkableOk
-
-`func (o *Skill) GetLinkableOk() (*bool, bool)`
-
-GetLinkableOk returns a tuple with the Linkable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLinkable
-
-`func (o *Skill) SetLinkable(v bool)`
-
-SetLinkable sets Linkable field to given value.
-
-### HasLinkable
-
-`func (o *Skill) HasLinkable() bool`
-
-HasLinkable returns a boolean if a field has been set.
 
 ### GetSynonyms
 
@@ -125,56 +76,6 @@ SetDescription sets Description field to given value.
 `func (o *Skill) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetInvest
-
-`func (o *Skill) GetInvest() bool`
-
-GetInvest returns the Invest field if non-nil, zero value otherwise.
-
-### GetInvestOk
-
-`func (o *Skill) GetInvestOk() (*bool, bool)`
-
-GetInvestOk returns a tuple with the Invest field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInvest
-
-`func (o *Skill) SetInvest(v bool)`
-
-SetInvest sets Invest field to given value.
-
-### HasInvest
-
-`func (o *Skill) HasInvest() bool`
-
-HasInvest returns a boolean if a field has been set.
-
-### GetKindGiver
-
-`func (o *Skill) GetKindGiver() bool`
-
-GetKindGiver returns the KindGiver field if non-nil, zero value otherwise.
-
-### GetKindGiverOk
-
-`func (o *Skill) GetKindGiverOk() (*bool, bool)`
-
-GetKindGiverOk returns a tuple with the KindGiver field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKindGiver
-
-`func (o *Skill) SetKindGiver(v bool)`
-
-SetKindGiver sets KindGiver field to given value.
-
-### HasKindGiver
-
-`func (o *Skill) HasKindGiver() bool`
-
-HasKindGiver returns a boolean if a field has been set.
 
 ### GetGroupPriority
 

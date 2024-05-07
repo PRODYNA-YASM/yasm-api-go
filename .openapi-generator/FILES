@@ -49,7 +49,6 @@ docs/LanguageAPI.md
 docs/LanguageDetails.md
 docs/LanguageLevel.md
 docs/Level.md
-docs/Linkable.md
 docs/Locateable.md
 docs/MinMax.md
 docs/MinMaxPercent.md
@@ -117,7 +116,6 @@ docs/SkillLinkUpdate.md
 docs/SkillSearch.md
 docs/Status.md
 docs/StatusAPI.md
-docs/Suggestable.md
 docs/Synonymable.md
 docs/TemplatesAPI.md
 docs/TimeframeFilter.md
@@ -150,7 +148,6 @@ model_language.go
 model_language_details.go
 model_language_level.go
 model_level.go
-model_linkable.go
 model_locateable.go
 model_min_max.go
 model_min_max_percent.go
@@ -209,7 +206,6 @@ model_skill_link.go
 model_skill_link_update.go
 model_skill_search.go
 model_status.go
-model_suggestable.go
 model_synonymable.go
 model_timeframe_filter.go
 model_timeframed.go

@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
@@ -29,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewPerson
 
-`func NewPerson(suggestion bool, ) *Person`
+`func NewPerson() *Person`
 
 NewPerson instantiates a new Person object
 This constructor will assign default values to properties that have it defined,
@@ -43,26 +42,6 @@ will change when the set of required properties is changed
 NewPersonWithDefaults instantiates a new Person object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSuggestion
-
-`func (o *Person) GetSuggestion() bool`
-
-GetSuggestion returns the Suggestion field if non-nil, zero value otherwise.
-
-### GetSuggestionOk
-
-`func (o *Person) GetSuggestionOk() (*bool, bool)`
-
-GetSuggestionOk returns a tuple with the Suggestion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSuggestion
-
-`func (o *Person) SetSuggestion(v bool)`
-
-SetSuggestion sets Suggestion field to given value.
-
 
 ### GetSynonyms
 

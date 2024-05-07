@@ -712,7 +712,7 @@ import (
 )
 
 func main() {
-    person := *openapiclient.NewPerson(false, "Id_example", "Name_example") // Person | 
+    person := *openapiclient.NewPerson("Id_example", "Name_example") // Person | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2598,7 +2598,7 @@ import (
 
 func main() {
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    person := *openapiclient.NewPerson(false, "Id_example", "Name_example") // Person | 
+    person := *openapiclient.NewPerson("Id_example", "Name_example") // Person | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

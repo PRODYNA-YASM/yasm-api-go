@@ -393,7 +393,7 @@ import (
 )
 
 func main() {
-    organization := *openapiclient.NewOrganization(false, "Id_example", "Name_example") // Organization | Details about the Organization
+    organization := *openapiclient.NewOrganization("Id_example", "Name_example") // Organization | Details about the Organization
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -458,7 +458,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The ID of the organization
-    project := *openapiclient.NewProject(false, "Id_example", "Name_example") // Project | 
+    project := *openapiclient.NewProject("Id_example", "Name_example") // Project | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1221,7 +1221,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    organization := *openapiclient.NewOrganization(false, "Id_example", "Name_example") // Organization | Details about the organization
+    organization := *openapiclient.NewOrganization("Id_example", "Name_example") // Organization | Details about the organization
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Validity** | Pointer to **string** |  | [optional] 
@@ -13,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewCertification
 
-`func NewCertification(suggestion bool, ) *Certification`
+`func NewCertification() *Certification`
 
 NewCertification instantiates a new Certification object
 This constructor will assign default values to properties that have it defined,
@@ -27,26 +26,6 @@ will change when the set of required properties is changed
 NewCertificationWithDefaults instantiates a new Certification object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSuggestion
-
-`func (o *Certification) GetSuggestion() bool`
-
-GetSuggestion returns the Suggestion field if non-nil, zero value otherwise.
-
-### GetSuggestionOk
-
-`func (o *Certification) GetSuggestionOk() (*bool, bool)`
-
-GetSuggestionOk returns a tuple with the Suggestion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSuggestion
-
-`func (o *Certification) SetSuggestion(v bool)`
-
-SetSuggestion sets Suggestion field to given value.
-
 
 ### GetSynonyms
 

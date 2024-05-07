@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Suggestion** | **bool** |  | [default to false]
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
@@ -17,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewOrganization
 
-`func NewOrganization(suggestion bool, ) *Organization`
+`func NewOrganization() *Organization`
 
 NewOrganization instantiates a new Organization object
 This constructor will assign default values to properties that have it defined,
@@ -31,26 +30,6 @@ will change when the set of required properties is changed
 NewOrganizationWithDefaults instantiates a new Organization object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSuggestion
-
-`func (o *Organization) GetSuggestion() bool`
-
-GetSuggestion returns the Suggestion field if non-nil, zero value otherwise.
-
-### GetSuggestionOk
-
-`func (o *Organization) GetSuggestionOk() (*bool, bool)`
-
-GetSuggestionOk returns a tuple with the Suggestion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSuggestion
-
-`func (o *Organization) SetSuggestion(v bool)`
-
-SetSuggestion sets Suggestion field to given value.
-
 
 ### GetSynonyms
 

@@ -5,8 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Types** | Pointer to **string** | Gives you either all skills, only the root kills | [optional] [default to "all"]
-**Suggestions** | Pointer to **string** | Optionally filter skills based on suggestion | [optional] [default to "all"]
-**Linkable** | Pointer to **bool** | Optionally filter skills based on linkable | [optional] 
+**SkillIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -52,55 +51,30 @@ SetTypes sets Types field to given value.
 
 HasTypes returns a boolean if a field has been set.
 
-### GetSuggestions
+### GetSkillIds
 
-`func (o *SkillSearch) GetSuggestions() string`
+`func (o *SkillSearch) GetSkillIds() []string`
 
-GetSuggestions returns the Suggestions field if non-nil, zero value otherwise.
+GetSkillIds returns the SkillIds field if non-nil, zero value otherwise.
 
-### GetSuggestionsOk
+### GetSkillIdsOk
 
-`func (o *SkillSearch) GetSuggestionsOk() (*string, bool)`
+`func (o *SkillSearch) GetSkillIdsOk() (*[]string, bool)`
 
-GetSuggestionsOk returns a tuple with the Suggestions field if it's non-nil, zero value otherwise
+GetSkillIdsOk returns a tuple with the SkillIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSuggestions
+### SetSkillIds
 
-`func (o *SkillSearch) SetSuggestions(v string)`
+`func (o *SkillSearch) SetSkillIds(v []string)`
 
-SetSuggestions sets Suggestions field to given value.
+SetSkillIds sets SkillIds field to given value.
 
-### HasSuggestions
+### HasSkillIds
 
-`func (o *SkillSearch) HasSuggestions() bool`
+`func (o *SkillSearch) HasSkillIds() bool`
 
-HasSuggestions returns a boolean if a field has been set.
-
-### GetLinkable
-
-`func (o *SkillSearch) GetLinkable() bool`
-
-GetLinkable returns the Linkable field if non-nil, zero value otherwise.
-
-### GetLinkableOk
-
-`func (o *SkillSearch) GetLinkableOk() (*bool, bool)`
-
-GetLinkableOk returns a tuple with the Linkable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLinkable
-
-`func (o *SkillSearch) SetLinkable(v bool)`
-
-SetLinkable sets Linkable field to given value.
-
-### HasLinkable
-
-`func (o *SkillSearch) HasLinkable() bool`
-
-HasLinkable returns a boolean if a field has been set.
+HasSkillIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
