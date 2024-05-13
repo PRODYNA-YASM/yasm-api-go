@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Skill** | Pointer to [**Skill**](Skill.md) |  | [optional] 
 **KindGiver** | Pointer to **bool** |  | [optional] [default to false]
+**ChildCount** | Pointer to **int32** |  | [optional] [default to 0]
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetKindGiver sets KindGiver field to given value.
 `func (o *SkillLink) HasKindGiver() bool`
 
 HasKindGiver returns a boolean if a field has been set.
+
+### GetChildCount
+
+`func (o *SkillLink) GetChildCount() int32`
+
+GetChildCount returns the ChildCount field if non-nil, zero value otherwise.
+
+### GetChildCountOk
+
+`func (o *SkillLink) GetChildCountOk() (*int32, bool)`
+
+GetChildCountOk returns a tuple with the ChildCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChildCount
+
+`func (o *SkillLink) SetChildCount(v int32)`
+
+SetChildCount sets ChildCount field to given value.
+
+### HasChildCount
+
+`func (o *SkillLink) HasChildCount() bool`
+
+HasChildCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

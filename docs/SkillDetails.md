@@ -5,10 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Skill** | Pointer to [**Skill**](Skill.md) |  | [optional] 
+**ParentPath** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 **Children** | Pointer to [**[]SkillLink**](SkillLink.md) |  | [optional] 
-**Parents** | Pointer to [**[]SkillLink**](SkillLink.md) |  | [optional] 
-**Kinds** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
-**DisplayName** | Pointer to **string** | The display name of the skill, e.g. \&quot;Communication (Computing)\&quot; or \&quot;Communication (Design)\&quot; or \&quot;Protcool (Communication,IT)\&quot; | [optional] 
+**AdditionalParents** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 
 ## Methods
 
@@ -54,6 +53,31 @@ SetSkill sets Skill field to given value.
 
 HasSkill returns a boolean if a field has been set.
 
+### GetParentPath
+
+`func (o *SkillDetails) GetParentPath() []Skill`
+
+GetParentPath returns the ParentPath field if non-nil, zero value otherwise.
+
+### GetParentPathOk
+
+`func (o *SkillDetails) GetParentPathOk() (*[]Skill, bool)`
+
+GetParentPathOk returns a tuple with the ParentPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentPath
+
+`func (o *SkillDetails) SetParentPath(v []Skill)`
+
+SetParentPath sets ParentPath field to given value.
+
+### HasParentPath
+
+`func (o *SkillDetails) HasParentPath() bool`
+
+HasParentPath returns a boolean if a field has been set.
+
 ### GetChildren
 
 `func (o *SkillDetails) GetChildren() []SkillLink`
@@ -79,80 +103,30 @@ SetChildren sets Children field to given value.
 
 HasChildren returns a boolean if a field has been set.
 
-### GetParents
+### GetAdditionalParents
 
-`func (o *SkillDetails) GetParents() []SkillLink`
+`func (o *SkillDetails) GetAdditionalParents() []Skill`
 
-GetParents returns the Parents field if non-nil, zero value otherwise.
+GetAdditionalParents returns the AdditionalParents field if non-nil, zero value otherwise.
 
-### GetParentsOk
+### GetAdditionalParentsOk
 
-`func (o *SkillDetails) GetParentsOk() (*[]SkillLink, bool)`
+`func (o *SkillDetails) GetAdditionalParentsOk() (*[]Skill, bool)`
 
-GetParentsOk returns a tuple with the Parents field if it's non-nil, zero value otherwise
+GetAdditionalParentsOk returns a tuple with the AdditionalParents field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetParents
+### SetAdditionalParents
 
-`func (o *SkillDetails) SetParents(v []SkillLink)`
+`func (o *SkillDetails) SetAdditionalParents(v []Skill)`
 
-SetParents sets Parents field to given value.
+SetAdditionalParents sets AdditionalParents field to given value.
 
-### HasParents
+### HasAdditionalParents
 
-`func (o *SkillDetails) HasParents() bool`
+`func (o *SkillDetails) HasAdditionalParents() bool`
 
-HasParents returns a boolean if a field has been set.
-
-### GetKinds
-
-`func (o *SkillDetails) GetKinds() []Skill`
-
-GetKinds returns the Kinds field if non-nil, zero value otherwise.
-
-### GetKindsOk
-
-`func (o *SkillDetails) GetKindsOk() (*[]Skill, bool)`
-
-GetKindsOk returns a tuple with the Kinds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKinds
-
-`func (o *SkillDetails) SetKinds(v []Skill)`
-
-SetKinds sets Kinds field to given value.
-
-### HasKinds
-
-`func (o *SkillDetails) HasKinds() bool`
-
-HasKinds returns a boolean if a field has been set.
-
-### GetDisplayName
-
-`func (o *SkillDetails) GetDisplayName() string`
-
-GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
-
-### GetDisplayNameOk
-
-`func (o *SkillDetails) GetDisplayNameOk() (*string, bool)`
-
-GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDisplayName
-
-`func (o *SkillDetails) SetDisplayName(v string)`
-
-SetDisplayName sets DisplayName field to given value.
-
-### HasDisplayName
-
-`func (o *SkillDetails) HasDisplayName() bool`
-
-HasDisplayName returns a boolean if a field has been set.
+HasAdditionalParents returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

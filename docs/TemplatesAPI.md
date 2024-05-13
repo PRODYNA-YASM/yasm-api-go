@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## GetTemplates
 
-> []string GetTemplates(ctx, text).Execute()
+> []string GetTemplates(ctx).Execute()
 
 list of existing templates
 
@@ -27,11 +27,10 @@ import (
 )
 
 func main() {
-    text := "text_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TemplatesAPI.GetTemplates(context.Background(), text).Execute()
+    resp, r, err := apiClient.TemplatesAPI.GetTemplates(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TemplatesAPI.GetTemplates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -43,19 +42,11 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**text** | **string** |  | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetTemplatesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
 
 
 ### Return type
