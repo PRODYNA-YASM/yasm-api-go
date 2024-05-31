@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **GroupPriority** | Pointer to **int32** |  | [optional] 
+**Important** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetGroupPriority sets GroupPriority field to given value.
 `func (o *Skill) HasGroupPriority() bool`
 
 HasGroupPriority returns a boolean if a field has been set.
+
+### GetImportant
+
+`func (o *Skill) GetImportant() bool`
+
+GetImportant returns the Important field if non-nil, zero value otherwise.
+
+### GetImportantOk
+
+`func (o *Skill) GetImportantOk() (*bool, bool)`
+
+GetImportantOk returns a tuple with the Important field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImportant
+
+`func (o *Skill) SetImportant(v bool)`
+
+SetImportant sets Important field to given value.
+
+### HasImportant
+
+`func (o *Skill) HasImportant() bool`
+
+HasImportant returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
