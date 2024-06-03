@@ -326,13 +326,11 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PersonAPIService GeneratePersonProfile", func(t *testing.T) {
+	t.Run("Test PersonAPIService GeneratePdfProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var personId string
-
-		resp, httpRes, err := apiClient.PersonAPI.GeneratePersonProfile(context.Background(), personId).Execute()
+		resp, httpRes, err := apiClient.PersonAPI.GeneratePdfProfile(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -340,11 +338,13 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PersonAPIService GeneratePersonProfileRaw", func(t *testing.T) {
+	t.Run("Test PersonAPIService GeneratePersonProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PersonAPI.GeneratePersonProfileRaw(context.Background()).Execute()
+		var personId string
+
+		resp, httpRes, err := apiClient.PersonAPI.GeneratePersonProfile(context.Background(), personId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

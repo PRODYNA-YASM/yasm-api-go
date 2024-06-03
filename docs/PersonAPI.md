@@ -25,8 +25,8 @@ Method | HTTP request | Description
 [**DeletePersonSkillExperience**](PersonAPI.md#DeletePersonSkillExperience) | **Delete** /persons/{personId}/experiences/skills/{skillId} | Remove an Skill Experience to a Person
 [**DeletePersonSkillExperiences**](PersonAPI.md#DeletePersonSkillExperiences) | **Delete** /persons/{personId}/experiences | Remove an Skill Experience to a Person
 [**DeleteProjectParticipation**](PersonAPI.md#DeleteProjectParticipation) | **Delete** /project-participations/{projectParticipationId} | Remove an Project from a Person
+[**GeneratePdfProfile**](PersonAPI.md#GeneratePdfProfile) | **Post** /pdf-profile | Generate a PDF profile from a Person
 [**GeneratePersonProfile**](PersonAPI.md#GeneratePersonProfile) | **Get** /persons/{personId}/pdf-profile | Generate a PDF profile from a Person, PDF generation is now done via POST /pdf-profile/
-[**GeneratePersonProfileRaw**](PersonAPI.md#GeneratePersonProfileRaw) | **Post** /pdf-profile | Generate a PDF profile from a Person
 [**GetAvailabilities**](PersonAPI.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonAPI.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**ReadPersonPicture**](PersonAPI.md#ReadPersonPicture) | **Get** /persons/{personId}/picture | Read person image
@@ -1529,6 +1529,70 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GeneratePdfProfile
+
+> *os.File GeneratePdfProfile(ctx).ProfileRequest(profileRequest).Execute()
+
+Generate a PDF profile from a Person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    profileRequest := *openapiclient.NewProfileRequest() // ProfileRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.GeneratePdfProfile(context.Background()).ProfileRequest(profileRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GeneratePdfProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GeneratePdfProfile`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GeneratePdfProfile`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGeneratePdfProfileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **profileRequest** | [**ProfileRequest**](ProfileRequest.md) |  | 
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/octet-stream, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GeneratePersonProfile
 
 > *os.File GeneratePersonProfile(ctx, personId).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).ProfileIds(profileIds).Seniority(seniority).Template(template).Execute()
@@ -1602,70 +1666,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/octet-stream, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GeneratePersonProfileRaw
-
-> *os.File GeneratePersonProfileRaw(ctx).ProfileRequest(profileRequest).Execute()
-
-Generate a PDF profile from a Person
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    profileRequest := *openapiclient.NewProfileRequest() // ProfileRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.GeneratePersonProfileRaw(context.Background()).ProfileRequest(profileRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GeneratePersonProfileRaw``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GeneratePersonProfileRaw`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GeneratePersonProfileRaw`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGeneratePersonProfileRawRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **profileRequest** | [**ProfileRequest**](ProfileRequest.md) |  | 
-
-### Return type
-
-[***os.File**](*os.File.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

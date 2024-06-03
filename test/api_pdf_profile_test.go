@@ -22,11 +22,11 @@ func Test_client_PDFProfileAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test PDFProfileAPIService GeneratePersonProfileRaw", func(t *testing.T) {
+	t.Run("Test PDFProfileAPIService GeneratePdfProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PDFProfileAPI.GeneratePersonProfileRaw(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PDFProfileAPI.GeneratePdfProfile(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

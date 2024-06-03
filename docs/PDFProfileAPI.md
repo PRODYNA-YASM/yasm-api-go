@@ -4,13 +4,13 @@ All URIs are relative to *https://yasm.prodyna.com:443/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GeneratePersonProfileRaw**](PDFProfileAPI.md#GeneratePersonProfileRaw) | **Post** /pdf-profile | Generate a PDF profile from a Person
+[**GeneratePdfProfile**](PDFProfileAPI.md#GeneratePdfProfile) | **Post** /pdf-profile | Generate a PDF profile from a Person
 
 
 
-## GeneratePersonProfileRaw
+## GeneratePdfProfile
 
-> *os.File GeneratePersonProfileRaw(ctx).ProfileRequest(profileRequest).Execute()
+> *os.File GeneratePdfProfile(ctx).ProfileRequest(profileRequest).Execute()
 
 Generate a PDF profile from a Person
 
@@ -31,13 +31,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PDFProfileAPI.GeneratePersonProfileRaw(context.Background()).ProfileRequest(profileRequest).Execute()
+    resp, r, err := apiClient.PDFProfileAPI.GeneratePdfProfile(context.Background()).ProfileRequest(profileRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PDFProfileAPI.GeneratePersonProfileRaw``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PDFProfileAPI.GeneratePdfProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GeneratePersonProfileRaw`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `PDFProfileAPI.GeneratePersonProfileRaw`: %v\n", resp)
+    // response from `GeneratePdfProfile`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `PDFProfileAPI.GeneratePdfProfile`: %v\n", resp)
 }
 ```
 
@@ -47,7 +47,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGeneratePersonProfileRawRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGeneratePdfProfileRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
