@@ -10,6 +10,7 @@ api_industry.go
 api_language.go
 api_office.go
 api_organization.go
+api_pdf_profile.go
 api_person.go
 api_profile.go
 api_project.go
@@ -62,6 +63,7 @@ docs/Organization.md
 docs/OrganizationAPI.md
 docs/OrganizationDetails.md
 docs/OrganizationSearch.md
+docs/PDFProfileAPI.md
 docs/Page.md
 docs/PagedAvailabilities.md
 docs/PagedCertifications.md
@@ -86,6 +88,7 @@ docs/PersonSkillFilter.md
 docs/Profile.md
 docs/ProfileAPI.md
 docs/ProfileDetails.md
+docs/ProfileRequest.md
 docs/Project.md
 docs/ProjectAPI.md
 docs/ProjectDetails.md
@@ -181,6 +184,7 @@ model_person_search.go
 model_person_skill_filter.go
 model_profile.go
 model_profile_details.go
+model_profile_request.go
 model_project.go
 model_project_details.go
 model_project_participation.go
@@ -218,6 +222,7 @@ test/api_industry_test.go
 test/api_language_test.go
 test/api_office_test.go
 test/api_organization_test.go
+test/api_pdf_profile_test.go
 test/api_person_test.go
 test/api_profile_test.go
 test/api_project_participation_test.go

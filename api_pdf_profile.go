@@ -16,57 +16,67 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"os"
 )
 
 
-// TemplatesAPIService TemplatesAPI service
-type TemplatesAPIService service
+// PDFProfileAPIService PDFProfileAPI service
+type PDFProfileAPIService service
 
-type TemplatesAPIGetTemplatesRequest struct {
+type PDFProfileAPIGeneratePersonProfileRawRequest struct {
 	ctx context.Context
-	ApiService *TemplatesAPIService
+	ApiService *PDFProfileAPIService
+	profileRequest *ProfileRequest
 }
 
-func (r TemplatesAPIGetTemplatesRequest) Execute() ([]string, *http.Response, error) {
-	return r.ApiService.GetTemplatesExecute(r)
+func (r PDFProfileAPIGeneratePersonProfileRawRequest) ProfileRequest(profileRequest ProfileRequest) PDFProfileAPIGeneratePersonProfileRawRequest {
+	r.profileRequest = &profileRequest
+	return r
+}
+
+func (r PDFProfileAPIGeneratePersonProfileRawRequest) Execute() (*os.File, *http.Response, error) {
+	return r.ApiService.GeneratePersonProfileRawExecute(r)
 }
 
 /*
-GetTemplates list of existing templates
+GeneratePersonProfileRaw Generate a PDF profile from a Person
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return TemplatesAPIGetTemplatesRequest
+ @return PDFProfileAPIGeneratePersonProfileRawRequest
 */
-func (a *TemplatesAPIService) GetTemplates(ctx context.Context) TemplatesAPIGetTemplatesRequest {
-	return TemplatesAPIGetTemplatesRequest{
+func (a *PDFProfileAPIService) GeneratePersonProfileRaw(ctx context.Context) PDFProfileAPIGeneratePersonProfileRawRequest {
+	return PDFProfileAPIGeneratePersonProfileRawRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
-func (a *TemplatesAPIService) GetTemplatesExecute(r TemplatesAPIGetTemplatesRequest) ([]string, *http.Response, error) {
+//  @return *os.File
+func (a *PDFProfileAPIService) GeneratePersonProfileRawExecute(r PDFProfileAPIGeneratePersonProfileRawRequest) (*os.File, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TemplatesAPIService.GetTemplates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PDFProfileAPIService.GeneratePersonProfileRaw")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/templates"
+	localVarPath := localBasePath + "/pdf-profile"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.profileRequest == nil {
+		return localVarReturnValue, nil, reportError("profileRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -75,13 +85,15 @@ func (a *TemplatesAPIService) GetTemplatesExecute(r TemplatesAPIGetTemplatesRequ
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/octet-stream", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.profileRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -104,6 +116,14 @@ func (a *TemplatesAPIService) GetTemplatesExecute(r TemplatesAPIGetTemplatesRequ
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
