@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **OrganizationIds** | Pointer to **[]string** |  | [optional] 
 **IndustryIds** | Pointer to **[]string** |  | [optional] 
 **CertificationIds** | Pointer to **[]string** |  | [optional] 
+**Inactive** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -361,6 +362,31 @@ SetCertificationIds sets CertificationIds field to given value.
 `func (o *PersonSearch) HasCertificationIds() bool`
 
 HasCertificationIds returns a boolean if a field has been set.
+
+### GetInactive
+
+`func (o *PersonSearch) GetInactive() bool`
+
+GetInactive returns the Inactive field if non-nil, zero value otherwise.
+
+### GetInactiveOk
+
+`func (o *PersonSearch) GetInactiveOk() (*bool, bool)`
+
+GetInactiveOk returns a tuple with the Inactive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInactive
+
+`func (o *PersonSearch) SetInactive(v bool)`
+
+SetInactive sets Inactive field to given value.
+
+### HasInactive
+
+`func (o *PersonSearch) HasInactive() bool`
+
+HasInactive returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
