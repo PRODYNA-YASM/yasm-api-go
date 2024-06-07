@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Template** | Pointer to **string** |  | [optional] 
 **Person** | Pointer to [**PersonDetails**](PersonDetails.md) |  | [optional] 
 **ProjectParticipation** | Pointer to [**[]PersonProjectParticipationDetails**](PersonProjectParticipationDetails.md) |  | [optional] 
+**Anonymize** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetProjectParticipation sets ProjectParticipation field to given value.
 `func (o *ProfileRequest) HasProjectParticipation() bool`
 
 HasProjectParticipation returns a boolean if a field has been set.
+
+### GetAnonymize
+
+`func (o *ProfileRequest) GetAnonymize() bool`
+
+GetAnonymize returns the Anonymize field if non-nil, zero value otherwise.
+
+### GetAnonymizeOk
+
+`func (o *ProfileRequest) GetAnonymizeOk() (*bool, bool)`
+
+GetAnonymizeOk returns a tuple with the Anonymize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnonymize
+
+`func (o *ProfileRequest) SetAnonymize(v bool)`
+
+SetAnonymize sets Anonymize field to given value.
+
+### HasAnonymize
+
+`func (o *ProfileRequest) HasAnonymize() bool`
+
+HasAnonymize returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

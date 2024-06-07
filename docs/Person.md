@@ -22,7 +22,6 @@ Name | Type | Description | Notes
 **Picture** | Pointer to **string** | base64 encoded image | [optional] [readonly] 
 **PictureSHA256** | Pointer to **string** | SHA256 hash of the full resolution image | [optional] [readonly] 
 **Inactive** | Pointer to **bool** | Marks persons not working for the company anymore | [optional] [default to false]
-**GithubUser** | Pointer to **string** | GitHub user name | [optional] 
 
 ## Methods
 
@@ -492,31 +491,6 @@ SetInactive sets Inactive field to given value.
 `func (o *Person) HasInactive() bool`
 
 HasInactive returns a boolean if a field has been set.
-
-### GetGithubUser
-
-`func (o *Person) GetGithubUser() string`
-
-GetGithubUser returns the GithubUser field if non-nil, zero value otherwise.
-
-### GetGithubUserOk
-
-`func (o *Person) GetGithubUserOk() (*string, bool)`
-
-GetGithubUserOk returns a tuple with the GithubUser field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGithubUser
-
-`func (o *Person) SetGithubUser(v string)`
-
-SetGithubUser sets GithubUser field to given value.
-
-### HasGithubUser
-
-`func (o *Person) HasGithubUser() bool`
-
-HasGithubUser returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

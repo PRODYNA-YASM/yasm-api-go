@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.28.0
+  version: 1.29.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -2146,73 +2146,6 @@ paths:
       tags:
       - Person
       - Office
-  /persons/{personId}/pdf-profile:
-    get:
-      deprecated: true
-      operationId: generatePersonProfile
-      parameters:
-      - in: path
-        name: personId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - explode: true
-        in: query
-        name: projectIds
-        required: false
-        schema:
-          $ref: '#/components/schemas/UUIDS_1'
-        style: form
-      - explode: true
-        in: query
-        name: skillIds
-        required: false
-        schema:
-          $ref: '#/components/schemas/UUIDS_1'
-        style: form
-      - explode: true
-        in: query
-        name: certificationIds
-        required: false
-        schema:
-          $ref: '#/components/schemas/UUIDS_1'
-        style: form
-      - explode: true
-        in: query
-        name: profileIds
-        required: false
-        schema:
-          $ref: '#/components/schemas/UUIDS_1'
-        style: form
-      - in: query
-        name: seniority
-        required: false
-        schema:
-          $ref: '#/components/schemas/Seniority'
-      - in: query
-        name: template
-        required: false
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/octet-stream:
-              schema:
-                example: JVBERi0xLjQKJcfs...
-                format: binary
-                type: string
-          description: A PDF profile of a Person
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: "Generate a PDF profile from a Person, PDF generation is now done via\
-        \ POST /pdf-profile/"
-      tags:
-      - Person
   /persons/{personId}/picture:
     delete:
       operationId: deletePersonPicture
@@ -3708,6 +3641,7 @@ components:
     ProfileRequest:
       example:
         template: template
+        anonymize: true
         projectParticipation:
         - participationItems:
           - participation: null
@@ -3911,6 +3845,8 @@ components:
           items:
             $ref: '#/components/schemas/PersonProjectParticipationDetails'
           type: array
+        anonymize:
+          type: boolean
       title: ProfileRequest
       type: object
     Person:
@@ -3966,10 +3902,6 @@ components:
             default: false
             description: Marks persons not working for the company anymore
             type: boolean
-          githubUser:
-            description: GitHub user name
-            example: pmueller
-            type: string
         type: object
       title: Person
     PersonDetails:
@@ -4167,21 +4099,6 @@ components:
         $ref: '#/components/schemas/UUID'
       title: UUIDS
       type: array
-    UUIDS_1:
-      items:
-        $ref: '#/components/schemas/UUID'
-      title: UUIDS
-      type: array
-    Seniority:
-      enum:
-      - UNKNOWN
-      - ENTRY_LEVEL
-      - PROFESSIONAL
-      - SENIOR
-      - MANAGING
-      - PRINCIPAL
-      title: Seniority
-      type: string
     PersonSearch:
       allOf:
       - $ref: '#/components/schemas/Search'
@@ -4699,6 +4616,16 @@ components:
           $ref: '#/components/schemas/Geolocation'
       title: Locateable
       type: object
+    Seniority:
+      enum:
+      - UNKNOWN
+      - ENTRY_LEVEL
+      - PROFESSIONAL
+      - SENIOR
+      - MANAGING
+      - PRINCIPAL
+      title: Seniority
+      type: string
     Experience:
       example:
         confirmedBy:

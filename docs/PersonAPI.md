@@ -26,7 +26,6 @@ Method | HTTP request | Description
 [**DeletePersonSkillExperiences**](PersonAPI.md#DeletePersonSkillExperiences) | **Delete** /persons/{personId}/experiences | Remove an Skill Experience to a Person
 [**DeleteProjectParticipation**](PersonAPI.md#DeleteProjectParticipation) | **Delete** /project-participations/{projectParticipationId} | Remove an Project from a Person
 [**GeneratePdfProfile**](PersonAPI.md#GeneratePdfProfile) | **Post** /pdf-profile | Generate a PDF profile from a Person
-[**GeneratePersonProfile**](PersonAPI.md#GeneratePersonProfile) | **Get** /persons/{personId}/pdf-profile | Generate a PDF profile from a Person, PDF generation is now done via POST /pdf-profile/
 [**GetAvailabilities**](PersonAPI.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonAPI.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**ReadPersonPicture**](PersonAPI.md#ReadPersonPicture) | **Get** /persons/{personId}/picture | Read person image
@@ -1586,86 +1585,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/octet-stream, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GeneratePersonProfile
-
-> *os.File GeneratePersonProfile(ctx, personId).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).ProfileIds(profileIds).Seniority(seniority).Template(template).Execute()
-
-Generate a PDF profile from a Person, PDF generation is now done via POST /pdf-profile/
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    projectIds := []string{"Inner_example"} // []string |  (optional)
-    skillIds := []string{"Inner_example"} // []string |  (optional)
-    certificationIds := []string{"Inner_example"} // []string |  (optional)
-    profileIds := []string{"Inner_example"} // []string |  (optional)
-    seniority := openapiclient.Seniority("UNKNOWN") // Seniority |  (optional)
-    template := "template_example" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.GeneratePersonProfile(context.Background(), personId).ProjectIds(projectIds).SkillIds(skillIds).CertificationIds(certificationIds).ProfileIds(profileIds).Seniority(seniority).Template(template).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GeneratePersonProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GeneratePersonProfile`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GeneratePersonProfile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGeneratePersonProfileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **projectIds** | **[]string** |  | 
- **skillIds** | **[]string** |  | 
- **certificationIds** | **[]string** |  | 
- **profileIds** | **[]string** |  | 
- **seniority** | [**Seniority**](Seniority.md) |  | 
- **template** | **string** |  | 
-
-### Return type
-
-[***os.File**](*os.File.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
