@@ -65,6 +65,7 @@ docs/OrganizationDetails.md
 docs/OrganizationSearch.md
 docs/PDFProfileAPI.md
 docs/Page.md
+docs/PageWithDirectHitCount.md
 docs/PagedAvailabilities.md
 docs/PagedCertifications.md
 docs/PagedCountries.md
@@ -163,6 +164,7 @@ model_organization.go
 model_organization_details.go
 model_organization_search.go
 model_page.go
+model_page_with_direct_hit_count.go
 model_paged_availabilities.go
 model_paged_certifications.go
 model_paged_countries.go
