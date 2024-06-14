@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.30.0
+  version: 1.31.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -2315,6 +2315,32 @@ paths:
       summary: Search over persons
       tags:
       - Person
+  /persons/search/stats:
+    post:
+      operationId: searchPersonsStats
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonSearch'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchStats'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: "Provides search stats (e.g., direct hits) across all persons, ignoring\
+        \ pagination."
+      tags:
+      - Person
   /persons/{personId}/project-participation:
     get:
       operationId: readPersonProjectParticipation
@@ -2737,6 +2763,32 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       summary: Complex search over project entities
+      tags:
+      - Project
+  /projects/search/stats:
+    post:
+      operationId: searchProjectsStats
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectSearch'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchStats'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: "Provides search stats (e.g., direct hits) across all projects, ignoring\
+        \ pagination."
       tags:
       - Project
   /project-participations:
@@ -4141,7 +4193,7 @@ components:
       title: PersonSearch
     PagedPersons:
       allOf:
-      - $ref: '#/components/schemas/PageWithDirectHitCount'
+      - $ref: '#/components/schemas/Page'
       - properties:
           persons:
             items:
@@ -4149,6 +4201,14 @@ components:
             type: array
         type: object
       title: PagedPersons
+    SearchStats:
+      example:
+        directHits: 0
+      properties:
+        directHits:
+          type: integer
+      title: SearchStats
+      type: object
     PersonProjectParticipationDetails:
       example:
         participationItems:
@@ -4359,7 +4419,7 @@ components:
       title: ProjectSearch
     PagedProjects:
       allOf:
-      - $ref: '#/components/schemas/PageWithDirectHitCount'
+      - $ref: '#/components/schemas/Page'
       - properties:
           projects:
             items:
@@ -4722,14 +4782,6 @@ components:
             type: string
         type: object
       title: PersonSkillFilter
-    PageWithDirectHitCount:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          directHits:
-            type: integer
-        type: object
-      title: PageDirectHits
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
