@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Participation** | Pointer to [**ProjectParticipation**](ProjectParticipation.md) |  | [optional] 
-**Experiences** | Pointer to [**[]Experience**](Experience.md) |  | [optional] [readonly] 
+**Experiences** | Pointer to [**[]Experience**](Experience.md) |  | [optional] 
 
 ## Methods
 
