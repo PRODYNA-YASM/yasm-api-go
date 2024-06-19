@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.32.0
+  version: 2.0.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -2290,6 +2290,37 @@ paths:
       tags:
       - Person
       - Profile
+  /persons/{personId}/skill-statistic/{skillId}:
+    get:
+      operationId: readPersonSkillStatistics
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: skillId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonSkillStatistic'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Show detailed statistics of a skill for a person
+      tags:
+      - Person
+      - Skill
   /persons/search:
     post:
       operationId: searchPersons
@@ -4151,6 +4182,37 @@ components:
         $ref: '#/components/schemas/UUID'
       title: UUIDS
       type: array
+    PersonSkillStatistic:
+      example:
+        duration: duration
+        trainedByCertifications:
+        - organization: null
+          certification: null
+        - organization: null
+          certification: null
+        interest: true
+        skill: null
+        usedInProjects:
+        - null
+        - null
+      properties:
+        skill:
+          $ref: '#/components/schemas/Skill'
+        duration:
+          format: duration
+          type: string
+        interest:
+          type: boolean
+        usedInProjects:
+          items:
+            $ref: '#/components/schemas/SkillStatisticProject'
+          type: array
+        trainedByCertifications:
+          items:
+            $ref: '#/components/schemas/CertificationView'
+          type: array
+      title: PersonSkillStatistic
+      type: object
     PersonSearch:
       allOf:
       - $ref: '#/components/schemas/Search'
@@ -4751,6 +4813,26 @@ components:
       - startdate
       title: Timeframed
       type: object
+    SkillStatisticProject:
+      allOf:
+      - $ref: '#/components/schemas/ProjectView'
+      - properties:
+          duration:
+            format: duration
+            type: string
+        type: object
+      title: SkillStatisticProject
+    CertificationView:
+      example:
+        organization: null
+        certification: null
+      properties:
+        certification:
+          $ref: '#/components/schemas/Certification'
+        organization:
+          $ref: '#/components/schemas/Organization'
+      title: CertificationView
+      type: object
     AvailabilityFilter:
       allOf:
       - $ref: '#/components/schemas/TimeframeFilter'
@@ -4947,6 +5029,20 @@ components:
             type: integer
         type: object
       title: ExperienceSkill
+    ProjectView:
+      discriminator:
+        propertyName: objectType
+      properties:
+        project:
+          $ref: '#/components/schemas/Project'
+        organization:
+          $ref: '#/components/schemas/Organization'
+        timeframe:
+          $ref: '#/components/schemas/Timeframed'
+        objectType:
+          type: string
+      title: ProjectView
+      type: object
     TimeframeFilter:
       discriminator:
         propertyName: objectType

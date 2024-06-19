@@ -31,6 +31,7 @@ docs/Certification.md
 docs/CertificationAPI.md
 docs/CertificationDetails.md
 docs/CertificationSearch.md
+docs/CertificationView.md
 docs/Confidentiality.md
 docs/Country.md
 docs/CountryAPI.md
@@ -85,6 +86,7 @@ docs/PersonProjectParticipationItem.md
 docs/PersonScoreDetail.md
 docs/PersonSearch.md
 docs/PersonSkillFilter.md
+docs/PersonSkillStatistic.md
 docs/Profile.md
 docs/ProfileAPI.md
 docs/ProfileDetails.md
@@ -102,6 +104,7 @@ docs/ProjectScoreDetail.md
 docs/ProjectSearch.md
 docs/ProjectStatus.md
 docs/ProjectType.md
+docs/ProjectView.md
 docs/ScoreResult.md
 docs/Search.md
 docs/SearchAPI.md
@@ -118,6 +121,7 @@ docs/SkillLevelUpdate.md
 docs/SkillLink.md
 docs/SkillLinkUpdate.md
 docs/SkillSearch.md
+docs/SkillStatisticProject.md
 docs/Status.md
 docs/StatusAPI.md
 docs/Synonymable.md
@@ -136,6 +140,7 @@ model_basic_domain_model.go
 model_certification.go
 model_certification_details.go
 model_certification_search.go
+model_certification_view.go
 model_confidentiality.go
 model_country.go
 model_country_details.go
@@ -183,6 +188,7 @@ model_person_project_participation_item.go
 model_person_score_detail.go
 model_person_search.go
 model_person_skill_filter.go
+model_person_skill_statistic.go
 model_profile.go
 model_profile_details.go
 model_profile_request.go
@@ -197,6 +203,7 @@ model_project_score_detail.go
 model_project_search.go
 model_project_status.go
 model_project_type.go
+model_project_view.go
 model_score_result.go
 model_search.go
 model_search_result.go
@@ -211,6 +218,7 @@ model_skill_level_update.go
 model_skill_link.go
 model_skill_link_update.go
 model_skill_search.go
+model_skill_statistic_project.go
 model_status.go
 model_synonymable.go
 model_timeframe_filter.go
