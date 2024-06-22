@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Audit** | Pointer to [**Audit**](Audit.md) |  | [optional] 
 **Participation** | Pointer to [**ProjectParticipation**](ProjectParticipation.md) |  | [optional] 
 **Experiences** | Pointer to [**[]Experience**](Experience.md) |  | [optional] [readonly] 
 **Person** | Pointer to [**Person**](Person.md) |  | [optional] 
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewProjectParticipationDetailsWithDefaults instantiates a new ProjectParticipationDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAudit
+
+`func (o *ProjectParticipationDetails) GetAudit() Audit`
+
+GetAudit returns the Audit field if non-nil, zero value otherwise.
+
+### GetAuditOk
+
+`func (o *ProjectParticipationDetails) GetAuditOk() (*Audit, bool)`
+
+GetAuditOk returns a tuple with the Audit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudit
+
+`func (o *ProjectParticipationDetails) SetAudit(v Audit)`
+
+SetAudit sets Audit field to given value.
+
+### HasAudit
+
+`func (o *ProjectParticipationDetails) HasAudit() bool`
+
+HasAudit returns a boolean if a field has been set.
 
 ### GetParticipation
 

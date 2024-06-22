@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Audit** | Pointer to [**Audit**](Audit.md) |  | [optional] 
 **Certification** | Pointer to [**Certification**](Certification.md) |  | [optional] 
 **Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
 **SkillLevels** | Pointer to [**[]SkillLevel**](SkillLevel.md) |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewCertificationDetailsWithDefaults instantiates a new CertificationDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAudit
+
+`func (o *CertificationDetails) GetAudit() Audit`
+
+GetAudit returns the Audit field if non-nil, zero value otherwise.
+
+### GetAuditOk
+
+`func (o *CertificationDetails) GetAuditOk() (*Audit, bool)`
+
+GetAuditOk returns a tuple with the Audit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudit
+
+`func (o *CertificationDetails) SetAudit(v Audit)`
+
+SetAudit sets Audit field to given value.
+
+### HasAudit
+
+`func (o *CertificationDetails) HasAudit() bool`
+
+HasAudit returns a boolean if a field has been set.
 
 ### GetCertification
 

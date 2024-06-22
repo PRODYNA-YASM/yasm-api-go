@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Audit** | Pointer to [**Audit**](Audit.md) |  | [optional] 
 **Industry** | Pointer to [**Industry**](Industry.md) |  | [optional] 
 **OrganizationsCount** | Pointer to **int32** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewIndustryDetailsWithDefaults instantiates a new IndustryDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAudit
+
+`func (o *IndustryDetails) GetAudit() Audit`
+
+GetAudit returns the Audit field if non-nil, zero value otherwise.
+
+### GetAuditOk
+
+`func (o *IndustryDetails) GetAuditOk() (*Audit, bool)`
+
+GetAuditOk returns a tuple with the Audit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudit
+
+`func (o *IndustryDetails) SetAudit(v Audit)`
+
+SetAudit sets Audit field to given value.
+
+### HasAudit
+
+`func (o *IndustryDetails) HasAudit() bool`
+
+HasAudit returns a boolean if a field has been set.
 
 ### GetIndustry
 

@@ -22,6 +22,7 @@ api_templates.go
 client.go
 configuration.go
 docs/AbstractEntityFilter.md
+docs/Audit.md
 docs/Availability.md
 docs/AvailabilityAPI.md
 docs/AvailabilityDetail.md
@@ -133,6 +134,7 @@ git_push.sh
 go.mod
 go.sum
 model_abstract_entity_filter.go
+model_audit.go
 model_availability.go
 model_availability_detail.go
 model_availability_filter.go

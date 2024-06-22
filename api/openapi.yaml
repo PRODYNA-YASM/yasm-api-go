@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.33.0
+  version: 1.34.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -3385,6 +3385,13 @@ components:
       title: Certification
     CertificationDetails:
       example:
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         skillLevels:
         - level:
             level: 1
@@ -3395,6 +3402,8 @@ components:
         organization: null
         certification: null
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         certification:
           $ref: '#/components/schemas/Certification'
         organization:
@@ -3460,7 +3469,16 @@ components:
         languages:
         - null
         - null
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         country:
           $ref: '#/components/schemas/Country'
         languages:
@@ -3515,8 +3533,17 @@ components:
     IndustryDetails:
       example:
         organizationsCount: 0
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         industry: null
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         industry:
           $ref: '#/components/schemas/Industry'
         organizationsCount:
@@ -3565,11 +3592,20 @@ components:
       title: Language
     LanguageDetails:
       example:
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         language: null
         countries:
         - null
         - null
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         language:
           $ref: '#/components/schemas/Language'
         countries:
@@ -3597,8 +3633,17 @@ components:
     OfficeDetails:
       example:
         country: null
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         office: null
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         office:
           $ref: '#/components/schemas/Office'
         country:
@@ -3649,6 +3694,13 @@ components:
         children:
         - null
         - null
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         organization: null
         industries:
         - null
@@ -3664,6 +3716,8 @@ components:
         - null
         - null
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         organization:
           $ref: '#/components/schemas/Organization'
         serviceManager:
@@ -3767,6 +3821,13 @@ components:
               enddate: 2000-01-23
               startdate: 2000-01-23
               objectType: objectType
+            audit:
+              updatedBy: updatedBy
+              createdBy: createdBy
+              created: 2000-01-23T04:56:07.000+00:00
+              updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updated: 2000-01-23T04:56:07.000+00:00
+              createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             organization: null
             industries:
             - null
@@ -3826,6 +3887,13 @@ components:
               enddate: 2000-01-23
               startdate: 2000-01-23
               objectType: objectType
+            audit:
+              updatedBy: updatedBy
+              createdBy: createdBy
+              created: 2000-01-23T04:56:07.000+00:00
+              updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updated: 2000-01-23T04:56:07.000+00:00
+              createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             organization: null
             industries:
             - null
@@ -3872,9 +3940,23 @@ components:
           - null
           office:
             country: null
+            audit:
+              updatedBy: updatedBy
+              createdBy: createdBy
+              created: 2000-01-23T04:56:07.000+00:00
+              updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updated: 2000-01-23T04:56:07.000+00:00
+              createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             office: null
           certifications:
-          - skillLevels:
+          - audit:
+              updatedBy: updatedBy
+              createdBy: createdBy
+              created: 2000-01-23T04:56:07.000+00:00
+              updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updated: 2000-01-23T04:56:07.000+00:00
+              createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            skillLevels:
             - level:
                 level: 1
               skill: null
@@ -3883,7 +3965,14 @@ components:
               skill: null
             organization: null
             certification: null
-          - skillLevels:
+          - audit:
+              updatedBy: updatedBy
+              createdBy: createdBy
+              created: 2000-01-23T04:56:07.000+00:00
+              updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updated: 2000-01-23T04:56:07.000+00:00
+              createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            skillLevels:
             - level:
                 level: 1
               skill: null
@@ -3911,6 +4000,13 @@ components:
                 level: 1
               skill: null
           objectType: objectType
+          audit:
+            updatedBy: updatedBy
+            createdBy: createdBy
+            created: 2000-01-23T04:56:07.000+00:00
+            updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updated: 2000-01-23T04:56:07.000+00:00
+            createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           person: null
           organization: null
           industries:
@@ -4018,9 +4114,23 @@ components:
         - null
         office:
           country: null
+          audit:
+            updatedBy: updatedBy
+            createdBy: createdBy
+            created: 2000-01-23T04:56:07.000+00:00
+            updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updated: 2000-01-23T04:56:07.000+00:00
+            createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           office: null
         certifications:
-        - skillLevels:
+        - audit:
+            updatedBy: updatedBy
+            createdBy: createdBy
+            created: 2000-01-23T04:56:07.000+00:00
+            updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updated: 2000-01-23T04:56:07.000+00:00
+            createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          skillLevels:
           - level:
               level: 1
             skill: null
@@ -4029,7 +4139,14 @@ components:
             skill: null
           organization: null
           certification: null
-        - skillLevels:
+        - audit:
+            updatedBy: updatedBy
+            createdBy: createdBy
+            created: 2000-01-23T04:56:07.000+00:00
+            updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updated: 2000-01-23T04:56:07.000+00:00
+            createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          skillLevels:
           - level:
               level: 1
             skill: null
@@ -4057,6 +4174,13 @@ components:
               level: 1
             skill: null
         objectType: objectType
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         person: null
         organization: null
         industries:
@@ -4066,6 +4190,8 @@ components:
         - null
         - null
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         person:
           $ref: '#/components/schemas/Person'
         organization:
@@ -4314,6 +4440,13 @@ components:
             enddate: 2000-01-23
             startdate: 2000-01-23
             objectType: objectType
+          audit:
+            updatedBy: updatedBy
+            createdBy: createdBy
+            created: 2000-01-23T04:56:07.000+00:00
+            updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updated: 2000-01-23T04:56:07.000+00:00
+            createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           organization: null
           industries:
           - null
@@ -4348,8 +4481,17 @@ components:
       title: Profile
     ProfileDetails:
       example:
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         profile: null
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         profile:
           $ref: '#/components/schemas/Profile'
       title: ProfileDetails
@@ -4392,6 +4534,13 @@ components:
           enddate: 2000-01-23
           startdate: 2000-01-23
           objectType: objectType
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         organization: null
         industries:
         - null
@@ -4411,6 +4560,8 @@ components:
         - null
         objectType: objectType
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         project:
           $ref: '#/components/schemas/Project'
         executiveOrganizations:
@@ -4508,6 +4659,13 @@ components:
     ProjectParticipationDetails:
       example:
         participation: null
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         person: null
         project: null
         experiences:
@@ -4526,6 +4684,8 @@ components:
               level: 1
             skill: null
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         participation:
           $ref: '#/components/schemas/ProjectParticipation'
         experiences:
@@ -4620,6 +4780,13 @@ components:
         - skill: null
           childCount: 0
           kindGiver: false
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         additionalParents:
         - null
         - null
@@ -4628,6 +4795,8 @@ components:
         - null
         - null
       properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
         skill:
           $ref: '#/components/schemas/Skill'
         parentPath:
@@ -4700,6 +4869,36 @@ components:
           example: This is a description
           type: string
       title: Descriptable
+      type: object
+    Audit:
+      example:
+        updatedBy: updatedBy
+        createdBy: createdBy
+        created: 2000-01-23T04:56:07.000+00:00
+        updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updated: 2000-01-23T04:56:07.000+00:00
+        createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        created:
+          format: date-time
+          type: string
+        createdBy:
+          type: string
+        createdById:
+          format: uuid
+          title: UUID
+          type: string
+        updated:
+          format: date-time
+          type: string
+        updatedBy:
+          type: string
+        updatedById:
+          format: uuid
+          title: UUID
+          type: string
+      readOnly: true
+      title: Audit
       type: object
     SkillLevel:
       example:
