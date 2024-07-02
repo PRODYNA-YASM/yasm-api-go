@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.35.0
+  version: 1.36.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -5307,13 +5307,30 @@ components:
       type: object
     ScoreResult:
       properties:
-        score:
-          example: 0.5
-          type: number
         directHit:
           example: true
           type: boolean
+        scores:
+          items:
+            $ref: '#/components/schemas/Score'
+          type: array
       title: ScoreResult
+      type: object
+    Score:
+      properties:
+        score:
+          example: 0.5
+          type: number
+        scoreType:
+          default: skillScore
+          description: Specifies the type of score
+          enum:
+          - actualScore
+          - officeScore
+          - skillScore
+          example: skillScore
+          type: string
+      title: Score
       type: object
   securitySchemes:
     oidcScheme:

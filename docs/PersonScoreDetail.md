@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Score** | Pointer to **float32** |  | [optional] 
 **DirectHit** | Pointer to **bool** |  | [optional] 
+**Scores** | Pointer to [**[]Score**](Score.md) |  | [optional] 
 
 ## Methods
 
@@ -25,31 +25,6 @@ will change when the set of required properties is changed
 NewPersonScoreDetailWithDefaults instantiates a new PersonScoreDetail object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetScore
-
-`func (o *PersonScoreDetail) GetScore() float32`
-
-GetScore returns the Score field if non-nil, zero value otherwise.
-
-### GetScoreOk
-
-`func (o *PersonScoreDetail) GetScoreOk() (*float32, bool)`
-
-GetScoreOk returns a tuple with the Score field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetScore
-
-`func (o *PersonScoreDetail) SetScore(v float32)`
-
-SetScore sets Score field to given value.
-
-### HasScore
-
-`func (o *PersonScoreDetail) HasScore() bool`
-
-HasScore returns a boolean if a field has been set.
 
 ### GetDirectHit
 
@@ -75,6 +50,31 @@ SetDirectHit sets DirectHit field to given value.
 `func (o *PersonScoreDetail) HasDirectHit() bool`
 
 HasDirectHit returns a boolean if a field has been set.
+
+### GetScores
+
+`func (o *PersonScoreDetail) GetScores() []Score`
+
+GetScores returns the Scores field if non-nil, zero value otherwise.
+
+### GetScoresOk
+
+`func (o *PersonScoreDetail) GetScoresOk() (*[]Score, bool)`
+
+GetScoresOk returns a tuple with the Scores field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScores
+
+`func (o *PersonScoreDetail) SetScores(v []Score)`
+
+SetScores sets Scores field to given value.
+
+### HasScores
+
+`func (o *PersonScoreDetail) HasScores() bool`
+
+HasScores returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

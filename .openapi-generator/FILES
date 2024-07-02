@@ -106,6 +106,7 @@ docs/ProjectSearch.md
 docs/ProjectStatus.md
 docs/ProjectType.md
 docs/ProjectView.md
+docs/Score.md
 docs/ScoreResult.md
 docs/Search.md
 docs/SearchAPI.md
@@ -206,6 +207,7 @@ model_project_search.go
 model_project_status.go
 model_project_type.go
 model_project_view.go
+model_score.go
 model_score_result.go
 model_search.go
 model_search_result.go
