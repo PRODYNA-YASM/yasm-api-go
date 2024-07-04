@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.36.0
+  version: 1.37.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -3782,37 +3782,25 @@ components:
         projectParticipation:
         - participationItems:
           - participation: null
-            experiences:
-            - confirmedBy:
+            skillGroups:
+            - skills:
               - null
               - null
-              skillLevel:
-                level:
-                  level: 1
-                skill: null
-            - confirmedBy:
+              group: null
+            - skills:
               - null
               - null
-              skillLevel:
-                level:
-                  level: 1
-                skill: null
+              group: null
           - participation: null
-            experiences:
-            - confirmedBy:
+            skillGroups:
+            - skills:
               - null
               - null
-              skillLevel:
-                level:
-                  level: 1
-                skill: null
-            - confirmedBy:
+              group: null
+            - skills:
               - null
               - null
-              skillLevel:
-                level:
-                  level: 1
-                skill: null
+              group: null
           projectDetails:
             persons:
             - null
@@ -3848,37 +3836,25 @@ components:
             objectType: objectType
         - participationItems:
           - participation: null
-            experiences:
-            - confirmedBy:
+            skillGroups:
+            - skills:
               - null
               - null
-              skillLevel:
-                level:
-                  level: 1
-                skill: null
-            - confirmedBy:
+              group: null
+            - skills:
               - null
               - null
-              skillLevel:
-                level:
-                  level: 1
-                skill: null
+              group: null
           - participation: null
-            experiences:
-            - confirmedBy:
+            skillGroups:
+            - skills:
               - null
               - null
-              skillLevel:
-                level:
-                  level: 1
-                skill: null
-            - confirmedBy:
+              group: null
+            - skills:
               - null
               - null
-              skillLevel:
-                level:
-                  level: 1
-                skill: null
+              group: null
           projectDetails:
             persons:
             - null
@@ -4438,37 +4414,25 @@ components:
       example:
         participationItems:
         - participation: null
-          experiences:
-          - confirmedBy:
+          skillGroups:
+          - skills:
             - null
             - null
-            skillLevel:
-              level:
-                level: 1
-              skill: null
-          - confirmedBy:
+            group: null
+          - skills:
             - null
             - null
-            skillLevel:
-              level:
-                level: 1
-              skill: null
+            group: null
         - participation: null
-          experiences:
-          - confirmedBy:
+          skillGroups:
+          - skills:
             - null
             - null
-            skillLevel:
-              level:
-                level: 1
-              skill: null
-          - confirmedBy:
+            group: null
+          - skills:
             - null
             - null
-            skillLevel:
-              level:
-                level: 1
-              skill: null
+            group: null
         projectDetails:
           persons:
           - null
@@ -4617,7 +4581,7 @@ components:
           type: array
         skillGroups:
           items:
-            $ref: '#/components/schemas/SkillGroup'
+            $ref: '#/components/schemas/ExperienceSkillGroup'
           type: array
         timeframe:
           $ref: '#/components/schemas/Timeframed'
@@ -4704,31 +4668,24 @@ components:
           updated: 2000-01-23T04:56:07.000+00:00
           createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         person: null
+        skillGroups:
+        - skills:
+          - null
+          - null
+          group: null
+        - skills:
+          - null
+          - null
+          group: null
         project: null
-        experiences:
-        - confirmedBy:
-          - null
-          - null
-          skillLevel:
-            level:
-              level: 1
-            skill: null
-        - confirmedBy:
-          - null
-          - null
-          skillLevel:
-            level:
-              level: 1
-            skill: null
       properties:
         audit:
           $ref: '#/components/schemas/Audit'
         participation:
           $ref: '#/components/schemas/ProjectParticipation'
-        experiences:
+        skillGroups:
           items:
-            $ref: '#/components/schemas/Experience'
-          readOnly: true
+            $ref: '#/components/schemas/ExperienceSkillGroup'
           type: array
         person:
           $ref: '#/components/schemas/Person'
@@ -5108,27 +5065,21 @@ components:
     PersonProjectParticipationItem:
       example:
         participation: null
-        experiences:
-        - confirmedBy:
+        skillGroups:
+        - skills:
           - null
           - null
-          skillLevel:
-            level:
-              level: 1
-            skill: null
-        - confirmedBy:
+          group: null
+        - skills:
           - null
           - null
-          skillLevel:
-            level:
-              level: 1
-            skill: null
+          group: null
       properties:
         participation:
           $ref: '#/components/schemas/ProjectParticipation'
-        experiences:
+        skillGroups:
           items:
-            $ref: '#/components/schemas/Experience'
+            $ref: '#/components/schemas/ExperienceSkillGroup'
           type: array
       title: PersonProjectParticipationItem
       type: object
@@ -5146,21 +5097,6 @@ components:
       - CONFIDENTIAL
       title: Confidentiality
       type: string
-    SkillGroup:
-      example:
-        skills:
-        - null
-        - null
-        group: null
-      properties:
-        group:
-          $ref: '#/components/schemas/Skill'
-        skills:
-          items:
-            $ref: '#/components/schemas/Skill'
-          type: array
-      title: SkillGroup
-      type: object
     ProjectStatus:
       enum:
       - PLANNING

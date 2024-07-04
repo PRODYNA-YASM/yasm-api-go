@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Participation** | Pointer to [**ProjectParticipation**](ProjectParticipation.md) |  | [optional] 
-**Experiences** | Pointer to [**[]Experience**](Experience.md) |  | [optional] 
+**SkillGroups** | Pointer to [**[]ExperienceSkillGroup**](ExperienceSkillGroup.md) |  | [optional] 
 
 ## Methods
 
@@ -51,30 +51,30 @@ SetParticipation sets Participation field to given value.
 
 HasParticipation returns a boolean if a field has been set.
 
-### GetExperiences
+### GetSkillGroups
 
-`func (o *PersonProjectParticipationItem) GetExperiences() []Experience`
+`func (o *PersonProjectParticipationItem) GetSkillGroups() []ExperienceSkillGroup`
 
-GetExperiences returns the Experiences field if non-nil, zero value otherwise.
+GetSkillGroups returns the SkillGroups field if non-nil, zero value otherwise.
 
-### GetExperiencesOk
+### GetSkillGroupsOk
 
-`func (o *PersonProjectParticipationItem) GetExperiencesOk() (*[]Experience, bool)`
+`func (o *PersonProjectParticipationItem) GetSkillGroupsOk() (*[]ExperienceSkillGroup, bool)`
 
-GetExperiencesOk returns a tuple with the Experiences field if it's non-nil, zero value otherwise
+GetSkillGroupsOk returns a tuple with the SkillGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExperiences
+### SetSkillGroups
 
-`func (o *PersonProjectParticipationItem) SetExperiences(v []Experience)`
+`func (o *PersonProjectParticipationItem) SetSkillGroups(v []ExperienceSkillGroup)`
 
-SetExperiences sets Experiences field to given value.
+SetSkillGroups sets SkillGroups field to given value.
 
-### HasExperiences
+### HasSkillGroups
 
-`func (o *PersonProjectParticipationItem) HasExperiences() bool`
+`func (o *PersonProjectParticipationItem) HasSkillGroups() bool`
 
-HasExperiences returns a boolean if a field has been set.
+HasSkillGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

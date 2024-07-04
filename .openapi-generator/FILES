@@ -117,7 +117,6 @@ docs/Seniority.md
 docs/Skill.md
 docs/SkillAPI.md
 docs/SkillDetails.md
-docs/SkillGroup.md
 docs/SkillLevel.md
 docs/SkillLevelUpdate.md
 docs/SkillLink.md
@@ -216,7 +215,6 @@ model_search_stats.go
 model_seniority.go
 model_skill.go
 model_skill_details.go
-model_skill_group.go
 model_skill_level.go
 model_skill_level_update.go
 model_skill_link.go

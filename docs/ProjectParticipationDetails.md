@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Audit** | Pointer to [**Audit**](Audit.md) |  | [optional] 
 **Participation** | Pointer to [**ProjectParticipation**](ProjectParticipation.md) |  | [optional] 
-**Experiences** | Pointer to [**[]Experience**](Experience.md) |  | [optional] [readonly] 
+**SkillGroups** | Pointer to [**[]ExperienceSkillGroup**](ExperienceSkillGroup.md) |  | [optional] 
 **Person** | Pointer to [**Person**](Person.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
 
@@ -79,30 +79,30 @@ SetParticipation sets Participation field to given value.
 
 HasParticipation returns a boolean if a field has been set.
 
-### GetExperiences
+### GetSkillGroups
 
-`func (o *ProjectParticipationDetails) GetExperiences() []Experience`
+`func (o *ProjectParticipationDetails) GetSkillGroups() []ExperienceSkillGroup`
 
-GetExperiences returns the Experiences field if non-nil, zero value otherwise.
+GetSkillGroups returns the SkillGroups field if non-nil, zero value otherwise.
 
-### GetExperiencesOk
+### GetSkillGroupsOk
 
-`func (o *ProjectParticipationDetails) GetExperiencesOk() (*[]Experience, bool)`
+`func (o *ProjectParticipationDetails) GetSkillGroupsOk() (*[]ExperienceSkillGroup, bool)`
 
-GetExperiencesOk returns a tuple with the Experiences field if it's non-nil, zero value otherwise
+GetSkillGroupsOk returns a tuple with the SkillGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExperiences
+### SetSkillGroups
 
-`func (o *ProjectParticipationDetails) SetExperiences(v []Experience)`
+`func (o *ProjectParticipationDetails) SetSkillGroups(v []ExperienceSkillGroup)`
 
-SetExperiences sets Experiences field to given value.
+SetSkillGroups sets SkillGroups field to given value.
 
-### HasExperiences
+### HasSkillGroups
 
-`func (o *ProjectParticipationDetails) HasExperiences() bool`
+`func (o *ProjectParticipationDetails) HasSkillGroups() bool`
 
-HasExperiences returns a boolean if a field has been set.
+HasSkillGroups returns a boolean if a field has been set.
 
 ### GetPerson
 
