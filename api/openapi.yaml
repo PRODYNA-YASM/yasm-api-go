@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.37.0
+  version: 1.38.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -46,6 +46,8 @@ tags:
   name: Project
 - description: Skill related endpoints
   name: Skill
+- description: Skills Profile related endpoints
+  name: SkillsProfile
 - description: Person related endpoints
   name: Person
 - description: Language related endpoints
@@ -2438,6 +2440,57 @@ paths:
       summary: Set a manager for a person
       tags:
       - Person
+  /persons/{personId}/skills-profiles:
+    get:
+      operationId: getPersonSkillsProfiles
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedSkillsProfiles'
+          description: OK
+      summary: Get all SkillsProfiles of a single person
+      tags:
+      - Person
+      - SkillsProfile
+    post:
+      operationId: createSkillsProfileForPerson
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkillsProfileRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillsProfileDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Create a SkillsProfile
+      tags:
+      - Person
+      - SkillsProfile
   /profiles:
     post:
       operationId: createProfile
@@ -3250,6 +3303,85 @@ paths:
       summary: "Attach a Skill to a parent Skill, returns the parent Skill"
       tags:
       - Skill
+  /skillsProfiles/{skillsProfileId}:
+    delete:
+      operationId: deleteSkillsProfile
+      parameters:
+      - in: path
+        name: skillsProfileId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Delete a skills profile
+      tags:
+      - SkillsProfile
+    get:
+      operationId: getSkillsProfile
+      parameters:
+      - in: path
+        name: skillsProfileId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillsProfileDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get a SkillsProfile
+      tags:
+      - SkillsProfile
+    put:
+      operationId: updateSkillsProfile
+      parameters:
+      - in: path
+        name: skillsProfileId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkillsProfileRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillsProfileDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Update a SkillsProfile
+      tags:
+      - SkillsProfile
   /templates:
     get:
       operationId: getTemplates
@@ -3336,6 +3468,12 @@ components:
     ProjectParticipationId:
       in: path
       name: projectParticipationId
+      required: true
+      schema:
+        $ref: '#/components/schemas/UUID'
+    SkillsProfileId:
+      in: path
+      name: skillsProfileId
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
@@ -4475,6 +4613,59 @@ components:
           type: array
       title: PersonProjectParticipationDetails
       type: object
+    PagedSkillsProfiles:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          skillsProfiles:
+            items:
+              $ref: '#/components/schemas/SkillsProfileDetails'
+            type: array
+        type: object
+      title: PagedSkillsProfiles
+    SkillsProfileRequest:
+      example:
+        skillsProfile: null
+        skillIds:
+        - null
+        - null
+      properties:
+        skillsProfile:
+          $ref: '#/components/schemas/SkillsProfile'
+        skillIds:
+          items:
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
+          type: array
+      title: SkillsProfileRequest
+      type: object
+    SkillsProfileDetails:
+      example:
+        skills:
+        - null
+        - null
+        skillsProfile: null
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        person: null
+      properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
+        skillsProfile:
+          $ref: '#/components/schemas/SkillsProfile'
+        person:
+          $ref: '#/components/schemas/Person'
+        skills:
+          items:
+            $ref: '#/components/schemas/Skill'
+          type: array
+      title: SkillsProfileDetails
+      type: object
     Profile:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -5083,6 +5274,11 @@ components:
           type: array
       title: PersonProjectParticipationItem
       type: object
+    SkillsProfile:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - type: object
+      title: SkillsProfile
     ProjectType:
       enum:
       - UNKNOWN_TYPE

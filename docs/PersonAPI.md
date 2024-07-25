@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**AddSkillConfirmation**](PersonAPI.md#AddSkillConfirmation) | **Post** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
 [**CreateAvailability**](PersonAPI.md#CreateAvailability) | **Post** /persons/{personId}/availabilities | Create a availability for a person
 [**CreatePerson**](PersonAPI.md#CreatePerson) | **Post** /persons | Create a new Person
+[**CreateSkillsProfileForPerson**](PersonAPI.md#CreateSkillsProfileForPerson) | **Post** /persons/{personId}/skills-profiles | Create a SkillsProfile
 [**DeleteAvailability**](PersonAPI.md#DeleteAvailability) | **Delete** /persons/{personId}/availabilities/{availabilityId} | Delete a person availability
 [**DeleteOfficeCountry**](PersonAPI.md#DeleteOfficeCountry) | **Delete** /offices/{officeId}/countries/{countryId} | Delete the office from a Person
 [**DeletePerson**](PersonAPI.md#DeletePerson) | **Delete** /persons/{personId} | Delete an existing Person
@@ -28,6 +29,7 @@ Method | HTTP request | Description
 [**GeneratePdfProfile**](PersonAPI.md#GeneratePdfProfile) | **Post** /pdf-profile | Generate a PDF profile from a Person
 [**GetAvailabilities**](PersonAPI.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonAPI.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
+[**GetPersonSkillsProfiles**](PersonAPI.md#GetPersonSkillsProfiles) | **Get** /persons/{personId}/skills-profiles | Get all SkillsProfiles of a single person
 [**ReadPersonPicture**](PersonAPI.md#ReadPersonPicture) | **Get** /persons/{personId}/picture | Read person image
 [**ReadPersonProjectParticipation**](PersonAPI.md#ReadPersonProjectParticipation) | **Get** /persons/{personId}/project-participation | Get a Project Participation of a Person
 [**ReadPersonSkillStatistics**](PersonAPI.md#ReadPersonSkillStatistics) | **Get** /persons/{personId}/skill-statistic/{skillId} | Show detailed statistics of a skill for a person
@@ -744,6 +746,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateSkillsProfileForPerson
+
+> SkillsProfileDetails CreateSkillsProfileForPerson(ctx, personId).SkillsProfileRequest(skillsProfileRequest).Execute()
+
+Create a SkillsProfile
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillsProfileRequest := *openapiclient.NewSkillsProfileRequest() // SkillsProfileRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.CreateSkillsProfileForPerson(context.Background(), personId).SkillsProfileRequest(skillsProfileRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.CreateSkillsProfileForPerson``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateSkillsProfileForPerson`: SkillsProfileDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.CreateSkillsProfileForPerson`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSkillsProfileForPersonRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **skillsProfileRequest** | [**SkillsProfileRequest**](SkillsProfileRequest.md) |  | 
+
+### Return type
+
+[**SkillsProfileDetails**](SkillsProfileDetails.md)
 
 ### Authorization
 
@@ -1715,6 +1787,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PersonDetails**](PersonDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPersonSkillsProfiles
+
+> PagedSkillsProfiles GetPersonSkillsProfiles(ctx, personId).Execute()
+
+Get all SkillsProfiles of a single person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.GetPersonSkillsProfiles(context.Background(), personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetPersonSkillsProfiles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPersonSkillsProfiles`: PagedSkillsProfiles
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetPersonSkillsProfiles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**personId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPersonSkillsProfilesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**PagedSkillsProfiles**](PagedSkillsProfiles.md)
 
 ### Authorization
 

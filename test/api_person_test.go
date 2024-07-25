@@ -165,6 +165,20 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PersonAPIService CreateSkillsProfileForPerson", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+
+		resp, httpRes, err := apiClient.PersonAPI.CreateSkillsProfileForPerson(context.Background(), personId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PersonAPIService DeleteAvailability", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -359,6 +373,20 @@ func Test_client_PersonAPIService(t *testing.T) {
 		var personId string
 
 		resp, httpRes, err := apiClient.PersonAPI.GetPerson(context.Background(), personId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PersonAPIService GetPersonSkillsProfiles", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+
+		resp, httpRes, err := apiClient.PersonAPI.GetPersonSkillsProfiles(context.Background(), personId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
