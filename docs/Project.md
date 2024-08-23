@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **External** | Pointer to **bool** | true if project was done outside of the organization | [optional] [default to false]
+**ErpId** | Pointer to **string** | ID in the ERP system | [optional] 
 **ProjectType** | Pointer to [**ProjectType**](ProjectType.md) |  | [optional] 
 **Confidentiality** | Pointer to [**Confidentiality**](Confidentiality.md) |  | [optional] 
 
@@ -155,6 +156,31 @@ SetExternal sets External field to given value.
 `func (o *Project) HasExternal() bool`
 
 HasExternal returns a boolean if a field has been set.
+
+### GetErpId
+
+`func (o *Project) GetErpId() string`
+
+GetErpId returns the ErpId field if non-nil, zero value otherwise.
+
+### GetErpIdOk
+
+`func (o *Project) GetErpIdOk() (*string, bool)`
+
+GetErpIdOk returns a tuple with the ErpId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErpId
+
+`func (o *Project) SetErpId(v string)`
+
+SetErpId sets ErpId field to given value.
+
+### HasErpId
+
+`func (o *Project) HasErpId() bool`
+
+HasErpId returns a boolean if a field has been set.
 
 ### GetProjectType
 
