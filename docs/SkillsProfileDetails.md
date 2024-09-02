@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Audit** | Pointer to [**Audit**](Audit.md) |  | [optional] 
 **SkillsProfile** | Pointer to [**SkillsProfile**](SkillsProfile.md) |  | [optional] 
 **Person** | Pointer to [**Person**](Person.md) |  | [optional] 
-**Skills** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
+**Skills** | Pointer to [**[]ExperienceSkill**](ExperienceSkill.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasPerson returns a boolean if a field has been set.
 
 ### GetSkills
 
-`func (o *SkillsProfileDetails) GetSkills() []Skill`
+`func (o *SkillsProfileDetails) GetSkills() []ExperienceSkill`
 
 GetSkills returns the Skills field if non-nil, zero value otherwise.
 
 ### GetSkillsOk
 
-`func (o *SkillsProfileDetails) GetSkillsOk() (*[]Skill, bool)`
+`func (o *SkillsProfileDetails) GetSkillsOk() (*[]ExperienceSkill, bool)`
 
 GetSkillsOk returns a tuple with the Skills field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkills
 
-`func (o *SkillsProfileDetails) SetSkills(v []Skill)`
+`func (o *SkillsProfileDetails) SetSkills(v []ExperienceSkill)`
 
 SetSkills sets Skills field to given value.
 
