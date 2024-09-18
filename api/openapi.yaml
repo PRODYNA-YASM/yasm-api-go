@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.40.0
+  version: 1.41.0
 servers:
 - url: "{scheme}://{host}:{port}/api/v1"
   variables:
@@ -58,6 +58,8 @@ tags:
   name: Search
 - description: Country related endpoints
   name: Country
+- description: Award related endpoints
+  name: Award
 paths:
   /version:
     get:
@@ -82,6 +84,173 @@ paths:
       summary: Information about the server
       tags:
       - Status
+  /awards:
+    post:
+      operationId: createAward
+      parameters:
+      - description: The ID of the organization
+        in: query
+        name: organizationId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Award'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AwardDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Create a new Award in an Organization
+      tags:
+      - Award
+  /awards/{awardId}:
+    delete:
+      operationId: deleteAward
+      parameters:
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Delete an award
+      tags:
+      - Award
+    get:
+      operationId: getAward
+      parameters:
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AwardDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get details of an award by ID
+      tags:
+      - Award
+    put:
+      operationId: updateAward
+      parameters:
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Award'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AwardDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Update an award
+      tags:
+      - Award
+  /awards/{awardId}/organizations/{organizationId}:
+    put:
+      operationId: moveAward
+      parameters:
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: organizationId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AwardDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Move an award to an Organization
+      tags:
+      - Organization
+      - Award
+  /awards/search:
+    post:
+      operationId: searchAwards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AwardSearch'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedAwards'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Search for awards
+      tags:
+      - Award
   /certifications:
     post:
       operationId: createCertification
@@ -1593,6 +1762,109 @@ paths:
       tags:
       - Person
       - Availability
+  /persons/{personId}/awards/{awardId}:
+    delete:
+      operationId: deletePersonAward
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Remove an Award from a Person
+      tags:
+      - Person
+      - Award
+    post:
+      operationId: addPersonAward
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DateModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Add an award to a Person
+      tags:
+      - Person
+      - Award
+    put:
+      operationId: updatePersonAward
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DateModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Update an Award of a Person
+      tags:
+      - Person
+      - Award
   /persons/{personId}/certifications/{certificationId}:
     delete:
       operationId: deletePersonCertification
@@ -3399,15 +3671,21 @@ paths:
       - Templates
 components:
   parameters:
-    CertificationId:
+    AwardId:
       in: path
-      name: certificationId
+      name: awardId
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
     OrganizationId:
       in: path
       name: organizationId
+      required: true
+      schema:
+        $ref: '#/components/schemas/UUID'
+    CertificationId:
+      in: path
+      name: certificationId
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
@@ -3511,6 +3789,67 @@ components:
       format: uuid
       title: UUID
       type: string
+    Award:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Synonymable'
+      - $ref: '#/components/schemas/Descriptable'
+      - properties:
+          yearOfAward:
+            description: The year in which the award was received
+            example: 2024
+            minimum: 1900
+            type: integer
+        type: object
+      title: Award
+    AwardDetails:
+      example:
+        award: null
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        organization: null
+      properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
+        award:
+          $ref: '#/components/schemas/Award'
+        organization:
+          $ref: '#/components/schemas/Organization'
+      title: AwardDetails
+      type: object
+    Status:
+      example:
+        status: status
+      properties:
+        status:
+          type: string
+      title: Status
+      type: object
+    AwardSearch:
+      allOf:
+      - $ref: '#/components/schemas/Search'
+      - properties:
+          awardIds:
+            $ref: '#/components/schemas/UUIDS'
+          organizationIds:
+            $ref: '#/components/schemas/UUIDS'
+        type: object
+      title: AwardSearch
+    PagedAwards:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          awards:
+            items:
+              $ref: '#/components/schemas/AwardDetails'
+            type: array
+        type: object
+      title: PagedAwards
     Certification:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -3551,14 +3890,6 @@ components:
             $ref: '#/components/schemas/SkillLevel'
           type: array
       title: CertificationDetails
-      type: object
-    Status:
-      example:
-        status: status
-      properties:
-        status:
-          type: string
-      title: Status
       type: object
     Level:
       example:
@@ -3839,6 +4170,9 @@ components:
           updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated: 2000-01-23T04:56:07.000+00:00
           createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        awards:
+        - null
+        - null
         organization: null
         industries:
         - null
@@ -3881,6 +4215,10 @@ components:
           items:
             $ref: '#/components/schemas/Certification'
           type: array
+        awards:
+          items:
+            $ref: '#/components/schemas/Award'
+          type: array
         offices:
           items:
             $ref: '#/components/schemas/Office'
@@ -3900,6 +4238,8 @@ components:
           industryIds:
             $ref: '#/components/schemas/UUIDS'
           certificationIds:
+            $ref: '#/components/schemas/UUIDS'
+          awardIds:
             $ref: '#/components/schemas/UUIDS'
         type: object
       title: OrganizationSearch
@@ -4136,6 +4476,25 @@ components:
             updated: 2000-01-23T04:56:07.000+00:00
             createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           person: null
+          awards:
+          - award: null
+            audit:
+              updatedBy: updatedBy
+              createdBy: createdBy
+              created: 2000-01-23T04:56:07.000+00:00
+              updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updated: 2000-01-23T04:56:07.000+00:00
+              createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            organization: null
+          - award: null
+            audit:
+              updatedBy: updatedBy
+              createdBy: createdBy
+              created: 2000-01-23T04:56:07.000+00:00
+              updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updated: 2000-01-23T04:56:07.000+00:00
+              createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            organization: null
           organization: null
           industries:
           - null
@@ -4324,6 +4683,25 @@ components:
           updated: 2000-01-23T04:56:07.000+00:00
           createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         person: null
+        awards:
+        - award: null
+          audit:
+            updatedBy: updatedBy
+            createdBy: createdBy
+            created: 2000-01-23T04:56:07.000+00:00
+            updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updated: 2000-01-23T04:56:07.000+00:00
+            createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          organization: null
+        - award: null
+          audit:
+            updatedBy: updatedBy
+            createdBy: createdBy
+            created: 2000-01-23T04:56:07.000+00:00
+            updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updated: 2000-01-23T04:56:07.000+00:00
+            createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          organization: null
         organization: null
         industries:
         - null
@@ -4353,6 +4731,10 @@ components:
         certifications:
           items:
             $ref: '#/components/schemas/CertificationDetails'
+          type: array
+        awards:
+          items:
+            $ref: '#/components/schemas/AwardDetails'
           type: array
         languages:
           items:
@@ -4525,6 +4907,8 @@ components:
           industryIds:
             $ref: '#/components/schemas/UUIDS'
           certificationIds:
+            $ref: '#/components/schemas/UUIDS'
+          awardIds:
             $ref: '#/components/schemas/UUIDS'
           inactive:
             type: boolean
@@ -5089,18 +5473,6 @@ components:
       readOnly: true
       title: Audit
       type: object
-    SkillLevel:
-      example:
-        level:
-          level: 1
-        skill: null
-      properties:
-        skill:
-          $ref: '#/components/schemas/Skill'
-        level:
-          $ref: '#/components/schemas/Level'
-      title: SkillLevel
-      type: object
     Page:
       discriminator:
         propertyName: objectType
@@ -5116,6 +5488,18 @@ components:
         objectType:
           type: string
       title: Page
+      type: object
+    SkillLevel:
+      example:
+        level:
+          level: 1
+        skill: null
+      properties:
+        skill:
+          $ref: '#/components/schemas/Skill'
+        level:
+          $ref: '#/components/schemas/Level'
+      title: SkillLevel
       type: object
     Locateable:
       properties:

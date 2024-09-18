@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Experiences** | Pointer to [**[]Experience**](Experience.md) |  | [optional] 
 **Interests** | Pointer to [**[]Skill**](Skill.md) |  | [optional] 
 **Certifications** | Pointer to [**[]CertificationDetails**](CertificationDetails.md) |  | [optional] 
+**Awards** | Pointer to [**[]AwardDetails**](AwardDetails.md) |  | [optional] 
 **Languages** | Pointer to [**[]LanguageLevel**](LanguageLevel.md) |  | [optional] 
 **Office** | Pointer to [**OfficeDetails**](OfficeDetails.md) |  | [optional] 
 **Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
@@ -213,6 +214,31 @@ SetCertifications sets Certifications field to given value.
 `func (o *PersonDetails) HasCertifications() bool`
 
 HasCertifications returns a boolean if a field has been set.
+
+### GetAwards
+
+`func (o *PersonDetails) GetAwards() []AwardDetails`
+
+GetAwards returns the Awards field if non-nil, zero value otherwise.
+
+### GetAwardsOk
+
+`func (o *PersonDetails) GetAwardsOk() (*[]AwardDetails, bool)`
+
+GetAwardsOk returns a tuple with the Awards field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwards
+
+`func (o *PersonDetails) SetAwards(v []AwardDetails)`
+
+SetAwards sets Awards field to given value.
+
+### HasAwards
+
+`func (o *PersonDetails) HasAwards() bool`
+
+HasAwards returns a boolean if a field has been set.
 
 ### GetLanguages
 

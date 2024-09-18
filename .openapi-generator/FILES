@@ -4,6 +4,7 @@
 README.md
 api/openapi.yaml
 api_availability.go
+api_award.go
 api_certification.go
 api_country.go
 api_industry.go
@@ -28,6 +29,10 @@ docs/Availability.md
 docs/AvailabilityAPI.md
 docs/AvailabilityDetail.md
 docs/AvailabilityFilter.md
+docs/Award.md
+docs/AwardAPI.md
+docs/AwardDetails.md
+docs/AwardSearch.md
 docs/BasicDomainModel.md
 docs/Certification.md
 docs/CertificationAPI.md
@@ -69,6 +74,7 @@ docs/OrganizationSearch.md
 docs/PDFProfileAPI.md
 docs/Page.md
 docs/PagedAvailabilities.md
+docs/PagedAwards.md
 docs/PagedCertifications.md
 docs/PagedCountries.md
 docs/PagedIndustries.md
@@ -144,6 +150,9 @@ model_audit.go
 model_availability.go
 model_availability_detail.go
 model_availability_filter.go
+model_award.go
+model_award_details.go
+model_award_search.go
 model_basic_domain_model.go
 model_certification.go
 model_certification_details.go
@@ -178,6 +187,7 @@ model_organization_details.go
 model_organization_search.go
 model_page.go
 model_paged_availabilities.go
+model_paged_awards.go
 model_paged_certifications.go
 model_paged_countries.go
 model_paged_industries.go
@@ -238,6 +248,7 @@ model_timeframed.go
 model_version.go
 response.go
 test/api_availability_test.go
+test/api_award_test.go
 test/api_certification_test.go
 test/api_country_test.go
 test/api_industry_test.go
