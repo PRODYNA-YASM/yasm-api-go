@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SkillsProfile** | Pointer to [**SkillsProfile**](SkillsProfile.md) |  | [optional] 
 **SkillIds** | Pointer to **[]string** |  | [optional] 
+**MethodologyIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetSkillIds sets SkillIds field to given value.
 `func (o *SkillsProfileRequest) HasSkillIds() bool`
 
 HasSkillIds returns a boolean if a field has been set.
+
+### GetMethodologyIds
+
+`func (o *SkillsProfileRequest) GetMethodologyIds() []string`
+
+GetMethodologyIds returns the MethodologyIds field if non-nil, zero value otherwise.
+
+### GetMethodologyIdsOk
+
+`func (o *SkillsProfileRequest) GetMethodologyIdsOk() (*[]string, bool)`
+
+GetMethodologyIdsOk returns a tuple with the MethodologyIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMethodologyIds
+
+`func (o *SkillsProfileRequest) SetMethodologyIds(v []string)`
+
+SetMethodologyIds sets MethodologyIds field to given value.
+
+### HasMethodologyIds
+
+`func (o *SkillsProfileRequest) HasMethodologyIds() bool`
+
+HasMethodologyIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

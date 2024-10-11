@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **SkillsProfile** | Pointer to [**SkillsProfile**](SkillsProfile.md) |  | [optional] 
 **Person** | Pointer to [**Person**](Person.md) |  | [optional] 
 **Skills** | Pointer to [**[]ExperienceSkill**](ExperienceSkill.md) |  | [optional] 
+**Methodologies** | Pointer to [**[]ExperienceSkill**](ExperienceSkill.md) |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetSkills sets Skills field to given value.
 `func (o *SkillsProfileDetails) HasSkills() bool`
 
 HasSkills returns a boolean if a field has been set.
+
+### GetMethodologies
+
+`func (o *SkillsProfileDetails) GetMethodologies() []ExperienceSkill`
+
+GetMethodologies returns the Methodologies field if non-nil, zero value otherwise.
+
+### GetMethodologiesOk
+
+`func (o *SkillsProfileDetails) GetMethodologiesOk() (*[]ExperienceSkill, bool)`
+
+GetMethodologiesOk returns a tuple with the Methodologies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMethodologies
+
+`func (o *SkillsProfileDetails) SetMethodologies(v []ExperienceSkill)`
+
+SetMethodologies sets Methodologies field to given value.
+
+### HasMethodologies
+
+`func (o *SkillsProfileDetails) HasMethodologies() bool`
+
+HasMethodologies returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
