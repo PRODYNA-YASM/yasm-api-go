@@ -1,6 +1,6 @@
 # \ProfileAPI
 
-All URIs are relative to *https://yasm.prodyna.com:443/api/v1*
+All URIs are relative to *https://yasm.prodyna.com:443/api/graph/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
