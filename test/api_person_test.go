@@ -168,6 +168,18 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PersonAPIService CreatePdfProfile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.PersonAPI.CreatePdfProfile(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PersonAPIService CreatePerson", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -370,18 +382,6 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PersonAPIService GeneratePdfProfile", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.PersonAPI.GeneratePdfProfile(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test PersonAPIService GetAvailabilities", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -417,6 +417,18 @@ func Test_client_PersonAPIService(t *testing.T) {
 		var personId string
 
 		resp, httpRes, err := apiClient.PersonAPI.GetPersonSkillsProfiles(context.Background(), personId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PersonAPIService PublishPdfProfile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.PersonAPI.PublishPdfProfile(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.43.0
+  version: 1.44.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -1504,9 +1504,9 @@ paths:
       summary: Search over organizations
       tags:
       - Organization
-  /pdf-profile:
+  /pdf-profile/create:
     post:
-      operationId: generatePdfProfile
+      operationId: createPdfProfile
       requestBody:
         content:
           application/json:
@@ -1516,12 +1516,38 @@ paths:
       responses:
         "200":
           content:
-            application/octet-stream:
+            application/pdf:
               schema:
                 example: JVBERi0xLjQKJcfs...
                 format: binary
                 type: string
-          description: A PDF profile of a Person
+          description: "A PDF profile of a Person, returns a PDF in binary format"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Generate a PDF profile from a Person
+      tags:
+      - PDFProfile
+      - Person
+  /pdf-profile/publish:
+    post:
+      operationId: publishPdfProfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PdfProfile'
+          description: A url to a stored PDF profile of a Person
         default:
           content:
             application/json:
@@ -4514,6 +4540,16 @@ components:
         anonymize:
           type: boolean
       title: ProfileRequest
+      type: object
+    PdfProfile:
+      example:
+        path: /external/uuid/filename.pdf
+      properties:
+        path:
+          example: /external/uuid/filename.pdf
+          format: string
+          type: string
+      title: PdfProfile
       type: object
     Person:
       allOf:

@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**AddProjectParticipation**](PersonAPI.md#AddProjectParticipation) | **Post** /project-participations | Add Project to a Person
 [**AddSkillConfirmation**](PersonAPI.md#AddSkillConfirmation) | **Post** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
 [**CreateAvailability**](PersonAPI.md#CreateAvailability) | **Post** /persons/{personId}/availabilities | Create a availability for a person
+[**CreatePdfProfile**](PersonAPI.md#CreatePdfProfile) | **Post** /pdf-profile/create | Generate a PDF profile from a Person
 [**CreatePerson**](PersonAPI.md#CreatePerson) | **Post** /persons | Create a new Person
 [**CreateSkillsProfileForPerson**](PersonAPI.md#CreateSkillsProfileForPerson) | **Post** /persons/{personId}/skills-profiles | Create a SkillsProfile
 [**DeleteAvailability**](PersonAPI.md#DeleteAvailability) | **Delete** /persons/{personId}/availabilities/{availabilityId} | Delete a person availability
@@ -28,10 +29,10 @@ Method | HTTP request | Description
 [**DeletePersonSkillExperience**](PersonAPI.md#DeletePersonSkillExperience) | **Delete** /persons/{personId}/experiences/skills/{skillId} | Remove an Skill Experience to a Person
 [**DeletePersonSkillExperiences**](PersonAPI.md#DeletePersonSkillExperiences) | **Delete** /persons/{personId}/experiences | Remove an Skill Experience to a Person
 [**DeleteProjectParticipation**](PersonAPI.md#DeleteProjectParticipation) | **Delete** /project-participations/{projectParticipationId} | Remove an Project from a Person
-[**GeneratePdfProfile**](PersonAPI.md#GeneratePdfProfile) | **Post** /pdf-profile | Generate a PDF profile from a Person
 [**GetAvailabilities**](PersonAPI.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonAPI.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**GetPersonSkillsProfiles**](PersonAPI.md#GetPersonSkillsProfiles) | **Get** /persons/{personId}/skills-profiles | Get all SkillsProfiles of a single person
+[**PublishPdfProfile**](PersonAPI.md#PublishPdfProfile) | **Post** /pdf-profile/publish | Generate a PDF profile from a Person
 [**ReadPersonPicture**](PersonAPI.md#ReadPersonPicture) | **Get** /persons/{personId}/picture | Read person image
 [**ReadPersonProjectParticipation**](PersonAPI.md#ReadPersonProjectParticipation) | **Get** /persons/{personId}/project-participation | Get a Project Participation of a Person
 [**ReadPersonSkillStatistics**](PersonAPI.md#ReadPersonSkillStatistics) | **Get** /persons/{personId}/skill-statistic/{skillId} | Show detailed statistics of a skill for a person
@@ -768,6 +769,70 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreatePdfProfile
+
+> *os.File CreatePdfProfile(ctx).ProfileRequest(profileRequest).Execute()
+
+Generate a PDF profile from a Person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    profileRequest := *openapiclient.NewProfileRequest() // ProfileRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.CreatePdfProfile(context.Background()).ProfileRequest(profileRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.CreatePdfProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreatePdfProfile`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.CreatePdfProfile`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreatePdfProfileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **profileRequest** | [**ProfileRequest**](ProfileRequest.md) |  | 
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/pdf, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1750,70 +1815,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GeneratePdfProfile
-
-> *os.File GeneratePdfProfile(ctx).ProfileRequest(profileRequest).Execute()
-
-Generate a PDF profile from a Person
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    profileRequest := *openapiclient.NewProfileRequest() // ProfileRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.GeneratePdfProfile(context.Background()).ProfileRequest(profileRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GeneratePdfProfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GeneratePdfProfile`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GeneratePdfProfile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGeneratePdfProfileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **profileRequest** | [**ProfileRequest**](ProfileRequest.md) |  | 
-
-### Return type
-
-[***os.File**](*os.File.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/octet-stream, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetAvailabilities
 
 > PagedAvailabilities GetAvailabilities(ctx, personId).Execute()
@@ -2011,6 +2012,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PublishPdfProfile
+
+> PdfProfile PublishPdfProfile(ctx).ProfileRequest(profileRequest).Execute()
+
+Generate a PDF profile from a Person
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    profileRequest := *openapiclient.NewProfileRequest() // ProfileRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.PublishPdfProfile(context.Background()).ProfileRequest(profileRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.PublishPdfProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PublishPdfProfile`: PdfProfile
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.PublishPdfProfile`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPublishPdfProfileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **profileRequest** | [**ProfileRequest**](ProfileRequest.md) |  | 
+
+### Return type
+
+[**PdfProfile**](PdfProfile.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -87,6 +87,7 @@ docs/PagedProjectParticipation.md
 docs/PagedProjects.md
 docs/PagedSkills.md
 docs/PagedSkillsProfiles.md
+docs/PdfProfile.md
 docs/Person.md
 docs/PersonAPI.md
 docs/PersonDetails.md
@@ -200,6 +201,7 @@ model_paged_project_participation.go
 model_paged_projects.go
 model_paged_skills.go
 model_paged_skills_profiles.go
+model_pdf_profile.go
 model_person.go
 model_person_details.go
 model_person_project_participation_details.go
