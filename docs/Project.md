@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Geolocation** | Pointer to [**Geolocation**](Geolocation.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **External** | Pointer to **bool** | true if project was done outside of the organization | [optional] [default to false]
-**ErpId** | Pointer to **string** | ID in the ERP system | [optional] 
+**ErpIds** | Pointer to **[]string** | IDs in the ERP system | [optional] 
 **ProjectType** | Pointer to [**ProjectType**](ProjectType.md) |  | [optional] 
 **Confidentiality** | Pointer to [**Confidentiality**](Confidentiality.md) |  | [optional] 
 
@@ -157,30 +157,30 @@ SetExternal sets External field to given value.
 
 HasExternal returns a boolean if a field has been set.
 
-### GetErpId
+### GetErpIds
 
-`func (o *Project) GetErpId() string`
+`func (o *Project) GetErpIds() []string`
 
-GetErpId returns the ErpId field if non-nil, zero value otherwise.
+GetErpIds returns the ErpIds field if non-nil, zero value otherwise.
 
-### GetErpIdOk
+### GetErpIdsOk
 
-`func (o *Project) GetErpIdOk() (*string, bool)`
+`func (o *Project) GetErpIdsOk() (*[]string, bool)`
 
-GetErpIdOk returns a tuple with the ErpId field if it's non-nil, zero value otherwise
+GetErpIdsOk returns a tuple with the ErpIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetErpId
+### SetErpIds
 
-`func (o *Project) SetErpId(v string)`
+`func (o *Project) SetErpIds(v []string)`
 
-SetErpId sets ErpId field to given value.
+SetErpIds sets ErpIds field to given value.
 
-### HasErpId
+### HasErpIds
 
-`func (o *Project) HasErpId() bool`
+`func (o *Project) HasErpIds() bool`
 
-HasErpId returns a boolean if a field has been set.
+HasErpIds returns a boolean if a field has been set.
 
 ### GetProjectType
 
