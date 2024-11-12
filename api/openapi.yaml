@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.45.0
+  version: 1.46.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -3937,6 +3937,12 @@ components:
             $ref: '#/components/schemas/UUIDS'
           organizationIds:
             $ref: '#/components/schemas/UUIDS'
+          projectIds:
+            $ref: '#/components/schemas/UUIDS'
+          industryIds:
+            $ref: '#/components/schemas/UUIDS'
+          officeIds:
+            $ref: '#/components/schemas/UUIDS'
         type: object
       title: CertificationSearch
     PagedCertifications:
@@ -4058,6 +4064,8 @@ components:
           industryIds:
             $ref: '#/components/schemas/UUIDS'
           certificationIds:
+            $ref: '#/components/schemas/UUIDS'
+          skillIds:
             $ref: '#/components/schemas/UUIDS'
         type: object
       title: IndustrySearch
@@ -4266,6 +4274,8 @@ components:
           certificationIds:
             $ref: '#/components/schemas/UUIDS'
           awardIds:
+            $ref: '#/components/schemas/UUIDS'
+          skillIds:
             $ref: '#/components/schemas/UUIDS'
         type: object
       title: OrganizationSearch
@@ -5455,6 +5465,16 @@ components:
             example: all
             type: string
           skillIds:
+            $ref: '#/components/schemas/UUIDS'
+          projectIds:
+            $ref: '#/components/schemas/UUIDS'
+          organizationIds:
+            $ref: '#/components/schemas/UUIDS'
+          industryIds:
+            $ref: '#/components/schemas/UUIDS'
+          certificationIds:
+            $ref: '#/components/schemas/UUIDS'
+          officeIds:
             $ref: '#/components/schemas/UUIDS'
         type: object
       title: SkillSearch

@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **CertificationIds** | Pointer to **[]string** |  | [optional] 
 **SkillIds** | Pointer to **[]string** |  | [optional] 
 **OrganizationIds** | Pointer to **[]string** |  | [optional] 
+**ProjectIds** | Pointer to **[]string** |  | [optional] 
+**IndustryIds** | Pointer to **[]string** |  | [optional] 
+**OfficeIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +104,81 @@ SetOrganizationIds sets OrganizationIds field to given value.
 `func (o *CertificationSearch) HasOrganizationIds() bool`
 
 HasOrganizationIds returns a boolean if a field has been set.
+
+### GetProjectIds
+
+`func (o *CertificationSearch) GetProjectIds() []string`
+
+GetProjectIds returns the ProjectIds field if non-nil, zero value otherwise.
+
+### GetProjectIdsOk
+
+`func (o *CertificationSearch) GetProjectIdsOk() (*[]string, bool)`
+
+GetProjectIdsOk returns a tuple with the ProjectIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectIds
+
+`func (o *CertificationSearch) SetProjectIds(v []string)`
+
+SetProjectIds sets ProjectIds field to given value.
+
+### HasProjectIds
+
+`func (o *CertificationSearch) HasProjectIds() bool`
+
+HasProjectIds returns a boolean if a field has been set.
+
+### GetIndustryIds
+
+`func (o *CertificationSearch) GetIndustryIds() []string`
+
+GetIndustryIds returns the IndustryIds field if non-nil, zero value otherwise.
+
+### GetIndustryIdsOk
+
+`func (o *CertificationSearch) GetIndustryIdsOk() (*[]string, bool)`
+
+GetIndustryIdsOk returns a tuple with the IndustryIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIndustryIds
+
+`func (o *CertificationSearch) SetIndustryIds(v []string)`
+
+SetIndustryIds sets IndustryIds field to given value.
+
+### HasIndustryIds
+
+`func (o *CertificationSearch) HasIndustryIds() bool`
+
+HasIndustryIds returns a boolean if a field has been set.
+
+### GetOfficeIds
+
+`func (o *CertificationSearch) GetOfficeIds() []string`
+
+GetOfficeIds returns the OfficeIds field if non-nil, zero value otherwise.
+
+### GetOfficeIdsOk
+
+`func (o *CertificationSearch) GetOfficeIdsOk() (*[]string, bool)`
+
+GetOfficeIdsOk returns a tuple with the OfficeIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOfficeIds
+
+`func (o *CertificationSearch) SetOfficeIds(v []string)`
+
+SetOfficeIds sets OfficeIds field to given value.
+
+### HasOfficeIds
+
+`func (o *CertificationSearch) HasOfficeIds() bool`
+
+HasOfficeIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

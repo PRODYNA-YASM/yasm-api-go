@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **OrganizationIds** | Pointer to **[]string** |  | [optional] 
 **IndustryIds** | Pointer to **[]string** |  | [optional] 
 **CertificationIds** | Pointer to **[]string** |  | [optional] 
+**SkillIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetCertificationIds sets CertificationIds field to given value.
 `func (o *IndustrySearch) HasCertificationIds() bool`
 
 HasCertificationIds returns a boolean if a field has been set.
+
+### GetSkillIds
+
+`func (o *IndustrySearch) GetSkillIds() []string`
+
+GetSkillIds returns the SkillIds field if non-nil, zero value otherwise.
+
+### GetSkillIdsOk
+
+`func (o *IndustrySearch) GetSkillIdsOk() (*[]string, bool)`
+
+GetSkillIdsOk returns a tuple with the SkillIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkillIds
+
+`func (o *IndustrySearch) SetSkillIds(v []string)`
+
+SetSkillIds sets SkillIds field to given value.
+
+### HasSkillIds
+
+`func (o *IndustrySearch) HasSkillIds() bool`
+
+HasSkillIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
