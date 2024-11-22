@@ -424,6 +424,21 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PersonAPIService GetPersonsForSkillInProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+		var skillId string
+
+		resp, httpRes, err := apiClient.PersonAPI.GetPersonsForSkillInProject(context.Background(), projectId, skillId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PersonAPIService PublishPdfProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

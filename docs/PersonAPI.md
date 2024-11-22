@@ -32,6 +32,7 @@ Method | HTTP request | Description
 [**GetAvailabilities**](PersonAPI.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonAPI.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**GetPersonSkillsProfiles**](PersonAPI.md#GetPersonSkillsProfiles) | **Get** /persons/{personId}/skills-profiles | Get all SkillsProfiles of a single person
+[**GetPersonsForSkillInProject**](PersonAPI.md#GetPersonsForSkillInProject) | **Get** /projects/{projectId}/skills/{skillId}/persons | Get all persons that use a certain skill in a certain project
 [**PublishPdfProfile**](PersonAPI.md#PublishPdfProfile) | **Post** /pdf-profile/publish | Generate a PDF profile from a Person
 [**ReadPersonPicture**](PersonAPI.md#ReadPersonPicture) | **Get** /persons/{personId}/picture | Read person image
 [**ReadPersonProjectParticipation**](PersonAPI.md#ReadPersonProjectParticipation) | **Get** /persons/{personId}/project-participation | Get a Project Participation of a Person
@@ -2004,6 +2005,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PagedSkillsProfiles**](PagedSkillsProfiles.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPersonsForSkillInProject
+
+> PagedPersons GetPersonsForSkillInProject(ctx, projectId, skillId).Execute()
+
+Get all persons that use a certain skill in a certain project
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.GetPersonsForSkillInProject(context.Background(), projectId, skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetPersonsForSkillInProject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPersonsForSkillInProject`: PagedPersons
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetPersonsForSkillInProject`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**projectId** | **string** |  | 
+**skillId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPersonsForSkillInProjectRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**PagedPersons**](PagedPersons.md)
 
 ### Authorization
 

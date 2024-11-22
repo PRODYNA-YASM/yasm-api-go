@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**DeletePersonSkillExperiences**](SkillAPI.md#DeletePersonSkillExperiences) | **Delete** /persons/{personId}/experiences | Remove an Skill Experience to a Person
 [**DeleteSkill**](SkillAPI.md#DeleteSkill) | **Delete** /skills/{skillId} | Delete a Skill
 [**DeleteSkillFromCertification**](SkillAPI.md#DeleteSkillFromCertification) | **Delete** /certifications/{certificationId}/skills/{skillId} | 
+[**GetPersonsForSkillInProject**](SkillAPI.md#GetPersonsForSkillInProject) | **Get** /projects/{projectId}/skills/{skillId}/persons | Get all persons that use a certain skill in a certain project
 [**GetSkill**](SkillAPI.md#GetSkill) | **Get** /skills/{skillId} | Get details for a single skill
 [**ReadPersonSkillStatistics**](SkillAPI.md#ReadPersonSkillStatistics) | **Get** /persons/{personId}/skill-statistic/{skillId} | Show detailed statistics of a skill for a person
 [**RemoveSkillConfirmation**](SkillAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
@@ -864,6 +865,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CertificationDetails**](CertificationDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPersonsForSkillInProject
+
+> PagedPersons GetPersonsForSkillInProject(ctx, projectId, skillId).Execute()
+
+Get all persons that use a certain skill in a certain project
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SkillAPI.GetPersonsForSkillInProject(context.Background(), projectId, skillId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.GetPersonsForSkillInProject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPersonsForSkillInProject`: PagedPersons
+    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.GetPersonsForSkillInProject`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**projectId** | **string** |  | 
+**skillId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPersonsForSkillInProjectRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**PagedPersons**](PagedPersons.md)
 
 ### Authorization
 
