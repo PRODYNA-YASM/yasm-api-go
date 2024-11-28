@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.47.0
+  version: 1.48.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -2789,6 +2789,38 @@ paths:
       tags:
       - Person
       - SkillsProfile
+  /persons/{personId}/skills/{skillId}/projects:
+    get:
+      operationId: getProjectsOfPersonWithSkill
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: skillId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedProjects'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get all projects where a certain skill was used by a certain person
+      tags:
+      - Person
+      - Project
+      - Skill
   /profiles:
     post:
       operationId: createProfile
@@ -5143,6 +5175,16 @@ components:
           type: array
       title: SkillsProfileDetails
       type: object
+    PagedProjects:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          projects:
+            items:
+              $ref: '#/components/schemas/ProjectScoreDetail'
+            type: array
+        type: object
+      title: PagedProjects
     Profile:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -5306,16 +5348,6 @@ components:
             $ref: '#/components/schemas/UUIDS'
         type: object
       title: ProjectSearch
-    PagedProjects:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          projects:
-            items:
-              $ref: '#/components/schemas/ProjectScoreDetail'
-            type: array
-        type: object
-      title: PagedProjects
     ProjectParticipationCreate:
       allOf:
       - $ref: '#/components/schemas/ProjectParticipationUpdate'
@@ -5782,6 +5814,11 @@ components:
             type: integer
         type: object
       title: ExperienceSkill
+    ProjectScoreDetail:
+      allOf:
+      - $ref: '#/components/schemas/ProjectDetails'
+      - $ref: '#/components/schemas/ScoreResult'
+      title: ProjectScoreDetail
     ProjectType:
       enum:
       - UNKNOWN_TYPE
@@ -5813,11 +5850,6 @@ components:
           type: integer
       title: MinMax
       type: object
-    ProjectScoreDetail:
-      allOf:
-      - $ref: '#/components/schemas/ProjectDetails'
-      - $ref: '#/components/schemas/ScoreResult'
-      title: ProjectScoreDetail
     ProjectParticipation:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
