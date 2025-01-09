@@ -22,6 +22,20 @@ func Test_client_ProjectAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test ProjectAPIService AddAwardToProjectParticipations", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var awardId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.AddAwardToProjectParticipations(context.Background(), awardId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectAPIService AddExecutiveOrganizationToProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -70,6 +84,20 @@ func Test_client_ProjectAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ProjectAPI.CreateProject(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectAPIService DeleteAwardFromProjectParticipations", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var awardId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.DeleteAwardFromProjectParticipations(context.Background(), awardId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

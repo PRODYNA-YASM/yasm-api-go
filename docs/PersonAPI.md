@@ -4,7 +4,7 @@ All URIs are relative to *https://yasm.prodyna.com:443/api/graph/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddPersonAward**](PersonAPI.md#AddPersonAward) | **Post** /persons/{personId}/awards/{awardId} | Add an award to a Person
+[**AddAwardToProjectParticipations**](PersonAPI.md#AddAwardToProjectParticipations) | **Post** /project-participations/awards/{awardId} | Add an award to Project Participations
 [**AddPersonCertification**](PersonAPI.md#AddPersonCertification) | **Post** /persons/{personId}/certifications/{certificationId} | Add Certification to a Person
 [**AddPersonInterest**](PersonAPI.md#AddPersonInterest) | **Post** /persons/{personId}/interests/skills/{skillId} | Add an Interest to a Person
 [**AddPersonLanguage**](PersonAPI.md#AddPersonLanguage) | **Post** /persons/{personId}/languages/{languageId} | Assign a language to the person
@@ -18,9 +18,9 @@ Method | HTTP request | Description
 [**CreatePerson**](PersonAPI.md#CreatePerson) | **Post** /persons | Create a new Person
 [**CreateSkillsProfileForPerson**](PersonAPI.md#CreateSkillsProfileForPerson) | **Post** /persons/{personId}/skills-profiles | Create a SkillsProfile
 [**DeleteAvailability**](PersonAPI.md#DeleteAvailability) | **Delete** /persons/{personId}/availabilities/{availabilityId} | Delete a person availability
+[**DeleteAwardFromProjectParticipations**](PersonAPI.md#DeleteAwardFromProjectParticipations) | **Delete** /project-participations/awards/{awardId} | Remove an Award from Project Participations
 [**DeleteOfficeCountry**](PersonAPI.md#DeleteOfficeCountry) | **Delete** /offices/{officeId}/countries/{countryId} | Delete the office from a Person
 [**DeletePerson**](PersonAPI.md#DeletePerson) | **Delete** /persons/{personId} | Delete an existing Person
-[**DeletePersonAward**](PersonAPI.md#DeletePersonAward) | **Delete** /persons/{personId}/awards/{awardId} | Remove an Award from a Person
 [**DeletePersonCertification**](PersonAPI.md#DeletePersonCertification) | **Delete** /persons/{personId}/certifications/{certificationId} | Remove an Interest to a Person
 [**DeletePersonInterest**](PersonAPI.md#DeletePersonInterest) | **Delete** /persons/{personId}/interests/skills/{skillId} | Remove an Interest to a Person
 [**DeletePersonOffice**](PersonAPI.md#DeletePersonOffice) | **Delete** /persons/{personId}/offices/{officeId} | Delete the office from a Person
@@ -50,7 +50,6 @@ Method | HTTP request | Description
 [**UpdateAvailability**](PersonAPI.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
 [**UpdateOrganizationServiceManager**](PersonAPI.md#UpdateOrganizationServiceManager) | **Put** /organizations/{organizationId}/service-manager/{personId} | Update service manager of an Organization
 [**UpdatePerson**](PersonAPI.md#UpdatePerson) | **Put** /persons/{personId} | Update an existing Person
-[**UpdatePersonAward**](PersonAPI.md#UpdatePersonAward) | **Put** /persons/{personId}/awards/{awardId} | Update an Award of a Person
 [**UpdatePersonCertification**](PersonAPI.md#UpdatePersonCertification) | **Put** /persons/{personId}/certifications/{certificationId} | Update a Certification of a Person
 [**UpdatePersonLanguage**](PersonAPI.md#UpdatePersonLanguage) | **Put** /persons/{personId}/languages/{languageId} | Update a language of a person
 [**UpdatePersonOffice**](PersonAPI.md#UpdatePersonOffice) | **Put** /persons/{personId}/offices/{officeId} | Assign a person to an office
@@ -61,11 +60,11 @@ Method | HTTP request | Description
 
 
 
-## AddPersonAward
+## AddAwardToProjectParticipations
 
-> PersonDetails AddPersonAward(ctx, personId, awardId).Body(body).Execute()
+> []ProjectParticipationDetails AddAwardToProjectParticipations(ctx, awardId).InvolvedProjectParticipations(involvedProjectParticipations).Execute()
 
-Add an award to a Person
+Add an award to Project Participations
 
 ### Example
 
@@ -76,24 +75,22 @@ import (
     "context"
     "fmt"
     "os"
-    "time"
     openapiclient "github.com/prodyna-yasm/yasm-api-go"
 )
 
 func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     awardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    body := time.Now() // string | 
+    involvedProjectParticipations := *openapiclient.NewInvolvedProjectParticipations() // InvolvedProjectParticipations | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.AddPersonAward(context.Background(), personId, awardId).Body(body).Execute()
+    resp, r, err := apiClient.PersonAPI.AddAwardToProjectParticipations(context.Background(), awardId).InvolvedProjectParticipations(involvedProjectParticipations).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddPersonAward``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.AddAwardToProjectParticipations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddPersonAward`: PersonDetails
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddPersonAward`: %v\n", resp)
+    // response from `AddAwardToProjectParticipations`: []ProjectParticipationDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.AddAwardToProjectParticipations`: %v\n", resp)
 }
 ```
 
@@ -103,23 +100,21 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | **string** |  | 
 **awardId** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAddPersonAwardRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAddAwardToProjectParticipationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
- **body** | **string** |  | 
+ **involvedProjectParticipations** | [**InvolvedProjectParticipations**](InvolvedProjectParticipations.md) |  | 
 
 ### Return type
 
-[**PersonDetails**](PersonDetails.md)
+[**[]ProjectParticipationDetails**](ProjectParticipationDetails.md)
 
 ### Authorization
 
@@ -1046,6 +1041,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteAwardFromProjectParticipations
+
+> []ProjectParticipationDetails DeleteAwardFromProjectParticipations(ctx, awardId).InvolvedProjectParticipations(involvedProjectParticipations).Execute()
+
+Remove an Award from Project Participations
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    awardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    involvedProjectParticipations := *openapiclient.NewInvolvedProjectParticipations() // InvolvedProjectParticipations | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonAPI.DeleteAwardFromProjectParticipations(context.Background(), awardId).InvolvedProjectParticipations(involvedProjectParticipations).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeleteAwardFromProjectParticipations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteAwardFromProjectParticipations`: []ProjectParticipationDetails
+    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeleteAwardFromProjectParticipations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**awardId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAwardFromProjectParticipationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **involvedProjectParticipations** | [**InvolvedProjectParticipations**](InvolvedProjectParticipations.md) |  | 
+
+### Return type
+
+[**[]ProjectParticipationDetails**](ProjectParticipationDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteOfficeCountry
 
 > OfficeDetails DeleteOfficeCountry(ctx, officeId, countryId).Execute()
@@ -1170,77 +1235,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Status**](Status.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DeletePersonAward
-
-> PersonDetails DeletePersonAward(ctx, personId, awardId).Execute()
-
-Remove an Award from a Person
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    awardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.DeletePersonAward(context.Background(), personId, awardId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.DeletePersonAward``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeletePersonAward`: PersonDetails
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.DeletePersonAward`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | **string** |  | 
-**awardId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeletePersonAwardRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**PersonDetails**](PersonDetails.md)
 
 ### Authorization
 
@@ -3247,80 +3241,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **person** | [**Person**](Person.md) |  | 
-
-### Return type
-
-[**PersonDetails**](PersonDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdatePersonAward
-
-> PersonDetails UpdatePersonAward(ctx, personId, awardId).Body(body).Execute()
-
-Update an Award of a Person
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    "time"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    awardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    body := time.Now() // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.UpdatePersonAward(context.Background(), personId, awardId).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.UpdatePersonAward``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdatePersonAward`: PersonDetails
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.UpdatePersonAward`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | **string** |  | 
-**awardId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdatePersonAwardRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | **string** |  | 
 
 ### Return type
 

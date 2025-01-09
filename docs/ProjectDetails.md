@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
 **SkillGroups** | Pointer to [**[]ExperienceSkillGroup**](ExperienceSkillGroup.md) |  | [optional] 
+**Awards** | Pointer to [**[]Award**](Award.md) |  | [optional] 
 **Timeframe** | Pointer to [**Timeframed**](Timeframed.md) |  | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
 
@@ -207,6 +208,31 @@ SetSkillGroups sets SkillGroups field to given value.
 `func (o *ProjectDetails) HasSkillGroups() bool`
 
 HasSkillGroups returns a boolean if a field has been set.
+
+### GetAwards
+
+`func (o *ProjectDetails) GetAwards() []Award`
+
+GetAwards returns the Awards field if non-nil, zero value otherwise.
+
+### GetAwardsOk
+
+`func (o *ProjectDetails) GetAwardsOk() (*[]Award, bool)`
+
+GetAwardsOk returns a tuple with the Awards field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwards
+
+`func (o *ProjectDetails) SetAwards(v []Award)`
+
+SetAwards sets Awards field to given value.
+
+### HasAwards
+
+`func (o *ProjectDetails) HasAwards() bool`
+
+HasAwards returns a boolean if a field has been set.
 
 ### GetTimeframe
 

@@ -22,14 +22,13 @@ func Test_client_AwardAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AwardAPIService AddPersonAward", func(t *testing.T) {
+	t.Run("Test AwardAPIService AddAwardToProjectParticipations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var personId string
 		var awardId string
 
-		resp, httpRes, err := apiClient.AwardAPI.AddPersonAward(context.Background(), personId, awardId).Execute()
+		resp, httpRes, err := apiClient.AwardAPI.AddAwardToProjectParticipations(context.Background(), awardId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -63,14 +62,13 @@ func Test_client_AwardAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AwardAPIService DeletePersonAward", func(t *testing.T) {
+	t.Run("Test AwardAPIService DeleteAwardFromProjectParticipations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var personId string
 		var awardId string
 
-		resp, httpRes, err := apiClient.AwardAPI.DeletePersonAward(context.Background(), personId, awardId).Execute()
+		resp, httpRes, err := apiClient.AwardAPI.DeleteAwardFromProjectParticipations(context.Background(), awardId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -126,21 +124,6 @@ func Test_client_AwardAPIService(t *testing.T) {
 		var awardId string
 
 		resp, httpRes, err := apiClient.AwardAPI.UpdateAward(context.Background(), awardId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AwardAPIService UpdatePersonAward", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var personId string
-		var awardId string
-
-		resp, httpRes, err := apiClient.AwardAPI.UpdatePersonAward(context.Background(), personId, awardId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

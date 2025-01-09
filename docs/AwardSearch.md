@@ -6,6 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwardIds** | Pointer to **[]string** |  | [optional] 
 **OrganizationIds** | Pointer to **[]string** |  | [optional] 
+**PersonIds** | Pointer to **[]string** |  | [optional] 
+**ProjectIds** | Pointer to **[]string** |  | [optional] 
+**IndustryIds** | Pointer to **[]string** |  | [optional] 
+**OfficeIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +79,106 @@ SetOrganizationIds sets OrganizationIds field to given value.
 `func (o *AwardSearch) HasOrganizationIds() bool`
 
 HasOrganizationIds returns a boolean if a field has been set.
+
+### GetPersonIds
+
+`func (o *AwardSearch) GetPersonIds() []string`
+
+GetPersonIds returns the PersonIds field if non-nil, zero value otherwise.
+
+### GetPersonIdsOk
+
+`func (o *AwardSearch) GetPersonIdsOk() (*[]string, bool)`
+
+GetPersonIdsOk returns a tuple with the PersonIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPersonIds
+
+`func (o *AwardSearch) SetPersonIds(v []string)`
+
+SetPersonIds sets PersonIds field to given value.
+
+### HasPersonIds
+
+`func (o *AwardSearch) HasPersonIds() bool`
+
+HasPersonIds returns a boolean if a field has been set.
+
+### GetProjectIds
+
+`func (o *AwardSearch) GetProjectIds() []string`
+
+GetProjectIds returns the ProjectIds field if non-nil, zero value otherwise.
+
+### GetProjectIdsOk
+
+`func (o *AwardSearch) GetProjectIdsOk() (*[]string, bool)`
+
+GetProjectIdsOk returns a tuple with the ProjectIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectIds
+
+`func (o *AwardSearch) SetProjectIds(v []string)`
+
+SetProjectIds sets ProjectIds field to given value.
+
+### HasProjectIds
+
+`func (o *AwardSearch) HasProjectIds() bool`
+
+HasProjectIds returns a boolean if a field has been set.
+
+### GetIndustryIds
+
+`func (o *AwardSearch) GetIndustryIds() []string`
+
+GetIndustryIds returns the IndustryIds field if non-nil, zero value otherwise.
+
+### GetIndustryIdsOk
+
+`func (o *AwardSearch) GetIndustryIdsOk() (*[]string, bool)`
+
+GetIndustryIdsOk returns a tuple with the IndustryIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIndustryIds
+
+`func (o *AwardSearch) SetIndustryIds(v []string)`
+
+SetIndustryIds sets IndustryIds field to given value.
+
+### HasIndustryIds
+
+`func (o *AwardSearch) HasIndustryIds() bool`
+
+HasIndustryIds returns a boolean if a field has been set.
+
+### GetOfficeIds
+
+`func (o *AwardSearch) GetOfficeIds() []string`
+
+GetOfficeIds returns the OfficeIds field if non-nil, zero value otherwise.
+
+### GetOfficeIdsOk
+
+`func (o *AwardSearch) GetOfficeIdsOk() (*[]string, bool)`
+
+GetOfficeIdsOk returns a tuple with the OfficeIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOfficeIds
+
+`func (o *AwardSearch) SetOfficeIds(v []string)`
+
+SetOfficeIds sets OfficeIds field to given value.
+
+### HasOfficeIds
+
+`func (o *AwardSearch) HasOfficeIds() bool`
+
+HasOfficeIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.48.0
+  version: 1.49.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -1788,109 +1788,6 @@ paths:
       tags:
       - Person
       - Availability
-  /persons/{personId}/awards/{awardId}:
-    delete:
-      operationId: deletePersonAward
-      parameters:
-      - in: path
-        name: personId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - in: path
-        name: awardId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PersonDetails'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Remove an Award from a Person
-      tags:
-      - Person
-      - Award
-    post:
-      operationId: addPersonAward
-      parameters:
-      - in: path
-        name: personId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - in: path
-        name: awardId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DateModel'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PersonDetails'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Add an award to a Person
-      tags:
-      - Person
-      - Award
-    put:
-      operationId: updatePersonAward
-      parameters:
-      - in: path
-        name: personId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - in: path
-        name: awardId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DateModel'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PersonDetails'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Update an Award of a Person
-      tags:
-      - Person
-      - Award
   /persons/{personId}/certifications/{certificationId}:
     delete:
       operationId: deletePersonCertification
@@ -3446,6 +3343,71 @@ paths:
       - Person
       - Project
       - Skill
+  /project-participations/awards/{awardId}:
+    delete:
+      operationId: deleteAwardFromProjectParticipations
+      parameters:
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvolvedProjectParticipations'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectParticipationDetailsList'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Remove an Award from Project Participations
+      tags:
+      - Person
+      - Project
+      - Award
+    post:
+      operationId: addAwardToProjectParticipations
+      parameters:
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvolvedProjectParticipations'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectParticipationDetailsList'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Add an award to Project Participations
+      tags:
+      - Person
+      - Project
+      - Award
   /search:
     post:
       operationId: search
@@ -3928,6 +3890,14 @@ components:
             $ref: '#/components/schemas/UUIDS'
           organizationIds:
             $ref: '#/components/schemas/UUIDS'
+          personIds:
+            $ref: '#/components/schemas/UUIDS'
+          projectIds:
+            $ref: '#/components/schemas/UUIDS'
+          industryIds:
+            $ref: '#/components/schemas/UUIDS'
+          officeIds:
+            $ref: '#/components/schemas/UUIDS'
         type: object
       title: AwardSearch
     PagedAwards:
@@ -4394,6 +4364,9 @@ components:
               updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               updated: 2000-01-23T04:56:07.000+00:00
               createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            awards:
+            - null
+            - null
             organization: null
             industries:
             - null
@@ -4448,6 +4421,9 @@ components:
               updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               updated: 2000-01-23T04:56:07.000+00:00
               createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            awards:
+            - null
+            - null
             organization: null
             industries:
             - null
@@ -5080,6 +5056,9 @@ components:
             updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             updated: 2000-01-23T04:56:07.000+00:00
             createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          awards:
+          - null
+          - null
           organization: null
           industries:
           - null
@@ -5259,6 +5238,9 @@ components:
           updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated: 2000-01-23T04:56:07.000+00:00
           createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        awards:
+        - null
+        - null
         organization: null
         industries:
         - null
@@ -5299,6 +5281,10 @@ components:
         skillGroups:
           items:
             $ref: '#/components/schemas/ExperienceSkillGroup'
+          type: array
+        awards:
+          items:
+            $ref: '#/components/schemas/Award'
           type: array
         timeframe:
           $ref: '#/components/schemas/Timeframed'
@@ -5375,6 +5361,9 @@ components:
           updated: 2000-01-23T04:56:07.000+00:00
           createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         person: null
+        awards:
+        - null
+        - null
         skillGroups:
         - skills:
           - null
@@ -5398,6 +5387,10 @@ components:
           $ref: '#/components/schemas/Person'
         project:
           $ref: '#/components/schemas/Project'
+        awards:
+          items:
+            $ref: '#/components/schemas/Award'
+          type: array
       title: ProjectParticipationDetails
       type: object
     ProjectParticipationUpdate:
@@ -5449,6 +5442,24 @@ components:
             type: array
         type: object
       title: PagedProjectParticipation
+    InvolvedProjectParticipations:
+      example:
+        projectParticipationIds:
+        - null
+        - null
+      properties:
+        projectParticipationIds:
+          items:
+            $ref: '#/components/schemas/UUID'
+          title: UUIDS
+          type: array
+      title: InvolvedProjectParticipations
+      type: object
+    ProjectParticipationDetailsList:
+      items:
+        $ref: '#/components/schemas/ProjectParticipationDetails'
+      title: ProjectParticipationDetailsList
+      type: array
     SearchResult:
       allOf:
       - $ref: '#/components/schemas/Page'

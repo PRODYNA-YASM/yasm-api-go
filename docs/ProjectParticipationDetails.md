@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **SkillGroups** | Pointer to [**[]ExperienceSkillGroup**](ExperienceSkillGroup.md) |  | [optional] 
 **Person** | Pointer to [**Person**](Person.md) |  | [optional] 
 **Project** | Pointer to [**Project**](Project.md) |  | [optional] 
+**Awards** | Pointer to [**[]Award**](Award.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetProject sets Project field to given value.
 `func (o *ProjectParticipationDetails) HasProject() bool`
 
 HasProject returns a boolean if a field has been set.
+
+### GetAwards
+
+`func (o *ProjectParticipationDetails) GetAwards() []Award`
+
+GetAwards returns the Awards field if non-nil, zero value otherwise.
+
+### GetAwardsOk
+
+`func (o *ProjectParticipationDetails) GetAwardsOk() (*[]Award, bool)`
+
+GetAwardsOk returns a tuple with the Awards field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwards
+
+`func (o *ProjectParticipationDetails) SetAwards(v []Award)`
+
+SetAwards sets Awards field to given value.
+
+### HasAwards
+
+`func (o *ProjectParticipationDetails) HasAwards() bool`
+
+HasAwards returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
