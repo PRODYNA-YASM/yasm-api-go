@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.49.0
+  version: 1.50.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -3134,6 +3134,312 @@ paths:
       - Project
       - Person
       - Skill
+  /project-images:
+    post:
+      operationId: createProjectImage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectImageCreate'
+        required: true
+      responses:
+        "200":
+          content:
+            image/png:
+              schema:
+                format: byte
+                type: string
+          description: Created a Project Image and get image
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Create a Project Image
+      tags:
+      - Project Image
+  /project-images/search:
+    post:
+      operationId: searchProjectImages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectImageSearch'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedProjectImages'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Search over Project Images
+      tags:
+      - Project Image
+  /project-images/{projectImageId}:
+    delete:
+      operationId: deleteProjectImage
+      parameters:
+      - in: path
+        name: projectImageId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Deleted a Project Image
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Delete Project Image
+      tags:
+      - Project Image
+    get:
+      operationId: readProjectImage
+      parameters:
+      - in: path
+        name: projectImageId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            image/png:
+              schema:
+                format: byte
+                type: string
+          description: Read a Project Image
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Read a Project Image
+      tags:
+      - Project Image
+  /layouts:
+    post:
+      operationId: createLayout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Layout'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayoutDetails'
+          description: Created a Layout
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Create a Layout
+      tags:
+      - Layout
+  /layouts/search:
+    post:
+      operationId: searchLayouts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Search'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedLayouts'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Search over Layouts
+      tags:
+      - Layout
+  /layouts/{layoutId}:
+    delete:
+      operationId: deleteLayout
+      parameters:
+      - in: path
+        name: layoutId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Deleted a Layout
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Delete a Layout
+      tags:
+      - Layout
+    get:
+      operationId: readLayout
+      parameters:
+      - in: path
+        name: layoutId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            image/png:
+              schema:
+                format: byte
+                type: string
+          description: Read a Layout
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Read a Layout
+      tags:
+      - Layout
+    put:
+      operationId: updateLayout
+      parameters:
+      - in: path
+        name: layoutId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Layout'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayoutDetails'
+          description: Updated a Layout
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Update a Layout
+      tags:
+      - Layout
+  /images:
+    post:
+      operationId: uploadImage
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              format: binary
+              type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageDetails'
+          description: Uploaded and returned newly uploaded Image
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Upload an Image as binary and retrieve UUID
+      tags:
+      - Image
+  /images/{imageId}:
+    delete:
+      operationId: deleteImage
+      parameters:
+      - in: path
+        name: imageId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Deleted the Image
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Delete Image
+      tags:
+      - Image
+    get:
+      operationId: readImage
+      parameters:
+      - in: path
+        name: imageId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            image/jpeg:
+              schema:
+                format: binary
+                type: string
+          description: Read an Image
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Read an Image
+      tags:
+      - Image
   /project-participations:
     post:
       operationId: addProjectParticipation
@@ -3792,6 +4098,18 @@ components:
     ProjectId:
       in: path
       name: projectId
+      required: true
+      schema:
+        $ref: '#/components/schemas/UUID'
+    LayoutId:
+      in: path
+      name: layoutId
+      required: true
+      schema:
+        $ref: '#/components/schemas/UUID'
+    ImageId:
+      in: path
+      name: imageId
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
@@ -5334,6 +5652,80 @@ components:
             $ref: '#/components/schemas/UUIDS'
         type: object
       title: ProjectSearch
+    ProjectImageCreate:
+      allOf:
+      - $ref: '#/components/schemas/ProjectImage'
+      - properties:
+          layoutId:
+            $ref: '#/components/schemas/UUID'
+        type: object
+      title: ProjectImageCreate
+    ProjectImageSearch:
+      allOf:
+      - $ref: '#/components/schemas/Search'
+      - properties:
+          projectIds:
+            $ref: '#/components/schemas/UUIDS'
+          layoutIds:
+            $ref: '#/components/schemas/UUIDS'
+        type: object
+      title: ProjectImageSearch
+    PagedProjectImages:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          projectImages:
+            items:
+              $ref: '#/components/schemas/ProjectImageDetails'
+            type: array
+        type: object
+      title: PagedProjectImages
+    Layout:
+      allOf:
+      - $ref: '#/components/schemas/BasicDomainModel'
+      - properties:
+          fields:
+            items:
+              $ref: '#/components/schemas/LayoutField'
+            minItems: 1
+            type: array
+        type: object
+      title: Layout
+    LayoutDetails:
+      example:
+        layout: null
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
+        layout:
+          $ref: '#/components/schemas/Layout'
+      title: LayoutDetails
+      type: object
+    PagedLayouts:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          layouts:
+            items:
+              $ref: '#/components/schemas/LayoutDetails'
+            type: array
+        type: object
+      title: PagedLayouts
+    ImageDetails:
+      allOf:
+      - $ref: '#/components/schemas/BasicDomainModel'
+      - properties:
+          audit:
+            $ref: '#/components/schemas/Audit'
+        type: object
+      title: Image
     ProjectParticipationCreate:
       allOf:
       - $ref: '#/components/schemas/ProjectParticipationUpdate'
@@ -5861,6 +6253,50 @@ components:
           type: integer
       title: MinMax
       type: object
+    ProjectImage:
+      allOf:
+      - $ref: '#/components/schemas/BasicDomainModel'
+      - properties:
+          projectId:
+            $ref: '#/components/schemas/UUID'
+          fieldImages:
+            items:
+              $ref: '#/components/schemas/FieldImage'
+            minItems: 1
+            type: array
+        type: object
+      title: ProjectImage
+    ProjectImageDetails:
+      properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
+        projectImage:
+          $ref: '#/components/schemas/ProjectImage'
+        layout:
+          $ref: '#/components/schemas/Layout'
+      title: ProjectImageDetails
+      type: object
+    BasicDomainModel:
+      discriminator:
+        propertyName: objectType
+      properties:
+        id:
+          format: uuid
+          title: UUID
+          type: string
+        objectType:
+          type: string
+      required:
+      - id
+      title: BasicDomainModel
+      type: object
+    LayoutField:
+      allOf:
+      - $ref: '#/components/schemas/BasicDomainModel'
+      - $ref: '#/components/schemas/Descriptable'
+      - $ref: '#/components/schemas/Dimension'
+      - $ref: '#/components/schemas/DeviceType'
+      title: LayoutField
     ProjectParticipation:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
@@ -5898,20 +6334,6 @@ components:
           default: 0
           type: integer
       title: SkillLink
-      type: object
-    BasicDomainModel:
-      discriminator:
-        propertyName: objectType
-      properties:
-        id:
-          format: uuid
-          title: UUID
-          type: string
-        objectType:
-          type: string
-      required:
-      - id
-      title: BasicDomainModel
       type: object
     Nameable:
       properties:
@@ -5984,6 +6406,41 @@ components:
             $ref: '#/components/schemas/Score'
           type: array
       title: ScoreResult
+      type: object
+    FieldImage:
+      properties:
+        image:
+          $ref: '#/components/schemas/ImageDetails'
+        layoutFieldId:
+          format: uuid
+          title: UUID
+          type: string
+      title: FieldImage
+      type: object
+    Dimension:
+      properties:
+        width:
+          example: 100.5
+          format: float
+          minimum: 0
+          type: number
+        height:
+          example: 150.0
+          format: float
+          minimum: 0
+          type: number
+      title: Dimension
+      type: object
+    DeviceType:
+      properties:
+        deviceType:
+          enum:
+          - DESKTOP
+          - TABLET
+          - MOBILE
+          example: MOBILE
+          type: string
+      title: DeviceType
       type: object
     Score:
       properties:
