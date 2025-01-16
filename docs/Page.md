@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Skip** | Pointer to **int32** |  | [optional] 
 **Limit** | Pointer to **int32** |  | [optional] 
 **Count** | Pointer to **int32** |  | [optional] 
+**DirectHits** | Pointer to **int32** |  | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetCount sets Count field to given value.
 `func (o *Page) HasCount() bool`
 
 HasCount returns a boolean if a field has been set.
+
+### GetDirectHits
+
+`func (o *Page) GetDirectHits() int32`
+
+GetDirectHits returns the DirectHits field if non-nil, zero value otherwise.
+
+### GetDirectHitsOk
+
+`func (o *Page) GetDirectHitsOk() (*int32, bool)`
+
+GetDirectHitsOk returns a tuple with the DirectHits field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDirectHits
+
+`func (o *Page) SetDirectHits(v int32)`
+
+SetDirectHits sets DirectHits field to given value.
+
+### HasDirectHits
+
+`func (o *Page) HasDirectHits() bool`
+
+HasDirectHits returns a boolean if a field has been set.
 
 ### GetObjectType
 

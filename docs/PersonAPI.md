@@ -44,7 +44,6 @@ Method | HTTP request | Description
 [**RemovePersonLanguage**](PersonAPI.md#RemovePersonLanguage) | **Delete** /persons/{personId}/languages/{languageId} | Remove a language from a person
 [**RemoveSkillConfirmation**](PersonAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**SearchPersons**](PersonAPI.md#SearchPersons) | **Post** /persons/search | Search over persons
-[**SearchPersonsStats**](PersonAPI.md#SearchPersonsStats) | **Post** /persons/search/stats | Provides search stats (e.g., direct hits) across all persons, ignoring pagination.
 [**SearchProjectParticipations**](PersonAPI.md#SearchProjectParticipations) | **Post** /project-participations/search | Search over project participations
 [**SetManager**](PersonAPI.md#SetManager) | **Put** /persons/{personId}/manager/{managerId} | Set a manager for a person
 [**UpdateAvailability**](PersonAPI.md#UpdateAvailability) | **Put** /persons/{personId}/availabilities/{availabilityId} | Update a person availability
@@ -2831,70 +2830,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PagedPersons**](PagedPersons.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SearchPersonsStats
-
-> SearchStats SearchPersonsStats(ctx).PersonSearch(personSearch).Execute()
-
-Provides search stats (e.g., direct hits) across all persons, ignoring pagination.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    personSearch := *openapiclient.NewPersonSearch(int32(123), int32(123)) // PersonSearch |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.SearchPersonsStats(context.Background()).PersonSearch(personSearch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.SearchPersonsStats``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchPersonsStats`: SearchStats
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.SearchPersonsStats`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSearchPersonsStatsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **personSearch** | [**PersonSearch**](PersonSearch.md) |  | 
-
-### Return type
-
-[**SearchStats**](SearchStats.md)
 
 ### Authorization
 

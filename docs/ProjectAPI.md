@@ -21,7 +21,6 @@ Method | HTTP request | Description
 [**RemoveSkillConfirmation**](ProjectAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**SearchProjectParticipations**](ProjectAPI.md#SearchProjectParticipations) | **Post** /project-participations/search | Search over project participations
 [**SearchProjects**](ProjectAPI.md#SearchProjects) | **Post** /projects/search | Complex search over project entities
-[**SearchProjectsStats**](ProjectAPI.md#SearchProjectsStats) | **Post** /projects/search/stats | Provides search stats (e.g., direct hits) across all projects, ignoring pagination.
 [**UpdateProject**](ProjectAPI.md#UpdateProject) | **Put** /projects/{projectId} | Update a Project
 [**UpdateProjectParticipation**](ProjectAPI.md#UpdateProjectParticipation) | **Put** /project-participations/{projectParticipationId} | Update a Project of a Person
 
@@ -1186,70 +1185,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PagedProjects**](PagedProjects.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SearchProjectsStats
-
-> SearchStats SearchProjectsStats(ctx).ProjectSearch(projectSearch).Execute()
-
-Provides search stats (e.g., direct hits) across all projects, ignoring pagination.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    projectSearch := *openapiclient.NewProjectSearch(int32(123), int32(123)) // ProjectSearch |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectAPI.SearchProjectsStats(context.Background()).ProjectSearch(projectSearch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.SearchProjectsStats``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SearchProjectsStats`: SearchStats
-    fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.SearchProjectsStats`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSearchProjectsStatsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **projectSearch** | [**ProjectSearch**](ProjectSearch.md) |  | 
-
-### Return type
-
-[**SearchStats**](SearchStats.md)
 
 ### Authorization
 
