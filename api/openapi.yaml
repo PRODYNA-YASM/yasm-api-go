@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.55.0
+  version: 1.56.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -4034,6 +4034,32 @@ paths:
       summary: list of existing templates
       tags:
       - Templates
+  /statistics/skill:
+    post:
+      operationId: skillsEvaluation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkillEvaluationFilter'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SkillPercentageDetail'
+                type: array
+          description: Successful response with percentage details
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Percentage skills evaluation
+      tags:
+      - Statistic
 components:
   parameters:
     AwardId:
@@ -5976,6 +6002,41 @@ components:
           default: false
           type: boolean
       title: SkillLinkUpdate
+      type: object
+    SkillEvaluationFilter:
+      allOf:
+      - properties:
+          startDate:
+            format: date
+            type: string
+          endDate:
+            format: date
+            type: string
+          employeeIds:
+            items:
+              type: string
+            type: array
+          erpIds:
+            items:
+              type: string
+            type: array
+        required:
+        - endDate
+        - startDate
+        type: object
+      title: SkillEvaluationFilter
+    SkillPercentageDetail:
+      example:
+        skill: null
+        percentage: 0.7
+      properties:
+        skill:
+          $ref: '#/components/schemas/Skill'
+        percentage:
+          example: 0.7
+          format: double
+          type: number
+      title: SkillPercentageDetail
       type: object
     NamedDomainModel:
       allOf:
