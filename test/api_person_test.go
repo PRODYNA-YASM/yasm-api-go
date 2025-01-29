@@ -81,6 +81,21 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PersonAPIService AddPersonNationality", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+		var countryId string
+
+		resp, httpRes, err := apiClient.PersonAPI.AddPersonNationality(context.Background(), personId, countryId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PersonAPIService AddPersonProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -286,6 +301,21 @@ func Test_client_PersonAPIService(t *testing.T) {
 		var skillId string
 
 		resp, httpRes, err := apiClient.PersonAPI.DeletePersonInterest(context.Background(), personId, skillId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PersonAPIService DeletePersonNationality", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+		var countryId string
+
+		resp, httpRes, err := apiClient.PersonAPI.DeletePersonNationality(context.Background(), personId, countryId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Certifications** | Pointer to [**[]CertificationDetails**](CertificationDetails.md) |  | [optional] 
 **Awards** | Pointer to [**[]AwardDetails**](AwardDetails.md) |  | [optional] 
 **Languages** | Pointer to [**[]LanguageLevel**](LanguageLevel.md) |  | [optional] 
+**Nationalities** | Pointer to [**[]Country**](Country.md) |  | [optional] 
 **Office** | Pointer to [**OfficeDetails**](OfficeDetails.md) |  | [optional] 
 **Availabilities** | Pointer to [**[]AvailabilityDetail**](AvailabilityDetail.md) |  | [optional] 
 **SkillGroups** | Pointer to [**[]ExperienceSkillGroup**](ExperienceSkillGroup.md) |  | [optional] 
@@ -264,6 +265,31 @@ SetLanguages sets Languages field to given value.
 `func (o *PersonDetails) HasLanguages() bool`
 
 HasLanguages returns a boolean if a field has been set.
+
+### GetNationalities
+
+`func (o *PersonDetails) GetNationalities() []Country`
+
+GetNationalities returns the Nationalities field if non-nil, zero value otherwise.
+
+### GetNationalitiesOk
+
+`func (o *PersonDetails) GetNationalitiesOk() (*[]Country, bool)`
+
+GetNationalitiesOk returns a tuple with the Nationalities field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNationalities
+
+`func (o *PersonDetails) SetNationalities(v []Country)`
+
+SetNationalities sets Nationalities field to given value.
+
+### HasNationalities
+
+`func (o *PersonDetails) HasNationalities() bool`
+
+HasNationalities returns a boolean if a field has been set.
 
 ### GetOffice
 

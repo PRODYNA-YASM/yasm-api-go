@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.54.0
+  version: 1.55.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -2280,6 +2280,65 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       summary: Remove a manager from a person
+      tags:
+      - Person
+  /persons/{personId}/nationalities/{countryId}:
+    delete:
+      operationId: deletePersonNationality
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: countryId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Remove a Nationality from a Person
+      tags:
+      - Person
+    post:
+      operationId: addPersonNationality
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: countryId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Add a Nationality to a Person
       tags:
       - Person
   /persons/{personId}/offices/{officeId}:
@@ -4748,6 +4807,9 @@ components:
           profiles:
           - null
           - null
+          nationalities:
+          - null
+          - null
           office:
             country: null
             audit:
@@ -4965,6 +5027,9 @@ components:
         profiles:
         - null
         - null
+        nationalities:
+        - null
+        - null
         office:
           country: null
           audit:
@@ -5091,6 +5156,10 @@ components:
         languages:
           items:
             $ref: '#/components/schemas/LanguageLevel'
+          type: array
+        nationalities:
+          items:
+            $ref: '#/components/schemas/Country'
           type: array
         office:
           $ref: '#/components/schemas/OfficeDetails'
