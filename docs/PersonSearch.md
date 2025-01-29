@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CountryIds** | Pointer to **[]string** |  | [optional] 
 **PersonIds** | Pointer to **[]string** |  | [optional] 
 **EmployeeIds** | Pointer to **[]string** |  | [optional] 
 **ProfileIds** | Pointer to **[]string** |  | [optional] 
@@ -38,6 +39,31 @@ will change when the set of required properties is changed
 NewPersonSearchWithDefaults instantiates a new PersonSearch object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCountryIds
+
+`func (o *PersonSearch) GetCountryIds() []string`
+
+GetCountryIds returns the CountryIds field if non-nil, zero value otherwise.
+
+### GetCountryIdsOk
+
+`func (o *PersonSearch) GetCountryIdsOk() (*[]string, bool)`
+
+GetCountryIdsOk returns a tuple with the CountryIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountryIds
+
+`func (o *PersonSearch) SetCountryIds(v []string)`
+
+SetCountryIds sets CountryIds field to given value.
+
+### HasCountryIds
+
+`func (o *PersonSearch) HasCountryIds() bool`
+
+HasCountryIds returns a boolean if a field has been set.
 
 ### GetPersonIds
 
