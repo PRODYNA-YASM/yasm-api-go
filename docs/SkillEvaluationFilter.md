@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **StartDate** | **string** |  | 
 **EndDate** | **string** |  | 
 **EmployeeIds** | Pointer to **[]string** |  | [optional] 
+**PersonIds** | Pointer to **[]string** |  | [optional] 
 **KindGiverIds** | Pointer to **[]string** |  | [optional] 
 **IndustryIds** | Pointer to **[]string** |  | [optional] 
 **OrganizationIds** | Pointer to **[]string** |  | [optional] 
@@ -96,6 +97,31 @@ SetEmployeeIds sets EmployeeIds field to given value.
 `func (o *SkillEvaluationFilter) HasEmployeeIds() bool`
 
 HasEmployeeIds returns a boolean if a field has been set.
+
+### GetPersonIds
+
+`func (o *SkillEvaluationFilter) GetPersonIds() []string`
+
+GetPersonIds returns the PersonIds field if non-nil, zero value otherwise.
+
+### GetPersonIdsOk
+
+`func (o *SkillEvaluationFilter) GetPersonIdsOk() (*[]string, bool)`
+
+GetPersonIdsOk returns a tuple with the PersonIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPersonIds
+
+`func (o *SkillEvaluationFilter) SetPersonIds(v []string)`
+
+SetPersonIds sets PersonIds field to given value.
+
+### HasPersonIds
+
+`func (o *SkillEvaluationFilter) HasPersonIds() bool`
+
+HasPersonIds returns a boolean if a field has been set.
 
 ### GetKindGiverIds
 
