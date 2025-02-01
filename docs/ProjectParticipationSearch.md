@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**LinkToErp** | Pointer to **bool** |  | [optional] 
 **ProjectIds** | Pointer to **[]string** |  | [optional] 
 **PersonIds** | Pointer to **[]string** |  | [optional] 
 **ProjectParticipationIds** | Pointer to **[]string** |  | [optional] 
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewProjectParticipationSearchWithDefaults instantiates a new ProjectParticipationSearch object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinkToErp
+
+`func (o *ProjectParticipationSearch) GetLinkToErp() bool`
+
+GetLinkToErp returns the LinkToErp field if non-nil, zero value otherwise.
+
+### GetLinkToErpOk
+
+`func (o *ProjectParticipationSearch) GetLinkToErpOk() (*bool, bool)`
+
+GetLinkToErpOk returns a tuple with the LinkToErp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinkToErp
+
+`func (o *ProjectParticipationSearch) SetLinkToErp(v bool)`
+
+SetLinkToErp sets LinkToErp field to given value.
+
+### HasLinkToErp
+
+`func (o *ProjectParticipationSearch) HasLinkToErp() bool`
+
+HasLinkToErp returns a boolean if a field has been set.
 
 ### GetProjectIds
 

@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Skill** | Pointer to [**Skill**](Skill.md) |  | [optional] 
 **Percentage** | Pointer to **float64** |  | [optional] 
+**DaysOfUsage** | Pointer to **float32** |  | [optional] 
+**ParticipationCount** | Pointer to **float32** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +77,56 @@ SetPercentage sets Percentage field to given value.
 `func (o *SkillPercentageDetail) HasPercentage() bool`
 
 HasPercentage returns a boolean if a field has been set.
+
+### GetDaysOfUsage
+
+`func (o *SkillPercentageDetail) GetDaysOfUsage() float32`
+
+GetDaysOfUsage returns the DaysOfUsage field if non-nil, zero value otherwise.
+
+### GetDaysOfUsageOk
+
+`func (o *SkillPercentageDetail) GetDaysOfUsageOk() (*float32, bool)`
+
+GetDaysOfUsageOk returns a tuple with the DaysOfUsage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDaysOfUsage
+
+`func (o *SkillPercentageDetail) SetDaysOfUsage(v float32)`
+
+SetDaysOfUsage sets DaysOfUsage field to given value.
+
+### HasDaysOfUsage
+
+`func (o *SkillPercentageDetail) HasDaysOfUsage() bool`
+
+HasDaysOfUsage returns a boolean if a field has been set.
+
+### GetParticipationCount
+
+`func (o *SkillPercentageDetail) GetParticipationCount() float32`
+
+GetParticipationCount returns the ParticipationCount field if non-nil, zero value otherwise.
+
+### GetParticipationCountOk
+
+`func (o *SkillPercentageDetail) GetParticipationCountOk() (*float32, bool)`
+
+GetParticipationCountOk returns a tuple with the ParticipationCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParticipationCount
+
+`func (o *SkillPercentageDetail) SetParticipationCount(v float32)`
+
+SetParticipationCount sets ParticipationCount field to given value.
+
+### HasParticipationCount
+
+`func (o *SkillPercentageDetail) HasParticipationCount() bool`
+
+HasParticipationCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
