@@ -90,6 +90,36 @@ func Test_client_AwardAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AwardAPIService GetPersonsForAwardInProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+		var awardId string
+
+		resp, httpRes, err := apiClient.AwardAPI.GetPersonsForAwardInProject(context.Background(), projectId, awardId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AwardAPIService GetProjectsOfPersonWithAward", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+		var awardId string
+
+		resp, httpRes, err := apiClient.AwardAPI.GetProjectsOfPersonWithAward(context.Background(), personId, awardId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AwardAPIService MoveAward", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -133,6 +133,21 @@ func Test_client_ProjectAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectAPIService GetPersonsForAwardInProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+		var awardId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.GetPersonsForAwardInProject(context.Background(), projectId, awardId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectAPIService GetPersonsForSkillInProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -155,6 +170,21 @@ func Test_client_ProjectAPIService(t *testing.T) {
 		var projectId string
 
 		resp, httpRes, err := apiClient.ProjectAPI.GetProject(context.Background(), projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectAPIService GetProjectsOfPersonWithAward", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var personId string
+		var awardId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.GetProjectsOfPersonWithAward(context.Background(), personId, awardId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

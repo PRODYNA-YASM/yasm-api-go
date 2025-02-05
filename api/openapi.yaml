@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.59.0
+  version: 1.60.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -2751,6 +2751,38 @@ paths:
       - Person
       - Project
       - Skill
+  /persons/{personId}/awards/{awardId}/projects:
+    get:
+      operationId: getProjectsOfPersonWithAward
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedProjects'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get all projects where a certain award was won by a certain person
+      tags:
+      - Person
+      - Project
+      - Award
   /profiles:
     post:
       operationId: createProfile
@@ -3141,6 +3173,38 @@ paths:
       - Project
       - Person
       - Skill
+  /projects/{projectId}/awards/{awardId}/persons:
+    get:
+      operationId: getPersonsForAwardInProject
+      parameters:
+      - in: path
+        name: projectId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedPersons'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get all persons that have won a certain award in a certain project
+      tags:
+      - Project
+      - Person
+      - Award
   /project-images:
     post:
       operationId: createProjectImage
