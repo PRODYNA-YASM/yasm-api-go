@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.60.0
+  version: 1.61.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -3205,6 +3205,42 @@ paths:
       - Project
       - Person
       - Award
+  /projects/{projectId}/merge-with/{sourceProjectId}:
+    put:
+      operationId: mergeProjects
+      parameters:
+      - in: path
+        name: projectId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: sourceProjectId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Merge source project into main project
+      tags:
+      - Project
   /project-images:
     post:
       operationId: createProjectImage

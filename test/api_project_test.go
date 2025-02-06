@@ -207,6 +207,21 @@ func Test_client_ProjectAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectAPIService MergeProjects", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+		var sourceProjectId string
+
+		resp, httpRes, err := apiClient.ProjectAPI.MergeProjects(context.Background(), projectId, sourceProjectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectAPIService MoveProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**GetProject**](ProjectAPI.md#GetProject) | **Get** /projects/{projectId} | Get details about a Project
 [**GetProjectsOfPersonWithAward**](ProjectAPI.md#GetProjectsOfPersonWithAward) | **Get** /persons/{personId}/awards/{awardId}/projects | Get all projects where a certain award was won by a certain person
 [**GetProjectsOfPersonWithSkill**](ProjectAPI.md#GetProjectsOfPersonWithSkill) | **Get** /persons/{personId}/skills/{skillId}/projects | Get all projects where a certain skill was used by a certain person
+[**MergeProjects**](ProjectAPI.md#MergeProjects) | **Put** /projects/{projectId}/merge-with/{sourceProjectId} | Merge source project into main project
 [**MoveProject**](ProjectAPI.md#MoveProject) | **Put** /projects/{projectId}/organizations/{organizationId} | Move a Project to an Organization
 [**ReadProjectParticipation**](ProjectAPI.md#ReadProjectParticipation) | **Get** /project-participations/{projectParticipationId} | Get a project participation
 [**RemoveExecutiveOrganizationFromProject**](ProjectAPI.md#RemoveExecutiveOrganizationFromProject) | **Delete** /projects/{projectId}/executive-organizations/{organizationId} | Remove an Organization from a Project as executive organization
@@ -925,6 +926,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## MergeProjects
+
+> ProjectDetails MergeProjects(ctx, projectId, sourceProjectId).Project(project).Execute()
+
+Merge source project into main project
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    sourceProjectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    project := *openapiclient.NewProject("Id_example", "Name_example") // Project | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectAPI.MergeProjects(context.Background(), projectId, sourceProjectId).Project(project).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.MergeProjects``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `MergeProjects`: ProjectDetails
+    fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.MergeProjects`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**projectId** | **string** |  | 
+**sourceProjectId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMergeProjectsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **project** | [**Project**](Project.md) |  | 
+
+### Return type
+
+[**ProjectDetails**](ProjectDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
