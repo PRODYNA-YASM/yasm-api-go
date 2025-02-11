@@ -5,7 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Score** | Pointer to **float32** |  | [optional] 
-**ScoreType** | Pointer to **string** | Specifies the type of score | [optional] [default to "skillScore"]
+**DirectHit** | Pointer to **bool** | Indicates if the score is a direct hit | [optional] 
+**BestMatch** | Pointer to **bool** | Indicates if the score is the best match | [optional] 
+**InputEntity** | Pointer to [**NamedDomainModel**](NamedDomainModel.md) |  | [optional] 
+**MatchingEntity** | Pointer to [**[]NamedDomainModel**](NamedDomainModel.md) | The matching entities | [optional] 
 
 ## Methods
 
@@ -51,30 +54,105 @@ SetScore sets Score field to given value.
 
 HasScore returns a boolean if a field has been set.
 
-### GetScoreType
+### GetDirectHit
 
-`func (o *Score) GetScoreType() string`
+`func (o *Score) GetDirectHit() bool`
 
-GetScoreType returns the ScoreType field if non-nil, zero value otherwise.
+GetDirectHit returns the DirectHit field if non-nil, zero value otherwise.
 
-### GetScoreTypeOk
+### GetDirectHitOk
 
-`func (o *Score) GetScoreTypeOk() (*string, bool)`
+`func (o *Score) GetDirectHitOk() (*bool, bool)`
 
-GetScoreTypeOk returns a tuple with the ScoreType field if it's non-nil, zero value otherwise
+GetDirectHitOk returns a tuple with the DirectHit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetScoreType
+### SetDirectHit
 
-`func (o *Score) SetScoreType(v string)`
+`func (o *Score) SetDirectHit(v bool)`
 
-SetScoreType sets ScoreType field to given value.
+SetDirectHit sets DirectHit field to given value.
 
-### HasScoreType
+### HasDirectHit
 
-`func (o *Score) HasScoreType() bool`
+`func (o *Score) HasDirectHit() bool`
 
-HasScoreType returns a boolean if a field has been set.
+HasDirectHit returns a boolean if a field has been set.
+
+### GetBestMatch
+
+`func (o *Score) GetBestMatch() bool`
+
+GetBestMatch returns the BestMatch field if non-nil, zero value otherwise.
+
+### GetBestMatchOk
+
+`func (o *Score) GetBestMatchOk() (*bool, bool)`
+
+GetBestMatchOk returns a tuple with the BestMatch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBestMatch
+
+`func (o *Score) SetBestMatch(v bool)`
+
+SetBestMatch sets BestMatch field to given value.
+
+### HasBestMatch
+
+`func (o *Score) HasBestMatch() bool`
+
+HasBestMatch returns a boolean if a field has been set.
+
+### GetInputEntity
+
+`func (o *Score) GetInputEntity() NamedDomainModel`
+
+GetInputEntity returns the InputEntity field if non-nil, zero value otherwise.
+
+### GetInputEntityOk
+
+`func (o *Score) GetInputEntityOk() (*NamedDomainModel, bool)`
+
+GetInputEntityOk returns a tuple with the InputEntity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputEntity
+
+`func (o *Score) SetInputEntity(v NamedDomainModel)`
+
+SetInputEntity sets InputEntity field to given value.
+
+### HasInputEntity
+
+`func (o *Score) HasInputEntity() bool`
+
+HasInputEntity returns a boolean if a field has been set.
+
+### GetMatchingEntity
+
+`func (o *Score) GetMatchingEntity() []NamedDomainModel`
+
+GetMatchingEntity returns the MatchingEntity field if non-nil, zero value otherwise.
+
+### GetMatchingEntityOk
+
+`func (o *Score) GetMatchingEntityOk() (*[]NamedDomainModel, bool)`
+
+GetMatchingEntityOk returns a tuple with the MatchingEntity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchingEntity
+
+`func (o *Score) SetMatchingEntity(v []NamedDomainModel)`
+
+SetMatchingEntity sets MatchingEntity field to given value.
+
+### HasMatchingEntity
+
+`func (o *Score) HasMatchingEntity() bool`
+
+HasMatchingEntity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

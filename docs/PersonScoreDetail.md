@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DirectHit** | Pointer to **bool** |  | [optional] 
+**Score** | Pointer to **float32** |  | [optional] 
+**DirectHit** | Pointer to **bool** | Indicates if the score is a direct hit | [optional] 
 **Scores** | Pointer to [**[]Score**](Score.md) |  | [optional] 
 
 ## Methods
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewPersonScoreDetailWithDefaults instantiates a new PersonScoreDetail object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetScore
+
+`func (o *PersonScoreDetail) GetScore() float32`
+
+GetScore returns the Score field if non-nil, zero value otherwise.
+
+### GetScoreOk
+
+`func (o *PersonScoreDetail) GetScoreOk() (*float32, bool)`
+
+GetScoreOk returns a tuple with the Score field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScore
+
+`func (o *PersonScoreDetail) SetScore(v float32)`
+
+SetScore sets Score field to given value.
+
+### HasScore
+
+`func (o *PersonScoreDetail) HasScore() bool`
+
+HasScore returns a boolean if a field has been set.
 
 ### GetDirectHit
 
