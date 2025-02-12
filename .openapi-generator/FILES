@@ -37,6 +37,8 @@ docs/Award.md
 docs/AwardAPI.md
 docs/AwardDetails.md
 docs/AwardSearch.md
+docs/AwardedParticipant.md
+docs/AwardedProject.md
 docs/BasicDomainModel.md
 docs/Certification.md
 docs/CertificationAPI.md
@@ -177,6 +179,8 @@ model_availability_filter.go
 model_award.go
 model_award_details.go
 model_award_search.go
+model_awarded_participant.go
+model_awarded_project.go
 model_basic_domain_model.go
 model_certification.go
 model_certification_details.go

@@ -34,9 +34,7 @@ Method | HTTP request | Description
 [**GetAvailabilities**](PersonAPI.md#GetAvailabilities) | **Get** /persons/{personId}/availabilities | Get a list of all activities for a person
 [**GetPerson**](PersonAPI.md#GetPerson) | **Get** /persons/{personId} | Get basic info about a person
 [**GetPersonSkillsProfiles**](PersonAPI.md#GetPersonSkillsProfiles) | **Get** /persons/{personId}/skills-profiles | Get all SkillsProfiles of a single person
-[**GetPersonsForAwardInProject**](PersonAPI.md#GetPersonsForAwardInProject) | **Get** /projects/{projectId}/awards/{awardId}/persons | Get all persons that have won a certain award in a certain project
 [**GetPersonsForSkillInProject**](PersonAPI.md#GetPersonsForSkillInProject) | **Get** /projects/{projectId}/skills/{skillId}/persons | Get all persons that use a certain skill in a certain project
-[**GetProjectsOfPersonWithAward**](PersonAPI.md#GetProjectsOfPersonWithAward) | **Get** /persons/{personId}/awards/{awardId}/projects | Get all projects where a certain award was won by a certain person
 [**GetProjectsOfPersonWithSkill**](PersonAPI.md#GetProjectsOfPersonWithSkill) | **Get** /persons/{personId}/skills/{skillId}/projects | Get all projects where a certain skill was used by a certain person
 [**PublishPdfProfile**](PersonAPI.md#PublishPdfProfile) | **Post** /pdf-profile/publish | Generate a PDF profile from a Person
 [**ReadPersonPicture**](PersonAPI.md#ReadPersonPicture) | **Get** /persons/{personId}/picture | Read person image
@@ -2160,77 +2158,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetPersonsForAwardInProject
-
-> PagedPersons GetPersonsForAwardInProject(ctx, projectId, awardId).Execute()
-
-Get all persons that have won a certain award in a certain project
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    awardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.GetPersonsForAwardInProject(context.Background(), projectId, awardId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetPersonsForAwardInProject``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPersonsForAwardInProject`: PagedPersons
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetPersonsForAwardInProject`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | **string** |  | 
-**awardId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPersonsForAwardInProjectRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**PagedPersons**](PagedPersons.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetPersonsForSkillInProject
 
 > PagedPersons GetPersonsForSkillInProject(ctx, projectId, skillId).Execute()
@@ -2287,77 +2214,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PagedPersons**](PagedPersons.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetProjectsOfPersonWithAward
-
-> PagedProjects GetProjectsOfPersonWithAward(ctx, personId, awardId).Execute()
-
-Get all projects where a certain award was won by a certain person
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    awardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonAPI.GetProjectsOfPersonWithAward(context.Background(), personId, awardId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonAPI.GetProjectsOfPersonWithAward``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetProjectsOfPersonWithAward`: PagedProjects
-    fmt.Fprintf(os.Stdout, "Response from `PersonAPI.GetProjectsOfPersonWithAward`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**personId** | **string** |  | 
-**awardId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetProjectsOfPersonWithAwardRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**PagedProjects**](PagedProjects.md)
 
 ### Authorization
 

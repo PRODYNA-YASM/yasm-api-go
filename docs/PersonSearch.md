@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **IndustryIds** | Pointer to **[]string** |  | [optional] 
 **CertificationIds** | Pointer to **[]string** |  | [optional] 
 **AwardIds** | Pointer to **[]string** |  | [optional] 
+**AwardedProject** | Pointer to [**AwardedProject**](AwardedProject.md) |  | [optional] 
 **Inactive** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -414,6 +415,31 @@ SetAwardIds sets AwardIds field to given value.
 `func (o *PersonSearch) HasAwardIds() bool`
 
 HasAwardIds returns a boolean if a field has been set.
+
+### GetAwardedProject
+
+`func (o *PersonSearch) GetAwardedProject() AwardedProject`
+
+GetAwardedProject returns the AwardedProject field if non-nil, zero value otherwise.
+
+### GetAwardedProjectOk
+
+`func (o *PersonSearch) GetAwardedProjectOk() (*AwardedProject, bool)`
+
+GetAwardedProjectOk returns a tuple with the AwardedProject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwardedProject
+
+`func (o *PersonSearch) SetAwardedProject(v AwardedProject)`
+
+SetAwardedProject sets AwardedProject field to given value.
+
+### HasAwardedProject
+
+`func (o *PersonSearch) HasAwardedProject() bool`
+
+HasAwardedProject returns a boolean if a field has been set.
 
 ### GetInactive
 

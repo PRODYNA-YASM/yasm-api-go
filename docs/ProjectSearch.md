@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **ParticipantIds** | Pointer to **[]string** |  | [optional] 
 **IndustryIds** | Pointer to **[]string** |  | [optional] 
 **OrganizationIds** | Pointer to **[]string** |  | [optional] 
+**AwardedParticipant** | Pointer to [**AwardedParticipant**](AwardedParticipant.md) |  | [optional] 
 
 ## Methods
 
@@ -387,6 +388,31 @@ SetOrganizationIds sets OrganizationIds field to given value.
 `func (o *ProjectSearch) HasOrganizationIds() bool`
 
 HasOrganizationIds returns a boolean if a field has been set.
+
+### GetAwardedParticipant
+
+`func (o *ProjectSearch) GetAwardedParticipant() AwardedParticipant`
+
+GetAwardedParticipant returns the AwardedParticipant field if non-nil, zero value otherwise.
+
+### GetAwardedParticipantOk
+
+`func (o *ProjectSearch) GetAwardedParticipantOk() (*AwardedParticipant, bool)`
+
+GetAwardedParticipantOk returns a tuple with the AwardedParticipant field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwardedParticipant
+
+`func (o *ProjectSearch) SetAwardedParticipant(v AwardedParticipant)`
+
+SetAwardedParticipant sets AwardedParticipant field to given value.
+
+### HasAwardedParticipant
+
+`func (o *ProjectSearch) HasAwardedParticipant() bool`
+
+HasAwardedParticipant returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

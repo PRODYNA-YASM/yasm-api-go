@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.63.0
+  version: 1.64.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -2751,38 +2751,6 @@ paths:
       - Person
       - Project
       - Skill
-  /persons/{personId}/awards/{awardId}/projects:
-    get:
-      operationId: getProjectsOfPersonWithAward
-      parameters:
-      - in: path
-        name: personId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - in: path
-        name: awardId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedProjects'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Get all projects where a certain award was won by a certain person
-      tags:
-      - Person
-      - Project
-      - Award
   /profiles:
     post:
       operationId: createProfile
@@ -3173,38 +3141,6 @@ paths:
       - Project
       - Person
       - Skill
-  /projects/{projectId}/awards/{awardId}/persons:
-    get:
-      operationId: getPersonsForAwardInProject
-      parameters:
-      - in: path
-        name: projectId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - in: path
-        name: awardId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedPersons'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Get all persons that have won a certain award in a certain project
-      tags:
-      - Project
-      - Person
-      - Award
   /projects/{projectId}/merge-with/{sourceProjectId}:
     put:
       operationId: mergeProjects
@@ -5459,6 +5395,8 @@ components:
             $ref: '#/components/schemas/UUIDS'
           awardIds:
             $ref: '#/components/schemas/UUIDS'
+          awardedProject:
+            $ref: '#/components/schemas/AwardedProject'
           inactive:
             type: boolean
         type: object
@@ -5787,6 +5725,8 @@ components:
             $ref: '#/components/schemas/UUIDS'
           organizationIds:
             $ref: '#/components/schemas/UUIDS'
+          awardedParticipant:
+            $ref: '#/components/schemas/AwardedParticipant'
         type: object
       title: ProjectSearch
     ProjectImageCreate:
@@ -6373,6 +6313,18 @@ components:
             type: string
         type: object
       title: PersonSkillFilter
+    AwardedProject:
+      properties:
+        awardId:
+          format: uuid
+          title: UUID
+          type: string
+        projectId:
+          format: uuid
+          title: UUID
+          type: string
+      title: AwardedProject
+      type: object
     PersonScoreDetail:
       allOf:
       - $ref: '#/components/schemas/PersonDetails'
@@ -6448,6 +6400,18 @@ components:
           example: 100
           type: integer
       title: MinMax
+      type: object
+    AwardedParticipant:
+      properties:
+        awardId:
+          format: uuid
+          title: UUID
+          type: string
+        personId:
+          format: uuid
+          title: UUID
+          type: string
+      title: AwardedParticipant
       type: object
     ProjectImage:
       allOf:
