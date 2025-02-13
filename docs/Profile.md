@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Synonyms** | Pointer to **[]string** |  | [optional] 
+**Confidentiality** | Pointer to [**Confidentiality**](Confidentiality.md) |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetSynonyms sets Synonyms field to given value.
 `func (o *Profile) HasSynonyms() bool`
 
 HasSynonyms returns a boolean if a field has been set.
+
+### GetConfidentiality
+
+`func (o *Profile) GetConfidentiality() Confidentiality`
+
+GetConfidentiality returns the Confidentiality field if non-nil, zero value otherwise.
+
+### GetConfidentialityOk
+
+`func (o *Profile) GetConfidentialityOk() (*Confidentiality, bool)`
+
+GetConfidentialityOk returns a tuple with the Confidentiality field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfidentiality
+
+`func (o *Profile) SetConfidentiality(v Confidentiality)`
+
+SetConfidentiality sets Confidentiality field to given value.
+
+### HasConfidentiality
+
+`func (o *Profile) HasConfidentiality() bool`
+
+HasConfidentiality returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
