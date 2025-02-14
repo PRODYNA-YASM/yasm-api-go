@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.67.0
+  version: 1.68.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -3619,79 +3619,6 @@ paths:
       tags:
       - Project
       - Person
-  /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId}:
-    delete:
-      operationId: removeSkillConfirmation
-      parameters:
-      - in: path
-        name: projectParticipationId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - in: path
-        name: skillId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - in: path
-        name: confirmingPersonId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectParticipationDetails'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Remove a confirmation
-      tags:
-      - Person
-      - Project
-      - Skill
-    post:
-      operationId: addSkillConfirmation
-      parameters:
-      - in: path
-        name: projectParticipationId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - in: path
-        name: skillId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - in: path
-        name: confirmingPersonId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectParticipationDetails'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Confirm Skill
-      tags:
-      - Person
-      - Project
-      - Skill
   /project-participations/awards/{awardId}:
     delete:
       operationId: deleteAwardFromProjectParticipations
@@ -3979,9 +3906,9 @@ paths:
       summary: Add a Person to a ShoppingCart
       tags:
       - ShoppingCart
-  /shopping-carts/{shoppingCartId}/search:
+  /shopping-carts/search:
     post:
-      operationId: searchProjects
+      operationId: searchShoppingCarts
       requestBody:
         content:
           application/json:
@@ -6261,7 +6188,7 @@ components:
           personIds:
             $ref: '#/components/schemas/UUIDS'
         type: object
-      title: PersonSearch
+      title: ShoppingCartSearch
     PagedShoppingCarts:
       allOf:
       - $ref: '#/components/schemas/Page'
@@ -6734,6 +6661,7 @@ components:
       - UNKNOWN_CONFIDENTIALITY
       - PUBLIC
       - CONFIDENTIAL
+      nullable: false
       title: Confidentiality
       type: string
     ProjectType:

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**DeleteShoppingCart**](ShoppingCartAPI.md#DeleteShoppingCart) | **Delete** /shopping-carts/{shoppingCartId} | Delete a ShoppingCart
 [**GetShoppingCart**](ShoppingCartAPI.md#GetShoppingCart) | **Get** /shopping-carts/{shoppingCartId} | Get details about a ShoppingCart
 [**RemovePersonFromShoppingCart**](ShoppingCartAPI.md#RemovePersonFromShoppingCart) | **Delete** /shopping-carts/{shoppingCartId}/persons/{personId} | Remove a Person from a ShoppingCart
-[**SearchProjects**](ShoppingCartAPI.md#SearchProjects) | **Post** /shopping-carts/{shoppingCartId}/search | Complex search over shopping cart entities
+[**SearchShoppingCarts**](ShoppingCartAPI.md#SearchShoppingCarts) | **Post** /shopping-carts/search | Complex search over shopping cart entities
 [**ShareShoppingCart**](ShoppingCartAPI.md#ShareShoppingCart) | **Post** /shopping-carts/{shoppingCartId}/shared-with/{personId} | Share a ShoppingCart with a Person
 [**UnshareShoppingCart**](ShoppingCartAPI.md#UnshareShoppingCart) | **Delete** /shopping-carts/{shoppingCartId}/shared-with/{personId} | Unshare a ShoppingCart with a Person
 [**UpdateShoppingCart**](ShoppingCartAPI.md#UpdateShoppingCart) | **Put** /shopping-carts/{shoppingCartId} | Update a ShoppingCart
@@ -358,9 +358,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SearchProjects
+## SearchShoppingCarts
 
-> PagedShoppingCarts SearchProjects(ctx).ShoppingCartSearch(shoppingCartSearch).Execute()
+> PagedShoppingCarts SearchShoppingCarts(ctx).ShoppingCartSearch(shoppingCartSearch).Execute()
 
 Complex search over shopping cart entities
 
@@ -381,13 +381,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShoppingCartAPI.SearchProjects(context.Background()).ShoppingCartSearch(shoppingCartSearch).Execute()
+    resp, r, err := apiClient.ShoppingCartAPI.SearchShoppingCarts(context.Background()).ShoppingCartSearch(shoppingCartSearch).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ShoppingCartAPI.SearchProjects``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ShoppingCartAPI.SearchShoppingCarts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchProjects`: PagedShoppingCarts
-    fmt.Fprintf(os.Stdout, "Response from `ShoppingCartAPI.SearchProjects`: %v\n", resp)
+    // response from `SearchShoppingCarts`: PagedShoppingCarts
+    fmt.Fprintf(os.Stdout, "Response from `ShoppingCartAPI.SearchShoppingCarts`: %v\n", resp)
 }
 ```
 
@@ -397,7 +397,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSearchProjectsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSearchShoppingCartsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

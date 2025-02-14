@@ -92,11 +92,11 @@ func Test_client_ShoppingCartAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ShoppingCartAPIService SearchProjects", func(t *testing.T) {
+	t.Run("Test ShoppingCartAPIService SearchShoppingCarts", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ShoppingCartAPI.SearchProjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ShoppingCartAPI.SearchShoppingCarts(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

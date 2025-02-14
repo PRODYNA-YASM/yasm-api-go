@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**AddPersonInterest**](SkillAPI.md#AddPersonInterest) | **Post** /persons/{personId}/interests/skills/{skillId} | Add an Interest to a Person
 [**AddPersonSkillExperience**](SkillAPI.md#AddPersonSkillExperience) | **Post** /persons/{personId}/experiences/skills/{skillId} | Add an Skill experience to a Person
 [**AddPersonSkillExperiences**](SkillAPI.md#AddPersonSkillExperiences) | **Post** /persons/{personId}/experiences | Add an Skill experience to a Person (bulk)
-[**AddSkillConfirmation**](SkillAPI.md#AddSkillConfirmation) | **Post** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
 [**AddSkillToCertification**](SkillAPI.md#AddSkillToCertification) | **Post** /certifications/{certificationId}/skills/{skillId} | 
 [**AddSkillToParentSkill**](SkillAPI.md#AddSkillToParentSkill) | **Post** /skills/{skillId}/parents/{parentSkillId} | Attach a Skill to a parent Skill, returns the parent Skill
 [**CreateSkill**](SkillAPI.md#CreateSkill) | **Post** /skills | Create a Skill
@@ -20,7 +19,6 @@ Method | HTTP request | Description
 [**GetProjectsOfPersonWithSkill**](SkillAPI.md#GetProjectsOfPersonWithSkill) | **Get** /persons/{personId}/skills/{skillId}/projects | Get all projects where a certain skill was used by a certain person
 [**GetSkill**](SkillAPI.md#GetSkill) | **Get** /skills/{skillId} | Get details for a single skill
 [**ReadPersonSkillStatistics**](SkillAPI.md#ReadPersonSkillStatistics) | **Get** /persons/{personId}/skill-statistic/{skillId} | Show detailed statistics of a skill for a person
-[**RemoveSkillConfirmation**](SkillAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**RemoveSkillFromParentSkill**](SkillAPI.md#RemoveSkillFromParentSkill) | **Delete** /skills/{skillId}/parents/{parentSkillId} | Detaches a Skill from parent Skill, return the parent Skill
 [**SearchSkills**](SkillAPI.md#SearchSkills) | **Post** /skills/search | Search over skills
 [**UpdatePersonSkillExperience**](SkillAPI.md#UpdatePersonSkillExperience) | **Put** /persons/{personId}/experiences/skills/{skillId} | Edit an Skill experience to a Person
@@ -237,80 +235,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## AddSkillConfirmation
-
-> ProjectParticipationDetails AddSkillConfirmation(ctx, projectParticipationId, skillId, confirmingPersonId).Execute()
-
-Confirm Skill
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SkillAPI.AddSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.AddSkillConfirmation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AddSkillConfirmation`: ProjectParticipationDetails
-    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.AddSkillConfirmation`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectParticipationId** | **string** |  | 
-**skillId** | **string** |  | 
-**confirmingPersonId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAddSkillConfirmationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**ProjectParticipationDetails**](ProjectParticipationDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1147,80 +1071,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PersonSkillStatistic**](PersonSkillStatistic.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RemoveSkillConfirmation
-
-> ProjectParticipationDetails RemoveSkillConfirmation(ctx, projectParticipationId, skillId, confirmingPersonId).Execute()
-
-Remove a confirmation
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SkillAPI.RemoveSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SkillAPI.RemoveSkillConfirmation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RemoveSkillConfirmation`: ProjectParticipationDetails
-    fmt.Fprintf(os.Stdout, "Response from `SkillAPI.RemoveSkillConfirmation`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectParticipationId** | **string** |  | 
-**skillId** | **string** |  | 
-**confirmingPersonId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRemoveSkillConfirmationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**ProjectParticipationDetails**](ProjectParticipationDetails.md)
 
 ### Authorization
 

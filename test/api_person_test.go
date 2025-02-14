@@ -152,22 +152,6 @@ func Test_client_PersonAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PersonAPIService AddSkillConfirmation", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectParticipationId string
-		var skillId string
-		var confirmingPersonId string
-
-		resp, httpRes, err := apiClient.PersonAPI.AddSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test PersonAPIService CreateAvailability", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -588,22 +572,6 @@ func Test_client_PersonAPIService(t *testing.T) {
 		var languageId string
 
 		resp, httpRes, err := apiClient.PersonAPI.RemovePersonLanguage(context.Background(), personId, languageId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PersonAPIService RemoveSkillConfirmation", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectParticipationId string
-		var skillId string
-		var confirmingPersonId string
-
-		resp, httpRes, err := apiClient.PersonAPI.RemoveSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

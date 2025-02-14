@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**AddAwardToProjectParticipations**](ProjectAPI.md#AddAwardToProjectParticipations) | **Post** /project-participations/awards/{awardId} | Add an award to Project Participations
 [**AddExecutiveOrganizationToProject**](ProjectAPI.md#AddExecutiveOrganizationToProject) | **Post** /projects/{projectId}/executive-organizations/{organizationId} | Add an Organization to a Project as executive organization
 [**AddProjectParticipation**](ProjectAPI.md#AddProjectParticipation) | **Post** /project-participations | Add Project to a Person
-[**AddSkillConfirmation**](ProjectAPI.md#AddSkillConfirmation) | **Post** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Confirm Skill
 [**CreateProject**](ProjectAPI.md#CreateProject) | **Post** /projects | Create a Project in an Organization
 [**DeleteAwardFromProjectParticipations**](ProjectAPI.md#DeleteAwardFromProjectParticipations) | **Delete** /project-participations/awards/{awardId} | Remove an Award from Project Participations
 [**DeleteProject**](ProjectAPI.md#DeleteProject) | **Delete** /projects/{projectId} | Delete a project
@@ -19,7 +18,6 @@ Method | HTTP request | Description
 [**MoveProject**](ProjectAPI.md#MoveProject) | **Put** /projects/{projectId}/organizations/{organizationId} | Move a Project to an Organization
 [**ReadProjectParticipation**](ProjectAPI.md#ReadProjectParticipation) | **Get** /project-participations/{projectParticipationId} | Get a project participation
 [**RemoveExecutiveOrganizationFromProject**](ProjectAPI.md#RemoveExecutiveOrganizationFromProject) | **Delete** /projects/{projectId}/executive-organizations/{organizationId} | Remove an Organization from a Project as executive organization
-[**RemoveSkillConfirmation**](ProjectAPI.md#RemoveSkillConfirmation) | **Delete** /project-participations/{projectParticipationId}/skills/{skillId}/confirmation/{confirmingPersonId} | Remove a confirmation
 [**SearchProjectParticipations**](ProjectAPI.md#SearchProjectParticipations) | **Post** /project-participations/search | Search over project participations
 [**SearchProjects**](ProjectAPI.md#SearchProjects) | **Post** /projects/search | Complex search over project entities
 [**UpdateProject**](ProjectAPI.md#UpdateProject) | **Put** /projects/{projectId} | Update a Project
@@ -226,80 +224,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## AddSkillConfirmation
-
-> ProjectParticipationDetails AddSkillConfirmation(ctx, projectParticipationId, skillId, confirmingPersonId).Execute()
-
-Confirm Skill
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectAPI.AddSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.AddSkillConfirmation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AddSkillConfirmation`: ProjectParticipationDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.AddSkillConfirmation`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectParticipationId** | **string** |  | 
-**skillId** | **string** |  | 
-**confirmingPersonId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAddSkillConfirmationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**ProjectParticipationDetails**](ProjectParticipationDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1057,80 +981,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ProjectDetails**](ProjectDetails.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RemoveSkillConfirmation
-
-> ProjectParticipationDetails RemoveSkillConfirmation(ctx, projectParticipationId, skillId, confirmingPersonId).Execute()
-
-Remove a confirmation
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    projectParticipationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    skillId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    confirmingPersonId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectAPI.RemoveSkillConfirmation(context.Background(), projectParticipationId, skillId, confirmingPersonId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.RemoveSkillConfirmation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RemoveSkillConfirmation`: ProjectParticipationDetails
-    fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.RemoveSkillConfirmation`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectParticipationId** | **string** |  | 
-**skillId** | **string** |  | 
-**confirmingPersonId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRemoveSkillConfirmationRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**ProjectParticipationDetails**](ProjectParticipationDetails.md)
 
 ### Authorization
 
