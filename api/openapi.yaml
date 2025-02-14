@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.66.0
+  version: 1.67.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -3757,6 +3757,253 @@ paths:
       - Person
       - Project
       - Award
+  /shopping-carts:
+    post:
+      operationId: createShoppingCart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShoppingCart'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShoppingCartDetail'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Create a ShoppingCart
+      tags:
+      - ShoppingCart
+  /shopping-carts/{shoppingCartId}:
+    delete:
+      operationId: deleteShoppingCart
+      parameters:
+      - in: path
+        name: shoppingCartId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Delete a ShoppingCart
+      tags:
+      - ShoppingCart
+    get:
+      operationId: getShoppingCart
+      parameters:
+      - in: path
+        name: shoppingCartId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShoppingCartDetail'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Get details about a ShoppingCart
+      tags:
+      - ShoppingCart
+    put:
+      operationId: updateShoppingCart
+      parameters:
+      - in: path
+        name: shoppingCartId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShoppingCart'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShoppingCartDetail'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Update a ShoppingCart
+      tags:
+      - ShoppingCart
+  /shopping-carts/{shoppingCartId}/shared-with/{personId}:
+    delete:
+      operationId: unshareShoppingCart
+      parameters:
+      - in: path
+        name: shoppingCartId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShoppingCartDetail'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Unshare a ShoppingCart with a Person
+      tags:
+      - ShoppingCart
+    post:
+      operationId: shareShoppingCart
+      parameters:
+      - in: path
+        name: shoppingCartId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShoppingCartDetail'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Share a ShoppingCart with a Person
+      tags:
+      - ShoppingCart
+  /shopping-carts/{shoppingCartId}/persons/{personId}:
+    delete:
+      operationId: removePersonFromShoppingCart
+      parameters:
+      - in: path
+        name: shoppingCartId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShoppingCartDetail'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Remove a Person from a ShoppingCart
+      tags:
+      - ShoppingCart
+    post:
+      operationId: addPersonToShoppingCart
+      parameters:
+      - in: path
+        name: shoppingCartId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShoppingCartDetail'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Add a Person to a ShoppingCart
+      tags:
+      - ShoppingCart
+  /shopping-carts/{shoppingCartId}/search:
+    post:
+      operationId: searchProjects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShoppingCartSearch'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedShoppingCarts'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Complex search over shopping cart entities
+      tags:
+      - ShoppingCart
   /search:
     post:
       operationId: search
@@ -4206,6 +4453,12 @@ components:
     ProjectParticipationId:
       in: path
       name: projectParticipationId
+      required: true
+      schema:
+        $ref: '#/components/schemas/UUID'
+    ShoppingCartId:
+      in: path
+      name: shoppingCartId
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
@@ -5958,6 +6211,67 @@ components:
         $ref: '#/components/schemas/ProjectParticipationDetails'
       title: ProjectParticipationDetailsList
       type: array
+    ShoppingCart:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - $ref: '#/components/schemas/Descriptable'
+      title: ShoppingCart
+    ShoppingCartDetail:
+      example:
+        owner: null
+        persons:
+        - null
+        - null
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        shoppingCart: null
+        sharedWith:
+        - null
+        - null
+      properties:
+        shoppingCart:
+          $ref: '#/components/schemas/ShoppingCart'
+        audit:
+          $ref: '#/components/schemas/Audit'
+        owner:
+          $ref: '#/components/schemas/Person'
+        sharedWith:
+          items:
+            $ref: '#/components/schemas/Person'
+          type: array
+        persons:
+          items:
+            $ref: '#/components/schemas/Person'
+          type: array
+      title: ShoppingCartDetail
+      type: object
+    ShoppingCartSearch:
+      allOf:
+      - $ref: '#/components/schemas/Search'
+      - properties:
+          ownerIds:
+            $ref: '#/components/schemas/UUIDS'
+          sharedWithIds:
+            $ref: '#/components/schemas/UUIDS'
+          personIds:
+            $ref: '#/components/schemas/UUIDS'
+        type: object
+      title: PersonSearch
+    PagedShoppingCarts:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          shoppingCarts:
+            items:
+              $ref: '#/components/schemas/ShoppingCartDetail'
+            type: array
+        type: object
+      title: PagedShoppingCarts
     SearchResult:
       allOf:
       - $ref: '#/components/schemas/Page'

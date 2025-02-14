@@ -20,6 +20,7 @@ api_project.go
 api_project_image.go
 api_project_participation.go
 api_search.go
+api_shopping_cart.go
 api_skill.go
 api_skills_profile.go
 api_statistic.go
@@ -103,6 +104,7 @@ docs/PagedProfiles.md
 docs/PagedProjectImages.md
 docs/PagedProjectParticipation.md
 docs/PagedProjects.md
+docs/PagedShoppingCarts.md
 docs/PagedSkills.md
 docs/PagedSkillsProfiles.md
 docs/PdfProfile.md
@@ -146,6 +148,10 @@ docs/SearchAPI.md
 docs/SearchResult.md
 docs/SearchResultItem.md
 docs/Seniority.md
+docs/ShoppingCart.md
+docs/ShoppingCartAPI.md
+docs/ShoppingCartDetail.md
+docs/ShoppingCartSearch.md
 docs/Skill.md
 docs/SkillAPI.md
 docs/SkillDetails.md
@@ -237,6 +243,7 @@ model_paged_profiles.go
 model_paged_project_images.go
 model_paged_project_participation.go
 model_paged_projects.go
+model_paged_shopping_carts.go
 model_paged_skills.go
 model_paged_skills_profiles.go
 model_pdf_profile.go
@@ -274,6 +281,9 @@ model_search.go
 model_search_result.go
 model_search_result_item.go
 model_seniority.go
+model_shopping_cart.go
+model_shopping_cart_detail.go
+model_shopping_cart_search.go
 model_skill.go
 model_skill_details.go
 model_skill_evaluation_filter.go
@@ -310,6 +320,7 @@ test/api_project_image_test.go
 test/api_project_participation_test.go
 test/api_project_test.go
 test/api_search_test.go
+test/api_shopping_cart_test.go
 test/api_skill_test.go
 test/api_skills_profile_test.go
 test/api_statistic_test.go
