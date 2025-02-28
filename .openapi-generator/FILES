@@ -151,6 +151,8 @@ docs/Seniority.md
 docs/ShoppingCart.md
 docs/ShoppingCartAPI.md
 docs/ShoppingCartDetail.md
+docs/ShoppingCartGroup.md
+docs/ShoppingCartGroupDetail.md
 docs/ShoppingCartSearch.md
 docs/Skill.md
 docs/SkillAPI.md
@@ -283,6 +285,8 @@ model_search_result_item.go
 model_seniority.go
 model_shopping_cart.go
 model_shopping_cart_detail.go
+model_shopping_cart_group.go
+model_shopping_cart_group_detail.go
 model_shopping_cart_search.go
 model_skill.go
 model_skill_details.go

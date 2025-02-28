@@ -4,23 +4,27 @@ All URIs are relative to *https://yasm.prodyna.com:443/api/graph/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddPersonToShoppingCart**](ShoppingCartAPI.md#AddPersonToShoppingCart) | **Post** /shopping-carts/{shoppingCartId}/persons/{personId} | Add a Person to a ShoppingCart
+[**AddPersonToShoppingCartGroup**](ShoppingCartAPI.md#AddPersonToShoppingCartGroup) | **Post** /shopping-cart-groups/{shoppingCartGroupId}/persons/{personId} | Add a Person to a ShoppingCartGroup
 [**CreateShoppingCart**](ShoppingCartAPI.md#CreateShoppingCart) | **Post** /shopping-carts | Create a ShoppingCart
+[**CreateShoppingCartGroup**](ShoppingCartAPI.md#CreateShoppingCartGroup) | **Post** /shopping-carts/{shoppingCartId}/shopping-cart-groups | Create a ShoppingCart
 [**DeleteShoppingCart**](ShoppingCartAPI.md#DeleteShoppingCart) | **Delete** /shopping-carts/{shoppingCartId} | Delete a ShoppingCart
+[**DeleteShoppingCartGroup**](ShoppingCartAPI.md#DeleteShoppingCartGroup) | **Delete** /shopping-cart-groups/{shoppingCartGroupId} | delete a ShoppingCartGroup
 [**GetShoppingCart**](ShoppingCartAPI.md#GetShoppingCart) | **Get** /shopping-carts/{shoppingCartId} | Get details about a ShoppingCart
-[**RemovePersonFromShoppingCart**](ShoppingCartAPI.md#RemovePersonFromShoppingCart) | **Delete** /shopping-carts/{shoppingCartId}/persons/{personId} | Remove a Person from a ShoppingCart
+[**GetShoppingCartGroup**](ShoppingCartAPI.md#GetShoppingCartGroup) | **Get** /shopping-cart-groups/{shoppingCartGroupId} | get a ShoppingCartGroup
+[**RemovePersonFromShoppingCartGroup**](ShoppingCartAPI.md#RemovePersonFromShoppingCartGroup) | **Delete** /shopping-cart-groups/{shoppingCartGroupId}/persons/{personId} | Remove a Person from a ShoppingCartGroup
 [**SearchShoppingCarts**](ShoppingCartAPI.md#SearchShoppingCarts) | **Post** /shopping-carts/search | Complex search over shopping cart entities
 [**ShareShoppingCart**](ShoppingCartAPI.md#ShareShoppingCart) | **Post** /shopping-carts/{shoppingCartId}/shared-with/{personId} | Share a ShoppingCart with a Person
 [**UnshareShoppingCart**](ShoppingCartAPI.md#UnshareShoppingCart) | **Delete** /shopping-carts/{shoppingCartId}/shared-with/{personId} | Unshare a ShoppingCart with a Person
 [**UpdateShoppingCart**](ShoppingCartAPI.md#UpdateShoppingCart) | **Put** /shopping-carts/{shoppingCartId} | Update a ShoppingCart
+[**UpdateShoppingCartGroup**](ShoppingCartAPI.md#UpdateShoppingCartGroup) | **Put** /shopping-cart-groups/{shoppingCartGroupId} | update a ShoppingCartGroup
 
 
 
-## AddPersonToShoppingCart
+## AddPersonToShoppingCartGroup
 
-> ShoppingCartDetail AddPersonToShoppingCart(ctx, shoppingCartId, personId).Execute()
+> ShoppingCartGroupDetail AddPersonToShoppingCartGroup(ctx, shoppingCartGroupId, personId).Execute()
 
-Add a Person to a ShoppingCart
+Add a Person to a ShoppingCartGroup
 
 ### Example
 
@@ -35,18 +39,18 @@ import (
 )
 
 func main() {
-    shoppingCartId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    shoppingCartGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShoppingCartAPI.AddPersonToShoppingCart(context.Background(), shoppingCartId, personId).Execute()
+    resp, r, err := apiClient.ShoppingCartAPI.AddPersonToShoppingCartGroup(context.Background(), shoppingCartGroupId, personId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ShoppingCartAPI.AddPersonToShoppingCart``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ShoppingCartAPI.AddPersonToShoppingCartGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddPersonToShoppingCart`: ShoppingCartDetail
-    fmt.Fprintf(os.Stdout, "Response from `ShoppingCartAPI.AddPersonToShoppingCart`: %v\n", resp)
+    // response from `AddPersonToShoppingCartGroup`: ShoppingCartGroupDetail
+    fmt.Fprintf(os.Stdout, "Response from `ShoppingCartAPI.AddPersonToShoppingCartGroup`: %v\n", resp)
 }
 ```
 
@@ -56,12 +60,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**shoppingCartId** | **string** |  | 
+**shoppingCartGroupId** | **string** |  | 
 **personId** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAddPersonToShoppingCartRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAddPersonToShoppingCartGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -71,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShoppingCartDetail**](ShoppingCartDetail.md)
+[**ShoppingCartGroupDetail**](ShoppingCartGroupDetail.md)
 
 ### Authorization
 
@@ -151,6 +155,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreateShoppingCartGroup
+
+> ShoppingCartGroupDetail CreateShoppingCartGroup(ctx, shoppingCartId).ShoppingCartGroup(shoppingCartGroup).Execute()
+
+Create a ShoppingCart
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    shoppingCartId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    shoppingCartGroup := *openapiclient.NewShoppingCartGroup("Id_example", "Name_example") // ShoppingCartGroup | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ShoppingCartAPI.CreateShoppingCartGroup(context.Background(), shoppingCartId).ShoppingCartGroup(shoppingCartGroup).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ShoppingCartAPI.CreateShoppingCartGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateShoppingCartGroup`: ShoppingCartGroupDetail
+    fmt.Fprintf(os.Stdout, "Response from `ShoppingCartAPI.CreateShoppingCartGroup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**shoppingCartId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateShoppingCartGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **shoppingCartGroup** | [**ShoppingCartGroup**](ShoppingCartGroup.md) |  | 
+
+### Return type
+
+[**ShoppingCartGroupDetail**](ShoppingCartGroupDetail.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteShoppingCart
 
 > Status DeleteShoppingCart(ctx, shoppingCartId).Execute()
@@ -195,6 +269,74 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteShoppingCartRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Status**](Status.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteShoppingCartGroup
+
+> Status DeleteShoppingCartGroup(ctx, shoppingCartGroupId).Execute()
+
+delete a ShoppingCartGroup
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    shoppingCartGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ShoppingCartAPI.DeleteShoppingCartGroup(context.Background(), shoppingCartGroupId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ShoppingCartAPI.DeleteShoppingCartGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteShoppingCartGroup`: Status
+    fmt.Fprintf(os.Stdout, "Response from `ShoppingCartAPI.DeleteShoppingCartGroup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**shoppingCartGroupId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteShoppingCartGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -287,11 +429,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RemovePersonFromShoppingCart
+## GetShoppingCartGroup
 
-> ShoppingCartDetail RemovePersonFromShoppingCart(ctx, shoppingCartId, personId).Execute()
+> ShoppingCartGroupDetail GetShoppingCartGroup(ctx, shoppingCartGroupId).Execute()
 
-Remove a Person from a ShoppingCart
+get a ShoppingCartGroup
 
 ### Example
 
@@ -306,18 +448,17 @@ import (
 )
 
 func main() {
-    shoppingCartId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    shoppingCartGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ShoppingCartAPI.RemovePersonFromShoppingCart(context.Background(), shoppingCartId, personId).Execute()
+    resp, r, err := apiClient.ShoppingCartAPI.GetShoppingCartGroup(context.Background(), shoppingCartGroupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ShoppingCartAPI.RemovePersonFromShoppingCart``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ShoppingCartAPI.GetShoppingCartGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RemovePersonFromShoppingCart`: ShoppingCartDetail
-    fmt.Fprintf(os.Stdout, "Response from `ShoppingCartAPI.RemovePersonFromShoppingCart`: %v\n", resp)
+    // response from `GetShoppingCartGroup`: ShoppingCartGroupDetail
+    fmt.Fprintf(os.Stdout, "Response from `ShoppingCartAPI.GetShoppingCartGroup`: %v\n", resp)
 }
 ```
 
@@ -327,12 +468,81 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**shoppingCartId** | **string** |  | 
+**shoppingCartGroupId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetShoppingCartGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ShoppingCartGroupDetail**](ShoppingCartGroupDetail.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemovePersonFromShoppingCartGroup
+
+> ShoppingCartGroupDetail RemovePersonFromShoppingCartGroup(ctx, shoppingCartGroupId, personId).Execute()
+
+Remove a Person from a ShoppingCartGroup
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    shoppingCartGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    personId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ShoppingCartAPI.RemovePersonFromShoppingCartGroup(context.Background(), shoppingCartGroupId, personId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ShoppingCartAPI.RemovePersonFromShoppingCartGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RemovePersonFromShoppingCartGroup`: ShoppingCartGroupDetail
+    fmt.Fprintf(os.Stdout, "Response from `ShoppingCartAPI.RemovePersonFromShoppingCartGroup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**shoppingCartGroupId** | **string** |  | 
 **personId** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRemovePersonFromShoppingCartRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRemovePersonFromShoppingCartGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -342,7 +552,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShoppingCartDetail**](ShoppingCartDetail.md)
+[**ShoppingCartGroupDetail**](ShoppingCartGroupDetail.md)
 
 ### Authorization
 
@@ -619,6 +829,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ShoppingCartDetail**](ShoppingCartDetail.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateShoppingCartGroup
+
+> ShoppingCartGroupDetail UpdateShoppingCartGroup(ctx, shoppingCartGroupId).ShoppingCartGroup(shoppingCartGroup).Execute()
+
+update a ShoppingCartGroup
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    shoppingCartGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    shoppingCartGroup := *openapiclient.NewShoppingCartGroup("Id_example", "Name_example") // ShoppingCartGroup | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ShoppingCartAPI.UpdateShoppingCartGroup(context.Background(), shoppingCartGroupId).ShoppingCartGroup(shoppingCartGroup).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ShoppingCartAPI.UpdateShoppingCartGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateShoppingCartGroup`: ShoppingCartGroupDetail
+    fmt.Fprintf(os.Stdout, "Response from `ShoppingCartAPI.UpdateShoppingCartGroup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**shoppingCartGroupId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateShoppingCartGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **shoppingCartGroup** | [**ShoppingCartGroup**](ShoppingCartGroup.md) |  | 
+
+### Return type
+
+[**ShoppingCartGroupDetail**](ShoppingCartGroupDetail.md)
 
 ### Authorization
 

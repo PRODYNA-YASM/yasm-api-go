@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Audit** | Pointer to [**Audit**](Audit.md) |  | [optional] 
 **Owner** | Pointer to [**Person**](Person.md) |  | [optional] 
 **SharedWith** | Pointer to [**[]Person**](Person.md) |  | [optional] 
-**Persons** | Pointer to [**[]Person**](Person.md) |  | [optional] 
+**ShoppingCartGroups** | Pointer to [**[]ShoppingCartGroupDetail**](ShoppingCartGroupDetail.md) |  | [optional] 
 
 ## Methods
 
@@ -129,30 +129,30 @@ SetSharedWith sets SharedWith field to given value.
 
 HasSharedWith returns a boolean if a field has been set.
 
-### GetPersons
+### GetShoppingCartGroups
 
-`func (o *ShoppingCartDetail) GetPersons() []Person`
+`func (o *ShoppingCartDetail) GetShoppingCartGroups() []ShoppingCartGroupDetail`
 
-GetPersons returns the Persons field if non-nil, zero value otherwise.
+GetShoppingCartGroups returns the ShoppingCartGroups field if non-nil, zero value otherwise.
 
-### GetPersonsOk
+### GetShoppingCartGroupsOk
 
-`func (o *ShoppingCartDetail) GetPersonsOk() (*[]Person, bool)`
+`func (o *ShoppingCartDetail) GetShoppingCartGroupsOk() (*[]ShoppingCartGroupDetail, bool)`
 
-GetPersonsOk returns a tuple with the Persons field if it's non-nil, zero value otherwise
+GetShoppingCartGroupsOk returns a tuple with the ShoppingCartGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPersons
+### SetShoppingCartGroups
 
-`func (o *ShoppingCartDetail) SetPersons(v []Person)`
+`func (o *ShoppingCartDetail) SetShoppingCartGroups(v []ShoppingCartGroupDetail)`
 
-SetPersons sets Persons field to given value.
+SetShoppingCartGroups sets ShoppingCartGroups field to given value.
 
-### HasPersons
+### HasShoppingCartGroups
 
-`func (o *ShoppingCartDetail) HasPersons() bool`
+`func (o *ShoppingCartDetail) HasShoppingCartGroups() bool`
 
-HasPersons returns a boolean if a field has been set.
+HasShoppingCartGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

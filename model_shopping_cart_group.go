@@ -14,33 +14,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the Descriptable type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Descriptable{}
+// checks if the ShoppingCartGroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ShoppingCartGroup{}
 
-// Descriptable struct for Descriptable
-type Descriptable struct {
+// ShoppingCartGroup struct for ShoppingCartGroup
+type ShoppingCartGroup struct {
+	NamedDomainModel
 	Description *string `json:"description,omitempty"`
 }
 
-// NewDescriptable instantiates a new Descriptable object
+// NewShoppingCartGroup instantiates a new ShoppingCartGroup object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDescriptable() *Descriptable {
-	this := Descriptable{}
+func NewShoppingCartGroup(id string, name string) *ShoppingCartGroup {
+	this := ShoppingCartGroup{}
+	this.Id = id
+	this.Name = name
 	return &this
 }
 
-// NewDescriptableWithDefaults instantiates a new Descriptable object
+// NewShoppingCartGroupWithDefaults instantiates a new ShoppingCartGroup object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDescriptableWithDefaults() *Descriptable {
-	this := Descriptable{}
+func NewShoppingCartGroupWithDefaults() *ShoppingCartGroup {
+	this := ShoppingCartGroup{}
 	return &this
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Descriptable) GetDescription() string {
+func (o *ShoppingCartGroup) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -50,7 +53,7 @@ func (o *Descriptable) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Descriptable) GetDescriptionOk() (*string, bool) {
+func (o *ShoppingCartGroup) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -58,7 +61,7 @@ func (o *Descriptable) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *Descriptable) HasDescription() bool {
+func (o *ShoppingCartGroup) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -67,11 +70,11 @@ func (o *Descriptable) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *Descriptable) SetDescription(v string) {
+func (o *ShoppingCartGroup) SetDescription(v string) {
 	o.Description = &v
 }
 
-func (o Descriptable) MarshalJSON() ([]byte, error) {
+func (o ShoppingCartGroup) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -79,46 +82,54 @@ func (o Descriptable) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Descriptable) ToMap() (map[string]interface{}, error) {
+func (o ShoppingCartGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	serializedNamedDomainModel, errNamedDomainModel := json.Marshal(o.NamedDomainModel)
+	if errNamedDomainModel != nil {
+		return map[string]interface{}{}, errNamedDomainModel
+	}
+	errNamedDomainModel = json.Unmarshal([]byte(serializedNamedDomainModel), &toSerialize)
+	if errNamedDomainModel != nil {
+		return map[string]interface{}{}, errNamedDomainModel
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	return toSerialize, nil
 }
 
-type NullableDescriptable struct {
-	value *Descriptable
+type NullableShoppingCartGroup struct {
+	value *ShoppingCartGroup
 	isSet bool
 }
 
-func (v NullableDescriptable) Get() *Descriptable {
+func (v NullableShoppingCartGroup) Get() *ShoppingCartGroup {
 	return v.value
 }
 
-func (v *NullableDescriptable) Set(val *Descriptable) {
+func (v *NullableShoppingCartGroup) Set(val *ShoppingCartGroup) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDescriptable) IsSet() bool {
+func (v NullableShoppingCartGroup) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDescriptable) Unset() {
+func (v *NullableShoppingCartGroup) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDescriptable(val *Descriptable) *NullableDescriptable {
-	return &NullableDescriptable{value: val, isSet: true}
+func NewNullableShoppingCartGroup(val *ShoppingCartGroup) *NullableShoppingCartGroup {
+	return &NullableShoppingCartGroup{value: val, isSet: true}
 }
 
-func (v NullableDescriptable) MarshalJSON() ([]byte, error) {
+func (v NullableShoppingCartGroup) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDescriptable) UnmarshalJSON(src []byte) error {
+func (v *NullableShoppingCartGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

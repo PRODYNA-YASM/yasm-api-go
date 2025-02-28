@@ -22,14 +22,14 @@ func Test_client_ShoppingCartAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ShoppingCartAPIService AddPersonToShoppingCart", func(t *testing.T) {
+	t.Run("Test ShoppingCartAPIService AddPersonToShoppingCartGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var shoppingCartId string
+		var shoppingCartGroupId string
 		var personId string
 
-		resp, httpRes, err := apiClient.ShoppingCartAPI.AddPersonToShoppingCart(context.Background(), shoppingCartId, personId).Execute()
+		resp, httpRes, err := apiClient.ShoppingCartAPI.AddPersonToShoppingCartGroup(context.Background(), shoppingCartGroupId, personId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,6 +42,20 @@ func Test_client_ShoppingCartAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ShoppingCartAPI.CreateShoppingCart(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ShoppingCartAPIService CreateShoppingCartGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var shoppingCartId string
+
+		resp, httpRes, err := apiClient.ShoppingCartAPI.CreateShoppingCartGroup(context.Background(), shoppingCartId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -63,6 +77,20 @@ func Test_client_ShoppingCartAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ShoppingCartAPIService DeleteShoppingCartGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var shoppingCartGroupId string
+
+		resp, httpRes, err := apiClient.ShoppingCartAPI.DeleteShoppingCartGroup(context.Background(), shoppingCartGroupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ShoppingCartAPIService GetShoppingCart", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -77,14 +105,28 @@ func Test_client_ShoppingCartAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ShoppingCartAPIService RemovePersonFromShoppingCart", func(t *testing.T) {
+	t.Run("Test ShoppingCartAPIService GetShoppingCartGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var shoppingCartId string
+		var shoppingCartGroupId string
+
+		resp, httpRes, err := apiClient.ShoppingCartAPI.GetShoppingCartGroup(context.Background(), shoppingCartGroupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ShoppingCartAPIService RemovePersonFromShoppingCartGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var shoppingCartGroupId string
 		var personId string
 
-		resp, httpRes, err := apiClient.ShoppingCartAPI.RemovePersonFromShoppingCart(context.Background(), shoppingCartId, personId).Execute()
+		resp, httpRes, err := apiClient.ShoppingCartAPI.RemovePersonFromShoppingCartGroup(context.Background(), shoppingCartGroupId, personId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -141,6 +183,20 @@ func Test_client_ShoppingCartAPIService(t *testing.T) {
 		var shoppingCartId string
 
 		resp, httpRes, err := apiClient.ShoppingCartAPI.UpdateShoppingCart(context.Background(), shoppingCartId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ShoppingCartAPIService UpdateShoppingCartGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var shoppingCartGroupId string
+
+		resp, httpRes, err := apiClient.ShoppingCartAPI.UpdateShoppingCartGroup(context.Background(), shoppingCartGroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
