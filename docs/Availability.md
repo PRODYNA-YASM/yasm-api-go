@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ObjectType** | Pointer to **string** |  | [optional] 
 **WorkHours** | **float32** |  | 
 **PlannedHours** | **float32** |  | 
-**Descriptions** | Pointer to **[]string** |  | [optional] 
+**Descriptions** | Pointer to [**[]TaskDescription**](TaskDescription.md) |  | [optional] 
 
 ## Methods
 
@@ -142,20 +142,20 @@ SetPlannedHours sets PlannedHours field to given value.
 
 ### GetDescriptions
 
-`func (o *Availability) GetDescriptions() []string`
+`func (o *Availability) GetDescriptions() []TaskDescription`
 
 GetDescriptions returns the Descriptions field if non-nil, zero value otherwise.
 
 ### GetDescriptionsOk
 
-`func (o *Availability) GetDescriptionsOk() (*[]string, bool)`
+`func (o *Availability) GetDescriptionsOk() (*[]TaskDescription, bool)`
 
 GetDescriptionsOk returns a tuple with the Descriptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescriptions
 
-`func (o *Availability) SetDescriptions(v []string)`
+`func (o *Availability) SetDescriptions(v []TaskDescription)`
 
 SetDescriptions sets Descriptions field to given value.
 

@@ -34,6 +34,7 @@ docs/Availability.md
 docs/AvailabilityAPI.md
 docs/AvailabilityDetail.md
 docs/AvailabilityFilter.md
+docs/AvailabilityType.md
 docs/Award.md
 docs/AwardAPI.md
 docs/AwardDetails.md
@@ -173,6 +174,7 @@ docs/StatisticAPI.md
 docs/Status.md
 docs/StatusAPI.md
 docs/Synonymable.md
+docs/TaskDescription.md
 docs/TemplatesAPI.md
 docs/TimeframeFilter.md
 docs/Timeframed.md
@@ -185,6 +187,7 @@ model_audit.go
 model_availability.go
 model_availability_detail.go
 model_availability_filter.go
+model_availability_type.go
 model_award.go
 model_award_details.go
 model_award_search.go
@@ -303,6 +306,7 @@ model_skills_profile_details.go
 model_skills_profile_request.go
 model_status.go
 model_synonymable.go
+model_task_description.go
 model_timeframe_filter.go
 model_timeframed.go
 model_version.go
