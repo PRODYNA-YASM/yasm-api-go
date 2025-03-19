@@ -11,6 +11,7 @@ api_image.go
 api_industry.go
 api_language.go
 api_layout.go
+api_layout_file.go
 api_office.go
 api_organization.go
 api_pdf_profile.go
@@ -75,6 +76,9 @@ docs/Layout.md
 docs/LayoutAPI.md
 docs/LayoutDetails.md
 docs/LayoutField.md
+docs/LayoutFileAPI.md
+docs/LayoutFileDetails.md
+docs/LayoutFileDetailsSearch.md
 docs/Level.md
 docs/Locateable.md
 docs/MinMax.md
@@ -97,6 +101,7 @@ docs/PagedCertifications.md
 docs/PagedCountries.md
 docs/PagedIndustries.md
 docs/PagedLanguages.md
+docs/PagedLayoutFileDetails.md
 docs/PagedLayouts.md
 docs/PagedOffices.md
 docs/PagedOrganizations.md
@@ -221,6 +226,8 @@ model_language_level.go
 model_layout.go
 model_layout_details.go
 model_layout_field.go
+model_layout_file_details.go
+model_layout_file_details_search.go
 model_level.go
 model_locateable.go
 model_min_max.go
@@ -240,6 +247,7 @@ model_paged_certifications.go
 model_paged_countries.go
 model_paged_industries.go
 model_paged_languages.go
+model_paged_layout_file_details.go
 model_paged_layouts.go
 model_paged_offices.go
 model_paged_organizations.go
@@ -318,6 +326,7 @@ test/api_country_test.go
 test/api_image_test.go
 test/api_industry_test.go
 test/api_language_test.go
+test/api_layout_file_test.go
 test/api_layout_test.go
 test/api_office_test.go
 test/api_organization_test.go

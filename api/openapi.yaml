@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.70.0
+  version: 1.71.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -3408,6 +3408,112 @@ paths:
       summary: Update a Layout
       tags:
       - Layout
+  /layout/{layoutId}/file/upload:
+    post:
+      operationId: uploadLayoutFile
+      parameters:
+      - in: path
+        name: layoutId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              format: binary
+              type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayoutFileDetails'
+          description: Uploaded a layout svg file
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Upload a Layout SVG file behind a layoutId
+      tags:
+      - Layout File
+  /layout/{layoutFileId}/file:
+    delete:
+      operationId: deleteLayoutFile
+      parameters:
+      - in: path
+        name: layoutFileId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Deleted a Layout SVG file
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Delete a Layout SVG file by layoutFileId
+      tags:
+      - Layout File
+    get:
+      operationId: readLayoutFile
+      parameters:
+      - in: path
+        name: layoutFileId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            image/svg+xml:
+              schema:
+                format: binary
+                type: string
+          description: Read a Layout SVG file
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: read a Layout SVG file
+      tags:
+      - Layout File
+  /layout/file/search:
+    post:
+      operationId: searchLayoutFileDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LayoutFileDetailsSearch'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedLayoutFileDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Search over Layout File
+      tags:
+      - Layout File
   /images:
     post:
       operationId: uploadImage
@@ -4478,6 +4584,12 @@ components:
     LayoutId:
       in: path
       name: layoutId
+      required: true
+      schema:
+        $ref: '#/components/schemas/UUID'
+    LayoutFileId:
+      in: path
+      name: layoutFileId
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
@@ -6116,6 +6228,34 @@ components:
             type: array
         type: object
       title: PagedLayouts
+    LayoutFileDetails:
+      allOf:
+      - $ref: '#/components/schemas/BasicDomainModel'
+      - properties:
+          audit:
+            $ref: '#/components/schemas/Audit'
+          layoutId:
+            $ref: '#/components/schemas/UUID'
+        type: object
+      title: LayoutFileDetail
+    LayoutFileDetailsSearch:
+      allOf:
+      - $ref: '#/components/schemas/Search'
+      - properties:
+          layoutIds:
+            $ref: '#/components/schemas/UUIDS'
+        type: object
+      title: LayoutFileDetailsSearch
+    PagedLayoutFileDetails:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - properties:
+          layoutFileDetails:
+            items:
+              $ref: '#/components/schemas/LayoutFileDetails'
+            type: array
+        type: object
+      title: PagedLayoutFileDetails
     ImageDetails:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
