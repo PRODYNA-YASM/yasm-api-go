@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **Projects** | Pointer to [**[]Project**](Project.md) |  | [optional] [readonly] 
 **Industries** | Pointer to [**[]Industry**](Industry.md) |  | [optional] 
 **Certifications** | Pointer to [**[]Certification**](Certification.md) |  | [optional] 
-**Awards** | Pointer to [**[]Award**](Award.md) |  | [optional] 
 **Offices** | Pointer to [**[]Office**](Office.md) |  | [optional] 
 
 ## Methods
@@ -233,31 +232,6 @@ SetCertifications sets Certifications field to given value.
 `func (o *OrganizationDetails) HasCertifications() bool`
 
 HasCertifications returns a boolean if a field has been set.
-
-### GetAwards
-
-`func (o *OrganizationDetails) GetAwards() []Award`
-
-GetAwards returns the Awards field if non-nil, zero value otherwise.
-
-### GetAwardsOk
-
-`func (o *OrganizationDetails) GetAwardsOk() (*[]Award, bool)`
-
-GetAwardsOk returns a tuple with the Awards field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAwards
-
-`func (o *OrganizationDetails) SetAwards(v []Award)`
-
-SetAwards sets Awards field to given value.
-
-### HasAwards
-
-`func (o *OrganizationDetails) HasAwards() bool`
-
-HasAwards returns a boolean if a field has been set.
 
 ### GetOffices
 

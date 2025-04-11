@@ -176,21 +176,6 @@ func Test_client_OrganizationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrganizationAPIService MoveAward", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var awardId string
-		var organizationId string
-
-		resp, httpRes, err := apiClient.OrganizationAPI.MoveAward(context.Background(), awardId, organizationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test OrganizationAPIService MoveCertification", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

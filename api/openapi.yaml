@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.72.0
+  version: 1.73.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -87,13 +87,6 @@ paths:
   /awards:
     post:
       operationId: createAward
-      parameters:
-      - description: The ID of the organization
-        in: query
-        name: organizationId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
@@ -113,7 +106,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Create a new Award in an Organization
+      summary: Create a new Award
       tags:
       - Award
   /awards/{awardId}:
@@ -194,37 +187,6 @@ paths:
           description: The specified resource was not found
       summary: Update an award
       tags:
-      - Award
-  /awards/{awardId}/organizations/{organizationId}:
-    put:
-      operationId: moveAward
-      parameters:
-      - in: path
-        name: awardId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      - in: path
-        name: organizationId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AwardDetails'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Move an award to an Organization
-      tags:
-      - Organization
       - Award
   /awards/search:
     post:
@@ -2751,6 +2713,67 @@ paths:
       - Person
       - Project
       - Skill
+  /persons/{personId}/awards/{awardId}:
+    delete:
+      operationId: deletePersonAward
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Remove Award from a Person
+      tags:
+      - Person
+      - Award
+    post:
+      operationId: addAwardToPerson
+      parameters:
+      - in: path
+        name: personId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: awardId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonDetails'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Add award to person
+      tags:
+      - Person
+      - Award
   /profiles:
     post:
       operationId: createProfile
@@ -4515,15 +4538,15 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
-    OrganizationId:
-      in: path
-      name: organizationId
-      required: true
-      schema:
-        $ref: '#/components/schemas/UUID'
     CertificationId:
       in: path
       name: certificationId
+      required: true
+      schema:
+        $ref: '#/components/schemas/UUID'
+    OrganizationId:
+      in: path
+      name: organizationId
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
@@ -4653,10 +4676,6 @@ components:
           type: string
       title: Error
       type: object
-    UUID:
-      format: uuid
-      title: UUID
-      type: string
     Award:
       allOf:
       - $ref: '#/components/schemas/NamedDomainModel'
@@ -4667,6 +4686,7 @@ components:
             description: The year in which the award was received
             example: 2024
             minimum: 1900
+            nullable: true
             type: integer
         type: object
       title: Award
@@ -4680,16 +4700,17 @@ components:
           updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated: 2000-01-23T04:56:07.000+00:00
           createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        organization: null
       properties:
         audit:
           $ref: '#/components/schemas/Audit'
         award:
           $ref: '#/components/schemas/Award'
-        organization:
-          $ref: '#/components/schemas/Organization'
       title: AwardDetails
       type: object
+    UUID:
+      format: uuid
+      title: UUID
+      type: string
     Status:
       example:
         status: status
@@ -4704,13 +4725,9 @@ components:
       - properties:
           awardIds:
             $ref: '#/components/schemas/UUIDS'
-          organizationIds:
-            $ref: '#/components/schemas/UUIDS'
           personIds:
             $ref: '#/components/schemas/UUIDS'
           projectIds:
-            $ref: '#/components/schemas/UUIDS'
-          industryIds:
             $ref: '#/components/schemas/UUIDS'
           officeIds:
             $ref: '#/components/schemas/UUIDS'
@@ -5054,9 +5071,6 @@ components:
           updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated: 2000-01-23T04:56:07.000+00:00
           createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        awards:
-        - null
-        - null
         organization: null
         industries:
         - null
@@ -5099,10 +5113,6 @@ components:
           items:
             $ref: '#/components/schemas/Certification'
           type: array
-        awards:
-          items:
-            $ref: '#/components/schemas/Award'
-          type: array
         offices:
           items:
             $ref: '#/components/schemas/Office'
@@ -5122,8 +5132,6 @@ components:
           industryIds:
             $ref: '#/components/schemas/UUIDS'
           certificationIds:
-            $ref: '#/components/schemas/UUIDS'
-          awardIds:
             $ref: '#/components/schemas/UUIDS'
           skillIds:
             $ref: '#/components/schemas/UUIDS'
@@ -5380,7 +5388,6 @@ components:
               updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               updated: 2000-01-23T04:56:07.000+00:00
               createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            organization: null
           - award: null
             audit:
               updatedBy: updatedBy
@@ -5389,7 +5396,6 @@ components:
               updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               updated: 2000-01-23T04:56:07.000+00:00
               createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            organization: null
           organization: null
           industries:
           - null
@@ -5600,7 +5606,6 @@ components:
             updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             updated: 2000-01-23T04:56:07.000+00:00
             createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          organization: null
         - award: null
           audit:
             updatedBy: updatedBy
@@ -5609,7 +5614,6 @@ components:
             updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             updated: 2000-01-23T04:56:07.000+00:00
             createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          organization: null
         organization: null
         industries:
         - null

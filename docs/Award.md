@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Synonyms** | Pointer to **[]string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**YearOfAward** | Pointer to **int32** | The year in which the award was received | [optional] 
+**YearOfAward** | Pointer to **NullableInt32** | The year in which the award was received | [optional] 
 
 ## Methods
 
@@ -102,6 +102,16 @@ SetYearOfAward sets YearOfAward field to given value.
 
 HasYearOfAward returns a boolean if a field has been set.
 
+### SetYearOfAwardNil
+
+`func (o *Award) SetYearOfAwardNil(b bool)`
+
+ SetYearOfAwardNil sets the value for YearOfAward to be an explicit nil
+
+### UnsetYearOfAward
+`func (o *Award) UnsetYearOfAward()`
+
+UnsetYearOfAward ensures that no value is present for YearOfAward, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

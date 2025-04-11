@@ -5,10 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwardIds** | Pointer to **[]string** |  | [optional] 
-**OrganizationIds** | Pointer to **[]string** |  | [optional] 
 **PersonIds** | Pointer to **[]string** |  | [optional] 
 **ProjectIds** | Pointer to **[]string** |  | [optional] 
-**IndustryIds** | Pointer to **[]string** |  | [optional] 
 **OfficeIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -54,31 +52,6 @@ SetAwardIds sets AwardIds field to given value.
 `func (o *AwardSearch) HasAwardIds() bool`
 
 HasAwardIds returns a boolean if a field has been set.
-
-### GetOrganizationIds
-
-`func (o *AwardSearch) GetOrganizationIds() []string`
-
-GetOrganizationIds returns the OrganizationIds field if non-nil, zero value otherwise.
-
-### GetOrganizationIdsOk
-
-`func (o *AwardSearch) GetOrganizationIdsOk() (*[]string, bool)`
-
-GetOrganizationIdsOk returns a tuple with the OrganizationIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrganizationIds
-
-`func (o *AwardSearch) SetOrganizationIds(v []string)`
-
-SetOrganizationIds sets OrganizationIds field to given value.
-
-### HasOrganizationIds
-
-`func (o *AwardSearch) HasOrganizationIds() bool`
-
-HasOrganizationIds returns a boolean if a field has been set.
 
 ### GetPersonIds
 
@@ -129,31 +102,6 @@ SetProjectIds sets ProjectIds field to given value.
 `func (o *AwardSearch) HasProjectIds() bool`
 
 HasProjectIds returns a boolean if a field has been set.
-
-### GetIndustryIds
-
-`func (o *AwardSearch) GetIndustryIds() []string`
-
-GetIndustryIds returns the IndustryIds field if non-nil, zero value otherwise.
-
-### GetIndustryIdsOk
-
-`func (o *AwardSearch) GetIndustryIdsOk() (*[]string, bool)`
-
-GetIndustryIdsOk returns a tuple with the IndustryIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIndustryIds
-
-`func (o *AwardSearch) SetIndustryIds(v []string)`
-
-SetIndustryIds sets IndustryIds field to given value.
-
-### HasIndustryIds
-
-`func (o *AwardSearch) HasIndustryIds() bool`
-
-HasIndustryIds returns a boolean if a field has been set.
 
 ### GetOfficeIds
 

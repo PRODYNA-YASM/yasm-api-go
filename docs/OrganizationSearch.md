@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **OrganizationIds** | Pointer to **[]string** |  | [optional] 
 **IndustryIds** | Pointer to **[]string** |  | [optional] 
 **CertificationIds** | Pointer to **[]string** |  | [optional] 
-**AwardIds** | Pointer to **[]string** |  | [optional] 
 **SkillIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -155,31 +154,6 @@ SetCertificationIds sets CertificationIds field to given value.
 `func (o *OrganizationSearch) HasCertificationIds() bool`
 
 HasCertificationIds returns a boolean if a field has been set.
-
-### GetAwardIds
-
-`func (o *OrganizationSearch) GetAwardIds() []string`
-
-GetAwardIds returns the AwardIds field if non-nil, zero value otherwise.
-
-### GetAwardIdsOk
-
-`func (o *OrganizationSearch) GetAwardIdsOk() (*[]string, bool)`
-
-GetAwardIdsOk returns a tuple with the AwardIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAwardIds
-
-`func (o *OrganizationSearch) SetAwardIds(v []string)`
-
-SetAwardIds sets AwardIds field to given value.
-
-### HasAwardIds
-
-`func (o *OrganizationSearch) HasAwardIds() bool`
-
-HasAwardIds returns a boolean if a field has been set.
 
 ### GetSkillIds
 
