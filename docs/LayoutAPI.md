@@ -6,15 +6,14 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateLayout**](LayoutAPI.md#CreateLayout) | **Post** /layouts | Create a Layout
 [**DeleteLayout**](LayoutAPI.md#DeleteLayout) | **Delete** /layouts/{layoutId} | Delete a Layout
-[**ReadLayout**](LayoutAPI.md#ReadLayout) | **Get** /layouts/{layoutId} | Read a Layout
+[**GetLayout**](LayoutAPI.md#GetLayout) | **Get** /layouts/{layoutId} | Read a Layout
 [**SearchLayouts**](LayoutAPI.md#SearchLayouts) | **Post** /layouts/search | Search over Layouts
-[**UpdateLayout**](LayoutAPI.md#UpdateLayout) | **Put** /layouts/{layoutId} | Update a Layout
 
 
 
 ## CreateLayout
 
-> LayoutDetails CreateLayout(ctx).Layout(layout).Execute()
+> LayoutDetails CreateLayout(ctx).SvgFile(svgFile).Id(id).Name(name).Execute()
 
 Create a Layout
 
@@ -31,11 +30,13 @@ import (
 )
 
 func main() {
-    layout := *openapiclient.NewLayout("Id_example") // Layout | 
+    svgFile := os.NewFile(1234, "some_file") // *os.File | SVG layout file
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    name := "name_example" // string | Layout JSON object (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LayoutAPI.CreateLayout(context.Background()).Layout(layout).Execute()
+    resp, r, err := apiClient.LayoutAPI.CreateLayout(context.Background()).SvgFile(svgFile).Id(id).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LayoutAPI.CreateLayout``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,7 +57,9 @@ Other parameters are passed through a pointer to a apiCreateLayoutRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **layout** | [**Layout**](Layout.md) |  | 
+ **svgFile** | ***os.File** | SVG layout file | 
+ **id** | **string** |  | 
+ **name** | **string** | Layout JSON object | 
 
 ### Return type
 
@@ -68,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -144,9 +147,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReadLayout
+## GetLayout
 
-> string ReadLayout(ctx, layoutId).Execute()
+> LayoutDetails GetLayout(ctx, layoutId).Execute()
 
 Read a Layout
 
@@ -167,13 +170,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LayoutAPI.ReadLayout(context.Background(), layoutId).Execute()
+    resp, r, err := apiClient.LayoutAPI.GetLayout(context.Background(), layoutId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LayoutAPI.ReadLayout``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LayoutAPI.GetLayout``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadLayout`: string
-    fmt.Fprintf(os.Stdout, "Response from `LayoutAPI.ReadLayout`: %v\n", resp)
+    // response from `GetLayout`: LayoutDetails
+    fmt.Fprintf(os.Stdout, "Response from `LayoutAPI.GetLayout`: %v\n", resp)
 }
 ```
 
@@ -187,7 +190,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReadLayoutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetLayoutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -196,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**LayoutDetails**](LayoutDetails.md)
 
 ### Authorization
 
@@ -205,7 +208,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: image/png, application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -261,76 +264,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PagedLayouts**](PagedLayouts.md)
-
-### Authorization
-
-[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateLayout
-
-> LayoutDetails UpdateLayout(ctx, layoutId).Layout(layout).Execute()
-
-Update a Layout
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/prodyna-yasm/yasm-api-go"
-)
-
-func main() {
-    layoutId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    layout := *openapiclient.NewLayout("Id_example") // Layout | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LayoutAPI.UpdateLayout(context.Background(), layoutId).Layout(layout).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LayoutAPI.UpdateLayout``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateLayout`: LayoutDetails
-    fmt.Fprintf(os.Stdout, "Response from `LayoutAPI.UpdateLayout`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**layoutId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateLayoutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **layout** | [**Layout**](Layout.md) |  | 
-
-### Return type
-
-[**LayoutDetails**](LayoutDetails.md)
 
 ### Authorization
 

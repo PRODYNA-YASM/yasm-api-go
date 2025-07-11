@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.73.0
+  version: 1.74.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -3200,22 +3200,34 @@ paths:
       summary: Merge source project into main project
       tags:
       - Project
-  /project-images:
+  /projects/{projectId}/layouts:
     post:
-      operationId: createProjectImage
+      operationId: createProjectLayout
+      parameters:
+      - in: path
+        name: projectId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - description: The ID of the layout to use for the image
+        in: query
+        name: layoutId
+        required: true
+        schema:
+          format: uuid
+          type: string
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProjectImageCreate'
+              $ref: '#/components/schemas/ProjectLayout'
         required: true
       responses:
         "200":
           content:
-            image/png:
+            application/json:
               schema:
-                format: byte
-                type: string
+                $ref: '#/components/schemas/ProjectLayoutDetails'
           description: Created a Project Image and get image
         default:
           content:
@@ -3223,40 +3235,92 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Create a Project Image
+      summary: Create a Project Layout
       tags:
-      - Project Image
-  /project-images/search:
+      - ProjectLayout
+  /projects/{projectId}/layouts/search:
     post:
-      operationId: searchProjectImages
+      operationId: searchProjectLayouts
+      parameters:
+      - in: path
+        name: projectId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProjectImageSearch'
-        required: false
+              $ref: '#/components/schemas/ProjectLayoutSearch'
+        required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PagedProjectImages'
-          description: OK
+                $ref: '#/components/schemas/PagedProjectLayouts'
+          description: Search results for Project Layouts
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Search over Project Images
+      summary: Search for Project Layouts
       tags:
-      - Project Image
-  /project-images/{projectImageId}:
-    delete:
-      operationId: deleteProjectImage
+      - projectLayoutId
+  /projects/{projectId}/layouts/{projectLayoutId}/overlay:
+    post:
+      operationId: createLayoutOverlay
       parameters:
       - in: path
-        name: projectImageId
+        name: projectId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: projectLayoutId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/createLayoutOverlay_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectLayoutDetails'
+          description: Updated Project Image with Layout Overlay
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Create a Layout Overlay
+      tags:
+      - ProjectLayout
+  /projects/{projectId}/images/{projectLayoutId}/overlay/{overlayId}:
+    delete:
+      operationId: deleteOverlayFromLayoutInProject
+      parameters:
+      - in: path
+        name: projectId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: projectLayoutId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: overlayId
         required: true
         schema:
           $ref: '#/components/schemas/UUID'
@@ -3266,21 +3330,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-          description: Deleted a Project Image
+          description: OK
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Delete Project Image
+      summary: Delete an overlay from a layout in a project
       tags:
-      - Project Image
+      - ProjectLayout
+  /projects/{projectId}/layouts/{projectLayoutId}.png:
     get:
-      operationId: readProjectImage
+      operationId: renderOverlayToPng
       parameters:
       - in: path
-        name: projectImageId
+        name: projectId
+        required: true
+        schema:
+          $ref: '#/components/schemas/UUID'
+      - in: path
+        name: projectLayoutId
         required: true
         schema:
           $ref: '#/components/schemas/UUID'
@@ -3289,26 +3359,26 @@ paths:
           content:
             image/png:
               schema:
-                format: byte
+                format: binary
                 type: string
-          description: Read a Project Image
+          description: Rendered Layout Overlay to png
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
-      summary: Read a Project Image
+      summary: Render a Layout Overlay to png
       tags:
-      - Project Image
+      - ProjectLayout
   /layouts:
     post:
       operationId: createLayout
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Layout'
+              $ref: '#/components/schemas/createLayout_request'
         required: true
       responses:
         "200":
@@ -3377,7 +3447,7 @@ paths:
       tags:
       - Layout
     get:
-      operationId: readLayout
+      operationId: getLayout
       parameters:
       - in: path
         name: layoutId
@@ -3387,10 +3457,9 @@ paths:
       responses:
         "200":
           content:
-            image/png:
+            application/json:
               schema:
-                format: byte
-                type: string
+                $ref: '#/components/schemas/LayoutDetails'
           description: Read a Layout
         default:
           content:
@@ -3401,142 +3470,6 @@ paths:
       summary: Read a Layout
       tags:
       - Layout
-    put:
-      operationId: updateLayout
-      parameters:
-      - in: path
-        name: layoutId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Layout'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LayoutDetails'
-          description: Updated a Layout
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Update a Layout
-      tags:
-      - Layout
-  /layout/{layoutId}/file/upload:
-    post:
-      operationId: uploadLayoutFile
-      parameters:
-      - in: path
-        name: layoutId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      requestBody:
-        content:
-          application/octet-stream:
-            schema:
-              format: binary
-              type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LayoutFileDetails'
-          description: Uploaded a layout svg file
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Upload a Layout SVG file behind a layoutId
-      tags:
-      - Layout File
-  /layout/{layoutFileId}/file:
-    delete:
-      operationId: deleteLayoutFile
-      parameters:
-      - in: path
-        name: layoutFileId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: Deleted a Layout SVG file
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Delete a Layout SVG file by layoutFileId
-      tags:
-      - Layout File
-    get:
-      operationId: readLayoutFile
-      parameters:
-      - in: path
-        name: layoutFileId
-        required: true
-        schema:
-          $ref: '#/components/schemas/UUID'
-      responses:
-        "200":
-          content:
-            image/svg+xml:
-              schema:
-                format: binary
-                type: string
-          description: Read a Layout SVG file
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: read a Layout SVG file
-      tags:
-      - Layout File
-  /layout/file/search:
-    post:
-      operationId: searchLayoutFileDetails
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LayoutFileDetailsSearch'
-        required: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagedLayoutFileDetails'
-          description: OK
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: The specified resource was not found
-      summary: Search over Layout File
-      tags:
-      - Layout File
   /images:
     post:
       operationId: uploadImage
@@ -4604,15 +4537,21 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
-    LayoutId:
+    ProjectLayoutId:
       in: path
-      name: layoutId
+      name: projectLayoutId
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
-    LayoutFileId:
+    OverlayId:
       in: path
-      name: layoutFileId
+      name: overlayId
+      required: true
+      schema:
+        $ref: '#/components/schemas/UUID'
+    LayoutId:
+      in: path
+      name: layoutId
       required: true
       schema:
         $ref: '#/components/schemas/UUID'
@@ -6168,45 +6107,54 @@ components:
             type: boolean
         type: object
       title: ProjectSearch
-    ProjectImageCreate:
+    ProjectLayout:
       allOf:
-      - $ref: '#/components/schemas/ProjectImage'
-      - properties:
-          layoutId:
-            $ref: '#/components/schemas/UUID'
-        type: object
-      title: ProjectImageCreate
-    ProjectImageSearch:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - type: object
+      title: ProjectLayout
+    ProjectLayoutDetails:
+      example:
+        projectLayout: null
+        audit:
+          updatedBy: updatedBy
+          createdBy: createdBy
+          created: 2000-01-23T04:56:07.000+00:00
+          updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated: 2000-01-23T04:56:07.000+00:00
+          createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        overlays:
+        - null
+        - null
+        layoutId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        audit:
+          $ref: '#/components/schemas/Audit'
+        projectLayout:
+          $ref: '#/components/schemas/ProjectLayout'
+        layoutId:
+          format: uuid
+          title: UUID
+          type: string
+        overlays:
+          items:
+            $ref: '#/components/schemas/LayoutOverlay'
+          type: array
+      title: ProjectLayoutDetails
+      type: object
+    ProjectLayoutSearch:
       allOf:
       - $ref: '#/components/schemas/Search'
-      - properties:
-          projectIds:
-            $ref: '#/components/schemas/UUIDS'
-          layoutIds:
-            $ref: '#/components/schemas/UUIDS'
-        type: object
-      title: ProjectImageSearch
-    PagedProjectImages:
+      title: ProjectLayoutSearch
+    PagedProjectLayouts:
       allOf:
       - $ref: '#/components/schemas/Page'
       - properties:
-          projectImages:
+          projectLayouts:
             items:
-              $ref: '#/components/schemas/ProjectImageDetails'
+              $ref: '#/components/schemas/ProjectLayoutDetails'
             type: array
         type: object
-      title: PagedProjectImages
-    Layout:
-      allOf:
-      - $ref: '#/components/schemas/BasicDomainModel'
-      - properties:
-          fields:
-            items:
-              $ref: '#/components/schemas/LayoutField'
-            minItems: 1
-            type: array
-        type: object
-      title: Layout
+      title: PagedProjectLayouts
     LayoutDetails:
       example:
         layout: null
@@ -6234,34 +6182,6 @@ components:
             type: array
         type: object
       title: PagedLayouts
-    LayoutFileDetails:
-      allOf:
-      - $ref: '#/components/schemas/BasicDomainModel'
-      - properties:
-          audit:
-            $ref: '#/components/schemas/Audit'
-          layoutId:
-            $ref: '#/components/schemas/UUID'
-        type: object
-      title: LayoutFileDetail
-    LayoutFileDetailsSearch:
-      allOf:
-      - $ref: '#/components/schemas/Search'
-      - properties:
-          layoutIds:
-            $ref: '#/components/schemas/UUIDS'
-        type: object
-      title: LayoutFileDetailsSearch
-    PagedLayoutFileDetails:
-      allOf:
-      - $ref: '#/components/schemas/Page'
-      - properties:
-          layoutFileDetails:
-            items:
-              $ref: '#/components/schemas/LayoutFileDetails'
-            type: array
-        type: object
-      title: PagedLayoutFileDetails
     ImageDetails:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
@@ -7019,29 +6939,24 @@ components:
           type: string
       title: AwardedParticipant
       type: object
-    ProjectImage:
+    LayoutOverlay:
       allOf:
-      - $ref: '#/components/schemas/BasicDomainModel'
+      - $ref: '#/components/schemas/NamedDomainModel'
       - properties:
-          projectId:
-            $ref: '#/components/schemas/UUID'
-          fieldImages:
+          field:
+            $ref: '#/components/schemas/LayoutField'
+        type: object
+      title: LayoutOverlay
+    Layout:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - properties:
+          fields:
             items:
-              $ref: '#/components/schemas/FieldImage'
-            minItems: 1
+              $ref: '#/components/schemas/LayoutField'
             type: array
         type: object
-      title: ProjectImage
-    ProjectImageDetails:
-      properties:
-        audit:
-          $ref: '#/components/schemas/Audit'
-        projectImage:
-          $ref: '#/components/schemas/ProjectImage'
-        layout:
-          $ref: '#/components/schemas/Layout'
-      title: ProjectImageDetails
-      type: object
+      title: Layout
     BasicDomainModel:
       discriminator:
         propertyName: objectType
@@ -7056,13 +6971,6 @@ components:
       - id
       title: BasicDomainModel
       type: object
-    LayoutField:
-      allOf:
-      - $ref: '#/components/schemas/BasicDomainModel'
-      - $ref: '#/components/schemas/Descriptable'
-      - $ref: '#/components/schemas/Dimension'
-      - $ref: '#/components/schemas/DeviceType'
-      title: LayoutField
     ProjectParticipation:
       allOf:
       - $ref: '#/components/schemas/BasicDomainModel'
@@ -7186,43 +7094,18 @@ components:
           type: array
       title: ScoreResult
       type: object
-    FieldImage:
-      properties:
-        image:
-          $ref: '#/components/schemas/ImageDetails'
-        layoutFieldId:
-          format: uuid
-          title: UUID
-          type: string
-      title: FieldImage
-      type: object
-    Dimension:
-      properties:
-        width:
-          example: 100.5
-          format: float
-          minimum: 0
-          nullable: false
-          type: number
-        height:
-          example: 150.0
-          format: float
-          minimum: 0
-          nullable: false
-          type: number
-      title: Dimension
-      type: object
-    DeviceType:
-      properties:
-        deviceType:
-          enum:
-          - DESKTOP
-          - TABLET
-          - MOBILE
-          example: MOBILE
-          type: string
-      title: DeviceType
-      type: object
+    LayoutField:
+      allOf:
+      - $ref: '#/components/schemas/NamedDomainModel'
+      - properties:
+          width:
+            description: with inside the svg tag
+            type: string
+          height:
+            description: height of the svg tag
+            type: string
+        type: object
+      title: LayoutField
     Score:
       properties:
         score:
@@ -7244,6 +7127,34 @@ components:
             $ref: '#/components/schemas/NamedDomainModel'
           type: array
       title: Score
+      type: object
+    createLayoutOverlay_request:
+      properties:
+        fieldId:
+          format: uuid
+          type: string
+        pngFile:
+          description: png layout file
+          format: binary
+          type: string
+      required:
+      - fieldId
+      - pngFile
+      type: object
+    createLayout_request:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          description: Layout JSON object
+          type: string
+        svgFile:
+          description: SVG layout file
+          format: binary
+          type: string
+      required:
+      - svgFile
       type: object
   securitySchemes:
     oidcScheme:

@@ -48,13 +48,13 @@ func Test_client_LayoutAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test LayoutAPIService ReadLayout", func(t *testing.T) {
+	t.Run("Test LayoutAPIService GetLayout", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var layoutId string
 
-		resp, httpRes, err := apiClient.LayoutAPI.ReadLayout(context.Background(), layoutId).Execute()
+		resp, httpRes, err := apiClient.LayoutAPI.GetLayout(context.Background(), layoutId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -67,20 +67,6 @@ func Test_client_LayoutAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.LayoutAPI.SearchLayouts(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test LayoutAPIService UpdateLayout", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var layoutId string
-
-		resp, httpRes, err := apiClient.LayoutAPI.UpdateLayout(context.Background(), layoutId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
