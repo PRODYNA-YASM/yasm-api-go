@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.74.0
+  version: 1.75.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -1517,6 +1517,35 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       summary: Generate a PDF profile from a Person
+      tags:
+      - PDFProfile
+      - Person
+  /pdf-profile/bulk-create:
+    post:
+      operationId: bulkCreatePdfProfiles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileRequests'
+        required: true
+      responses:
+        "200":
+          content:
+            application/zip:
+              schema:
+                example: JVBERi0xLjQKJcfs...
+                format: binary
+                type: string
+          description: A Zip file that contains all pdf profiles of the persons in
+            the persons list
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Generate PDF profiles wrapped in a ZIP File from a list of Persons
       tags:
       - PDFProfile
       - Person
@@ -5364,6 +5393,524 @@ components:
           format: string
           type: string
       title: PdfProfile
+      type: object
+    ProfileRequests:
+      example:
+        profileRequest:
+        - template: template
+          anonymize: true
+          projectParticipation:
+          - participationItems:
+            - participation: null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+            - participation: null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+            projectDetails:
+              persons:
+              - null
+              - null
+              timeframe:
+                enddate: 2000-01-23
+                startdate: 2000-01-23
+                objectType: objectType
+              audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              awards:
+              - null
+              - null
+              organization: null
+              industries:
+              - null
+              - null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+              project: null
+              executiveOrganizations:
+              - null
+              - null
+              objectType: objectType
+          - participationItems:
+            - participation: null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+            - participation: null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+            projectDetails:
+              persons:
+              - null
+              - null
+              timeframe:
+                enddate: 2000-01-23
+                startdate: 2000-01-23
+                objectType: objectType
+              audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              awards:
+              - null
+              - null
+              organization: null
+              industries:
+              - null
+              - null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+              project: null
+              executiveOrganizations:
+              - null
+              - null
+              objectType: objectType
+          person:
+            languages:
+            - level:
+                level: 1
+              language: null
+            - level:
+                level: 1
+              language: null
+            manager: null
+            availabilities:
+            - audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              availability: null
+              percent: 8.008281904610115
+            - audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              availability: null
+              percent: 8.008281904610115
+            skillGroups:
+            - skills:
+              - null
+              - null
+              group: null
+            - skills:
+              - null
+              - null
+              group: null
+            profiles:
+            - null
+            - null
+            nationalities:
+            - null
+            - null
+            office:
+              country: null
+              audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              office: null
+            certifications:
+            - audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              skillLevels:
+              - level:
+                  level: 1
+                skill: null
+              - level:
+                  level: 1
+                skill: null
+              organization: null
+              certification: null
+            - audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              skillLevels:
+              - level:
+                  level: 1
+                skill: null
+              - level:
+                  level: 1
+                skill: null
+              organization: null
+              certification: null
+            teamMembers:
+            - null
+            - null
+            experiences:
+            - confirmedBy:
+              - null
+              - null
+              skillLevel:
+                level:
+                  level: 1
+                skill: null
+            - confirmedBy:
+              - null
+              - null
+              skillLevel:
+                level:
+                  level: 1
+                skill: null
+            objectType: objectType
+            audit:
+              updatedBy: updatedBy
+              createdBy: createdBy
+              created: 2000-01-23T04:56:07.000+00:00
+              updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updated: 2000-01-23T04:56:07.000+00:00
+              createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            person: null
+            awards:
+            - award: null
+              audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - award: null
+              audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            organization: null
+            industries:
+            - null
+            - null
+            interests:
+            - null
+            - null
+        - template: template
+          anonymize: true
+          projectParticipation:
+          - participationItems:
+            - participation: null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+            - participation: null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+            projectDetails:
+              persons:
+              - null
+              - null
+              timeframe:
+                enddate: 2000-01-23
+                startdate: 2000-01-23
+                objectType: objectType
+              audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              awards:
+              - null
+              - null
+              organization: null
+              industries:
+              - null
+              - null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+              project: null
+              executiveOrganizations:
+              - null
+              - null
+              objectType: objectType
+          - participationItems:
+            - participation: null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+            - participation: null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+            projectDetails:
+              persons:
+              - null
+              - null
+              timeframe:
+                enddate: 2000-01-23
+                startdate: 2000-01-23
+                objectType: objectType
+              audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              awards:
+              - null
+              - null
+              organization: null
+              industries:
+              - null
+              - null
+              skillGroups:
+              - skills:
+                - null
+                - null
+                group: null
+              - skills:
+                - null
+                - null
+                group: null
+              project: null
+              executiveOrganizations:
+              - null
+              - null
+              objectType: objectType
+          person:
+            languages:
+            - level:
+                level: 1
+              language: null
+            - level:
+                level: 1
+              language: null
+            manager: null
+            availabilities:
+            - audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              availability: null
+              percent: 8.008281904610115
+            - audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              availability: null
+              percent: 8.008281904610115
+            skillGroups:
+            - skills:
+              - null
+              - null
+              group: null
+            - skills:
+              - null
+              - null
+              group: null
+            profiles:
+            - null
+            - null
+            nationalities:
+            - null
+            - null
+            office:
+              country: null
+              audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              office: null
+            certifications:
+            - audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              skillLevels:
+              - level:
+                  level: 1
+                skill: null
+              - level:
+                  level: 1
+                skill: null
+              organization: null
+              certification: null
+            - audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              skillLevels:
+              - level:
+                  level: 1
+                skill: null
+              - level:
+                  level: 1
+                skill: null
+              organization: null
+              certification: null
+            teamMembers:
+            - null
+            - null
+            experiences:
+            - confirmedBy:
+              - null
+              - null
+              skillLevel:
+                level:
+                  level: 1
+                skill: null
+            - confirmedBy:
+              - null
+              - null
+              skillLevel:
+                level:
+                  level: 1
+                skill: null
+            objectType: objectType
+            audit:
+              updatedBy: updatedBy
+              createdBy: createdBy
+              created: 2000-01-23T04:56:07.000+00:00
+              updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updated: 2000-01-23T04:56:07.000+00:00
+              createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            person: null
+            awards:
+            - award: null
+              audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - award: null
+              audit:
+                updatedBy: updatedBy
+                createdBy: createdBy
+                created: 2000-01-23T04:56:07.000+00:00
+                updatedById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                updated: 2000-01-23T04:56:07.000+00:00
+                createdById: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            organization: null
+            industries:
+            - null
+            - null
+            interests:
+            - null
+            - null
+      properties:
+        profileRequest:
+          items:
+            $ref: '#/components/schemas/ProfileRequest'
+          type: array
+      title: ProfileRequests
       type: object
     Person:
       allOf:

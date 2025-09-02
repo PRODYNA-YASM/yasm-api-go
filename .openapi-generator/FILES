@@ -121,6 +121,7 @@ docs/Profile.md
 docs/ProfileAPI.md
 docs/ProfileDetails.md
 docs/ProfileRequest.md
+docs/ProfileRequests.md
 docs/ProfileStatistic.md
 docs/Project.md
 docs/ProjectAPI.md
@@ -260,6 +261,7 @@ model_person_skill_statistic.go
 model_profile.go
 model_profile_details.go
 model_profile_request.go
+model_profile_requests.go
 model_profile_statistic.go
 model_project.go
 model_project_details.go
