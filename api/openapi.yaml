@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.75.0
+  version: 1.76.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -1464,6 +1464,33 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: The specified resource was not found
       summary: Search over organizations
+      tags:
+      - Organization
+  /organizations/logo-search:
+    get:
+      operationId: searchOrganizationLogos
+      parameters:
+      - description: The term to search logos with
+        in: query
+        name: term
+        required: true
+        schema:
+          example: OrganizationName
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationLogos'
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Search third-party api for organization logos
       tags:
       - Organization
   /pdf-profile/create:
@@ -5115,6 +5142,18 @@ components:
             type: array
         type: object
       title: PagedOrganizations
+    OrganizationLogos:
+      example:
+        logos:
+        - null
+        - null
+      properties:
+        logos:
+          items:
+            $ref: '#/components/schemas/OrganizationLogo'
+          type: array
+      title: OrganizationLogos
+      type: object
     ProfileRequest:
       example:
         template: template
@@ -7251,6 +7290,20 @@ components:
           $ref: '#/components/schemas/Geolocation'
       title: Locateable
       type: object
+    OrganizationLogo:
+      allOf:
+      - properties:
+          name:
+            default: ""
+            type: string
+          logo_url:
+            default: ""
+            type: string
+          domain:
+            default: ""
+            type: string
+        type: object
+      title: OrganizationLogo
     Seniority:
       enum:
       - UNKNOWN

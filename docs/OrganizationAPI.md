@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**RemoveExecutiveOrganizationFromProject**](OrganizationAPI.md#RemoveExecutiveOrganizationFromProject) | **Delete** /projects/{projectId}/executive-organizations/{organizationId} | Remove an Organization from a Project as executive organization
 [**RemoveOrganizationFromParentOrganization**](OrganizationAPI.md#RemoveOrganizationFromParentOrganization) | **Delete** /organizations/{organizationId}/parents/{parentOrganizationId} | Detaches an Organization from parent Organization, return the parent Organization
 [**RemoveOrganizationServiceManager**](OrganizationAPI.md#RemoveOrganizationServiceManager) | **Delete** /organizations/{organizationId}/service-manager/{personId} | Remove service manager from an Organization
+[**SearchOrganizationLogos**](OrganizationAPI.md#SearchOrganizationLogos) | **Get** /organizations/logo-search | Search third-party api for organization logos
 [**SearchOrganizations**](OrganizationAPI.md#SearchOrganizations) | **Post** /organizations/search | Search over organizations
 [**UpdateOrganization**](OrganizationAPI.md#UpdateOrganization) | **Put** /organizations/{organizationId} | Update an Organization
 [**UpdateOrganizationServiceManager**](OrganizationAPI.md#UpdateOrganizationServiceManager) | **Put** /organizations/{organizationId}/service-manager/{personId} | Update service manager of an Organization
@@ -1122,6 +1123,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrganizationDetails**](OrganizationDetails.md)
+
+### Authorization
+
+[oidcScheme](../README.md#oidcScheme), [bearerScheme](../README.md#bearerScheme)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchOrganizationLogos
+
+> OrganizationLogos SearchOrganizationLogos(ctx).Term(term).Execute()
+
+Search third-party api for organization logos
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/prodyna-yasm/yasm-api-go"
+)
+
+func main() {
+    term := "OrganizationName" // string | The term to search logos with
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAPI.SearchOrganizationLogos(context.Background()).Term(term).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAPI.SearchOrganizationLogos``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SearchOrganizationLogos`: OrganizationLogos
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAPI.SearchOrganizationLogos`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSearchOrganizationLogosRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **term** | **string** | The term to search logos with | 
+
+### Return type
+
+[**OrganizationLogos**](OrganizationLogos.md)
 
 ### Authorization
 

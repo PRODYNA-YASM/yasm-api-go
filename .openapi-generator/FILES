@@ -87,6 +87,8 @@ docs/OfficeSearch.md
 docs/Organization.md
 docs/OrganizationAPI.md
 docs/OrganizationDetails.md
+docs/OrganizationLogo.md
+docs/OrganizationLogos.md
 docs/OrganizationSearch.md
 docs/PDFProfileAPI.md
 docs/Page.md
@@ -230,6 +232,8 @@ model_office_details.go
 model_office_search.go
 model_organization.go
 model_organization_details.go
+model_organization_logo.go
+model_organization_logos.go
 model_organization_search.go
 model_page.go
 model_paged_availabilities.go
