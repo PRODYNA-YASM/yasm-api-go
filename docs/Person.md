@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **Seniority** | Pointer to **string** |  | [optional] 
 **SeniorityEnum** | Pointer to [**Seniority**](Seniority.md) |  | [optional] 
 **ExperienceSinceYear** | Pointer to **int32** |  | [optional] 
+**EmployeeSince** | Pointer to **string** |  | [optional] 
+**Nationality** | Pointer to **string** |  | [optional] 
 **OnsiteRatio** | Pointer to **int32** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] [readonly] 
 **PictureSHA256** | Pointer to **string** | SHA256 hash of the full resolution image | [optional] [readonly] 
@@ -391,6 +393,56 @@ SetExperienceSinceYear sets ExperienceSinceYear field to given value.
 `func (o *Person) HasExperienceSinceYear() bool`
 
 HasExperienceSinceYear returns a boolean if a field has been set.
+
+### GetEmployeeSince
+
+`func (o *Person) GetEmployeeSince() string`
+
+GetEmployeeSince returns the EmployeeSince field if non-nil, zero value otherwise.
+
+### GetEmployeeSinceOk
+
+`func (o *Person) GetEmployeeSinceOk() (*string, bool)`
+
+GetEmployeeSinceOk returns a tuple with the EmployeeSince field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmployeeSince
+
+`func (o *Person) SetEmployeeSince(v string)`
+
+SetEmployeeSince sets EmployeeSince field to given value.
+
+### HasEmployeeSince
+
+`func (o *Person) HasEmployeeSince() bool`
+
+HasEmployeeSince returns a boolean if a field has been set.
+
+### GetNationality
+
+`func (o *Person) GetNationality() string`
+
+GetNationality returns the Nationality field if non-nil, zero value otherwise.
+
+### GetNationalityOk
+
+`func (o *Person) GetNationalityOk() (*string, bool)`
+
+GetNationalityOk returns a tuple with the Nationality field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNationality
+
+`func (o *Person) SetNationality(v string)`
+
+SetNationality sets Nationality field to given value.
+
+### HasNationality
+
+`func (o *Person) HasNationality() bool`
+
+HasNationality returns a boolean if a field has been set.
 
 ### GetOnsiteRatio
 

@@ -3,7 +3,7 @@ info:
   description: This is an example of using OAuth2 Implicit Flow in a specification
     to describe security to your API.
   title: YASM (Yet Another Skill Management) API
-  version: 1.76.0
+  version: 1.77.0
 servers:
 - url: "{scheme}://{host}:{port}/api/graph/v1"
   variables:
@@ -5987,6 +5987,13 @@ components:
           experienceSinceYear:
             example: 2010
             type: integer
+          employeeSince:
+            example: 2015-06-01
+            format: date
+            type: string
+          nationality:
+            example: German
+            type: string
           onsiteRatio:
             example: 20
             maximum: 100
@@ -7360,8 +7367,6 @@ components:
       title: ExperienceSkillGroup
       type: object
     Timeframed:
-      discriminator:
-        propertyName: objectType
       example:
         enddate: 2000-01-23
         startdate: 2000-01-23
