@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **Picture** | Pointer to **string** | base64 encoded image | [optional] [readonly] 
 **PictureSHA256** | Pointer to **string** | SHA256 hash of the full resolution image | [optional] [readonly] 
 **Inactive** | Pointer to **bool** | Marks persons not working for the company anymore | [optional] [default to false]
+**FormerEmployee** | Pointer to **bool** | Indicates if the person is a former employee | [optional] [default to false]
 
 ## Methods
 
@@ -543,6 +544,31 @@ SetInactive sets Inactive field to given value.
 `func (o *Person) HasInactive() bool`
 
 HasInactive returns a boolean if a field has been set.
+
+### GetFormerEmployee
+
+`func (o *Person) GetFormerEmployee() bool`
+
+GetFormerEmployee returns the FormerEmployee field if non-nil, zero value otherwise.
+
+### GetFormerEmployeeOk
+
+`func (o *Person) GetFormerEmployeeOk() (*bool, bool)`
+
+GetFormerEmployeeOk returns a tuple with the FormerEmployee field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormerEmployee
+
+`func (o *Person) SetFormerEmployee(v bool)`
+
+SetFormerEmployee sets FormerEmployee field to given value.
+
+### HasFormerEmployee
+
+`func (o *Person) HasFormerEmployee() bool`
+
+HasFormerEmployee returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
