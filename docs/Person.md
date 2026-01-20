@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **SeniorityEnum** | Pointer to [**Seniority**](Seniority.md) |  | [optional] 
 **ExperienceSinceYear** | Pointer to **int32** |  | [optional] 
 **EmployeeSince** | Pointer to **string** |  | [optional] 
-**Nationality** | Pointer to **string** |  | [optional] 
+**Nationalities** | Pointer to **[]string** |  | [optional] 
 **OnsiteRatio** | Pointer to **int32** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] [readonly] 
 **PictureSHA256** | Pointer to **string** | SHA256 hash of the full resolution image | [optional] [readonly] 
@@ -420,30 +420,30 @@ SetEmployeeSince sets EmployeeSince field to given value.
 
 HasEmployeeSince returns a boolean if a field has been set.
 
-### GetNationality
+### GetNationalities
 
-`func (o *Person) GetNationality() string`
+`func (o *Person) GetNationalities() []string`
 
-GetNationality returns the Nationality field if non-nil, zero value otherwise.
+GetNationalities returns the Nationalities field if non-nil, zero value otherwise.
 
-### GetNationalityOk
+### GetNationalitiesOk
 
-`func (o *Person) GetNationalityOk() (*string, bool)`
+`func (o *Person) GetNationalitiesOk() (*[]string, bool)`
 
-GetNationalityOk returns a tuple with the Nationality field if it's non-nil, zero value otherwise
+GetNationalitiesOk returns a tuple with the Nationalities field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNationality
+### SetNationalities
 
-`func (o *Person) SetNationality(v string)`
+`func (o *Person) SetNationalities(v []string)`
 
-SetNationality sets Nationality field to given value.
+SetNationalities sets Nationalities field to given value.
 
-### HasNationality
+### HasNationalities
 
-`func (o *Person) HasNationality() bool`
+`func (o *Person) HasNationalities() bool`
 
-HasNationality returns a boolean if a field has been set.
+HasNationalities returns a boolean if a field has been set.
 
 ### GetOnsiteRatio
 
