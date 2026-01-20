@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **SeniorityEnum** | Pointer to [**Seniority**](Seniority.md) |  | [optional] 
 **ExperienceSinceYear** | Pointer to **int32** |  | [optional] 
 **EmployeeSince** | Pointer to **string** |  | [optional] 
-**Nationalities** | Pointer to **[]string** |  | [optional] 
 **OnsiteRatio** | Pointer to **int32** |  | [optional] 
 **Picture** | Pointer to **string** | base64 encoded image | [optional] [readonly] 
 **PictureSHA256** | Pointer to **string** | SHA256 hash of the full resolution image | [optional] [readonly] 
@@ -419,31 +418,6 @@ SetEmployeeSince sets EmployeeSince field to given value.
 `func (o *Person) HasEmployeeSince() bool`
 
 HasEmployeeSince returns a boolean if a field has been set.
-
-### GetNationalities
-
-`func (o *Person) GetNationalities() []string`
-
-GetNationalities returns the Nationalities field if non-nil, zero value otherwise.
-
-### GetNationalitiesOk
-
-`func (o *Person) GetNationalitiesOk() (*[]string, bool)`
-
-GetNationalitiesOk returns a tuple with the Nationalities field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNationalities
-
-`func (o *Person) SetNationalities(v []string)`
-
-SetNationalities sets Nationalities field to given value.
-
-### HasNationalities
-
-`func (o *Person) HasNationalities() bool`
-
-HasNationalities returns a boolean if a field has been set.
 
 ### GetOnsiteRatio
 
