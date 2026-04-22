@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CountryIds** | Pointer to **[]string** |  | [optional] 
+**NationalityIds** | Pointer to **[]string** |  | [optional] 
 **PersonIds** | Pointer to **[]string** |  | [optional] 
 **EmployeeIds** | Pointer to **[]string** |  | [optional] 
 **ProfileIds** | Pointer to **[]string** |  | [optional] 
@@ -65,6 +66,31 @@ SetCountryIds sets CountryIds field to given value.
 `func (o *PersonSearch) HasCountryIds() bool`
 
 HasCountryIds returns a boolean if a field has been set.
+
+### GetNationalityIds
+
+`func (o *PersonSearch) GetNationalityIds() []string`
+
+GetNationalityIds returns the NationalityIds field if non-nil, zero value otherwise.
+
+### GetNationalityIdsOk
+
+`func (o *PersonSearch) GetNationalityIdsOk() (*[]string, bool)`
+
+GetNationalityIdsOk returns a tuple with the NationalityIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNationalityIds
+
+`func (o *PersonSearch) SetNationalityIds(v []string)`
+
+SetNationalityIds sets NationalityIds field to given value.
+
+### HasNationalityIds
+
+`func (o *PersonSearch) HasNationalityIds() bool`
+
+HasNationalityIds returns a boolean if a field has been set.
 
 ### GetPersonIds
 
