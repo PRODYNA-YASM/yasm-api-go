@@ -76,6 +76,7 @@ docs/LayoutField.md
 docs/LayoutOverlay.md
 docs/Level.md
 docs/Locateable.md
+docs/MatchMode.md
 docs/MinMax.md
 docs/MinMaxPercent.md
 docs/Nameable.md
@@ -223,6 +224,7 @@ model_layout_field.go
 model_layout_overlay.go
 model_level.go
 model_locateable.go
+model_match_mode.go
 model_min_max.go
 model_min_max_percent.go
 model_nameable.go

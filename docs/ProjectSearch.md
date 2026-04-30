@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**MatchMode** | Pointer to [**MatchMode**](MatchMode.md) |  | [optional] 
 **ProjectIds** | Pointer to **[]string** |  | [optional] 
 **MinStartDate** | Pointer to **string** |  | [optional] 
 **MaxEndDate** | Pointer to **string** |  | [optional] 
@@ -39,6 +40,31 @@ will change when the set of required properties is changed
 NewProjectSearchWithDefaults instantiates a new ProjectSearch object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMatchMode
+
+`func (o *ProjectSearch) GetMatchMode() MatchMode`
+
+GetMatchMode returns the MatchMode field if non-nil, zero value otherwise.
+
+### GetMatchModeOk
+
+`func (o *ProjectSearch) GetMatchModeOk() (*MatchMode, bool)`
+
+GetMatchModeOk returns a tuple with the MatchMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchMode
+
+`func (o *ProjectSearch) SetMatchMode(v MatchMode)`
+
+SetMatchMode sets MatchMode field to given value.
+
+### HasMatchMode
+
+`func (o *ProjectSearch) HasMatchMode() bool`
+
+HasMatchMode returns a boolean if a field has been set.
 
 ### GetProjectIds
 

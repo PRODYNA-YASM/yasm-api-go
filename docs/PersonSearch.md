@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**MatchMode** | Pointer to [**MatchMode**](MatchMode.md) |  | [optional] 
 **CountryIds** | Pointer to **[]string** |  | [optional] 
 **NationalityIds** | Pointer to **[]string** |  | [optional] 
 **PersonIds** | Pointer to **[]string** |  | [optional] 
@@ -41,6 +42,31 @@ will change when the set of required properties is changed
 NewPersonSearchWithDefaults instantiates a new PersonSearch object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMatchMode
+
+`func (o *PersonSearch) GetMatchMode() MatchMode`
+
+GetMatchMode returns the MatchMode field if non-nil, zero value otherwise.
+
+### GetMatchModeOk
+
+`func (o *PersonSearch) GetMatchModeOk() (*MatchMode, bool)`
+
+GetMatchModeOk returns a tuple with the MatchMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchMode
+
+`func (o *PersonSearch) SetMatchMode(v MatchMode)`
+
+SetMatchMode sets MatchMode field to given value.
+
+### HasMatchMode
+
+`func (o *PersonSearch) HasMatchMode() bool`
+
+HasMatchMode returns a boolean if a field has been set.
 
 ### GetCountryIds
 
